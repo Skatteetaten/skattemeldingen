@@ -12,7 +12,7 @@ const gatsbyConfig = {
       },
     ],
   },
-  pathPrefix: "/aurora",
+  pathPrefix: "/skattemeldingen",
   plugins: [
     "gatsby-plugin-react-helmet",
     {

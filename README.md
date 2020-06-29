@@ -26,6 +26,6 @@ will start a local web server and continuously build the documentation as you ma
 
 ## Deploying to github pages
 
-To update the gh-pages branch and in turn publish to https://skatteetaten.github.io/aurora/ run
+To update the gh-pages branch and in turn publish to https://skatteetaten.github.io/skattemeldingen/ run
 
     npm deploy
