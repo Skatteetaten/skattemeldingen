@@ -42,3 +42,5 @@ In that folder, add an index.md file. At the beginning of that file, add
     ---
 
 The values will be displayed in the documentation root page. Finally, go wild with markdown.
+
+Icon reference: https://skatteetaten.github.io/frontend-components/#icon
