@@ -1,14 +1,14 @@
 const gatsbyConfig = {
   siteMetadata: {
-    title: "the Aurora Platform",
+    title: "Skattemeldingen",
     menu: [
       {
         href: "/",
-        name: "The Aurora Platform",
+        name: "Skattemeldingen",
       },
       {
         href: "/documentation",
-        name: "Documentation",
+        name: "Dokumentasjon",
       },
     ],
   },

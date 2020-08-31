@@ -3,7 +3,7 @@ import Grid from "@skatteetaten/frontend-components/Grid";
 import NavigationTile from "@skatteetaten/frontend-components/NavigationTile";
 import SkeBasis from "@skatteetaten/frontend-components/SkeBasis";
 import { SingleColumnRow } from "../components/Columns";
-import Link from "gatsby-link";
+import { Link } from 'gatsby';
 
 const DocumentationPage = ({
   data: {
@@ -11,13 +11,14 @@ const DocumentationPage = ({
     site: { pathPrefix },
   },
 }) => {
+  const prefix = process.env.NODE_ENV !== 'production' ? '' : pathPrefix;
   const contents = edges
     .filter(
       ({ node }) =>
         node.fields && node.fields.slug.search("/documentation/") >= 0
     )
     .map(({ node }) => ({
-      to: `${pathPrefix}${node.fields.slug}`,
+      to: `${prefix}${node.fields.slug}`,
       icon: node.frontmatter.icon,
       heading: node.frontmatter.title,
       description: node.frontmatter.description || "",
@@ -27,10 +28,7 @@ const DocumentationPage = ({
     <SkeBasis>
       <Grid>
         <SingleColumnRow>
-          <div>
-            <h1>Documentation</h1>
-            <br />
-          </div>
+          <h1>Dokumentasjon</h1>
         </SingleColumnRow>
         <SingleColumnRow>
           <NavigationTile

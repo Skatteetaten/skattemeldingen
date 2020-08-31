@@ -1,8 +1,7 @@
 import React from "react";
 import Grid from "@skatteetaten/frontend-components/Grid";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
-import Breadcrumb from "starter/components/Breadcrumb";
 import TableOfContents from "starter/components/TableOfContents";
 
 import styles from "./documentation-template.module.css";
@@ -27,14 +26,9 @@ export default function Template({ data }) {
     <Grid>
       <Grid.Row>
         <Grid.Col {...mainGrid}>
-          <Breadcrumb
-            className={styles.breadcrumb}
-            path={fields.slug}
-            renderLink={({ href, name }) => <Link to={href}>{name}</Link>}
-          />
           <h1>{frontmatter.title}</h1>
           {headings && (
-            <TableOfContents headings={headings} slug={fields.slug} />
+            <TableOfContents headings={headings} slug={fields.slug} minHeaders={1} />
           )}
           <div
             className={styles.documentationContainer}

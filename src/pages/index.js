@@ -1,9 +1,7 @@
 import React from "react";
 import Grid from "@skatteetaten/frontend-components/Grid";
-import Quote from "../components/Quote";
 import { SingleColumnRow, DoubleColumnRow } from "../components/Columns";
 import auroraApi from "../../docs/frontpage/images/aurora-api.svg";
-import auroraObserve from "../../docs/frontpage/images/aurora-run.svg";
 import auroraBuild from "../../docs/frontpage/images/aurora-build.svg";
 
 const InfoSeparator = () => (
@@ -14,7 +12,7 @@ const InfoSeparator = () => (
 
 const InfoRow = ({ title, picture, children, left }) => {
   const Picture = () => (
-    <img src={picture} style={{ maxWidth: "100%", maxHeight: "600px" }} />
+    <img src={picture} style={{ maxWidth: "100%", maxHeight: "600px" }} alt="" />
   );
 
   return (
@@ -51,38 +49,17 @@ const IndexPage = ({
             <h1>The Aurora Platform</h1>
           </div>
         </SingleColumnRow>
-        <DoubleColumnRow>
-          <FrontPageContent path="/frontpage/faster-development/" />
-          <FrontPageContent path="/frontpage/why/" />
-        </DoubleColumnRow>
       </Grid>
 
-      <Quote
-        source="Bjarte Karlsen, Technical Architect NTA"
-        style={{ margin: "30px 0" }}
-      >
-        In order to avoid 'wall-of-yaml' we use a declarative, composable
-        configuration format with sane defaults that is transformed into
-        Kubernets objects
-      </Quote>
+      <InfoRow picture={auroraApi}>
+        <FrontPageContent path="/frontpage/deploy/" />
+      </InfoRow>
 
-      <Grid>
-        <InfoRow picture={auroraApi}>
-          <FrontPageContent path="/frontpage/deploy/" />
-        </InfoRow>
+      <InfoSeparator />
 
-        <InfoSeparator />
-
-        <InfoRow picture={auroraBuild} left>
-          <FrontPageContent path="/frontpage/build/" />
-        </InfoRow>
-
-        <InfoSeparator />
-
-        <InfoRow picture={auroraObserve}>
-          <FrontPageContent path="/frontpage/observe/" />
-        </InfoRow>
-      </Grid>
+      <InfoRow picture={auroraBuild} left>
+        <FrontPageContent path="/frontpage/build/" />
+      </InfoRow>
     </div>
   );
 };

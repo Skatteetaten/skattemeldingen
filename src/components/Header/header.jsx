@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import classnames from "classnames/bind";
 import Logo from "@skatteetaten/frontend-components/TopBanner/assets/ske-logo.svg";
 import Image from "@skatteetaten/frontend-components/Image";
+import Icon from "@skatteetaten/frontend-components/Icon";
 
 import styles from "./header.module.css";
 
@@ -53,7 +54,7 @@ const Header = ({ title, menu, onToggleMenu, showMobileMenu, ...rest }) => (
           </div>
           <div className={styles.mainHeaderButton}>
             <button onClick={onToggleMenu}>
-              <i className="material-icons">menu</i>
+              <Icon iconName="Menu" />
             </button>
           </div>
         </div>
