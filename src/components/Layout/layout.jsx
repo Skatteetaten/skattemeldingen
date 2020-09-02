@@ -56,7 +56,12 @@ class Layout extends React.Component {
               onToggleMenu={this.toggleMobileMenu}
               showMobileMenu={this.state.showMobileMenu}
             />
-            <div>{children}</div>
+            <div style={{
+              display: 'flex',
+              padding: '30px',
+              maxWidth: '1024px',
+              margin: '0 auto'
+            }}>{children}</div>
             <Footer />
           </>
         )}
