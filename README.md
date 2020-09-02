@@ -7,7 +7,7 @@ Getting the gatsby-starter-skatteetaten module (TODO: Add more docs)
     git submodule init
     git submodule update
 
-## How to build
+## How to build manually
 
 The project is built using npm from the current Node LTS. Install with [nvm](https://github.com/nvm-sh/nvm);
 
