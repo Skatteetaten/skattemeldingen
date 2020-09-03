@@ -1,7 +1,7 @@
 ---
 icon: "cloud"
-title: "Næringsberegninger"
-description: ""
+title: "Spørsmål og svar"
+description: "Spørsmål og svar"
 ---
 
 # Kotlin
