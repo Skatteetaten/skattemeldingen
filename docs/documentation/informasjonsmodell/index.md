@@ -1,6 +1,6 @@
 ---
 icon: "cloud"
-title: "Informasjonsmodeller"
+title: "Informasjonsmodeller og kodeverk"
 description: "Informasjonsmodeller og kodeverk"
 ---
 

@@ -1,6 +1,6 @@
 ---
 icon: "cloud"
-title: "kodelister"
-description: "Kodelister som benyttes i informasjonsmodellene"
+title: "Kodelister som benyttes i informasjonsmodellene"
+description: ""
 ---
 

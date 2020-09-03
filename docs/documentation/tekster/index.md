@@ -1,7 +1,7 @@
 ---
 icon: "cloud"
-title: "tekster"
-description: "Lede- og hjelpetekster for felt i informasjonsmodellene"
+title: "Lede- og hjelpetekster for felt i informasjonsmodellene"
+description: ""
 ---
 
 # Kotlin
