@@ -22,6 +22,7 @@ const mainGrid = {
 export default function Template({ data }) {
   const { markdownRemark } = data;
   const { frontmatter, fields, html, headings } = markdownRemark;
+
   return (
     <Grid>
       <Grid.Row>
