@@ -25,15 +25,11 @@ will start a local web server and continuously build the documentation as you ma
 
 ## Deploying to github pages
 
-To update the gh-pages branch and in turn publish to https://skatteetaten.github.io/skattemeldingen/ run
-
-    npm run build && npm run deploy
-
 ## Adding a \/documentation page
 
 Add a folder in /docs/documentation. Name it properly, as it will be reflected in the url.
 
-In that folder, add an index.md file. At the beginning of that file, add 
+In that folder, add an index.md file. At the beginning of that file, add
 
     ---
     icon: ""
