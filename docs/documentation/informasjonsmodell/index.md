@@ -44,9 +44,13 @@ XSD'en kommer ny og oppdatert versjon i senere versjoner av spesifikasjon/implem
 
 #XSD Næringsopplysninger for 2020
 Versjon 1 av denne XSD'en ligger vedlagt og heter [naeringsopplysninger_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/xsd/naeringsopplysninger_v1.xsd)
-Eksempel på innsendt XML fil fra et enkeltpersonforetak ligger vedlagt og heter [Naeringsopplysninger_ENK_Eksempel.xml] (https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/Naeringsopplysninger_ENK_Eksempel.xml) 
-Grafisk fremstilling ligger vedlagt og heter [Næringsopplysninger UML modell.pdf] (https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/Næringsopplysninger UML Modell.pdf)
-'Mapping' mellom informasjonselementer i XSD'en og postnummer/OR-id i eksisterende RF-skjemaer ligger vedlagt og heter [Mapping_Xpath_Skjema_Orid.xlsx] (https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/Mapping_Xpath_Skjema_Orid.xlsx)
+
+Eksempel på innsendt XML fil fra et enkeltpersonforetak ligger vedlagt og heter [Naeringsopplysninger-ENK-Eksempel.xml] (https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/Naeringsopplysninger_ENK_Eksempel.xml) 
+
+Grafisk fremstilling ligger vedlagt og heter [Naeringsopplysninger-UML-modell.pdf] (https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/Naeringsopplysninger-UML-Modell.pdf)
+
+'Mapping' mellom informasjonselementer i XSD'en og postnummer/OR-id i eksisterende RF-skjemaer ligger vedlagt og heter [Mapping-Xpath-Skjema-Orid.xlsx] (https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/Mapping-Xpath-Skjema-Orid.xlsx)
+
 I Resultatregnskap og Balanse benyttes kodelister til å spesifisere hvilke konti som kan benyttes.  I tillegg til kontonummer inneholder kodelistene regnskapspliktstype (1 = Ikke årsregnskapspliktig, 2 = Årsregnskapspliktig, 5 = Begrenset regnskapsplikt.  Tilsvarer dagens næringsoppgave 1, 2 og 5).  Dette for å indikere hvilke konti som er relevante for det enkelte foretaket.  Noen konti er for eksempel kun relevante for foretak med årsregnskapsplikt.
 Det er en kodeliste pr. kontoklasse/gruppe (Resultatregnskap: Salgsinntekt, AnnenDriftsinntekt, Varekostnad, Lønnskostnad, AnnenDriftskostnad, Finansinntekt, Finanskostnad, EkstraordinærPost, Skattekostnad.  Balanse: Anleggsmidler, Omløpsmidler, Langsiktiggjeld, Kortsiktiggjeld og Egenkaptial).  Alle kodelistene er samlet i en fysisk fil hvor den enkelte kodeliste kalles "underkodeliste".  Kodelistefil i "lesbart" format ligger vedlagt og heter Kodeliste_ResultatregnskapOgBalanse.xslx.  Kodelistefiler i XML format til bruk  i utvikling ligger vedlagt og heter 2020_resultatregnskapOgBalanse.xml og 2020_midlertidigOgPermanentForskjellstype.xml.
 
