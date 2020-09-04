@@ -23,6 +23,7 @@ Konkret må sluttbrukersystemet gjøre følgende:
    - Når det ikke er feil i retur fra valideringstjenesten kan man gå til punkt E
    - Kalle Altinn sin nye plattform for å instansiere opp App'en for innsending av skattemelding for næringsdrivende.
    - Kalle Altinn for å laste opp skattemelding og næringsopplysninger på den instansierte App'en fra pkt e.
+   - Kalle Altinn for å laste ned kvittering/tilbakemelding fra skatteeaten.
 
 Skatteetaten har tilgjengeliggjort en test-applikasjon som viser hvordan trinnene beskrevet over kan utføres:
 [skattemelding-eksternt-api-test.zip](../api/skattemelding-eksternt-api-test.zip)
@@ -91,3 +92,4 @@ Testmiljøet vil være tilgjengelig fra 10.6. Det er ikke bestemt sluttdato for 
 Tekniske spørsmål knyttet til forberedelser og gjennomføring kan rettes til nyskattemelding@skatteetaten.no
 
 Etter gjennomført test ønsker vi at dere sender en testrapport på resultatet av gjennomført test. Den kan dere sende til samme adresse som over. I testrapporten beskriver dere hvordan dere har gjennomført test (om dere har brukt testklienten eller egenutviklet kode), resultatet og eventuelle kommentarer.
+
