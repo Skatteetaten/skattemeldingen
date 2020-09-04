@@ -1,0 +1,792 @@
+{
+	"info": {
+		"_postman_id": "82bdff04-8091-425c-8732-1671c136db33",
+		"name": "skattemelding-app-Altinn3-API",
+		"description": "0. Generer ID-porten token.\n1. kall \"hent AltinnToken\" (bruk ID-porten token fra punkt0 i header-felt Authorization).\n1.1 Hent partyID (bruk ID-porten token fra punkt0 i header-felt Authorization).\n2. Kall \"Opprett ny Instans\" (bruk Altinn-token fra punkt1 i header-felt Authorization, legg på bearer først).\n\n3. Kall \"Oppdater metadata (skattemelding_V1)\" (bruk instanceId og data.id fra punkt2 på slutten av URL-en)\n4. Kall \"Last opp skattemelding.xml\" (bruk Altinn-token fra punkt1 og instanceId fra punkt2).\n\n5. Kall \"Sett proses til neste steg - Bekreftelse\" (med instansID fra punkt2)\n6. Kall \"Sett proses til neste steg - Tilbakemelding\" (med instansID fra punkt2)\n7. Kall \"Hent kvittering\".\n\n----------------------------------------\n\nNyttige kall som kan være til hjelp:\n\n\"Hent instans informasjon\" (bruk instansID du fikk i punkt2).\n\"Hent process information\" (med instansID fra punk2).\n\nVisning i Altinn:\nGå til følgende URL via en browser: https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1#/instance/50006836/cc3958f3-978f-4271-9089-c664d39d3d84 (bytt ut slutten av URL-en med processID fra punkt2).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "hentAltinnToken basert på Maskinporten",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://platform.tt02.altinn.no/authentication/api/v1/exchange/maskinporten",
+					"protocol": "https",
+					"host": [
+						"platform",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"authentication",
+						"api",
+						"v1",
+						"exchange",
+						"maskinporten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. hent AltinnToken basert på ID-portenToken",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJraWQiOiJjWmswME1rbTVIQzRnN3Z0NmNwUDVGSFpMS0pzdzhmQkFJdUZiUzRSVEQ0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJzc0c0OHhwYmVQcFJRNnV3ekktLTRWbjBQWVgzSUxHWHdSc0tMd2Y1R1FjPSIsImlzcyI6Imh0dHBzOlwvXC9vaWRjLXZlcjIuZGlmaS5ub1wvaWRwb3J0ZW4tb2lkYy1wcm92aWRlclwvIiwiY2xpZW50X2FtciI6Im5vbmUiLCJwaWQiOiIwMjA5NTMwMDE3MyIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJjbGllbnRfaWQiOiIzOGU2MzRkOS01NjgyLTQ0YWUtOWI2MC1kYjYzNmVmZTMxNTYiLCJhdWQiOiJodHRwczpcL1wvbXAtdGVzdC5zaXRzLm5vXC9hcGlcL2Vrc3Rlcm50YXBpXC9mb3JtdWVpbm50ZWt0XC9za2F0dGVtZWxkaW5nXC8iLCJhY3IiOiJMZXZlbDMiLCJzY29wZSI6Im9wZW5pZCIsImV4cCI6MTU5OTIwODA4MywiaWF0IjoxNTk5MjA3NzgzLCJjbGllbnRfb3Jnbm8iOiI5NzQ3NjEwNzYiLCJqdGkiOiI0LVQ0YlE1N19jN2ZHSGlycG9iYW9TY0ozUDlUd2loMEZMejBOVmhLV0VvIiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In19.4NUH7W17f211wjMhyQDmQ6vl89jfhki1sRSVE5M3AzO_vsk5NxfjAGfhQ_j0-f4mdaI7qJ4Ckj5zq0CcwXHtW3M6Kcq1usrx5rNMH8pWe3OQ-JIjivSrQXfPP3RFF3FJFJ84jJSfYrDai301dbekrf2TUbamKgRpl6MXcH4WQoaeBNvxoJOcPE0mOKnl_GY11yDbtzFSisZah4YuPRMXmjOEuV-7zieWqN9RMxS_JkMbzGu1S_QphskGfy2sV7lpPfGJqGj2kCfiptuYuccq81ZKM71mlqlBgwz7EtBkF5NyOm9fWf1nEzxSGfypfV55CJ4t2U5vgrMZ_TDuR28agA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://platform.tt02.altinn.no/authentication/api/v1/exchange/id-porten",
+					"protocol": "https",
+					"host": [
+						"platform",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"authentication",
+						"api",
+						"v1",
+						"exchange",
+						"id-porten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hent Instans informasjon",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkNGQkRENTdCREE1NjkxQUEwREQ0ODJFQzc4OTcxOUU4NTc1RkI4RDAiLCJ4NXQiOiJ6NzNWZTlwV2thb04xSUxzZUpjWjZGZGZ1TkEiLCJ0eXAiOiJKV1QifQ.eyJuYW1laWQiOiI4MDU3MCIsInVybjphbHRpbm46dXNlcmlkIjoiODA1NzAiLCJ1cm46YWx0aW5uOnVzZXJuYW1lIjoiIiwidXJuOmFsdGlubjpwYXJ0eWlkIjo1MDAwNjgzNiwidXJuOmFsdGlubjphdXRoZW50aWNhdGVtZXRob2QiOiJOb3REZWZpbmVkIiwidXJuOmFsdGlubjphdXRobGV2ZWwiOjMsImNsaWVudF9hbXIiOiJub25lIiwicGlkIjoiMDIwOTUzMDAxNzMiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiY2xpZW50X2lkIjoiMzhlNjM0ZDktNTY4Mi00NGFlLTliNjAtZGI2MzZlZmUzMTU2IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQiLCJleHAiOjE1OTkyMDk3ODMsImlhdCI6MTU5OTIwNzk4MywiY2xpZW50X29yZ25vIjoiOTc0NzYxMDc2IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In0sIm5iZiI6MTU5OTIwNzk4M30.bLzeJ57b5Anvi6TcWRqNLlU5UwR_ld8FocIdORCAuWmrhjT8kstWFDwNqKYWxSbStmD8Qec99HQ0RI4HtLepyH4isV5aAZ_Ih1w44Y1PxiS_hCxyc6mgGFeifweDc2_iUQeEiPQ8N80_OJD_j7Ilu0jWNBlxY0sEz2pCP1MUoWlwld6hzDyjPxn9QAszRUJu5iurPN2S3ru0m3uigEgFgVzCVdB7jY-T_j7eP-IM7zwaji1yzH-ve32jV5XD5CFvl1Bcerr3Qx33Qe33GxMIPZSGKb-ZYbHW3PHRo4yckuEyp-BEZ3-hWddaU5-afVEN5theoka_qMSnAaAnz6R4xQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006836/cc3958f3-978f-4271-9089-c664d39d3d84",
+					"protocol": "https",
+					"host": [
+						"skd",
+						"apps",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"skd",
+						"sirius-skattemelding-v1",
+						"instances",
+						"50006836",
+						"cc3958f3-978f-4271-9089-c664d39d3d84"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hent prosess information",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkNGQkRENTdCREE1NjkxQUEwREQ0ODJFQzc4OTcxOUU4NTc1RkI4RDAiLCJ4NXQiOiJ6NzNWZTlwV2thb04xSUxzZUpjWjZGZGZ1TkEiLCJ0eXAiOiJKV1QifQ.eyJuYW1laWQiOiI4MDU3MCIsInVybjphbHRpbm46dXNlcmlkIjoiODA1NzAiLCJ1cm46YWx0aW5uOnVzZXJuYW1lIjoiIiwidXJuOmFsdGlubjpwYXJ0eWlkIjo1MDAwNjgzNiwidXJuOmFsdGlubjphdXRoZW50aWNhdGVtZXRob2QiOiJOb3REZWZpbmVkIiwidXJuOmFsdGlubjphdXRobGV2ZWwiOjMsImNsaWVudF9hbXIiOiJub25lIiwicGlkIjoiMDIwOTUzMDAxNzMiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiY2xpZW50X2lkIjoiMzhlNjM0ZDktNTY4Mi00NGFlLTliNjAtZGI2MzZlZmUzMTU2IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQiLCJleHAiOjE1OTkyMDk3ODMsImlhdCI6MTU5OTIwNzk4MywiY2xpZW50X29yZ25vIjoiOTc0NzYxMDc2IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In0sIm5iZiI6MTU5OTIwNzk4M30.bLzeJ57b5Anvi6TcWRqNLlU5UwR_ld8FocIdORCAuWmrhjT8kstWFDwNqKYWxSbStmD8Qec99HQ0RI4HtLepyH4isV5aAZ_Ih1w44Y1PxiS_hCxyc6mgGFeifweDc2_iUQeEiPQ8N80_OJD_j7Ilu0jWNBlxY0sEz2pCP1MUoWlwld6hzDyjPxn9QAszRUJu5iurPN2S3ru0m3uigEgFgVzCVdB7jY-T_j7eP-IM7zwaji1yzH-ve32jV5XD5CFvl1Bcerr3Qx33Qe33GxMIPZSGKb-ZYbHW3PHRo4yckuEyp-BEZ3-hWddaU5-afVEN5theoka_qMSnAaAnz6R4xQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006836/cc3958f3-978f-4271-9089-c664d39d3d84/process",
+					"protocol": "https",
+					"host": [
+						"skd",
+						"apps",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"skd",
+						"sirius-skattemelding-v1",
+						"instances",
+						"50006836",
+						"cc3958f3-978f-4271-9089-c664d39d3d84",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Opprett ny instans",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkNGQkRENTdCREE1NjkxQUEwREQ0ODJFQzc4OTcxOUU4NTc1RkI4RDAiLCJ4NXQiOiJ6NzNWZTlwV2thb04xSUxzZUpjWjZGZGZ1TkEiLCJ0eXAiOiJKV1QifQ.eyJuYW1laWQiOiI4MDU3MCIsInVybjphbHRpbm46dXNlcmlkIjoiODA1NzAiLCJ1cm46YWx0aW5uOnVzZXJuYW1lIjoiIiwidXJuOmFsdGlubjpwYXJ0eWlkIjo1MDAwNjgzNiwidXJuOmFsdGlubjphdXRoZW50aWNhdGVtZXRob2QiOiJOb3REZWZpbmVkIiwidXJuOmFsdGlubjphdXRobGV2ZWwiOjMsImNsaWVudF9hbXIiOiJub25lIiwicGlkIjoiMDIwOTUzMDAxNzMiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiY2xpZW50X2lkIjoiMzhlNjM0ZDktNTY4Mi00NGFlLTliNjAtZGI2MzZlZmUzMTU2IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQiLCJleHAiOjE1OTkyMDk3ODMsImlhdCI6MTU5OTIwNzk4MywiY2xpZW50X29yZ25vIjoiOTc0NzYxMDc2IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In0sIm5iZiI6MTU5OTIwNzk4M30.bLzeJ57b5Anvi6TcWRqNLlU5UwR_ld8FocIdORCAuWmrhjT8kstWFDwNqKYWxSbStmD8Qec99HQ0RI4HtLepyH4isV5aAZ_Ih1w44Y1PxiS_hCxyc6mgGFeifweDc2_iUQeEiPQ8N80_OJD_j7Ilu0jWNBlxY0sEz2pCP1MUoWlwld6hzDyjPxn9QAszRUJu5iurPN2S3ru0m3uigEgFgVzCVdB7jY-T_j7eP-IM7zwaji1yzH-ve32jV5XD5CFvl1Bcerr3Qx33Qe33GxMIPZSGKb-ZYbHW3PHRo4yckuEyp-BEZ3-hWddaU5-afVEN5theoka_qMSnAaAnz6R4xQ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"instanceOwner\": {\n    \t\"partyId\": \"50006836\"\n    },\n    \"appOwner\":{\n    \t\"labels\" : [ \"gr\", \"x2\" ]\n    },\n    \"appId\" : \"skd/sirius-skattemelding-v1\",\n    \"dueBefore\": \"2020-06-01T12:00:00Z\",\n    \"visibleAfter\": \"2019-05-20T00:00:00Z\",\n    \"title\": { \"nb\": \"Skattemelding\" }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/",
+					"protocol": "https",
+					"host": [
+						"skd",
+						"apps",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"skd",
+						"sirius-skattemelding-v1",
+						"instances",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Last opp skattemelding.xml",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a17fdeb9-e581-4c68-ab71-4a005b486391",
+						"exec": [
+							"pm.test(\"Runtime - Data - Add attachment - Status - 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if(pm.expect(jsonData.id).not.eql(null))\r",
+							"    {\r",
+							"        pm.environment.set('dataGuid', jsonData.id);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9c6e67a4-86b0-41ab-9bda-42ba036784c1",
+						"exec": [
+							"pm.environment.set(\"dataGuid\",\"\");",
+							"pm.environment.set(\"attachmentElementType\", \"skattemelding\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Disposition",
+						"name": "Content-Type",
+						"value": "attachment; filename=skattemelding.xml",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkNGQkRENTdCREE1NjkxQUEwREQ0ODJFQzc4OTcxOUU4NTc1RkI4RDAiLCJ4NXQiOiJ6NzNWZTlwV2thb04xSUxzZUpjWjZGZGZ1TkEiLCJ0eXAiOiJKV1QifQ.eyJuYW1laWQiOiI4MDU3MCIsInVybjphbHRpbm46dXNlcmlkIjoiODA1NzAiLCJ1cm46YWx0aW5uOnVzZXJuYW1lIjoiIiwidXJuOmFsdGlubjpwYXJ0eWlkIjo1MDAwNjgzNiwidXJuOmFsdGlubjphdXRoZW50aWNhdGVtZXRob2QiOiJOb3REZWZpbmVkIiwidXJuOmFsdGlubjphdXRobGV2ZWwiOjMsImNsaWVudF9hbXIiOiJub25lIiwicGlkIjoiMDIwOTUzMDAxNzMiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiY2xpZW50X2lkIjoiMzhlNjM0ZDktNTY4Mi00NGFlLTliNjAtZGI2MzZlZmUzMTU2IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQiLCJleHAiOjE1OTkyMDk3ODMsImlhdCI6MTU5OTIwNzk4MywiY2xpZW50X29yZ25vIjoiOTc0NzYxMDc2IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In0sIm5iZiI6MTU5OTIwNzk4M30.bLzeJ57b5Anvi6TcWRqNLlU5UwR_ld8FocIdORCAuWmrhjT8kstWFDwNqKYWxSbStmD8Qec99HQ0RI4HtLepyH4isV5aAZ_Ih1w44Y1PxiS_hCxyc6mgGFeifweDc2_iUQeEiPQ8N80_OJD_j7Ilu0jWNBlxY0sEz2pCP1MUoWlwld6hzDyjPxn9QAszRUJu5iurPN2S3ru0m3uigEgFgVzCVdB7jY-T_j7eP-IM7zwaji1yzH-ve32jV5XD5CFvl1Bcerr3Qx33Qe33GxMIPZSGKb-ZYbHW3PHRo4yckuEyp-BEZ3-hWddaU5-afVEN5theoka_qMSnAaAnz6R4xQ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml"
+					}
+				},
+				"url": {
+					"raw": "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006836/cc3958f3-978f-4271-9089-c664d39d3d84/data?dataType=skattemelding",
+					"protocol": "https",
+					"host": [
+						"skd",
+						"apps",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"skd",
+						"sirius-skattemelding-v1",
+						"instances",
+						"50006836",
+						"cc3958f3-978f-4271-9089-c664d39d3d84",
+						"data"
+					],
+					"query": [
+						{
+							"key": "dataType",
+							"value": "skattemelding"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST Add attachment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Disposition",
+								"name": "Content-Type",
+								"value": "attachment; filename=test.pdf",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "http://altinn3local.no/{{org}}/{{app}}/instances/{{instanceOwnerId}}/{{instanceId}}/data?dataType={{attachmentElementType}}",
+							"protocol": "http",
+							"host": [
+								"altinn3local",
+								"no"
+							],
+							"path": [
+								"{{org}}",
+								"{{app}}",
+								"instances",
+								"{{instanceOwnerId}}",
+								"{{instanceId}}",
+								"data"
+							],
+							"query": [
+								{
+									"key": "dataType",
+									"value": "{{attachmentElementType}}"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 26 Mar 2020 12:34:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Location",
+							"value": "https://altinn3local.no/ttd/demo-multiple-process-steps/instances/12345/721b01a7-33f8-4e1c-b54a-f5a076be5207/data/dd962200-f22d-483a-a534-6baabdf24f20"
+						},
+						{
+							"key": "Request-Context",
+							"value": "appId=cid-v1:314e2a3c-c24f-41b2-95f7-8640bf974834"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"dd962200-f22d-483a-a534-6baabdf24f20\",\n    \"instanceGuid\": \"721b01a7-33f8-4e1c-b54a-f5a076be5207\",\n    \"dataType\": \"required-data-element-task2\",\n    \"filename\": \"test.pdf\",\n    \"contentType\": \"application/pdf\",\n    \"blobStoragePath\": \"ttd/demo-multiple-process-steps/721b01a7-33f8-4e1c-b54a-f5a076be5207/data/dd962200-f22d-483a-a534-6baabdf24f20\",\n    \"selfLinks\": {\n        \"apps\": \"https://altinn3local.no/ttd/demo-multiple-process-steps/instances/12345/721b01a7-33f8-4e1c-b54a-f5a076be5207/data/dd962200-f22d-483a-a534-6baabdf24f20\",\n        \"platform\": \"https://platform.altinn3local.no/storage/api/v1/instances/12345/721b01a7-33f8-4e1c-b54a-f5a076be5207/data/dd962200-f22d-483a-a534-6baabdf24f20\"\n    },\n    \"size\": 13264,\n    \"locked\": false,\n    \"refs\": [],\n    \"created\": \"2020-03-26T12:34:36.9097845Z\",\n    \"createdBy\": null,\n    \"lastChanged\": \"2020-03-26T12:34:36.9097845Z\",\n    \"lastChangedBy\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "8. Sett prosess til neste steg (Feedback)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "153be9db-3c94-4245-921c-399ca41b3b01",
+						"exec": [
+							"pm.test(\"Runtime - Data - Add attachment - Status - 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if(pm.expect(jsonData.id).not.eql(null))\r",
+							"    {\r",
+							"        pm.environment.set('dataGuid', jsonData.id);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ce71aaba-9f54-447c-be87-8359d29623d4",
+						"exec": [
+							"pm.environment.set(\"dataGuid\",\"\");",
+							"pm.environment.set(\"attachmentElementType\", \"skattemelding\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AltinnStudioRuntime}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Disposition",
+						"name": "Content-Type",
+						"value": "attachment; filename=skattemelding.xml",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/acn-nkyls/Desktop/skattemelding.xml"
+					}
+				},
+				"url": {
+					"raw": "https://{{org}}.apps.{{envUrl}}/{{org}}/{{app}}/instances/{{instanceOwnerId}}/{{instanceId}}/data?dataType={{attachmentElementType}}",
+					"protocol": "https",
+					"host": [
+						"{{org}}",
+						"apps",
+						"{{envUrl}}"
+					],
+					"path": [
+						"{{org}}",
+						"{{app}}",
+						"instances",
+						"{{instanceOwnerId}}",
+						"{{instanceId}}",
+						"data"
+					],
+					"query": [
+						{
+							"key": "dataType",
+							"value": "{{attachmentElementType}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST Add attachment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Disposition",
+								"name": "Content-Type",
+								"value": "attachment; filename=test.pdf",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "http://altinn3local.no/{{org}}/{{app}}/instances/{{instanceOwnerId}}/{{instanceId}}/data?dataType={{attachmentElementType}}",
+							"protocol": "http",
+							"host": [
+								"altinn3local",
+								"no"
+							],
+							"path": [
+								"{{org}}",
+								"{{app}}",
+								"instances",
+								"{{instanceOwnerId}}",
+								"{{instanceId}}",
+								"data"
+							],
+							"query": [
+								{
+									"key": "dataType",
+									"value": "{{attachmentElementType}}"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 26 Mar 2020 12:34:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Location",
+							"value": "https://altinn3local.no/ttd/demo-multiple-process-steps/instances/12345/721b01a7-33f8-4e1c-b54a-f5a076be5207/data/dd962200-f22d-483a-a534-6baabdf24f20"
+						},
+						{
+							"key": "Request-Context",
+							"value": "appId=cid-v1:314e2a3c-c24f-41b2-95f7-8640bf974834"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"dd962200-f22d-483a-a534-6baabdf24f20\",\n    \"instanceGuid\": \"721b01a7-33f8-4e1c-b54a-f5a076be5207\",\n    \"dataType\": \"required-data-element-task2\",\n    \"filename\": \"test.pdf\",\n    \"contentType\": \"application/pdf\",\n    \"blobStoragePath\": \"ttd/demo-multiple-process-steps/721b01a7-33f8-4e1c-b54a-f5a076be5207/data/dd962200-f22d-483a-a534-6baabdf24f20\",\n    \"selfLinks\": {\n        \"apps\": \"https://altinn3local.no/ttd/demo-multiple-process-steps/instances/12345/721b01a7-33f8-4e1c-b54a-f5a076be5207/data/dd962200-f22d-483a-a534-6baabdf24f20\",\n        \"platform\": \"https://platform.altinn3local.no/storage/api/v1/instances/12345/721b01a7-33f8-4e1c-b54a-f5a076be5207/data/dd962200-f22d-483a-a534-6baabdf24f20\"\n    },\n    \"size\": 13264,\n    \"locked\": false,\n    \"refs\": [],\n    \"created\": \"2020-03-26T12:34:36.9097845Z\",\n    \"createdBy\": null,\n    \"lastChanged\": \"2020-03-26T12:34:36.9097845Z\",\n    \"lastChangedBy\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "3 Oppdater metadata (skattemelding_V1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "adc276c7-a761-46e3-af5a-92fca792201a",
+						"exec": [
+							"pm.test(\"Runtime - Data - Edit Form Data - Status - 303\", function () {\r",
+							"    pm.response.to.have.status(303);\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var envDataId = pm.environment.get(\"dataGuid\");\r",
+							"    pm.expect(jsonData.id).to.equal(envDataId);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkNGQkRENTdCREE1NjkxQUEwREQ0ODJFQzc4OTcxOUU4NTc1RkI4RDAiLCJ4NXQiOiJ6NzNWZTlwV2thb04xSUxzZUpjWjZGZGZ1TkEiLCJ0eXAiOiJKV1QifQ.eyJuYW1laWQiOiI4MDU3MCIsInVybjphbHRpbm46dXNlcmlkIjoiODA1NzAiLCJ1cm46YWx0aW5uOnVzZXJuYW1lIjoiIiwidXJuOmFsdGlubjpwYXJ0eWlkIjo1MDAwNjgzNiwidXJuOmFsdGlubjphdXRoZW50aWNhdGVtZXRob2QiOiJOb3REZWZpbmVkIiwidXJuOmFsdGlubjphdXRobGV2ZWwiOjMsImNsaWVudF9hbXIiOiJub25lIiwicGlkIjoiMDIwOTUzMDAxNzMiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiY2xpZW50X2lkIjoiMzhlNjM0ZDktNTY4Mi00NGFlLTliNjAtZGI2MzZlZmUzMTU2IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQiLCJleHAiOjE1OTkyMDk3ODMsImlhdCI6MTU5OTIwNzk4MywiY2xpZW50X29yZ25vIjoiOTc0NzYxMDc2IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In0sIm5iZiI6MTU5OTIwNzk4M30.bLzeJ57b5Anvi6TcWRqNLlU5UwR_ld8FocIdORCAuWmrhjT8kstWFDwNqKYWxSbStmD8Qec99HQ0RI4HtLepyH4isV5aAZ_Ih1w44Y1PxiS_hCxyc6mgGFeifweDc2_iUQeEiPQ8N80_OJD_j7Ilu0jWNBlxY0sEz2pCP1MUoWlwld6hzDyjPxn9QAszRUJu5iurPN2S3ru0m3uigEgFgVzCVdB7jY-T_j7eP-IM7zwaji1yzH-ve32jV5XD5CFvl1Bcerr3Qx33Qe33GxMIPZSGKb-ZYbHW3PHRo4yckuEyp-BEZ3-hWddaU5-afVEN5theoka_qMSnAaAnz6R4xQ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Disposition",
+						"value": "attachment; filename=skattemelding.xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<SkattemeldingApp xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <partsreferanse>str1234</partsreferanse>\r\n  <inntektsaar>2020</inntektsaar>\r\n  <innsendingstype>komplett</innsendingstype>\r\n  <opprettetAv>TurboSkatt AS...</opprettetAv>\r\n  <opprettingstidspunkt>2012-06-03T12:12:12</opprettingstidspunkt>\r\n  <endringstidspunkt>2012-06-03T12:12:12</endringstidspunkt>\r\n</SkattemeldingApp>"
+				},
+				"url": {
+					"raw": "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006836/cc3958f3-978f-4271-9089-c664d39d3d84/data/7dc82aeb-bebd-40be-ac0b-c536c598f6fc",
+					"protocol": "https",
+					"host": [
+						"skd",
+						"apps",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"skd",
+						"sirius-skattemelding-v1",
+						"instances",
+						"50006836",
+						"cc3958f3-978f-4271-9089-c664d39d3d84",
+						"data",
+						"7dc82aeb-bebd-40be-ac0b-c536c598f6fc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Sett prosess til neste steg - Bekreftelse",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c8b493a4-3014-4512-ada6-872650c782b3",
+						"exec": [
+							"pm.test(\"Runtime - Instances - Complete process - Status - 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkNGQkRENTdCREE1NjkxQUEwREQ0ODJFQzc4OTcxOUU4NTc1RkI4RDAiLCJ4NXQiOiJ6NzNWZTlwV2thb04xSUxzZUpjWjZGZGZ1TkEiLCJ0eXAiOiJKV1QifQ.eyJuYW1laWQiOiI4MDU3MCIsInVybjphbHRpbm46dXNlcmlkIjoiODA1NzAiLCJ1cm46YWx0aW5uOnVzZXJuYW1lIjoiIiwidXJuOmFsdGlubjpwYXJ0eWlkIjo1MDAwNjgzNiwidXJuOmFsdGlubjphdXRoZW50aWNhdGVtZXRob2QiOiJOb3REZWZpbmVkIiwidXJuOmFsdGlubjphdXRobGV2ZWwiOjMsImNsaWVudF9hbXIiOiJub25lIiwicGlkIjoiMDIwOTUzMDAxNzMiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiY2xpZW50X2lkIjoiMzhlNjM0ZDktNTY4Mi00NGFlLTliNjAtZGI2MzZlZmUzMTU2IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQiLCJleHAiOjE1OTkyMDk3ODMsImlhdCI6MTU5OTIwNzk4MywiY2xpZW50X29yZ25vIjoiOTc0NzYxMDc2IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In0sIm5iZiI6MTU5OTIwNzk4M30.bLzeJ57b5Anvi6TcWRqNLlU5UwR_ld8FocIdORCAuWmrhjT8kstWFDwNqKYWxSbStmD8Qec99HQ0RI4HtLepyH4isV5aAZ_Ih1w44Y1PxiS_hCxyc6mgGFeifweDc2_iUQeEiPQ8N80_OJD_j7Ilu0jWNBlxY0sEz2pCP1MUoWlwld6hzDyjPxn9QAszRUJu5iurPN2S3ru0m3uigEgFgVzCVdB7jY-T_j7eP-IM7zwaji1yzH-ve32jV5XD5CFvl1Bcerr3Qx33Qe33GxMIPZSGKb-ZYbHW3PHRo4yckuEyp-BEZ3-hWddaU5-afVEN5theoka_qMSnAaAnz6R4xQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006836/cc3958f3-978f-4271-9089-c664d39d3d84/process/next",
+					"protocol": "https",
+					"host": [
+						"skd",
+						"apps",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"skd",
+						"sirius-skattemelding-v1",
+						"instances",
+						"50006836",
+						"cc3958f3-978f-4271-9089-c664d39d3d84",
+						"process",
+						"next"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Sett prosess til neste steg - Tilbakemelding",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9573584-0c94-44dc-9536-600a1b558e0e",
+						"exec": [
+							"pm.test(\"Runtime - Instances - Complete process - Status - 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkNGQkRENTdCREE1NjkxQUEwREQ0ODJFQzc4OTcxOUU4NTc1RkI4RDAiLCJ4NXQiOiJ6NzNWZTlwV2thb04xSUxzZUpjWjZGZGZ1TkEiLCJ0eXAiOiJKV1QifQ.eyJuYW1laWQiOiI4MDU3MCIsInVybjphbHRpbm46dXNlcmlkIjoiODA1NzAiLCJ1cm46YWx0aW5uOnVzZXJuYW1lIjoiIiwidXJuOmFsdGlubjpwYXJ0eWlkIjo1MDAwNjgzNiwidXJuOmFsdGlubjphdXRoZW50aWNhdGVtZXRob2QiOiJOb3REZWZpbmVkIiwidXJuOmFsdGlubjphdXRobGV2ZWwiOjMsImNsaWVudF9hbXIiOiJub25lIiwicGlkIjoiMDIwOTUzMDAxNzMiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiY2xpZW50X2lkIjoiMzhlNjM0ZDktNTY4Mi00NGFlLTliNjAtZGI2MzZlZmUzMTU2IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQiLCJleHAiOjE1OTkyMDk3ODMsImlhdCI6MTU5OTIwNzk4MywiY2xpZW50X29yZ25vIjoiOTc0NzYxMDc2IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In0sIm5iZiI6MTU5OTIwNzk4M30.bLzeJ57b5Anvi6TcWRqNLlU5UwR_ld8FocIdORCAuWmrhjT8kstWFDwNqKYWxSbStmD8Qec99HQ0RI4HtLepyH4isV5aAZ_Ih1w44Y1PxiS_hCxyc6mgGFeifweDc2_iUQeEiPQ8N80_OJD_j7Ilu0jWNBlxY0sEz2pCP1MUoWlwld6hzDyjPxn9QAszRUJu5iurPN2S3ru0m3uigEgFgVzCVdB7jY-T_j7eP-IM7zwaji1yzH-ve32jV5XD5CFvl1Bcerr3Qx33Qe33GxMIPZSGKb-ZYbHW3PHRo4yckuEyp-BEZ3-hWddaU5-afVEN5theoka_qMSnAaAnz6R4xQ"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006836/cc3958f3-978f-4271-9089-c664d39d3d84/process/next",
+					"protocol": "https",
+					"host": [
+						"skd",
+						"apps",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"skd",
+						"sirius-skattemelding-v1",
+						"instances",
+						"50006836",
+						"cc3958f3-978f-4271-9089-c664d39d3d84",
+						"process",
+						"next"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Hent kvittering",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkNGQkRENTdCREE1NjkxQUEwREQ0ODJFQzc4OTcxOUU4NTc1RkI4RDAiLCJ4NXQiOiJ6NzNWZTlwV2thb04xSUxzZUpjWjZGZGZ1TkEiLCJ0eXAiOiJKV1QifQ.eyJuYW1laWQiOiI4MDU3MCIsInVybjphbHRpbm46dXNlcmlkIjoiODA1NzAiLCJ1cm46YWx0aW5uOnVzZXJuYW1lIjoiIiwidXJuOmFsdGlubjpwYXJ0eWlkIjo1MDAwNjgzNiwidXJuOmFsdGlubjphdXRoZW50aWNhdGVtZXRob2QiOiJOb3REZWZpbmVkIiwidXJuOmFsdGlubjphdXRobGV2ZWwiOjMsImNsaWVudF9hbXIiOiJub25lIiwicGlkIjoiMDIwOTUzMDAxNzMiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiY2xpZW50X2lkIjoiMzhlNjM0ZDktNTY4Mi00NGFlLTliNjAtZGI2MzZlZmUzMTU2IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQiLCJleHAiOjE1OTkyMDk3ODMsImlhdCI6MTU5OTIwNzk4MywiY2xpZW50X29yZ25vIjoiOTc0NzYxMDc2IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In0sIm5iZiI6MTU5OTIwNzk4M30.bLzeJ57b5Anvi6TcWRqNLlU5UwR_ld8FocIdORCAuWmrhjT8kstWFDwNqKYWxSbStmD8Qec99HQ0RI4HtLepyH4isV5aAZ_Ih1w44Y1PxiS_hCxyc6mgGFeifweDc2_iUQeEiPQ8N80_OJD_j7Ilu0jWNBlxY0sEz2pCP1MUoWlwld6hzDyjPxn9QAszRUJu5iurPN2S3ru0m3uigEgFgVzCVdB7jY-T_j7eP-IM7zwaji1yzH-ve32jV5XD5CFvl1Bcerr3Qx33Qe33GxMIPZSGKb-ZYbHW3PHRo4yckuEyp-BEZ3-hWddaU5-afVEN5theoka_qMSnAaAnz6R4xQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006836/cc3958f3-978f-4271-9089-c664d39d3d84/data?dataType=tilbakemelding",
+					"protocol": "https",
+					"host": [
+						"skd",
+						"apps",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"skd",
+						"sirius-skattemelding-v1",
+						"instances",
+						"50006836",
+						"cc3958f3-978f-4271-9089-c664d39d3d84",
+						"data"
+					],
+					"query": [
+						{
+							"key": "dataType",
+							"value": "tilbakemelding"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.1 Hent partyId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkNGQkRENTdCREE1NjkxQUEwREQ0ODJFQzc4OTcxOUU4NTc1RkI4RDAiLCJ4NXQiOiJ6NzNWZTlwV2thb04xSUxzZUpjWjZGZGZ1TkEiLCJ0eXAiOiJKV1QifQ.eyJuYW1laWQiOiI4MDU3MCIsInVybjphbHRpbm46dXNlcmlkIjoiODA1NzAiLCJ1cm46YWx0aW5uOnVzZXJuYW1lIjoiIiwidXJuOmFsdGlubjpwYXJ0eWlkIjo1MDAwNjgzNiwidXJuOmFsdGlubjphdXRoZW50aWNhdGVtZXRob2QiOiJOb3REZWZpbmVkIiwidXJuOmFsdGlubjphdXRobGV2ZWwiOjMsImNsaWVudF9hbXIiOiJub25lIiwicGlkIjoiMDIwOTUzMDAxNzMiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiY2xpZW50X2lkIjoiMzhlNjM0ZDktNTY4Mi00NGFlLTliNjAtZGI2MzZlZmUzMTU2IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQiLCJleHAiOjE1OTkyMDk3ODMsImlhdCI6MTU5OTIwNzk4MywiY2xpZW50X29yZ25vIjoiOTc0NzYxMDc2IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTc0NzYxMDc2In0sIm5iZiI6MTU5OTIwNzk4M30.bLzeJ57b5Anvi6TcWRqNLlU5UwR_ld8FocIdORCAuWmrhjT8kstWFDwNqKYWxSbStmD8Qec99HQ0RI4HtLepyH4isV5aAZ_Ih1w44Y1PxiS_hCxyc6mgGFeifweDc2_iUQeEiPQ8N80_OJD_j7Ilu0jWNBlxY0sEz2pCP1MUoWlwld6hzDyjPxn9QAszRUJu5iurPN2S3ru0m3uigEgFgVzCVdB7jY-T_j7eP-IM7zwaji1yzH-ve32jV5XD5CFvl1Bcerr3Qx33Qe33GxMIPZSGKb-ZYbHW3PHRo4yckuEyp-BEZ3-hWddaU5-afVEN5theoka_qMSnAaAnz6R4xQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/api/v1/profile/user",
+					"protocol": "https",
+					"host": [
+						"skd",
+						"apps",
+						"tt02",
+						"altinn",
+						"no"
+					],
+					"path": [
+						"skd",
+						"sirius-skattemelding-v1",
+						"api",
+						"v1",
+						"profile",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8f87bd09-993e-4fb9-8485-534de07b0a46",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "753f8c60-c6b1-4248-9c65-4ed036077266",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
