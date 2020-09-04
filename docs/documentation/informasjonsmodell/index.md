@@ -16,14 +16,14 @@ I tillegg kan det bli aktuelt å legge ved en metadatafil med teknisk innhold.
 
 For inntektsårene etter 2020 vil det også komme andre varianter av skattemeldinger for å støtte ulike selskapsformer slik at totalsamlingen relevante skattemeldinger blir:
 
-![Skattemeldingsvarianter.png](Skattemeldingsvarianter.png)
+![Skattemeldingsvarianter.PNG](Skattemeldingsvarianter.PNG)
 
 I utgangspunktet er planen at XSD for næringsopplysninger etterhvert skal inneholde alle de forholdene som er aktuelle å innrapportere fra næringsdrivende og selskap. Det kan imidlertid bli aktuelt at det legges til noen tilleggs-XSD-er for helt spesielle forhold.
 
 #Årsrevisjon
 XSD-spesifikasjonene vil gjennomgå en årlig revisjon slik at det normalt kommer en ny versjon av disse per inntektsår. Skatteetaten har valgt å ikke ha inntektsåret i filnavnet, men derimot ha et løpende versjonsnummer som er basert på "semantisk versjonering". Dette vil tre i kraft etter første produsjonsversjon (altså ikke aktuelt å innføre i testperioden i 2020).
 
-##"Semantic Versioning":
+##Semantic Versioning:
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
 
@@ -34,7 +34,7 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 Innenfor et inntektsår kan det forutsettes av det kun kommer MINOR- og PATCH-versjoner.
 
 #XSD Skattemelding for lønnstakere og pensjonister for 2020
-Versjon  0.8.0.0 av denne XSD'en ligger vedlagt og heter "skattemelding_v8.xsd".
+Versjon  0.8.0.0 av denne XSD'en ligger vedlagt og heter [skattemelding_v8.xsd](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/xsd/skattemelding_v8.xsd)
 Eksempel på innsendt XML fil for en person på siste versjon kommer.
 Denne spesifikasjonen har både noen mangler og noen elementer som skal fjernes:
 
@@ -48,12 +48,13 @@ Versjon 1 av denne XSD'en ligger vedlagt og heter [naeringsopplysninger_v1.xsd](
 
 Eksempel på innsendt XML fil fra et enkeltpersonforetak ligger vedlagt og heter [Naeringsopplysninger-ENK-Eksempel.xml](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/Naeringsopplysninger_ENK_Eksempel.xml) 
 
-Grafisk fremstilling ligger vedlagt og heter [Naeringsopplysninger-UML-modell.pdf] (https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/Naeringsopplysninger-UML-Modell.pdf)
+Grafisk fremstilling ligger vedlagt og heter [Naeringsopplysninger-UML-modell.pdf](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/Naeringsopplysninger-UML-Modell.pdf)
 
 'Mapping' mellom informasjonselementer i XSD'en og postnummer/OR-id i eksisterende RF-skjemaer ligger vedlagt og heter [Mapping-Xpath-Skjema-Orid.xlsx](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/Mapping-Xpath-Skjema-Orid.xlsx)
 
 I Resultatregnskap og Balanse benyttes kodelister til å spesifisere hvilke konti som kan benyttes.  I tillegg til kontonummer inneholder kodelistene regnskapspliktstype (1 = Ikke årsregnskapspliktig, 2 = Årsregnskapspliktig, 5 = Begrenset regnskapsplikt.  Tilsvarer dagens næringsoppgave 1, 2 og 5).  Dette for å indikere hvilke konti som er relevante for det enkelte foretaket.  Noen konti er for eksempel kun relevante for foretak med årsregnskapsplikt.
-Det er en kodeliste pr. kontoklasse/gruppe (Resultatregnskap: Salgsinntekt, AnnenDriftsinntekt, Varekostnad, Lønnskostnad, AnnenDriftskostnad, Finansinntekt, Finanskostnad, EkstraordinærPost, Skattekostnad.  Balanse: Anleggsmidler, Omløpsmidler, Langsiktiggjeld, Kortsiktiggjeld og Egenkaptial).  Alle kodelistene er samlet i en fysisk fil hvor den enkelte kodeliste kalles "underkodeliste".  Kodelistefil i "lesbart" format ligger vedlagt og heter Kodeliste_ResultatregnskapOgBalanse.xslx.  Kodelistefiler i XML format til bruk  i utvikling ligger vedlagt og heter 2020_resultatregnskapOgBalanse.xml og 2020_midlertidigOgPermanentForskjellstype.xml.
+Det er en kodeliste pr. kontoklasse/gruppe (Resultatregnskap: Salgsinntekt, AnnenDriftsinntekt, Varekostnad, Lønnskostnad, AnnenDriftskostnad, Finansinntekt, Finanskostnad, EkstraordinærPost, Skattekostnad.  Balanse: Anleggsmidler, Omløpsmidler, Langsiktiggjeld, Kortsiktiggjeld og Egenkaptial).  Alle kodelistene er samlet i en fysisk fil hvor den enkelte kodeliste kalles "underkodeliste".  Kodelistefil i "lesbart" format ligger vedlagt og heter [Kodeliste_ResultatregnskapOgBalanse.xslx](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/Kodeliste_ResultatregnskapOgBalanse.xslx). 
+Kodelistefiler i XML format til bruk  i utvikling ligger vedlagt og heter [2020_resultatregnskapOgBalanse.xml](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/kodeliste/2020_resultatregnskapOgBalanse.xml) og [2020_midlertidigOgPermanentForskjellstype.xml](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/kodeliste/2020_midlertidigOgPermanentForskjellstype.xml).
 
 Fra og med inntektsåret 2021 vil et utvalg av fastsatte verdier fra tidligere års fastsetting være tilgjengelig i næringsopplysninger og kan benyttes som inngående verdier i neste års næringsopplysninger. Denne funksjonaliteten har også blitt kalt "UB-master" fordi den presenterer Skatteetatens syn på hva som er gjeldene utgående verdi fra i fjor som igjen skal innrapporteres som inngående verdi i gjeldende år.
 
