@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kodeliste xmlns="urn:no:skatteetaten:kodelistebibliotek:domain:v1">
+    <tekniskNavn>2020_mappingTilInterneGrunnlagsdataFraSL</tekniskNavn>
+    <beskrivelse>
+        <spraakTekst>
+            <tekst>Liste over felter som overføres fra SL til SIRIUS og begynnes ifm prefill</tekst>
+            <spraak>no</spraak>
+        </spraakTekst>
+    </beskrivelse>
+    <kode>
+        <tekniskNavn>maalform</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Målform</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>21778</verdi>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles B = Bokmål E = Engelsk N = Nynorsk S = Samisk</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>statsborgerskap</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Statsborgerskap SFU</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>i15035</verdi>
+            <tilOrienteringIfmSkattemeldingen>Brukes til riktig preutfylling og fastsetting for sjøfolk.</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>skattytergruppe</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Overstyrt skattytergruppering. Tekst</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>i12132</verdi>
+            <tilOrienteringIfmSkattemeldingen>Merker skattyter som næringsdrivende 1 = Lønnstaker 2 = Jord/skog/rein 3 = Fiske 4 = Annen næring 9 = Lottaker</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>overstyrtSkattytergruppe</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Overstyrt skattytergruppering. Tekst</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>i12132</verdi>
+            <tilOrienteringIfmSkattemeldingen>Merker skattyter som næringsdrivende 1 = Lønnstaker 2 = Jord/skog/rein 3 = Fiske 4 = Annen næring 9 = Lottaker</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>harMottattErstatningTilBarn</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Merke for mottatt erstatning til barn</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>i12044</verdi>
+            <tilOrienteringIfmSkattemeldingen>Kontroll i forbindelse med manuell behandling. Senere må finnes en løsning for maskinell behandling hvis mulig.</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>skogfaktor</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Skogfaktor</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>I9020</verdi>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - skogeiendom For 2017 var skogfaktor = 5</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>samboer</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Samboers fnr</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>21777</verdi>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Samboers fødselsnummer og Foreldrefradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>samboerMedFellesBarn</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Felles barn med samboer</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>33968</verdi>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Samboers fødselsnummer og Foreldrefradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>samboerMedFellesFormue</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Felles formue/gjeld med samboer</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>33969</verdi>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Samboers fødselsnummer</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>bosattPaaInstitusjon</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Kode for bosatt på institusjon</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <begrepsreferanse>https://begrepskatalog/begrep/98da4319-dff2-11e7-a0fd-005056821322</begrepsreferanse>
+        <kodetillegg>
+            <path>rotentitet</path>
+            <verdi>i4613</verdi>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Fordeling av barns forhold</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>enoekfradrag</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fra SOFIE</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>avregning</path>
+            <verdi>37109</verdi>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>avregnetForskuddstrekk</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fra SOFIE</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>avregning</path>
+            <verdi>31699</verdi>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>avregnetForskuddsskatt</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fra SOFIE</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>avregning</path>
+            <verdi>34525</verdi>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>betaltTilleggsforskudd</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fra SOFIE</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>avregning</path>
+            <verdi>34949</verdi>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiForAndreVerdipapirer</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Verdi andre verdipapirer</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i3007</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiForInnboLoesoereOgFritidsbaatUnderSalgsverdigrense</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>4.2.3 Innbo/løsøre inkl. båt med salgsv. under 50 000 kr</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>21128</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiAvUtestaaendeFordringerGjeldsbrevMv</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>4.1.6 Formue av utestående fordringer, gjeldsbrev og lignende og fordringer i næring</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>22193</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>innskuddIUtlandet</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>4.1.9 Innskudd i utenlandsk bank (RF-1231)</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>21044</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA + privatforbruksberegning</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>opptjenteRenterIUtlandet</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>3.1.11 Renteinntekter i utenlandsk bank (RF-1231)</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>21042</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>reisefradrag</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Reiseutgifter - Beløp</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <antallKm>6785</antallKm>
+            <beloep>20989</beloep>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Reisefradrag</tilOrienteringIfmSkattemeldingen>
+            <antallDager>6783</antallDager>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>sumLoenn</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Sum lønn</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i3545</beloep>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Reisefradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>nettoFormuesverdiForAndelINOKUS</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Formue andel i NOKUS-selskap</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>27770</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiForAndelIFellesNettoformueISDF</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Andel formue KS, ANS mv.</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>21710</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>andelAvFellesgjeldISDF</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Andel negativ nettoformue KS, ANS mv.</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>21717</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>underskuddTilFremfoering</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Enkel FB-kode 74 - Underskudd til fremføring</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <kommunenummer>17034</kommunenummer>
+            <beloep>i8862</beloep>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Underskudd til fremføring</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>nettoinntektVedUtleieAvFastEiendomMv</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>2.8.2 Nettoinntekt ved utleie mv. av fast eiendom utenfor næring (RF-1189)</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>21707</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiForSkogeiendom</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>4.3.4 Formue skog</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <seksjonsnummer>20769</seksjonsnummer>
+            <festenummer>20770</festenummer>
+            <gaardsnummer>20767</gaardsnummer>
+            <kommunenummer>20765</kommunenummer>
+            <bruksnummer>20768</bruksnummer>
+            <beloep>20771</beloep>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Formue skog</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>pensjonFraUtlandetSkattepliktigINorge</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>2.2.2 Pensjon fra utlandet</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>22543</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>underskuddVedUtleieMvAvFastEiendomUtenforNaering</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>3.3.12 Underskudd ved utleie mv. av fast eiendom (RF-1189)</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>21708</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiAvPrivatUtestaaendeFordringIUtlandet</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fordringer i utlandet</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>20935</beloep>
+            <tilOrienteringIfmSkattemeldingen>Privatforbruksberegning? Bør likebehandles med utenstående fordringer i Norge</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>gjeldIUtlandet</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>4.8.3 Gjeld i utlandet</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>27995</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA + privatforbruksberegning</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>paaloepteRenterIUtlandet</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>3.3.2 Renter i utlandet</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>27994</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>nettoinntektVedUtleieAvFastEiendomMv</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>2.8.2 Nettoinntekt ved utleie mv. av fast eiendom utenfor næring (preutfylt)</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>20746</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiForFritidsbaatMedSalgsverdiOverSalgsverdigrense</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>4.2.4 Lystfartøy</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>21131</beloep>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Lystfartøy</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>underskuddVedUtleieMvAvFastEiendomUtenforNaering</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>3.3.12 Underskudd ved utleie mv. av fast eiendom utenfor næring</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>20753</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiForFastEiendomIUtlandet</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Formue</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <metode>i11428</metode>
+            <eiendomstype>i11002</eiendomstype>
+            <land>i9201</land>
+            <beloep>30857</beloep>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Fast eiendom i utlandet</tilOrienteringIfmSkattemeldingen>
+            <eierandel>i11871</eierandel>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiForUtleidNaeringseiendomIUtlandet</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Formue</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <metode>i11429</metode>
+            <eiendomstype>i11030</eiendomstype>
+            <land>i9204</land>
+            <beloep>32993</beloep>
+            <tilOrienteringIfmSkattemeldingen>Preutfylles - Utleid utenlandsk næringseiendom</tilOrienteringIfmSkattemeldingen>
+            <eierandel>i12317</eierandel>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>nettoinntektVedUtleieAvFastEiendomMvIUtlandet</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>2.8.5 Leieinntekt fast eiendom utland</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>33960</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>underskuddVedUtleieMvAvFastEiendomUtenforNaeringIUtlandet</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>3.3.12 Underskudd fast eiendom utland</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <land>33970</land>
+            <beloep>33971</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>pensjonsinntektIEOESTilsvarendeAlderspensjonEllerAFP</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>2.2.3 EØS-pensjon</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>34531</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>pensjonFraUtlandetSkattefriINorge</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>2.2.5 Skattefri pensjon fra utlandet</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>34782</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>pensjonsinnbetalingTilTjenestepensjonsordningIArbeidsforholdIEOES</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Utenlandsk pensjonsordning - fradrag</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <betaltTil>36617</betaltTil>
+            <land>36616</land>
+            <oppstartsdato>36618</oppstartsdato>
+            <beloep>37124</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>pensjonsinnbetalingTilIPSIEOES</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Utenlandsk IPA/IPS-premie - fradrag</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <betaltTil>36626</betaltTil>
+            <land>36625</land>
+            <beloep>37125</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>pensjonsinnbetalingTilAvtaleOmSkattefavorisertIndividuellSparingTilPensjonIEOESTegnetFomNov2017</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Utenlandsk IPA/IPS-premie - fradrag - Ny ordning</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <betaltTil>37406</betaltTil>
+            <land>37407</land>
+            <beloep>37406</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>pensjonFraUtlandetSkattepliktigINorge</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>2.2.2 Annen pensjon fra utlandet</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>37051</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>sumFradragForSykdomsutgifter</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Sum fradrag for sykdomsutgifter</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i3054</beloep>
+            <tilOrienteringIfmSkattemeldingen>Brukes i kalkyle for å sjekke om skattyter har krav på fradrag. Trenger verdiene fra 2010, 2011, i forfjor og i fjor.</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>underskuddEPFSvalbard</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Enkel ferdigberegningskode 69 Underskudd EPF Svalbard</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i7657</beloep>
+            <tilOrienteringIfmSkattemeldingen>Brukes ved beregning av alminnelig inntekt Svalbard.</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>fremfoertFradragForFormuesskattBetaltIUtlandet2013</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fremførbart kreditfradrag for formuesskatt betalt i utlandet 2013</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i15318</beloep>
+            <tilOrienteringIfmSkattemeldingen>Fastsettingsberegning ifm årets kreditfradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>fremfoertFradragForFormuesskattBetaltIUtlandet2014</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fremførbart kreditfradrag for formuesskatt betalt i utlandet 2014</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i15319</beloep>
+            <tilOrienteringIfmSkattemeldingen>Fastsettingsberegning ifm årets kreditfradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>fremfoertFradragForFormuesskattBetaltIUtlandet2015</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fremførbart kreditfradrag for formuesskatt betalt i utlandet 2015</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i15320</beloep>
+            <tilOrienteringIfmSkattemeldingen>Fastsettingsberegning ifm årets kreditfradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>fremfoertFradragForFormuesskattBetaltIUtlandet2016</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fremførbart kreditfradrag for formuesskatt betalt i utlandet 2016</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i15479</beloep>
+            <tilOrienteringIfmSkattemeldingen>Fastsettingsberegning ifm årets kreditfradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>fremfoertFradragForInntektsskattBetaltIUtlandet2013</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fremførbart kreditfradrrag for intektsskatt betalt i utlandet 2013</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i15478</beloep>
+            <tilOrienteringIfmSkattemeldingen>Fastsettingsberegning ifm årets kreditfradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>fremfoertFradragForInntektsskattBetaltIUtlandet2014</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fremførbart kreditfradrrag for intektsskatt betalt i utlandet 2014</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i15315</beloep>
+            <tilOrienteringIfmSkattemeldingen>Fastsettingsberegning ifm årets kreditfradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>fremfoertFradragForInntektsskattBetaltIUtlandet2015</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fremførbart kreditfradrrag for intektsskatt betalt i utlandet 2015</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i15314</beloep>
+            <tilOrienteringIfmSkattemeldingen>Fastsettingsberegning ifm årets kreditfradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>fremfoertFradragForInntektsskattBetaltIUtlandet2016</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Fremførbart kreditfradrrag for intektsskatt betalt i utlandet 2016</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i15313</beloep>
+            <tilOrienteringIfmSkattemeldingen>Fastsettingsberegning ifm årets kreditfradrag</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>formuesverdiAndreFinansprodukterFraRF1159</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>4.1.10 Formue andre finansprodukter (RF-1159)</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i16776</beloep>
+            <tilOrienteringIfmSkattemeldingen>Dialog i SME og ev. SMIA</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>saerfradragForStoreSykdomskostnaderI2010</tekniskNavn>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i16867</beloep>
+            <tilOrienteringIfmSkattemeldingen>Brukes i kalkyle for å sjekke om skattepliktige har rett til å kreve særfradrag for store sykdomskostnader i inntektsåret</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>saerfradragForStoreSykdomskostnaderI2011</tekniskNavn>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>I16868</beloep>
+            <tilOrienteringIfmSkattemeldingen>Brukes i kalkyle for å sjekke om skattepliktige har rett til å kreve særfradrag for store sykdomskostnader i inntektsåret</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>saerfradragForStoreSykdomskostnaderIAaretFoerInntektsaaret</tekniskNavn>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i16866</beloep>
+            <tilOrienteringIfmSkattemeldingen>Brukes i kalkyle for å sjekke om skattepliktige har rett til å kreve særfradrag for store sykdomskostnader i inntektsåret</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>saerfradragForStoreSykdomskostnaderToAarFoerInntektsaaret</tekniskNavn>
+        <kodetillegg>
+            <path>generisk</path>
+            <beloep>i16874</beloep>
+            <tilOrienteringIfmSkattemeldingen>Brukes i kalkyle for å sjekke om skattepliktige har rett til å kreve særfradrag for store sykdomskostnader i inntektsåret</tilOrienteringIfmSkattemeldingen>
+        </kodetillegg>
+    </kode>
+    <lokaltForvaltet>false</lokaltForvaltet>
+</kodeliste>
