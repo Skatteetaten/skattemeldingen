@@ -223,6 +223,7 @@ Skatteetaten har følgende beregning av verdier som er definert innenfor egenfas
 * overskudd av ulike utgiftsgodtjørelser fra arbeidsgiver
 * samlet pensjonsinntekt og øvrige grunnlag for skattefradrag for pensjonsinntekt
 * reisefradrag
+* merkostnader ved arbeidsopphold utenfor hjemmet (pendleropphold, opphold under yrkes- og tjenestereise, opphold under kjøreoppdrag)
 * standardfradrag for utenlandske sjøfolk og sokkelarbeidere
 * særfradrag for enslig forsørger
 * særfradrag for lettere nedsatt ervervsevne
