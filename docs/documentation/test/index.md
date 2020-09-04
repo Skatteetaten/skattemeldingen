@@ -1,6 +1,6 @@
 ---
 icon: "cloud"
-title: "Testmiljø og -klienter"
+title: "Test"
 description: ""
 ---
 
@@ -25,8 +25,11 @@ Konkret må sluttbrukersystemet gjøre følgende:
    - Kalle Altinn for å laste opp skattemelding og næringsopplysninger på den instansierte App'en fra pkt e.
    - Kalle Altinn for å laste ned kvittering/tilbakemelding fra skatteeaten.
 
-Skatteetaten har tilgjengeliggjort en test-applikasjon som viser hvordan trinnene beskrevet over kan utføres:
-[skattemelding-eksternt-api-test.zip](../api/skattemelding-eksternt-api-test.zip)
+Skatteetaten har tilgjengeliggjort flere testapplikasjoner som viser hvordan trinnene beskrevet over kan utføres:
+1. [skattemelding-eksternt-api-test.zip](../api/skattemelding-eksternt-api-test.zip) hent gjeldende skattemelding
+2. [altinn 3 postmann collection](../api/skattemelding-app-Altinn3-API.postman_collection.json)
+3. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo.ipynb)
+4. [Eksempel XML](eksmpler/)
 
 ## Ta i bruk ID-porten
 
