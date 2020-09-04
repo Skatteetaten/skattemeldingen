@@ -104,9 +104,10 @@ API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt i
 - `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
 - `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige som man spør om skattemeldingen for.`
 
-**Respons** :
+**Respons** : se [skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd)
 
 ```xml
+eksempel:
 <hentSkattemeldingMvResponse xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemelding:hentskattemeldingmv:response:v1">
     <dokumenter>
         <skattemeldingdokument>
@@ -118,6 +119,8 @@ API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt i
     </dokumenter>
 </hentSkattemeldingMvResponse>
 ```
+
+
 
 ## Hent Skattemelding (basert på type)
 
@@ -136,9 +139,10 @@ API som returnerer siste gjeldende skattemeldingen av gitt type for skatteplikti
 - `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
 - `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige som man spør om skattemeldingen for.`
 
-**Respons** :
+**Respons** : se [skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd)
 
 ```xml
+eksempel:
 <hentSkattemeldingMvResponse xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemelding:hentskattemeldingmv:response:v1">
     <dokumenter>
         <skattemeldingdokument>
@@ -172,9 +176,10 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 - `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
 - `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige`
 
-**Body** :
+**Body** : se [skattemeldingerognaeringsopplysningerequest_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerequest_v1.xsd)
 
 ```xml
+Eksempel:
 <valideringsrequest xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemelding:valideringsrequest:v1">
   <dokumenter>
     <dokument>
@@ -186,9 +191,10 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 </valideringsrequest>
 ```
 
-**Respons** :
+**Respons** : se [skattemeldingerognaeringsopplysningerresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerresponse_v1.xsd)
 
 ```xml
+Eksempel:
 <valideringsresponse xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemelding:validering:response:v1">
         <dokumenter>
             <dokument>
