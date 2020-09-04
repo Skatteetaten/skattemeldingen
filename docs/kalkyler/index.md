@@ -7,7 +7,7 @@ description: ""
 # Kalkyler
 
 Dette er en oversikt over de kalkylene som er laget til nå. Merk at Skatteetaten bruker dette som en kjørbar spesifikasjon og forbeholder seg retten til
-å gjøre endringer i formen på disse kallylene. Formålet med å inkludere dem her er at de sammenfaller at spesifikasjonen er identisk med hvordan det er spesifisert
+å gjøre endringer i formen på disse kalkylene. Formålet med å inkludere dem her er at de sammenfaller at spesifikasjonen er identisk med hvordan det er spesifisert
 i vår egen implemementasjon av disse beregningene.
 
 ## GevinstOgTapskonto

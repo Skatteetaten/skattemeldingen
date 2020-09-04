@@ -70,3 +70,6 @@ Etter innsending av skattemelding/næringsopplysninger vil skatteetaten kvittere
 
 XSD for denne tjenesten er ikke definert i denne versjonen av spesifikasjon/implementasjonsguide.
 
+# Kodelister
+
+En oversikt over kodelistene som er definert så langt finnes i [Oversikten over kodelister](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/kodeliste)
