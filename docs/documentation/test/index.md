@@ -29,7 +29,7 @@ Skatteetaten har tilgjengeliggjort flere testapplikasjoner som viser hvordan tri
 1. [skattemelding-eksternt-api-test.zip](../api/skattemelding-eksternt-api-test.zip) hent gjeldende skattemelding
 2. [altinn 3 postmann collection](../api/skattemelding-app-Altinn3-API.postman_collection.json)
 3. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo.ipynb)
-4. [Eksempel XML](eksmpler/)
+4. [Eksempel XML](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/eksempler)
 
 ## Ta i bruk ID-porten
 
