@@ -63,12 +63,14 @@ Fra og med inntektsåret 2021 vil et utvalg av fastsatte verdier fra tidligere �
 XSD'en kommer ny og oppdatert versjon i senere versjoner av spesifikasjon/implementasjonsguide.
 
 #XSD Respons fra validering
-Valideringstjenesten vil returnere en respons som beskriver avvik og feil. Et eksempel på en slik respons er vist i kapittelet om Valideringstjenesten, men XSD for denne tjenesten er ikke definert i denne versjonen av spesifikasjon/implementasjonsguide.
+Valideringstjenesten vil returnere en respons som beskriver avvik og feil. 
+
+En nærmere beskrivelse av valideringstjenesten (inkl. requesten og responen) finnes under kapittelet API.
 
 #XSD Tilbakemelding
-Etter innsending av skattemelding/næringsopplysninger vil skatteetaten kvittere med en tilbakemeldingsfil i Innboksen i Altinn som inneholder status og eventuelle avvik. 
+Etter innsending av skattemelding/næringsopplysninger vil skatteetaten kvittere med en tilbakemeldingsfil som inneholder status og eventuelle avvik.
+Tilbakemeldingsfilen/kvitteringen vil bli lastet opp på instansen i Altinn og kan lastes ned av innsender. Se kapittelet API for nærmere beskrivelse.
 
-XSD for denne tjenesten er ikke definert i denne versjonen av spesifikasjon/implementasjonsguide.
 
 # Kodelister
 
