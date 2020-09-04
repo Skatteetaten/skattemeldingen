@@ -3,7 +3,7 @@ import Grid from "@skatteetaten/frontend-components/Grid";
 import NavigationTile from "@skatteetaten/frontend-components/NavigationTile";
 import SkeBasis from "@skatteetaten/frontend-components/SkeBasis";
 import { SingleColumnRow } from "../components/Columns";
-import { Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 const DocumentationPage = ({
   data: {

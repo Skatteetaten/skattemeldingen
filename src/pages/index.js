@@ -1,6 +1,8 @@
 import React from "react";
 import Grid from "@skatteetaten/frontend-components/Grid";
 import { SingleColumnRow } from "../components/Columns";
+import { graphql } from 'gatsby';
+import { renderAst } from '../components/renderAst';
 
 const IndexPage = ({
   data: {
@@ -8,8 +10,11 @@ const IndexPage = ({
   },
 }) => {
   const content = edges
-    .filter(({ node }) => node.fields && node.fields.slug === '/frontpage/')
-    .map(edge => <div key="front" dangerouslySetInnerHTML={{ __html: edge.node.html }} />);
+    .map(({ node }) => (
+      <div key={node.id}>
+        { renderAst(node.htmlAst) }
+      </div>
+    ));
 
   return (
     <div>
@@ -26,10 +31,11 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark {
+    allMarkdownRemark(filter: {fields: {slug: {eq: "/frontpage/"}}}) {
       edges {
         node {
-          html
+          id
+          htmlAst
           fields {
             slug
           }
