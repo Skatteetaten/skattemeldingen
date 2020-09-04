@@ -4,7 +4,7 @@ title: "Informasjonsmodeller og kodeverk"
 description: "Informasjonsmodeller og kodeverk"
 ---
 
-#Generelt
+# Generelt
 Skattemeldingen og næringsopplysninger skal leveres som XML-filer. Innhold og format på XML-filene er spesifisert gjennom XML Schema Definition, XSD. 
 
 For inntektsåret 2020 som kun støtter lønnstakere, pensjonister og enkeltpersonsforetak er det 2 XSD-er som er aktuelle:
@@ -20,10 +20,10 @@ For inntektsårene etter 2020 vil det også komme andre varianter av skattemeldi
 
 I utgangspunktet er planen at XSD for næringsopplysninger etterhvert skal inneholde alle de forholdene som er aktuelle å innrapportere fra næringsdrivende og selskap. Det kan imidlertid bli aktuelt at det legges til noen tilleggs-XSD-er for helt spesielle forhold.
 
-#Årsrevisjon
+# Årsrevisjon
 XSD-spesifikasjonene vil gjennomgå en årlig revisjon slik at det normalt kommer en ny versjon av disse per inntektsår. Skatteetaten har valgt å ikke ha inntektsåret i filnavnet, men derimot ha et løpende versjonsnummer som er basert på "semantisk versjonering". Dette vil tre i kraft etter første produsjonsversjon (altså ikke aktuelt å innføre i testperioden i 2020).
 
-##Semantic Versioning:
+## Semantic Versioning:
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
 
@@ -33,7 +33,7 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 
 Innenfor et inntektsår kan det forutsettes av det kun kommer MINOR- og PATCH-versjoner.
 
-#XSD Skattemelding for lønnstakere og pensjonister for 2020
+# XSD Skattemelding for lønnstakere og pensjonister for 2020
 Versjon  8.0.0 av denne XSD'en ligger vedlagt og heter [skattemelding_v8.xsd](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/xsd/skattemelding_v8.xsd)
 Eksempel på innsendt XML fil for en person på siste versjon kommer.
 Denne spesifikasjonen har både noen mangler og noen elementer som skal fjernes:
@@ -43,7 +43,7 @@ Temaet "Næring" er introdusert som et tema parallelt med "Arbeid, trygd og pens
 Siste versjon har fjernet interne konstruksjoner som ikke vil være relevant i en innsendingskontekst. Dette gjelder eksempelvis typen "Endringsmetadata" og id-felter som tidligere har blitt delt. 
 XSD'en kommer ny og oppdatert versjon i senere versjoner av spesifikasjon/implementasjonsguide.
 
-#XSD Næringsopplysninger for 2020
+# XSD Næringsopplysninger for 2020
 Versjon 1.0.0 av denne XSD'en ligger vedlagt og heter [naeringsopplysninger_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/xsd/naeringsopplysninger_v1.xsd)
 
 Eksempel på innsendt XML fil fra et enkeltpersonforetak ligger vedlagt og heter [Naeringsopplysninger-ENK-Eksempel.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/Naeringsingopplysninger-ENK-Eksempel.xml) 
@@ -62,10 +62,10 @@ Fra og med inntektsåret 2021 vil et utvalg av fastsatte verdier fra tidligere �
 
 XSD'en kommer ny og oppdatert versjon i senere versjoner av spesifikasjon/implementasjonsguide.
 
-#XSD Respons fra validering
+# XSD Respons fra validering
 Valideringstjenesten vil returnere en respons som beskriver avvik og feil. Et eksempel på en slik respons er vist i kapittelet om Valideringstjenesten, men XSD for denne tjenesten er ikke definert i denne versjonen av spesifikasjon/implementasjonsguide.
 
-#XSD Tilbakemelding
+# XSD Tilbakemelding
 Etter innsending av skattemelding/næringsopplysninger vil skatteetaten kvittere med en tilbakemeldingsfil i Innboksen i Altinn som inneholder status og eventuelle avvik. 
 
 XSD for denne tjenesten er ikke definert i denne versjonen av spesifikasjon/implementasjonsguide.
