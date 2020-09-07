@@ -141,16 +141,17 @@ API som returnerer siste gjeldende skattemeldingen av gitt type for skatteplikti
 
 ```xml
 eksempel:
-<hentSkattemeldingMvResponse xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemelding:hentskattemeldingmv:response:v1">
-    <dokumenter>
-        <skattemeldingdokument>
-            <id>SKI:138:5829</id>
-            <encoding>utf-8</encoding>
-            <content>Base64-enkodet skattemelding.xml iht XSD</content>
-            <type>skattemeldingUtkastPersonligSkattepliktig</type>
-        </skattemeldingdokument>
-    </dokumenter>
-</hentSkattemeldingMvResponse>
+<?xml version="1.0" encoding="UTF-8"?>
+<skattemeldingerOgNaeringsopplysningerforespoerselResponse xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingerognaeringsopplysninger:forespoersel:response:v1">
+   <dokumenter>
+      <skattemeldingdokument>
+         <id>SKI:138:7259</id>
+         <encoding>utf-8</encoding>
+         <content>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c2thdHRlbWVsZGluZyB4bWxucz0idXJuOm5vOnNrYXR0ZWV0YXRlbjpmYXN0c2V0dGluZzpmb3JtdWVpbm50ZWt0OnNrYXR0ZW1lbGRpbmc6ZWtzdGVybjp2OCI+PHBhcnRzcmVmZXJhbnNlPjMwMDAwNDU3ODU8L3BhcnRzcmVmZXJhbnNlPjxpbm50ZWt0c2Fhcj4yMDIwPC9pbm50ZWt0c2Fhcj48L3NrYXR0ZW1lbGRpbmc+</content>
+         <type>skattemeldingUtkastPersonligSkattepliktig</type>
+      </skattemeldingdokument>
+   </dokumenter>
+</skattemeldingerOgNaeringsopplysningerforespoerselResponse>
 ```
 
 ## Valider skattemelding
@@ -178,7 +179,7 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 
 ```xml
 Eksempel:
-<valideringsrequest xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemelding:valideringsrequest:v1">
+<skattemeldingerognaeringsopplysningerRequest xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingerognaeringsopplysninger:request:v1">
   <dokumenter>
     <dokument>
       <type>skattemeldingPersonligSkattepliktig</type>
@@ -186,44 +187,58 @@ Eksempel:
       <content>Base64-enkodet skattemelding.xml iht xsd-en</content>
     </dokument>
   </dokumenter>
-</valideringsrequest>
+</skattemeldingerognaeringsopplysningerRequest>
 ```
 
 **Respons** : se [skattemeldingerognaeringsopplysningerresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerresponse_v1_kompakt.xsd)
 
 ```xml
 Eksempel:
-<valideringsresponse xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemelding:validering:response:v1">
-        <dokumenter>
-            <dokument>
-                <type>skattemeldingEtterBeregning</type>
-                <encoding>utf-8</encoding>
-                <content>Base64-enkodet xml</content>
-            </dokument>
-            <dokument>
-                <type>naeringsopplysningerEtterBeregning</type>
-                <encoding>utf-8</encoding>
-                <content>Base64-enkodet xml</content>
-            </dokument>
-            <dokument>
-                <type>beregnetSkatt</type>
-                <encoding>utf-8</encoding>
-                <content>Base64-enkodet xml</content>
-            </dokument>
-            <dokument>
-                <type>summertSkattegrunnlagForVisning</type>
-                <encoding>utf-8</encoding>
-                <content>Base64-enkodet xml</content>
-            </dokument>
-        </dokumenter>
-        <avvikEtterBeregning>
-            <avvik>
-                <avvikstype>manglerNaeringsopplysninger</avvikstype>
-                <forekomstidentifikator>global</forekomstidentifikator>
-                <beregnetVerdi>0</beregnetVerdi>
-                <sti>resultatregnskap/driftsinntekt/sumDriftsinntekt/beloep/beloepSomHeltall</sti>
-            </avvik>
-        </avvikEtterBeregning></valideringsresponse>
+<skattemeldingerOgNaeringsopplysningerResponse xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingerognaeringsopplysninger:response:v1">
+    <dokumenter>
+        <dokument>
+            <type>skattemeldingEtterBeregning</type>
+            <encoding>utf-8</encoding>
+            <content>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c2thdHRlbWVsZGluZyB4bWxucz0idXJuOm5vOnNrYXR0ZWV0YXRlbjpmYXN0c2V0dGluZzpmb3JtdWVpbm50ZWt0OnNrYXR0ZW1lbGRpbmc6ZWtzdGVybjp2OCI+PHBhcnRzcmVmZXJhbnNlPjIyMjU3NjY2PC9wYXJ0c3JlZmVyYW5zZT48aW5udGVrdHNhYXI+MjAyMDwvaW5udGVrdHNhYXI+PGJvbGlnT2dFaWVuZGVsZXI+PGtqb2VyZXRvZXk+PGlkPjM3NzhhOTg2LTE4YzctNGYxNC05NDMwLTVjNmY0ZDUyNWVjNjwvaWQ+PGtqZW5uZW1lcmtlPjx0ZWtzdD4zMTM8L3Rla3N0Pjwva2plbm5lbWVya2U+PGFhckZvckZvZXJzdGVnYW5nc3JlZ2lzdHJlcmluZz48YWFyc3RhbGw+MTk5OTwvYWFyc3RhbGw+PC9hYXJGb3JGb2Vyc3RlZ2FuZ3NyZWdpc3RyZXJpbmc+PGZvcm11ZXN2ZXJkaUZvcktqb2VyZXRvZXk+PGJlbG9lcD48YmVsb2VwSU5vaz48YmVsb2VwU29tSGVsdGFsbD4xMDAwPC9iZWxvZXBTb21IZWx0YWxsPjwvYmVsb2VwSU5vaz48L2JlbG9lcD48L2Zvcm11ZXN2ZXJkaUZvcktqb2VyZXRvZXk+PC9ram9lcmV0b2V5PjwvYm9saWdPZ0VpZW5kZWxlcj48L3NrYXR0ZW1lbGRpbmc+</content>
+        </dokument>
+        <dokument>
+            <type>naeringsopplysningerEtterBeregning</type>
+            <encoding>utf-8</encoding>
+            <content>PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz48bmFlcmluZ3NvcHBseXNuaW5nZXIgeG1sbnM9InVybjpubzpza2F0dGVldGF0ZW46ZmFzdHNldHRpbmc6Zm9ybXVlaW5udGVrdDpuYWVyaW5nc29wcGx5c25pbmdlcjp2MSI+PHBhcnRzcmVmZXJhbnNlPjIyMjU3NjY2PC9wYXJ0c3JlZmVyYW5zZT48aW5udGVrdHNhYXI+MjAyMDwvaW5udGVrdHNhYXI+PHJlc3VsdGF0cmVnbnNrYXA+PGRyaWZ0c2lubnRla3Q+PHNhbGdzaW5udGVrdD48aWQ+MTwvaWQ+PHNhbGdzaW5udGVrdHN0eXBlPjxzYWxnc2lubnRla3RzdHlwZT40NTYwPC9zYWxnc2lubnRla3RzdHlwZT48L3NhbGdzaW5udGVrdHN0eXBlPjxiZWxvZXA+PGJlbG9lcD48YmVsb2VwPjEwMDwvYmVsb2VwPjwvYmVsb2VwPjwvYmVsb2VwPjwvc2FsZ3Npbm50ZWt0PjxzYWxnc2lubnRla3Q+PGlkPjI8L2lkPjxzYWxnc2lubnRla3RzdHlwZT48c2FsZ3Npbm50ZWt0c3R5cGU+NDU2MDwvc2FsZ3Npbm50ZWt0c3R5cGU+PC9zYWxnc2lubnRla3RzdHlwZT48YmVsb2VwPjxiZWxvZXA+PGJlbG9lcD4xNzwvYmVsb2VwPjwvYmVsb2VwPjwvYmVsb2VwPjwvc2FsZ3Npbm50ZWt0Pjxhbm5lbkRyaWZ0c2lubnRla3Q+PGlkPjI8L2lkPjxhbm5lbkRyaWZ0c2lubnRla3RzdHlwZT48YW5uZW5EcmlmdHNpbm50ZWt0c3R5cGU+MjAwPC9hbm5lbkRyaWZ0c2lubnRla3RzdHlwZT48L2FubmVuRHJpZnRzaW5udGVrdHN0eXBlPjxiZWxvZXA+PGJlbG9lcD48YmVsb2VwPjIxNzwvYmVsb2VwPjwvYmVsb2VwPjwvYmVsb2VwPjwvYW5uZW5EcmlmdHNpbm50ZWt0Pjxhbm5lbkRyaWZ0c2lubnRla3Q+PGlkPjM8L2lkPjxhbm5lbkRyaWZ0c2lubnRla3RzdHlwZT48YW5uZW5EcmlmdHNpbm50ZWt0c3R5cGU+NzAwPC9hbm5lbkRyaWZ0c2lubnRla3RzdHlwZT48L2FubmVuRHJpZnRzaW5udGVrdHN0eXBlPjxiZWxvZXA+PGJlbG9lcD48YmVsb2VwPi0xNzwvYmVsb2VwPjwvYmVsb2VwPjwvYmVsb2VwPjwvYW5uZW5EcmlmdHNpbm50ZWt0Pjxhbm5lbkRyaWZ0c2lubnRla3Q+PGlkPjE8L2lkPjxhbm5lbkRyaWZ0c2lubnRla3RzdHlwZT48YW5uZW5EcmlmdHNpbm50ZWt0c3R5cGU+MTAwPC9hbm5lbkRyaWZ0c2lubnRla3RzdHlwZT48L2FubmVuRHJpZnRzaW5udGVrdHN0eXBlPjxiZWxvZXA+PGJlbG9lcD48YmVsb2VwPjEwMDwvYmVsb2VwPjwvYmVsb2VwPjwvYmVsb2VwPjwvYW5uZW5EcmlmdHNpbm50ZWt0PjxzdW1EcmlmdHNpbm50ZWt0PjxiZWxvZXA+PGJlbG9lcD40MTc8L2JlbG9lcD48L2JlbG9lcD48L3N1bURyaWZ0c2lubnRla3Q+PC9kcmlmdHNpbm50ZWt0PjxkcmlmdHNrb3N0bmFkPjxzdW1EcmlmdHNrb3N0bmFkPjxiZWxvZXA+PGJlbG9lcD4wPC9iZWxvZXA+PC9iZWxvZXA+PC9zdW1EcmlmdHNrb3N0bmFkPjwvZHJpZnRza29zdG5hZD48c3VtRWtzdHJhb3JkaW5hZXJQb3N0PjxiZWxvZXA+PGJlbG9lcD4wPC9iZWxvZXA+PC9iZWxvZXA+PC9zdW1Fa3N0cmFvcmRpbmFlclBvc3Q+PHN1bVNrYXR0ZWtvc3RuYWQ+PGJlbG9lcD48YmVsb2VwPjA8L2JlbG9lcD48L2JlbG9lcD48L3N1bVNrYXR0ZWtvc3RuYWQ+PGFhcnNyZXN1bHRhdD48YmVsb2VwPjxiZWxvZXA+NDE3PC9iZWxvZXA+PC9iZWxvZXA+PC9hYXJzcmVzdWx0YXQ+PC9yZXN1bHRhdHJlZ25za2FwPjwvbmFlcmluZ3NvcHBseXNuaW5nZXI+</content>
+        </dokument>
+        <dokument>
+            <type>beregnetSkatt</type>
+            <encoding>utf-8</encoding>
+            <content>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48YmVyZWduZXRTa2F0dCB4bWxucz0idXJuOm5vOnNrYXR0ZWV0YXRlbjpmYXN0c2V0dGluZzpmb3JtdWVpbm50ZWt0OmJlcmVnbmV0c2thdHQ6djMiPjxza2F0dGVyZWduc2thcHNrb21tdW5lPjAwMjA8L3NrYXR0ZXJlZ25za2Fwc2tvbW11bmU+PHNrYXR0ZWtsYXNzZT4xPC9za2F0dGVrbGFzc2U+PGJlcmVnbmV0U2thdHRGb2VyU2thdHRlZnJhZHJhZz48Z3J1bm5sYWc+MDwvZ3J1bm5sYWc+PGJlbG9lcD4wPC9iZWxvZXA+PC9iZXJlZ25ldFNrYXR0Rm9lclNrYXR0ZWZyYWRyYWc+PGJlcmVnbmV0U2thdHQ+PGdydW5ubGFnPjA8L2dydW5ubGFnPjxiZWxvZXA+MDwvYmVsb2VwPjwvYmVyZWduZXRTa2F0dD48c2thdHRPZ0F2Z2lmdD48Zm9ybXVlc2thdHRUaWxTdGF0PjxncnVubmxhZz4xMDAwPC9ncnVubmxhZz48YmVsb2VwPjA8L2JlbG9lcD48L2Zvcm11ZXNrYXR0VGlsU3RhdD48Zm9ybXVlc2thdHRUaWxLb21tdW5lPjxncnVubmxhZz4xMDAwPC9ncnVubmxhZz48YmVsb2VwPjA8L2JlbG9lcD48L2Zvcm11ZXNrYXR0VGlsS29tbXVuZT48L3NrYXR0T2dBdmdpZnQ+PG9ldnJpZ2VSZXN1bHRhdGVyQXZCZXJlZ25pbmc+PG9ldnJpZ0Zvcm11ZT4xMDAwPC9vZXZyaWdGb3JtdWU+PC9vZXZyaWdlUmVzdWx0YXRlckF2QmVyZWduaW5nPjxhbnZlbmR0VG9sdmRlbFZlZEFyYmVpZHNvcHBob2xkSU5vcmdlPjEyPC9hbnZlbmR0VG9sdmRlbFZlZEFyYmVpZHNvcHBob2xkSU5vcmdlPjxhbnZlbmR0VG9sdmRlbEZvclRyaW5uc2thdHQ+MTI8L2FudmVuZHRUb2x2ZGVsRm9yVHJpbm5za2F0dD48YW52ZW5kdFN0YW5kYXJkZnJhZHJhZz5mYWxzZTwvYW52ZW5kdFN0YW5kYXJkZnJhZHJhZz48L2JlcmVnbmV0U2thdHQ+</content>
+        </dokument>
+        <dokument>
+            <type>summertSkattegrunnlagForVisning</type>
+            <encoding>utf-8</encoding>
+            <content>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c2thdHRlZ3J1bm5sYWcgeG1sbnM9InVybjpza2U6ZmFzdHNldHRpbmc6Zm9ybXVlaW5udGVrdDpza2F0dGVncnVubmxhZzp2NSI+PHNrYXR0ZWdydW5ubGFnc29iamVrdD48dGVrbmlza05hdm4+YnJ1dHRvZm9ybXVlPC90ZWtuaXNrTmF2bj48YmVsb2VwPjEwMDA8L2JlbG9lcD48L3NrYXR0ZWdydW5ubGFnc29iamVrdD48c2thdHRlZ3J1bm5sYWdzb2JqZWt0Pjx0ZWtuaXNrTmF2bj5mb3JtdWVzdmVyZGlGb3JLam9lcmV0b2V5PC90ZWtuaXNrTmF2bj48YmVsb2VwPjEwMDA8L2JlbG9lcD48L3NrYXR0ZWdydW5ubGFnc29iamVrdD48c2thdHRlZ3J1bm5sYWdzb2JqZWt0Pjx0ZWtuaXNrTmF2bj5uZXR0b2Zvcm11ZTwvdGVrbmlza05hdm4+PGJlbG9lcD4xMDAwPC9iZWxvZXA+PC9za2F0dGVncnVubmxhZ3NvYmpla3Q+PC9za2F0dGVncnVubmxhZz4=</content>
+        </dokument>
+    </dokumenter>
+    <avvikEtterBeregning>
+        <avvik>
+            <avvikstype>avvikNaeringsopplysninger</avvikstype>
+            <forekomstidentifikator>global</forekomstidentifikator>
+            <beregnetVerdi>417</beregnetVerdi>
+            <sti>resultatregnskap/driftsinntekt/sumDriftsinntekt/beloep/beloep</sti>
+        </avvik>
+        <avvik>
+            <avvikstype>manglerNaeringsopplysninger</avvikstype>
+            <forekomstidentifikator>global</forekomstidentifikator>
+            <beregnetVerdi>0</beregnetVerdi>
+            <sti>resultatregnskap/driftskostnad/sumDriftskostnad/beloep/beloep</sti>
+        </avvik>
+    </avvikEtterBeregning>
+    <veiledningEtterKontroll>
+        <veiledning>
+            <veiledningstype>KJØRETØY_MANGLER_VERDI_SOM_NY</veiledningstype>
+            <forekomstidentifikator>3778a986-18c7-4f14-9430-5c6f4d525ec6</forekomstidentifikator>
+            <sti>boligOgEiendeler/kjoeretoey</sti>
+        </veiledning>
+    </veiledningEtterKontroll>
+</skattemeldingerOgNaeringsopplysningerResponse>
 ```
 
 For detaljer om valider-tjenesten, se filen valider.py [skattemelding-eksternt-api-test.zip](skattemelding-eksternt-api-test.zip)

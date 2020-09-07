@@ -6,9 +6,7 @@ description: ""
 
 # Testplan
 
-Formålet med testen er å verifisere uthenting av skattemelding for en skattepliktig og bruk av valideringstjenesten hos Skatteetaten.
-I tillegg legger vi opp til muligheten til å instansiere opp en instans for skattemelding på den nye Altinn 3 plattformen.
-Det skal også være tilgjengelig funksjonalitet for å laste opp filer med skattemelding og næringsopplysninger på instansen i Altinn.
+Formålet med testen er å verifisere uthenting av skattemelding, bruk av valideringstjenesten hos Skatteetaten, sende inn og få tilbakmelding.
 
 # Innhold i testen
 
@@ -20,16 +18,17 @@ Konkret må sluttbrukersystemet gjøre følgende:
    - Sende en request til Skatteetatens tjeneste for å hente ut skattemeldingen for en skattepliktig.
    - Sende en request til Skatteetatens tjeneste for å validere skattemelding med næringsinformasjon for en skattepliktig
    - Motta og tolke resultatet fra valideringstjenesten.
-   - Når det ikke er feil i retur fra valideringstjenesten kan man gå til punkt E
+   - Når det ikke er feil i retur fra valideringstjenesten kan man gå til neste punkt.
    - Kalle Altinn sin nye plattform for å instansiere opp App'en for innsending av skattemelding for næringsdrivende.
-   - Kalle Altinn for å laste opp skattemelding og næringsopplysninger på den instansierte App'en fra pkt e.
-   - Kalle Altinn for å laste ned kvittering/tilbakemelding fra skatteeaten.
+   - Kalle Altinn for å laste opp skattemelding og næringsopplysninger på den instansierte App'en fra forrige punkt.
+   - Kalle Altinn for å laste ned kvittering/tilbakemelding fra Skatteetaten.
 
 Skatteetaten har tilgjengeliggjort flere testapplikasjoner som viser hvordan trinnene beskrevet over kan utføres:
+
 1. [skattemelding-eksternt-api-test.zip](../api/skattemelding-eksternt-api-test.zip) hent gjeldende skattemelding
 2. [altinn 3 postmann collection](../api/skattemelding-app-Altinn3-API.postman_collection.json)
 3. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo.ipynb)
-4. [Eksempel XML](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/eksempler)
+4. [Eksempel XML-er](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/eksempler)
 
 ## Ta i bruk ID-porten
 
@@ -87,12 +86,6 @@ Bruk MinID innlogging; fnr på testbruker, password01 og Pinkode 12345.
 
 Merk at dere også kan endre/tilføye opplysninger og sende inn skattemelding. Fastsatt skattemelding (endret skattemelding) vil da også være tilgjengelig for nedlasting. Se kapittel 4.3.6.3 i implementasjonsguide.
 
-# Tidsplan, henvendelser og tilbakemelding på testresultater
-
-Tidsplan, henvendelser og tilbakemelding på testresultater
-Testmiljøet vil være tilgjengelig fra 10.6. Det er ikke bestemt sluttdato for gjennomføring, men vi ønsker at flest mulig får gjennomført testen så raskt det lar seg gjøre.
+# Hendelser
 
 Tekniske spørsmål knyttet til forberedelser og gjennomføring kan rettes til nyskattemelding@skatteetaten.no
-
-Etter gjennomført test ønsker vi at dere sender en testrapport på resultatet av gjennomført test. Den kan dere sende til samme adresse som over. I testrapporten beskriver dere hvordan dere har gjennomført test (om dere har brukt testklienten eller egenutviklet kode), resultatet og eventuelle kommentarer.
-
