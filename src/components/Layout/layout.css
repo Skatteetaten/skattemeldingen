@@ -19,6 +19,11 @@ img {
     max-width: 100%;
 }
 
+.gatsby-highlight pre {
+    max-width: min(992px, 80vw);
+    overflow-x: auto;
+}
+
 a {
   color: rgba(19, 98, 174, 1);
   text-decoration: none;
