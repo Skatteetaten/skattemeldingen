@@ -38,5 +38,5 @@ Etter pilot vil det også bli utviklet muligheter til å hente ned den informasj
 
 
 ### Detaljert Funksjonell spesifikasjon
-En mer detaljer funksjonell spesifikasjon kan lasted ned her.
+En mer detaljer funksjonell spesifikasjon kan lastes ned her.
 [Funksjonell spesifikasjon.pdf](Funksjonell spesifikasjon.pdf)
