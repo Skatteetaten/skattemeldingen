@@ -29,7 +29,11 @@
     </xsd:complexType>
     <xsd:complexType name="EntitetMedGenerelleEgenskaper">
         <xsd:sequence>
-            
+            <xsd:element name="id" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940" type="Tekst">
+                <xsd:annotation>
+                    <xsd:documentation>Systemgenerert ID som brukes til å gjenkjenne instansen på tvers av versjsner av samme dokument</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
             <xsd:element minOccurs="0" name="eksternReferanse" type="Tekst"/>
         </xsd:sequence>
     </xsd:complexType>
