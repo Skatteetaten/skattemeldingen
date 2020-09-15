@@ -20,8 +20,8 @@ const FooterLinks = () => (
     <div>
       <FooterLink to="https://www.skatteetaten.no" name="skatteetaten.no" />
       <FooterLink
-        to="https://github.com/Skatteetaten"
-        name="github.com/skatteetaten"
+        to="https://github.com/Skatteetaten/skattemeldingen"
+        name="github.com/skatteetaten/skattemeldingen"
       />
     </div>
   </div>
