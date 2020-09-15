@@ -32,7 +32,7 @@ def opprett_ny_instans(header: dict, party_id: str) -> dict:
         "visibleAfter": "2019-05-20T00:00:00Z",
         "title": {"nb": "Skattemelding"}
     }
-    url = "https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/"
+    url = "{ALTINN_URL}/skd/sirius-skattemelding-v1/instances/"
     r = requests.post(url, headers=header, json=payload)
     r.raise_for_status()
     return r.json()
@@ -61,7 +61,7 @@ def last_opp_skattedata(instans_data: dict, token: dict, xml: str) -> None:
     return r
 
 def get_innstans(partyid, id, token):
-    r = requests.get(f"https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/{partyid}/{id}", headers=token)
+    r = requests.get(f"{ALTINN_URL}/skd/sirius-skattemelding-v1/instances/{partyid}/{id}", headers=token)
     return r.json()
 
 
