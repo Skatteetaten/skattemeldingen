@@ -32,7 +32,7 @@ def opprett_ny_instans(header: dict, party_id: str) -> dict:
         "visibleAfter": "2019-05-20T00:00:00Z",
         "title": {"nb": "Skattemelding"}
     }
-    url = "{ALTINN_URL}/skd/sirius-skattemelding-v1/instances/"
+    url = f"{ALTINN_URL}/skd/sirius-skattemelding-v1/instances/"
     r = requests.post(url, headers=header, json=payload)
     r.raise_for_status()
     return r.json()
