@@ -22,6 +22,7 @@ to install the dependencies.
     npm start
 
 will start a local web server and continuously build the documentation as you make changes.
+The documentation will be available at http://localhost:8000/documentation
 
 ## Deploying to github pages
 

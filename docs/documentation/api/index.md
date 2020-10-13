@@ -27,7 +27,7 @@ Autentisering skjer enten via ID-porten eller Maskinporten:
 - Personlig innlogging vil skje via ID-porten.
 - Systemer/maskiner som ønsker å opptre på vegne av en organisasjon kan autentisere seg via maskinporten.
 
-**Merk** at dagens Altinn innlogging med brukernavn/passord vil ikke lenger kunne brukes.
+**Merk** at dagens Altinn innlogging med brukernavn/passord vil ikke lenger kunne brukes.<br/>
 
 ### ID-porten
 
@@ -35,17 +35,32 @@ Via ID-porten kan selve sluttbrukeren autentiseres og da via sitt personnummer.
 
 ![idporten.png](idporten.png)
 
+#### Dataflyt og sekvensdiagram
+
+Figuren under skisserer hvordan innloggingsprosessen vil se ut:
+
+![ID-porten_program.png](ID-porten_program.png)
+
 #### Registrering av et sluttbrukersystem i ID-porten
 
 Når et sluttbrukersystem initierer en påloggingsprosess mot ID-porten må SBS sende med en klient-ID. Denne klient-id-en er unik for SBS-typen og vil bli tildelt ved at programvareleverandøren av SBS på forhånd har gjennomført en registrering (onboarding) i en selvbetjeningsportal hos Digdir/Difi. Dette er beskrevet her: https://difi.github.io/felleslosninger/oidc_index.html. Lenken beskriver også standarden OIDC som ID-porten er basert på.
 
-I registreringen inngår følgende data:
+Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir slik at dere kan få tildelt en klient-ID.
 
-- Klient-id. Denne er en GUID som tildeles fra Digdir/Difi.
-- Klient-navn. Dette er navn på SBS-systemet. Denne settes av SBS-leverandøren og det er ingen videre krav til navnestandard eller om programvareversjon skal inngå i navnet.
-- Klient-navn skal presenteres for brukeren under påloggingen.
-- Hvilken offentlig API-tjeneste registreringen gjelder. Dette identifiseres ved navn på en autorisasjonstype som er definert i ID-porten. For skattemeldingen foreslår vi autorisasjonstypenavnet "Skattemeldingen-API". merk! Dette støttes ikke i dag, men vil komme senere.
-- Registreringen må knyttes opp mot en juridisk ansvarlig aktør, dvs et norsk selskap identifisert ved et orgnr.
+#### Hvordan opprette ID-porten interasjon hos DigDir
+
+- Først må en integrasjon hos DigDir (gamle DIFI) opprettes gjennom deres [selvbetjeningsløsning](https://selvbetjening-samarbeid-ver2.difi.no/).
+- Klikk på integrasjoner under Ver2, klikk så på knappen "ny Integrasjon".
+- Det er denne integrasjonen som deres applikasjon vil snakke med seinere når deres sluttbruker skal autentisere seg mot ID-porten.
+  - Verdien i feltet "Integrasjonens identifikator" (kalt klient-ID over) er en GUID som tildeles av Digdir/Difi og som SBS må sende med i kallet til ID-porten.
+- Velge så et scope som angir hvilken offentlig API-tjeneste registreringen gjelder for:
+  - Klikk på knappen "Rediger Scopes" og velg _"skatteetaten:skattemelding"_ fra lista over scopes.
+  - PS: hvis dere ikke finner scopet _"skatteetaten:skattemelding"_ i lista må dere ta kontakt med skatteetaten slik at vi kan gi dere tilgang til scopet (i mellom tiden kan dere forsatt bruke denne integrasjonen da skatteetaen pt. ikke sjekker scope ved validering av access tokenet. Men denne sjekken er noe vi på et seinere tidspunkt kommer til å slå på).
+- Skriv inn et redirect uri-er (komma seperert og uten mellomrom). Dette er Uri-(er) som klienten får lov å gå til etter innlogging (ref. pilnummer 6 i figuren over)
+- Sett ønskede verdier for levetiden på autoriasjons-, access og refresh-token.
+- Et eksempel på hvordan integrasjonen kan bli seende ut:
+
+![id-porten_integrasjon.png](id-porten_integrasjon.png)
 
 ### Maskin-porten
 
