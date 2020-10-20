@@ -200,46 +200,46 @@ Dette definerer rekkefølgen på kallkyleområdene innbyrdes.
 
 # Kalkyler
 
-En oversikt over kalkylene som er definert så langt finnes i [Oversikten over kalkyler](/kalkyler)
+En oversikt over kalkylene som er definert så langt finnes i [Oversikten over kalkyler](https://github.com/Skatteetaten/skattemeldingen/tree/master/src/kotlin/kalkyler)
 
 # Skattemeldingsberegninger
 
 Skatteetaten har følgende beregning av verdier som er definert innenfor egenfastsettingsprinsippet i skatteforvaltningsloven:
-* formuesverdi for annet privat innbo og løsøre
-* årets sparebeløp knyttet til boligsparing for ungdom  (norge og/eller utland)
-* fradragsberettiget beløp som følge av betalt fagforeningskontingent
-* formuesverdi for fast eiendom
-* nettoinntekt eller underskudd som følge av utleie av fast eiendom
-* foreldrefradrag
-* formuesverdi for fritidsbåt med salgsverdi over salgsverdigrense
-* fradrag for gaver til frivillige organisasjoner (norge og/eller utland)
-* fradrag for individuell sparing til pensjon (ny og/eller gammel ordning)
-* formuesverdi for kjøretøy
-* fradrag for kostnader knyttet til arbeid og annen inntekt
-* nettoinntekter som følge av krav om den alternative fordelingsmetoden
-* nettoinntekter som følge av krav om kreditfradag
-* skattepliktig fordel ved elektronisk kommunikasjon som naturalytelse fra arbeidsgiver
-* skattepliktig lønn til barn under 13 år
-* overskudd av ulike utgiftsgodtjørelser fra arbeidsgiver
-* samlet pensjonsinntekt og øvrige grunnlag for skattefradrag for pensjonsinntekt
-* reisefradrag
-* merkostnader ved arbeidsopphold utenfor hjemmet (pendleropphold, opphold under yrkes- og tjenestereise, opphold under kjøreoppdrag)
-* standardfradrag for utenlandske sjøfolk og sokkelarbeidere
-* særfradrag for enslig forsørger
-* særfradrag for lettere nedsatt ervervsevne
-* særfradrag for store sykdomskostnader
-* særskilt fradrag for sjøfolk
-* særskilt inntektsfradrag i barns inntekt
-* fradrag for pengetilskudd til vitenskapelig forskning og yrkesopplæring
-* særskilt fradrag i næringsinntekt for jordbruk mv.
-* særskilt fradrag for reindrift
-* særskilt fradrag for skiferproduksjon
-* særskilt fradrag for fiskere og fangstfolk
-* lønnsomhetsvurdering minstefradrag vs. fradrag for kostnader knyttet til arbeid
-* skattemessig avkorting av fradragsberettiget beløp ved kombinasjonsforhold særfradrag for lettere nedsatt ervervsevne vs. særfradrag for store sykdomskostnader
-* skattemessig avkorting av fradragsberettiget beløp ved kombinasjonsforhold særskilt fradrag for sjøfolk og særskilt fradrag for fiskere og fangstfolk
-* skattemessig avkorting av fradragsberettiget beløp ved kombinasjonsforhold diverse fradrag og krav om standardfradrag
 
+- formuesverdi for annet privat innbo og løsøre
+- årets sparebeløp knyttet til boligsparing for ungdom (norge og/eller utland)
+- fradragsberettiget beløp som følge av betalt fagforeningskontingent
+- formuesverdi for fast eiendom
+- nettoinntekt eller underskudd som følge av utleie av fast eiendom
+- foreldrefradrag
+- formuesverdi for fritidsbåt med salgsverdi over salgsverdigrense
+- fradrag for gaver til frivillige organisasjoner (norge og/eller utland)
+- fradrag for individuell sparing til pensjon (ny og/eller gammel ordning)
+- formuesverdi for kjøretøy
+- fradrag for kostnader knyttet til arbeid og annen inntekt
+- nettoinntekter som følge av krav om den alternative fordelingsmetoden
+- nettoinntekter som følge av krav om kreditfradag
+- skattepliktig fordel ved elektronisk kommunikasjon som naturalytelse fra arbeidsgiver
+- skattepliktig lønn til barn under 13 år
+- overskudd av ulike utgiftsgodtjørelser fra arbeidsgiver
+- samlet pensjonsinntekt og øvrige grunnlag for skattefradrag for pensjonsinntekt
+- reisefradrag
+- merkostnader ved arbeidsopphold utenfor hjemmet (pendleropphold, opphold under yrkes- og tjenestereise, opphold under kjøreoppdrag)
+- standardfradrag for utenlandske sjøfolk og sokkelarbeidere
+- særfradrag for enslig forsørger
+- særfradrag for lettere nedsatt ervervsevne
+- særfradrag for store sykdomskostnader
+- særskilt fradrag for sjøfolk
+- særskilt inntektsfradrag i barns inntekt
+- fradrag for pengetilskudd til vitenskapelig forskning og yrkesopplæring
+- særskilt fradrag i næringsinntekt for jordbruk mv.
+- særskilt fradrag for reindrift
+- særskilt fradrag for skiferproduksjon
+- særskilt fradrag for fiskere og fangstfolk
+- lønnsomhetsvurdering minstefradrag vs. fradrag for kostnader knyttet til arbeid
+- skattemessig avkorting av fradragsberettiget beløp ved kombinasjonsforhold særfradrag for lettere nedsatt ervervsevne vs. særfradrag for store sykdomskostnader
+- skattemessig avkorting av fradragsberettiget beløp ved kombinasjonsforhold særskilt fradrag for sjøfolk og særskilt fradrag for fiskere og fangstfolk
+- skattemessig avkorting av fradragsberettiget beløp ved kombinasjonsforhold diverse fradrag og krav om standardfradrag
 
 # Begreper
 
