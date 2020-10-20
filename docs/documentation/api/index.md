@@ -53,7 +53,8 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
 - Klikk på integrasjoner under Ver2, klikk så på knappen "ny Integrasjon".
 - Det er denne integrasjonen som deres applikasjon vil snakke med seinere når deres sluttbruker skal autentisere seg mot ID-porten.
   - Verdien i feltet "Integrasjonens identifikator" (kalt klient-ID over) er en GUID som tildeles av Digdir/Difi og som SBS må sende med i kallet til ID-porten.
-- Velge så et scope som angir hvilken offentlig API-tjeneste registreringen gjelder for:
+- Velg _"API-klient"_ under "Difi-tjeneste".
+- Velg så et scope som angir hvilken offentlig API-tjeneste registreringen gjelder for:
   - Klikk på knappen "Rediger Scopes" og velg _"skatteetaten:skattemelding"_ fra lista over scopes.
   - PS: hvis dere ikke finner scopet _"skatteetaten:skattemelding"_ i lista må dere ta kontakt med skatteetaten slik at vi kan gi dere tilgang til scopet (i mellom tiden kan dere forsatt bruke denne integrasjonen da skatteetaen pt. ikke sjekker scope ved validering av access tokenet. Men denne sjekken er noe vi på et seinere tidspunkt kommer til å slå på).
 - Skriv inn et redirect uri-er (komma seperert og uten mellomrom). Dette er Uri-(er) som klienten får lov å gå til etter innlogging (ref. pilnummer 6 i figuren over)
