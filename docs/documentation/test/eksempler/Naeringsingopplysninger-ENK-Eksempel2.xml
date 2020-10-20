@@ -5,6 +5,12 @@
 	<inntektsaar>2019</inntektsaar>
 	<resultatregnskap>
 		<driftsinntekt>
+			<sumDriftsinntekt>
+				<beloep>
+					<beloep>436859</beloep>
+				</beloep>
+			</sumDriftsinntekt>
+			<salgsinntekter>
 			<salgsinntekt>
 				<id>1</id>
 				<salgsinntektstype>
@@ -27,6 +33,8 @@
 					</beloep>
 				</beloep>
 			</salgsinntekt>
+			</salgsinntekter>
+			<andreDriftsinntekter>
 			<annenDriftsinntekt>
 				<id>3</id>
 				<annenDriftsinntektstype>
@@ -48,14 +56,16 @@
 						<beloep>15881</beloep>
 					</beloep>
 				</beloep>
-			</annenDriftsinntekt>
-			<sumDriftsinntekt>
-				<beloep>
-					<beloep>436859</beloep>
-				</beloep>
-			</sumDriftsinntekt>
+			</annenDriftsinntekt>		
+		</andreDriftsinntekter>
 		</driftsinntekt>
 		<driftskostnad>
+			<sumDriftskostnad>
+				<beloep>
+					<beloep>275176</beloep>
+				</beloep>
+			</sumDriftskostnad>
+			<andreDriftskostnader>
 			<annenDriftskostnad>
 				<id>5</id>
 				<annenDriftskostnadstype>
@@ -221,11 +231,7 @@
 					</beloep>
 				</beloep>
 			</annenDriftskostnad>
-			<sumDriftskostnad>
-				<beloep>
-					<beloep>275176</beloep>
-				</beloep>
-			</sumDriftskostnad>
+			</andreDriftskostnader>
 		</driftskostnad>
 		<aarsresultat>
 			<beloep>
@@ -235,6 +241,12 @@
 	</resultatregnskap>
 	<balanse>
 		<anleggsmiddel>
+		<sumAnleggsmiddelSkattemessigVerdi>
+				<beloep>
+					<beloep>446743</beloep>
+				</beloep>
+			</sumAnleggsmiddelSkattemessigVerdi>
+			<balanseverdiForAnleggsmidler>
 			<balanseverdiForAnleggsmiddel>
 				<id>20</id>
 				<anleggsmiddeltype>
@@ -268,13 +280,15 @@
 					</beloep>
 				</skattemessigVerdi>
 			</balanseverdiForAnleggsmiddel>
-			<sumAnleggsmiddelSkattemessigVerdi>
-				<beloep>
-					<beloep>446743</beloep>
-				</beloep>
-			</sumAnleggsmiddelSkattemessigVerdi>
+			</balanseverdiForAnleggsmidler>
 		</anleggsmiddel>
 		<omloepsmiddel>
+			<sumOmloepsmiddelSkattemessigVerdi>
+				<beloep>
+					<beloep>248740</beloep>
+				</beloep>
+			</sumOmloepsmiddelSkattemessigVerdi>
+			<balanseverdiForOmloepsmidler>
 			<balanseverdiForOmloepsmiddel>
 				<id>23</id>
 				<omloepsmiddeltype>
@@ -307,14 +321,21 @@
 						<beloep>238384</beloep>
 					</beloep>
 				</skattemessigVerdi>
-			</balanseverdiForOmloepsmiddel>	
-			<sumOmloepsmiddelSkattemessigVerdi>
-				<beloep>
-					<beloep>248740</beloep>
-				</beloep>
-			</sumOmloepsmiddelSkattemessigVerdi>
+			</balanseverdiForOmloepsmiddel>
+			</balanseverdiForOmloepsmidler>	
 		</omloepsmiddel>
 		<gjeldOgEgenkapital>
+			<sumKortsiktigGjeldSkattemessigVerdi>
+				<beloep>
+					<beloep>3776</beloep>
+				</beloep>
+			</sumKortsiktigGjeldSkattemessigVerdi>
+			<sumEgenkapital>
+				<beloep>
+					<beloep>691706</beloep>
+				</beloep>
+			</sumEgenkapital>
+			<allKortsiktigGjeld>
 			<kortsiktigGjeld>
 				<id>26</id>
 				<kortsiktigGjeldtype>
@@ -337,6 +358,8 @@
 					</beloep>
 				</skattemessigVerdi>
 			</kortsiktigGjeld>
+			</allKortsiktigGjeld>
+			<allEgenkapital>
 			<egenkapital>
 				<id>28</id>
 				<egenkapitaltype>
@@ -370,16 +393,7 @@
 					</beloep>
 				</beloep>
 			</egenkapital>
-			<sumKortsiktigGjeldSkattemessigVerdi>
-				<beloep>
-					<beloep>3776</beloep>
-				</beloep>
-			</sumKortsiktigGjeldSkattemessigVerdi>
-			<sumEgenkapital>
-				<beloep>
-					<beloep>691706</beloep>
-				</beloep>
-			</sumEgenkapital>
+			</allEgenkapital>
 		</gjeldOgEgenkapital>
 	</balanse>
 	<spesifikasjonAvResultatregnskapOgBalanse>
@@ -898,4 +912,7 @@
 			<heltall>12</heltall>
 		</antallMaanederDrevetIAar>
 	</virksomhet>
+	<samletGjeldOgFormuesobjekter>
+		<id>999</id>
+	</samletGjeldOgFormuesobjekter>
 </naeringsopplysninger>
