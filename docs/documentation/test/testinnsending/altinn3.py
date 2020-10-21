@@ -1,11 +1,15 @@
 from hent import main_relay
 import requests
 
+# Slå av sertifikat verifikasjon i test
+import urllib3
+urllib3.disable_warnings()
+
 ALTINN_URL = "https://skd.apps.tt02.altinn.no"
 
 def hent_altinn_token(idporten_token: dict) -> dict:
     altinn3 = "https://platform.tt02.altinn.no/authentication/api/v1/exchange/id-porten"
-    r = requests.get(altinn3, headers=idporten_token)
+    r = requests.get(altinn3, headers=idporten_token, verify=False)
     r.raise_for_status()
     altinn_header = {"Authorization": "Bearer " + r.text}
     print(altinn_header)
@@ -14,7 +18,7 @@ def hent_altinn_token(idporten_token: dict) -> dict:
 
 def hent_party_id(token: dict) -> str:
     url = f"{ALTINN_URL}/skd/sirius-skattemelding-v1/api/v1/profile/user"
-    r = requests.get(url, headers=token)
+    r = requests.get(url, headers=token, verify=False)
     r.raise_for_status()
     return str(r.json()["partyId"])
 
@@ -33,7 +37,7 @@ def opprett_ny_instans(header: dict, party_id: str) -> dict:
         "title": {"nb": "Skattemelding"}
     }
     url = f"{ALTINN_URL}/skd/sirius-skattemelding-v1/instances/"
-    r = requests.post(url, headers=header, json=payload)
+    r = requests.post(url, headers=header, json=payload, verify=False)
     r.raise_for_status()
     return r.json()
 
@@ -44,7 +48,7 @@ def last_opp_metadata(instans_data: dict, token: dict, xml: str = None) -> None:
 
     url = f"{ALTINN_URL}/skd/sirius-skattemelding-v1/instances/{id}/data/{data_id}"
     token["content-type"] = "application/xml"
-    r = requests.put(url, data=xml, headers=token)
+    r = requests.put(url, data=xml, headers=token, verify=False)
     r.raise_for_status()
     return r
 
@@ -56,12 +60,12 @@ def last_opp_skattedata(instans_data: dict, token: dict, xml: str) -> None:
     token["content-type"] = "text/xml"
     token["Content-Disposition"] = "attachment; filename=skattemelding.xml"
 
-    r = requests.post(url, data=xml, headers=token)
+    r = requests.post(url, data=xml, headers=token, verify=False)
     r.raise_for_status()
     return r
 
 def get_innstans(partyid, id, token):
-    r = requests.get(f"{ALTINN_URL}/skd/sirius-skattemelding-v1/instances/{partyid}/{id}", headers=token)
+    r = requests.get(f"{ALTINN_URL}/skd/sirius-skattemelding-v1/instances/{partyid}/{id}", headers=token, verify=False)
     return r.json()
 
 
@@ -70,7 +74,7 @@ def endre_prosess_status(instans_data: dict, token: dict, neste_status: str) -> 
         raise NotImplementedError
 
     url = f"{ALTINN_URL}/skd/sirius-skattemelding-v1/instances/{instans_data['id']}/process/{neste_status}"
-    r = requests.put(url, headers=token)
+    r = requests.put(url, headers=token, verify=False)
     r.raise_for_status()
     return r.text
 
