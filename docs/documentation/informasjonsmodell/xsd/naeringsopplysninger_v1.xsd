@@ -24,7 +24,7 @@
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="personinntektFraEnkeltpersonforetak" type="PersoninntektFraEnkeltpersonforetak"/>
             <xsd:element minOccurs="0" name="forskjellMellomRegnskapsmessigOgSkattemessigVerdi" type="ForskjellMellomRegnskapsmessigOgSkattemessigVerdi"/>
             <xsd:element name="virksomhet" type="Virksomhet"/>
-            <xsd:element name="samletGjeldOgFormuesobjekter" type="SamletGjeldOgFormuesobjekter"/>
+            <xsd:element minOccurs="0" name="samletGjeldOgFormuesobjekter" type="SamletGjeldOgFormuesobjekter"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="EntitetMedGenerelleEgenskaper">
