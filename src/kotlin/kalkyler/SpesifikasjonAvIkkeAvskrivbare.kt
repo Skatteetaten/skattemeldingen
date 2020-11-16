@@ -30,4 +30,10 @@ internal object SpesifikasjonAvIkkeAvskrivbare : HarKalkyletre, PostProsessering
     override fun getKalkyletre(): Kalkyletre {
         return Kalkyletre(utgaaendeVerdiPositivOgNegativ, utgaaendeVerdi).medPostprosessering(this)
     }
+
+    override fun postprosessering(generiskModell: GeneriskModell): GeneriskModell {
+        return generiskModell.filter {
+            it.key != beregnedeFelter.utgaaendeVerdiPositivOgNegativ.key
+        }
+    }
 }

@@ -1,8 +1,21 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
+/**
+ *  https://wiki.sits.no/display/SIR/Kalkyler+resultatregnskap+for+regnskapspliktstype+1+og+5
+ *
+ *  Kodelister for dette er her: https://git.aurora.skead.no/projects/KOLI/repos/kodeliste/browse/formuesOgInntektsskatt
+ *
+ *
+ *  inntektFraGevinstOgTapskonto er  et oppsummert felt fra Forekomster under GevinstOgTapskonto. Denne verdien skal inn som
+ *  annenDriftsinntekt med type/konto 3890. Innslaget som er en forekomst av annenDriftsinntekt
+ *  med annenDriftsinntektstype (3890) er således en sum
+ *  av denne typen. Det skal ikke være mer enn en sum per type i denne listen.
+ *
+ *
+ */
 internal object Resultatregnskapet : HarKalkyletre {
     val salgsinntekterKalkyle =
-        summer forekomsterAv salgsinntekt forVerdi { it.beloep }
+        summer forekomsterAv salgsinntekter.salgsinntekt forVerdi { it.beloep }
 
     val annenDriftsinntektKalkyle =
         summer forekomsterAv annenDriftsinntekt forVerdi { it.beloep }

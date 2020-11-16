@@ -1,7 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
-
-internal object GevinstOgTapskontoKalkyler : HarKalkyletre {
+internal object GevinstOgTapskonto : HarKalkyletre {
     private val forekomsterGevinstOgTapskonto = itererForekomster forekomsterAv gevinstOgTapskonto
     private val grunnlagForAaretsInntektsOgFradragsfoeringKalkyle = forekomsterGevinstOgTapskonto forVerdi {
         it.inngaaendeVerdi + it.sumGevinstVedRealisasjonOgUttak - it.sumTapVedRealisasjonOgUttak somFelt gevinstOgTapskonto.grunnlagForAaretsInntektsOgFradragsfoering

@@ -2,21 +2,6 @@
 
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.FeltKoordinat
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.derVerdiErLik
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.derVerdiErMindreEnn
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.derVerdiErNull
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.derVerdiErStoerreEnn
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.ikke
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.der
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.itererForekomster
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.minus
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.naeringsopplysninger
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.lineaertavskrevetAnleggsmiddel
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
-import java.math.BigDecimal
-
 object SpesifikasjonAvBalanseLineaereAvskrivninger : HarKalkyletre, PostProsessering {
 
     internal object beregnedeFelter {
@@ -189,4 +174,12 @@ object SpesifikasjonAvBalanseLineaereAvskrivninger : HarKalkyletre, PostProsesse
         return kalkyler
     }
 
+    override fun postprosessering(generiskModell: GeneriskModell): GeneriskModell {
+        return generiskModell.filter {
+            !(it.key == beregnedeFelter.antallAarErhvervet.key
+                || it.key == beregnedeFelter.antallMaanederEidIAaret.key
+                || it.key == beregnedeFelter.aaretsInntektsfoeringAvNegativSaldoGrunnlag.key
+                )
+        }
+    }
 }

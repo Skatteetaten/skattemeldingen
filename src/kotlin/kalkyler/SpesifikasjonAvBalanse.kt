@@ -1,5 +1,10 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
+val saldoAvskrevetForekomster = itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel
+
+/**
+ * Saldogruppe A og B håndteres helt likt
+ */
 internal object SpesifikasjonAvBalanse : HarKalkyletre {
 
     val grunnlagForAvskrivningOgInntektsFoeringForretningsbygg =

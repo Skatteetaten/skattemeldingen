@@ -1,3 +1,5 @@
+@file:Suppress("ClassName")
+
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
 internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
@@ -351,4 +353,17 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
         ).medPostprosessering(this)
     }
 
+    /**
+     * Vi filtrerer vekk feltene
+     */
+    override fun postprosessering(generiskModell: GeneriskModell): GeneriskModell {
+        return generiskModell.filter {
+            !(it.key == beregnedeFelter.prosentAvBilensVerdi.key
+                || it.key == beregningsgrunnlagAlt1.key
+                || it.key == bilensAlder.key
+                || it.key == beregnedeFelter.satsBeregningsgrunnlag1.key
+                || it.key == prosentandelAvFaktiskeKostnader.key
+                || it.key == beregnedeFelter.kmSatsForPrivatBruk.key)
+        }
+    }
 }
