@@ -268,11 +268,11 @@ Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners 
 Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
 
 **URL** : `GET https://<env>/api/formueinntekt/eiendom/soek/<inntektsår>?query=<tekst>`
-  
+
 **Eksempel URL vegadress** : `GET https://mp-test.sits.no/api/formueinntekt/eiendom/soek/2020?query=Storgata 1`
 
 **Eksempel URL matrikkelnummer** : `GET https://mp-test.sits.no/api/formueinntekt/eiendom/soek/2020?query=36/120`
-  
+
 **Forespørsel** :
 
 - `<env>: Miljøspesifikk adresse.`
@@ -287,7 +287,7 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 
 \***\*Skal vi ta med søkeeksempler?\*\***
 Kan hentes her http://eiendom-serg-utv-i.utv.paas.skead.no/docs/index.html#_s%C3%B8k
-  
+
 **Respons vegadresse** :
 
 ```json
@@ -361,9 +361,9 @@ Hent formuesgrunnlag for valgt unik eiendomsidentifikator og inntektsår.
 Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektsår, og at formuesopplysninger vil variere basert på hvilken eiendomstype eiendomsidentifikator har. Noen detaljer vil fjernes fra responsen hvis skatteyter ikke er eier av eiendommen.
 
 **URL** : `GET https://<env>/formueinntekt/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>`
-  
+
 **Eksempel URL** : `GET https://mp-test.sits.no/api/formueinntekt/eiendom/formuesgrunnlag/2020/1/02095300173`
-  
+
 **Forespørsel** :
 
 - `<env>: Miljøspesifikk adresse.`
@@ -452,9 +452,9 @@ Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være un
 Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
 
 **URL** : `POST https://<env>/formueinntekt/eiendom/markedsverdi/bolig/<inntektsår>/<eiendomsidentifikator>`
-  
+
 **Eksempel URL** : `POST https://mp-test.sits.no/api/formueinntekt/eiendom/markedsverdi/bolig/2020/1`
-  
+
 **Forespørsel** :
 
 - `<env>: Miljøspesifikk adresse.`
@@ -620,9 +620,9 @@ Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være un
 Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
 
 **URL** : `POST https://<env>/formueinntekt/eiendom/markedsverdi/flerbolig/<inntektsår>/<eiendomsidentifikator>`
-  
+
 **Eksempel URL** : `POST https://mp-test.sits.no/api/formueinntekt/eiendom/markedsverdi/bolig/2020/102`
-  
+
 **Forespørsel** :
 
 - `<env>: Miljøspesifikk adresse.`
@@ -910,7 +910,7 @@ Neste trinn er å laste opp meta-data (informasjon om hvem innsender er, dato et
 Meta-data skal være en XML-fil iht. [Skattemeldingsappv1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/Skattemeldingsapp_v1.xsd)
 Beskrivelse av felt i XML-en følger her:
 
-- `partsreferanse: Identifikasjonsnummer til skatteliktige i deres system. Skattetaten bruker ikke dette feltet til noe`
+- `partsreferanse: Identifikasjonsnummer til skatteliktige i sluttbrukersystemet. Skattetaten bruker ikke dette feltet til noe`
 - `inntektsaar: Inntektsår skattemeldingen gjelder for`
 - `opprettetAv: Navn på sluttbrukersystemet.`
 - `innsendingstype: Angir om innsendingen er komplett eller ikke-komplett. Gyldige verdier er komplett eller ikkeKomplett`
