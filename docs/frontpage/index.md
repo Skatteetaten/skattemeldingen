@@ -36,7 +36,7 @@ Det stiplede rektangel identifiserer hva som ansees som en enhet med informasjon
 Som i dagens løsning vil det være mulig å hente ned den informasjonene som Skatteeetaten vet om den skattepliktige og bruke dette som grunnlag for utfyllingen av skattemeldingen.
 Etter pilot vil det også bli utviklet muligheter til å hente ned den informasjonen som Skatteetaten vet om den næringsdrivende og som kan brukes som utgangspunkt for å fylle ut næringsopplysningene.
 
+### Detaljert funksjonell spesifikasjon
 
-### Detaljert Funksjonell spesifikasjon
-En mer detaljer funksjonell spesifikasjon kan lastes ned her.
-[Funksjonell spesifikasjon.pdf](Funksjonell spesifikasjon.pdf)
+En mer detaljert funksjonell spesifikasjon kan lastes ned her.
+[funksjonell spesifikasjon.pdf](Funksjonell spesifikasjon.pdf)
