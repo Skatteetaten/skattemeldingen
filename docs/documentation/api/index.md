@@ -263,7 +263,7 @@ For detaljer om valider-tjenesten, se filen valider.py [skattemelding-eksternt-a
 
 Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners formuesgrunnlag og for å beregne eiendommers markedsverdi.
 
-## Søk
+### Søk
 
 Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
 
@@ -354,7 +354,7 @@ Kan hentes her http://eiendom-serg-utv-i.utv.paas.skead.no/docs/index.html#_s%C3
 
 - `sergEiendomsidentifikator: eiendomsidentifkator som skal benyttes for å hente eiendom og formuesinformajon.`
 
-## Hent formuesgrunnlag
+### Hent formuesgrunnlag
 
 Hent formuesgrunnlag for valgt unik eiendomsidentifikator og inntektsår.
 
@@ -443,7 +443,7 @@ Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektså
 - `formuesspesifikasjonFor*: innholder eiendommens formuesspesifikasjon og gjeldende skatteyters andel av formuesverdi. Detaljer som xxxx er med hvis skatteyter er eier av eiendommen. * Kan ha følgende verdier: Bolig, Flerboligbygning, SkalIkkeFastsettes, Tomt, SelveidFritidseiendom, AnnenFastEiendomInnenforInntektsgivendeAktivitet, AnnenFastEiendomUtenforInntektsgivendeAktivitet.`
 - `ukjentEiendomINorge: hvis vi ikke støtter denne eiendomstypen.`
 
-## Beregn markedsverdi for bolig
+### Beregn markedsverdi for bolig
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
@@ -609,7 +609,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - `dokumentertMarkedsverdi: dokumentert markedsverdi når denne er innefor reglene slik at den er hensynstatt.`
 - `justertMarkedsverdi: justert markedsverdi er med når dokumentert markedsverdi er hensynstatt.`
 
-## Beregn markedsverdi for flerbolig
+### Beregn markedsverdi for flerbolig
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
