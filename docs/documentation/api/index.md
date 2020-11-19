@@ -260,31 +260,36 @@ Eksempel:
 For detaljer om valider-tjenesten, se filen valider.py [skattemelding-eksternt-api-test.zip](skattemelding-eksternt-api-test.zip)
 
 ## Eiendom API
-Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners formuesgrunnlag og for å beregne eiendommers markedsverdi.  
 
-## Søk
+Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners formuesgrunnlag og for å beregne eiendommers markedsverdi.
+
+### Søk
+
 Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
 
 **URL** : `GET https://<env>/api/formueinntekt/eiendom/soek/<inntektsår>?query=<tekst>`
-        
+
 **Eksempel URL vegadress** : `GET https://mp-test.sits.no/api/formueinntekt/eiendom/soek/2020?query=Storgata 1`
 
 **Eksempel URL matrikkelnummer** : `GET https://mp-test.sits.no/api/formueinntekt/eiendom/soek/2020?query=36/120`
-        
+
 **Forespørsel** :
+
 - `<env>: Miljøspesifikk adresse.`
 - `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
 - `<query>: Fritekst søkestreng.`
 
-***Fritekst søkestreng***
+**_Fritekst søkestreng_**
+
 - `Hvis første tegn man angir er et tall vil søket kun lete blant matrikkeladresser.`
 - `Hvis første tegn man angir er en bokstav vil søket kun lete blant veiadresser.`
 - `Søket krever streng plassering av tegn.`
 
-****Skal vi ta med søkeeksempler?****
+\***\*Skal vi ta med søkeeksempler?\*\***
 Kan hentes her http://eiendom-serg-utv-i.utv.paas.skead.no/docs/index.html#_s%C3%B8k
-        
-**Respons vegadresse** : 
+
+**Respons vegadresse** :
+
 ```json
 {
   "resultatStorrelse": 1,
@@ -319,497 +324,520 @@ Kan hentes her http://eiendom-serg-utv-i.utv.paas.skead.no/docs/index.html#_s%C3
   "sokSlutt": "2020-10-05T09:53:06.149235"
 }
 ```
-**Respons matrikkelnummer** : 
+
+**Respons matrikkelnummer** :
+
 ```json
 {
-    "resultatStorrelse": 1,
-    "eiendommer": [
-        {
-            "sergEiendomsidentifikator": 1,
-            "unikeiendomsidentifikator": 1,
-            "eiendometablertdato": "1925-03-31",
-            "kommunenr": "1919",
-            "kommunenavn": "GRATANGEN",
-            "gaardsnr": 36,
-            "bruksnr": 120,
-            "festenr": 0,
-            "seksjonsnr": 0,
-            "highlight": "1919-<em>36/120</em>/0/0"
-        }
-    ],
-    "vegadresser": [],
-    "sokStart": "2020-10-05T09:55:03.197953",
-    "sokSlutt": "2020-10-05T09:55:03.206961"
+  "resultatStorrelse": 1,
+  "eiendommer": [
+    {
+      "sergEiendomsidentifikator": 1,
+      "unikeiendomsidentifikator": 1,
+      "eiendometablertdato": "1925-03-31",
+      "kommunenr": "1919",
+      "kommunenavn": "GRATANGEN",
+      "gaardsnr": 36,
+      "bruksnr": 120,
+      "festenr": 0,
+      "seksjonsnr": 0,
+      "highlight": "1919-<em>36/120</em>/0/0"
+    }
+  ],
+  "vegadresser": [],
+  "sokStart": "2020-10-05T09:55:03.197953",
+  "sokSlutt": "2020-10-05T09:55:03.206961"
 }
 ```
 
-***Forklaring til respons***
+**_Forklaring til respons_**
+
 - `sergEiendomsidentifikator: eiendomsidentifkator som skal benyttes for å hente eiendom og formuesinformajon.`
 
-## Hent formuesgrunnlag
+### Hent formuesgrunnlag
+
 Hent formuesgrunnlag for valgt unik eiendomsidentifikator og inntektsår.
 
 Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektsår, og at formuesopplysninger vil variere basert på hvilken eiendomstype eiendomsidentifikator har. Noen detaljer vil fjernes fra responsen hvis skatteyter ikke er eier av eiendommen.
 
 **URL** : `GET https://<env>/formueinntekt/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>`
-        
+
 **Eksempel URL** : `GET https://mp-test.sits.no/api/formueinntekt/eiendom/formuesgrunnlag/2020/1/02095300173`
-        
+
 **Forespørsel** :
+
 - `<env>: Miljøspesifikk adresse.`
 - `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
 - `<eiendomsidentifikator>: Unik eiendomsidentifikator.`
 - `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige som man henter eiendom for.`
-        
-**Respons** : 
+
+**Respons** :
+
 ```json
 {
-    "formuesspesifikasjonForBolig": [
+  "formuesspesifikasjonForBolig": [
+    {
+      "eiendomstype": "selveidBolig",
+      "byggeaar": "2000",
+      "boligensAreal": "150",
+      "boligtype": "enebolig",
+      "internEiendomsidentifikator": "d7ea5b46-1b6c-4d74-9a72-f92282b5288dfastEiendom",
+      "andelAvFormuesverdi": "100.00"
+    }
+  ],
+  "fastEiendom": [
+    {
+      "vegadresse": [
         {
-            "eiendomstype": "selveidBolig",
-            "byggeaar": "2000",
-            "boligensAreal": "150",
-            "boligtype": "enebolig",
-            "internEiendomsidentifikator": "d7ea5b46-1b6c-4d74-9a72-f92282b5288dfastEiendom",
-            "andelAvFormuesverdi": "100.00"
+          "husnummer": "2",
+          "husbokstav": "A",
+          "adressenavn": "Storgata"
         }
-    ],
-    "fastEiendom": [
-        {
-            "vegadresse": [
-                {
-                    "husnummer": "2",
-                    "husbokstav": "A",
-                    "adressenavn": "Storgata"
-                }
-            ],
-            "kommunenummer": "1919",
-            "postnummer": "9471",
-            "poststedsnavn": "GRATANGEN",
-            "sergEiendomsidentifikator": "1",
-            "bruksnummer": "120",
-            "gaardsnummer": "36",
-            "internEiendomsidentifikator": "d7ea5b46-1b6c-4d74-9a72-f92282b5288dfastEiendom",
-            "eierandel": "100.00"
-        }
-    ]
+      ],
+      "kommunenummer": "1919",
+      "postnummer": "9471",
+      "poststedsnavn": "GRATANGEN",
+      "sergEiendomsidentifikator": "1",
+      "bruksnummer": "120",
+      "gaardsnummer": "36",
+      "internEiendomsidentifikator": "d7ea5b46-1b6c-4d74-9a72-f92282b5288dfastEiendom",
+      "eierandel": "100.00"
+    }
+  ]
 }
 ```
 
 ```json
 {
-    "ukjentEiendomINorge": [
+  "ukjentEiendomINorge": [
+    {
+      "internEiendomsidentifikator": "bdb3a6b8-61d9-48e0-86e3-e4777edde687fastEiendom"
+    }
+  ],
+  "fastEiendom": [
+    {
+      "vegadresse": [
         {
-            "internEiendomsidentifikator": "bdb3a6b8-61d9-48e0-86e3-e4777edde687fastEiendom"
+          "husnummer": "1",
+          "husbokstav": "C",
+          "adressenavn": "Giraffveien"
         }
-    ],
-    "fastEiendom": [
-        {
-            "vegadresse": [
-                {
-                    "husnummer": "1",
-                    "husbokstav": "C",
-                    "adressenavn": "Giraffveien"
-                }
-            ],
-            "kommunenummer": "1919",
-            "postnummer": "9471",
-            "poststedsnavn": "GRATANGEN",
-            "sergEiendomsidentifikator": "3",
-            "bruksnummer": "113",
-            "gaardsnummer": "38",
-            "internEiendomsidentifikator": "bdb3a6b8-61d9-48e0-86e3-e4777edde687fastEiendom"
-        }
-    ]
+      ],
+      "kommunenummer": "1919",
+      "postnummer": "9471",
+      "poststedsnavn": "GRATANGEN",
+      "sergEiendomsidentifikator": "3",
+      "bruksnummer": "113",
+      "gaardsnummer": "38",
+      "internEiendomsidentifikator": "bdb3a6b8-61d9-48e0-86e3-e4777edde687fastEiendom"
+    }
+  ]
 }
 ```
 
-***Forklaring til respons***
- 
- `Responsen kan inneholde følgende objekt:`
+**_Forklaring til respons_**
+
+`Responsen kan inneholde følgende objekt:`
+
 - `fastEiendom: innholder eiendommens adresseinfomasjon og gjeldende skatteyters eierandel. Merk at det kan være flere vegadresser knyttet til eiendommen.`
 - `formuesspesifikasjonFor*: innholder eiendommens formuesspesifikasjon og gjeldende skatteyters andel av formuesverdi. Detaljer som xxxx er med hvis skatteyter er eier av eiendommen. * Kan ha følgende verdier: Bolig, Flerboligbygning, SkalIkkeFastsettes, Tomt, SelveidFritidseiendom, AnnenFastEiendomInnenforInntektsgivendeAktivitet, AnnenFastEiendomUtenforInntektsgivendeAktivitet.`
 - `ukjentEiendomINorge: hvis vi ikke støtter denne eiendomstypen.`
 
+### Beregn markedsverdi for bolig
 
-## Beregn markedsverdi for bolig
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
 Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert markedsverdi vil ikke hensyntas.
 
-Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.   
+Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
 
 **URL** : `POST https://<env>/formueinntekt/eiendom/markedsverdi/bolig/<inntektsår>/<eiendomsidentifikator>`
-        
+
 **Eksempel URL** : `POST https://mp-test.sits.no/api/formueinntekt/eiendom/markedsverdi/bolig/2020/1`
-        
+
 **Forespørsel** :
+
 - `<env>: Miljøspesifikk adresse.`
 - `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
 - `<eiendomsidentifikator>: Unik eiendomsidentifikator.`
 
 **Body uten dokumentert markedsverdi**
+
 ```json
 {
-    "formuesspesifikasjonForBolig": [
-        {
-            "eiendomstype": "selveidBolig",
-            "byggeaar": "2000",
-            "boligensAreal": "150",
-            "boligtype": "enebolig",
-            "andelAvFormuesverdi": "100.00"
-        }
-    ]
+  "formuesspesifikasjonForBolig": [
+    {
+      "eiendomstype": "selveidBolig",
+      "byggeaar": "2000",
+      "boligensAreal": "150",
+      "boligtype": "enebolig",
+      "andelAvFormuesverdi": "100.00"
+    }
+  ]
 }
 ```
 
 **Body med dokumentert markedsverdi**
+
 ```json
 {
-    "formuesspesifikasjonForBolig": [
-        {
-            "eiendomstype": "selveidBolig",
-            "byggeaar": "2000",
-            "boligensAreal": "150",
-            "boligtype": "enebolig",
-            "andelAvFormuesverdi": "100.00",
-            "dokumentertMarkedsverdi": "2000000"
-        }
-    ]
+  "formuesspesifikasjonForBolig": [
+    {
+      "eiendomstype": "selveidBolig",
+      "byggeaar": "2000",
+      "boligensAreal": "150",
+      "boligtype": "enebolig",
+      "andelAvFormuesverdi": "100.00",
+      "dokumentertMarkedsverdi": "2000000"
+    }
+  ]
 }
 ```
 
-***Body full eiendom***
+**_Body full eiendom_**
+
 ```json
 {
-    "formuesspesifikasjonForBolig": [
+  "formuesspesifikasjonForBolig": [
+    {
+      "eiendomstype": "selveidBolig",
+      "byggeaar": "2000",
+      "boligensAreal": "150",
+      "boligtype": "enebolig",
+      "internEiendomsidentifikator": "1fb46159-19d5-4dc5-b5d6-706839b65103fastEiendom",
+      "andelAvFormuesverdi": "100.00"
+    }
+  ],
+  "fastEiendom": [
+    {
+      "vegadresse": [
         {
-            "eiendomstype": "selveidBolig",
-            "byggeaar": "2000",
-            "boligensAreal": "150",
-            "boligtype": "enebolig",
-            "internEiendomsidentifikator": "1fb46159-19d5-4dc5-b5d6-706839b65103fastEiendom",
-            "andelAvFormuesverdi": "100.00"
+          "husnummer": "2",
+          "husbokstav": "A",
+          "adressenavn": "Storgata"
         }
-    ],
-    "fastEiendom": [
-        {
-            "vegadresse": [
-                {
-                    "husnummer": "2",
-                    "husbokstav": "A",
-                    "adressenavn": "Storgata"
-                }
-            ],
-            "kommunenummer": "1919",
-            "postnummer": "9471",
-            "poststedsnavn": "GRATANGEN",
-            "sergEiendomsidentifikator": "1",
-            "bruksnummer": "120",
-            "gaardsnummer": "36",
-            "internEiendomsidentifikator": "1fb46159-19d5-4dc5-b5d6-706839b65103fastEiendom",
-            "eierandel": "100.00"
-        }
-    ]
+      ],
+      "kommunenummer": "1919",
+      "postnummer": "9471",
+      "poststedsnavn": "GRATANGEN",
+      "sergEiendomsidentifikator": "1",
+      "bruksnummer": "120",
+      "gaardsnummer": "36",
+      "internEiendomsidentifikator": "1fb46159-19d5-4dc5-b5d6-706839b65103fastEiendom",
+      "eierandel": "100.00"
+    }
+  ]
 }
 ```
 
-**Respons uten dokumentert markedsverdi** : 
+**Respons uten dokumentert markedsverdi** :
+
 ```json
 {
-    "formuesspesifikasjonForBolig": [
-        {
-            "eiendomstype": "selveidBolig",
-            "andelAvFormuesverdi": "100.00",
-            "byggeaar": "2000",
-            "boligensAreal": "150",
-            "boligtype": "enebolig",
-            "beregnetMarkedsverdi": "2592619"
-        }
-    ]
+  "formuesspesifikasjonForBolig": [
+    {
+      "eiendomstype": "selveidBolig",
+      "andelAvFormuesverdi": "100.00",
+      "byggeaar": "2000",
+      "boligensAreal": "150",
+      "boligtype": "enebolig",
+      "beregnetMarkedsverdi": "2592619"
+    }
+  ]
 }
 ```
 
-**Respons med dokumentert markedsverdi** : 
+**Respons med dokumentert markedsverdi** :
+
 ```json
 {
-    "formuesspesifikasjonForBolig": [
-        {
-            "eiendomstype": "selveidBolig",
-            "dokumentertMarkedsverdi": "2000000",
-            "andelAvFormuesverdi": "100.00",
-            "byggeaar": "2000",
-            "boligensAreal": "150",
-            "boligtype": "enebolig",
-            "justertMarkedsverdi": "2000000",
-            "beregnetMarkedsverdi": "2000000"
-        }
-    ]
+  "formuesspesifikasjonForBolig": [
+    {
+      "eiendomstype": "selveidBolig",
+      "dokumentertMarkedsverdi": "2000000",
+      "andelAvFormuesverdi": "100.00",
+      "byggeaar": "2000",
+      "boligensAreal": "150",
+      "boligtype": "enebolig",
+      "justertMarkedsverdi": "2000000",
+      "beregnetMarkedsverdi": "2000000"
+    }
+  ]
 }
 ```
 
-**Respons full eiendom** : 
+**Respons full eiendom** :
+
 ```json
 {
-    "formuesspesifikasjonForBolig": [
+  "formuesspesifikasjonForBolig": [
+    {
+      "eiendomstype": "selveidBolig",
+      "andelAvFormuesverdi": "100.00",
+      "internEiendomsidentifikator": "1fb46159-19d5-4dc5-b5d6-706839b65103fastEiendom",
+      "byggeaar": "2000",
+      "boligensAreal": "150",
+      "boligtype": "enebolig",
+      "beregnetMarkedsverdi": "2592619"
+    }
+  ],
+  "fastEiendom": [
+    {
+      "vegadresse": [
         {
-            "eiendomstype": "selveidBolig",
-            "andelAvFormuesverdi": "100.00",
-            "internEiendomsidentifikator": "1fb46159-19d5-4dc5-b5d6-706839b65103fastEiendom",
-            "byggeaar": "2000",
-            "boligensAreal": "150",
-            "boligtype": "enebolig",
-            "beregnetMarkedsverdi": "2592619"
+          "husnummer": "2",
+          "husbokstav": "A",
+          "adressenavn": "Storgata"
         }
-    ],
-    "fastEiendom": [
-        {
-            "vegadresse": [
-                {
-                    "husnummer": "2",
-                    "husbokstav": "A",
-                    "adressenavn": "Storgata"
-                }
-            ],
-            "kommunenummer": "1919",
-            "postnummer": "9471",
-            "internEiendomsidentifikator": "1fb46159-19d5-4dc5-b5d6-706839b65103fastEiendom",
-            "eierandel": "100.00",
-            "poststedsnavn": "GRATANGEN",
-            "sergEiendomsidentifikator": "1",
-            "bruksnummer": "120",
-            "gaardsnummer": "36"
-        }
-    ]
+      ],
+      "kommunenummer": "1919",
+      "postnummer": "9471",
+      "internEiendomsidentifikator": "1fb46159-19d5-4dc5-b5d6-706839b65103fastEiendom",
+      "eierandel": "100.00",
+      "poststedsnavn": "GRATANGEN",
+      "sergEiendomsidentifikator": "1",
+      "bruksnummer": "120",
+      "gaardsnummer": "36"
+    }
+  ]
 }
 ```
 
-***Forklaring til respons***
+**_Forklaring til respons_**
+
 - `beregnetMarkedsverdi: beregnet markedverdi for boligen.`
 - `dokumentertMarkedsverdi: dokumentert markedsverdi når denne er innefor reglene slik at den er hensynstatt.`
 - `justertMarkedsverdi: justert markedsverdi er med når dokumentert markedsverdi er hensynstatt.`
 
-## Beregn markedsverdi for flerbolig
+### Beregn markedsverdi for flerbolig
+
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
 Det beregnes markedsverdi for hver useksjonert boenhet.
 
 Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert markedsverdi vil ikke hensyntas.
 
-Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.   
+Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
 
 **URL** : `POST https://<env>/formueinntekt/eiendom/markedsverdi/flerbolig/<inntektsår>/<eiendomsidentifikator>`
-        
+
 **Eksempel URL** : `POST https://mp-test.sits.no/api/formueinntekt/eiendom/markedsverdi/bolig/2020/102`
-        
+
 **Forespørsel** :
+
 - `<env>: Miljøspesifikk adresse.`
 - `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
 - `<eiendomsidentifikator>: Unik eiendomsidentifikator.`
 
 **Body uten dokumentert markedsverdi**
+
 ```json
 {
-    "formuesspesifikasjonForFlerboligbygning": [
+  "formuesspesifikasjonForFlerboligbygning": [
+    {
+      "useksjonertBoenhet": [
         {
-            "useksjonertBoenhet": [
-                {
-                    "boligensAreal": "100",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0101",
-                    "boligtype": "leilighet"
-                },
-                {
-                    "boligensAreal": "101",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0102",
-                    "boligtype": "leilighet"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0103",
-                    "boligtype": "leilighet"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0104",
-                    "boligtype": "leilighet"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0105",
-                    "boligtype": "leilighet"
-                }
-            ],
-            "eiendomstype": "flerboligbygning"
+          "boligensAreal": "100",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0101",
+          "boligtype": "leilighet"
+        },
+        {
+          "boligensAreal": "101",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0102",
+          "boligtype": "leilighet"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0103",
+          "boligtype": "leilighet"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0104",
+          "boligtype": "leilighet"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0105",
+          "boligtype": "leilighet"
         }
-    ]
+      ],
+      "eiendomstype": "flerboligbygning"
+    }
+  ]
 }
 ```
 
 **Body med dokumentert markedsverdi**
+
 ```json
 {
-    "formuesspesifikasjonForFlerboligbygning": [
+  "formuesspesifikasjonForFlerboligbygning": [
+    {
+      "useksjonertBoenhet": [
         {
-            "useksjonertBoenhet": [
-                {
-                    "boligensAreal": "100",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0101",
-                    "boligtype": "leilighet"
-                },
-                {
-                    "boligensAreal": "101",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0102",
-                    "boligtype": "leilighet"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0103",
-                    "boligtype": "leilighet"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0104",
-                    "boligtype": "leilighet"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0105",
-                    "boligtype": "leilighet"
-                }
-            ],
-            "eiendomstype": "flerboligbygning",
-            "dokumentertMarkedsverdi": "11000000"
+          "boligensAreal": "100",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0101",
+          "boligtype": "leilighet"
+        },
+        {
+          "boligensAreal": "101",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0102",
+          "boligtype": "leilighet"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0103",
+          "boligtype": "leilighet"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0104",
+          "boligtype": "leilighet"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0105",
+          "boligtype": "leilighet"
         }
-    ]
+      ],
+      "eiendomstype": "flerboligbygning",
+      "dokumentertMarkedsverdi": "11000000"
+    }
+  ]
 }
 ```
 
-**Respons uten dokumentert markedsverdi** : 
+**Respons uten dokumentert markedsverdi** :
+
 ```json
 {
-    "formuesspesifikasjonForFlerboligbygning": [
+  "formuesspesifikasjonForFlerboligbygning": [
+    {
+      "useksjonertBoenhet": [
         {
-            "useksjonertBoenhet": [
-                {
-                    "boligensAreal": "100",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0101",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2621994"
-                },
-                {
-                    "boligensAreal": "101",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0102",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2639856"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0103",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2657663"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0104",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2657663"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0105",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2657663"
-                }
-            ],
-            "eiendomstype": "flerboligbygning",
-            "beregnetMarkedsverdi": "13234839"
+          "boligensAreal": "100",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0101",
+          "boligtype": "leilighet",
+          "boligverdi": "2621994"
+        },
+        {
+          "boligensAreal": "101",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0102",
+          "boligtype": "leilighet",
+          "boligverdi": "2639856"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0103",
+          "boligtype": "leilighet",
+          "boligverdi": "2657663"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0104",
+          "boligtype": "leilighet",
+          "boligverdi": "2657663"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0105",
+          "boligtype": "leilighet",
+          "boligverdi": "2657663"
         }
-    ]
+      ],
+      "eiendomstype": "flerboligbygning",
+      "beregnetMarkedsverdi": "13234839"
+    }
+  ]
 }
 ```
 
-**Respons med dokumentert markedsverdi** : 
+**Respons med dokumentert markedsverdi** :
+
 ```json
 {
-    "formuesspesifikasjonForFlerboligbygning": [
+  "formuesspesifikasjonForFlerboligbygning": [
+    {
+      "useksjonertBoenhet": [
         {
-            "useksjonertBoenhet": [
-                {
-                    "boligensAreal": "100",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0101",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2621994"
-                },
-                {
-                    "boligensAreal": "101",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0102",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2639856"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0103",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2657663"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0104",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2657663"
-                },
-                {
-                    "boligensAreal": "102",
-                    "byggeaar": "2016",
-                    "bruksenhetsnummer": "H0105",
-                    "boligtype": "leilighet",
-                    "boligverdi": "2657663"
-                }
-            ],
-            "eiendomstype": "flerboligbygning",
-            "dokumentertMarkedsverdi": "11000000",
-            "justertMarkedsverdi": "11000000",
-            "beregnetMarkedsverdi": "11000000"
+          "boligensAreal": "100",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0101",
+          "boligtype": "leilighet",
+          "boligverdi": "2621994"
+        },
+        {
+          "boligensAreal": "101",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0102",
+          "boligtype": "leilighet",
+          "boligverdi": "2639856"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0103",
+          "boligtype": "leilighet",
+          "boligverdi": "2657663"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0104",
+          "boligtype": "leilighet",
+          "boligverdi": "2657663"
+        },
+        {
+          "boligensAreal": "102",
+          "byggeaar": "2016",
+          "bruksenhetsnummer": "H0105",
+          "boligtype": "leilighet",
+          "boligverdi": "2657663"
         }
-    ]
+      ],
+      "eiendomstype": "flerboligbygning",
+      "dokumentertMarkedsverdi": "11000000",
+      "justertMarkedsverdi": "11000000",
+      "beregnetMarkedsverdi": "11000000"
+    }
+  ]
 }
 ```
 
-***Forklaring til respons***
+**_Forklaring til respons_**
+
 - `beregnetMarkedsverdi: beregnet markedverdi for boligen.`
 - `boligverdi: beregnet markedsverdi for useksjonert boenhet. Beregnes uavhenig av dokumentert markedsverdi.`
 - `dokumentertMarkedsverdi: dokumentert markedsverdi når denne er innefor reglene slik at den er hensynstatt.`
 - `justertMarkedsverdi: justert markedsverdi er med når dokumentert markedsverdi er hensynstatt.`
 
 **Feil response ifm bad request**
+
 ```json
 {
-  "feilkode" : "EIENDOM-014",
-  "beskrivelse" : "Eiendommen finnes ikke."
+  "feilkode": "EIENDOM-014",
+  "beskrivelse": "Eiendommen finnes ikke."
 }
-
 ```
 
-***Feilkoder ifm bad request***
+**_Feilkoder ifm bad request_**
+
 - EIENDOM-001: Ugyldig verdi: boligtype må være (enebolig, leilighet, smaahus).
 - EIENDOM-002: Ugyldig verdi: byggeaar må være tall.
 - EIENDOM-003: Ugyldig verdi: byggeaar må være mindre eller lik skatteleggingsperiode og større enn 1250.
@@ -828,8 +856,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-022: Ugyldig verdi: Dokumentert markedsverdi må være stoerre enn 0.
 - EIENDOM-050: støtter ikke inntektsaar: <inntektsår>.
 - EIENDOM-051: <Ulike mangler på input>.
-- EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres. 
-
+- EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
 # Altinn3-API
 
@@ -867,7 +894,7 @@ Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved opprett
 `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
 <br />
 
-## Opprett en insants i Altinn
+## Opprett en instans i Altinn
 
 Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige responsen og bruk det i body under.
 
@@ -881,7 +908,18 @@ Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldinge
 Neste trinn er å laste opp meta-data (informasjon om hvem innsender er, dato etc.) om skattemeldingen.
 
 Meta-data skal være en XML-fil iht. [Skattemeldingsappv1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/Skattemeldingsapp_v1.xsd)
-(se også eksempelfilen: [Skattemeldingsappv1.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/Skattemeldingsapp_v1.xml).
+Beskrivelse av felt i XML-en følger her:
+
+- `partsreferanse: Identifikasjonsnummer til skatteliktige i sluttbrukersystemet. Skattetaten bruker ikke dette feltet til noe`
+- `inntektsaar: Inntektsår skattemeldingen gjelder for`
+- `opprettetAv: Navn på sluttbrukersystemet.`
+- `innsendingstype: Angir om innsendingen er komplett eller ikke-komplett. Gyldige verdier er komplett eller ikkeKomplett`
+- `opprettingstidspunkt: Tidspunktet da innsendingen ble opprettet`
+- `endringstidspunkt: Tidspunktet da innsendingen ble endret`
+
+Se også eksempelfilene:
+[Komplett innsending](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/Skattemeldingsapp_v1.xml).
+[Ikke-komplett innsending](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/Skattemeldingsapp_ikkeKomplett_v1.xml).
 
 Plukk ut _id_ og _data.id_ fra forrige responsen og bruk de på slutten av url-en under:
 
@@ -895,7 +933,7 @@ Plukk ut _id_ og _data.id_ fra forrige responsen og bruk de på slutten av url-e
 
 Neste trinn er å laste opp skattemeldingsdata.
 
-Plukk ut _id_ fra responsen til "Opprett en insants i Altinn"-kallet og bruk det på slutten av url-en under.
+Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 (ved ved en hvilken som helst xml-fil).
 
 `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
@@ -910,7 +948,7 @@ Plukk ut _id_ fra responsen til "Opprett en insants i Altinn"-kallet og bruk det
 
 Når data opplastingen er gjort kan følgende kall gjøres for å få instansen over i neste status:
 
-Plukk ut _id_ fra responsen til "Opprett en insants i Altinn"-kallet og bruk det på slutten av url-en under.
+Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 
 `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`  
 <br />
@@ -919,7 +957,7 @@ Plukk ut _id_ fra responsen til "Opprett en insants i Altinn"-kallet og bruk det
 
 Gjør kall under for å gjøre seg ferdig med instansen/innsendingen, dette slik at skatteetaten kan plukke den opp og behandle:
 
-Plukk ut _id_ fra responsen til "Opprett en insants i Altinn"-kallet og bruk det på slutten av url-en under.
+Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 
 `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw ''`
 
