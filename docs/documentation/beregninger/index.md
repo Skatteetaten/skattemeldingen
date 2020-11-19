@@ -200,7 +200,7 @@ Dette definerer rekkefølgen på kallkyleområdene innbyrdes.
 
 # Kalkyler
 
-En oversikt over kalkylene som er definert så langt finnes i [Oversikten over kalkyler](https://github.com/Skatteetaten/skattemeldingen/tree/master/src/kotlin/kalkyler)
+En oversikt over kalkylene som er definert så langt finnes i [Oversikten over kalkyler](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/beregninger/kotlin)
 
 # Skattemeldingsberegninger
 
