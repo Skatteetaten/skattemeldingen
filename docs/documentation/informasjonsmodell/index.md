@@ -9,7 +9,7 @@ Skattemeldingen og næringsopplysninger skal leveres som XML-filer. Innhold og f
 
 For inntektsåret 2020 som kun støtter lønnstakere, pensjonister og enkeltpersonsforetak er det 2 XSD-er som er aktuelle:
 
-- skattemelding for lønnstakere og pensjonister
+- skattemelding for personlige skattepliktige
 - næringsopplysninger
 
 I tillegg kan det bli aktuelt å legge ved en metadatafil med teknisk innhold.
@@ -33,14 +33,14 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 
 Innenfor et inntektsår kan det forutsettes av det kun kommer MINOR- og PATCH-versjoner.
 
-# XSD Skattemelding for lønnstakere og pensjonister for 2020
+# XSD Skattemelding for personlige skattepliktige for 2020
 Versjon  8.0.0 av denne XSD'en ligger vedlagt og heter [skattemelding_v8.xsd](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/xsd/skattemelding_v8.xsd)
-Eksempel på innsendt XML fil for en person på siste versjon kommer.
+
 Denne spesifikasjonen har både noen mangler og noen elementer som skal fjernes:
 
-Versjon 8.0.0 er foreløpig en utviklingsversjon av skattemeldingen for lønnstakere og pensjonister slik den implementertes i ny skattemelding for lønnstakere og pensjonister for inntektsåret 2020 med en forskuttert utvidelse for tema Næring som ennå ikke er utviklet.  
-Temaet "Næring" er introdusert som et tema parallelt med "Arbeid, trygd og pensjon" etc. i skattemeldingen for inntektsåret 2020. Informasjonen i dette temaet vil blant annet inneholde beløp avledet fra de tilhørende næringsopplysningene. Dette vil løses etter samme hovedmønster som eksisterende løsning mellom næringsoppgavene og de næringsspesifikke feltene i skattemeldingen RF-1030, men de vil realiseres i underliggende grupperingen ekvivalent med grupperinger innenfor de andre temaene. 
-Siste versjon har fjernet interne konstruksjoner som ikke vil være relevant i en innsendingskontekst. Dette gjelder eksempelvis typen "Endringsmetadata" og id-felter som tidligere har blitt delt. 
+Versjon 8.0.0 er foreløpig en utviklingsversjon av skattemeldingen for personlige skattepliktige slik den implementertes i ny skattemelding for personlige skattepliktige for inntektsåret 2020.  
+Temaet "Næring" ligger som et tema parallelt med "Arbeid, trygd og pensjon" etc. i skattemeldingen for inntektsåret 2020. Informasjonen i dette temaet vil blant annet inneholde beløp avledet fra de tilhørende næringsopplysningene. Dette vil løses etter samme hovedmønster som eksisterende løsning mellom næringsoppgavene og de næringsspesifikke feltene i skattemeldingen RF-1030, men de vil realiseres i underliggende grupperingen ekvivalent med grupperinger innenfor de andre temaene. 
+Siste versjon har fjernet interne konstruksjoner som ikke vil være relevant i en innsendingskontekst. Dette gjelder eksempelvis typen "Endringsmetadata" som tidligere har blitt delt. 
 XSD'en kommer ny og oppdatert versjon i senere versjoner av spesifikasjon/implementasjonsguide.
 
 # XSD Næringsopplysninger for 2020
