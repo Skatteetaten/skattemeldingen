@@ -131,7 +131,11 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
     - id – dokumentidentifikator til dokumentet i skatteetatens system.
     - encoding – kodeliste – [utf-8]
     - content – serialisert dokumentinnhold
-  - naeringsopplysningsdokument – complex type - id – dokumentidentifikator til dokumentet i skatteetatens system - encoding – kodeliste – [utf-8] - content – serialisert dokumentinnhold
+  - naeringsopplysningsdokument 
+    – complex type - id – dokumentidentifikator til dokumentet i skatteetatens system 
+    - encoding – kodeliste – [utf-8] 
+    - content – serialisert dokumentinnhold
+    
 
 ## Hent Skattemelding (basert på type)
 
