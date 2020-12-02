@@ -131,11 +131,11 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
     - id – dokumentidentifikator til dokumentet i skatteetatens system.
     - encoding – kodeliste – [utf-8]
     - content – serialisert dokumentinnhold
-  - naeringsopplysningsdokument 
-    – complex type - id – dokumentidentifikator til dokumentet i skatteetatens system 
-    - encoding – kodeliste – [utf-8] 
+  - naeringsopplysningsdokument
+    – complex type - id – dokumentidentifikator til dokumentet i skatteetatens system
+
+    - encoding – kodeliste – [utf-8]
     - content – serialisert dokumentinnhold
-    
 
 ## Hent Skattemelding (basert på type)
 
@@ -871,7 +871,7 @@ Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved opprett
 
 Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige responsen og bruk det i body under.
 
-`curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50028539" }, "appOwner":{ "labels" : [ "gr", "x2" ] }, "appId" : "skd/sirius-skattemelding-v1", "dueBefore": "2020-06-01T12:00:00Z", "visibleAfter": "2019-05-20T00:00:00Z", "title": { "nb": "Skattemelding" } }'`
+`curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/sirius-skattemelding-v1" }'`
 
 **Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere til å hente/oppdatere instansen.
 <br />
