@@ -23,12 +23,11 @@ Konkret må sluttbrukersystemet gjøre følgende:
    - Kalle Altinn for å laste opp skattemelding og næringsopplysninger på den instansierte App'en fra forrige punkt.
    - Kalle Altinn for å laste ned kvittering/tilbakemelding fra Skatteetaten.
 
-Skatteetaten har tilgjengeliggjort flere testapplikasjoner som viser hvordan trinnene beskrevet over kan utføres:
+Skatteetaten har tilgjengeliggjort en testapplikasjoner som viser hvordan trinnene beskrevet over kan utføres.
+Den er skrevet i [jupyter notebook formatet](https://jupyter.org/):
 
-1. [skattemelding-eksternt-api-test.zip](../api/skattemelding-eksternt-api-test.zip) hent gjeldende skattemelding
-2. [altinn 3 postmann collection](../api/skattemelding-app-Altinn3-API.postman_collection.json)
-3. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo.ipynb)
-4. [Eksempel XML-er](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/eksempler)
+1. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo.ipynb)
+2. [Eksempel XML-er](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/eksempler)
 
 ## Ta i bruk ID-porten
 
@@ -63,11 +62,11 @@ Vi benytter følgende testmiljø hos ID-porten:
 - /authorize endpoint: https://oidc-ver2.difi.no/idporten-oidc-provider/authorize
 - /token endpoint: https://oidc-ver2.difi.no/idporten-oidc-provider/token
 
-For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen hent.py: [skattemelding-eksternt-api-test.zip](../api/skattemelding-eksternt-api-test.zip)
+For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen [hent.py](../test/testinnsending/hent.py)
 
 ## Kalle skattemeldings-API
 
-Når callback-URL blir kalt må klienten plukke ut JWT-tokenet fra responsen og legge det i header-feltet Authorization og kalle skattemeldings-API. For detaljer, se filen hent.py: [skattemelding-eksternt-api-test.zip](../api/skattemelding-eksternt-api-test.zip)
+Når callback-URL blir kalt må klienten plukke ut JWT-tokenet fra responsen og legge det i header-feltet Authorization og kalle skattemeldings-API. For detaljer, se [demo klient](../test/testinnsending/demo.ipynb)
 
 URL til skattemeldings-API i test er: https://mp-test.sits.no/
 

@@ -13,8 +13,8 @@ Det tilbys to sett med API-er:
 
 # Skatteetatens-API
 
-Skatteetaten har utviklet en testklient (i python) som viser hvordan koble seg på ID-porten og kalle skatteetatens-API:
-[skattemelding-eksternt-api-test.zip](skattemelding-eksternt-api-test.zip)
+Skatteetaten har utviklet en demo klient (i python) som viser hvordan koble seg på ID-porten og kalle skatteetatens-API:
+[jupyter notebook](../test/testinnsending/demo.ipynb)
 
 ## Autentisering
 
@@ -843,7 +843,7 @@ For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjenn
 6. hente kvittering/tilbakemelding. Merk at det kan gå litt tid før kvittering er tilgjengelig (Skatteetaten må laste ned, behandle innsendingen og laste opp kvitteringen)
 
 Les mer om Altinn API-ene på [altinn sine sider](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/). Altinn har utviklet POSTMAN skript som viser hvordan deres APIer kan bli kalt. Postman skriptene [finnes her](https://github.com/Altinn/altinn-studio/blob/master/src/test/Postman/collections/App.postman_collection.json)
-Skatteetaten har også laget POSTMAN-skript som gjør kallene beskrevet under, se: [postman_collection.json](./skattemelding-app-Altinn3-API.postman_collection.json)
+
 
 Tjenestene listet under kalles for å sende inn skattemelding til Altinn.
 

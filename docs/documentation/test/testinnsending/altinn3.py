@@ -87,14 +87,14 @@ if __name__ == '__main__':
     party_id = hent_party_id(altinn_header)
     print("2. Kall 'Opprett ny Instans' (bruk Altinn-tokenet fra punkt1 i header-felt 'Authorization', legg på Bearer først).")
     instans_data = opprett_ny_instans(altinn_header, party_id)
-    print("3.1 Kall 'Last opp metadata (skattemelding_V1)' (bruk instanceId og data.id fra punkt2 på slutten av URL-en).")
+    print("3. Kall 'Last opp metadata (skattemelding_V1)' (bruk instanceId og data.id fra punkt2 på slutten av URL-en).")
     last_opp_metadata(instans_data, altinn_header)
     print("4. Kall 'Last opp skattemelding.xml' (bruk Altinn-token fra punkt1 og instanceId fra punkt2).")
     last_opp_skattedata(instans_data, altinn_header)
 
-    print("Sett proses til neste steg - Bekreftelse")
+    print("5. Sett proses til neste steg - Bekreftelse")
     print(endre_prosess_status(instans_data, altinn_header, "next"))
-    print("Sett proses til neste steg - Tilbakemelding")
+    print("6. Sett proses til neste steg - Tilbakemelding")
     print(endre_prosess_status(instans_data, altinn_header, "next"))
     # Dette steget gjøres av skatteetaten og ikke sluttbruker
     # print("Sett proses til neste steg - Avslutt")
