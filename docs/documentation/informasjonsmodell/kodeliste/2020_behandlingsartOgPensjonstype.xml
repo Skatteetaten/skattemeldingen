@@ -41,6 +41,7 @@
             <beskrivelseIAMelding>arbeidsavklaringspenger</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
@@ -79,6 +80,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
             <kategori>PensjonEllerTrygd</kategori>
+            <etterbetalingstypeISL>alder</etterbetalingstypeISL>
             <harPensjonsgrad>ja</harPensjonsgrad>
             <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>avtalefestetPensjon</beskrivelseIAMelding>
@@ -165,6 +167,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
             <kategori>PensjonEllerTrygd</kategori>
+            <etterbetalingstypeISL>alder</etterbetalingstypeISL>
             <harPensjonsgrad>ja</harPensjonsgrad>
             <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>alderspensjon</beskrivelseIAMelding>
@@ -308,8 +311,10 @@
             <oppgavekodeISL>35521</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
-            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>PensjonEllerTrygd</kategori>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>barnepensjonFraAndreEnnFolketrygden</beskrivelseIAMelding>
             <minstefradrag>minstefradragIBarnePensjon</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -355,6 +360,8 @@
             <beskrivelseIAMelding>barnepensjon</beskrivelseIAMelding>
             <minstefradrag>minstefradragIBarnePensjon</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -371,7 +378,7 @@
         <tekniskNavn>BILGODT</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkpliktig bil- og båtgodtgjørelse</tekst>
+                <tekst>Trekkpliktig bil- og båtgodtgjørelse - overskudd settes til innberettet beløp</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -448,7 +455,7 @@
         <tekniskNavn>BOLIG_UTL_PENDLER</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Fri kost og losji - utenlandsk pendler|Bolig – utenlandsk pendler</tekst>
+                <tekst>Fri kost og losji - utenlandsk pendler|Bolig – utenlandsk pendler - overskudd settes til 0, kun skattepliktig ved egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -595,20 +602,16 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Dagpenger for fisker</tekst>
+                <tekst>Dagpenger for fisker og fangstmann</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Dagpengar for fiskar</tekst>
+                <tekst>Dagpengar for fiskar og fangstmann</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Unemployment benefits to fishermen</tekst>
+                <tekst>Unemployment benefit for fishermen and hunters at sea</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Beaiveruđat guolásteaddjái</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -630,20 +633,16 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Dagpenger for næringsdrivende</tekst>
+                <tekst>Dagpenger for næringsdrivende under etablering</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Dagpengar for næringsdrivande</tekst>
+                <tekst>Dagpengar for næringsdrivande under etablering</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Unemployment benefits to self-employed persons</tekst>
+                <tekst>Unemployment benefit for self-employed persons in the start-up phase</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Beaiveruđat ealáhusdolliide</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -691,6 +690,7 @@
             <beskrivelseIAMelding>dagpengerVedArbeidsloeshet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
             <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
@@ -723,7 +723,7 @@
         <tekniskNavn>DIETT_HOTELL</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Overskudd diett hotell</tekst>
+                <tekst>Overskudd diett hotell - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -766,7 +766,7 @@
         <tekniskNavn>DIETT_HYBEL</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Overskudd diett hybel/brakke/privat</tekst>
+                <tekst>Overskudd diett hybel/brakke/privat - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -811,7 +811,7 @@
         <tekniskNavn>DIETT_LANGTR_UTL</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Overskudd diett langtransportsjåfør i utlandet</tekst>
+                <tekst>Overskudd diett langtransportsjåfør i utlandet - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -856,7 +856,7 @@
         <tekniskNavn>DIETT_PENSJONAT</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Overskudd diett pensjonat</tekst>
+                <tekst>Overskudd diett pensjonat - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -932,6 +932,7 @@
             <beskrivelseIAMelding>ektefelletilleggUfoeretrygd</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>ufore</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -973,6 +974,8 @@
             <beskrivelseIAMelding>ektefelletillegg</beskrivelseIAMelding>
             <minstefradrag>minstefradragIEktefelletillegg</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -1056,8 +1059,10 @@
             <oppgavekodeISL>35520</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
-            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>PensjonEllerTrygd</kategori>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>etterlattepensjon</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -1135,7 +1140,7 @@
         <tekniskNavn>FLYTTEGODTGJ</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Flyttegodtgjørelse</tekst>
+                <tekst>Flyttegodtgjørelse - overskudd settes til 0, kun skattepliktig ved egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -1222,20 +1227,8 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Fødselspenger og omsorgspenger ved adopsjon</tekst>
+                <tekst>Utbetaling fra NAV ved fødsel eller adopsjon</tekst>
                 <spraak>nb_NO</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Fødselspengar og omsorgspengar ved adopsjon</tekst>
-                <spraak>nn_NO</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Maternity benefit and care allowances in connection with adoption</tekst>
-                <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Riegádahttinruđat ja fuolahusruđat adopšuvnna oktavuođas</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -1247,6 +1240,7 @@
             <beskrivelseIAMelding>foreldrepenger</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -1335,26 +1329,22 @@
         <tekniskNavn>FRI_BESOKSREISE</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Fri besøksreise til hjemmet</tekst>
+                <tekst>Fri besøksreise til hjemmet - overskudd settes til 0, kun skattepliktig ved egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Fri besøksreise til hjemmet</tekst>
+                <tekst>Reise mellom pendlersted og hjemsted betalt av arbeidsgiver</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Fri besøksreise til heimen</tekst>
+                <tekst>Reise mellom pendlarstad og heimstad betalt av arbeidsgivar</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Free home visits for employees living away from home</tekst>
+                <tekst>Travels between commuter location and home address paid by employer</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Nuvttá galledanmátki ruoktut</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -1384,6 +1374,14 @@
             <spraakTekst>
                 <tekst>Fri kost, losji eller bolig for norsk pendler</tekst>
                 <spraak>nb_NO</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Gratis kost, losji eller bustad som norsk pendlar</tekst>
+                <spraak>nn_NO</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Free board, lodging or housing for Norwegian commuters</tekst>
+                <spraak>en_GB</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -1455,20 +1453,16 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Fri kost for sokkelarbeidere</tekst>
+                <tekst>Fri kost som sokkelarbeidere</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Fri kost for sokkelarbeidarar</tekst>
+                <tekst>Gratis kost som sokkelarbeidar</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
                 <tekst>Free board for offshore workers</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Nuvttá borran áhpebargiide</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -1577,7 +1571,7 @@
         <tekniskNavn>GODTGJ_BESOKSREISE</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Godtgjørelse ved besøksreiser</tekst>
+                <tekst>Godtgjørelse ved besøksreiser - overskudd settes til 0, kun skattepliktig ved egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -1625,15 +1619,15 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Inntekt fra dagmammavirksomhet i dagmammas hjem</tekst>
+                <tekst>Arbeidsvederlag for dagmamma i dagmammas hjem</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Inntekt frå dagmammaverksemd i eigen heim</tekst>
+                <tekst>Arbeidsvederlag for dagmamma i eigen heim</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Income from minding children in the home of the childminder</tekst>
+                <tekst>Remuneration for work from minding children in the home of the childminder</tekst>
                 <spraak>en_GB</spraak>
             </spraakTekst>
         </visningsnavn>
@@ -1652,7 +1646,7 @@
         <tekniskNavn>GODTGJ_EOS_PENDLER</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Godtgjørelse til kost og losji pendler utland</tekst>
+                <tekst>Godtgjørelse til kost og losji pendler utland - overskudd settes til 0, kun skattepliktig ved egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -1692,7 +1686,7 @@
         <tekniskNavn>GODTGJ_FREMKOMST</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Godtgjørelse andre fremkomstmidler</tekst>
+                <tekst>Godtgjørelse andre fremkomstmidler - overskudd settes til 0, kun skattepliktig ved egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -1738,20 +1732,16 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Hyre</tekst>
+                <tekst>Hyre som mannskap på fiske- og fangstfartøy</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Hyre</tekst>
+                <tekst>Hyre som mannskap på fiske- og fangstfartøy</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Seafarers’ wages</tekst>
+                <tekst>Seafarers’ wages as a crew member on a fishing and hunting vessel</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Fanasveahka</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -1895,6 +1885,8 @@
             <beskrivelseIAMelding>introduksjonsstoenad</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
             <fordel>kontantytelse</fordel>
             <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
             <kommentar>2019_pensjonstype</kommentar>
@@ -1937,6 +1929,8 @@
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <minstefradrag>mistefradragIBarnePensjon</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -2019,6 +2013,8 @@
             <beskrivelseIAMelding>ipaEllerIpsPeriodiskeYtelser</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -2060,6 +2056,7 @@
             <beskrivelseIAMelding>ipaEllerIpsUfoerepensjon</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -2113,6 +2110,23 @@
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+        </kodetillegg>
+    </kode>
+    <kode>
+        <tekniskNavn>KOMP_PERS_INNT</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Kompensasjonsytelse</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <kodetillegg>
+            <visningsfelt>beloep</visningsfelt>
+            <visningskategori>Lønn</visningskategori>
+            <kategori>Lønn</kategori>
+            <minstefradrag>minstefradragIInntekt</minstefradrag>
+            <fordel>kontantytelse</fordel>
+            <kommentar>Både lønnskort og næringstema (SH-8484)</kommentar>
         </kodetillegg>
     </kode>
     <kode>
@@ -2187,8 +2201,10 @@
             <oppgavekodeISL>35521</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
-            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>PensjonEllerTrygd</kategori>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>krigspensjon</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -2393,20 +2409,16 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Lønn norsk sokkel - utlending</tekst>
+                <tekst>Lønn som utenlandsk sokkelarbeider</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Lønn norsk sokkel – utlending</tekst>
+                <tekst>Lønn som utanlandsk sokkelarbeidar</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Salary Norwegian shelf - foreign nationals</tekst>
+                <tekst>Salary for foreign offshore workers</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Bálká Norgga áhpebarggus - olgoriikkalaš</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -2625,7 +2637,7 @@
         <tekniskNavn>LOSJI_BRAKKE</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Overskudd losji brakke eller campingvogn</tekst>
+                <tekst>Overskudd losji brakke eller campingvogn - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -2916,8 +2928,10 @@
             <oppgavekodeISL>35521</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
-            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>PensjonEllerTrygd</kategori>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>nyAvtalefestetPensjonPrivatSektor</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -2962,6 +2976,7 @@
             <beskrivelseIAMelding>overgangsstoenadTilEnsligMorEllerFarSomBegynteAaLoepe1April2014EllerSenere</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
@@ -3110,6 +3125,8 @@
             <beskrivelseIAMelding>overgangsstoenadTilGjenlevendeEktefelle</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
             <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
@@ -3119,7 +3136,7 @@
         <tekniskNavn>PASSASJERTILLEGG</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Passasjertillegg</tekst>
+                <tekst>Passasjertillegg - overskudd settes til 0, kun skattepliktig ved egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -3186,8 +3203,10 @@
             <oppgavekodeISL>35521</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
-            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>PensjonEllerTrygd</kategori>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>pensjonOgLivrenterIArbeidsforhold</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -3228,8 +3247,10 @@
             <oppgavekodeISL>35520</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
-            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>PensjonEllerTrygd</kategori>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>annet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -3499,20 +3520,16 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Skattefri erstatning</tekst>
+                <tekst>Skattefri erstatning ved opphør av arbeidsforhold</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Skattefri erstatning</tekst>
+                <tekst>Skattefri erstatning ved opphøyr av arbeidsforhold</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Tax-free compensations</tekst>
+                <tekst>Tax-free severance payment upon termination of employment</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Vearuheamis buhtadus</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -3721,6 +3738,8 @@
             <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>PensjonEllerTrygd</kategori>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
             <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
         </kodetillegg>
     </kode>
@@ -3772,7 +3791,7 @@
         <tekniskNavn>STIPEND</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkpliktig stipend</tekst>
+                <tekst>Trekkpliktig stipend - overskudd settes til innberettet beløp</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -3887,6 +3906,9 @@
             <beskrivelseIAMelding>supplerendeStoenadTilPersonKortBotidNorge</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>alder#fom2015</etterbetalingstypeISL>
+            <etterbetalingstypeISL>ufore#tom2014</etterbetalingstypeISL>
+            <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
             <fordel>kontantytelse</fordel>
             <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
         </kodetillegg>
@@ -3950,6 +3972,7 @@
             <beskrivelseIAMelding>svangerskapspenger</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -3993,6 +4016,7 @@
             <beskrivelseIAMelding>sykepengerTilFiskerSomBareHarHyre</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
@@ -4079,20 +4103,16 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Sykepenger til selvstendig næringsdrivende</tekst>
+                <tekst>Sykepenger for selvstendig næringsdrivende</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Sjukepengar til sjølvstendig næringsdrivande</tekst>
+                <tekst>Sjukepengar for sjølvstendig næringsdrivande</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Sickness benefits to self-employed persons</tekst>
+                <tekst>Sickness benefits for self-employed persons</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Buohcanruđat iešheanalaš ealáhusdoallái</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
@@ -4111,7 +4131,7 @@
         <tekniskNavn>TFRI_BILGODTGJ</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkfri bilgodtgjørelse</tekst>
+                <tekst>Trekkfri bilgodtgjørelse - overskuddsberegning / ikke egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4149,35 +4169,10 @@
         </kodetillegg>
     </kode>
     <kode>
-        <tekniskNavn>TFRI_GODTGJ_ELBIL</tekniskNavn>
-        <beskrivelse>
-            <spraakTekst>
-                <tekst>Trekkfri bilgodtgjørelse, el-bil</tekst>
-                <spraak>no</spraak>
-            </spraakTekst>
-        </beskrivelse>
-        <visningsnavn>
-            <spraakTekst>
-                <tekst>Trekkfri bilgodtgjørelse, el-bil</tekst>
-                <spraak>nb_NO</spraak>
-            </spraakTekst>
-        </visningsnavn>
-        <kodetillegg>
-            <visningsfelt>beloep</visningsfelt>
-            <visningsfelt>antall</visningsfelt>
-            <kategori>Lønn</kategori>
-            <beskrivelseIAMelding>kilometergodtgjoerelseElBil</beskrivelseIAMelding>
-            <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
-            <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-            <fordel>utgiftsgodtgjoerelse</fordel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-        </kodetillegg>
-    </kode>
-    <kode>
         <tekniskNavn>TFRI_KOST_BESOK</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkfri kostgodtgjørelse for besøksreiser til hjemmet ved fri kost på arbeidstedet</tekst>
+                <tekst>Trekkfri kostgodtgjørelse for besøksreiser til hjemmet ved fri kost på arbeidstedet - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4218,7 +4213,7 @@
         <tekniskNavn>TFRI_KOST_O_28DG</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkfri kostgodtgjørelse ved arbeidsopphold utover 28 døgn</tekst>
+                <tekst>Trekkfri kostgodtgjørelse ved arbeidsopphold utover 28 døgn - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4263,7 +4258,7 @@
         <tekniskNavn>TFRI_KOST_O_28DG_UT</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkfri kostgodtgjørelse ved arbeidsopphold i utlandet utover 28 døgn</tekst>
+                <tekst>Trekkfri kostgodtgjørelse ved arbeidsopphold i utlandet utover 28 døgn - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4304,7 +4299,7 @@
         <tekniskNavn>TFRI_KOST_TJENESTE</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkfri godtgjørelse til kost på tjenestereise uten overnatting</tekst>
+                <tekst>Trekkfri godtgjørelse til kost på tjenestereise uten overnatting - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4425,7 +4420,7 @@
         <tekniskNavn>TFRI_STIPEND</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkfrie stipend</tekst>
+                <tekst>Trekkfrie stipend - skattefri, overføres ikke</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4522,6 +4517,7 @@
             <beskrivelseIAMelding>ufoerepensjonFraAndreEnnFolketrygden</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>ufore</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -4563,6 +4559,7 @@
             <beskrivelseIAMelding>ufoerepensjon</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>ufore</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -4605,6 +4602,7 @@
             <beskrivelseIAMelding>ufoereytelseEtteroppgjoerFraAndreEnnFolketrygden</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>ufore</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -4646,6 +4644,7 @@
             <beskrivelseIAMelding>ufoereytelseEtteroppgjoer</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>ufore</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -4687,6 +4686,7 @@
             <beskrivelseIAMelding>ufoeretrygd</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <etterbetalingstypeISL>ufore</etterbetalingstypeISL>
             <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>kontantytelse</fordel>
@@ -4697,7 +4697,7 @@
         <tekniskNavn>ULEG_NATTILLEGG</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkfritt ulegitimert nattillegg på innenlandsreiser</tekst>
+                <tekst>Trekkfritt ulegitimert nattillegg på innenlandsreiser - overskuddsberegning / egenfastsetting</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4736,45 +4736,10 @@
         </kodetillegg>
     </kode>
     <kode>
-        <tekniskNavn>UNDERHOLD_TIDL_EF</tekniskNavn>
-        <beskrivelse>
-            <spraakTekst>
-                <tekst>Underholdsbidrag fra tidligere ektefelle</tekst>
-                <spraak>no</spraak>
-            </spraakTekst>
-        </beskrivelse>
-        <visningsnavn>
-            <spraakTekst>
-                <tekst>Underholdsbidrag fra tidligere ektefelle</tekst>
-                <spraak>nb_NO</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Underhaldsbidrag frå tidlegare ektefelle</tekst>
-                <spraak>nn_NO</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Maintenance payments from former spouses</tekst>
-                <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Birgendoarjja ovddeš beallelaččas</tekst>
-                <spraak>se_NO</spraak>
-            </spraakTekst>
-        </visningsnavn>
-        <kodetillegg>
-            <oppgavekodeISL>35525</oppgavekodeISL>
-            <kategori>PensjonEllerTrygd</kategori>
-            <beskrivelseIAMelding>underholdsbidragTilTidligereEktefelle</beskrivelseIAMelding>
-            <minstefradrag>minstefradragIInntekt</minstefradrag>
-            <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-            <fordel>kontantytelse</fordel>
-        </kodetillegg>
-    </kode>
-    <kode>
         <tekniskNavn>UTG_GODTGJORELSE</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Trekkpliktig utgiftsgodtgjørelse</tekst>
+                <tekst>Trekkpliktig utgiftsgodtgjørelse - overskudd settes til innberettet beløp</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4819,7 +4784,7 @@
         <tekniskNavn>UTGGJ_REISE_KOST_LOSJI</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Godtgjørelse mv. til reise, kost og losji</tekst>
+                <tekst>Godtgjørelse mv. til reise, kost og losji - overskudd settes til innberettet beløp</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4869,7 +4834,7 @@
         <tekniskNavn>UTGGJ_TFRI_ANNET</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
-                <tekst>Andre trekkfrie utgiftsgodtgjørelser</tekst>
+                <tekst>Andre trekkfrie utgiftsgodtgjørelser - skattefri, overføres ikke</tekst>
                 <spraak>no</spraak>
             </spraakTekst>
         </beskrivelse>
@@ -4913,20 +4878,16 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Utenlandske sjøfolk trygdet i Norge</tekst>
+                <tekst>Lønn som utenlandsk sjøfolk</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Utanlandske sjøfolk trygda i Noreg</tekst>
+                <tekst>Lønn som utanlandsk sjøfolk</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Foreign seafarers who are members of the Norwegian National Insurance scheme</tekst>
+                <tekst>Salary for foreign seafarers</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Olgoriikkalaš mearrabargit Norgga oajuin</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
