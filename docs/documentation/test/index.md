@@ -26,7 +26,7 @@ Konkret må sluttbrukersystemet gjøre følgende:
 Skatteetaten har tilgjengeliggjort en testapplikasjoner som viser hvordan trinnene beskrevet over kan utføres.
 Den er skrevet i [jupyter notebook formatet](https://jupyter.org/):
 
-1. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo.ipynb)
+1. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo.ipynb). Last ned katalogen testinnsending og kjør skriptet demo.ipynb (skriptet vil utføre alle trinn som inngår i prosessen: hente/velidere skattemelding og innsending av skattemelding til Altinn)  
 2. [Eksempel XML-er](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/eksempler)
 
 ## Ta i bruk ID-porten
