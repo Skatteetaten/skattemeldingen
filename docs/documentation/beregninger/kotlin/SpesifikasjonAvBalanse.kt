@@ -1,9 +1,12 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
+
 val saldoAvskrevetForekomster = itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel
 
 /**
- * Saldogruppe A og B håndteres helt likt
+ * Saldogruppe A og B håndteres helt likt.
+ *
+ * Spec: https://wiki.sits.no/display/SIR/FR-Spes+av+bal+-+Anleggsmidler
  */
 internal object SpesifikasjonAvBalanse : HarKalkyletre {
 
@@ -17,7 +20,7 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre {
                 der(saldoavskrevetAnleggsmiddel, {
                     it.historiskKostpris -
                         it.nedskrevetVerdiPr01011984 somFelt it.nedreGrenseForAvskrivning
-                }, it.nedskrevetVerdiPr01011984.filterFelt(Specifications.ikke(Specifications.derVerdiErNull())))
+                }, it.nedskrevetVerdiPr01011984.filterFelt(Specifications.ikke(derVerdiErNull())))
             },
             {
                 der(saldoavskrevetAnleggsmiddel, {
@@ -31,7 +34,7 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre {
                         it.tilbakefoeringAvTilskuddTilInvesteringIDistriktene +
                         it.vederlagVedRealisasjonOgUttakInntektsfoertIAar -
                         it.nedreGrenseForAvskrivning somFelt it.grunnlagForAvskrivningOgInntektsfoering
-                }, it.nedskrevetVerdiPr01011984.filterFelt(Specifications.derVerdiErNull()))
+                }, it.nedskrevetVerdiPr01011984.filterFelt(derVerdiErNull()))
             }
         )
 
@@ -67,8 +70,12 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre {
                 Saldogruppe.i
             )
         )
-    } forVerdi {
-        f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) * f.avskrivningssats.prosent() somFelt f.aaretsAvskrivning
+    } forVerdier listOf {
+        der(
+            saldoavskrevetAnleggsmiddel,
+            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) * f.avskrivningssats.prosent() somFelt f.aaretsAvskrivning },
+            it.vederlagVedRealisasjonOgUttak.filterFelt(derVerdiErNull())
+        )
     }
 
     val utgaaendeVerdiSaldogruppEogFogGogHogI =
@@ -84,17 +91,30 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre {
             )
         } forVerdier listOf(
             {
-                der(saldoavskrevetAnleggsmiddel, {
-                    f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) -
-                        f.aaretsAvskrivning somFelt f.utgaaendeVerdi
-                }, it.vederlagVedRealisasjonOgUttak.filterFelt(Specifications.derVerdiErMindreEnnEllerLik(0)))
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) -
+                            f.aaretsAvskrivning somFelt f.utgaaendeVerdi
+                    }, it.vederlagVedRealisasjonOgUttak.filterFelt(
+                        Specifications.eller(
+                            derVerdiErNull(),
+                            derVerdiErMindreEnnEllerLik(0)
+                        )
+                    )
+                )
             },
             {
-                der(saldoavskrevetAnleggsmiddel, {
-                    f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) -
-                        f.tapOverfoertTilGevinstOgTapskonto +
-                        f.gevinstOverfoertTilGevinstOgTapskonto somFelt f.utgaaendeVerdi
-                }, it.vederlagVedRealisasjonOgUttak.filterFelt(derVerdiErStoerreEnn(0)))
+                der(
+                    saldoavskrevetAnleggsmiddel,
+                    { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering -
+                            f.tapOverfoertTilGevinstOgTapskonto +
+                            f.gevinstOverfoertTilGevinstOgTapskonto somFelt f.utgaaendeVerdi
+                    },
+                    it.vederlagVedRealisasjonOgUttak.filterFelt(
+                        derVerdiErStoerreEnn(0)
+                    )
+                )
             }
         )
 
@@ -132,24 +152,50 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre {
 
     internal val avskrivningInntektsfoeringOgUtgaaendeVerdiSaldogruppeAogC = forekomsterSaldogruppeAogCogJ forVerdier (
         listOf(
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning },
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErMindreEnn(-14999)) * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs() },
-            { f ->
-                f.grunnlagForAvskrivningOgInntektsfoering.der(
-                    derVerdiErMellom(
-                        -14999,
-                        0
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErStoerreEnn(0)
                     )
-                ) somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
+                )
+            },
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErMindreEnn(-14999)
+                    )
+                )
+            },
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErMellom(
+                            -14999,
+                            0
+                        )
+                    )
+                )
             }
-
         )
         )
 
     internal val avskrivningInntektsfoeringOgUtgaaendeVerdiSaldogruppeB = forekomsterSaldogruppeB forVerdier (
         listOf(
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning }
-
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErStoerreEnn(0)
+                    )
+                )
+            }
         )
         )
     internal val avskrivningSaldogruppeD = forekomsterSaldogruppeD filter {
@@ -158,45 +204,113 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre {
         )
     } forVerdier (
         listOf(
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) * f.avskrivningssats.prosent() + (f.grunnlagForStartavskrivning * f.avskrivningssatsForStartavskrivning.prosent()) somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning }
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() + (f.grunnlagForStartavskrivning * f.avskrivningssatsForStartavskrivning.prosent()) somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErStoerreEnn(0)
+                    )
+                )
+            }
         )
         )
 
     internal val inntektsfoeringOgUtgaaendeVerdiSaldogruppeD = forekomsterSaldogruppeD forVerdier (
         listOf(
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErMindreEnn(-14999)) * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs() },
-            { f ->
-                f.grunnlagForAvskrivningOgInntektsfoering.der(
-                    derVerdiErMellom(
-                        -14999,
-                        0
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErMindreEnn(-14999)
                     )
-                ) somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
+                )
+            },
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErMellom(
+                            -14999,
+                            0
+                        )
+                    )
+                )
             }
-
         )
         )
 
     private val utgaaendeVerdiSaldogruppeAogC = forekomsterSaldogruppeAogCogJ forVerdier (
         listOf(
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnnEllerLik(0)) - f.aaretsAvskrivning somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi },
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErMindreEnn(0)) + f.aaretsInntektsfoeringAvNegativSaldo.abs() somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi }
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering -
+                            f.aaretsAvskrivning somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErStoerreEnnEllerLik(0)
+                    )
+                )
+            },
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering +
+                            f.aaretsInntektsfoeringAvNegativSaldo somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErMindreEnn(0)
+                    )
+                )
+            }
         )
         )
 
     private val utgaaendeVerdiSaldogruppeB = forekomsterSaldogruppeB forVerdier (
         listOf(
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnnEllerLik(0)) - f.aaretsAvskrivning somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi },
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErMindreEnn(0)) + f.gevinstOverfoertTilGevinstOgTapskonto somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi }
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering -
+                            f.aaretsAvskrivning somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErStoerreEnnEllerLik(0)
+                    )
+                )
 
+            },
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering +
+                        f.gevinstOverfoertTilGevinstOgTapskonto somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
+                        derVerdiErMindreEnn(0)
+                    )
+                )
+            }
         )
         )
 
     private val utgaaendeVerdiSaldogruppeD = forekomsterSaldogruppeD forVerdier (
         listOf(
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnnEllerLik(0)) - f.aaretsAvskrivning somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi },
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErMindreEnn(0)) + f.gevinstOverfoertTilGevinstOgTapskonto somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi }
-
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering -
+                            f.aaretsAvskrivning somFelt f.utgaaendeVerdi
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(derVerdiErStoerreEnnEllerLik(0))
+                )
+            },
+            {
+                der(
+                    saldoavskrevetAnleggsmiddel, { f ->
+                        f.grunnlagForAvskrivningOgInntektsfoering +
+                            f.gevinstOverfoertTilGevinstOgTapskonto somFelt f.utgaaendeVerdi
+                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(derVerdiErMindreEnn(0))
+                )
+            }
         )
         )
 

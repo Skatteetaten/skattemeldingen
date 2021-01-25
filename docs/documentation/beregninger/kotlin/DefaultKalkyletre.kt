@@ -11,13 +11,10 @@ object DefaultKalkyletre : Kalkyletre(
     GevinstOgTapskonto,
     SpesifikasjonAvBalanse,
     SpesifikasjonAvBalanseFordringer,
+    TransportmiddelNaering,
     Resultatregnskapet,
     SpesifikasjonAvIkkeAvskrivbare,
     FordelingAvNaering,
     Balanse,
-    TransportmiddelNaering,
-    FordelingAvNaering,
-    BalanseFormueOgGjeld,
-    HarKalkyletre { Kalkyletre(PersoninntektBereging) }
-
+    BalanseFormueOgGjeld
 )

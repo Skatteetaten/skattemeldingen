@@ -1,10 +1,8 @@
-@file:Suppress("ClassName")package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.codegen.Kodetillegg
+package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering
 
 
-data class KodeVerdi(val kode: String, val beskrivelse: String, val kodetillegg: Kodetillegg)
-object resultatOgBalansekonti_2020 {
-    object balanseverdiForAnleggsmiddel {
+object resultatOgBalansekonti_2020 : KodeverdierHovedkodeliste() {
+    object balanseverdiForAnleggsmiddel : KodeverdierUnderkodeliste() {
         val kode_1000 = KodeVerdi("1000", "Forskning og utvikling", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_1020 = KodeVerdi("1020", "Konsesjoner, patenter, lisenser o.l. rettigheter (immaterielle eiendeler)", Kodetillegg(true, listOf("1", "2", "5"), true))
         val kode_1070 = KodeVerdi("1070", "Utsatt skattefordel", Kodetillegg(true, listOf("2"), false))
@@ -39,7 +37,7 @@ object resultatOgBalansekonti_2020 {
         val kode_1390 = KodeVerdi("1390", "Andre langsiktige fordringer", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_1395 = KodeVerdi("1395", "Netto pensjonsmidler", Kodetillegg(true, listOf("2"), false))
     }
-    object balanseverdiForOmloepsmiddel {
+    object balanseverdiForOmloepsmiddel : KodeverdierUnderkodeliste() {
         val kode_1400 = KodeVerdi("1400", "Varelager", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_1490 = KodeVerdi("1490", "Biologiske eiendeler", Kodetillegg(true, listOf("2"), false))
         val kode_1500 = KodeVerdi("1500", "Kundefordringer", Kodetillegg(true, listOf("1", "2", "5"), false))
@@ -59,7 +57,7 @@ object resultatOgBalansekonti_2020 {
         val kode_1920 = KodeVerdi("1920", "Bankinnskudd", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_1950 = KodeVerdi("1950", "Bankinnskudd for skattetrekk", Kodetillegg(true, listOf("1", "5"), false))
     }
-    object langsiktigGjeld {
+    object langsiktigGjeld : KodeverdierUnderkodeliste() {
         val kode_2100 = KodeVerdi("2100", "Pensjonsforpliktelser", Kodetillegg(true, listOf("2"), false))
         val kode_2120 = KodeVerdi("2120", "Utsatt skatt", Kodetillegg(true, listOf("2"), false))
         val kode_2130 = KodeVerdi("2130", "Derivater - langsiktige", Kodetillegg(true, listOf("2"), false))
@@ -73,7 +71,7 @@ object resultatOgBalansekonti_2020 {
         val kode_2280 = KodeVerdi("2280", "Stille interessentinnskudd og ansvarlig lånekapital", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_2290 = KodeVerdi("2290", "Annen langsiktig gjeld", Kodetillegg(true, listOf("1", "2", "5"), false))
     }
-    object kortsiktigGjeld {
+    object kortsiktigGjeld : KodeverdierUnderkodeliste() {
         val kode_2310 = KodeVerdi("2310", "Konvertible lån - kortsiktige", Kodetillegg(true, listOf("2"), false))
         val kode_2320 = KodeVerdi("2320", "Obligasjonslån - kortsiktige", Kodetillegg(true, listOf("2"), false))
         val kode_2330 = KodeVerdi("2330", "Derivater - kortsiktige", Kodetillegg(true, listOf("2"), false))
@@ -96,7 +94,7 @@ object resultatOgBalansekonti_2020 {
         val kode_2980 = KodeVerdi("2980", "Avsetninger for forpliktelser - kortsiktig", Kodetillegg(true, listOf("2"), false))
         val kode_2990 = KodeVerdi("2990", "Annen kortsiktig gjeld", Kodetillegg(true, listOf("1", "2", "5"), false))
     }
-    object egenkapital {
+    object egenkapital : KodeverdierUnderkodeliste() {
         val kode_2000 = KodeVerdi("2000", "Aksjekapital/Egenkapital andre foretak", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_2010 = KodeVerdi("2010", "Egne aksjer", Kodetillegg(true, listOf("2"), false))
         val kode_2020 = KodeVerdi("2020", "Overkurs", Kodetillegg(true, listOf("2"), false))
@@ -112,13 +110,13 @@ object resultatOgBalansekonti_2020 {
         val kode_2097 = KodeVerdi("2097", "Betinget avsatt gevinst", Kodetillegg(true, listOf("1", "5"), false))
         val kode_2098 = KodeVerdi("2098", "Positiv tømmerkonto", Kodetillegg(true, listOf("1", "5"), false))
     }
-    object salgsinntekt {
+    object salgsinntekt : KodeverdierUnderkodeliste() {
         val kode_3000 = KodeVerdi("3000", "Salgsinntekt og uttak, avgiftspliktig", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_3100 = KodeVerdi("3100", "Salgsinntekt og uttak, avgiftsfritt", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_3200 = KodeVerdi("3200", "Salgsinntekt og uttak, utenfor merverdiavgiftsloven", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_3300 = KodeVerdi("3300", "Spesielle offentlige avgifter vedrørende salg", Kodetillegg(true, listOf("1", "2", "5"), false))
     }
-    object annenDriftsinntekt {
+    object annenDriftsinntekt : KodeverdierUnderkodeliste() {
         val kode_3400 = KodeVerdi("3400", "Offentlig tilskudd/refusjon", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_3410 = KodeVerdi("3410", "Tilskudd kompensasjonsordning", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_3500 = KodeVerdi("3500", "Endring uopptjent inntekt", Kodetillegg(true, listOf("2"), false))
@@ -136,13 +134,13 @@ object resultatOgBalansekonti_2020 {
         val kode_3900 = KodeVerdi("3900", "Annen driftsrelatert inntekt", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_3910 = KodeVerdi("3910", "Inntektsføring fra tømmerkonto", Kodetillegg(true, listOf("1", "5"), false))
     }
-    object varekostnad {
+    object varekostnad : KodeverdierUnderkodeliste() {
         val kode_4005 = KodeVerdi("4005", "Varekostnad", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_4295 = KodeVerdi("4295", "Beholdningsendring av varer under tilvirkning og ferdig tilv. Varer", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_4500 = KodeVerdi("4500", "Fremmedytelse og underentreprise", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_4995 = KodeVerdi("4995", "Beholdningsendring av egentilvirkede anleggsmidler", Kodetillegg(true, listOf("1", "2", "5"), false))
     }
-    object loennskostnad {
+    object loennskostnad : KodeverdierUnderkodeliste() {
         val kode_5000 = KodeVerdi("5000", "Kostnadsført lønn, feriepenger mv.", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_5300 = KodeVerdi("5300", "Kostnadsført annen opplysningspliktig godtgjørelse", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_5400 = KodeVerdi("5400", "Kostnadsført arbeidsgiveravgift", Kodetillegg(true, listOf("1", "2", "5"), false))
@@ -151,7 +149,7 @@ object resultatOgBalansekonti_2020 {
         val kode_5900 = KodeVerdi("5900", "Annen personalkostnad", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_5950 = KodeVerdi("5950", "Kostnad til egen pensjonsordning", Kodetillegg(true, listOf("1", "5"), false))
     }
-    object annenDriftskostnad {
+    object annenDriftskostnad : KodeverdierUnderkodeliste() {
         val kode_6000 = KodeVerdi("6000", "Avskrivning på varige driftsmidler og immaterielle eiendeler", Kodetillegg(true, listOf("1", "2", "5"), false))
         val kode_6050 = KodeVerdi("6050", "Nedskrivning på varige driftsmidler og immaterielle eiendeler", Kodetillegg(true, listOf("2"), false))
         val kode_6100 = KodeVerdi("6100", "Frakt og transportkostnad vedrørende salg", Kodetillegg(true, listOf("1", "2", "5"), false))
@@ -196,7 +194,7 @@ object resultatOgBalansekonti_2020 {
         val kode_7910 = KodeVerdi("7910", "Overført til tømmerkonto av årets overskudd/underskudd", Kodetillegg(true, listOf("1", "5"), false))
         val kode_7911 = KodeVerdi("7911", "Kostnadsføring tømmerkonto", Kodetillegg(true, listOf("1", "5"), false))
     }
-    object finansinntekt {
+    object finansinntekt : KodeverdierUnderkodeliste() {
         val kode_8005 = KodeVerdi("8005", "Netto positiv resultatandel vedrørende investering i DS, TS og FKV", Kodetillegg(true, listOf("2", "5"), false))
         val kode_8030 = KodeVerdi("8030", "Renteinntekt fra foretak i samme konsern", Kodetillegg(true, listOf("2"), false))
         val kode_8050 = KodeVerdi("8050", "Annen renteinntekt", Kodetillegg(true, listOf("2", "5"), false))
@@ -207,7 +205,7 @@ object resultatOgBalansekonti_2020 {
         val kode_8090 = KodeVerdi("8090", "Inntekt av andre investeringer/utbytte", Kodetillegg(true, listOf("2", "5"), false))
         val kode_8091 = KodeVerdi("8091", "3 % av netto skattefrie inntekter etter fritaksmetoden og 3 % av utdeling fra selskap med deltakerfastsetting til selskapsdeltaker", Kodetillegg(true, listOf("5"), false))
     }
-    object finanskostnad {
+    object finanskostnad : KodeverdierUnderkodeliste() {
         val kode_8006 = KodeVerdi("8006", "Netto negativ resultatandel vedrørende investering i DS, TS og FKV", Kodetillegg(true, listOf("2", "5"), false))
         val kode_8100 = KodeVerdi("8100", "Verdireduksjon av finansielle instrumenter vurdert til virkelig verdi", Kodetillegg(true, listOf("2"), false))
         val kode_8115 = KodeVerdi("8115", "Nedskriving av finansielle eiendeler", Kodetillegg(true, listOf("2"), false))
@@ -217,13 +215,13 @@ object resultatOgBalansekonti_2020 {
         val kode_8174 = KodeVerdi("8174", "Tap ved realisasjon av aksjer, egenkapitalbevis og fondsandeler", Kodetillegg(true, listOf("2", "5"), false))
         val kode_8179 = KodeVerdi("8179", "Annen finanskostnad", Kodetillegg(true, listOf("1", "2", "5"), false))
     }
-    object skattekostnad {
+    object skattekostnad : KodeverdierUnderkodeliste() {
         val kode_8300 = KodeVerdi("8300", "Betalbar skatt på ordinært resultat", Kodetillegg(true, listOf("2"), false))
         val kode_8320 = KodeVerdi("8320", "Endring utsatt skatt/skattefordel på ordinært resultat", Kodetillegg(true, listOf("2"), false))
         val kode_8600 = KodeVerdi("8600", "Betalbar skatt på resultat etter ekstraordinære poster", Kodetillegg(true, listOf("2"), false))
         val kode_8620 = KodeVerdi("8620", "Endring utsatt skatt/skattefordel på resultat etter ekstraordinære poster", Kodetillegg(true, listOf("2"), false))
     }
-    object resultatkomponentForIFRSForetak {
+    object resultatkomponentForIFRSForetak : KodeverdierUnderkodeliste() {
         val kode_8901 = KodeVerdi("8901", "Endring i verdireguleringsreserve - eiendom, anlegg og utstyr", Kodetillegg(true, listOf("2"), false))
         val kode_8902 = KodeVerdi("8902", "Endring i verdireguleringsreserve - immaterielle eiendeler", Kodetillegg(true, listOf("2"), false))
         val kode_8903 = KodeVerdi("8903", "Aktuariell gevinst og tap på ytelsesbaserte pensjonsordninger - ytelser til ansatte", Kodetillegg(true, listOf("2"), false))

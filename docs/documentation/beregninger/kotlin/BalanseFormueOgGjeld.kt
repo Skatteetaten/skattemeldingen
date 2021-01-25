@@ -5,36 +5,42 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
 
     fun getFilterForAnleggsmiddel(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
-            Specification<Any> { it != null && Kodeliste2020Helper.sorterKodeListe()[it as String]!!.kodetillegg.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForvenetVerdi }
+            Specification<Any> { it != null && Kodeliste2020Helper.kodeliste[it as String]!!.kodetillegg.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForvenetVerdi }
         return Specifications.og(
-            FeltSpecification(balanseverdiForAnleggsmiddel.overfoeresIkkeTilSkattemeldingen, Specifications.erUsann()),
+            FeltSpecification(
+                balanseverdiForAnleggsmiddel.overfoeresIkkeTilSkattemeldingen,
+                Specifications.erUsannEllerNull()
+            ),
             FeltSpecification(balanseverdiForAnleggsmiddel.anleggsmiddeltype, balansekontoSpecification),
         )
     }
 
     fun getFilterForOmloepsmiddel(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
-            Specification<Any> { it != null && Kodeliste2020Helper.sorterKodeListe()[it as String]!!.kodetillegg.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForvenetVerdi }
+            Specification<Any> { it != null && Kodeliste2020Helper.kodeliste[it as String]!!.kodetillegg.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForvenetVerdi }
         return Specifications.og(
-            FeltSpecification(balanseverdiForOmloepsmiddel.overfoeresIkkeTilSkattemeldingen, Specifications.erUsann()),
+            FeltSpecification(
+                balanseverdiForOmloepsmiddel.overfoeresIkkeTilSkattemeldingen,
+                Specifications.erUsannEllerNull()
+            ),
             FeltSpecification(balanseverdiForOmloepsmiddel.omloepsmiddeltype, balansekontoSpecification),
         )
     }
 
     fun getFilterForKortsiktigGjeld(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
-            Specification<Any> { it != null && Kodeliste2020Helper.sorterKodeListe()[it as String]!!.kodetillegg.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForvenetVerdi }
+            Specification<Any> { it != null && Kodeliste2020Helper.kodeliste[it as String]!!.kodetillegg.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForvenetVerdi }
         return Specifications.og(
-            FeltSpecification(kortsiktigGjeld.overfoeresIkkeTilSkattemeldingen, Specifications.erUsann()),
+            FeltSpecification(kortsiktigGjeld.overfoeresIkkeTilSkattemeldingen, Specifications.erUsannEllerNull()),
             FeltSpecification(kortsiktigGjeld.kortsiktigGjeldtype, balansekontoSpecification),
         )
     }
 
     fun getFilterForLangsiktigGjeld(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
-            Specification<Any> { it != null && Kodeliste2020Helper.sorterKodeListe()[it as String]!!.kodetillegg.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForvenetVerdi }
+            Specification<Any> { it != null && Kodeliste2020Helper.kodeliste[it as String]!!.kodetillegg.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForvenetVerdi }
         return Specifications.og(
-            FeltSpecification(langsiktigGjeld.overfoeresIkkeTilSkattemeldingen, Specifications.erUsann()),
+            FeltSpecification(langsiktigGjeld.overfoeresIkkeTilSkattemeldingen, Specifications.erUsannEllerNull()),
             FeltSpecification(langsiktigGjeld.langsiktigGjeldtype, balansekontoSpecification),
         )
     }

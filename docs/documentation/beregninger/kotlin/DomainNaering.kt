@@ -1,8 +1,4 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.FeltKoordinat
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.FieldDataType
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.ForekomstTypeSpecification
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.VerdifeltTypeSpecification
 
 object sumDriftskostnad :  VerdifeltTypeSpecification<sumDriftskostnad>(gruppe= "resultatregnskap.driftskostnad.sumDriftskostnad") {
     val beloep : FeltKoordinat<sumDriftskostnad> = FeltKoordinat("resultatregnskap.driftskostnad.sumDriftskostnad.beloep", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
@@ -28,12 +24,6 @@ object sumFinanskostnad :  VerdifeltTypeSpecification<sumFinanskostnad>(gruppe= 
     val beloep : FeltKoordinat<sumFinanskostnad> = FeltKoordinat("resultatregnskap.sumFinanskostnad.beloep", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val erOverstyrt : FeltKoordinat<sumFinanskostnad> = FeltKoordinat("resultatregnskap.sumFinanskostnad.erOverstyrt")
 }
-object langsiktigGjeld :  ForekomstTypeSpecification<langsiktigGjeld>("balanse.gjeldOgEgenkapital.langsiktigGjeld") {
-    val overfoeresIkkeTilSkattemeldingen : FeltKoordinat<langsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.langsiktigGjeld.overfoeresIkkeTilSkattemeldingen")
-    val regnskapsmessigVerdi : FeltKoordinat<langsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.langsiktigGjeld.regnskapsmessigVerdi.beloep" ,"balanse.gjeldOgEgenkapital.langsiktigGjeld.regnskapsmessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-    val skattemessigVerdi : FeltKoordinat<langsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.langsiktigGjeld.skattemessigVerdi.beloep" ,"balanse.gjeldOgEgenkapital.langsiktigGjeld.skattemessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-    val langsiktigGjeldtype : FeltKoordinat<langsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.langsiktigGjeld.langsiktigGjeldtype")
-}
 object sumEiendelSkattemessigVerdi :  VerdifeltTypeSpecification<sumEiendelSkattemessigVerdi>(gruppe= "balanse.sumEiendelSkattemessigVerdi") {
     val beloep : FeltKoordinat<sumEiendelSkattemessigVerdi> = FeltKoordinat("balanse.sumEiendelSkattemessigVerdi.beloep", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val erOverstyrt : FeltKoordinat<sumEiendelSkattemessigVerdi> = FeltKoordinat("balanse.sumEiendelSkattemessigVerdi.erOverstyrt")
@@ -41,6 +31,14 @@ object sumEiendelSkattemessigVerdi :  VerdifeltTypeSpecification<sumEiendelSkatt
 object sumAnleggsmiddelSkattemessigVerdi :  VerdifeltTypeSpecification<sumAnleggsmiddelSkattemessigVerdi>(gruppe= "balanse.anleggsmiddel.sumAnleggsmiddelSkattemessigVerdi") {
     val beloep : FeltKoordinat<sumAnleggsmiddelSkattemessigVerdi> = FeltKoordinat("balanse.anleggsmiddel.sumAnleggsmiddelSkattemessigVerdi.beloep", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val erOverstyrt : FeltKoordinat<sumAnleggsmiddelSkattemessigVerdi> = FeltKoordinat("balanse.anleggsmiddel.sumAnleggsmiddelSkattemessigVerdi.erOverstyrt")
+}
+object allLangsiktigGjeld :  ForekomstTypeSpecification<allLangsiktigGjeld>("balanse.gjeldOgEgenkapital.allLangsiktigGjeld") {
+    object langsiktigGjeld :  ForekomstTypeSpecification<langsiktigGjeld>("balanse.gjeldOgEgenkapital.allLangsiktigGjeld","balanse.gjeldOgEgenkapital.allLangsiktigGjeld.langsiktigGjeld") {
+        val langsiktigGjeldtype : FeltKoordinat<langsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.allLangsiktigGjeld.langsiktigGjeld.langsiktigGjeldtype")
+        val overfoeresIkkeTilSkattemeldingen : FeltKoordinat<langsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.allLangsiktigGjeld.langsiktigGjeld.overfoeresIkkeTilSkattemeldingen")
+        val regnskapsmessigVerdi : FeltKoordinat<langsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.allLangsiktigGjeld.langsiktigGjeld.regnskapsmessigVerdi.beloep" ,"balanse.gjeldOgEgenkapital.allLangsiktigGjeld.langsiktigGjeld.regnskapsmessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+        val skattemessigVerdi : FeltKoordinat<langsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.allLangsiktigGjeld.langsiktigGjeld.skattemessigVerdi.beloep" ,"balanse.gjeldOgEgenkapital.allLangsiktigGjeld.langsiktigGjeld.skattemessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+    }
 }
 object aarsresultat :  VerdifeltTypeSpecification<aarsresultat>(gruppe= "resultatregnskap.aarsresultat") {
     val erOverstyrt : FeltKoordinat<aarsresultat> = FeltKoordinat("resultatregnskap.aarsresultat.erOverstyrt")
@@ -135,11 +133,8 @@ object personinntektFraEnkeltpersonforetak :  ForekomstTypeSpecification<personi
     val rentekostnadPaaForetaksgjeld : FeltKoordinat<personinntektFraEnkeltpersonforetak> = FeltKoordinat("personinntektFraEnkeltpersonforetak.rentekostnadPaaForetaksgjeld.beloep" ,"personinntektFraEnkeltpersonforetak.rentekostnadPaaForetaksgjeld", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val kapitalkostnad : FeltKoordinat<personinntektFraEnkeltpersonforetak> = FeltKoordinat("personinntektFraEnkeltpersonforetak.kapitalkostnad.beloep" ,"personinntektFraEnkeltpersonforetak.kapitalkostnad", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val aaretsBeregnedePersoninntektFoerFordelingOgSamordning : FeltKoordinat<personinntektFraEnkeltpersonforetak> = FeltKoordinat("personinntektFraEnkeltpersonforetak.aaretsBeregnedePersoninntektFoerFordelingOgSamordning.beloep" ,"personinntektFraEnkeltpersonforetak.aaretsBeregnedePersoninntektFoerFordelingOgSamordning", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+    val antallMaanederDrevetIAar : FeltKoordinat<personinntektFraEnkeltpersonforetak> = FeltKoordinat("personinntektFraEnkeltpersonforetak.antallMaanederDrevetIAar")
     val gevinstVedRealisasjonAvAlminneligGaardsbrukEllerSkogbruk : FeltKoordinat<personinntektFraEnkeltpersonforetak> = FeltKoordinat("personinntektFraEnkeltpersonforetak.gevinstVedRealisasjonAvAlminneligGaardsbrukEllerSkogbruk.beloep" ,"personinntektFraEnkeltpersonforetak.gevinstVedRealisasjonAvAlminneligGaardsbrukEllerSkogbruk", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-}
-object egenkapital :  ForekomstTypeSpecification<egenkapital>("balanse.gjeldOgEgenkapital.egenkapital") {
-    val egenkapitaltype : FeltKoordinat<egenkapital> = FeltKoordinat("balanse.gjeldOgEgenkapital.egenkapital.egenkapitaltype")
-    val beloep : FeltKoordinat<egenkapital> = FeltKoordinat("balanse.gjeldOgEgenkapital.egenkapital.beloep.beloep" ,"balanse.gjeldOgEgenkapital.egenkapital.beloep", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
 }
 object lineaertavskrevetAnleggsmiddel :  ForekomstTypeSpecification<lineaertavskrevetAnleggsmiddel>("spesifikasjonAvResultatregnskapOgBalanse.lineaertavskrevetAnleggsmiddel") {
     val ervervsdato : FeltKoordinat<lineaertavskrevetAnleggsmiddel> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.lineaertavskrevetAnleggsmiddel.ervervsdato")
@@ -185,7 +180,6 @@ object fordelingAvNaeringsinntekt :  ForekomstTypeSpecification<fordelingAvNaeri
     val korreksjonForEndringIAvviklingsOgOmstillingsfondForReineiere : FeltKoordinat<fordelingAvNaeringsinntekt> = FeltKoordinat("fordelingAvNaeringsinntekt.reindrift.korreksjonForEndringIAvviklingsOgOmstillingsfondForReineiere.beloep" ,"fordelingAvNaeringsinntekt.reindrift.korreksjonForEndringIAvviklingsOgOmstillingsfondForReineiere", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val resultatForToAarSiden : FeltKoordinat<fordelingAvNaeringsinntekt> = FeltKoordinat("fordelingAvNaeringsinntekt.reindrift.resultatForToAarSiden.beloep" ,"fordelingAvNaeringsinntekt.reindrift.resultatForToAarSiden", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val korrigeringForBeloepFraGevinstOgTapskonto : FeltKoordinat<fordelingAvNaeringsinntekt> = FeltKoordinat("fordelingAvNaeringsinntekt.reindrift.korrigeringForBeloepFraGevinstOgTapskonto.beloep" ,"fordelingAvNaeringsinntekt.reindrift.korrigeringForBeloepFraGevinstOgTapskonto", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-    val grunnlagForBeregningAvReindriftsfradrag : FeltKoordinat<fordelingAvNaeringsinntekt> = FeltKoordinat("fordelingAvNaeringsinntekt.reindrift.grunnlagForBeregningAvReindriftsfradrag.beloep" ,"fordelingAvNaeringsinntekt.reindrift.grunnlagForBeregningAvReindriftsfradrag", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val uttakFraAvviklingsOgOmstillingsfondForReineiere : FeltKoordinat<fordelingAvNaeringsinntekt> = FeltKoordinat("fordelingAvNaeringsinntekt.reindrift.uttakFraAvviklingsOgOmstillingsfondForReineiere.beloep" ,"fordelingAvNaeringsinntekt.reindrift.uttakFraAvviklingsOgOmstillingsfondForReineiere", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val identifikatorForFordelingAvNaeringsinntektOgPersoninntekt : FeltKoordinat<fordelingAvNaeringsinntekt> = FeltKoordinat("fordelingAvNaeringsinntekt.identifikatorForFordelingAvNaeringsinntektOgPersoninntekt")
     val naeringsbeskrivelse : FeltKoordinat<fordelingAvNaeringsinntekt> = FeltKoordinat("fordelingAvNaeringsinntekt.naeringsbeskrivelse")
@@ -208,6 +202,7 @@ object andreDriftsinntekter :  ForekomstTypeSpecification<andreDriftsinntekter>(
 }
 object gevinstOgTapskonto :  ForekomstTypeSpecification<gevinstOgTapskonto>("spesifikasjonAvResultatregnskapOgBalanse.gevinstOgTapskonto") {
     val inntektFraGevinstOgTapskonto : FeltKoordinat<gevinstOgTapskonto> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.gevinstOgTapskonto.inntektFraGevinstOgTapskonto.beloep" ,"spesifikasjonAvResultatregnskapOgBalanse.gevinstOgTapskonto.inntektFraGevinstOgTapskonto", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+    val stammerGevinstOgTapskontoenFraGevinstFraRealisasjonAvAlminneligGaardsbrukEllerSkogbruk : FeltKoordinat<gevinstOgTapskonto> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.gevinstOgTapskonto.stammerGevinstOgTapskontoenFraGevinstFraRealisasjonAvAlminneligGaardsbrukEllerSkogbruk")
     val gevinstOgTapskontoIdentifikator : FeltKoordinat<gevinstOgTapskonto> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.gevinstOgTapskonto.gevinstOgTapskontoIdentifikator")
     val kommunenummer : FeltKoordinat<gevinstOgTapskonto> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.gevinstOgTapskonto.kommunenummer")
     val naeringsidentifikator : FeltKoordinat<gevinstOgTapskonto> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.gevinstOgTapskonto.naeringsidentifikator")
@@ -235,11 +230,13 @@ object salgsinntekter :  ForekomstTypeSpecification<salgsinntekter>("resultatreg
         val beloep : FeltKoordinat<salgsinntekt> = FeltKoordinat("resultatregnskap.driftsinntekt.salgsinntekter.salgsinntekt.beloep.beloep" ,"resultatregnskap.driftsinntekt.salgsinntekter.salgsinntekt.beloep", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     }
 }
-object balanseverdiForOmloepsmiddel :  ForekomstTypeSpecification<balanseverdiForOmloepsmiddel>("balanse.omloepsmiddel.balanseverdiForOmloepsmiddel") {
-    val overfoeresIkkeTilSkattemeldingen : FeltKoordinat<balanseverdiForOmloepsmiddel> = FeltKoordinat("balanse.omloepsmiddel.balanseverdiForOmloepsmiddel.overfoeresIkkeTilSkattemeldingen")
-    val regnskapsmessigVerdi : FeltKoordinat<balanseverdiForOmloepsmiddel> = FeltKoordinat("balanse.omloepsmiddel.balanseverdiForOmloepsmiddel.regnskapsmessigVerdi.beloep" ,"balanse.omloepsmiddel.balanseverdiForOmloepsmiddel.regnskapsmessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-    val skattemessigVerdi : FeltKoordinat<balanseverdiForOmloepsmiddel> = FeltKoordinat("balanse.omloepsmiddel.balanseverdiForOmloepsmiddel.skattemessigVerdi.beloep" ,"balanse.omloepsmiddel.balanseverdiForOmloepsmiddel.skattemessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-    val omloepsmiddeltype : FeltKoordinat<balanseverdiForOmloepsmiddel> = FeltKoordinat("balanse.omloepsmiddel.balanseverdiForOmloepsmiddel.omloepsmiddeltype")
+object balanseverdiForOmloepsmidler :  ForekomstTypeSpecification<balanseverdiForOmloepsmidler>("balanse.omloepsmiddel.balanseverdiForOmloepsmidler") {
+    object balanseverdiForOmloepsmiddel :  ForekomstTypeSpecification<balanseverdiForOmloepsmiddel>("balanse.omloepsmiddel.balanseverdiForOmloepsmidler","balanse.omloepsmiddel.balanseverdiForOmloepsmidler.balanseverdiForOmloepsmiddel") {
+        val skattemessigVerdi : FeltKoordinat<balanseverdiForOmloepsmiddel> = FeltKoordinat("balanse.omloepsmiddel.balanseverdiForOmloepsmidler.balanseverdiForOmloepsmiddel.skattemessigVerdi.beloep" ,"balanse.omloepsmiddel.balanseverdiForOmloepsmidler.balanseverdiForOmloepsmiddel.skattemessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+        val regnskapsmessigVerdi : FeltKoordinat<balanseverdiForOmloepsmiddel> = FeltKoordinat("balanse.omloepsmiddel.balanseverdiForOmloepsmidler.balanseverdiForOmloepsmiddel.regnskapsmessigVerdi.beloep" ,"balanse.omloepsmiddel.balanseverdiForOmloepsmidler.balanseverdiForOmloepsmiddel.regnskapsmessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+        val overfoeresIkkeTilSkattemeldingen : FeltKoordinat<balanseverdiForOmloepsmiddel> = FeltKoordinat("balanse.omloepsmiddel.balanseverdiForOmloepsmidler.balanseverdiForOmloepsmiddel.overfoeresIkkeTilSkattemeldingen")
+        val omloepsmiddeltype : FeltKoordinat<balanseverdiForOmloepsmiddel> = FeltKoordinat("balanse.omloepsmiddel.balanseverdiForOmloepsmidler.balanseverdiForOmloepsmiddel.omloepsmiddeltype")
+    }
 }
 object saldoavskrevetAnleggsmiddel :  ForekomstTypeSpecification<saldoavskrevetAnleggsmiddel>("spesifikasjonAvResultatregnskapOgBalanse.saldoavskrevetAnleggsmiddel") {
     val avskrivningssats : FeltKoordinat<saldoavskrevetAnleggsmiddel> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.saldoavskrevetAnleggsmiddel.avskrivningssats")
@@ -283,6 +280,14 @@ object saldoavskrevetAnleggsmiddel :  ForekomstTypeSpecification<saldoavskrevetA
     val erRealisasjonenUfrivilligOgGevinstenBetingetSkattefri : FeltKoordinat<saldoavskrevetAnleggsmiddel> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.saldoavskrevetAnleggsmiddel.erRealisasjonenUfrivilligOgGevinstenBetingetSkattefri")
     val avskrivningssatsForStartavskrivning : FeltKoordinat<saldoavskrevetAnleggsmiddel> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.saldoavskrevetAnleggsmiddel.avskrivningssatsForStartavskrivning")
 }
+object balanseverdiForAnleggsmidler :  ForekomstTypeSpecification<balanseverdiForAnleggsmidler>("balanse.anleggsmiddel.balanseverdiForAnleggsmidler") {
+    object balanseverdiForAnleggsmiddel :  ForekomstTypeSpecification<balanseverdiForAnleggsmiddel>("balanse.anleggsmiddel.balanseverdiForAnleggsmidler","balanse.anleggsmiddel.balanseverdiForAnleggsmidler.balanseverdiForAnleggsmiddel") {
+        val skattemessigVerdi : FeltKoordinat<balanseverdiForAnleggsmiddel> = FeltKoordinat("balanse.anleggsmiddel.balanseverdiForAnleggsmidler.balanseverdiForAnleggsmiddel.skattemessigVerdi.beloep" ,"balanse.anleggsmiddel.balanseverdiForAnleggsmidler.balanseverdiForAnleggsmiddel.skattemessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+        val regnskapsmessigVerdi : FeltKoordinat<balanseverdiForAnleggsmiddel> = FeltKoordinat("balanse.anleggsmiddel.balanseverdiForAnleggsmidler.balanseverdiForAnleggsmiddel.regnskapsmessigVerdi.beloep" ,"balanse.anleggsmiddel.balanseverdiForAnleggsmidler.balanseverdiForAnleggsmiddel.regnskapsmessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+        val anleggsmiddeltype : FeltKoordinat<balanseverdiForAnleggsmiddel> = FeltKoordinat("balanse.anleggsmiddel.balanseverdiForAnleggsmidler.balanseverdiForAnleggsmiddel.anleggsmiddeltype")
+        val overfoeresIkkeTilSkattemeldingen : FeltKoordinat<balanseverdiForAnleggsmiddel> = FeltKoordinat("balanse.anleggsmiddel.balanseverdiForAnleggsmidler.balanseverdiForAnleggsmiddel.overfoeresIkkeTilSkattemeldingen")
+    }
+}
 object finanskostnader :  ForekomstTypeSpecification<finanskostnader>("resultatregnskap.finanskostnader") {
     object finanskostnad :  ForekomstTypeSpecification<finanskostnad>("resultatregnskap.finanskostnader","resultatregnskap.finanskostnader.finanskostnad") {
         val type : FeltKoordinat<finanskostnad> = FeltKoordinat("resultatregnskap.finanskostnader.finanskostnad.type")
@@ -292,12 +297,6 @@ object finanskostnader :  ForekomstTypeSpecification<finanskostnader>("resultatr
 object sumOmloepsmiddelSkattemessigVerdi :  VerdifeltTypeSpecification<sumOmloepsmiddelSkattemessigVerdi>(gruppe= "balanse.omloepsmiddel.sumOmloepsmiddelSkattemessigVerdi") {
     val erOverstyrt : FeltKoordinat<sumOmloepsmiddelSkattemessigVerdi> = FeltKoordinat("balanse.omloepsmiddel.sumOmloepsmiddelSkattemessigVerdi.erOverstyrt")
     val beloep : FeltKoordinat<sumOmloepsmiddelSkattemessigVerdi> = FeltKoordinat("balanse.omloepsmiddel.sumOmloepsmiddelSkattemessigVerdi.beloep", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-}
-object balanseverdiForAnleggsmiddel :  ForekomstTypeSpecification<balanseverdiForAnleggsmiddel>("balanse.anleggsmiddel.balanseverdiForAnleggsmiddel") {
-    val anleggsmiddeltype : FeltKoordinat<balanseverdiForAnleggsmiddel> = FeltKoordinat("balanse.anleggsmiddel.balanseverdiForAnleggsmiddel.anleggsmiddeltype")
-    val regnskapsmessigVerdi : FeltKoordinat<balanseverdiForAnleggsmiddel> = FeltKoordinat("balanse.anleggsmiddel.balanseverdiForAnleggsmiddel.regnskapsmessigVerdi.beloep" ,"balanse.anleggsmiddel.balanseverdiForAnleggsmiddel.regnskapsmessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-    val overfoeresIkkeTilSkattemeldingen : FeltKoordinat<balanseverdiForAnleggsmiddel> = FeltKoordinat("balanse.anleggsmiddel.balanseverdiForAnleggsmiddel.overfoeresIkkeTilSkattemeldingen")
-    val skattemessigVerdi : FeltKoordinat<balanseverdiForAnleggsmiddel> = FeltKoordinat("balanse.anleggsmiddel.balanseverdiForAnleggsmiddel.skattemessigVerdi.beloep" ,"balanse.anleggsmiddel.balanseverdiForAnleggsmiddel.skattemessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
 }
 object sumGjeldOgEgenkapitalSkattemessigVerdi :  VerdifeltTypeSpecification<sumGjeldOgEgenkapitalSkattemessigVerdi>(gruppe= "balanse.sumGjeldOgEgenkapitalSkattemessigVerdi") {
     val erOverstyrt : FeltKoordinat<sumGjeldOgEgenkapitalSkattemessigVerdi> = FeltKoordinat("balanse.sumGjeldOgEgenkapitalSkattemessigVerdi.erOverstyrt")
@@ -313,12 +312,6 @@ object varekostnader :  ForekomstTypeSpecification<varekostnader>("resultatregns
         val beloep : FeltKoordinat<varekostnad> = FeltKoordinat("resultatregnskap.driftskostnad.varekostnader.varekostnad.beloep.beloep" ,"resultatregnskap.driftskostnad.varekostnader.varekostnad.beloep", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     }
 }
-object kortsiktigGjeld :  ForekomstTypeSpecification<kortsiktigGjeld>("balanse.gjeldOgEgenkapital.kortsiktigGjeld") {
-    val overfoeresIkkeTilSkattemeldingen : FeltKoordinat<kortsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.kortsiktigGjeld.overfoeresIkkeTilSkattemeldingen")
-    val skattemessigVerdi : FeltKoordinat<kortsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.kortsiktigGjeld.skattemessigVerdi.beloep" ,"balanse.gjeldOgEgenkapital.kortsiktigGjeld.skattemessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-    val kortsiktigGjeldtype : FeltKoordinat<kortsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.kortsiktigGjeld.kortsiktigGjeldtype")
-    val regnskapsmessigVerdi : FeltKoordinat<kortsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.kortsiktigGjeld.regnskapsmessigVerdi.beloep" ,"balanse.gjeldOgEgenkapital.kortsiktigGjeld.regnskapsmessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
-}
 object andreDriftskostnader :  ForekomstTypeSpecification<andreDriftskostnader>("resultatregnskap.driftskostnad.andreDriftskostnader") {
     object annenDriftskostnad :  ForekomstTypeSpecification<annenDriftskostnad>("resultatregnskap.driftskostnad.andreDriftskostnader","resultatregnskap.driftskostnad.andreDriftskostnader.annenDriftskostnad") {
         val type : FeltKoordinat<annenDriftskostnad> = FeltKoordinat("resultatregnskap.driftskostnad.andreDriftskostnader.annenDriftskostnad.type")
@@ -332,6 +325,14 @@ object samletGjeldOgFormuesobjekter :  ForekomstTypeSpecification<samletGjeldOgF
     val verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabattTilordnetInnehaver : FeltKoordinat<samletGjeldOgFormuesobjekter> = FeltKoordinat("samletGjeldOgFormuesobjekter.verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabattTilordnetInnehaver.beloep" ,"samletGjeldOgFormuesobjekter.verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabattTilordnetInnehaver", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val samletGjeldTilordnetInnehaver : FeltKoordinat<samletGjeldOgFormuesobjekter> = FeltKoordinat("samletGjeldOgFormuesobjekter.samletGjeldTilordnetInnehaver.beloep" ,"samletGjeldOgFormuesobjekter.samletGjeldTilordnetInnehaver", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabattTilordnetInnehaver : FeltKoordinat<samletGjeldOgFormuesobjekter> = FeltKoordinat("samletGjeldOgFormuesobjekter.formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabattTilordnetInnehaver.beloep" ,"samletGjeldOgFormuesobjekter.formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabattTilordnetInnehaver", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+}
+object allKortsiktigGjeld :  ForekomstTypeSpecification<allKortsiktigGjeld>("balanse.gjeldOgEgenkapital.allKortsiktigGjeld") {
+    object kortsiktigGjeld :  ForekomstTypeSpecification<kortsiktigGjeld>("balanse.gjeldOgEgenkapital.allKortsiktigGjeld","balanse.gjeldOgEgenkapital.allKortsiktigGjeld.kortsiktigGjeld") {
+        val skattemessigVerdi : FeltKoordinat<kortsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.allKortsiktigGjeld.kortsiktigGjeld.skattemessigVerdi.beloep" ,"balanse.gjeldOgEgenkapital.allKortsiktigGjeld.kortsiktigGjeld.skattemessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+        val overfoeresIkkeTilSkattemeldingen : FeltKoordinat<kortsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.allKortsiktigGjeld.kortsiktigGjeld.overfoeresIkkeTilSkattemeldingen")
+        val kortsiktigGjeldtype : FeltKoordinat<kortsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.allKortsiktigGjeld.kortsiktigGjeld.kortsiktigGjeldtype")
+        val regnskapsmessigVerdi : FeltKoordinat<kortsiktigGjeld> = FeltKoordinat("balanse.gjeldOgEgenkapital.allKortsiktigGjeld.kortsiktigGjeld.regnskapsmessigVerdi.beloep" ,"balanse.gjeldOgEgenkapital.allKortsiktigGjeld.kortsiktigGjeld.regnskapsmessigVerdi", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+    }
 }
 object sumKortsiktigGjeldSkattemessigVerdi :  VerdifeltTypeSpecification<sumKortsiktigGjeldSkattemessigVerdi>(gruppe= "balanse.gjeldOgEgenkapital.sumKortsiktigGjeldSkattemessigVerdi") {
     val erOverstyrt : FeltKoordinat<sumKortsiktigGjeldSkattemessigVerdi> = FeltKoordinat("balanse.gjeldOgEgenkapital.sumKortsiktigGjeldSkattemessigVerdi.erOverstyrt")
@@ -360,10 +361,15 @@ object transportmiddelINaering :  ForekomstTypeSpecification<transportmiddelINae
     val listeprisSomNy : FeltKoordinat<transportmiddelINaering> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.transportmiddelINaering.listeprisSomNy.beloep" ,"spesifikasjonAvResultatregnskapOgBalanse.transportmiddelINaering.listeprisSomNy", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
     val saldoavskrivningPrivatBruk : FeltKoordinat<transportmiddelINaering> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.transportmiddelINaering.saldoavskrivningPrivatBruk.beloep" ,"spesifikasjonAvResultatregnskapOgBalanse.transportmiddelINaering.saldoavskrivningPrivatBruk", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
 }
+object allEgenkapital :  ForekomstTypeSpecification<allEgenkapital>("balanse.gjeldOgEgenkapital.allEgenkapital") {
+    object egenkapital :  ForekomstTypeSpecification<egenkapital>("balanse.gjeldOgEgenkapital.allEgenkapital","balanse.gjeldOgEgenkapital.allEgenkapital.egenkapital") {
+        val beloep : FeltKoordinat<egenkapital> = FeltKoordinat("balanse.gjeldOgEgenkapital.allEgenkapital.egenkapital.beloep.beloep" ,"balanse.gjeldOgEgenkapital.allEgenkapital.egenkapital.beloep", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))
+        val egenkapitaltype : FeltKoordinat<egenkapital> = FeltKoordinat("balanse.gjeldOgEgenkapital.allEgenkapital.egenkapital.egenkapitaltype")
+    }
+}
 object virksomhet :  VerdifeltTypeSpecification<virksomhet>(gruppe= "virksomhet") {
     val regnskapspliktstype : FeltKoordinat<virksomhet> = FeltKoordinat("virksomhet.regnskapspliktstype")
     val selskapstype : FeltKoordinat<virksomhet> = FeltKoordinat("virksomhet.selskapstype")
-    val antallMaanederDrevetIAar : FeltKoordinat<virksomhet> = FeltKoordinat("virksomhet.antallMaanederDrevetIAar")
 }
 object skattemessigVerdiPaaFordring :  ForekomstTypeSpecification<skattemessigVerdiPaaFordring>("spesifikasjonAvResultatregnskapOgBalanse.skattemessigVerdiPaaFordring") {
     val konstatertTapPaaKundefordring : FeltKoordinat<skattemessigVerdiPaaFordring> = FeltKoordinat("spesifikasjonAvResultatregnskapOgBalanse.skattemessigVerdiPaaFordring.konstatertTapPaaKundefordring.beloep" ,"spesifikasjonAvResultatregnskapOgBalanse.skattemessigVerdiPaaFordring.konstatertTapPaaKundefordring", dataType = FieldDataType(FieldDataType.ActualType.DecimalType, 2))

@@ -23,23 +23,36 @@ internal object Resultatregnskapet : HarKalkyletre {
     val sumDriftsinntekterKalkyle: Kalkyle =
         (salgsinntekterKalkyle + annenDriftsinntektKalkyle) verdiSom sumDriftsinntekt
 
-    val driftskostnadstypeKalkyle = summer gitt ForekomstOgVerdi(virksomhet, {
+    private val aaretsAvskrivningForSaldoavskrevetAnleggsmiddel = summer gitt ForekomstOgVerdi(virksomhet, {
         it.regnskapspliktstype.filterFelt(
             Specifications.harEnAvVerdiene(
                 Regnskapspliktstype.type_1,
                 Regnskapspliktstype.type_5
             )
         )
-    }) forekomsterAv saldoavskrevetAnleggsmiddel forVerdi { it.aaretsAvskrivning } verdiSom NyForekomst(
+    }) forekomsterAv saldoavskrevetAnleggsmiddel forVerdi { it.aaretsAvskrivning }
+
+    private val aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel = summer gitt ForekomstOgVerdi(virksomhet, {
+        it.regnskapspliktstype.filterFelt(
+            Specifications.harEnAvVerdiene(
+                Regnskapspliktstype.type_1,
+                Regnskapspliktstype.type_5
+            )
+        )
+    }) forekomsterAv lineaertavskrevetAnleggsmiddel forVerdi { it.aaretsAvskrivning }
+
+    val aaretsAvskrivning = aaretsAvskrivningForSaldoavskrevetAnleggsmiddel + aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel verdiSom NyForekomst(
         annenDriftskostnad,
-        kode_6000.kode,
+        resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode,
         annenDriftskostnad.beloep,
         {
             listOf(
-                FeltOgVerdi(it.type, kode_6000.kode)
+                FeltOgVerdi(it.type, resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode)
             )
         }
     )
+
+
 
     private val summeringGevinstOgTap = summer gitt ForekomstOgVerdi(
         virksomhet,
@@ -79,13 +92,28 @@ internal object Resultatregnskapet : HarKalkyletre {
         )
 
     private val annenDriftsinntektstypeFradragKalkyle =
-        summeringGevinstOgTap forekomsterAv gevinstOgTapskonto forVerdi { it.inntektsfradragFraGevinstOgTapskonto } verdiSom NyForekomst(
+        summeringGevinstOgTap forekomsterAv gevinstOgTapskonto filter
+            { it.inntektsfradragFraGevinstOgTapskonto.filterFelt(derVerdiErStoerreEnn1(0)) } forVerdi { it.inntektsfradragFraGevinstOgTapskonto } verdiSom NyForekomst(
             annenDriftsinntekt,
-            kode_3890.kode,
+            kode_7890.kode,
             annenDriftsinntekt.beloep,
             {
                 listOf(
-                    FeltOgVerdi(it.type, kode_3890.kode)
+                    FeltOgVerdi(it.type, kode_7890.kode)
+                )
+            }
+        )
+
+
+    private val tilbakefoertKostnadForPrivatBrukAvNaeringsbil =
+        summer forekomsterAv transportmiddelINaering filter
+            { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil.filterFelt(Specifications.derVerdiErStoerreEnn(0)) } forVerdi { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil * -1 } verdiSom NyForekomst(
+            annenDriftskostnad,
+            kode_7099.kode,
+            annenDriftskostnad.beloep,
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_7099.kode)
                 )
             }
         )
@@ -118,9 +146,10 @@ internal object Resultatregnskapet : HarKalkyletre {
             (sumEkstraordinaerePosterKalkyle + sumSkattekostnadKalkyle) verdiSom aarsresultat
 
     private val tre = Kalkyletre(
-        driftskostnadstypeKalkyle,
+        aaretsAvskrivning,
         annenDriftsinntektstypeInntektKalkyle,
         annenDriftsinntektstypeFradragKalkyle,
+        tilbakefoertKostnadForPrivatBrukAvNaeringsbil,
         aaretsInntektsfoeringAvNegativSaldoKalkyle,
         sumDriftsinntekterKalkyle,
         sumDriftskostnaderKalkyle,

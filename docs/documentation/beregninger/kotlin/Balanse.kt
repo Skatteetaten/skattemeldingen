@@ -4,10 +4,12 @@ internal object Balanse : HarKalkyletre {
 
     private fun lagBalanseForekomst(saldogruppe: String, kodeVerdi: KodeVerdi, filter: Specification<Any>): Kalkyle {
         return summer forekomsterAv saldoavskrevetAnleggsmiddel filter {
-            it.saldogruppe.filterFelt(
-                Specifications.derVerdiErLik(saldogruppe)
+            Specifications.og(
+                it.saldogruppe.filterFelt(
+                    Specifications.derVerdiErLik(saldogruppe)
+                ), it.utgaaendeVerdi.filterFelt(filter)
             )
-        } forVerdi { it.utgaaendeVerdi.der(filter) } verdiSom NyForekomst(
+        } forVerdi { it.utgaaendeVerdi } verdiSom NyForekomst(
             forekomststTypeSpesifikasjon = balanseverdiForAnleggsmiddel,
             idVerdi = kodeVerdi.kode,
             feltKoordinat = balanseverdiForAnleggsmiddel.skattemessigVerdi,
@@ -22,15 +24,11 @@ internal object Balanse : HarKalkyletre {
 
     private fun lagBalanseForGevinstOgTapskonto(
         kodeVerdi: KodeVerdi,
-        filter: Specification<Any>,
-        absoluttverdi: Boolean = false
+        filter: Specification<Any>
+
     ): Kalkyle {
-        return summer forekomsterAv gevinstOgTapskonto forVerdi {
-            it.utgaaendeVerdi.der(filter) * if (absoluttverdi) {
-                -1
-            } else {
-                1
-            }
+        return summer forekomsterAv gevinstOgTapskonto filter { it.utgaaendeVerdi.filterFelt(filter) } forVerdi {
+            it.utgaaendeVerdi.der(filter) * -1
         } verdiSom NyForekomst(
             forekomststTypeSpesifikasjon = balanseverdiForAnleggsmiddel,
             idVerdi = kodeVerdi.kode,
@@ -46,25 +44,27 @@ internal object Balanse : HarKalkyletre {
 
     private fun lagBalanseForNegativSaldo(): Kalkyle {
         return summer forekomsterAv saldoavskrevetAnleggsmiddel filter {
-            it.saldogruppe.filterFelt(
-                Specifications.harEnAvVerdiene(
-                    Saldogruppe.a,
-                    Saldogruppe.c,
-                    Saldogruppe.c2,
-                    Saldogruppe.d,
-                    Saldogruppe.j
-                )
+            Specifications.og(
+                it.saldogruppe.filterFelt(
+                    Specifications.harEnAvVerdiene(
+                        Saldogruppe.a,
+                        Saldogruppe.c,
+                        Saldogruppe.c2,
+                        Saldogruppe.d,
+                        Saldogruppe.j
+                    )
+                ), it.utgaaendeVerdi.filterFelt(derVerdiErMindreEnn(0))
             )
         } forVerdi {
-            it.utgaaendeVerdi.der(derVerdiErMindreEnn(0))
+            it.utgaaendeVerdi * -1  //TODO: hvorfor fungerer ikke abs her
         } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = balanseverdiForAnleggsmiddel,
+            forekomststTypeSpesifikasjon = egenkapital,
             idVerdi = kode_2095.kode,
-            feltKoordinat = balanseverdiForAnleggsmiddel.skattemessigVerdi,
+            feltKoordinat = egenkapital.beloep,
             feltMedFasteVerdier =
             {
                 listOf(
-                    FeltOgVerdi(it.anleggsmiddeltype, kode_2095.kode)
+                    FeltOgVerdi(it.egenkapitaltype, kode_2095.kode)
                 )
             }
         )
@@ -94,7 +94,7 @@ internal object Balanse : HarKalkyletre {
 
     internal val kontormaskiner = lagBalanseForekomst(Saldogruppe.a, kode_1280, derVerdiErStoerreEnn(0))
 
-    internal val negativGevinstOgTapskonto = lagBalanseForGevinstOgTapskonto(kode_1296, derVerdiErMindreEnn(0), true)
+    internal val negativGevinstOgTapskonto = lagBalanseForGevinstOgTapskonto(kode_1296, derVerdiErMindreEnn(0))
 
     internal val sumAnleggsmiddelSkattemessigVerdiKalkyle =
         summer forekomsterAv balanseverdiForAnleggsmiddel forVerdi {
@@ -122,7 +122,23 @@ internal object Balanse : HarKalkyletre {
 
     internal val negativSaldoKalkyle = lagBalanseForNegativSaldo()
 
-    internal val positivGevinstOgTapskonto = lagBalanseForGevinstOgTapskonto(kode_2096, derVerdiErStoerreEnn(0))
+    internal val positivGevinstOgTapskonto = summer forekomsterAv gevinstOgTapskonto forVerdi {
+        it.utgaaendeVerdi.der(derVerdiErStoerreEnn(0)) * if (false) {
+            -1
+        } else {
+            1
+        }
+    } verdiSom NyForekomst(
+        forekomststTypeSpesifikasjon = egenkapital,
+        idVerdi = kode_2096.kode,
+        feltKoordinat = egenkapital.beloep,
+        feltMedFasteVerdier =
+        {
+            listOf(
+                FeltOgVerdi(it.egenkapitaltype, kode_2096.kode)
+            )
+        }
+    )
 
     internal val sumEgenkapitalKalkyle =
         summer forekomsterAv egenkapital forVerdi {
@@ -132,10 +148,6 @@ internal object Balanse : HarKalkyletre {
     internal val sumGjeldOgEgenkapitalSkattemessigVerdiKalkyle =
         sumLangsiktigGjeldSkattemessigVerdiKalkyle.plus(sumKortsiktigGjeldSkattemessigVerdiKalkyle)
             .plus(sumEgenkapitalKalkyle) verdiSom sumGjeldOgEgenkapitalSkattemessigVerdi
-
-    internal val sumGjeldOgEgenkapitalRegnskapsmessigVerdiKalkyle = sumLangsiktigGjeldSkattemessigVerdiKalkyle.plus(
-        sumKortsiktigGjeldSkattemessigVerdiKalkyle
-    ).plus(sumEgenkapitalKalkyle) verdiSom sumGjeldOgEgenkapitalRegnskapsmessigVerdi
 
     private val kalkyletre = Kalkyletre(
         goodWill,
@@ -158,8 +170,7 @@ internal object Balanse : HarKalkyletre {
         negativSaldoKalkyle,
         positivGevinstOgTapskonto,
         sumEgenkapitalKalkyle,
-        sumGjeldOgEgenkapitalSkattemessigVerdiKalkyle,
-        sumGjeldOgEgenkapitalRegnskapsmessigVerdiKalkyle
+        sumGjeldOgEgenkapitalSkattemessigVerdiKalkyle
     )
 
     override fun getKalkyletre(): Kalkyletre {
