@@ -236,7 +236,7 @@ skattemeldingerOgNaeringsopplysningerResponse:
 
 Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners formuesgrunnlag og for å beregne eiendommers markedsverdi.
 ### Testdata
-Oversikt over hvilke eiendommer dere kan søke opp ligger i ![dette regnearket](Syntetiske_eiendommer.xlsx)
+Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer.xlsx)
 
 
 ### Søk
