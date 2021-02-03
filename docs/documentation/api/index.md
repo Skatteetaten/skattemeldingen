@@ -235,6 +235,9 @@ skattemeldingerOgNaeringsopplysningerResponse:
 ## Eiendom API
 
 Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners formuesgrunnlag og for å beregne eiendommers markedsverdi.
+### Testdata
+Oversikt over hvilke eiendommer dere kan søke opp ligger i ![dette regnearket](Syntetiske_eiendommer.xlsx)
+
 
 ### Søk
 
@@ -258,8 +261,6 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 - `Hvis første tegn man angir er en bokstav vil søket kun lete blant veiadresser.`
 - `Søket krever streng plassering av tegn.`
 
-\***\*Skal vi ta med søkeeksempler?\*\***
-Kan hentes her http://eiendom-serg-utv-i.utv.paas.skead.no/docs/index.html#_s%C3%B8k
 
 **Respons vegadresse** :
 
