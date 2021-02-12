@@ -33,7 +33,7 @@ Løsningen legger opp til at en innsending skal ha skattemelding og næringsoppl
 Det stiplede rektangel identifiserer hva som ansees som en enhet med informasjon som skal sendes inn til Skatteetaten sine tjenester for validering og innsending.
 
 ![typeSelskap.png](typeSelskap.png)
-Som i dagens løsning vil det være mulig å hente ned den informasjonene som Skatteeetaten vet om den skattepliktige og bruke dette som grunnlag for utfyllingen av skattemeldingen.
+Som i dagens løsning vil det være mulig å hente ned den informasjonen som Skatteeetaten vet om den skattepliktige og bruke dette som grunnlag for utfyllingen av skattemeldingen.
 Etter pilot vil det også bli utviklet muligheter til å hente ned den informasjonen som Skatteetaten vet om den næringsdrivende og som kan brukes som utgangspunkt for å fylle ut næringsopplysningene.
 
 ### Detaljert funksjonell spesifikasjon
