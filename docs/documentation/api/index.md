@@ -863,16 +863,26 @@ Responsen til dette kallet vil være et Altinn-token, dette tokenet skal brukes 
 
 ## Hent PartyId fra Altinn
 
-Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved opprettelse av instans.
+Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved kall til Altinn tjenestene.
 
 `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
 <br />
+
+Merk at partyId kan også fås ved å opprette instans basert på fødselsnummer (eller organisasjonsnummer). For detaljer se neste avsnitt.
 
 ## Opprett en instans i Altinn
 
 Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige responsen og bruk det i body under.
 
 `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/sirius-skattemelding-v1" }'`
+
+I enkelte tilfeller vil partyId ikke være kjent (f.eks. i tilfelle en ønsker å gjøre kall påvegne av en annen bruker). I slike tilfeller kan instansen opprettes ved å oppgi fødselsnummer eller organisasjonsnummer (i stedet for partyId) i payloaden, da vil partyId bli retunert i responsen og kan brukes til å gjøre resterende kall mot Altinn. 
+
+`curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/sirius-skattemelding-v1" }'`
+
+Les mer om det hos Altinn sine sider:
+https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#create-instance
+
 
 **Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere til å hente/oppdatere instansen.
 <br />
