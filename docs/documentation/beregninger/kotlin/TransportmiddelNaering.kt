@@ -1,3 +1,5 @@
+@file:Suppress("ClassName")
+
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
 internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
@@ -24,7 +26,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                     somFelt(
                         SyntetiskFeltMedVerdi(
                             1,
-                            value,
+                            verdi,
                             transportmiddelINaering,
                             FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
                         )
@@ -41,7 +43,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                     somFelt(
                         SyntetiskFeltMedVerdi(
                             0.75,
-                            value,
+                            verdi,
                             transportmiddelINaering,
                             FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
                         )
@@ -58,7 +60,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                     somFelt(
                         SyntetiskFeltMedVerdi(
                             0.75,
-                            value,
+                            verdi,
                             transportmiddelINaering,
                             FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
                         )
@@ -104,7 +106,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 0.6,
-                                value,
+                                verdi,
                                 transportmiddelINaering,
                                 FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
                             )
@@ -120,7 +122,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 0.45,
-                                value,
+                                verdi,
                                 transportmiddelINaering,
                                 FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
                             )
@@ -147,7 +149,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 1,
-                                value,
+                                verdi,
                                 transportmiddelINaering,
                                 FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
                             )
@@ -163,7 +165,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 0.75,
-                                value,
+                                verdi,
                                 transportmiddelINaering,
                                 FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
                             )

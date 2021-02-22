@@ -1,350 +1,159 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
-
-val saldoAvskrevetForekomster = itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel
-
 /**
- * Saldogruppe A og B håndteres helt likt.
+ *  InntektFraGevinstOgTapskonto er  et oppsummert felt fra Forekomster under GevinstOgTapskonto. Denne verdien skal inn som
+ *  annenDriftsinntekt med type/konto 3890. Innslaget som er en forekomst av annenDriftsinntekt
+ *  med annenDriftsinntektstype (3890) er således en sum
+ *  av denne typen. Det skal ikke være mer enn en sum per type i denne listen.
  *
- * Spec: https://wiki.sits.no/display/SIR/FR-Spes+av+bal+-+Anleggsmidler
+ *
  */
-internal object SpesifikasjonAvBalanse : HarKalkyletre {
+internal object Resultatregnskapet : HarKalkyletre {
+    val salgsinntekterKalkyle =
+        summer forekomsterAv salgsinntekter.salgsinntekt forVerdi { it.beloep }
 
-    val grunnlagForAvskrivningOgInntektsFoeringForretningsbygg =
-        itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel filter {
-            it.saldogruppe.filterFelt(
-                Specifications.derVerdiErLik(Saldogruppe.i)
-            )
-        } forVerdier listOf(
-            {
-                der(saldoavskrevetAnleggsmiddel, {
-                    it.historiskKostpris -
-                        it.nedskrevetVerdiPr01011984 somFelt it.nedreGrenseForAvskrivning
-                }, it.nedskrevetVerdiPr01011984.filterFelt(Specifications.ikke(derVerdiErNull())))
-            },
-            {
-                der(saldoavskrevetAnleggsmiddel, {
-                    it.inngaaendeVerdi +
-                        it.nyanskaffelse +
-                        it.paakostning -
-                        it.offentligTilskudd +
-                        it.justeringAvInngaaendeMva -
-                        it.nedskrevetVerdiAvUtskilteDriftsmidler -
-                        it.vederlagVedRealisasjonOgUttak -
-                        it.tilbakefoeringAvTilskuddTilInvesteringIDistriktene +
-                        it.vederlagVedRealisasjonOgUttakInntektsfoertIAar -
-                        it.nedreGrenseForAvskrivning somFelt it.grunnlagForAvskrivningOgInntektsfoering
-                }, it.nedskrevetVerdiPr01011984.filterFelt(derVerdiErNull()))
-            }
-        )
+    val annenDriftsinntektKalkyle =
+        summer forekomsterAv annenDriftsinntekt forVerdi { it.beloep }
 
-    val grunnlagForAvskrivningOgInntektsFoeringSaldogruppeEogFogGogH =
-        itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel filter {
-            it.saldogruppe.filterFelt(
-                Specifications.harEnAvVerdiene(
-                    Saldogruppe.e,
-                    Saldogruppe.f,
-                    Saldogruppe.g,
-                    Saldogruppe.h
-                )
-            )
-        } forVerdi {
-            it.inngaaendeVerdi +
-                it.nyanskaffelse +
-                it.paakostning -
-                it.offentligTilskudd +
-                it.justeringAvInngaaendeMva -
-                it.nedskrevetVerdiAvUtskilteDriftsmidler -
-                it.vederlagVedRealisasjonOgUttak -
-                it.tilbakefoeringAvTilskuddTilInvesteringIDistriktene +
-                it.vederlagVedRealisasjonOgUttakInntektsfoertIAar somFelt it.grunnlagForAvskrivningOgInntektsfoering
-        }
+    val sumDriftsinntekterKalkyle: Kalkyle =
+        (salgsinntekterKalkyle + annenDriftsinntektKalkyle) verdiSom sumDriftsinntekt
 
-    val aaretsAvskrivningSaldogruppeEogFogHogI = itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel filter {
-        it.saldogruppe.filterFelt(
+    private val aaretsAvskrivningForSaldoavskrevetAnleggsmiddel = summer gitt ForekomstOgVerdi(virksomhet, {
+        it.regnskapspliktstype.filterFelt(
             Specifications.harEnAvVerdiene(
-                Saldogruppe.e,
-                Saldogruppe.f,
-                Saldogruppe.g,
-                Saldogruppe.h,
-                Saldogruppe.i
+                Regnskapspliktstype.type_1,
+                Regnskapspliktstype.type_5
             )
         )
-    } forVerdier listOf {
-        der(
-            saldoavskrevetAnleggsmiddel,
-            { f -> f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) * f.avskrivningssats.prosent() somFelt f.aaretsAvskrivning },
-            it.vederlagVedRealisasjonOgUttak.filterFelt(derVerdiErNull())
-        )
-    }
+    }) forekomsterAv saldoavskrevetAnleggsmiddel forVerdi { it.aaretsAvskrivning }
 
-    val utgaaendeVerdiSaldogruppEogFogGogHogI =
-        itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel filter {
-            it.saldogruppe.filterFelt(
+    private val aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel = summer gitt ForekomstOgVerdi(virksomhet, {
+        it.regnskapspliktstype.filterFelt(
+            Specifications.harEnAvVerdiene(
+                Regnskapspliktstype.type_1,
+                Regnskapspliktstype.type_5
+            )
+        )
+    }) forekomsterAv lineaertavskrevetAnleggsmiddel forVerdi { it.aaretsAvskrivning }
+
+    val aaretsAvskrivning =
+        aaretsAvskrivningForSaldoavskrevetAnleggsmiddel + aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel verdiSom NyForekomst(
+            annenDriftskostnad,
+            resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode,
+            annenDriftskostnad.beloep,
+            {
+                listOf(
+                    FeltOgVerdi(it.type, resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode)
+                )
+            }
+        )
+
+    private val summeringGevinstOgTap = summer gitt ForekomstOgVerdi(
+        virksomhet,
+        {
+            it.regnskapspliktstype.filterFelt(
                 Specifications.harEnAvVerdiene(
-                    Saldogruppe.e,
-                    Saldogruppe.f,
-                    Saldogruppe.g,
-                    Saldogruppe.h,
-                    Saldogruppe.i
+                    Regnskapspliktstype.type_1,
+                    Regnskapspliktstype.type_5
                 )
             )
-        } forVerdier listOf(
+        })
+
+    internal val annenDriftsinntektstypeInntektKalkyle =
+        summer forekomsterAv gevinstOgTapskonto forVerdi { it.inntektFraGevinstOgTapskonto } verdiSom NyForekomst(
+            forekomststTypeSpesifikasjon = annenDriftsinntekt,
+            idVerdi = kode_3890.kode,
+            feltKoordinat = annenDriftsinntekt.beloep,
+            feltMedFasteVerdier =
             {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering.der(derVerdiErStoerreEnn(0)) -
-                            f.aaretsAvskrivning somFelt f.utgaaendeVerdi
-                    }, it.vederlagVedRealisasjonOgUttak.filterFelt(
-                        Specifications.eller(
-                            derVerdiErNull(),
-                            derVerdiErMindreEnnEllerLik(0)
-                        )
-                    )
-                )
-            },
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel,
-                    { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering -
-                            f.tapOverfoertTilGevinstOgTapskonto +
-                            f.gevinstOverfoertTilGevinstOgTapskonto somFelt f.utgaaendeVerdi
-                    },
-                    it.vederlagVedRealisasjonOgUttak.filterFelt(
-                        derVerdiErStoerreEnn(0)
-                    )
+                listOf(
+                    FeltOgVerdi(it.type, kode_3890.kode)
                 )
             }
         )
 
-    // Denne genererer summer på forekomstnivå; for forekomsten som har verdiene
-    private val forekomsterSaldogruppeAogCogJ: SammensattUttrykk<saldoavskrevetAnleggsmiddel> =
-        saldoAvskrevetForekomster filter {
-            it.saldogruppe.filterFelt(
-                Specifications.harEnAvVerdiene(
-                    Saldogruppe.a,
-                    Saldogruppe.c,
-                    Saldogruppe.c2,
-                    Saldogruppe.j
-                )
-            )
-        }
-    private val forekomsterSaldogruppeB: SammensattUttrykk<saldoavskrevetAnleggsmiddel> =
-        saldoAvskrevetForekomster filter { it.saldogruppe.filterFelt(Specifications.derVerdiErLik(Saldogruppe.b)) }
-    private val forekomsterSaldogruppeD: SammensattUttrykk<saldoavskrevetAnleggsmiddel> =
-        saldoAvskrevetForekomster filter { it.saldogruppe.filterFelt(Specifications.derVerdiErLik(Saldogruppe.d)) }
-
-    private val grunnlagForAvskrivningOgInntektsfoeringSaldogruppeAogC: SammensattUttrykk<saldoavskrevetAnleggsmiddel> =
-        forekomsterSaldogruppeAogCogJ forVerdi {
-            it.inngaaendeVerdi + it.nyanskaffelse + it.paakostning - it.offentligTilskudd + it.justeringAvInngaaendeMva - it.vederlagVedRealisasjonOgUttak - it.nedskrevetVerdiAvUtskilteDriftsmidler - it.tilbakefoeringAvTilskuddTilInvesteringIDistriktene + it.vederlagVedRealisasjonOgUttakInntektsfoertIAar somFelt saldoavskrevetAnleggsmiddel.grunnlagForAvskrivningOgInntektsfoering
-        }
-
-    private val grunnlagForAvskrivningOgInntektsfoeringSaldogruppeB: SammensattUttrykk<saldoavskrevetAnleggsmiddel> =
-        forekomsterSaldogruppeB forVerdi {
-            it.inngaaendeVerdi + it.nyanskaffelse - it.nedskrevetVerdiAvUtskilteDriftsmidler - it.vederlagVedRealisasjonOgUttak + it.vederlagVedRealisasjonOgUttakInntektsfoertIAar somFelt saldoavskrevetAnleggsmiddel.grunnlagForAvskrivningOgInntektsfoering
-        }
-
-    private val grunnlagForAvskrivningOgInntektsfoeringSaldogruppeD: SammensattUttrykk<saldoavskrevetAnleggsmiddel> =
-        forekomsterSaldogruppeD forVerdi {
-            it.inngaaendeVerdi + it.nyanskaffelse + it.paakostning - it.offentligTilskudd + it.justeringAvInngaaendeMva - it.nedskrevetVerdiAvUtskilteDriftsmidler - it.vederlagVedRealisasjonOgUttak - it.tilbakefoeringAvTilskuddTilInvesteringIDistriktene + it.vederlagVedRealisasjonOgUttakInntektsfoertIAar somFelt saldoavskrevetAnleggsmiddel.grunnlagForAvskrivningOgInntektsfoering
-        }
-
-    internal val avskrivningInntektsfoeringOgUtgaaendeVerdiSaldogruppeAogC = forekomsterSaldogruppeAogCogJ forVerdier (
-        listOf(
+    internal val aaretsInntektsfoeringAvNegativSaldoKalkyle =
+        summer forekomsterAv saldoavskrevetAnleggsmiddel forVerdi { it.aaretsInntektsfoeringAvNegativSaldo } verdiSom NyForekomst(
+            forekomststTypeSpesifikasjon = annenDriftsinntekt,
+            idVerdi = kode_3895.kode,
+            feltKoordinat = annenDriftsinntekt.beloep,
+            feltMedFasteVerdier =
             {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErStoerreEnn(0)
-                    )
-                )
-            },
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErMindreEnn(-14999)
-                    )
-                )
-            },
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErMellom(
-                            -14999,
-                            0
-                        )
-                    )
+                listOf(
+                    FeltOgVerdi(it.type, kode_3895.kode)
                 )
             }
         )
-        )
 
-    internal val avskrivningInntektsfoeringOgUtgaaendeVerdiSaldogruppeB = forekomsterSaldogruppeB forVerdier (
-        listOf(
+    private val annenDriftsinntektstypeFradragKalkyle =
+        summeringGevinstOgTap forekomsterAv gevinstOgTapskonto filter
+            { it.inntektsfradragFraGevinstOgTapskonto.filterFelt(derVerdiErStoerreEnn(0)) } forVerdi { it.inntektsfradragFraGevinstOgTapskonto } verdiSom NyForekomst(
+            annenDriftskostnad,
+            kode_7890.kode,
+            annenDriftskostnad.beloep,
             {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErStoerreEnn(0)
-                    )
+                listOf(
+                    FeltOgVerdi(it.type, kode_7890.kode)
                 )
             }
         )
-        )
-    internal val avskrivningSaldogruppeD = forekomsterSaldogruppeD filter {
-        it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-            derVerdiErStoerreEnn(0)
-        )
-    } forVerdier (
-        listOf(
+
+    private val tilbakefoertKostnadForPrivatBrukAvNaeringsbil =
+        summer forekomsterAv transportmiddelINaering filter
+            { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil.filterFelt(derVerdiErStoerreEnn(0)) } forVerdi { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil * -1 } verdiSom NyForekomst(
+            annenDriftskostnad,
+            kode_7099.kode,
+            annenDriftskostnad.beloep,
             {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() + (f.grunnlagForStartavskrivning * f.avskrivningssatsForStartavskrivning.prosent()) somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErStoerreEnn(0)
-                    )
+                listOf(
+                    FeltOgVerdi(it.type, kode_7099.kode)
                 )
             }
         )
-        )
 
-    internal val inntektsfoeringOgUtgaaendeVerdiSaldogruppeD = forekomsterSaldogruppeD forVerdier (
-        listOf(
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErMindreEnn(-14999)
-                    )
-                )
-            },
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering somFelt saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo.abs()
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErMellom(
-                            -14999,
-                            0
-                        )
-                    )
-                )
-            }
-        )
-        )
+    val sumVarekostnadKalkyle = summer forekomsterAv varekostnad forVerdi { it.beloep }
+    val sumLoennskostnadKalkyle = summer forekomsterAv loennskostnad forVerdi { it.beloep }
+    val sumAnnenDriftskostnadKalkyle = summer forekomsterAv annenDriftskostnad forVerdi { it.beloep }
 
-    private val utgaaendeVerdiSaldogruppeAogC = forekomsterSaldogruppeAogCogJ forVerdier (
-        listOf(
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering -
-                            f.aaretsAvskrivning somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErStoerreEnnEllerLik(0)
-                    )
-                )
-            },
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering +
-                            f.aaretsInntektsfoeringAvNegativSaldo somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErMindreEnn(0)
-                    )
-                )
-            }
-        )
-        )
+    internal val sumDriftskostnaderKalkyle =
+        (sumVarekostnadKalkyle + sumLoennskostnadKalkyle + sumAnnenDriftskostnadKalkyle) verdiSom sumDriftskostnad
 
-    private val utgaaendeVerdiSaldogruppeB = forekomsterSaldogruppeB forVerdier (
-        listOf(
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering -
-                            f.aaretsAvskrivning somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErStoerreEnnEllerLik(0)
-                    )
-                )
+    val sumFinansinntektKalkyle = summer forekomsterAv finansinntekt forVerdi { it.beloep } verdiSom sumFinansinntekt
+    val sumFinanskostnadKalkyle = summer forekomsterAv finanskostnad forVerdi { it.beloep } verdiSom sumFinanskostnad
 
-            },
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering +
-                        f.gevinstOverfoertTilGevinstOgTapskonto somFelt saldoavskrevetAnleggsmiddel.utgaaendeVerdi
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
-                        derVerdiErMindreEnn(0)
-                    )
-                )
-            }
-        )
-        )
+    val sumEkstraordinaerePosterInntektKalkyle = summer forekomsterAv ekstraordinaerPost forVerdi { it.inntekt }
+    val sumEkstraordinaerePosterKostnadKalkyle = summer forekomsterAv ekstraordinaerPost forVerdi { it.kostnad }
+    val sumEkstraordinaerePosterKalkyle =
+        sumEkstraordinaerePosterInntektKalkyle - sumEkstraordinaerePosterKostnadKalkyle verdiSom sumEkstraordinaerPost
 
-    private val utgaaendeVerdiSaldogruppeD = forekomsterSaldogruppeD forVerdier (
-        listOf(
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering -
-                            f.aaretsAvskrivning somFelt f.utgaaendeVerdi
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(derVerdiErStoerreEnnEllerLik(0))
-                )
-            },
-            {
-                der(
-                    saldoavskrevetAnleggsmiddel, { f ->
-                        f.grunnlagForAvskrivningOgInntektsfoering +
-                            f.gevinstOverfoertTilGevinstOgTapskonto somFelt f.utgaaendeVerdi
-                    }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(derVerdiErMindreEnn(0))
-                )
-            }
-        )
-        )
+    val skattekostnadKalkyle = summer forekomsterAv skattekostnad forVerdi { it.skattekostnad }
+    val negativSkattekostnadkalkyle = summer forekomsterAv skattekostnad forVerdi { it.negativSkattekostnad }
+    val sumSkattekostnadKalkyle =
+        (negativSkattekostnadkalkyle - skattekostnadKalkyle) verdiSom sumSkattekostnad
 
-    internal val kalkyletreSaldogruppeAogC = Kalkyletre(
-        grunnlagForAvskrivningOgInntektsfoeringSaldogruppeAogC,
-        avskrivningInntektsfoeringOgUtgaaendeVerdiSaldogruppeAogC,
-        utgaaendeVerdiSaldogruppeAogC
-    )
-    internal val kalkyletreSaldogruppeB = Kalkyletre(
-        grunnlagForAvskrivningOgInntektsfoeringSaldogruppeB,
-        avskrivningInntektsfoeringOgUtgaaendeVerdiSaldogruppeB,
-        utgaaendeVerdiSaldogruppeB
-    )
-    internal val kalkyletreSaldogruppeD = Kalkyletre(
-        grunnlagForAvskrivningOgInntektsfoeringSaldogruppeD,
-        avskrivningSaldogruppeD,
-        inntektsfoeringOgUtgaaendeVerdiSaldogruppeD,
-        utgaaendeVerdiSaldogruppeD
-    )
-    internal val kalkyletreSaldogruppeEogFogGogHogI = Kalkyletre(
-        grunnlagForAvskrivningOgInntektsFoeringForretningsbygg,
-        grunnlagForAvskrivningOgInntektsFoeringSaldogruppeEogFogGogH,
-        aaretsAvskrivningSaldogruppeEogFogHogI,
-        utgaaendeVerdiSaldogruppEogFogGogHogI
-    )
+    val aarsresultatKalkyle =
+        (
+            sumDriftsinntekterKalkyle -
+                sumDriftskostnaderKalkyle) +
+            (sumFinansinntektKalkyle - sumFinanskostnadKalkyle) +
+            (sumEkstraordinaerePosterKalkyle + sumSkattekostnadKalkyle) verdiSom aarsresultat
 
-    val kalkyle = Kalkyletre(
-        kalkyletreSaldogruppeAogC,
-        kalkyletreSaldogruppeB,
-        kalkyletreSaldogruppeD,
-        kalkyletreSaldogruppeEogFogGogHogI
+    private val tre = Kalkyletre(
+        aaretsAvskrivning,
+        annenDriftsinntektstypeInntektKalkyle,
+        annenDriftsinntektstypeFradragKalkyle,
+        tilbakefoertKostnadForPrivatBrukAvNaeringsbil,
+        aaretsInntektsfoeringAvNegativSaldoKalkyle,
+        sumDriftsinntekterKalkyle,
+        sumDriftskostnaderKalkyle,
+        sumFinansinntektKalkyle,
+        sumFinanskostnadKalkyle,
+        sumEkstraordinaerePosterKalkyle,
+        sumSkattekostnadKalkyle,
+        aarsresultatKalkyle
     )
 
     override fun getKalkyletre(): Kalkyletre {
-        return kalkyle
+        return tre
     }
 }

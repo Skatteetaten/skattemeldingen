@@ -16,5 +16,7 @@ object DefaultKalkyletre : Kalkyletre(
     SpesifikasjonAvIkkeAvskrivbare,
     FordelingAvNaering,
     Balanse,
-    BalanseFormueOgGjeld
+    BalanseFormueOgGjeld,
+    HarKalkyletre { Kalkyletre(PersoninntektBereging) }
+
 )

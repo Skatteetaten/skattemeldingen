@@ -201,6 +201,101 @@ Dette definerer rekkefølgen på kallkyleområdene innbyrdes.
 # Kalkyler
 
 En oversikt over kalkylene som er definert så langt finnes i [Oversikten over kalkyler](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/beregninger/kotlin)
+Det er ikke laget DSL for kalkylen for personinntekt enda. Dette kommer senere. Kalkylen for personinntekt er beskrevet nedenfor.
+
+## Beregning av personinntekt
+
+Beregning av de ulike feltene av personinntekt er beskrevet i seksjonenen nedenfor
+
+### sumSkjermingsgrunnlagFørGjeldsfradrag
+
+Hvis selskapstype = enkeltpersonforetak
+
+    For samme identifikatorForFordelingAvNæringsinntektOgPersoninntekt:
+
+    (spesifikasjonAvSkjermingsgrunnlag/inngaaendeVerdi + spesifikasjonAvSkjermingsgrunnlag/utgaaendeVerdi) / 2
+
+    for alle forekomster av skjermingsgrunnlagstype
+
+    ( saldogruppeA, saldogruppeB, saldogruppeC, saldogruppeC2, saldogruppeD, saldogruppeE, saldogruppeF, saldogruppeG, saldogruppeH, saldogruppeI, saldogruppeJ, lineaertavskrevetAnleggsmiddel, ikkeAvskrivbartAnleggsmiddel, ervervetImmatriellRettighet, aktivertForskningsOgUtvklingskostnad, varelager, kundefordring)
+
+    - (spesifikasjonAvSkjermingsgrunnlag/inngaaendeVerdi
+
+    + spesifikasjonAvSkjermingsgrunnlag/utgaaendeVerdi)
+      /2
+
+    for alle forekomster av skjermingsgrunnlagstype = leverandoergjeld
+    = sumSkjermingsgrunnlagFørGjeldsfradrag
+
+    Sum skjermingsgrunnlag før gjeldsfradrag kan ikke bli negativt, dvs hvis leverandørgjeld er høyere enn sum av eiendelene skal skjermingsgrunnlag før gjeldsfradrag settes til null:
+
+    sum av
+
+    (spesifikasjonAvSkjermingsgrunnlag/inngaaendeVerdi
+
+    + spesifikasjonAvSkjermingsgrunnlag/utgaaendeVerdi)
+      /2
+
+    for alle forekomster av skjermingsgrunnlagstype = leverandoergjeld >=
+    sum av
+    (spesifikasjonAvSkjermingsgrunnlag/inngaaendeVerdi
+
+    + spesifikasjonAvSkjermingsgrunnlag/utgaaendeVerdi)
+      /2
+
+    for alle forekomster av skjermingsgrunnlagstyper
+    (= saldogruppeA, saldogruppeB, saldogruppeC, saldogruppeC2, saldogruppeD, saldogruppeE, saldogruppeF, saldogruppeG, saldogruppeH, saldogruppeI, saldogruppeJ, lineaertavskrevetAnleggsmiddel, ikkeAvskrivbartAnleggsmiddel, ervervetImmatriellRettighet, aktivertForskningsOgUtvklingskostnad, varelager, kundefordring)
+    skal sumSkjermingsgrunnlagFørGjeldsfradrag = 0
+
+### sumSkjermingsgrunnlagEtterGjeldsfradrag
+
+    sumSkjermingsgrunnlagFørGjeldsfradrag
+
+    - (spesifikasjonAvSkjermingsgrunnlag/inngaaendeVerdi
+
+    + spesifikasjonAvSkjermingsgrunnlag/utgaaendeVerdi)
+      / 2
+
+    for alle forekomster av skjermingsgrunnlagstype = foretaksgjeld
+    = sumSkjermingsgrunnlagEtterGjeldsfradrag
+
+Skjermingsgrunnlag etter gjeldsfradrag kan ikke være negativt, dvs at foretaksgjeld ikke kan være høyere enn skjermingsgrunnlag før gjeldsfradrag. I så fall skal skjermingsgrunnlag etter gjeldsfradrag settes til null:
+
+    Hvis
+    sum av (spesifikasjonAvSkjermingsgrunnlag/inngaaendeVerdi
+
+    + spesifikasjonAvSkjermingsgrunnlag/utgaaendeVerdi)
+      / 2
+
+    for alle forekomster av skjermingsgrunnlagstype = foretaksgjeld >=
+    sumSkjermingsgrunnlagFørGjeldsfradrag
+    skal sumSkjermingsgrunnlagEtterGjeldsfradrag = 0
+
+### skjermingsfradrag
+
+    sumSkjermingsgrunnlagEtterGjeldsfradrag
+
+    * antallMaanederDrevetIAar / 12
+    * skjermingsrente
+    = skjermingsfradrag
+
+### åretsBeregnedePersoninntektFørFordelingOgSamordning
+
+Hvis selskapstype = enkeltpersonforetak
+
+    For samme
+    identifikatorForFordelingAvNæringsinntektOgPersoninntekt:
+    fordelingAvNaeringsinntekt/skattemessigResultatForNaeringEtterKorreksjon
+
+    - rentekostnadPaaForetaksgjeld
+    - kapitalinntekt
+
+    + kapitalkostnad
+
+    - reduksjonsbeloepForLeidEiendomMotInnskudd
+    - gevinstVedRealisasjonAvAlminneligGaardsbrukEllerSkogbruk
+    -  skjermingsfradrag
+     åretsBeregnedePersoninntektFørFordelingOgSamordning
 
 # Skattemeldingsberegninger
 

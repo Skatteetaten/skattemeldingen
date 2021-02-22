@@ -1,4 +1,5 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering
+@file:Suppress("ClassName")package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering
+
 
 
 object resultatOgBalansekonti_2020 : KodeverdierHovedkodeliste() {
