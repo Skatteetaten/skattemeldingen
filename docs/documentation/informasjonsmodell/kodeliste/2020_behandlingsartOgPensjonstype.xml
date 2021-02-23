@@ -153,7 +153,7 @@
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Old-age pension from the National Insurance scheme</tekst>
+                <tekst>Retirement pension from the National Insurance scheme</tekst>
                 <spraak>en_GB</spraak>
             </spraakTekst>
             <spraakTekst>
@@ -369,12 +369,6 @@
         </kodetillegg>
     </kode>
     <kode>
-        <tekniskNavn>BESOKSREISE</tekniskNavn>
-        <kodetillegg>
-            <minstefradrag>minstefradragIInntekt</minstefradrag>
-        </kodetillegg>
-    </kode>
-    <kode>
         <tekniskNavn>BILGODT</tekniskNavn>
         <beskrivelse>
             <spraakTekst>
@@ -405,6 +399,7 @@
             <oppgavekodeISL>35517</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>nei</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>fastBilgodtgjoerelse</beskrivelseIAMelding>
             <beskrivelseIAMelding>kilometergodtgjoerelseBil</beskrivelseIAMelding>
@@ -472,10 +467,16 @@
                 <tekst>Free board, lodging or housing for foreign commuter</tekst>
                 <spraak>en_GB</spraak>
             </spraakTekst>
+            <spraakTekst>
+                <tekst>Friddja biebmu, orrun dahje ásodat olgoriikka johttibargái</tekst>
+                <spraak>se_NO</spraak>
+            </spraakTekst>
         </visningsnavn>
         <kodetillegg>
             <oppgavekodeISL>35517</oppgavekodeISL>
             <visningsfelt>loenn</visningsfelt>
+            <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>bolig</beskrivelseIAMelding>
             <beskrivelseIAMelding>kostDoegn</beskrivelseIAMelding>
@@ -622,6 +623,7 @@
         </visningsnavn>
         <kodetillegg>
             <oppgavekodeISL>35518</oppgavekodeISL>
+            <visningskategori>Næring</visningskategori>
             <kategori>NæringsInntekt</kategori>
             <beskrivelseIAMelding>dagpengerTilFisker</beskrivelseIAMelding>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
@@ -657,6 +659,7 @@
         </visningsnavn>
         <kodetillegg>
             <oppgavekodeISL>35518</oppgavekodeISL>
+            <visningskategori>Næring</visningskategori>
             <kategori>NæringsInntekt</kategori>
             <beskrivelseIAMelding>dagpengerVedArbeidsloeshet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -763,7 +766,8 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
-            <sats>578</sats>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+            <sats>589</sats>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaHotell</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -808,17 +812,18 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
-            <sats>89</sats>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
+            <presentasjonsrekkefoelge>345</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <sats>91</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaHybelBrakkePrivat</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-            <presentasjonsrekkefoelge>345</presentasjonsrekkefoelge>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>utgiftsgodtgjoerelse</fordel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
         </kodetillegg>
     </kode>
     <kode>
@@ -853,17 +858,18 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
-            <sats>300</sats>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
+            <presentasjonsrekkefoelge>350</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <sats>300</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingTilLangtransportsjaafoerForKjoeringIUtlandet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-            <presentasjonsrekkefoelge>350</presentasjonsrekkefoelge>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>utgiftsgodtgjoerelse</fordel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
         </kodetillegg>
     </kode>
     <kode>
@@ -898,17 +904,18 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
-            <sats>161</sats>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
+            <presentasjonsrekkefoelge>340</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <sats>164</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaPensjonat</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-            <presentasjonsrekkefoelge>340</presentasjonsrekkefoelge>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>utgiftsgodtgjoerelse</fordel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
         </kodetillegg>
     </kode>
     <kode>
@@ -1183,6 +1190,7 @@
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>flyttegodtgjoerelse</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -1377,6 +1385,7 @@
             <oppgavekodeISL>35517</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>besoeksreiserHjemmetAnnet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -1415,6 +1424,7 @@
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
+            <visningskategori>Lønn</visningskategori>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>bolig</beskrivelseIAMelding>
             <beskrivelseIAMelding>kostDoegn</beskrivelseIAMelding>
@@ -1483,11 +1493,11 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Fri kost som sokkelarbeidere</tekst>
+                <tekst>Fri kost som arbeidstaker på sokkel</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Gratis kost som sokkelarbeidar</tekst>
+                <tekst>Gratis kost som arbeidstakar på sokkel</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
@@ -1631,6 +1641,7 @@
             <oppgavekodeISL>35517</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>besoeksreiserHjemmetAnnet</beskrivelseIAMelding>
             <beskrivelseIAMelding>besoeksreiserHjemmetKilometergodtgjoerelseBil</beskrivelseIAMelding>
@@ -1672,6 +1683,7 @@
         <kodetillegg>
             <oppgavekodeISL>35508</oppgavekodeISL>
             <oppgavekodeISL>35516</oppgavekodeISL>
+            <visningskategori>Næring</visningskategori>
             <kategori>NæringsInntekt</kategori>
             <beskrivelseIAMelding>vederlagDagmammaIEgetHjem</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -1710,6 +1722,7 @@
             <oppgavekodeISL>35517</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>arbeidsoppholdKost</beskrivelseIAMelding>
             <beskrivelseIAMelding>arbeidsoppholdLosji</beskrivelseIAMelding>
@@ -1749,6 +1762,7 @@
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>kilometergodtgjoerelseAndreFremkomstmidler</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -2038,7 +2052,7 @@
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Old-age pension from IPA/IPS</tekst>
+                <tekst>Retirement pension from IPA/IPS</tekst>
                 <spraak>en_GB</spraak>
             </spraakTekst>
             <spraakTekst>
@@ -2164,23 +2178,29 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Kompensasjon for tapt inntekt</tekst>
+                <tekst>Kompensasjon for tapt personinntekt utbetalt fra NAV</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Kompensasjon for tapt inntekt</tekst>
+                <tekst>Kompensasjon for tapt personinntekt utbetalt frå NAV</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Compensation for loss of income</tekst>
+                <tekst>Compensation for loss of personal income paid by NAV</tekst>
                 <spraak>en_GB</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Buhtadus NAVas go lea massán persovnnalaš dietnasa</tekst>
+                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <visningskategori>Næring</visningskategori>
             <kategori>Lønn</kategori>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
+            <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
             <fordel>kontantytelse</fordel>
             <kommentar>Både lønnskort og næringstema (SH-8484)</kommentar>
         </kodetillegg>
@@ -2469,11 +2489,11 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Lønn som utenlandsk sokkelarbeider</tekst>
+                <tekst>Lønn som utenlandsk arbeidstaker på sokkel</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Lønn som utanlandsk sokkelarbeidar</tekst>
+                <tekst>Lønn som utanlandsk arbeidstakar på sokkel</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
@@ -2727,7 +2747,8 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
-            <sats>64</sats>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+            <sats>65</sats>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>losjiEgenBrakkeCampingvogn</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -2749,24 +2770,21 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Lott eller part til fisker</tekst>
+                <tekst>Lott eller part til fiskere og fangstfolk</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Lott eller part til fiskar</tekst>
+                <tekst>Lott eller par til fiskarar og fangstfolk</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Share of proceeds or catches to fishermen</tekst>
+                <tekst>Share of proceeds or catches to fishermen and hunters</tekst>
                 <spraak>en_GB</spraak>
-            </spraakTekst>
-            <spraakTekst>
-                <tekst>Oassi dahje bealli guolásteaddjái</tekst>
-                <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
             <oppgavekodeISL>35530</oppgavekodeISL>
+            <visningskategori>Næring</visningskategori>
             <kategori>NæringsInntekt</kategori>
             <beskrivelseIAMelding>vederlag</beskrivelseIAMelding>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
@@ -3057,15 +3075,20 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Nye livrenter i arbeidsforhold mv.</tekst>
+                <tekst>Utbetaling fra livrente i arbeidsforhold og fortsettelsesforsikring</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Ođđa eallinreanttut bargodilis ja eará</tekst>
-                <spraak>se_NO</spraak>
+                <tekst>Utbetaling fra livrente i arbeidsforhold og framhaldsforsikring</tekst>
+                <spraak>nn_NO</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Payments from employment-related annuities and continuation insurance</tekst>
+                <spraak>en_GB</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
+            <visningskategori>Forsikring</visningskategori>
             <kategori>PensjonEllerTrygd</kategori>
             <beskrivelseIAMelding>nyeLivrenterIArbeidsforholdOgLivrenterFortsettelsesforsikringer</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -3230,6 +3253,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <sats>1</sats>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>kilometergodtgjoerelsePassasjertillegg</beskrivelseIAMelding>
@@ -3385,7 +3409,7 @@
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Pension from other EEA state corresponding to old-age pension and Norwegian AFP</tekst>
+                <tekst>Pension from other EEA state corresponding to retirement pension and Norwegian AFP</tekst>
                 <spraak>en_GB</spraak>
             </spraakTekst>
             <spraakTekst>
@@ -3609,6 +3633,7 @@
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
+            <visningskategori>Lønn</visningskategori>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>skattefriErstatning</beskrivelseIAMelding>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -3676,16 +3701,25 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Skattefri lott til utenlandsk fisker kun trygdeavgift</tekst>
+                <tekst>Skattefri lott til utenlandsk fisker (kun trygdeavgift)</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Vearu haga oassi olgoriikka guolásteaddjái, dušše oadjodivat</tekst>
+                <tekst>Skattefri lott til utanlandsk fiskar (berre trygdeavgift)</tekst>
+                <spraak>nn_NO</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Tax-free share of proceeds for foreign fishermen (national insurance contributions only)</tekst>
+                <spraak>en_GB</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Vearu haga oassi olgoriikka guolásteaddjái (dušše oadjodivat)</tekst>
                 <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
         <kodetillegg>
             <oppgavekodeISL>35507</oppgavekodeISL>
+            <visningskategori>Næring</visningskategori>
             <kategori>NæringsInntekt</kategori>
             <beskrivelseIAMelding>lottKunTrygdeavgift</beskrivelseIAMelding>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
@@ -3894,6 +3928,7 @@
             <oppgavekodeISL>35517</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>nei</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>stipend</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4129,6 +4164,7 @@
         <kodetillegg>
             <oppgavekodeISL>35511</oppgavekodeISL>
             <oppgavekodeISL>35516</oppgavekodeISL>
+            <visningskategori>Næring</visningskategori>
             <kategori>NæringsInntekt</kategori>
             <beskrivelseIAMelding>sykepengerTilDagmamma</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4166,6 +4202,7 @@
         <kodetillegg>
             <oppgavekodeISL>35510</oppgavekodeISL>
             <oppgavekodeISL>35532</oppgavekodeISL>
+            <visningskategori>Næring</visningskategori>
             <kategori>NæringsInntekt</kategori>
             <beskrivelseIAMelding>sykepengerTilFisker</beskrivelseIAMelding>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
@@ -4202,6 +4239,7 @@
         <kodetillegg>
             <oppgavekodeISL>35512</oppgavekodeISL>
             <oppgavekodeISL>35533</oppgavekodeISL>
+            <visningskategori>Næring</visningskategori>
             <kategori>NæringsInntekt</kategori>
             <beskrivelseIAMelding>sykepenger</beskrivelseIAMelding>
             <beskrivelseIAMelding>sykepengerTilJordOgSkogbrukere</beskrivelseIAMelding>
@@ -4241,6 +4279,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>nei</overskuddKanOverstyres>
             <sats>3,50</sats>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>kilometergodtgjoerelseBil</beskrivelseIAMelding>
@@ -4281,7 +4320,8 @@
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
-            <sats>91</sats>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+            <sats>93</sats>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>besoeksreiserHjemmetKost</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4325,17 +4365,18 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
-            <sats>578</sats>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
+            <presentasjonsrekkefoelge>360</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <sats>589</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaHotellBeordringUtover28Doegn</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-            <presentasjonsrekkefoelge>360</presentasjonsrekkefoelge>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
             <fordel>utgiftsgodtgjoerelse</fordel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
         </kodetillegg>
     </kode>
     <kode>
@@ -4368,7 +4409,8 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
-            <sats>578</sats>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+            <sats>589</sats>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaHotellBeordringUtover28Doegn</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4409,6 +4451,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <sats>400</sats>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>reiseKostUtenOvernatting</beskrivelseIAMelding>
@@ -4529,6 +4572,7 @@
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>nei</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>stipend</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4807,6 +4851,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>antall</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <sats>435</sats>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>reiseNattillegg</beskrivelseIAMelding>
@@ -4851,6 +4896,7 @@
             <oppgavekodeISL>35519</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>nei</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>annet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4895,6 +4941,7 @@
             <oppgavekodeISL>35517</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>nei</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>arbeidsoppholdKost</beskrivelseIAMelding>
             <beskrivelseIAMelding>arbeidsoppholdLosji</beskrivelseIAMelding>
@@ -4943,6 +4990,7 @@
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <overskuddKanOverstyres>nei</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <beskrivelseIAMelding>annet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4962,11 +5010,11 @@
         </beskrivelse>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Lønn som utenlandsk sjøfolk</tekst>
+                <tekst>Lønn som utenlandsk arbeidstaker på skip</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Lønn som utanlandsk sjøfolk</tekst>
+                <tekst>Lønn som utanlandsk arbeidstakar på skip</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
