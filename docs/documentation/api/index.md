@@ -121,7 +121,7 @@ API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt i
 **Respons** :
 
 - Iht. XSD: [skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingognaeringsopplysningerforespoerselresponse_v1_kompakt.xsd)
-- Eksempel XML: [skattemeldingerOgNaeringsopplysningerforespoerselResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xml/skattemeldingerOgNaeringsopplysningerforespoerselResponse.xml)
+  Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
 skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
@@ -177,7 +177,7 @@ API som returnerer siste gjeldende skattemeldingen av gitt type for skatteplikti
 **Respons** :
 
 - Iht. XSD: [skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingognaeringsopplysningerforespoerselresponse_v1_kompakt.xsd)
-- Eksempel XML: [skattemeldingerOgNaeringsopplysningerforespoerselResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xml/skattemeldingerOgNaeringsopplysningerforespoerselResponse.xml)
+- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
 For nærmere beskrivelse av felt i XSDen, se forrige kapittel.
 
@@ -205,7 +205,7 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 **Body** :
 
 - Iht. XSD: [skattemeldingerognaeringsopplysningerequest_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerequest_v1_kompakt.xsd)
-- Eksempel XML: [validerings_request.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xml/validerings_request.xml)
+- Eksempel XML: [skattemeldingerognaeringsopplysninger_forespoersel.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_forespoersel.xml)
 
 skattemeldingerOgNaeringsopplysningerRequest:
 
@@ -221,7 +221,7 @@ skattemeldingerOgNaeringsopplysningerRequest:
 **Respons** :
 
 - Iht. XSD: [skattemeldingerognaeringsopplysningerresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerresponse_v1_kompakt.xsd)
-- Eksempel XML: [validerings_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xml/validerings_response.xml)
+- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
 skattemeldingerOgNaeringsopplysningerResponse:
 
@@ -940,7 +940,12 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 
 `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
 
-**Body :** `data-binary '../skattemelding.xml'. Filen skattemelding.xml skal være på samme format som responsen fra tjenesten "Hent Skattemelding".`
+**Body :** `data-binary '../skattemelding.xml'.` 
+Innholdet i filen skattemelding.xml skal være på format:
+- Iht. XSD: [skattemeldingerognaeringsopplysningerequest_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerequest_v1_kompakt.xsd)
+- Eksempel XML: [skattemeldingerognaeringsopplysninger_forespoersel.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_forespoersel.xml)
+
+Merk at det er samme format som benyttes ved kall til valideringstjensten.
 
 **Respons :** `Respons vil inneholde metadata om objektet som ble opprettet. En unik identifikator (id) vil bli retunert som seinere kan brukes til å oppdatere, sjekke status etc..`
 
@@ -968,7 +973,14 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 ## Hente kvittering
 
 Etter at innsendingen er blitt behandlet hos skatteetaten vil det bli lastet opp en kvitteirng/tilbakemelding på instansen i altinn.
-Kvitteringen (xml-fil) kan lastes ned ved å gjøre følgende kall:
+Kvitteringen (xml-fil) kan lastes ned ved å:
+1. hente ut instans-data: `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed' \ --header 'Authorization: Bearer <altinn Token>'`
+     
+    Les mer om det hos Altinn [get-instance](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#get-instance)
+2. plukke ut id-en til vedlegget 'tilbakemelding' fra payloaden i #1 (data --> dataType=skattemelding).
+3. bruke Id-en fra #2 og kalle følgende API for å hente ut tilbakemeldingen: `curl --location --request GET 'https://skd.apps.tt02.altinn.no/{{appId}}/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed/data/<ID til vedlegget>' \ --header 'Authorization: Bearer <altinn Token>'`
 
-`curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006836/cc3958f3-978f-4271-9089-c664d39d3d84/data?dataType=tilbakemelding' \ --header 'Authorization: Bearer <altinn Token>'`
-``
+   Les mer om det hos Altinn [get-data](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/data-elements/#get-data)
+
+
+
