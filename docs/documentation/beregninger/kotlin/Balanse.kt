@@ -1,5 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
+
 internal object Balanse : HarKalkyletre {
 
     private fun lagBalanseForekomst(saldogruppe: String, kodeVerdi: KodeVerdi, filter: Specification<Any>): Kalkyle {

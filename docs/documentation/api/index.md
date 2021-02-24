@@ -126,16 +126,36 @@ API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt i
 skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
 - dokumenter – konvolutt for dokumenter
+
   - skattemeldingdokument – complex type
     - type – kodeliste – [skattemeldingUtkastPersonligSkattepliktig|skattemeldingFastsattPersonligSkattepliktig]
     - id – dokumentidentifikator til dokumentet i skatteetatens system.
     - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold
+    - content – serialisert dokumentinnhold i base64 encodet mime format
   - naeringsopplysningsdokument
     – complex type - id – dokumentidentifikator til dokumentet i skatteetatens system
 
     - encoding – kodeliste – [utf-8]
     - content – serialisert dokumentinnhold
+
+### Serialisert dokumentinnhold
+
+Det serialiserte dokumentinnholdet er skattemelding eller næringsopplysninger i base64 encodet mime format.
+Dette er formattert i henhold til https://tools.ietf.org/html/rfc2045#section-6.8 som har et linjeskift etter 76 karakterer. Vi støtter også lange
+linjer med base64 encodet innhold, men det er enklere å håndtere mime-formatert tekst når det er mime - encodet.
+Responsen fra Skatteetaten vil alltid inneholde base 64 som er formatert på denne måten.
+
+Eksempel:
+
+    <content>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHNrYXR0ZW1lbGRpbmcgeG1s
+    bnM9InVybjpubzpza2F0dGVldGF0ZW46ZmFzdHNldHRpbmc6Zm9ybXVlaW5udGVrdDpza2F0dGVt
+    ZWxkaW5nOmVrc3Rlcm46djgiPgogIDxwYXJ0c3JlZmVyYW5zZT4xMjM8L3BhcnRzcmVmZXJhbnNl
+    PgogIDxpbm50ZWt0c2Fhcj4yMDIwPC9pbm50ZWt0c2Fhcj4KICA8c2thdHRlbWVsZGluZ09wcHJl
+    dHRldD4KICAgIDxicnVrZXJpZGVudGlmaWthdG9yPmlra2UtaW1wbGVtZW50ZXJ0PC9icnVrZXJp
+    ZGVudGlmaWthdG9yPgogICAgPGJydWtlcmlkZW50aWZpa2F0b3J0eXBlPnN5c3RlbWlkZW50aWZp
+    a2F0b3I8L2JydWtlcmlkZW50aWZpa2F0b3J0eXBlPgogICAgPG9wcHJldHRldERhdG8+MjAyMC0x
+    MC0yMVQwNjozMjowNi45OTMwMzlaPC9vcHByZXR0ZXREYXRvPgogIDwvc2thdHRlbWVsZGluZ09w
+    cHJldHRldD4KPC9za2F0dGVtZWxkaW5nPg==<content>
 
 ## Hent Skattemelding (basert på type)
 
@@ -235,9 +255,10 @@ skattemeldingerOgNaeringsopplysningerResponse:
 ## Eiendom API
 
 Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners formuesgrunnlag og for å beregne eiendommers markedsverdi.
-### Testdata
-Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer.xlsx)
 
+### Testdata
+
+Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer.xlsx)
 
 ### Søk
 
@@ -260,7 +281,6 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 - `Hvis første tegn man angir er et tall vil søket kun lete blant matrikkeladresser.`
 - `Hvis første tegn man angir er en bokstav vil søket kun lete blant veiadresser.`
 - `Søket krever streng plassering av tegn.`
-
 
 **Respons vegadresse** :
 
@@ -845,7 +865,6 @@ For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjenn
 
 Les mer om Altinn API-ene på [altinn sine sider](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/). Altinn har utviklet POSTMAN skript som viser hvordan deres APIer kan bli kalt. Postman skriptene [finnes her](https://github.com/Altinn/altinn-studio/blob/master/src/test/Postman/collections/App.postman_collection.json)
 
-
 Tjenestene listet under kalles for å sende inn skattemelding til Altinn.
 
 _Merk at Base URL-en_ til applikasjonen vår i Altinn er: `https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/.`
@@ -876,13 +895,12 @@ Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldinge
 
 `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/sirius-skattemelding-v1" }'`
 
-I enkelte tilfeller vil partyId ikke være kjent (f.eks. i tilfelle en ønsker å gjøre kall påvegne av en annen bruker). I slike tilfeller kan instansen opprettes ved å oppgi fødselsnummer eller organisasjonsnummer (i stedet for partyId) i payloaden, da vil partyId bli retunert i responsen og kan brukes til å gjøre resterende kall mot Altinn. 
+I enkelte tilfeller vil partyId ikke være kjent (f.eks. i tilfelle en ønsker å gjøre kall påvegne av en annen bruker). I slike tilfeller kan instansen opprettes ved å oppgi fødselsnummer eller organisasjonsnummer (i stedet for partyId) i payloaden, da vil partyId bli retunert i responsen og kan brukes til å gjøre resterende kall mot Altinn.
 
 `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/sirius-skattemelding-v1" }'`
 
 Les mer om det hos Altinn sine sider:
 https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#create-instance
-
 
 **Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere til å hente/oppdatere instansen.
 <br />

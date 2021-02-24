@@ -1,8 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
 /**
- *  https://wiki.sits.no/display/SIR/Kalkyler+resultatregnskap+for+regnskapspliktstype+1+og+5
- *
  *  Kodelister for dette er her: https://git.aurora.skead.no/projects/KOLI/repos/kodeliste/browse/formuesOgInntektsskatt
  *
  *
@@ -41,18 +39,17 @@ internal object Resultatregnskapet : HarKalkyletre {
         )
     }) forekomsterAv lineaertavskrevetAnleggsmiddel forVerdi { it.aaretsAvskrivning }
 
-    val aaretsAvskrivning = aaretsAvskrivningForSaldoavskrevetAnleggsmiddel + aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel verdiSom NyForekomst(
-        annenDriftskostnad,
-        resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode,
-        annenDriftskostnad.beloep,
-        {
-            listOf(
-                FeltOgVerdi(it.type, resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode)
-            )
-        }
-    )
-
-
+    val aaretsAvskrivning =
+        aaretsAvskrivningForSaldoavskrevetAnleggsmiddel + aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel verdiSom NyForekomst(
+            annenDriftskostnad,
+            resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode,
+            annenDriftskostnad.beloep,
+            {
+                listOf(
+                    FeltOgVerdi(it.type, resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode)
+                )
+            }
+        )
 
     private val summeringGevinstOgTap = summer gitt ForekomstOgVerdi(
         virksomhet,
@@ -93,10 +90,10 @@ internal object Resultatregnskapet : HarKalkyletre {
 
     private val annenDriftsinntektstypeFradragKalkyle =
         summeringGevinstOgTap forekomsterAv gevinstOgTapskonto filter
-            { it.inntektsfradragFraGevinstOgTapskonto.filterFelt(derVerdiErStoerreEnn1(0)) } forVerdi { it.inntektsfradragFraGevinstOgTapskonto } verdiSom NyForekomst(
-            annenDriftsinntekt,
+            { it.inntektsfradragFraGevinstOgTapskonto.filterFelt(derVerdiErStoerreEnn(0)) } forVerdi { it.inntektsfradragFraGevinstOgTapskonto } verdiSom NyForekomst(
+            annenDriftskostnad,
             kode_7890.kode,
-            annenDriftsinntekt.beloep,
+            annenDriftskostnad.beloep,
             {
                 listOf(
                     FeltOgVerdi(it.type, kode_7890.kode)
@@ -104,10 +101,9 @@ internal object Resultatregnskapet : HarKalkyletre {
             }
         )
 
-
     private val tilbakefoertKostnadForPrivatBrukAvNaeringsbil =
         summer forekomsterAv transportmiddelINaering filter
-            { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil.filterFelt(Specifications.derVerdiErStoerreEnn(0)) } forVerdi { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil * -1 } verdiSom NyForekomst(
+            { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil.filterFelt(derVerdiErStoerreEnn(0)) } forVerdi { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil * -1 } verdiSom NyForekomst(
             annenDriftskostnad,
             kode_7099.kode,
             annenDriftskostnad.beloep,
