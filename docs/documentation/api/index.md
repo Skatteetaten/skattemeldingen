@@ -121,7 +121,7 @@ API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt i
 **Respons** :
 
 - Iht. XSD: [skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingognaeringsopplysningerforespoerselresponse_v1_kompakt.xsd)
-- Eksempel XML: [skattemeldingerOgNaeringsopplysningerforespoerselResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xml/skattemeldingerOgNaeringsopplysningerforespoerselResponse.xml)
+  Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
 skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
@@ -177,7 +177,7 @@ API som returnerer siste gjeldende skattemeldingen av gitt type for skatteplikti
 **Respons** :
 
 - Iht. XSD: [skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingognaeringsopplysningerforespoerselresponse_v1_kompakt.xsd)
-- Eksempel XML: [skattemeldingerOgNaeringsopplysningerforespoerselResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xml/skattemeldingerOgNaeringsopplysningerforespoerselResponse.xml)
+- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
 For nærmere beskrivelse av felt i XSDen, se forrige kapittel.
 
@@ -205,7 +205,7 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 **Body** :
 
 - Iht. XSD: [skattemeldingerognaeringsopplysningerequest_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerequest_v1_kompakt.xsd)
-- Eksempel XML: [validerings_request.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xml/validerings_request.xml)
+- Eksempel XML: [skattemeldingerognaeringsopplysninger_forespoersel.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_forespoersel.xml)
 
 skattemeldingerOgNaeringsopplysningerRequest:
 
@@ -221,7 +221,7 @@ skattemeldingerOgNaeringsopplysningerRequest:
 **Respons** :
 
 - Iht. XSD: [skattemeldingerognaeringsopplysningerresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerresponse_v1_kompakt.xsd)
-- Eksempel XML: [validerings_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xml/validerings_response.xml)
+- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
 skattemeldingerOgNaeringsopplysningerResponse:
 
@@ -943,7 +943,7 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 **Body :** `data-binary '../skattemelding.xml'.` 
 Innholdet i filen skattemelding.xml skal være på format:
 - Iht. XSD: [skattemeldingerognaeringsopplysningerequest_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerequest_v1_kompakt.xsd)
-- Eksempel XML: [validerings_request.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xml/validerings_request.xml)
+- Eksempel XML: [skattemeldingerognaeringsopplysninger_forespoersel.xml](https://https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_forespoersel.xml)
 
 Merk at det er samme format som benyttes ved kall til valideringstjensten.
 
