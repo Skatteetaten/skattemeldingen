@@ -3,4 +3,4 @@ icon: "cloud"
 title: "Spørsmål og svar"
 description: ""
 ---
-Her finner du en oppsummering av spørsmål og svar til vår brukerstøtte som gjelder fag- og teknisk implementering. Oppdatert per 11.02.21: [SpørsmåL_svar_SBS_tom110221.docx](SpørsmåL_svar_SBS_tom110221.docx)
+Her finner du en oppsummering av spørsmål og svar til vår brukerstøtte som gjelder fag- og teknisk implementering. Oppdatert per 11.02.21: [SpørsmåL_svar_SBS_tom030321.docx](SpørsmåL_svar_SBS_tom030321.docx)
