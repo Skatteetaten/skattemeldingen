@@ -943,6 +943,14 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 
 `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=tilbakemelding' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
 
+**Merk** følgende i curl-kommandoen over:
+- content-type skal være **text/xml** (i dokumetasjonen hos altinn3 står det at content-type skal være application/xml, det er feil)
+- Content-Disposition skal være **attachment; filename=skattemelding.xml** (skattemelding.xml skal ikke ha double quotes. Dette vil gi feil: filename="skattemelding.xml").
+
+
+'Content-Disposition: attachment; filename=skattemelding.xml' \
+
+
 **Body :** `data-binary '../skattemelding.xml'.` 
 Innholdet i filen skattemelding.xml skal være på format:
 - Iht. XSD: [skattemeldingerognaeringsopplysningerequest_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerequest_v1_kompakt.xsd)
