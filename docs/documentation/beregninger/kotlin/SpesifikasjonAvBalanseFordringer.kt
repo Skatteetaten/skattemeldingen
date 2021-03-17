@@ -1,5 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
-
 object SpesifikasjonAvBalanseFordringer : HarKalkyletre {
 
     val skattemessigNedskrivningPaaKundefordring =

@@ -1,16 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
-
-/**
- *  Kodelister for dette er her: https://git.aurora.skead.no/projects/KOLI/repos/kodeliste/browse/formuesOgInntektsskatt
- *
- *
- *  inntektFraGevinstOgTapskonto er  et oppsummert felt fra Forekomster under GevinstOgTapskonto. Denne verdien skal inn som
- *  annenDriftsinntekt med type/konto 3890. Innslaget som er en forekomst av annenDriftsinntekt
- *  med annenDriftsinntektstype (3890) er således en sum
- *  av denne typen. Det skal ikke være mer enn en sum per type i denne listen.
- *
- *
- */
 internal object Resultatregnskapet : HarKalkyletre {
     val salgsinntekterKalkyle =
         summer forekomsterAv salgsinntekter.salgsinntekt forVerdi { it.beloep }
@@ -42,11 +29,11 @@ internal object Resultatregnskapet : HarKalkyletre {
     val aaretsAvskrivning =
         aaretsAvskrivningForSaldoavskrevetAnleggsmiddel + aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel verdiSom NyForekomst(
             annenDriftskostnad,
-            resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode,
+            resultatregnskapOgBalanse_2020.annenDriftskostnad.kode_6000.kode,
             annenDriftskostnad.beloep,
             {
                 listOf(
-                    FeltOgVerdi(it.type, resultatOgBalansekonti_2020.annenDriftskostnad.kode_6000.kode)
+                    FeltOgVerdi(it.type, resultatregnskapOgBalanse_2020.annenDriftskostnad.kode_6000.kode)
                 )
             }
         )

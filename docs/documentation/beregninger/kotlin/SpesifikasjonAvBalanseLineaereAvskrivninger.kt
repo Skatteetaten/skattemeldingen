@@ -1,7 +1,3 @@
-@file:Suppress("MoveLambdaOutsideParentheses")
-
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
-
 object SpesifikasjonAvBalanseLineaereAvskrivninger : HarKalkyletre, PostProsessering {
 
     internal object beregnedeFelter {

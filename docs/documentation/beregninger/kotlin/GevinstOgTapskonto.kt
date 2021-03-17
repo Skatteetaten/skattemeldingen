@@ -1,4 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
 
 internal object GevinstOgTapskonto : HarKalkyletre {
     private val forekomsterGevinstOgTapskonto = itererForekomster forekomsterAv gevinstOgTapskonto

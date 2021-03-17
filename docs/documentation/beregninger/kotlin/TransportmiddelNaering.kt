@@ -1,7 +1,3 @@
-@file:Suppress("ClassName")
-
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
-
 internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
 
     internal object beregnedeFelter {

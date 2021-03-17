@@ -1,5 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler
-
 internal object BalanseFormueOgGjeld : HarKalkyletre {
 
     fun getFilterForAnleggsmiddel(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Specification<GeneriskModell> {
