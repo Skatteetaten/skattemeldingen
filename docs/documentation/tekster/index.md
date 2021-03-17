@@ -6,4 +6,4 @@ description: ""
 
 # Tekstfil
 
-Lede- og hjelpetekster [2020_tekster_og_stier_nb_NO.json](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/tekster/2020_tekster_og_stier_nb_NO.json)
+Lede- og hjelpetekster [tekster_170321.json](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/tekster/tekster_170321.json)
