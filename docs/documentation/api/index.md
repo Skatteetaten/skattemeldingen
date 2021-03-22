@@ -264,11 +264,11 @@ Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](S
 
 Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
 
-**URL** : `GET https://<env>/api/formueinntekt/eiendom/soek/<inntektsår>?query=<tekst>`
+**URL** : `GET https://<env>/api/eksterntapi/formueinntekt/eiendom/soek/<inntektsår>?query=<tekst>`
 
-**Eksempel URL vegadress** : `GET https://mp-test.sits.no/api/formueinntekt/eiendom/soek/2020?query=Storgata 1`
+**Eksempel URL vegadress** : `GET https://mp-test.sits.no/api/eksterntapi/formueinntekt/eiendom/soek/2020?query=Storgata 1`
 
-**Eksempel URL matrikkelnummer** : `GET https://mp-test.sits.no/api/formueinntekt/eiendom/soek/2020?query=36/120`
+**Eksempel URL matrikkelnummer** : `GET https://mp-test.sits.no/api/eksterntapi/formueinntekt/eiendom/soek/2020?query=36/120`
 
 **Forespørsel** :
 
@@ -356,7 +356,7 @@ Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektså
 
 **URL** : `GET https://<env>/formueinntekt/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>`
 
-**Eksempel URL** : `GET https://mp-test.sits.no/api/formueinntekt/eiendom/formuesgrunnlag/2020/1/02095300173`
+**Eksempel URL** : `GET https://mp-test.sits.no/api/eksterntapi/formueinntekt/eiendom/formuesgrunnlag/2020/1/02095300173`
 
 **Forespørsel** :
 
@@ -447,7 +447,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 
 **URL** : `POST https://<env>/formueinntekt/eiendom/markedsverdi/bolig/<inntektsår>/<eiendomsidentifikator>`
 
-**Eksempel URL** : `POST https://mp-test.sits.no/api/formueinntekt/eiendom/markedsverdi/bolig/2020/1`
+**Eksempel URL** : `POST https://mp-test.sits.no/api/eksterntapi/formueinntekt/eiendom/markedsverdi/bolig/2020/1`
 
 **Forespørsel** :
 
@@ -615,7 +615,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 
 **URL** : `POST https://<env>/formueinntekt/eiendom/markedsverdi/flerbolig/<inntektsår>/<eiendomsidentifikator>`
 
-**Eksempel URL** : `POST https://mp-test.sits.no/api/formueinntekt/eiendom/markedsverdi/bolig/2020/102`
+**Eksempel URL** : `POST https://mp-test.sits.no/api/eksterntapi/formueinntekt/eiendom/markedsverdi/bolig/2020/102`
 
 **Forespørsel** :
 
