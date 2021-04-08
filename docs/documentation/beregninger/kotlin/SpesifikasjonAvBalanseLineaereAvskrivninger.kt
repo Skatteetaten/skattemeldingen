@@ -42,7 +42,9 @@ object SpesifikasjonAvBalanseLineaereAvskrivninger : HarKalkyletre, PostProsesse
                         it.vederlagVedRealisasjonOgUttak +
                         it.vederlagVedRealisasjonOgUttakInntektsfoertIAar +
                         it.gevinstOverfoertTilGevinstOgTapskonto -
-                        it.tapOverfoertTilGevinstOgTapskonto somFelt lineaertavskrevetAnleggsmiddel.utgaaendeVerdi.nullHvisNegativt()
+                        it.tapOverfoertTilGevinstOgTapskonto +
+                        it.verdiOverfoertFraPaakostningVedRealisasjon -
+                        it.verdiOverfoertTilDriftsmiddelVedRealisasjon somFelt lineaertavskrevetAnleggsmiddel.utgaaendeVerdi.nullHvisNegativt()
                 },
                 beregnedeFelter.antallAarErhvervet.filterFelt(derVerdiErLik(0))
             )
