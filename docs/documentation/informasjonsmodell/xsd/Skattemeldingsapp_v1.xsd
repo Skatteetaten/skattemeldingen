@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemeldingsapp:v1" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemeldingsapp:v1">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2021-04-16T12:37:34.163+0200" name="generertDato"/>
+            <xsd:attribute fixed="2021-04-19T10:45:31.437+0200" name="generertDato"/>
             <xsd:attribute fixed="v1" name="versjon"/>
             <xsd:attribute fixed="" name="beskrivelse"/>
             <xsd:attribute fixed="v1" name="modellnavn"/>
@@ -13,7 +13,7 @@
             <xsd:attribute fixed="false" name="modellelement"/>
         </xsd:documentation>
     </xsd:annotation>
-    <xsd:element name="melding" type="SkattemeldingApp"/>
+    <xsd:element name="skattemeldingApp" type="SkattemeldingApp"/>
     <xsd:complexType name="SkattemeldingApp">
         <xsd:sequence>
             <xsd:element name="partsreferanse" type="Tekst"/>
