@@ -13,8 +13,16 @@ internal object FordelingAvNaering : HarKalkyletre {
 
     internal val gjennomsnittsInntektKalkyle =
         itererForekomster forekomsterAv fordelingAvNaeringsinntekt filter {
-            it.naeringstype.filterFelt(
-                Specifications.derVerdiErLik("reindrift")
+            Specifications.og(
+                it.naeringstype.filterFelt(
+                    Specifications.derVerdiErLik("reindrift"),
+                ),
+                it.resultatIFjor.filterFelt(
+                    Specifications.derVerdiIkkeErNull(),
+                ),
+                it.korrigertResultat.filterFelt(
+                    Specifications.derVerdiIkkeErNull(),
+                )
             )
         } forVerdi {
             (it.resultatForToAarSiden +
@@ -24,8 +32,16 @@ internal object FordelingAvNaering : HarKalkyletre {
 
     internal val korreksjonForDifferanseMellomKorrigertResultatOgGjennomsnittsinntektKalkyle =
         itererForekomster forekomsterAv fordelingAvNaeringsinntekt filter {
-            it.naeringstype.filterFelt(
-                Specifications.derVerdiErLik("reindrift")
+            Specifications.og(
+                it.naeringstype.filterFelt(
+                    Specifications.derVerdiErLik("reindrift")
+                ),
+                it.gjennomsnittsinntekt.filterFelt(
+                    Specifications.derVerdiIkkeErNull()
+                ),
+                it.korrigertResultat.filterFelt(
+                    Specifications.derVerdiIkkeErNull()
+                )
             )
         } forVerdi {
             it.gjennomsnittsinntekt -
@@ -37,7 +53,7 @@ internal object FordelingAvNaering : HarKalkyletre {
             it.naeringstype.filterFelt(
                 Specifications.derVerdiErLik("reindrift")
             )
-        }forVerdi {
+        } forVerdi {
             it.uttakFraAvviklingsOgOmstillingsfondForReineiere -
                 it.innskuddIAvviklingsOgOmstillingsfondForReineiere somFelt it.korreksjonForEndringIAvviklingsOgOmstillingsfondForReineiere
         }
@@ -53,11 +69,7 @@ internal object FordelingAvNaering : HarKalkyletre {
         }
 
     internal val skattemessigResultatForNaeringEtterKorreksjonKalkyle =
-        itererForekomster forekomsterAv fordelingAvNaeringsinntekt filter {
-            it.naeringstype.filterFelt(
-                Specifications.harEnAvVerdiene("reindrift", "jordbrukGartneriPelsdyrnaeringMv")
-            )
-        } forVerdi {
+        itererForekomster forekomsterAv fordelingAvNaeringsinntekt forVerdi {
             it.skattemessigResultatForNaering +
                 it.sjablongberegnetInntektFraBiomasseVedproduksjon +
                 it.korreksjonFraReindrift somFelt it.skattemessigResultatForNaeringEtterKorreksjon
