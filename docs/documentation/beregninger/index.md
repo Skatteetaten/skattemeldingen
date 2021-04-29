@@ -336,6 +336,57 @@ Skatteetaten har følgende beregning av verdier som er definert innenfor egenfas
 - skattemessig avkorting av fradragsberettiget beløp ved kombinasjonsforhold særskilt fradrag for sjøfolk og særskilt fradrag for fiskere og fangstfolk
 - skattemessig avkorting av fradragsberettiget beløp ved kombinasjonsforhold diverse fradrag og krav om standardfradrag
 
+# Validering av id på næringsopplysninger
+
+For at vi skal kunne foreta sammenlikninger og vise differanse mellom inngående og beregnede - feltverdier på en
+enhetlig måte så må vi kunne gjenfinne elementer i spesifikasjonen av næringsopplysnigner slik at vi kan sammenlikne 1:1.
+Dette gjøres gjennom at vi har etablert et regelsett på at id på samme nivå må være lokalt unike. Id - attributtet finnes på flere typer i næringsspesifikasjonen og er da et påkrevd felt.
+Det er et krav at id-felt på samme nivå må være unike, da typisk i en liste av flere elementer. De trnger ikke
+å være unike på tvers av lister.
+
+Det er flere av elementene der vi krever at id - verdien er den samme som type - feltet, og verdiene skal være det samme som den
+tilhørende aksepterte typen for et gitt element. Verdiene hentes fra kodelisten fra elementet underkodeliste
+for forekomsten med samme navn hentet. Kodelisten det hentes fra er 2020_resultatregnskapOgBalanse.xml
+
+Dette gjelder følgende forekomster og type - felt:
+
+- andreDriftsinntekter.annenDriftsinntekt.type underkodeliste:annenDriftsinntekt
+- andreDriftskostnader.annenDriftskostnad.type underkodeliste:annenDriftskostnad
+- salgsinntekter.salgsinntekt.type underkodeliste:salgsinntekt
+- finansinntekter.finansinntekt.type underkodeliste:finansinntekt
+- finanskostnader.finanskostnad.type finanskostnad
+- varekostnader.varekostnad.type underkodeliste:varekostnad
+- skattekostnader.skattekostnad.type underkodeliste:skattekostnad
+- balanseverdiForAnleggsmidler.balanseverdiForAnleggsmiddel.anleggsmiddeltype underkodeliste:balanseverdiForAnleggsmiddel
+- balanseverdiForOmloepsmidler.balanseverdiForOmloepsmiddel.omloepsmiddeltype underkodeliste:balanseverdiForOmloepsmiddel
+- allKortsiktigGjeld.kortsiktigGjeld.kortsiktigGjeldtype underkodeliste:kortsiktigGjeld
+- allLangsiktigGjeld.langsiktigGjeld.langsiktigGjeldtype underkodeliste:langsiktigGjeld
+- allEgenkapital.egenkapital.egenkapitaltype underkodeliste:egenkapital
+
+Det finnes også andre områder som krever fast id, med verdi 1, der det kun skal
+være en forekomst. Da dette gjenspeiler elementer der beregningen også skal generere
+opp en forekomst med verdi, så har vi sagt at denne må ha verdien 1.
+Dette gjelder følgende elementer i næringsspesifikasjonen:
+
+- andreDriftsinntekter,
+- andreDriftskostnader,
+- salgsinntekter,
+- varekostnader,
+- finanskostnader,
+- finansinntekter,
+- skattekostnader,
+- skattekostnader,
+- balanseverdiForOmloepsmidler,
+- balanseverdiForAnleggsmidler,
+- allKortsiktigGjeld,
+- allLangsiktigGjeld,
+- allEgenkapital,
+- samletGjeldOgFormuesobjekter,
+
+Dokumenter som ikke følger dette regelsettet blir avist med en eller flere av disse kodene:
+
+- idAvvikerFraKrav
+
 # Begreper
 
 - DSL, Domain Specific Language, `https://en.wikipedia.org/wiki/Domain-specific_language`
