@@ -18,8 +18,11 @@ import xmltodict
 import requests
 from jose import jwt
 
+
+CLIENT_ID = '8d7adad7-b497-40d0-8897-9a9d86c95306'
 AUTH_DOMAIN = 'oidc-ver2.difi.no/idporten-oidc-provider'
 ALGORITHMS = ["RS256"]
+API_AUDIENCE = 'https://mp-test.sits.no/api/eksterntapi/formueinntekt/skattemelding/'
 
 
 # En enkel webserver som venter på callback fra browseren, og lagrer
@@ -95,7 +98,7 @@ def main_relay(**kwargs) -> dict:
     port = server.server_address[1]
     assert 0 < port < 65536
 
-    client_id = '38e634d9-5682-44ae-9b60-db636efe3156'
+    client_id = CLIENT_ID
 
     # Public clients need state parameter and PKCE challenge
     # https://difi.github.io/felleslosninger/oidc_auth_spa.html
@@ -107,16 +110,17 @@ def main_relay(**kwargs) -> dict:
     nonce = "{}".format(int(time.time() * 1e6))
 
     u = 'https://{}/authorize'.format(AUTH_DOMAIN) + \
-        quote(('?scope=openid skatteetaten:formueinntekt/skattemelding'
+        quote(('?scope=skatteetaten:formueinntekt/skattemelding openid'
                '&acr_values=Level3'
                '&client_id={}'
                '&redirect_uri=http://localhost:{}/token'
                '&response_type=code'
                '&state={}'
                '&nonce={}'
+               '&resource={}'
                '&code_challenge={}'
                '&code_challenge_method=S256'
-               '&ui_locales=nb'.format(client_id, port, state, nonce, pkce_challenge)), safe='?&=_')
+               '&ui_locales=nb'.format(client_id, port, state, nonce, API_AUDIENCE, pkce_challenge)), safe='?&=_')
     print(u)
 
     # Open web browser to get ID-porten authorization token
@@ -134,6 +138,7 @@ def main_relay(**kwargs) -> dict:
     # "/token?code=_Acl-x8H83rjhjhdefeefeef_xlbi_6TqauJV1Aiu_Q&state=oxw06LrtiyyWb7uj7umRSQ%3D%3D"
     # We must verify that state is identical to what we sent - https://tools.ietf.org/html/rfc7636
     qs = parse_qs(urlparse(BrowserRedirectHandler.result.path).query)
+    print(qs)
     assert len(qs['state']) == 1 and qs['state'][0] == state
 
     # Use the authorization code to get access and id token from /token
@@ -144,9 +149,14 @@ def main_relay(**kwargs) -> dict:
                'client_id': client_id}
     headers = {'Accept': 'application/json'}
     r = requests.post('https://{}/token'.format(AUTH_DOMAIN), headers=headers, data=payload)
-    r.raise_for_status()
+
+    if not r:
+        print(r.headers, r.text)
+        r.raise_for_status()
     js = r.json()
     assert js['token_type'] == 'Bearer'
+    print("JS : ")
+    print(js)
 
     # Validate tokens according to https://tools.ietf.org/html/rfc7519#section-7.2
     # A list of 3rd party libraries for various languages on https://jwt.io/
@@ -170,13 +180,15 @@ def main_relay(**kwargs) -> dict:
         js['access_token'],
         jwks,
         algorithms=ALGORITHMS,
-        issuer="https://" + AUTH_DOMAIN + "/"
+        issuer="https://" + AUTH_DOMAIN + "/",
+        audience=API_AUDIENCE
     )
     at_encoded = js['access_token'].split(".", 3)[1]
     access_token = json.loads(urlsafe_b64decode(at_encoded + "==").decode())
     assert access_token['client_id'] == client_id
     assert access_token['token_type'] == "Bearer"
     assert access_token['acr'] == "Level3"
+    assert access_token['aud'] == API_AUDIENCE
 
     print("The token is good, expires in {} seconds".format(access_token['exp'] - int(time.time())))
     print("\nBearer {}".format(js['access_token']))
