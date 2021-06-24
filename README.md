@@ -1,5 +1,7 @@
 # Skattemelding
 
+Dette kodetreet inneholder kildekode til [implementasjonsguiden for systeminnsending av skattemeldingen](https://skatteetaten.github.io/skattemeldingen/).
+
 ## Initial setup
 
 Getting the gatsby-starter-skatteetaten module (TODO: Add more docs)
