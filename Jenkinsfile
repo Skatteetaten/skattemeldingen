@@ -10,7 +10,6 @@ def overrides = [
     iqOrganizationName      : "Team Sirius IO",
     iqCredentialsId         : "ioteam-iq",
     iqBreakOnUnstable       : false,
-    GroupId                 : 'ske.fastsetting.formueinntekt.skattemelding',
     publishToNpm            : false,
     deployToNexus           : false,
     openShiftBuild          : false,
