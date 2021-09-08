@@ -1,0 +1,7 @@
+clone:
+  depth: full
+pipelines:
+  default:
+    - step:
+        script:
+          - git push --mirror 	https://github.com/Skatteetaten/skattemeldingen
