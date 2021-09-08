@@ -15,7 +15,6 @@ def config = [
     publishToNpm            : false,
     deployToNexus           : false,
     openShiftBuild          : false,
-    nodeVersion             : "12",
 
     github                 : [
       enabled              : true,
@@ -26,6 +25,6 @@ def config = [
 ]
 
 fileLoader.withGit(config.pipelineScript, config.scriptVersion) {
-   jenkinsfile = fileLoader.load('templates/webleveransepakke')
+   jenkinsfile = fileLoader.load('templates/leveransepakke')
 }
 jenkinsfile.run(config.scriptVersion, config)
