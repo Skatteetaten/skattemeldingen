@@ -2,13 +2,19 @@
 def jenkinsfile
 
 def overrides = [
-    scriptVersion          : 'v7',
-    iqOrganizationName: "Team Sirius IO",
-    iqCredentialsId: "ioteam-iq",
-    iqBreakOnUnstable: false,
-    pipelineScript         : 'https://git.aurora.skead.no/scm/ao/aurora-pipeline-scripts.git',
+    scriptVersion           : 'v7',
+    pipelineScript          : 'https://git.aurora.skead.no/scm/ao/aurora-pipeline-scripts.git',
+    versionStrategy         : [
+      [ branch : 'master', versionHint:'1' ]
+    ],
+    iqOrganizationName      : "Team Sirius IO",
+    iqCredentialsId         : "ioteam-iq",
+    iqBreakOnUnstable       : false,
+    publishToNpm            : false,
+    deployToNexus           : false,
+    openShiftBuild          : false,
+    nideVersion             : "12",
 
-    versionStrategy        : [[ branch : 'master', versionHint:'1' ]],
 
     github                 : [
       enabled              : true,
