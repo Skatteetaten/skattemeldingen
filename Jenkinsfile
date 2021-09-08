@@ -21,7 +21,7 @@ def config = [
     mavenCompile            : false,
     mavenDeploy             : false,
     github                  : [
-      enabled               : true
+      enabled               : true,
       credentialsId         : "github",
       push                  : env.BRANCH_NAME == "master",
       repoUrl               : "https://github.com/Skatteetaten/skattemeldingen",
