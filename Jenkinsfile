@@ -7,13 +7,7 @@ def config = [
     iqBreakOnUnstable: false,
     pipelineScript         : 'https://git.aurora.skead.no/scm/ao/aurora-pipeline-scripts.git',
 
-    versionStrategy        : [[ branch : 'master', versionHint:'1' ]],
-
-    github                 : [
-      enabled              : true,
-      push                 : env.BRANCH_NAME == "master",
-      repoUrl              : "https://github.com/Skatteetaten/skattemeldingen",
-    ]
+    versionStrategy        : [[ branch : 'master', versionHint:'1' ]]
 
 ]
 
