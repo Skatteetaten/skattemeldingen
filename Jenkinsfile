@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 def jenkinsfile
 
-def overrides = [
+def config = [
     scriptVersion           : 'v7',
     pipelineScript          : 'https://git.aurora.skead.no/scm/ao/aurora-pipeline-scripts.git',
     versionStrategy         : [
@@ -10,11 +10,12 @@ def overrides = [
     iqOrganizationName      : "Team Sirius IO",
     iqCredentialsId         : "ioteam-iq",
     iqBreakOnUnstable       : false,
+    artifactId              : 'skattemeldingen',
+    groupId                 : 'no.skatteetaten.fastsetting.formueinntekt.skattemelding',
     publishToNpm            : false,
     deployToNexus           : false,
     openShiftBuild          : false,
-    nideVersion             : "12",
-
+    nodeVersion             : "12",
 
     github                 : [
       enabled              : true,
@@ -24,7 +25,7 @@ def overrides = [
 
 ]
 
-fileLoader.withGit(overrides.pipelineScript, overrides.scriptVersion) {
+fileLoader.withGit(overrides.pipelineScript, config.scriptVersion) {
    jenkinsfile = fileLoader.load('templates/webleveransepakke')
 }
-jenkinsfile.run(overrides.scriptVersion, overrides)
+jenkinsfile.run(config.scriptVersion, config)
