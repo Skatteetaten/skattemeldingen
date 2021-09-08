@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 def jenkinsfile
 
-def config = [
+def overrides = [
     scriptVersion          : 'v7',
     iqOrganizationName: "Team Sirius IO",
     iqCredentialsId: "ioteam-iq",
