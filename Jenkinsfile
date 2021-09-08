@@ -12,6 +12,6 @@ def config = [
 ]
 
 fileLoader.withGit(overrides.pipelineScript, overrides.scriptVersion) {
-   jenkinsfile = fileLoader.load('templates/webleveransepakke')
+   jenkinsfile = fileLoader.load('templates/leveransepakke')
 }
 jenkinsfile.run(overrides.scriptVersion, overrides)
