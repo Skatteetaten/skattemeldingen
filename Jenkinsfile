@@ -19,10 +19,11 @@ def config = [
     checkstyle              : true,
     jacoco                  : false,
     mavenCompile            : false,
-    github                 : [
-      enabled              : true,
-      push                 : env.BRANCH_NAME == "master",
-      repoUrl              : "https://github.com/Skatteetaten/skattemeldingen",
+    mavenDeploy             : false,
+    github                  : [
+      enabled               : true,
+      push                  : env.BRANCH_NAME == "master",
+      repoUrl               : "https://github.com/Skatteetaten/skattemeldingen",
     ]
 
 ]
