@@ -2,8 +2,8 @@
 def jenkinsfile
 
 def config = [
-    scriptVersion           : 'v7',
-    pipelineScript          : 'https://git.aurora.skead.no/scm/ao/aurora-pipeline-scripts.git',
+    scriptVersion           : 'gittest',
+    pipelineScript          : 'https://git.aurora.skead.no/scm/~k95087/aurora-pipeline-scripts.git',
     versionStrategy         : [
       [ branch : 'master', versionHint:'1' ]
     ],
@@ -15,7 +15,10 @@ def config = [
     publishToNpm            : false,
     deployToNexus           : false,
     openShiftBuild          : false,
-
+    disableAllReports       : true,
+    checkstyle              : true,
+    jacoco                  : false,
+    mavenCompile            : false,
     github                 : [
       enabled              : true,
       push                 : env.BRANCH_NAME == "master",
