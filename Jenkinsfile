@@ -4,7 +4,7 @@ def config = [
     scriptVersion          : 'v7',
     iqOrganizationName: "Team Sirius IO",
     iqCredentialsId: "ioteam-iq",
-    iqBreakOnUnstable: false
+    iqBreakOnUnstable: false,
     pipelineScript         : 'https://git.aurora.skead.no/scm/ao/aurora-pipeline-scripts.git',
 
     versionStrategy        : [[ branch : 'master', versionHint:'1' ]],
