@@ -20,9 +20,8 @@ def config = [
     jacoco                  : false,
     mavenCompile            : false,
     mavenDeploy             : false,
-    github                  : [
+    x_github                  : [
       enabled               : true,
-      credentialsId         : "github",
       push                  : env.BRANCH_NAME == "master",
       repoUrl               : "https://github.com/Skatteetaten/skattemeldingen",
     ]
