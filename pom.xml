@@ -5,6 +5,10 @@
 
   <artifactId>skattemeldingen</artifactId>
   <packaging>pom</packaging>
+  <properties>
+    <skattemelding.mapping.version>1.193.0</skattemelding.mapping.version>
+
+  </properties>
 
   <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
   <version>1-SNAPSHOT</version>
@@ -20,6 +24,48 @@
 
     </pluginManagement>
 
-    <plugins></plugins>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
+                  <artifactId>skattemelding-mapping-skattemelding</artifactId>
+                  <version>${skattemelding.mapping.version}</version>
+                  <outputDirectory>src/resources</outputDirectory>
+                  <includes>xsd/skattemelding*.xsd</includes>
+                  <includes>xsd/skattemelding*ekstern.xsd</includes>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
+                  <artifactId>skattemelding-mapping-naering</artifactId>
+                  <version>${skattemelding.mapping.version}</version>
+                  <outputDirectory>src/resources/definisjoner</outputDirectory>
+                  <includes>Naeringsopplysninger*ekstern*.xsd</includes>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
+                  <artifactId>skattemelding-mapping-upersonlig</artifactId>
+                  <version>${skattemelding.mapping.version}</version>
+                  <outputDirectory>src/resources</outputDirectory>
+                  <includes>xsd/skattemeldingUpersonlig*ekstern*.xsd</includes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
   </build>
 </project>
