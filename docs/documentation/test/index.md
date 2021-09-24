@@ -26,7 +26,7 @@ Konkret må sluttbrukersystemet gjøre følgende:
 Skatteetaten har tilgjengeliggjort en testapplikasjoner som viser hvordan trinnene beskrevet over kan utføres.
 Den er skrevet i [jupyter notebook formatet](https://jupyter.org/):
 
-1. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo.ipynb). Last ned katalogen testinnsending og kjør skriptet demo.ipynb (skriptet vil utføre alle trinn som inngår i prosessen: hente/velidere skattemelding og innsending av skattemelding til Altinn)  
+1. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo-2020.ipynb). Last ned katalogen testinnsending og kjør skriptet demo.ipynb (skriptet vil utføre alle trinn som inngår i prosessen: hente/velidere skattemelding og innsending av skattemelding til Altinn)  
 2. [Eksempel XML-er](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/eksempler)
 
 ## Ta i bruk ID-porten
@@ -66,7 +66,7 @@ For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen
 
 ## Kalle skattemeldings-API
 
-Når callback-URL blir kalt må klienten plukke ut JWT-tokenet fra responsen og legge det i header-feltet Authorization og kalle skattemeldings-API. For detaljer, se [demo klient](../test/testinnsending/demo.ipynb)
+Når callback-URL blir kalt må klienten plukke ut JWT-tokenet fra responsen og legge det i header-feltet Authorization og kalle skattemeldings-API. For detaljer, se [demo klient](../test/testinnsending/demo-2020.ipynb)
 
 URL til skattemeldings-API i test er: https://mp-test.sits.no/
 
@@ -75,7 +75,7 @@ Første testen bør være å teste at klienten når frem, dette kan gjøres ved 
 - `GET https://<env>/api/eksterntapi/formueinntekt/skattemelding/ping`
 - `Eksempel: GET https://mp-test.sits.no/api/eksterntapi/formueinntekt/skattemelding/ping`
 
-For nærmere beskrivelse av skattemelding-API og Altinn3-API, se kapitelet [API](../api/index.md)
+For nærmere beskrivelse av skattemelding-API og Altinn3-API, se kapitelet [API](docs/documentation/api-v1-pilot/index.md)
 
 # Se skattemelding i portal
 

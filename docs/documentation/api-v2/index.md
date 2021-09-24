@@ -1,3 +1,18 @@
+TODO: 
+mu -- Oppdater lenker til v2 og bytt ut deprikert url eksterntapi med skattemeldingen. 
+mu -- Oppdater eksterne url (sbstest.sits.no, både for v1 og v2 api)
+mu -- Oppdater lenke til 2021 jupyter notebook som støtter personlig og vedlegg
+gg -- Oppdater altinn url til applikasjonene, bytte ut sirius-skattemelding-v1
+mu -- Oppdater xsd referanser og xml eksempler til v2. Både på api kall (request/response) og skattemelding/næringspesifikasjon
+mu -- Under Altinn3, sjekk om bruk av party id fortsatt er et krav for kall mot altinn3. Hvis ikke fjern punktet
+gg -- Under altinn3, oppdater skjema metadata
+gg -- Lage nytt kapittel om vedlegg under Altinn3. Skal vi anbefale å validere skattemeldingen etter at de har lagt inn korrekt referanse til vedlegg? 
+mu -- Beskrive hvordan sjekke status på innsending, er den prosessert av skatteetaten eller ikke. 
+
+TODO: upersonlig: 
+ -- Dokumenter hvordan hente skattemelding, valider og send inn for upersonlig. Alle eksemplene dekker kun personlig. 
+
+
 ---
 icon: "cloud"
 title: "API"
@@ -9,12 +24,12 @@ Det tilbys to sett med API-er:
 - Skatteetatens-API: har tjenester for hent- og validering av skattemedlinger.
 - Altinn3-API: for: har tjenester for opprettelse og innsending av en skattemeldinger.
 
-![apier.png](apier.png)
+![apier.png](../api-v1-pilot/apier.png)
 
 # Skatteetatens-API
 
 Skatteetaten har utviklet en demo klient (i python) som viser hvordan koble seg på ID-porten og kalle skatteetatens-API:
-[jupyter notebook](../test/testinnsending/demo.ipynb)
+[jupyter notebook](../test/testinnsending/demo-2020.ipynb)
 
 ## Autentisering
 
@@ -33,13 +48,13 @@ Autentisering skjer enten via ID-porten eller Maskinporten:
 
 Via ID-porten kan selve sluttbrukeren autentiseres og da via sitt personnummer.
 
-![idporten.png](idporten.png)
+![idporten.png](../api-v1-pilot/idporten.png)
 
 #### Dataflyt og sekvensdiagram
 
 Figuren under skisserer hvordan innloggingsprosessen vil se ut:
 
-![ID-porten_program.png](ID-porten_program.png)
+![ID-porten_program.png](../api-v1-pilot/ID-porten_program.png)
 
 #### Registrering av et sluttbrukersystem i ID-porten
 
@@ -62,7 +77,7 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
 - Sett ønskede verdier for levetiden på autoriasjons-, access og refresh-token.
 - Et eksempel på hvordan integrasjonen kan bli seende ut:
 
-![id-porten_integrasjon.png](id-porten_integrasjon.png)
+![id-porten_integrasjon.png](../api-v1-pilot/id-porten_integrasjon.png)
 
 ### Maskin-porten
 
@@ -74,7 +89,7 @@ En autentisering gjort via Maskinporten tilrettelegger for høyere grad av autom
 
 Bruk av Maskinporten forutsetter at organisasjonen har et virksomhetssertifikat eller tilsvarende mekanisme. Figuren under skisserer hvordan samhandlingen fungerer:
 
-![maskinporten.png](maskinporten.png)
+![maskinporten.png](../api-v1-pilot/maskinporten.png)
 
 Les detaljer om maksinporten her: https://difi.github.io/felleslosninger/maskinporten_guide_apikonsument.html
 
@@ -277,7 +292,7 @@ Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners 
 
 ### Testdata
 
-Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer.xlsx)
+Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](../api-v1-pilot/Syntetiske_eiendommer.xlsx)
 
 ### Søk
 
