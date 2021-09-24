@@ -1,5 +1,4 @@
 TODO: 
-mu -- Oppdater lenker til v2 og bytt ut deprikert url eksterntapi med skattemeldingen. 
 mu -- Oppdater eksterne url (sbstest.sits.no, både for v1 og v2 api)
 mu -- Oppdater lenke til 2021 jupyter notebook som støtter personlig og vedlegg
 gg -- Oppdater altinn url til applikasjonene, bytte ut sirius-skattemelding-v1
@@ -109,12 +108,9 @@ API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungere
 | Produksjon   | idporten.api.skatteetaten.no    |
 
 
-**Depricated**
-**URL** : `GET https://<env>/api/eksterntapi/formueinntekt/skattemelding/ping`
+**URL** : `GET https://<env>/api/skattemelding/v2/ping`
 
-**URL** : `GET https://<env>/api/skattemelding/ping`
-
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/ping`
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/ping`
 
 **Forespørsel** : `<env>: Miljøspesifikk adresse`
 
@@ -133,12 +129,9 @@ API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt i
 - Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og data fra skattemeldingen tidligere år.
 - Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist. Dette kan også inneholde et eller flere myndighetsfastsatte felter.
 
-**Depricated**
-**URL** : `GET https://<env>/api/eksterntapi/formueinntekt/skattemelding/<inntektsaar>/<identifikator>/`
+**URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/`
 
-**URL** : `GET https://<env>/api/skattemelding/<inntektsaar>/<identifikator>/`
-
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/2020/974761076`
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/2020/974761076`
 
 **Forespørsel** :
 
@@ -192,12 +185,9 @@ API som returnerer siste gjeldende skattemeldingen av gitt type for skatteplikti
 - Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og data fra skattemeldingen tidligere år.
 - Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist. Dette kan også inneholde et eller flere myndighetsfastsatte felter.
 
-**Depricated**
-**URL** : `GET https://<env>/api/eksterntapi/formueinntekt/skattemelding/<type>/<inntektsaar>/<identifikator>/`
+**URL** : `GET https://<env>/api/skattemelding/v2/<type>/<inntektsaar>/<identifikator>/`
 
-**URL** : `GET https://<env>/api/skattemelding/<type>/<inntektsaar>/<identifikator>/`
-
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/utkast/2020/974761076`
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/utkast/2020/974761076`
 
 **Forespørsel** :
 
@@ -223,12 +213,10 @@ Tjenesten validerer innholdet i en skattemelding og returnerer en respons med ev
 Skatteetaten ønsker at valideringstjenesten blir kalt i forkant av innsending av skattemeldingen. Dette for å sikre at skattemeldingen er korrekt og vil mest sannsynligvis bli godkjent ved innsending.
 Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som sendes inn i valideringstjenesten på noen måte. Skatteetaten anser at disse dataene eies av den skattepliktige og ikke av skatteetaten.
 
-**Depricated**
-**URL** : `POST https://<env>/api/eksterntapi/formueinntekt/skattemelding/valider/<inntektsaar>/<identifikator>`
 
-**URL** : `POST https://<env>/api/skattemelding/valider/<inntektsaar>/<identifikator>`
+**URL** : `POST https://<env>/api/skattemelding/v2/valider/<inntektsaar>/<identifikator>`
 
-**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/valider/2020/01028312345`
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/valider/2020/01028312345`
 
 **Forespørsel** :
 
@@ -298,14 +286,11 @@ Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](.
 
 Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
 
-**Depricated**
-**URL** : `GET https://<env>/api/eksterntapi/formueinntekt/eiendom/soek/<inntektsår>?query=<tekst>`
+**URL** : `GET https://<env>/api/skattemelding/v2/eiendom/soek/<inntektsår>?query=<tekst>`
 
-**URL** : `GET https://<env>/api/skattemelding/eiendom/soek/<inntektsår>?query=<tekst>`
+**Eksempel URL vegadress** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2020?query=Storgata 1`
 
-**Eksempel URL vegadress** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/eiendom/soek/2020?query=Storgata 1`
-
-**Eksempel URL matrikkelnummer** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/eiendom/soek/2020?query=36/120`
+**Eksempel URL matrikkelnummer** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2020?query=36/120`
 
 **Forespørsel** :
 
@@ -391,9 +376,9 @@ Hent formuesgrunnlag for valgt unik eiendomsidentifikator og inntektsår.
 
 Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektsår, og at formuesopplysninger vil variere basert på hvilken eiendomstype eiendomsidentifikator har. Noen detaljer vil fjernes fra responsen hvis skatteyter ikke er eier av eiendommen.
 
-**URL** : `GET https://<env>/api/skattemelding/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>`
+**URL** : `GET https://<env>/api/skattemelding/v2/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>`
 
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/eiendom/formuesgrunnlag/2020/1/02095300173`
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/formuesgrunnlag/2020/1/02095300173`
 
 **Forespørsel** :
 
@@ -482,9 +467,9 @@ Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være un
 
 Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
 
-**URL** : `POST https://<env>/api/skattemelding/eiendom/markedsverdi/bolig/<inntektsår>/<eiendomsidentifikator>`
+**URL** : `POST https://<env>/api/skattemelding/v2/eiendom/markedsverdi/bolig/<inntektsår>/<eiendomsidentifikator>`
 
-**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/eiendom/markedsverdi/bolig/2020/1`
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/markedsverdi/bolig/2020/1`
 
 **Forespørsel** :
 
@@ -650,9 +635,9 @@ Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være un
 
 Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
 
-**URL** : `POST https://<env>/api/skattemelding/eiendom/markedsverdi/flerbolig/<inntektsår>/<eiendomsidentifikator>`
+**URL** : `POST https://<env>/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/<inntektsår>/<eiendomsidentifikator>`
 
-**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/eiendom/markedsverdi/flerbolig/2020/102`
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/2020/102`
 
 **Forespørsel** :
 
