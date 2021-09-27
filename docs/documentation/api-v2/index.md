@@ -878,12 +878,13 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 
 For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjennom et klient API (typisk skattepliktige som bruker et sluttbrukersystem) tilbyr Altinn API-er med følgende funksjonalitet:
 
-1. opprette en innstans i Altinn
+1. opprette en instans i Altinn
 2. populere instansen med metadata
-3. Populere instansten med skattemeldingsdata
-4. trigger neste steg slik at instansen havner i status _Bekreftelse_ (betyr "data lastet opp").
-5. trigger neste steg slik at instansen havner i status _Tilbakemelding_ (betyr "skattemeldingen innsendt").
-6. hente kvittering/tilbakemelding. Merk at det kan gå litt tid før kvittering er tilgjengelig (Skatteetaten må laste ned, behandle innsendingen og laste opp kvitteringen)
+3. populere instansen med vedlegg (ved behov)
+4. populere instansen med skattemeldingsdata
+5. trigger neste steg slik at instansen havner i status _Bekreftelse_ (betyr "data lastet opp").
+6. trigger neste steg slik at instansen havner i status _Tilbakemelding_ (betyr "skattemeldingen innsendt").
+7. hente kvittering/tilbakemelding. Merk at det kan gå litt tid før kvittering er tilgjengelig (Skatteetaten må laste ned, behandle innsendingen og laste opp kvitteringen)
 
 Les mer om Altinn API-ene på [altinn sine sider](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/). Altinn har utviklet POSTMAN skript som viser hvordan deres APIer kan bli kalt. Postman skriptene [finnes her](https://github.com/Altinn/altinn-studio/blob/master/src/test/Postman/collections/App.postman_collection.json)
 
@@ -891,9 +892,9 @@ Tjenestene listet under kalles for å sende inn skattemelding til Altinn.
 
 _Merk at Base URL-en_ til applikasjonen vår i Altinn er:
 
-**Testmiljø:** `https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/`
+**Testmiljø:** `https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/`
 
-**Produksjonsmiljø:** `https://skd.apps.altinn.no/skd/sirius-skattemelding-v1/`
+**Produksjonsmiljø:** `https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/`
 
 ## Hent token
 
@@ -912,9 +913,9 @@ Responsen til dette kallet vil være et Altinn-token, dette tokenet skal brukes 
 
 Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved kall til Altinn tjenestene.
 
-**Testmiljø:** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
+**Testmiljø:** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
 
-**Produksjonsmiljø:** `curl --location --request GET 'https://skd.apps.altinn.no/skd/sirius-skattemelding-v1/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
+**Produksjonsmiljø:** `curl --location --request GET 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
 
 <br />
 
@@ -924,15 +925,15 @@ Merk at partyId kan også fås ved å opprette instans basert på fødselsnummer
 
 Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige responsen og bruk det i body under.
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/sirius-skattemelding-v1" }'`
+**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/sirius-skattemelding-v1" }'`
+**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
 
 En instans kan også opprettes ved å oppgi fødselsnummer (i stedet for partyId) i payloaden, da vil partyId bli retunert i responsen og kan brukes til å gjøre resterende kall mot Altinn.
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/sirius-skattemelding-v1" }'`
+**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/sirius-skattemelding-v1/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/sirius-skattemelding-v1" }'`
+**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
 
 Merk at skattemelding for "personlige skattepliktige med næring (ENK)" skal alltid sendes inn på personens fødselsnummer (det kan ikke benyttes orgnummer til ENK).
 
@@ -942,32 +943,51 @@ https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#
 **Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere til å hente/oppdatere instansen.
 <br />
 
-## Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen
+## Oppdater skjema-metadata til instansen
 
-Neste trinn er å laste opp meta-data (informasjon om hvem innsender er, dato etc.) om skattemeldingen.
+_Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten, som beskrevet i 
+api-v1-pilot/index.md._
 
-Meta-data skal være en XML-fil iht. [Skattemeldingsappv1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/Skattemeldingsapp_v1.xsd)
-Beskrivelse av felt i XML-en følger her:
+Neste trinn er å laste opp meta-data om skattemeldingen. Meta-data skal være en json tilsvarende eksempelet under. 
 
-- `partsreferanse: Identifikasjonsnummer til skatteliktige i sluttbrukersystemet. Skattetaten bruker ikke dette feltet til noe`
-- `inntektsaar: Inntektsår skattemeldingen gjelder for`
-- `opprettetAv: Navn på sluttbrukersystemet.`
-- `innsendingstype: Angir om innsendingen er komplett eller ikke-komplett. Gyldige verdier er komplett eller ikkeKomplett`
-- `opprettingstidspunkt: Tidspunktet da innsendingen ble opprettet`
-- `endringstidspunkt: Tidspunktet da innsendingen ble endret`
-
-Se også eksempelfilene:
-[Komplett innsending](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/Skattemeldingsapp_v1.xml).
-[Ikke-komplett innsending](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/Skattemeldingsapp_ikkeKomplett_v1.xml).
+```json
+{
+  "inntektsaar": 2021
+}
+```
+Beskrivelse: `inntektsaar: Inntektsår skattemeldingen gjelder for`
 
 Plukk ut _id_ og _data.id_ fra forrige responsen og bruk de på slutten av url-en under:
 
-- erstatt 50028539/82652921-88e4-47d9-9551-b9da483e86c2/data/58c560b4-90a2-42ac-af26-98e1e60336cd med verdien fra _id_
+- erstatt 50028539/82652921-88e4-47d9-9551-b9da483e86c2 med verdien fra _id_
 - erstatt 58c560b4-90a2-42ac-af26-98e1e60336cd med verdien fra _data.id_
 
-**Testmiljø:** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data/58c560b4-90a2-42ac-af26-98e1e60336cd' \ --header 'Content-Type: application/xml' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '<?xml version="1.0" encoding="utf-8"?> <SkattemeldingApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <partsreferanse>str1234</partsreferanse> <inntektsaar>2020</inntektsaar> <innsendingstype>komplett</innsendingstype> <opprettetAv>TurboSkatt AS...</opprettetAv> <opprettingstidspunkt>2012-06-03T12:12:12</opprettingstidspunkt> <endringstidspunkt>2012-06-03T12:12:12</endringstidspunkt> </SkattemeldingApp>'`
+**Testmiljø:** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data/58c560b4-90a2-42ac-af26-98e1e60336cd' \ --header 'Content-Type: application/xml' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{"inntetksaar": 2021}'`
 
-**Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data/58c560b4-90a2-42ac-af26-98e1e60336cd' \ --header 'Content-Type: application/xml' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '<?xml version="1.0" encoding="utf-8"?> <SkattemeldingApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <partsreferanse>str1234</partsreferanse> <inntektsaar>2020</inntektsaar> <innsendingstype>komplett</innsendingstype> <opprettetAv>TurboSkatt AS...</opprettetAv> <opprettingstidspunkt>2012-06-03T12:12:12</opprettingstidspunkt> <endringstidspunkt>2012-06-03T12:12:12</endringstidspunkt> </SkattemeldingApp>'`
+**Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data/58c560b4-90a2-42ac-af26-98e1e60336cd' \ --header 'Content-Type: application/xml' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{"inntetksaar": 2021}'`
+
+<br />
+
+## Last opp vedlegg (ved behov)
+
+Opplasting av vedlegg utføres etter instansopprettelse og før innsending av skattemeldingdata. 
+
+Ved opplasting av vedlegg må denne prosedyren følges:
+1. Last opp vedlegg til instans
+2. Oppdater skattemelding.xml med vedleggsreferanse(er) i henhold til XSD. 
+   - Ved oppdatering av skattemelding med referanser til vedlegg trengs en vedleggsId. Denne vedleggsId-en finner man i 
+    responsen til kallet for opplasting av vedlegg. 
+
+Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
+Merk at dataType skal settes til **skattemelding-vedlegg**.
+
+**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: application/pdf' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel_Vedlegg.pdf'`
+
+**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: application/pdf' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel_vedlegg.pdf'`
+
+**Merk** 
+- Aksepterte content-types er: application/pdf, image/jpeg og image/png
+- Content-disposition skal være: **attachment; filename=\<filnavn>**
 
 <br />
 
@@ -975,19 +995,20 @@ Plukk ut _id_ og _data.id_ fra forrige responsen og bruk de på slutten av url-e
 
 Neste trinn er å laste opp skattemeldingsdata.
 
+**Merk:** Hvis vedlegg er lastet opp til instansen må disse være lagt til i skattemeldingen før opplasting av skattemelding.xml. 
+Det anbefales å gjøre ny validering etter oppdatering av skattemelding.xml.  
+
 Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 (ved ved en hvilken som helst xml-fil). Merk at dataType skal settes til **skattemelding**.
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
+**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
+**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
 
 **Merk** følgende i curl-kommandoen over:
 - content-type skal være **text/xml** (i dokumetasjonen hos altinn3 står det at content-type skal være application/xml, det er feil)
 - Content-Disposition skal være **attachment; filename=skattemelding.xml** (skattemelding.xml skal ikke ha double quotes. Dette vil gi feil: filename="skattemelding.xml").
 
-
-'Content-Disposition: attachment; filename=skattemelding.xml' \
 
 
 **Body :** `data-binary '../skattemelding.xml'.`
@@ -1007,9 +1028,9 @@ Når data opplastingen er gjort kan følgende kall gjøres for å få instansen 
 
 Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 
-**Testmiljø:** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`
+**Testmiljø:** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`
 
-**Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`  
+**Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`  
 <br />
 
 ## Trigge prosess/next for å få prosessen til status _Tilbakemelding_
@@ -1018,9 +1039,9 @@ Gjør kall under for å gjøre seg ferdig med instansen/innsendingen, dette slik
 
 Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 
-**Testmiljø:** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw ''`
+**Testmiljø:** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw ''`
 
-**Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/sirius-skattemelding-v1/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw ''`
+**Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw ''`
 
 <br />
 
@@ -1029,8 +1050,8 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 Etter at innsendingen er blitt behandlet hos skatteetaten vil det bli lastet opp en kvitteirng/tilbakemelding på instansen i altinn.
 Kvitteringen (xml-fil) kan lastes ned ved å:
 1. hente ut instans-data:
-  * **Testmiljø:** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/sirius-skattemelding-v1/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed' \ --header 'Authorization: Bearer <altinn Token>'`
-  * **Produksjonsmiljø:** `curl --location --request GET 'https://skd.apps.altinn.no/skd/sirius-skattemelding-v1/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed' \ --header 'Authorization: Bearer <altinn Token>'`
+  * **Testmiljø:** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed' \ --header 'Authorization: Bearer <altinn Token>'`
+  * **Produksjonsmiljø:** `curl --location --request GET 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed' \ --header 'Authorization: Bearer <altinn Token>'`
 
    Les mer om det hos Altinn [get-instance](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#get-instance)
 2. plukke ut id-en til vedlegget 'tilbakemelding' fra payloaden i #1 (data --> dataType=tilbakemelding).
