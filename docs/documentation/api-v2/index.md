@@ -972,7 +972,7 @@ Opplasting av vedlegg utføres etter instansopprettelse og før innsending av sk
 
 Ved opplasting av vedlegg må denne prosedyren følges:
 1. Last opp vedlegg til instans
-2. Oppdater skattemelding.xml med vedleggsreferanse(er) i henhold til XSD. 
+2. Oppdater skattemelding.xml med vedleggsreferanse(er) iht. XSD: [skattemelding_v9_kompakt_ekstern.xsd](../../../src/resources/xsd). 
    - Ved oppdatering av skattemelding med referanser til vedlegg trengs en vedleggsId. Denne vedleggsId-en finner man i 
     responsen til kallet for opplasting av vedlegg. 
 
