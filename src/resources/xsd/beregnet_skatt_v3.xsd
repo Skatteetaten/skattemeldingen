@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v3" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v3">
+    <xsd:annotation>
+        <xsd:documentation>
+            <xsd:attribute fixed="2020-12-18T14:13:33.362+0100" name="generertDato"/>
+            <xsd:attribute fixed="v3" name="versjon"/>
+            <xsd:attribute fixed="" name="beskrivelse"/>
+            <xsd:attribute fixed="v3" name="modellnavn"/>
+            <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v3" name="navnerom"/>
+            <xsd:attribute fixed="true" name="begrepsreferanse"/>
+            <xsd:attribute fixed="false" name="dokumentasjon"/>
+            <xsd:attribute fixed="false" name="nillable"/>
+            <xsd:attribute fixed="false" name="modellelement"/>
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="beregnetSkatt" type="BeregnetSkatt"/>
+    <xsd:complexType name="BeregnetSkatt" skatt:begrepsreferanse="http://begrepskatalog/begrep/6b41c68a-50cd-11e7-b7c5-005056821322">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="informasjonTilSkattelister" type="InformasjonTilSkattelister"/>
+            <xsd:element minOccurs="0" name="valideringsresultat" type="Valideringsresultat"/>
+            <xsd:element minOccurs="0" name="skatteregnskapskommune" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcf1-ad07-11e8-8ffd-005056821322" type="Kommunenummer"/>
+            <xsd:element minOccurs="0" name="skatteklasse" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e211-9fe1-11e5-a9f8-e4115b280940" type="Skatteklasse"/>
+            <xsd:element minOccurs="0" name="beregnetSkattFoerSkattefradrag" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcd4-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="sumSkattefradrag" skatt:begrepsreferanse="http://begrepskatalog/begrep/3cc37500-571d-11e7-a43d-0050568351d2" type="Skatt"/>
+            <xsd:element minOccurs="0" name="beregnetSkatt" type="Skatt"/>
+            <xsd:element minOccurs="0" name="skattOgAvgift" type="SkattOgAvgift"/>
+            <xsd:element minOccurs="0" name="skattefradrag" type="Skattefradrag"/>
+            <xsd:element minOccurs="0" name="oevrigeResultaterAvBeregning" type="OevrigeResultaterAvBeregning"/>
+            <xsd:element minOccurs="0" name="skattetillegg" type="Skattetillegg"/>
+            <xsd:element minOccurs="0" name="anvendtTolvdelVedArbeidsoppholdINorge" skatt:begrepsreferanse="http://begrepskatalog/begrep/98da4353-dff2-11e7-a0fd-005056821322" type="Tolvdel"/>
+            <xsd:element minOccurs="0" name="anvendtTolvdelForTrinnskatt" skatt:begrepsreferanse="http://begrepskatalog/begrep/98da4351-dff2-11e7-a0fd-005056821322" type="Tolvdel"/>
+            <xsd:element minOccurs="0" name="anvendtStandardfradrag" skatt:begrepsreferanse="http://begrepskatalog/begrep/cf248015-dfe5-11e7-9101-005056821322" type="Boolsk"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="anvendtTolvdelOpptjentForSaerskiltSkatteplikt" type="TolvdelForSaerskiltSkatteplikt"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="InformasjonTilSkattelister">
+        <xsd:sequence>
+            <xsd:element name="nettoinntekt" type="BeloepSomHeltall"/>
+            <xsd:element name="nettoformue" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbce3-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element name="beregnetSkatt" type="BeloepSomHeltall"/>
+            <xsd:element maxOccurs="unbounded" name="kommune" type="Kommunenummer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Skattefradrag" skatt:begrepsreferanse="http://begrepskatalog/begrep/3cc37500-571d-11e7-a43d-0050568351d2">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="skattefradragVedBSU" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcee-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="finnmarksfradragITrinnskatt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbce6-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="finnmarksfradragIInntektsskattTilKommune" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcf7-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="finnmarksfradragIInntektsskattTilFylkeskommune" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcf6-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="finnmarksfradragIFellesskatt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcf8-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="sumFinnmarksfradrag" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcf4-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForPensjonsinntekt" skatt:begrepsreferanse="http://begrepskatalog/begrep/cf24800b-dfe5-11e7-9101-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattebegrensningVedLavAlminneligInntekt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbce8-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattebegrensningVedLitenSkatteevne" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbce9-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForUfoereVedOvergangsregel" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbced-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattenedsettelseVedAlternativFordeling" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcf0-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForFormuesskattBetaltIUtlandet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/6c325d62-ff95-11e8-a756-005056823b15" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForInntektsskattBetaltIUtlandet" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcea-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForKostnaderTilFoU" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbceb-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="skattefradragForOmberegnetGevinstPaaOpsjoner" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="korrigertSkattForEtterbetaltPensjonOgTrygdeytelse" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2c86-a9e1-11e8-8514-005056821322" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Skattetillegg">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="skattAvEngangutbetalingFraIPATilBo" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbce7-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="skattAvEngangserstatningTilBarn" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2ccf-a9e1-11e8-8514-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattetilleggVedBSU" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2cd3-a9e1-11e8-8514-005056821322" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SkattOgAvgift">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="formueskattTilStat" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcd8-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="inntektsskattTilKommune" skatt:begrepsreferanse="http://begrepskatalog/begrep/d67e0662-6dcf-11e6-be2b-ba992a0501a6" type="Skatt"/>
+            <xsd:element minOccurs="0" name="formuesskattTilSvalbard" type="Skatt"/>
+            <xsd:element minOccurs="0" name="inntektsskattTilFylkeskommune" skatt:begrepsreferanse="http://begrepskatalog/begrep/d67e0661-6dcf-11e6-be2b-ba992a0501a6" type="Skatt"/>
+            <xsd:element minOccurs="0" name="inntektsskattTilKommuneOgFylkeskommune" type="Skatt"/>
+            <xsd:element minOccurs="0" name="formueskattTilKommune" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcd7-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="fellesskatt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcd5-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="fellesskattPaaLoennFraDenNorskeStatMedSaerskiltSkatteplikt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcd6-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="statsskatt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcf3-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trinnskatt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcf9-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="kildeskattPaaPensjon" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbce0-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trygdeavgiftAvLoennsinntekt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcfa-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trygdeavgiftAvPensjonsinntekt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcfa-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trygdeavgiftAvNaeringsinntektFraFiskeOgFangst" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcfa-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trygdeavgiftAvNaeringsinntektFraFamiliebarnehage" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcfa-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trygdeavgiftAvNaeringsinntektFraFiskeFangstFamiliebarnehage" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcfa-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trygdeavgiftAvNaeringsinntekt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcfa-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trygdeavgiftAvUfoeretrygd" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcfa-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trygdeavgiftSomFrivilligMedlemIPensjonsdel" skatt:begrepsreferanse="http://begrepskatalog/begrep/8c509100-b1b4-11e8-a015-0050568351d2" type="Skatt"/>
+            <xsd:element minOccurs="0" name="trygdeavgiftSomFrivilligMedlemIHelsedel" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcfb-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="pensjonsinntektFritattForSkattEtterSkatteavtale" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbce5-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="sumTrygdeavgift" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcfa-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="skattPaaAlminneligInntekt" type="Skatt"/>
+            <xsd:element minOccurs="0" name="skattPaaNaeringsoverskudd" type="Skatt"/>
+            <xsd:element minOccurs="0" name="skattPaaInntektOver12G" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2cc4-a9e1-11e8-8514-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="fastsattSkattEtterLoennstrekkordningen" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="betaltSkattOgAvgiftEtterLoennstrekkordningen" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="betaltSkattOgAvgiftEtterOrdningForKildeskattPaaLoenn" type="Skatt"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OevrigeResultaterAvBeregning">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="underskuddTilFramfoeringSenereAar" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2cd6-a9e1-11e8-8514-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="alminneligInntektFoerSaerfradrag" skatt:begrepsreferanse="http://begrepskatalog/begrep/e88c7380-5684-11e7-a43d-0050568351d2" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="anvendtSaerfradrag" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcd3-ad07-11e8-8ffd-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="utsattFormuesskatt" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2cca-a9e1-11e8-8514-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="pensjonsgivendeInntekt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbce4-ad07-11e8-8ffd-005056821322" type="Skatt"/>
+            <xsd:element minOccurs="0" name="nettoTapVedUtflytting" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2cad-a9e1-11e8-8514-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="nettoGevinstVedUtflytting" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2cac-a9e1-11e8-8514-005056821322" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUEget" type="Skatt"/>
+            <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUOverfoertTilEktefelle" type="Skatt"/>
+            <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUOverfoertFraEktefelle" type="Skatt"/>
+            <xsd:element minOccurs="0" name="samletGrunnlagForInntektsskattTilKommuneOgFylkeskommuneStatsskattOgFellesskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="negativAlminneligInntektOverfoertTilEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="negativAlminneligInntektOverfoertFraEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="negativFormueOverfoertFraEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="saerfradragOverfoertTilEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="saerfradragOverfoertFraEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="underskuddIOrdinaerAlminneligInntektPaaSvalbardTilFremfoeringSenereAar" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="underskuddIEnkeltpersonforetakPaaSvalbardTilFremfoeringSenereAar" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="alminneligInntektFoerFordelingsfradrag" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fordelingsfradrag" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="oevrigFormue" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="korrigertGrunnlagForTrinnskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fradragSomKanFordelesFritt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="inntekterSomKanFordelesFritt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="samletGjeld" type="BeloepSomHeltall"/>
+            <xsd:element maxOccurs="5" minOccurs="0" name="fremfoerbartSkattefradragForSkattBetaltIUtlandet" type="FremfoerbartSkattefradragForSkattBetaltIUtlandet"/>
+            <xsd:element minOccurs="0" name="kildeskattPaaAksjeutbytteTilUtenlandskAksjonaer" type="Skatt"/>
+            <xsd:element minOccurs="0" name="resultaterAvBeregningEtterMetodeVedDobbeltbeskatning" type="ResultaterAvBeregningEtterMetodeVedDobbeltbeskatning"/>
+            <xsd:element minOccurs="0" name="endretSkattToAarEtterInntektsaaretOverfoertFraEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="endretSkattToAarEtterInntektsaaretOverfoertTilEktefelle" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="FremfoerbartSkattefradragForSkattBetaltIUtlandet">
+        <xsd:sequence>
+            <xsd:element name="inntektsaar" type="Inntektsaar"/>
+            <xsd:element minOccurs="0" name="fremfoerbartSkattefradragForFormuesskattBetaltIUtlandet" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fremfoerbartSkattefradragForInntektsskattBetaltIUtlandet" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="KommunefordeltSkatt">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="kommune" type="Tekst"/>
+            <xsd:element minOccurs="0" name="grunnlag" type="Heltall"/>
+            <xsd:element minOccurs="0" name="beloep" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ResultaterAvBeregningEtterMetodeVedDobbeltbeskatning">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="globalAlminneligInntektEtterDenAlternativeFordelingsmetoden" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetSkattenedsettelseITrinnskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetSkattenedsettelseISkattTilKommuneOgFylkeskommune" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetSkattenedsettelseIFellesskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="globalAlminneligInntektEtterKreditmetoden" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragITrinnskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragIInntektsskattTilKommuneOgFylkeskommune" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragIFellesskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragIFormuesskatt" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Skatt">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="skattyterfordeltskatt" type="Skattyterfordeltskatt"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="kommunefordeltSkatt" type="KommunefordeltSkatt"/>
+            <xsd:element minOccurs="0" name="grunnlag" type="Heltall"/>
+            <xsd:element name="beloep" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Skattyterfordeltskatt">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="identifikator" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940" type="Tekst"/>
+            <xsd:element minOccurs="0" name="grunnlag" type="Heltall"/>
+            <xsd:element minOccurs="0" name="beloep" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="Skatteklasse" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e211-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:complexType name="Valideringsresultat">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="avvik" type="Avvik"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="Tekst" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4000"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Kommunenummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f3-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="Tekst">
+            <xsd:pattern value="([0-9]){4}"/>
+            <xsd:length value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="xsd:long"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Tolvdel">
+        <xsd:restriction base="Heltall"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="xsd:boolean"/>
+    </xsd:simpleType>
+    <xsd:complexType name="TolvdelForSaerskiltSkatteplikt">
+        <xsd:sequence>
+            <xsd:element name="tolvdel" type="Tolvdel"/>
+            <xsd:element name="saerskiltSkatteplikt" type="SaerskiltSkattepliktstype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="BeloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="Heltall"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Inntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/fa86c460-d685-11e7-9676-0050568351d2">
+        <xsd:restriction base="Heltall">
+            <xsd:minInclusive value="1000"/>
+            <xsd:totalDigits value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="Avvik">
+        <xsd:sequence>
+            <xsd:element name="avvikskode" type="Tekst"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="SaerskiltSkattepliktstype">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="kildeskattepliktPaaPensjon"/>
+            <xsd:enumeration value="skattepliktEtterPetroleumsskatteloven"/>
+            <xsd:enumeration value="skattepliktSomUtenrikstjenestemann"/>
+            <xsd:enumeration value="skattepliktSomSjoemann"/>
+            <xsd:enumeration value="skattepliktAvNaeringsdriftEiendomMv"/>
+            <xsd:enumeration value="kildeskattepliktPaaLoenn"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
