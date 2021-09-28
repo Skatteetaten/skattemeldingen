@@ -1,9 +1,7 @@
 TODO: 
 mu -- Oppdater eksterne url (sbstest.sits.no, både for v1 og v2 api)
-mu -- Oppdater lenke til 2021 jupyter notebook som støtter personlig og vedlegg
 gg -- Oppdater altinn url til applikasjonene, bytte ut sirius-skattemelding-v1
 mu -- Oppdater xsd referanser og xml eksempler til v2. Både på api kall (request/response) og skattemelding/næringspesifikasjon
-mu -- Under Altinn3, sjekk om bruk av party id fortsatt er et krav for kall mot altinn3. Hvis ikke fjern punktet
 gg -- Under altinn3, oppdater skjema metadata
 gg -- Lage nytt kapittel om vedlegg under Altinn3. Skal vi anbefale å validere skattemeldingen etter at de har lagt inn korrekt referanse til vedlegg? 
 mu -- Beskrive hvordan sjekke status på innsending, er den prosessert av skatteetaten eller ikke. 
@@ -27,8 +25,8 @@ Det tilbys to sett med API-er:
 
 # Skatteetatens-API
 
-Skatteetaten har utviklet en demo klient (i python) som viser hvordan koble seg på ID-porten og kalle skatteetatens-API:
-[jupyter notebook](../test/testinnsending/demo-2020.ipynb)
+Skatteetaten har utviklet en demo klient (i python/jupyter notebook) som viser hvordan koble seg på ID-porten og kalle skatteetatens-API, og sende inn skattemeldingen med vedlegg via Altinn3:
+[jupyter notebook](../test/testinnsending/innsending%20skattemelding%20person%20med%20nærings%202021.ipynb)
 
 ## Autentisering
 
@@ -999,11 +997,11 @@ Neste trinn er å laste opp skattemeldingsdata.
 Det anbefales å gjøre ny validering etter oppdatering av skattemelding.xml.  
 
 Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
-(ved ved en hvilken som helst xml-fil). Merk at dataType skal settes til **skattemelding**.
+(ved ved en hvilken som helst xml-fil). Merk at dataType skal settes til **skattemeldingOgNaeringspesifikasjon**.
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
+**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemeldingOgNaeringspesifikasjon' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
+**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemeldingOgNaeringspesifikasjon' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen_v06..xml'`
 
 **Merk** følgende i curl-kommandoen over:
 - content-type skal være **text/xml** (i dokumetasjonen hos altinn3 står det at content-type skal være application/xml, det er feil)
@@ -1013,8 +1011,8 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 
 **Body :** `data-binary '../skattemelding.xml'.`
 Innholdet i filen skattemelding.xml skal være på format:
-- Iht. XSD: [skattemeldingerognaeringsopplysningerequest_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerequest_v1_kompakt.xsd)
-- Eksempel XML: [skattemeldingerognaeringsopplysninger_forespoersel.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_forespoersel.xml)
+- Iht. XSD: [skattemeldingognaeringsopplysningerforespoerselresponse_v1_kompakt.xsd](../../../src/resources/xsd)
+- Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml.xml](../test/eksempler-v2)
 
 Merk at det er samme format som benyttes ved kall til valideringstjensten.
 

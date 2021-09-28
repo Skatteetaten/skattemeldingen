@@ -62,7 +62,7 @@ Vi benytter følgende testmiljø hos ID-porten:
 - /authorize endpoint: https://oidc-ver2.difi.no/idporten-oidc-provider/authorize
 - /token endpoint: https://oidc-ver2.difi.no/idporten-oidc-provider/token
 
-For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen [hent.py](../test/testinnsending/hent.py)
+For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen [hent.py](../test/testinnsending/skatteetaten_api.py)
 
 ## Kalle skattemeldings-API
 
