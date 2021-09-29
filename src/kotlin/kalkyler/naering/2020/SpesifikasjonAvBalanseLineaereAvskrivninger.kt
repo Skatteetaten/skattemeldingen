@@ -1,25 +1,3 @@
-@file:Suppress("MoveLambdaOutsideParentheses")
-
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v1_2020
-
-import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.HarKalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.Kalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.PostProsessering
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.FeltKoordinat
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.derVerdiErLik
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.derVerdiErMindreEnn
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.derVerdiErNull
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.derVerdiErStoerreEnn
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications.ikke
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.der
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.itererForekomster
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.minus
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.naeringsopplysninger
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v1_2020.lineaertavskrevetAnleggsmiddel
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
-
 object SpesifikasjonAvBalanseLineaereAvskrivninger : HarKalkyletre, PostProsessering {
 
     internal object beregnedeFelter {
