@@ -1,10 +1,4 @@
 val saldoAvskrevetForekomster = itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel
-
-/**
- * Saldogruppe A og B håndteres helt likt.
- *
- * Spec: https://wiki.sits.no/display/SIR/FR-Spes+av+bal+-+Anleggsmidler
- */
 internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
 
     internal object beregnedeFelter {

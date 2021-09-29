@@ -1,6 +1,3 @@
-/**
- * Spesifisert her: https://wiki.sits.no/pages/viewpage.action?pageId=489349748
- */
 internal object FordeltBeregnetNaeringsinntektBeregning : HarKalkyletre {
 
     internal val korrigertResultatKalkyle =
