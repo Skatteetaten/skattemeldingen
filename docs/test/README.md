@@ -4,7 +4,7 @@ title: "Test"
 description: ""
 ---
 
-# Testplan
+# Hvordan komme igjang
 
 Formålet med testen er å verifisere uthenting av skattemelding, bruk av valideringstjenesten hos Skatteetaten, sende inn og få tilbakmelding.
 
@@ -19,15 +19,16 @@ Konkret må sluttbrukersystemet gjøre følgende:
    - Sende en request til Skatteetatens tjeneste for å validere skattemelding med næringsinformasjon for en skattepliktig
    - Motta og tolke resultatet fra valideringstjenesten.
    - Når det ikke er feil i retur fra valideringstjenesten kan man gå til neste punkt.
-   - Kalle Altinn sin nye plattform for å instansiere opp App'en for innsending av skattemelding for næringsdrivende.
-   - Kalle Altinn for å laste opp skattemelding og næringsopplysninger på den instansierte App'en fra forrige punkt.
+   - Kalle Altinn sin nye plattform for å instansiere opp App'en for innsending av skattemelding for næringsdrivende. 
+   - Hvis nødvendig, kalle Altinn for å laste opp vedlegg til skattemeldingen eller næringsspesifikasjonen
+   - Kalle Altinn for å laste opp skattemelding og næringsspesifikasjon på den instansierte App'en fra forrige punkt.
    - Kalle Altinn for å laste ned kvittering/tilbakemelding fra Skatteetaten.
 
 Skatteetaten har tilgjengeliggjort en testapplikasjoner som viser hvordan trinnene beskrevet over kan utføres.
 Den er skrevet i [jupyter notebook formatet](https://jupyter.org/):
 
 1. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo-2020.ipynb). Last ned katalogen testinnsending og kjør skriptet demo.ipynb (skriptet vil utføre alle trinn som inngår i prosessen: hente/velidere skattemelding og innsending av skattemelding til Altinn)  
-2. [Eksempel XML-er](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/test/eksempler)
+2. [Eksempel XML-er](../../src/resources/eksempler)
 
 ## Ta i bruk ID-porten
 
@@ -85,6 +86,3 @@ Bruk MinID innlogging; fnr på testbruker, password01 og Pinkode 12345.
 
 Merk at dere også kan endre/tilføye opplysninger og sende inn skattemelding. Fastsatt skattemelding (endret skattemelding) vil da også være tilgjengelig for nedlasting. Se kapittel 4.3.6.3 i implementasjonsguide.
 
-# Hendelser
-
-Tekniske spørsmål knyttet til forberedelser og gjennomføring kan rettes til nyskattemelding@skatteetaten.no

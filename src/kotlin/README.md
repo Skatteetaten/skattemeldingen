@@ -200,7 +200,7 @@ Dette definerer rekkefølgen på kallkyleområdene innbyrdes.
 
 # Kalkyler
 
-En oversikt over kalkylene som er definert så langt finnes i [Oversikten over kalkyler](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/beregninger/kotlin)
+En oversikt over kalkylene som er definert så langt finnes i [Oversikten over kalkyler]()
 Det er ikke laget DSL for kalkylen for personinntekt enda. Dette kommer senere. Kalkylen for personinntekt er beskrevet nedenfor.
 
 ## Beregning av personinntekt

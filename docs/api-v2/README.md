@@ -1,7 +1,3 @@
-TODO: upersonlig: 
- -- Dokumenter hvordan hente skattemelding, valider og send inn for upersonlig. Alle eksemplene dekker kun personlig. 
-Dette er helt likt for personlig og uperosnlig, men forskjellig dokumenttyper for skattemeldingen. 
-
 
 ---
 icon: "cloud"
