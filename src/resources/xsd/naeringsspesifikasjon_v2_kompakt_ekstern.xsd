@@ -88,6 +88,7 @@
   <xsd:complexType name="BeregnetNaeringsinntekt">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fordeltBeregnetNaeringsinntekt" type="FordeltBeregnetNaeringsinntekt"/>
+      <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="sumTilleggINaeringsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="sumFradragINaeringsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="sumEndringIMidlertidigForskjell" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
