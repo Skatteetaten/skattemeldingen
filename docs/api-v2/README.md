@@ -909,6 +909,8 @@ Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved kall ti
 Merk at partyId kan også fås ved å opprette instans basert på fødselsnummer. For detaljer se neste avsnitt.
 
 ## Opprett en instans i Altinn
+For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen være `formueinntekt-skattemelding-v2`
+
 
 Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige responsen og bruk det i body under.
 
