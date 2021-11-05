@@ -40,23 +40,16 @@
               <artifactItems>
                 <artifactItem>
                   <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
-                  <artifactId>skattemelding-mapping-skattemelding</artifactId>
-                  <version>${skattemelding.mapping.version}</version>
-                  <outputDirectory>src/resources</outputDirectory>
-                  <includes>xsd/*ekstern.xsd</includes>
-                </artifactItem>
-                <artifactItem>
-                  <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
-                  <artifactId>skattemelding-mapping-naering</artifactId>
+                  <artifactId>skattemelding-mapping-resources</artifactId>
                   <version>${skattemelding.mapping.version}</version>
                   <outputDirectory>src/resources/xsd</outputDirectory>
-                  <includes>*ekstern.xsd</includes>
+                  <includes>*ekstern*.xsd</includes>
                 </artifactItem>
                 <artifactItem>
                   <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
-                  <artifactId>skattemelding-mapping-upersonlig</artifactId>
+                  <artifactId>skattemelding-mapping-resources</artifactId>
                   <version>${skattemelding.mapping.version}</version>
-                  <outputDirectory>src/resources</outputDirectory>
+                  <outputDirectory>src/resources/xsd</outputDirectory>
                   <includes>xsd/*ekstern*.xsd</includes>
                 </artifactItem>
               </artifactItems>
