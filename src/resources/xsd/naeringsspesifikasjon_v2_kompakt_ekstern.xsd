@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v2" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v2">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2021-09-20T08:36:44.022+0200" name="generertDato"/>
+      <xsd:attribute fixed="2021-10-05T10:28:20.582+0200" name="generertDato"/>
       <xsd:attribute fixed="v2" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Næringsspesifikasjon v2" name="modellnavn"/>
@@ -339,7 +339,8 @@
       <xsd:element name="identifikatorForPersoninntekt" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="rentekostnadPaaForetaksgjeld" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="kapitalinntektTilKorrigeringAvPersoninntekt" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="kapitalkostnadTilKorrigeringAvPersoninntekt" type="BeloepMedSkattemessigeEgenskaper"/><xsd:element minOccurs="0" name="reduksjonsbeloepForLeidEiendomMotInnskudd" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="kapitalkostnadTilKorrigeringAvPersoninntekt" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="reduksjonsbeloepForLeidEiendomMotInnskudd" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAlminneligGaardsbrukEllerSkogbrukTilKorrigeringAvPersoninntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="sumSkjermingsgrunnlagFoerGjeldsfradrag" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="sumSkjermingsgrunnlagEtterGjeldsfradrag" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
@@ -711,20 +712,8 @@
   <xsd:simpleType name="Dato">
     <xsd:restriction base="xsd:date"/>
   </xsd:simpleType>
-  <xsd:simpleType name="Saldogruppe" skatt:eksternKodeliste="inline">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="a"/>
-      <xsd:enumeration value="b"/>
-      <xsd:enumeration value="c"/>
-      <xsd:enumeration value="c2"/>
-      <xsd:enumeration value="d"/>
-      <xsd:enumeration value="e"/>
-      <xsd:enumeration value="f"/>
-      <xsd:enumeration value="g"/>
-      <xsd:enumeration value="h"/>
-      <xsd:enumeration value="i"/>
-      <xsd:enumeration value="j"/>
-    </xsd:restriction>
+  <xsd:simpleType name="Saldogruppe" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_saldogruppe.xml">
+    <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Prosent">
     <xsd:restriction base="Desimaltall"/>
@@ -751,10 +740,10 @@
 
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="PermanentForskjellstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_midlertidigOgPermanentForskjellstype.xml">
+  <xsd:simpleType name="PermanentForskjellstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_permanentForskjellstype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
-  <xsd:simpleType name="MidlertidigForskjellstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_midlertidigOgPermanentForskjellstype.xml">
+  <xsd:simpleType name="MidlertidigForskjellstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_midlertidigForskjellstype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Tilstand" skatt:eksternKodeliste="inline">
@@ -788,27 +777,7 @@
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Skjermingsgrunnlagstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_skjermingsgrunnlagstype.xml">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="saldogruppeA"/>
-      <xsd:enumeration value="saldogruppeB"/>
-      <xsd:enumeration value="saldogruppeC"/>
-      <xsd:enumeration value="saldogruppeC2"/>
-      <xsd:enumeration value="saldogruppeD"/>
-      <xsd:enumeration value="saldogruppeE"/>
-      <xsd:enumeration value="saldogruppeF"/>
-      <xsd:enumeration value="saldogruppeG"/>
-      <xsd:enumeration value="saldogruppeH"/>
-      <xsd:enumeration value="saldogruppeI"/>
-      <xsd:enumeration value="saldogruppeJ"/>
-      <xsd:enumeration value="lineaertavskrevetAnleggsmiddel"/>
-      <xsd:enumeration value="ikkeAvskrivbartAnleggsmiddel"/>
-      <xsd:enumeration value="ervervetImmatriellRettighet"/>
-      <xsd:enumeration value="aktivertForskningsOgUtvklingskostnad"/>
-      <xsd:enumeration value="varelager"/>
-      <xsd:enumeration value="kundefordring"/>
-      <xsd:enumeration value="leverandoergjeld"/>
-      <xsd:enumeration value="foretaksgjeld"/>
-    </xsd:restriction>
+    <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Uri">
     <xsd:restriction base="Tekst"/>
