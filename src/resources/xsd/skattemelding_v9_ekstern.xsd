@@ -1396,7 +1396,7 @@
           <xsd:element minOccurs="0" name="inntektStammerFraNOKUSSelskapEllerVirksomhetILavskatteland" type="BoolskMedInnkapsling"/>
           <xsd:element minOccurs="0" name="samletDriftsinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="samletDriftskostnad" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="driftsresultat" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="driftsresultat" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
           <xsd:element minOccurs="0" name="samletFinansinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="samletFinanskostnad" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="samletEkstraordinaerInntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
@@ -2271,6 +2271,12 @@
       <xsd:element name="land" type="Landkode"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="BeloepMedSkattemessigeEgenskaperOgOverstyring">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="BeloepMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erOverstyrt" type="BoolskMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="DeltakersAndelAvInntektPerNaeringstype">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
@@ -2427,7 +2433,7 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="formuesverdiForNaeringseiendom" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="beregnetUtleieverdiForNaeringseiendom" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d702-4c6c-11e8-bb3e-005056821322" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="grunnlagForBeregnetUtleieverdiforNaeringseiendom" type="GrunnlagForBeregnetUtleieverdiForNaeringseiendom"/>
+      <xsd:element minOccurs="0" name="grunnlagForBeregnetUtleieverdiForNaeringseiendom" type="GrunnlagForBeregnetUtleieverdiForNaeringseiendom"/>
       <xsd:element minOccurs="0" name="areal" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d756-4c6c-11e8-bb3e-005056821322" type="HeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="naeringseiendomstype" type="NaeringseiendomstypeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="utleidAreal" type="HeltallMedInnkapsling"/>
@@ -2847,6 +2853,7 @@
       <xsd:element minOccurs="0" name="aarligUtleieinntektIAaretFoerInntektsaar" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="aarligUtleieinntektToAarFoerInntektsaar" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="sisteRapporterteUtleieinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="avvikMellomDokumentertMarkedsverdiOgBeregnetUtleieverdi" skatt:erAvledet="true" type="Prosent"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="HeltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
