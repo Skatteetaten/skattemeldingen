@@ -60,7 +60,6 @@
   <xsd:complexType name="FormueOgGjeld">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesobjekt" type="Formuesobjekt"/>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="gjeld" type="Gjeld"/>
       <xsd:element minOccurs="0" name="samletVerdiFoerEventuellVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
       <xsd:element minOccurs="0" name="samletGjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
