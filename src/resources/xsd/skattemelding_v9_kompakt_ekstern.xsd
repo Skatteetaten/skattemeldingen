@@ -127,7 +127,7 @@
       <xsd:element minOccurs="0" name="vedleggsnavn" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="vedleggsfil" type="Vedleggsfil"/>
       <xsd:element minOccurs="0" name="vedleggstype" type="VedleggskategoriMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="informasjonselemenidentifikator" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="informasjonselementidentifikator" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="forekomstidentifikator" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="utvekslingsarkividentifikator" type="TekstMedInnkapsling"/>
     </xsd:sequence>
@@ -1732,10 +1732,16 @@
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:choice>
-            <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvFastEiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-            <xsd:element minOccurs="0" name="tapVedRealisasjonAvFastEiendom" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
+            <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvFastEiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+            <xsd:element minOccurs="0" name="tapVedRealisasjonAvFastEiendom" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
           </xsd:choice>
           <xsd:element name="internEiendomsidentifikator" type="Tekst"/>
+          <xsd:element minOccurs="0" name="kjoepesum" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="salgssum" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="utgiftTilMegler" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="paakostning" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="annenSalgskostnad" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="annenAnskaffelseskostnad" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
