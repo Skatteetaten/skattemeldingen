@@ -342,8 +342,8 @@
       <xsd:element name="naeringsidentifikator" type="TekstMedInnkapsling"/>
       <xsd:element name="kommunenummer" type="KommunenummerMedInnkapsling"/>
       <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="sumGevinstVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="sumTapVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="sumGevinstVedRealisasjonOgUttak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+      <xsd:element minOccurs="0" name="sumTapVedRealisasjonOgUttak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvHelBuskapPaaGaardsbrukVedOpphoerAvDriftsgren" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="grunnlagForAaretsInntektsOgFradragsfoering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="satsForInntektsfoeringOgInntektsfradrag" type="ProsentMedInnkapsling"/>
@@ -358,8 +358,7 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="identifikatorForFordeltBeregnetPersoninntekt" type="TekstMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="identifikatorForFordeltBeregnetNaeringsinntekt" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="identifikatorForPersoninntekt" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="naeringstype" type="NaeringstypeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="naeringsbeskrivelse" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="fordeltSkattemessigResultat" type="BeloepMedSkattemessigeEgenskaper"/>
@@ -374,8 +373,7 @@
   <xsd:complexType name="FordeltBeregnetPersoninntekt">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
-      <xsd:element name="identifikatorForFordeltBeregnetPersoninntekt" type="TekstMedInnkapsling"/>
-      <xsd:element name="identifikatorForFordeltBeregnetNaeringsinntekt" type="TekstMedInnkapsling"/>
+      <xsd:element name="identifikatorForPersoninntekt" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="rentekostnadPaaForetaksgjeld" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="kapitalinntektTilKorrigeringAvPersoninntekt" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="kapitalkostnadTilKorrigeringAvPersoninntekt" type="BeloepMedSkattemessigeEgenskaper"/>
@@ -406,8 +404,7 @@
       <xsd:element name="midlertidigForskjellstype" type="MidlertidigForskjellstypeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="regnskapsmessigVerdi" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="skattemessigVerdi" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="regnskapsmessigVerdiForrigeInntektsaar" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="skattemessigVerdiForrigeInntektsaar" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="forskjellIForrigeInntektsaar" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="endringIForskjell" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="beskrivelse" type="TekstMedInnkapsling"/>
     </xsd:sequence>
