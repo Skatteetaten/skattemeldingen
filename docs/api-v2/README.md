@@ -861,6 +861,124 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
+### Beregn utleieverdi for ikke-utleid næringseiendom
+
+BeregnetUtleieverdi er basert på næringssjablong fra SSB hvor næringstype, areal, bystatus, sentralitet og skatteleggingsperiode inngår i beregningen.
+
+Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert markedsverdi vil ikke hensyntas.
+
+Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
+
+**URL** : `POST https://<env>/api/skattemelding/v2/eiendom/utleieverdi/<inntektsår>/<eiendomsidentifikator>`
+
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/utleieverdi/2020/102`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse.`
+- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
+- `<eiendomsidentifikator>: Unik eiendomsidentifikator.`
+
+**Body uten dokumentert markedsverdi**
+
+```json
+{
+  "formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge": [
+    {
+      "eiendomstype": "ikkeUtleidNaeringseiendomINorge",
+      "naeringseiendomstype": "tomtGrunnarealHovedfunksjon",
+      "areal": "250"
+    }
+  ]
+}
+```
+
+**Body med dokumentert markedsverdi**
+
+```json
+{
+    "formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge": [
+        {
+            "eiendomstype": "ikkeUtleidNaeringseiendomINorge",
+            "naeringseiendomstype": "tomtGrunnarealHovedfunksjon",
+            "areal": "250",
+            "dokumentertMarkedsverdi": "200000"
+        }
+    ]
+}
+```
+
+**Respons uten dokumentert markedsverdi** :
+
+```json
+{
+    "formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge": [
+        {
+            "eiendomstype": "ikkeUtleidNaeringseiendomINorge",
+            "naeringseiendomstype": "tomtGrunnarealHovedfunksjon",
+            "areal": "250",
+            "beregnetUtleieverdi": "250000",
+            "utleieverdi": "250000"
+        }
+    ]
+}
+```
+
+**Respons med dokumentert markedsverdi** :
+
+```json
+{
+  "formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge": [
+    {
+      "eiendomstype": "ikkeUtleidNaeringseiendomINorge",
+      "naeringseiendomstype": "tomtGrunnarealHovedfunksjon",
+      "dokumentertMarkedsverdi": "200000",
+      "areal": "250",
+      "beregnetUtleieverdi": "200000",
+      "utleieverdi": "250000"
+    }
+  ]
+}
+```
+
+**_Forklaring til respons_**
+
+- `beregnetMarkedsverdi: beregnet markedverdi for boligen.`
+- `boligverdi: beregnet markedsverdi for useksjonert boenhet. Beregnes uavhenig av dokumentert markedsverdi.`
+- `dokumentertMarkedsverdi: dokumentert markedsverdi når denne er innefor reglene slik at den er hensynstatt.`
+- `justertMarkedsverdi: justert markedsverdi er med når dokumentert markedsverdi er hensynstatt.`
+
+**Feil response ifm bad request**
+
+```json
+{
+  "feilkode": "EIENDOM-014",
+  "beskrivelse": "Eiendommen finnes ikke."
+}
+```
+
+**_Feilkoder ifm bad request_**
+
+- EIENDOM-001: Ugyldig verdi: boligtype må være (enebolig, leilighet, smaahus).
+- EIENDOM-002: Ugyldig verdi: byggeaar må være tall.
+- EIENDOM-003: Ugyldig verdi: byggeaar må være mindre eller lik skatteleggingsperiode og større enn 1250.
+- EIENDOM-004: Ugyldig verdi: boligensAreal må være et tall større enn 9 og mindre enn 10000.
+- EIENDOM-005: Ugyldig verdi: dokumentertMarkedsverdiForBolig må være et tall.
+- EIENDOM-008: Ugyldig verdi: Boligtype for boenhet må være leilighet.
+- EIENDOM-013: Eiendom kunne ikke entydig identifiseres med oppgitte verdier.
+- EIENDOM-014: Eiendommen finnes ikke.
+- EIENDOM-015: Eiendommen er utgått.
+- EIENDOM-016: Ingen bruksareal.
+- EIENDOM-017: Ingen bruksareal. Flere bygninger har registrert bruksareal.
+- EIENDOM-018: Ugyldig bruksareal.
+- EIENDOM-019: Formuesgrunnlag mangler for denne eiendommen. Forespørselen kunne ikke fullføres.
+- EIENDOM-020: Ugyldig verdi: Dokumentert markedsverdi kan ikke overstige 2.1 milliarder.
+- EIENDOM-021: Ugyldig Naeringstype. Naeringstypen er ikke en gyldig naeringstype for ikke utleid naeringseiendom.
+- EIENDOM-022: Ugyldig verdi: Dokumentert markedsverdi må være stoerre enn 0.
+- EIENDOM-050: støtter ikke inntektsaar: <inntektsår>.
+- EIENDOM-051: <Ulike mangler på input>.
+- EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
+
 # Altinn3-API
 
 For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjennom et klient API (typisk skattepliktige som bruker et sluttbrukersystem) tilbyr Altinn API-er med følgende funksjonalitet:
