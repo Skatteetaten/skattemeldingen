@@ -1397,7 +1397,7 @@
           <xsd:element minOccurs="0" name="inntektStammerFraNOKUSSelskapEllerVirksomhetILavskatteland" type="BoolskMedInnkapsling"/>
           <xsd:element minOccurs="0" name="samletDriftsinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="samletDriftskostnad" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="driftsresultat" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="driftsresultat" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
           <xsd:element minOccurs="0" name="samletFinansinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="samletFinanskostnad" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="samletEkstraordinaerInntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
@@ -2276,6 +2276,12 @@
       <xsd:element name="id" type="Tekst"/>
       <xsd:element name="beloep" type="BeloepSomHeltall"/>
       <xsd:element name="land" type="Landkode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BeloepMedSkattemessigeEgenskaperOgOverstyring">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="BeloepMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erOverstyrt" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DeltakersAndelAvInntektPerNaeringstype">
