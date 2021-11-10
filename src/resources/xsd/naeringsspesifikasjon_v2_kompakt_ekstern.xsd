@@ -129,10 +129,6 @@
   </xsd:complexType>
   <xsd:complexType name="Egenkapitalavstemming">
     <xsd:sequence>
-      <xsd:choice>
-        <xsd:element minOccurs="0" name="utsattSkattefordel" type="BeloepMedSkattemessigeEgenskaper"/>
-        <xsd:element minOccurs="0" name="utsattSkatt" type="BeloepMedSkattemessigeEgenskaper"/>
-      </xsd:choice>
       <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="inngaaendeEgenkapital" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="sumTilleggIEgenkapital" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
