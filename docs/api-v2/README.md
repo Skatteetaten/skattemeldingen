@@ -261,6 +261,25 @@ skattemeldingerOgNaeringsopplysningerResponse:
     - forekomstidentifikator – identfikator til felt i skattemeldingen
     - sti – stien til elementet med veiledning
 
+## Hent vedlegg
+
+Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, enten fastsatt i gjeldende/nyeste skattemelding eller fra tidligere fastsettinger.
+
+**URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/vedlegg/<vedleggId>`
+
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/<inntektsaar>/<identifikator>/vedlegg/<vedleggId>`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse`
+- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY`
+- `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige`
+- `<vedleggId>: ID fra XML-stien "/skattemelding/vedlegg/id"`
+
+**Respons** :
+
+- nedlastbar fil
+
 ## Eiendom API
 
 Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners formuesgrunnlag og for å beregne eiendommers markedsverdi.
