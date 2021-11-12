@@ -102,6 +102,11 @@ def endre_prosess_status(instans_data: dict, token: dict, neste_status: str, app
     r.raise_for_status()
     return r.text
 
+def hent_instans(instans_data: dict, token: dict, appnavn: str = "skd/sirius-skattemelding-v1") -> dict:
+    url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}"
+    r = requests.get(url, headers=token, verify=False)
+    r.raise_for_status()
+    return r
 
 if __name__ == '__main__':
     print("Dette er en rekke med metoder jupyter notebook applikasjonen bruker")
