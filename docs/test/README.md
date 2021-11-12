@@ -4,7 +4,7 @@ title: "Test"
 description: ""
 ---
 
-# Hvordan komme igjang
+# Hvordan komme igang
 
 Formålet med testen er å verifisere uthenting av skattemelding, bruk av valideringstjenesten hos Skatteetaten, sende inn og få tilbakmelding.
 
@@ -80,7 +80,12 @@ For nærmere beskrivelse av skattemelding-API og Altinn3-API, se kapitelet [API]
 
 # Se skattemelding i portal
 
-URL til portal: https://skatt-ref.sits.no/web/skattemeldingen/2020
+Hvis du gjør en ikke komplett insending så dukker det opp en melding i innboksen i Altinn. Denne sier at du må logge på skatteetatens sider for å fullføre innsendingen, med en lenke til "Min skatt" sidene i produksjon. 
+Lenken i testmiljøet til "Min skatt" sidene er: https://skatt-sbstest.sits.no/web/mineskatteforhold/
+
+Det er også mulig å gå direkte til skattemelding portalen.  
+Direkte URL til skattemelding portal: https://skatt-sbstest.sits.no/web/skattemeldingen/2021
+
 
 Bruk MinID innlogging; fnr på testbruker, password01 og Pinkode 12345.
 
