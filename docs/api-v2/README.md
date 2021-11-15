@@ -15,7 +15,7 @@ Det tilbys to sett med API-er:
 # Skatteetatens-API
 
 Skatteetaten har utviklet en demo klient (i python/jupyter notebook) som viser hvordan koble seg på ID-porten og kalle skatteetatens-API, og sende inn skattemeldingen med vedlegg via Altinn3:
-[jupyter notebook](../test/testinnsending/innsending%20skattemelding%20person%20med%20nærings%202021.ipynb)
+[jupyter notebook](../test/testinnsending/person-enk-med-vedlegg-2021.ipynb)
 
 ## Autentisering
 
@@ -203,7 +203,7 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 
 **URL** : `POST https://<env>/api/skattemelding/v2/valider/<inntektsaar>/<identifikator>`
 
-**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/valider/2020/01028312345`
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/valider/2021/01028312345`
 
 **Forespørsel** :
 
@@ -213,35 +213,39 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 
 **Body** :
 
-- Iht. XSD: [skattemeldingerognaeringsopplysningerequest_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerequest_v1_kompakt.xsd)
-- Eksempel XML: [skattemeldingerognaeringsopplysninger_forespoersel.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_forespoersel.xml)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2.xsd)
+- Eksempel XML: [personligSkattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/v2/personligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
 
-skattemeldingerOgNaeringsopplysningerRequest:
+skattemeldingOgNaeringsspesifikasjonRequest:
+- dokumenter
+  - dokument
+    - type - [skattemeldingPersonlig | skattemeldingUpersonlig | naeringsspesifikasjon]
+    - encoding - kodeliste – [utf-8]
+    - content - base64 encodet xml dokument 
+- dokumentreferanseTilGjeldendeDokument
+  - dokumenttype (samme som dokumenter.dokument.type)
+  - dokumentidentifikator - referanse hentet fra hentSkattemelding kall. Bruk referansen til skattemeldingen
+- inntektsår - fire siffer for inntektsår innsendingen gjelder. husk å bruk riktig xsd versjon for skattemeldingen og næringspesifikasjon for tilhørende inntektsår
+- innsendingsinformasjon 
+  - innsendingstype - [ikkeKomplett | komplett]
+  - opprettetAv - system navn brukt for å gjøre innsendingen
 
-- dokumentreferanseTilGjeldendeDokument - complex type
-  - dokumenttype – kodeliste [skattemeldingPersonligSkattepliktig|naeringsopplysninger]
-  - dokumentidentifikator – dokumentidentifikator til sist gjeldende dokument i skatteetatens system.
-- dokumenter – konvolutt for dokumenter
-  - dokument – complex type
-    - type – kodeliste – [skattemeldingPersonligSkattepliktig|naeringsopplysninger]
-    - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingerognaeringsopplysningerresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingerognaeringsopplysningerresponse_v1_kompakt.xsd)
-- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonresponse_v2_kompakt.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
+- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](../../src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
-skattemeldingerOgNaeringsopplysningerResponse:
+skattemeldingOgNaeringsspesifikasjonResponse:
 
 - Dokumenter – konvolutt for relevante dokumenter
   - Dokument – complex type
-    - Type – kodeliste [skattemeldingEtterBeregning|naeringsopplysningerEtterBeregning|beregnetSkatt|summertSkattegrunnlagForVisning]
+    - Type – kodeliste [skattemeldingPersonligEtterBeregning|beregnetSkattPersonlig|summertSkattegrunnlagForVisningPersonlig|naeringsspesifikasjonEtterBeregning|skattemeldingUpersonligEtterBeregning|beregnetSkattUpersonlig|summertSkattegrunnlagForVisningUpersonlig]
     - Encoding – kodeliste – [utf-8]
     - Content – serialisert dokumentinnhold
 - avvikEtterBeregning – konvolutt for avvik funnet etter beregning
   - avvik – complex type
-    - avvikstype – kodeliste [avvikNaeringsopplysninger| manglerNaeringsopplysninger|*]
+    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021_avvikskodeVedValidertMedFeil.xml)
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
     - beregnetVerdi – verdien som ble beregnet
@@ -249,7 +253,7 @@ skattemeldingerOgNaeringsopplysningerResponse:
     - sti – stien til elementet som har avvik
 - avvikVedValidering – konvolutt for avvik funnet ved validering
   - avvik – complex type
-    - avvikstype – kodeliste [*]
+    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021_avvikskodeVedValidertMedFeil.xml
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
     - beregnetVerdi – verdien som ble beregnet
@@ -294,9 +298,9 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 
 **URL** : `GET https://<env>/api/skattemelding/v2/eiendom/soek/<inntektsår>?query=<tekst>`
 
-**Eksempel URL vegadress** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2020?query=Storgata 1`
+**Eksempel URL vegadress** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2021?query=Storgata 1`
 
-**Eksempel URL matrikkelnummer** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2020?query=36/120`
+**Eksempel URL matrikkelnummer** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2021?query=36/120`
 
 **Forespørsel** :
 
@@ -342,8 +346,8 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
       ]
     }
   ],
-  "sokStart": "2020-10-05T09:53:06.118374",
-  "sokSlutt": "2020-10-05T09:53:06.149235"
+  "sokStart": "2021-10-05T09:53:06.118374",
+  "sokSlutt": "2021-10-05T09:53:06.149235"
 }
 ```
 
@@ -384,7 +388,7 @@ Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektså
 
 **URL** : `GET https://<env>/api/skattemelding/v2/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>`
 
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/formuesgrunnlag/2020/1/02095300173`
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/formuesgrunnlag/2021/1/02095300173`
 
 **Forespørsel** :
 
@@ -475,7 +479,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 
 **URL** : `POST https://<env>/api/skattemelding/v2/eiendom/markedsverdi/bolig/<inntektsår>/<eiendomsidentifikator>`
 
-**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/markedsverdi/bolig/2020/1`
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/markedsverdi/bolig/2021/1`
 
 **Forespørsel** :
 
@@ -643,7 +647,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 
 **URL** : `POST https://<env>/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/<inntektsår>/<eiendomsidentifikator>`
 
-**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/2020/102`
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/2021/102`
 
 **Forespørsel** :
 
@@ -890,7 +894,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 
 **URL** : `POST https://<env>/api/skattemelding/v2/eiendom/utleieverdi/<inntektsår>/<eiendomsidentifikator>`
 
-**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/utleieverdi/2020/102`
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/utleieverdi/2021/102`
 
 **Forespørsel** :
 
