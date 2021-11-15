@@ -9,10 +9,10 @@ Området er delt inn i to hoveddeler:
 
 Innhold i de ulike sidene/katalogene:
 
-##Forside
+## Forside
 Denne leseveiledningen + funksjonell beskrivelse (PDF fil). Vi anbefaler at du leser denne beskrivelsen først.
 
-##Docs
+## Docs
 
 **api-v1-pilot** – API beskrivelser for inntektsår 2020, skal fases ut og kan ikke benyttes for 2021
 **api-v2** – API beskrivelser for inntektsår 2021 - må brukes for 2021 og for upersonlig og vil på sikt helt erstatte V1
@@ -22,7 +22,7 @@ Denne leseveiledningen + funksjonell beskrivelse (PDF fil). Vi anbefaler at du l
 **tekster** – lede og hjelpetekster i skattemeldingene og næringsspesifikasjon
 **test** – informasjon om hvordan komme i gang med test/testklienter
 
-##Src
+## Src
 
 **Kotlin** – overordnet beskrivelse av beregninger, kodefiler for beregning/kalkyler
 
