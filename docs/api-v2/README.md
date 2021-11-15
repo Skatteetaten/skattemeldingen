@@ -1145,7 +1145,7 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 **Body :** `data-binary '../skattemelding.xml'.`
 Innholdet i filen skattemelding.xml skal være på format:
 - Iht. XSD: [skattemeldingognaeringsopplysningerforespoerselresponse_v1_kompakt.xsd](../../src/resources/xsd)
-- Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml.xml](../test/eksempler-v2)
+- Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/v2)
 
 Merk at det er samme format som benyttes ved kall til valideringstjensten.
 
