@@ -33,6 +33,7 @@
                 <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
+        <begrepsreferanse>aaa</begrepsreferanse>
         <kodetillegg>
             <oppgavekodeISL>35513</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
@@ -2807,11 +2808,11 @@
         <tekniskNavn>LONN_VERGE_FM</tekniskNavn>
         <visningsnavn>
             <spraakTekst>
-                <tekst>Lønn til verge fra fylkesmannen</tekst>
+                <tekst>Lønn til verge fra Statsforvalteren</tekst>
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Lønn til verje fra Fylkesmannen</tekst>
+                <tekst>Lønn til verje fra Statsforvalteren</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
@@ -2819,7 +2820,7 @@
                 <spraak>en_GB</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Bálká ovdagohccái fylkkamánnis</tekst>
+                <tekst>Bálká ovdagohccái Stáhtahálddašeaddji</tekst>
                 <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
@@ -4162,11 +4163,11 @@
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Supplementary benefits for persons with a short residence time in Norway</tekst>
+                <tekst>Supplementary benefits for persons who have lived in Norway for a short period</tekst>
                 <spraak>en_GB</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Dievasmahttin doarjja olbmui geas lea oanehis ássanáigi Norggas</tekst>
+                <tekst>Dievasmahtti doarjja olbmuide geat oanehis áiggi leat orron Norggas</tekst>
                 <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
@@ -4188,7 +4189,69 @@
         </kodetillegg>
     </kode>
     <kode>
+        <tekniskNavn>SUPPL_STONAD_UFOR</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Supplerende stønad til uføre flyktninger</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <visningsnavn>
+            <spraakTekst>
+                <tekst>Supplerende stønad til uføre flyktninger</tekst>
+                <spraak>nb_NO</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Supplerande stønad til uføre flyktningar</tekst>
+                <spraak>nn_NO</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Supplementary benefits for disabled refugees</tekst>
+                <spraak>en_GB</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Dievasmahtti doarjja báhtareddjiide geain ii leat bargovuoibmi</tekst>
+                <spraak>se_NO</spraak>
+            </spraakTekst>
+        </visningsnavn>
+        <kodetillegg>
+            <visningsfelt>beloep</visningsfelt>
+            <visningskategori>Pensjon</visningskategori>
+            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
+            <kategori>PensjonEllerTrygd</kategori>
+            <etterbetalingstypeISL>ufore</etterbetalingstypeISL>
+            <minstefradrag>minstefradragIInntekt</minstefradrag>
+            <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+            <fordel>kontantytelse</fordel>
+            <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+        </kodetillegg>
+    </kode>
+    <kode>
         <tekniskNavn>SVALBARD</tekniskNavn>
+        <beskrivelse>
+            <spraakTekst>
+                <tekst>Lønn Svalbard</tekst>
+                <spraak>no</spraak>
+            </spraakTekst>
+        </beskrivelse>
+        <visningsnavn>
+            <spraakTekst>
+                <tekst>Lønn Svalbard</tekst>
+                <spraak>nb_NO</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Lønn Svalbard</tekst>
+                <spraak>nn_NO</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Salary Svalbard</tekst>
+                <spraak>en_GB</spraak>
+            </spraakTekst>
+            <spraakTekst>
+                <tekst>Bálká Svalbárda </tekst>
+                <spraak>se_NO</spraak>
+            </spraakTekst>
+        </visningsnavn>
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
@@ -4211,6 +4274,7 @@
             <beskrivelseIAMelding>uregelmessigeTilleggKnyttetTilIkkeArbeidetTid</beskrivelseIAMelding>
             <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>kontantytelse</fordel>
         </kodetillegg>
     </kode>

@@ -7,21 +7,22 @@ description: "Informasjonsmodeller og kodeverk"
 # Generelt
 Skattemeldingen og næringsopplysninger skal leveres som XML-filer. Innhold og format på XML-filene er spesifisert gjennom XML Schema Definition, XSD. 
 
-For inntektsåret 2020 som kun støtter lønnstakere, pensjonister og enkeltpersonsforetak er det 2 XSD-er som er aktuelle:
+For inntektsåret 2021 er det 3 XSD-er som er aktuelle:
 
-- skattemelding for personlige skattepliktige
-- næringsopplysninger
+- skattemelding for formues- og inntektsskatt for personlige skattepliktige
+- skattemelding for formues- og inntektsskatt for upersonlige skattepliktige
+- næringsspesifikasjon
 
 I tillegg kan det bli aktuelt å legge ved en metadatafil med teknisk innhold.
 
-For inntektsårene etter 2020 vil det også komme andre varianter av skattemeldinger for å støtte ulike selskapsformer slik at totalsamlingen relevante skattemeldinger blir:
+For inntektsårene etter 2021 vil det også komme andre varianter av skattemeldinger for å støtte ulike selskapsformer slik at totalsamlingen relevante skattemeldinger blir:
 
 ![Skattemeldingsvarianter.PNG](Skattemeldingsvarianter.PNG)
 
-I utgangspunktet er planen at XSD for næringsopplysninger etterhvert skal inneholde alle de forholdene som er aktuelle å innrapportere fra næringsdrivende og selskap. Det kan imidlertid bli aktuelt at det legges til noen tilleggs-XSD-er for helt spesielle forhold.
+I utgangspunktet er planen at XSD for næringsspesifikasjon etterhvert skal inneholde alle de forholdene som er aktuelle å innrapportere fra næringsdrivende og selskap. Det kan imidlertid bli aktuelt at det legges til noen tilleggs-XSD-er for helt spesielle forhold.
 
 # Årsrevisjon
-XSD-spesifikasjonene vil gjennomgå en årlig revisjon slik at det normalt kommer en ny versjon av disse per inntektsår. Skatteetaten har valgt å ikke ha inntektsåret i filnavnet, men derimot ha et løpende versjonsnummer som er basert på "semantisk versjonering". Dette vil tre i kraft etter første produsjonsversjon (altså ikke aktuelt å innføre i testperioden i 2020).
+XSD-spesifikasjonene vil gjennomgå en årlig revisjon slik at det normalt kommer en ny versjon av disse per inntektsår. Skatteetaten har valgt å ikke ha inntektsåret i filnavnet, men derimot ha et løpende versjonsnummer som er basert på "semantisk versjonering". 
 
 ## Semantic Versioning:
 
@@ -33,33 +34,24 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 
 Innenfor et inntektsår kan det forutsettes av det kun kommer MINOR- og PATCH-versjoner.
 
-# XSD Skattemelding for personlige skattepliktige for 2020
-Versjon  8.0.0 av denne XSD'en ligger vedlagt og heter [skattemelding_v8.xsd](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/xsd/skattemelding_v8.xsd)
+# XSD Skattemelding for formues- og inntektsskatt for personlige skattepliktige for 2021
+Versjon  9.0.0 av denne XSD'en heter [skattemelding_v9_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemelding_v9_ekstern.xsd) og [skattemelding_v9_kompakt_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemelding_v9_kompakt_ekstern.xsd)
 
-Denne spesifikasjonen har både noen mangler og noen elementer som skal fjernes:
-
-Versjon 8.0.0 er foreløpig en utviklingsversjon av skattemeldingen for personlige skattepliktige slik den implementeres i ny skattemelding for personlige skattepliktige for inntektsåret 2020.  
-Temaet "Næring" ligger som et tema parallelt med "Arbeid, trygd og pensjon" etc. i skattemeldingen for inntektsåret 2020. Informasjonen i dette temaet vil blant annet inneholde beløp avledet fra de tilhørende næringsopplysningene. Dette vil løses etter samme hovedmønster som eksisterende løsning mellom næringsoppgavene og de næringsspesifikke feltene i skattemeldingen RF-1030, men de vil realiseres i underliggende grupperingen ekvivalent med grupperinger innenfor de andre temaene. 
-Siste versjon har fjernet interne konstruksjoner som ikke vil være relevant i en innsendingskontekst. Dette gjelder eksempelvis typen "Endringsmetadata" som tidligere har blitt delt. 
-XSD'en kommer ny og oppdatert versjon i senere versjoner av spesifikasjon/implementasjonsguide.
-
-# XSD Næringsopplysninger for 2020
-Versjon 1.0.0 av denne XSD'en ligger vedlagt og heter [naeringsopplysninger_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/xsd/naeringsopplysninger_v1.xsd)
-
-Eksempel på innsendt XML fil fra et enkeltpersonforetak ligger vedlagt og heter [Naeringsopplysninger-ENK-Eksempel.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/Naeringsingopplysninger-ENK-Eksempel.xml) 
-
-Grafisk fremstilling ligger vedlagt og heter [Naeringsopplysninger-UML-modell.pdf](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/Naeringsopplysninger-UML-modell.pdf)
-
-'Mapping' mellom informasjonselementer i XSD'en og postnummer/OR-id i eksisterende RF-skjemaer ligger vedlagt og heter [Mapping-Xpath-Skjema-Orid.xlsx](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/Mapping-Xpath-Skjema-Orid.xlsx)
+# XSD Næringsspesifikasjon for 2021
+Versjon 2.0.0 av denne XSD'en heter [naeringsspesifikasjon_v2_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/naeringsspesifikasjon_v2_ekstern.xsd) og [naeringsspesifikasjon_v2_kompakt_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/naeringsspesifikasjon_v2_kompakt_ekstern.xsd)
 
 I Resultatregnskap og Balanse benyttes kodelister til å spesifisere hvilke konti som kan benyttes.  I tillegg til kontonummer inneholder kodelistene regnskapspliktstype (1 = Ikke årsregnskapspliktig, 2 = Årsregnskapspliktig, 5 = Begrenset regnskapsplikt.  Tilsvarer dagens næringsoppgave 1, 2 og 5).  Dette for å indikere hvilke konti som er relevante for det enkelte foretaket.  Noen konti er for eksempel kun relevante for foretak med årsregnskapsplikt.
 Det er en kodeliste pr. kontoklasse/gruppe (Resultatregnskap: Salgsinntekt, AnnenDriftsinntekt, Varekostnad, Lønnskostnad, AnnenDriftskostnad, Finansinntekt, Finanskostnad, EkstraordinærPost, Skattekostnad.  Balanse: Anleggsmidler, Omløpsmidler, Langsiktiggjeld, Kortsiktiggjeld og Egenkaptial).
+Alle kodelistene er samlet i en fysisk fil hvor den enkelte kodeliste kalles "underkodeliste". 
 
-Alle kodelistene er samlet i en fysisk fil hvor den enkelte kodeliste kalles "underkodeliste". Kodelistefiler i XML format til bruk  i utvikling ligger vedlagt og heter [2020_resultatregnskapOgBalanse.xml](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/kodeliste/2020_resultatregnskapOgBalanse.xml) og [2020_midlertidigOgPermanentForskjellstype.xml](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/kodeliste/2020_midlertidigOgPermanentForskjellstype.xml).
+# XSD Skattemelding for formues- og inntektsskatt for upersonlige skattepliktige for 2021
+Versjon 2.0.0 av denne XSD'en heter [skattemeldingUpersonlig_v1_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingUpersonlig_v1_ekstern.xsd) og [skattemeldingUpersonlig_v1_kompakt_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingUpersonlig_v1_kompakt_ekstern.xsd)
 
-Fra og med inntektsåret 2021 vil et utvalg av fastsatte verdier fra tidligere års fastsetting være tilgjengelig i næringsopplysninger og kan benyttes som inngående verdier i neste års næringsopplysninger. Denne funksjonaliteten har også blitt kalt "UB-master" fordi den presenterer Skatteetatens syn på hva som er gjeldene utgående verdi fra i fjor som igjen skal innrapporteres som inngående verdi i gjeldende år.
+Eksempel på innsendt XML finnes her: [eksempler](https://github.com/Skatteetaten/skattemeldingen/tree/master/src/resources/eksempler/v2) 
 
-XSD'en kommer ny og oppdatert versjon i senere versjoner av spesifikasjon/implementasjonsguide.
+Grafisk fremstilling ligger finnes her: [UML](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/informasjonsmodell)
+
+En tekstlig beskrivelse av overgangen mellom informasjonselementer i XSD'en og postnummer/OR-id i eksisterende RF-skjemaer finnes her: [veiledning_fraRFSkjemaTilNæringsspesifikasjon_2021](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/informasjonsmodell/veiledning_fraRFSkjemaTilN%C3%A6ringsspesifikasjon_2021.xlsx)
 
 # XSD Respons fra validering
 Valideringstjenesten vil returnere en respons som beskriver avvik og feil. Et eksempel på en slik respons er vist i kapittelet om Valideringstjenesten, og XSD for denne tjenesten er beskrevet i seksjonen for [API](https://skatteetaten.github.io/skattemeldingen/documentation/api).
@@ -68,5 +60,4 @@ Valideringstjenesten vil returnere en respons som beskriver avvik og feil. Et ek
 Etter innsending av skattemelding/næringsopplysninger vil skatteetaten kvittere med en tilbakemeldingsfil i Innboksen i Altinn som inneholder status og eventuelle avvik. 
 
 # Kodelister
-
-En oversikt over kodelistene som er definert så langt finnes i [Oversikten over kodelister](https://github.com/Skatteetaten/skattemeldingen/tree/master/docs/documentation/informasjonsmodell/kodeliste)
+En oversikt over kodelistene som er definert så langt finnes i [Oversikten over kodelister](https://github.com/Skatteetaten/skattemeldingen/tree/master/src/resources/kodeliste)
