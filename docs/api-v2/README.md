@@ -1045,8 +1045,12 @@ Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved kall ti
 
 Merk at partyId kan også fås ved å opprette instans basert på fødselsnummer. For detaljer se neste avsnitt.
 
-## Opprett en instans i Altinn (Alternativ 1)
-**Merk:** Alternativ 1 er foretrukket, og innebærer å sende med inntektsaar i payloaden. Dette gjør "Oppdater skjema-metadata til instansen" overflødig. 
+## Opprett en instans i Altinn
+
+Det er to måter å opprette en instans i Altinn på.
+Alternativ 1 er foretrukket, og innebærer å sende med inntektsaar i payloaden. Dette gjør "Oppdater skjema-metadata til instansen" overflødig.
+
+### Opprett en instans i Altinn (Alternativ 1)
 
 For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen være `formueinntekt-skattemelding-v2`
 
@@ -1074,7 +1078,7 @@ https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#
 <br />
 
 
-## Opprett en instans i Altinn (Alternativ 2)
+### Opprett en instans i Altinn (Alternativ 2)
 For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen være `formueinntekt-skattemelding-v2`
 
 
@@ -1098,7 +1102,7 @@ https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#
 **Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere til å hente/oppdatere instansen.
 <br />
 
-## Oppdater skjema-metadata til instansen (Kun hvis alternativ 2 benyttes ved opprettelse av instans)
+### Oppdater skjema-metadata til instansen (Kun hvis alternativ 2 benyttes ved opprettelse av instans)
 
 _Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten, som beskrevet i 
 api-v1-pilot/index.md._
