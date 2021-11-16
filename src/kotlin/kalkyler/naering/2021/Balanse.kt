@@ -77,7 +77,7 @@ internal object Balanse : HarKalkyletre {
                 ), it.utgaaendeVerdi.filterFelt(derVerdiErMindreEnn(0))
             )
         } forVerdi {
-            it.utgaaendeVerdi * -1  //TODO: hvorfor fungerer ikke abs her
+            it.utgaaendeVerdi * -1
         } verdiSom NyForekomst(
             forekomststTypeSpesifikasjon = kapital,
             idVerdi = kode_2095.kode,
