@@ -1046,11 +1046,14 @@ Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved kall ti
 Merk at partyId kan også fås ved å opprette instans basert på fødselsnummer. For detaljer se neste avsnitt.
 
 ## Opprett en instans i Altinn (Alternativ 1)
+**Merk:** Alternativ 1 er foretrukket, og innebærer å sende med inntektsaar i payloaden. Dette gjør "Oppdater skjema-metadata til instansen" overflødig. 
+
 For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen være `formueinntekt-skattemelding-v2`
 
+Beskrivelse: `inntektsaar: Inntektsår skattemeldingen gjelder for`
 
 Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige respons og bruk det i body under. 
-**Alternativ 1 krever at inntektsår inngår i payloaden.** 
+
 
 **Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
 
