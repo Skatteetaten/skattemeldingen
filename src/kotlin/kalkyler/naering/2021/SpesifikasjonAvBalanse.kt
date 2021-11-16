@@ -15,7 +15,7 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
     val nedreGrenseForAvskrivningForForretningsbygg =
         itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel filter {
             it.saldogruppe.filterFelt(
-                Specifications.derVerdiErLik(Saldogruppe.i)
+                Specifications.derVerdiErLik(saldogruppe_2021.kode_i.kode)
             )
         } forVerdier listOf { it ->
             der(saldoavskrevetAnleggsmiddel, {
@@ -28,11 +28,11 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
         itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel filter {
             it.saldogruppe.filterFelt(
                 Specifications.harEnAvVerdiene(
-                    Saldogruppe.e,
-                    Saldogruppe.f,
-                    Saldogruppe.g,
-                    Saldogruppe.h,
-                    Saldogruppe.i
+                    saldogruppe_2021.kode_e.kode,
+                    saldogruppe_2021.kode_f.kode,
+                    saldogruppe_2021.kode_g.kode,
+                    saldogruppe_2021.kode_h.kode,
+                    saldogruppe_2021.kode_i.kode
                 )
             )
         } forVerdi {
@@ -53,11 +53,11 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
         og(
             it.saldogruppe.filterFelt(
                 Specifications.harEnAvVerdiene(
-                    Saldogruppe.e,
-                    Saldogruppe.f,
-                    Saldogruppe.g,
-                    Saldogruppe.h,
-                    Saldogruppe.i
+                    saldogruppe_2021.kode_e.kode,
+                    saldogruppe_2021.kode_f.kode,
+                    saldogruppe_2021.kode_g.kode,
+                    saldogruppe_2021.kode_h.kode,
+                    saldogruppe_2021.kode_i.kode
                 )
             ),
             it.nedreGrenseForAvskrivning.filterFelt(
@@ -79,13 +79,14 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
             og(
                 it.saldogruppe.filterFelt(
                     Specifications.harEnAvVerdiene(
-                        Saldogruppe.i
+                        saldogruppe_2021.kode_i.kode
                     )
                 ),
                 Specifications.binaryFeltSpec(
                     it.grunnlagForAvskrivningOgInntektsfoering,
                     it.nedreGrenseForAvskrivning
-                ) { grunnlagForAvskrivningOgInntektsfoering, nedreGrenseForAvskrivning
+                ) {
+                        grunnlagForAvskrivningOgInntektsfoering, nedreGrenseForAvskrivning,
                     ->
                     grunnlagForAvskrivningOgInntektsfoering > nedreGrenseForAvskrivning
                 }
@@ -102,10 +103,10 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
         itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel filter {
             it.saldogruppe.filterFelt(
                 Specifications.harEnAvVerdiene(
-                    Saldogruppe.e,
-                    Saldogruppe.f,
-                    Saldogruppe.g,
-                    Saldogruppe.h,
+                    saldogruppe_2021.kode_e.kode,
+                    saldogruppe_2021.kode_f.kode,
+                    saldogruppe_2021.kode_g.kode,
+                    saldogruppe_2021.kode_h.kode,
                 )
             )
         } forVerdi {
@@ -119,7 +120,7 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
             og(
                 it.saldogruppe.filterFelt(
                     Specifications.harEnAvVerdiene(
-                        Saldogruppe.i
+                        saldogruppe_2021.kode_i.kode
                     )
                 ),
 
@@ -142,7 +143,7 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
         og(
             it.saldogruppe.filterFelt(
                 Specifications.harEnAvVerdiene(
-                    Saldogruppe.i
+                    saldogruppe_2021.kode_i.kode
                 )
             ),
             it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
@@ -197,7 +198,7 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
             og(
                 it.saldogruppe.filterFelt(
                     Specifications.harEnAvVerdiene(
-                        Saldogruppe.i
+                        saldogruppe_2021.kode_i.kode
                     )
                 ),
             )
@@ -213,17 +214,17 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
         saldoAvskrevetForekomster filter {
             it.saldogruppe.filterFelt(
                 Specifications.harEnAvVerdiene(
-                    Saldogruppe.a,
-                    Saldogruppe.c,
-                    Saldogruppe.c2,
-                    Saldogruppe.j
+                    saldogruppe_2021.kode_a.kode,
+                    saldogruppe_2021.kode_c.kode,
+                    saldogruppe_2021.kode_c2.kode,
+                    saldogruppe_2021.kode_j.kode
                 )
             )
         }
     private val forekomsterSaldogruppeB: SammensattUttrykk<saldoavskrevetAnleggsmiddel> =
-        saldoAvskrevetForekomster filter { it.saldogruppe.filterFelt(Specifications.derVerdiErLik(Saldogruppe.b)) }
+        saldoAvskrevetForekomster filter { it.saldogruppe.filterFelt(Specifications.derVerdiErLik(saldogruppe_2021.kode_b.kode)) }
     private val forekomsterSaldogruppeD: SammensattUttrykk<saldoavskrevetAnleggsmiddel> =
-        saldoAvskrevetForekomster filter { it.saldogruppe.filterFelt(Specifications.derVerdiErLik(Saldogruppe.d)) }
+        saldoAvskrevetForekomster filter { it.saldogruppe.filterFelt(Specifications.derVerdiErLik(saldogruppe_2021.kode_d.kode)) }
 
     private val grunnlagForAvskrivningOgInntektsfoeringSaldogruppeAogC: SammensattUttrykk<saldoavskrevetAnleggsmiddel> =
         forekomsterSaldogruppeAogCogJ forVerdi {
