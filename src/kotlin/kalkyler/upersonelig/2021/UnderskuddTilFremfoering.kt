@@ -15,162 +15,162 @@ object UnderskuddTilFremfoering : HarKalkyletre, PostProsessering {
     internal val samletUnderSkuddEllerSamletInntektKalkyle =
         itererForekomster forekomsterAv inntektOgUnderskudd forVerdi {
             it.naeringsinntekt -
-                it.underskudd +
-                it.mottattKonsernbidrag -
-                it.aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar -
-                it.yttKonsernbidrag somFelt hjelpeBeregninger.samletUnderSkuddEllerSamletInntekt
+                    it.underskudd +
+                    it.mottattKonsernbidrag -
+                    it.aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar -
+                    it.yttKonsernbidrag somFelt samletUnderSkuddEllerSamletInntekt
         }
 
     internal val resultatAvSamletUnderSkuddEllerSamletInntektKalkyle =
         itererForekomster forekomsterAv inntektOgUnderskudd forVerdier
-            listOf(
-                {
-                    der(
-                        inntektOgUnderskudd,
-                        { hjelpeBeregninger.samletUnderSkuddEllerSamletInntekt somFelt inntektOgUnderskudd.samletInntekt.abs() },
-                        hjelpeBeregninger.samletUnderSkuddEllerSamletInntekt.filterFelt(
-                            Specifications.derVerdiErStoerreEnnEllerLik(0))
-                    )
-                },
-                {
-                    der(
-                        inntektOgUnderskudd,
-                        { hjelpeBeregninger.samletUnderSkuddEllerSamletInntekt somFelt inntektOgUnderskudd.samletUnderskudd.abs() },
-                        hjelpeBeregninger.samletUnderSkuddEllerSamletInntekt.filterFelt(
-                            Specifications.derVerdiErMindreEnn(0))
-                    )
+                listOf(
+                    {
+                        der(
+                            inntektOgUnderskudd,
+                            { samletUnderSkuddEllerSamletInntekt somFelt inntektOgUnderskudd.samletInntekt.abs() },
+                            samletUnderSkuddEllerSamletInntekt.filterFelt(
+                                Specifications.derVerdiErStoerreEnnEllerLik(0))
+                        )
+                    },
+                    {
+                        der(
+                            inntektOgUnderskudd,
+                            { samletUnderSkuddEllerSamletInntekt somFelt inntektOgUnderskudd.samletUnderskudd.abs() },
+                            samletUnderSkuddEllerSamletInntekt.filterFelt(
+                                Specifications.derVerdiErMindreEnn(0))
+                        )
 
-                }
-            )
+                    }
+                )
 
     internal val underhaandsakkordMotregnetFremfoertUnderskuddKalkyle =
         itererForekomster forekomsterAv inntektOgUnderskudd forVerdier
-            listOf(
-                {
-                    der(
-                        inntektOgUnderskudd,
-                        { it.fremfoertUnderskuddFraTidligereAar somFelt hjelpeBeregninger.underhaandsakkordMotregnetFremfoertUnderskudd },
-                        Specifications.binaryFeltSpec(
-                            it.oppnaaddUnderhaandsakkordOgGjeldsettergivelse,
-                            it.fremfoertUnderskuddFraTidligereAar)
-                        { oppnadd, fremfoert ->
-                            oppnadd >= fremfoert
-                        }
-                    )
-                },
-                {
-                    der(
-                        inntektOgUnderskudd,
-                        { it.oppnaaddUnderhaandsakkordOgGjeldsettergivelse somFelt hjelpeBeregninger.underhaandsakkordMotregnetFremfoertUnderskudd },
-                        Specifications.binaryFeltSpec(
-                            it.oppnaaddUnderhaandsakkordOgGjeldsettergivelse,
-                            it.fremfoertUnderskuddFraTidligereAar)
-                        { oppnadd, fremfoert ->
-                            oppnadd < fremfoert
-                        }
-                    )
+                listOf(
+                    {
+                        der(
+                            inntektOgUnderskudd,
+                            { it.fremfoertUnderskuddFraTidligereAar somFelt underhaandsakkordMotregnetFremfoertUnderskudd },
+                            Specifications.binaryFeltSpec(
+                                it.oppnaaddUnderhaandsakkordOgGjeldsettergivelse,
+                                it.fremfoertUnderskuddFraTidligereAar)
+                            { oppnadd, fremfoert ->
+                                oppnadd >= fremfoert
+                            }
+                        )
+                    },
+                    {
+                        der(
+                            inntektOgUnderskudd,
+                            { it.oppnaaddUnderhaandsakkordOgGjeldsettergivelse somFelt underhaandsakkordMotregnetFremfoertUnderskudd },
+                            Specifications.binaryFeltSpec(
+                                it.oppnaaddUnderhaandsakkordOgGjeldsettergivelse,
+                                it.fremfoertUnderskuddFraTidligereAar)
+                            { oppnadd, fremfoert ->
+                                oppnadd < fremfoert
+                            }
+                        )
 
-                }
-            )
+                    }
+                )
 
     internal val restOppnaaddUnderhaandsakkordOgGjeldsettergivelseKalkyle =
         itererForekomster forekomsterAv inntektOgUnderskudd forVerdi {
             it.oppnaaddUnderhaandsakkordOgGjeldsettergivelse -
-                hjelpeBeregninger.underhaandsakkordMotregnetFremfoertUnderskudd somFelt inntektOgUnderskudd.restOppnaaddUnderhaandsakkordOgGjeldsettergivelse
+                    underhaandsakkordMotregnetFremfoertUnderskudd somFelt inntektOgUnderskudd.restOppnaaddUnderhaandsakkordOgGjeldsettergivelse
         }
 
     internal val restFremfoertUnderskuddKalkyle =
         itererForekomster forekomsterAv inntektOgUnderskudd forVerdi {
             it.fremfoertUnderskuddFraTidligereAar -
-                hjelpeBeregninger.underhaandsakkordMotregnetFremfoertUnderskudd somFelt hjelpeBeregninger.restFremfoertUnderskudd
+                    underhaandsakkordMotregnetFremfoertUnderskudd somFelt restFremfoertUnderskudd
         }
 
     internal val inntektFoerAnvendelseAvUnderskuddKalkyle =
         itererForekomster forekomsterAv inntektOgUnderskudd forVerdi {
             it.naeringsinntekt -
-                it.underskudd +
-                it.mottattKonsernbidrag somFelt hjelpeBeregninger.inntektFoerAnvendelseAvUnderskudd
+                    it.underskudd +
+                    it.mottattKonsernbidrag somFelt inntektFoerAnvendelseAvUnderskudd
         }
 
     internal val aaretsAnvendelseAvFremfoertIUnderskuddFraTidligereAar =
         itererForekomster forekomsterAv inntektOgUnderskudd forVerdier
-            listOf(
-                {
-                    der(
-                        inntektOgUnderskudd,
-                        { hjelpeBeregninger.restFremfoertUnderskudd somFelt inntektOgUnderskudd.aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar },
-                        Specifications.binaryFeltSpec(
-                            hjelpeBeregninger.inntektFoerAnvendelseAvUnderskudd,
-                            hjelpeBeregninger.restFremfoertUnderskudd)
-                        { inntektFoerAnvendelseAvUnderskudd, restFremfoertUnderskudd ->
-                            inntektFoerAnvendelseAvUnderskudd >= restFremfoertUnderskudd &&
-                                inntektFoerAnvendelseAvUnderskudd > BigDecimal(0)
-                        }
-                    )
-                },
-                {
-                    der(
-                        inntektOgUnderskudd,
-                        { hjelpeBeregninger.inntektFoerAnvendelseAvUnderskudd somFelt inntektOgUnderskudd.aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar },
-                        Specifications.binaryFeltSpec(
-                            hjelpeBeregninger.inntektFoerAnvendelseAvUnderskudd,
-                            hjelpeBeregninger.restFremfoertUnderskudd)
-                        { inntektFoerAnvendelseAvUnderskudd, restFremfoertUnderskudd ->
-                            inntektFoerAnvendelseAvUnderskudd < restFremfoertUnderskudd &&
-                                inntektFoerAnvendelseAvUnderskudd > BigDecimal(0)
-                        }
-                    )
+                listOf(
+                    {
+                        der(
+                            inntektOgUnderskudd,
+                            { restFremfoertUnderskudd somFelt inntektOgUnderskudd.aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar },
+                            Specifications.binaryFeltSpec(
+                                inntektFoerAnvendelseAvUnderskudd,
+                                restFremfoertUnderskudd)
+                            { inntektFoerAnvendelseAvUnderskudd, restFremfoertUnderskudd ->
+                                inntektFoerAnvendelseAvUnderskudd >= restFremfoertUnderskudd &&
+                                        inntektFoerAnvendelseAvUnderskudd > BigDecimal(0)
+                            }
+                        )
+                    },
+                    {
+                        der(
+                            inntektOgUnderskudd,
+                            { inntektFoerAnvendelseAvUnderskudd somFelt inntektOgUnderskudd.aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar },
+                            Specifications.binaryFeltSpec(
+                                inntektFoerAnvendelseAvUnderskudd,
+                                restFremfoertUnderskudd)
+                            { inntektFoerAnvendelseAvUnderskudd, restFremfoertUnderskudd ->
+                                inntektFoerAnvendelseAvUnderskudd < restFremfoertUnderskudd &&
+                                        inntektFoerAnvendelseAvUnderskudd > BigDecimal(0)
+                            }
+                        )
 
-                }
-            )
+                    }
+                )
 
     internal val restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskuddKalkyle =
         itererForekomster forekomsterAv inntektOgUnderskudd forVerdier
-            listOf(
-                {
-                    der(
-                        inntektOgUnderskudd,
-                        { inntektOgUnderskudd.samletUnderskudd somFelt hjelpeBeregninger.restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd },
-                        Specifications.binaryFeltSpec(
-                            inntektOgUnderskudd.restOppnaaddUnderhaandsakkordOgGjeldsettergivelse,
-                            inntektOgUnderskudd.samletUnderskudd)
-                        { restOppnaaddUnderhaandsakkordOgGjeldsettergivelse, samletUnderskudd ->
-                            restOppnaaddUnderhaandsakkordOgGjeldsettergivelse >= samletUnderskudd
-                        }
-                    )
-                },
-                {
-                    der(
-                        inntektOgUnderskudd,
-                        { inntektOgUnderskudd.restOppnaaddUnderhaandsakkordOgGjeldsettergivelse somFelt hjelpeBeregninger.restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd },
-                        Specifications.binaryFeltSpec(
-                            inntektOgUnderskudd.restOppnaaddUnderhaandsakkordOgGjeldsettergivelse,
-                            inntektOgUnderskudd.samletUnderskudd)
-                        { restOppnaaddUnderhaandsakkordOgGjeldsettergivelse, samletUnderskudd ->
-                            restOppnaaddUnderhaandsakkordOgGjeldsettergivelse < samletUnderskudd
-                        }
-                    )
+                listOf(
+                    {
+                        der(
+                            inntektOgUnderskudd,
+                            { inntektOgUnderskudd.samletUnderskudd somFelt restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd },
+                            Specifications.binaryFeltSpec(
+                                inntektOgUnderskudd.restOppnaaddUnderhaandsakkordOgGjeldsettergivelse,
+                                inntektOgUnderskudd.samletUnderskudd)
+                            { restOppnaaddUnderhaandsakkordOgGjeldsettergivelse, samletUnderskudd ->
+                                restOppnaaddUnderhaandsakkordOgGjeldsettergivelse >= samletUnderskudd
+                            }
+                        )
+                    },
+                    {
+                        der(
+                            inntektOgUnderskudd,
+                            { inntektOgUnderskudd.restOppnaaddUnderhaandsakkordOgGjeldsettergivelse somFelt restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd },
+                            Specifications.binaryFeltSpec(
+                                inntektOgUnderskudd.restOppnaaddUnderhaandsakkordOgGjeldsettergivelse,
+                                inntektOgUnderskudd.samletUnderskudd)
+                            { restOppnaaddUnderhaandsakkordOgGjeldsettergivelse, samletUnderskudd ->
+                                restOppnaaddUnderhaandsakkordOgGjeldsettergivelse < samletUnderskudd
+                            }
+                        )
 
-                }
-            )
+                    }
+                )
 
     internal val fremfoerbartUnderskuddIInntektFoerKorreksjonSomFoelgeAvSkattefradragPaaUnderskuddKalkyle =
         itererForekomster forekomsterAv inntektOgUnderskudd forVerdi {
-            hjelpeBeregninger.restFremfoertUnderskudd -
-                it.aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
-                it.samletUnderskudd -
-                hjelpeBeregninger.restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd somFelt
-                it.fremfoerbartUnderskuddIInntektFoerKorreksjonSomFoelgeAvSkattefradragPaaUnderskudd
+            restFremfoertUnderskudd -
+                    it.aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
+                    it.samletUnderskudd -
+                    restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd somFelt
+                    it.fremfoerbartUnderskuddIInntektFoerKorreksjonSomFoelgeAvSkattefradragPaaUnderskudd
         }
 
     internal val kalkyletreUtenPostProsessering = Kalkyletre(
-        samletUnderSkuddEllerSamletInntektKalkyle,
-        resultatAvSamletUnderSkuddEllerSamletInntektKalkyle,
         underhaandsakkordMotregnetFremfoertUnderskuddKalkyle,
-        restOppnaaddUnderhaandsakkordOgGjeldsettergivelseKalkyle,
         restFremfoertUnderskuddKalkyle,
         inntektFoerAnvendelseAvUnderskuddKalkyle,
         aaretsAnvendelseAvFremfoertIUnderskuddFraTidligereAar,
+        samletUnderSkuddEllerSamletInntektKalkyle,
+        resultatAvSamletUnderSkuddEllerSamletInntektKalkyle,
+        restOppnaaddUnderhaandsakkordOgGjeldsettergivelseKalkyle,
         restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskuddKalkyle,
         fremfoerbartUnderskuddIInntektFoerKorreksjonSomFoelgeAvSkattefradragPaaUnderskuddKalkyle
     )
@@ -187,10 +187,10 @@ object UnderskuddTilFremfoering : HarKalkyletre, PostProsessering {
     override fun postprosessering(generiskModell: GeneriskModell): GeneriskModell {
         return generiskModell.filter {
             !(it.key == underhaandsakkordMotregnetFremfoertUnderskudd.key
-                || it.key == restFremfoertUnderskudd.key
-                || it.key == inntektFoerAnvendelseAvUnderskudd.key
-                || it.key == restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd.key
-                || it.key == samletUnderSkuddEllerSamletInntekt.key)
+                    || it.key == restFremfoertUnderskudd.key
+                    || it.key == inntektFoerAnvendelseAvUnderskudd.key
+                    || it.key == restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd.key
+                    || it.key == samletUnderSkuddEllerSamletInntekt.key)
         }
     }
 }
