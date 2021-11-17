@@ -1128,7 +1128,6 @@ Plukk ut _id_ og _data.id_ fra forrige responsen og bruk de på slutten av url-e
 <br />
 
 ## Last opp vedlegg (ved behov)
-### Dette er ikke helt klart. XSD og API endringer kommer for vedlegg i løpet av  høsten 2021
 
 Opplasting av vedlegg utføres etter instansopprettelse og før innsending av skattemeldingdata. 
 
