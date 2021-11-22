@@ -68,16 +68,16 @@ internal object Balanse : HarKalkyletre {
             Specifications.og(
                 it.saldogruppe.filterFelt(
                     Specifications.harEnAvVerdiene(
-                        Saldogruppe.a,
-                        Saldogruppe.c,
-                        Saldogruppe.c2,
-                        Saldogruppe.d,
-                        Saldogruppe.j
+                        kode_a.kode,
+                        kode_c.kode,
+                        kode_c2.kode,
+                        kode_d.kode,
+                        kode_j.kode
                     )
                 ), it.utgaaendeVerdi.filterFelt(derVerdiErMindreEnn(0))
             )
         } forVerdi {
-            it.utgaaendeVerdi * -1  //TODO: hvorfor fungerer ikke abs her
+            it.utgaaendeVerdi * -1
         } verdiSom NyForekomst(
             forekomststTypeSpesifikasjon = kapital,
             idVerdi = kode_2095.kode,
@@ -112,29 +112,29 @@ internal object Balanse : HarKalkyletre {
         )
     }
 
-    internal val goodWill = lagBalanseForekomst(Saldogruppe.b, kode_1080, Specifications.allwaysTrue())
+    internal val goodWill = lagBalanseForekomst(kode_b.kode, kode_1080, Specifications.allwaysTrue())
 
-    internal val forretningsBygg = lagBalanseForekomst(Saldogruppe.i, kode_1105, Specifications.allwaysTrue())
+    internal val forretningsBygg = lagBalanseForekomst(kode_i.kode, kode_1105, Specifications.allwaysTrue())
 
-    internal val byggAnleggHotell = lagBalanseForekomst(Saldogruppe.h, kode_1115, Specifications.allwaysTrue())
+    internal val byggAnleggHotell = lagBalanseForekomst(kode_h.kode, kode_1115, Specifications.allwaysTrue())
 
     internal val elektrotekniskUtrustningIKraftforetak =
-        lagBalanseForekomst(Saldogruppe.g, kode_1117, Specifications.allwaysTrue())
+        lagBalanseForekomst(kode_g.kode, kode_1117, Specifications.allwaysTrue())
 
     internal val fastTekniskInstallasjonIByggninger =
-        lagBalanseForekomst(Saldogruppe.j, kode_1120, derVerdiErStoerreEnn(0))
+        lagBalanseForekomst(kode_j.kode, kode_1120, derVerdiErStoerreEnn(0))
 
-    internal val personbilerMaskinerInventar = lagBalanseForekomst(Saldogruppe.d, kode_1205, derVerdiErStoerreEnn(0))
+    internal val personbilerMaskinerInventar = lagBalanseForekomst(kode_d.kode, kode_1205, derVerdiErStoerreEnn(0))
 
-    internal val skipRigger = lagBalanseForekomst(Saldogruppe.e, kode_1221, Specifications.allwaysTrue())
+    internal val skipRigger = lagBalanseForekomst(kode_e.kode, kode_1221, Specifications.allwaysTrue())
 
-    internal val flyHelikopter = lagBalanseForekomst(Saldogruppe.f, kode_1225, Specifications.allwaysTrue())
+    internal val flyHelikopter = lagBalanseForekomst(kode_f.kode, kode_1225, Specifications.allwaysTrue())
 
-    internal val vareOgLastebilerBusser = lagBalanseForekomst(Saldogruppe.c, kode_1238, derVerdiErStoerreEnn(0))
+    internal val vareOgLastebilerBusser = lagBalanseForekomst(kode_c.kode, kode_1238, derVerdiErStoerreEnn(0))
 
-    internal val varebilerMedNullutslipp = lagBalanseForekomst(Saldogruppe.c2, kode_1239, derVerdiErStoerreEnn(0))
+    internal val varebilerMedNullutslipp = lagBalanseForekomst(kode_c2.kode, kode_1239, derVerdiErStoerreEnn(0))
 
-    internal val kontormaskiner = lagBalanseForekomst(Saldogruppe.a, kode_1280, derVerdiErStoerreEnn(0))
+    internal val kontormaskiner = lagBalanseForekomst(kode_a.kode, kode_1280, derVerdiErStoerreEnn(0))
 
     internal val negativGevinstOgTapskonto = lagBalanseForGevinstOgTapskonto(kode_1296, derVerdiErMindreEnn(0))
 

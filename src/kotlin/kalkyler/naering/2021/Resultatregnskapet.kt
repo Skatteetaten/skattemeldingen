@@ -17,7 +17,7 @@ internal object Resultatregnskapet : HarKalkyletre {
     val sumDriftsinntekterKalkyle: Kalkyle =
         (salgsinntekterKalkyle + annenDriftsinntektKalkyle) verdiSom sumDriftsinntekt
 
-    private val aaretsAvskrivningForSaldoavskrevetAnleggsmiddel = summer gitt ForekomstOgVerdi(virksomhet, {
+    internal val aaretsAvskrivningForSaldoavskrevetAnleggsmiddel = summer gitt ForekomstOgVerdi(virksomhet, {
         it.regnskapspliktstype.filterFelt(
             Specifications.harEnAvVerdiene(
                 Regnskapspliktstype.type_1,
@@ -26,7 +26,7 @@ internal object Resultatregnskapet : HarKalkyletre {
         )
     }) forekomsterAv saldoavskrevetAnleggsmiddel forVerdi { it.aaretsAvskrivning }
 
-    private val aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel = summer gitt ForekomstOgVerdi(virksomhet, {
+    internal val aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel = summer gitt ForekomstOgVerdi(virksomhet, {
         it.regnskapspliktstype.filterFelt(
             Specifications.harEnAvVerdiene(
                 Regnskapspliktstype.type_1,
@@ -35,7 +35,7 @@ internal object Resultatregnskapet : HarKalkyletre {
         )
     }) forekomsterAv lineaertavskrevetAnleggsmiddel forVerdi { it.aaretsAvskrivning }
 
-    val aaretsAvskrivning =
+    internal val aaretsAvskrivning =
         aaretsAvskrivningForSaldoavskrevetAnleggsmiddel + aaretsAvskrivningForLineaertAvskrevetAnleggsmiddel verdiSom NyForekomst(
             annenDriftskostnad.kostnad,
             resultatregnskapOgBalanse_2021.annenDriftskostnad.kode_6000.kode,
@@ -82,9 +82,9 @@ internal object Resultatregnskapet : HarKalkyletre {
 
     internal val aaretsInntektsfoeringAvNegativSaldoKalkyle =
         vederlagVedRealisasjonOgUttakInntektsfoertIAarLinear +
-            vederlagVedRealisasjonOgUttakInntektsfoertIAarIkkeAvskrivbart +
-            vederlagVedRealisasjonOgUttakInntektsfoertIAarSaldo +
-            aaretsInntektsfoeringAvNegativSaldo verdiSom NyForekomst(
+                vederlagVedRealisasjonOgUttakInntektsfoertIAarIkkeAvskrivbart +
+                vederlagVedRealisasjonOgUttakInntektsfoertIAarSaldo +
+                aaretsInntektsfoeringAvNegativSaldo verdiSom NyForekomst(
             forekomststTypeSpesifikasjon = annenDriftsinntekt.inntekt,
             idVerdi = kode_3895.kode,
             feltKoordinat = annenDriftsinntekt.inntekt.beloep,
@@ -96,9 +96,9 @@ internal object Resultatregnskapet : HarKalkyletre {
             }
         )
 
-    private val annenDriftsinntektstypeFradragKalkyle =
+    internal val annenDriftsinntektstypeFradragKalkyle =
         summeringGevinstOgTap forekomsterAv gevinstOgTapskonto filter
-            { it.inntektsfradragFraGevinstOgTapskonto.filterFelt(derVerdiErStoerreEnn(0)) } forVerdi { it.inntektsfradragFraGevinstOgTapskonto } verdiSom NyForekomst(
+                { it.inntektsfradragFraGevinstOgTapskonto.filterFelt(derVerdiErStoerreEnn(0)) } forVerdi { it.inntektsfradragFraGevinstOgTapskonto } verdiSom NyForekomst(
             annenDriftskostnad.kostnad,
             kode_7890.kode,
             annenDriftskostnad.kostnad.beloep,
@@ -109,9 +109,9 @@ internal object Resultatregnskapet : HarKalkyletre {
             }
         )
 
-    private val tilbakefoertKostnadForPrivatBrukAvNaeringsbil =
+    internal val tilbakefoertKostnadForPrivatBrukAvNaeringsbil =
         summer forekomsterAv transportmiddelINaering filter
-            { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil.filterFelt(Specifications.derVerdiErStoerreEnnEllerLik(0)) } forVerdi { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil * -1 } verdiSom NyForekomst(
+                { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil.filterFelt(Specifications.derVerdiErStoerreEnnEllerLik(0)) } forVerdi { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil * -1 } verdiSom NyForekomst(
             annenDriftskostnad.kostnad,
             kode_7099.kode,
             annenDriftskostnad.kostnad.beloep,
@@ -142,10 +142,10 @@ internal object Resultatregnskapet : HarKalkyletre {
 
     val aarsresultatKalkyle =
         (
-            sumDriftsinntekterKalkyle -
-                sumDriftskostnaderKalkyle) +
-            (sumFinansinntektKalkyle - sumFinanskostnadKalkyle) +
-            (sumEkstraordinaerePosterKalkyle + sumSkattekostnadKalkyle) verdiSom aarsresultat
+                sumDriftsinntekterKalkyle -
+                        sumDriftskostnaderKalkyle) +
+                (sumFinansinntektKalkyle - sumFinanskostnadKalkyle) +
+                (sumEkstraordinaerePosterKalkyle + sumSkattekostnadKalkyle) verdiSom aarsresultat
 
     private val tre = Kalkyletre(
         aaretsAvskrivning,
