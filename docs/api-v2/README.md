@@ -1050,6 +1050,39 @@ Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved kall ti
 Merk at partyId kan også fås ved å opprette instans basert på fødselsnummer. For detaljer se neste avsnitt.
 
 ## Opprett en instans i Altinn
+
+Det er to måter å opprette en instans i Altinn på.
+Alternativ 1 er foretrukket, og innebærer å sende med inntektsaar i payloaden. Dette gjør "Oppdater skjema-metadata til instansen" overflødig.
+
+### Opprett en instans i Altinn (Alternativ 1)
+
+For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen være `formueinntekt-skattemelding-v2`
+
+Beskrivelse: `inntektsaar: Inntektsår skattemeldingen gjelder for`
+
+Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige respons og bruk det i body under. 
+
+
+**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
+
+**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
+
+En instans kan også opprettes ved å oppgi fødselsnummer (i stedet for partyId) i payloaden, da vil partyId bli retunert i responsen og kan brukes til å gjøre resterende kall mot Altinn.
+
+**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
+
+**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
+
+Merk at skattemelding for "personlige skattepliktige med næring (ENK)" skal alltid sendes inn på personens fødselsnummer (det kan ikke benyttes orgnummer til ENK).
+
+Les mer om endepunktet på Altinn sine sider:
+https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#create-instance
+
+**Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere til å hente/oppdatere instansen.
+<br />
+
+
+### Opprett en instans i Altinn (Alternativ 2)
 For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen være `formueinntekt-skattemelding-v2`
 
 
@@ -1073,7 +1106,7 @@ https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#
 **Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere til å hente/oppdatere instansen.
 <br />
 
-## Oppdater skjema-metadata til instansen
+### Oppdater skjema-metadata til instansen (Kun hvis alternativ 2 benyttes ved opprettelse av instans)
 
 _Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten, som beskrevet i 
 api-v1-pilot/index.md._
@@ -1099,7 +1132,6 @@ Plukk ut _id_ og _data.id_ fra forrige responsen og bruk de på slutten av url-e
 <br />
 
 ## Last opp vedlegg (ved behov)
-### Dette er ikke helt klart. XSD og API endringer kommer for vedlegg i løpet av  høsten 2021
 
 Opplasting av vedlegg utføres etter instansopprettelse og før innsending av skattemeldingdata. 
 

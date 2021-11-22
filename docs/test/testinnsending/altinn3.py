@@ -42,6 +42,24 @@ def opprett_ny_instans(header: dict, fnr: str, appnavn: str = "skd/sirius-skatte
     r.raise_for_status()
     return r.json()
 
+def opprett_ny_instans_med_inntektsaar(header: dict, fnr: str, inntektsaar: str, appnavn: str = "skd/sirius-skattemelding-v1") -> dict:
+    payload = {
+        "instanceOwner": {
+            "personNumber": fnr
+        },
+        "appOwner": {
+            "labels": ["gr", "x2"]
+        },
+        "appId": appnavn,
+        "dataValues": {"inntektsaar": inntektsaar},
+        "dueBefore": "2020-06-01T12:00:00Z",
+        "visibleAfter": "2019-05-20T00:00:00Z",
+        "title": {"nb": "Skattemelding"}
+    }
+    url = f"{ALTINN_URL}/{appnavn}/instances/"
+    r = requests.post(url, headers=header, json=payload, verify=False)
+    r.raise_for_status()
+    return r.json()
 
 def last_opp_metadata(instans_data: dict, token: dict, xml: str = None, appnavn: str = "skd/sirius-skattemelding-v1") -> None:
     id = instans_data['id']
