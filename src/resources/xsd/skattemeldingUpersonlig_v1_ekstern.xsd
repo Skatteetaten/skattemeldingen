@@ -148,8 +148,7 @@
       <xsd:element minOccurs="0" name="oppnaaddUnderhaandsakkordOgGjeldsettergivelse" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="restOppnaaddUnderhaandsakkordOgGjeldsettergivelse" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektFoerKorreksjonSomFoelgeAvSkattefradragPaaUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
-    </xsd:sequence>
+      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>    </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepSomHeltallMedOverstyring">
     <xsd:sequence>
