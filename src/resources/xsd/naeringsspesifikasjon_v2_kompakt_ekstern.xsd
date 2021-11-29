@@ -111,8 +111,9 @@
   <xsd:complexType name="Virksomhet">
     <xsd:sequence>
       <xsd:element name="regnskapspliktstype" type="RegnskapspliktstypeMedInnkapsling"/>
-      <xsd:element name="selskapstype" type="SelskapstypeMedInnkapsling"/>
       <xsd:element name="regnskapsperiode" type="Periode"/>
+      <xsd:element name="virksomhetsstype" type="VirksomhetstypeMedInnkapsling"/>
+      <xsd:element name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskapMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvOmloepsmiddel">
@@ -411,17 +412,24 @@
 
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="SelskapstypeMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="selskapstype" type="Selskapstype"/>
-
-
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="Periode">
     <xsd:sequence>
       <xsd:element name="start" type="DatoKlokkeslett"/>
       <xsd:element minOccurs="0" name="slutt" type="DatoKlokkeslett"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VirksomhetstypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="virksomhetstype" type="Virksomhetstype"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RegeltypeForAarsregnskapMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskap"/>
+
+
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvSkattemessigVerdiPaaFordring">
@@ -747,7 +755,11 @@
       <xsd:enumeration value="5"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="Selskapstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_selskapstype.xml">
+
+  <xsd:simpleType name="Virksomhetstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_virksomhetstype.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="RegeltypeForAarsregnskap" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_regeltypeForAarsregnskap">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:complexType name="VerditypeMedInnkapsling">
