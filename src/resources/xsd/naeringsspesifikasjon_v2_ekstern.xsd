@@ -117,8 +117,9 @@
   <xsd:complexType name="Virksomhet">
     <xsd:sequence>
       <xsd:element name="regnskapspliktstype" type="RegnskapspliktstypeMedInnkapsling"/>
-      <xsd:element name="selskapstype" type="SelskapstypeMedInnkapsling"/>
       <xsd:element name="regnskapsperiode" type="Periode"/>
+      <xsd:element name="virksomhetsstype" type="VirksomhetstypeMedInnkapsling"/>
+      <xsd:element name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskapMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvOmloepsmiddel">
@@ -424,11 +425,8 @@
   <xsd:complexType name="RegnskapspliktstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="regnskapspliktstype" type="Regnskapspliktstype"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="SelskapstypeMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="selskapstype" type="Selskapstype"/>
+
+
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Periode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52b6d-9fe1-11e5-a9f8-e4115b280940">
@@ -446,6 +444,20 @@
           <xsd:documentation>Sluttidspunktet for perioden. Er med i selve perioden.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VirksomhetstypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="virksomhetstype" type="Virksomhetstype"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RegeltypeForAarsregnskapMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskap"/>
+
+
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvSkattemessigVerdiPaaFordring">
@@ -622,7 +634,7 @@
       </xsd:element>
       <xsd:element minOccurs="0" name="kildedokumenttype" type="Tekst">
         <xsd:annotation>
-          <xsd:documentation>beskriver dokumenttypen i Skatteinfo. Må fylles ut dersom kildedokumentidentifikator peker på et dokument i Skatteinfo.</xsd:documentation>
+          <xsd:documentation>beskriver dokumenttypen i Skatteinfo. Må fylles ut dersom kildedokumentidentifikator peker på et dokument i Skatteinfo. </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:sequence>
@@ -750,7 +762,7 @@
   </xsd:complexType>
   <xsd:complexType name="ProsentMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5d2b8b80-b7e8-11e7-aa27-0050568351d2">
     <xsd:annotation>
-      <xsd:documentation>tall som er satt sammen av en heltallsdel og en fraksjondel [wikipedia]</xsd:documentation>
+      <xsd:documentation>tall som er satt sammen av en heltallsdel og en fraksjondel [wikipedia] </xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="prosent" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5d2b8b80-b7e8-11e7-aa27-0050568351d2" type="Prosent"/>
@@ -830,6 +842,13 @@
       <xsd:enumeration value="5"/>
     </xsd:restriction>
   </xsd:simpleType>
+
+  <xsd:simpleType name="Virksomhetstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_virksomhetstype.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="RegeltypeForAarsregnskap" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_regeltypeForAarsregnskap">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
   <xsd:complexType name="VerditypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="verditype" type="Verditype"/>
@@ -906,9 +925,6 @@
       <xsd:element name="salgsinntekterIKontant" type="BeloepSomHeltall"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Selskapstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_selskapstype.xml">
-    <xsd:restriction base="xsd:string"/>
-  </xsd:simpleType>
   <xsd:complexType name="Laan">
     <xsd:sequence>
       <xsd:choice>
@@ -1040,7 +1056,8 @@
   </xsd:complexType>
   <xsd:simpleType name="Dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
-      <xsd:documentation>gir verdier for år, måned og dag. Kodes som en tekststreng etter datoformatering spesifisert i ISO 8601 (ISO 8601:2004 Data elements and interchange formats -- Information interchange -- Representation of dates and times). Eksempel : 1998-12-21 eller 19981221.</xsd:documentation>
+      <xsd:documentation>gir verdier for år, måned og dag. Kodes som en tekststreng etter datoformatering spesifisert i  ISO 8601 (ISO 8601:2004 Data elements and interchange formats -- Information interchange -- Representation of dates and times).
+        Eksempel : 1998-12-21 eller 19981221.</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:date"/>
   </xsd:simpleType>
