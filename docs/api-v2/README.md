@@ -1196,8 +1196,8 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 **Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`  
 <br />
 
-## Åpne visningsklient for å vise beregnet skattemelding med næringsspesifikasjon
-Skatteetaten tilby visningsklient for å vise innholdet av skattemelding og næringsspesifikasjon slik skatteetaten ser den.
+## Åpne visningsklient for å se beregnet skattemelding med næringsspesifikasjon
+Skatteetaten tilby visningsklient for å se innholdet av skattemelding og næringsspesifikasjon slik skatteetaten ser den.
 
 Url'en til visningsklient kan åpnes fra nettleser: 
 
