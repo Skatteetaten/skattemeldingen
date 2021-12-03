@@ -1197,7 +1197,7 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 <br />
 
 ## Åpne visningsklient for å se beregnet skattemelding med næringsspesifikasjon
-Skatteetaten tilby visningsklient for å se innholdet av skattemelding og næringsspesifikasjon slik skatteetaten ser den.
+Skatteetaten tilbyr en visningsklient for å se innholdet av skattemelding og næringsspesifikasjon slik skatteetaten ser den.
 
 Url'en til visningsklient kan åpnes fra nettleser: 
 
