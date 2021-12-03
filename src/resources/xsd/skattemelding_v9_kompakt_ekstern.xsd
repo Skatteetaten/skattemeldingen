@@ -663,12 +663,16 @@
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
-          <xsd:element minOccurs="0" name="trukketSkattOgAvgift" type="BeloepSomHeltallMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="restskattOver12G" type="BeloepSomHeltallMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="loennsinntektMedTrygdeavgiftsplikt" type="BeloepSomHeltallMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="loennsinntektUtenTrygdeavgiftsplikt" type="BeloepSomHeltallMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="pensjonsinntekt" type="BeloepSomHeltallMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="ufoereytelse" type="BeloepSomHeltallMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="beregnetTrekkbeloepForSkattOgAvgift" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="trukketSkattOgAvgift" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="restskattOver12G" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="loennsinntektMedTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="loennsinntektUtenTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="pensjonsinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="ufoereytelse" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForSkattleggingVedLoennstrekkPaaSvalbardPerArbeidsgiver" type="GrunnlagForSkattleggingVedLoennstrekkPaaSvalbardPerArbeidsgiver"/>
+          <xsd:element minOccurs="0" name="positivtAvviksbeloepMellomTrukketOgBeregnetTrekkbeloep" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="negativtAvviksbeloepMellomTrukketOgBeregnetTrekkbeloep" skatt:erAvledet="true" type="BeloepSomHeltall"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2026,6 +2030,19 @@
   <xsd:complexType name="BeloepSomHeltallMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="beloepSomHeltall" type="BeloepSomHeltall"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GrunnlagForSkattleggingVedLoennstrekkPaaSvalbardPerArbeidsgiver">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="arbeidsgiversNavn" type="Organisasjonsnavn"/>
+      <xsd:element minOccurs="0" name="arbeidsgiversOrganisasjonsnummer" type="Organisasjonsnummer"/>
+      <xsd:element minOccurs="0" name="beregnetTrekkbeloepForSkattOgAvgift" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="trukketSkattOgAvgift" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="loennsinntektMedTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="loennsinntektUtenTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="pensjonsinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="ufoereytelse" skatt:erAvledet="true" type="BeloepSomHeltall"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OppholdskostnaderVedPassOgStellAvBarn">
