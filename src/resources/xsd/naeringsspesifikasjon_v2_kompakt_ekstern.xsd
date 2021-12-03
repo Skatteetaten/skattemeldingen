@@ -264,7 +264,7 @@
       <xsd:element minOccurs="0" name="objektidentifikatorNedskrivningenMedBetingetSkattefriSalgsgevinstGjelder" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="tilskuddTilInvesteringIDistriktene" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="tilbakefoeringAvTilskuddTilInvesteringIDistriktene" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="grunnlagForAvskrivningOgInntektsfoering" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+      <xsd:element minOccurs="0" name="grunnlagForAvskrivningOgInntektsfoering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="utgaaendeVerdi" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="gevinstOverfoertTilGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="tapOverfoertTilGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
@@ -284,8 +284,8 @@
     <xsd:complexContent>
       <xsd:extension base="AnleggsmiddelFelles">
         <xsd:sequence>
-          <xsd:element minOccurs="0" name="aaretsAvskrivning" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
-          <xsd:element minOccurs="0" name="aaretsInntektsfoeringAvNegativSaldo" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+          <xsd:element minOccurs="0" name="aaretsAvskrivning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+          <xsd:element minOccurs="0" name="aaretsInntektsfoeringAvNegativSaldo" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
           <xsd:element name="saldogruppe" type="SaldogruppeMedInnkapsling"/>
           <xsd:element name="avskrivningssats" type="ProsentMedInnkapsling"/>
           <xsd:element minOccurs="0" name="nyanskaffelse" type="BeloepMedSkattemessigeEgenskaper"/>
