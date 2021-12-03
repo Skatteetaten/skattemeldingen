@@ -1,4 +1,4 @@
-object FordeltBeregnetPersoninntektBeregning : InlineKallkyle() {
+object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
     override fun kalkulertPaa(naeringsopplysninger: HarGeneriskModell): Verdi {
         val gm = naeringsopplysninger.tilGeneriskModell()
 

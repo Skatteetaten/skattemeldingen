@@ -289,13 +289,13 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
             {
                 der(it, {
                     (it.driftskostnader + it.saldoavskrivningPrivatBruk) *
-                        satsVedProsentandelAvFaktiskeKostander somFelt prosentandelAvFaktiskeKostnader
+                        satsVedProsentandelAvFaktiskeKostnader somFelt prosentandelAvFaktiskeKostnader
                 }, FeltSpecification(it.leasingleie, eller(derVerdiErNull(), derVerdiErLik(0))))
             },
             {
                 der(it, {
                     (it.driftskostnader + it.leasingleie) *
-                        satsVedProsentandelAvFaktiskeKostander somFelt prosentandelAvFaktiskeKostnader
+                        satsVedProsentandelAvFaktiskeKostnader somFelt prosentandelAvFaktiskeKostnader
                 }, FeltSpecification(it.leasingleie, derVerdiErStoerreEnn(0)))
             }
         )

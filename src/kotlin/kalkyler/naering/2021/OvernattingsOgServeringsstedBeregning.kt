@@ -1,4 +1,4 @@
-object OvernattingsOgServeringsstedBeregning : InlineKallkyle() {
+object OvernattingsOgServeringsstedBeregning : InlineKalkyle() {
 
     override fun kalkulertPaa(naeringsopplysninger: HarGeneriskModell): Verdi {
         val gm = naeringsopplysninger.tilGeneriskModell()

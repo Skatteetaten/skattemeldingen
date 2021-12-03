@@ -51,7 +51,7 @@ internal object Resultatregnskapet : HarKalkyletre {
 
     internal val annenDriftsinntektstypeInntektKalkyle =
         summer forekomsterAv gevinstOgTapskonto forVerdi { it.inntektFraGevinstOgTapskonto } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = annenDriftsinntekt,
+            forekomstTypeSpesifikasjon = annenDriftsinntekt,
             idVerdi = kode_3890.kode,
             feltKoordinat = annenDriftsinntekt.beloep,
             feltMedFasteVerdier =
@@ -76,7 +76,7 @@ internal object Resultatregnskapet : HarKalkyletre {
             vederlagVedRealisasjonOgUttakInntektsfoertIAarIkkeAvskrivbart +
             vederlagVedRealisasjonOgUttakInntektsfoertIAarSaldo +
             aaretsInntektsfoeringAvNegativSaldo  verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = annenDriftsinntekt,
+            forekomstTypeSpesifikasjon = annenDriftsinntekt,
             idVerdi = kode_3895.kode,
             feltKoordinat = annenDriftsinntekt.beloep,
             feltMedFasteVerdier =

@@ -18,7 +18,7 @@ _Kalkyle_ eller _Kalkyler_.
 Skatteetaten har etablert en DSL for Kalkylene som henviser til elementer og felt i XML-strukturen. Tanken er at denne skal kunne
 brukes som en spesifikasjon av Kalkylene som sluttbrukersystemene må implementere for å kunne sende inn de riktige dataene. Denne DSL'en er laget
 som [Kotlin](https://kotlinlang.org/) kode og Skatteetaten bruker selv denne DSL'en som en kjørbar spesifikasjon av Kalkylene. Kalkylene vil derfor
-bruke reserverte ord i Kotlin som en del av Kallkylespråket.
+bruke reserverte ord i Kotlin som en del av Kalkylespråket.
 
 Denne spesifikasjonen har navngivning av del konsepter som man må gjøre seg kjent med for å kunne forstå hvordan Kalkylene er bygget opp.
 
@@ -111,7 +111,7 @@ som Skatteetaten selv beregner. To forekomster med ulik id vil i henhold til den
 Eksempel på kalkyle som returnerer en forekomst:
 
 ```kotlin
-internal val annenDriftsinntektstypeInntektKalkyle = summer forekomsterAv gevinstOgTapskonto forVerdi { it.inntektFraGevinstOgTapskonto } verdiSom NyForekomst(forekomststTypeSpesifikasjon = annenDriftsinntekt, idVerdi = "3890", feltKoordinat = annenDriftsinntekt.beloep, feltMedFasteVerdier =
+internal val annenDriftsinntektstypeInntektKalkyle = summer forekomsterAv gevinstOgTapskonto forVerdi { it.inntektFraGevinstOgTapskonto } verdiSom NyForekomst(forekomstTypeSpesifikasjon = annenDriftsinntekt, idVerdi = "3890", feltKoordinat = annenDriftsinntekt.beloep, feltMedFasteVerdier =
     {
         listOf(
                 FeltOgVerdi(it.type, "3890")
@@ -196,7 +196,7 @@ object DefaultKalkyletre : Kalkyletre(
 )
 ```
 
-Dette definerer rekkefølgen på kallkyleområdene innbyrdes.
+Dette definerer rekkefølgen på kalkyleområdene innbyrdes.
 
 # Kalkyler
 
