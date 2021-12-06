@@ -1196,6 +1196,17 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 **Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`  
 <br />
 
+## Åpne visningsklient for å se beregnet skattemelding med næringsspesifikasjon
+Skatteetaten tilbyr en visningsklient for å se innholdet av skattemelding og næringsspesifikasjon slik skatteetaten ser den.
+
+Url'en til visningsklient kan åpnes fra nettleser: 
+
+**Testmiljø:** `https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId=50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c`
+
+**Produksjonsmiljø:** `https://skatt.skatteetaten.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId=50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c`
+
+- Erstatt 50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c med verdien _id_ fra instansen
+
 ## Trigge prosess/next for å få prosessen til status _Tilbakemelding_
 
 Gjør kall under for å gjøre seg ferdig med instansen/innsendingen, dette slik at skatteetaten kan plukke den opp og behandle:

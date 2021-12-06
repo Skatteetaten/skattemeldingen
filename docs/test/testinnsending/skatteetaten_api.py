@@ -84,6 +84,12 @@ def base64_decode_response(r: requests):
         utkast_resp[k] = v
     return xmltodict.unparse(utkast_resp)
 
+def skattemelding_visning(instans_data: dict,
+                          appnavn: str = "skd/formueinntekt-skattemelding-v2") -> None:
+    instans_id = instans_data['id']
+    url_visning = f"https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId={appnavn}&instansId={instans_id}"
+    webbrowser.open(url_visning, new=0, autoraise=True)
+    return url_visning
 
 def main_relay(**kwargs) -> dict:
     # disabled - idporten fails to register 127.0.0.1 and dynamic port numbers for now
