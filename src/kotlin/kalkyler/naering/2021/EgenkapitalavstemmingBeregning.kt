@@ -1,4 +1,4 @@
-object EgenkapitalavstemmingBeregning : InlineKallkyle() {
+object EgenkapitalavstemmingBeregning : InlineKalkyle() {
 
     private fun summerForekomsterAvEgenkapitalendring(
         kategori: Kategori,

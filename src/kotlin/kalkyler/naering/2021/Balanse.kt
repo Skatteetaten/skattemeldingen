@@ -19,7 +19,7 @@ internal object Balanse : HarKalkyletre {
                 it.erRealisasjonenUfrivilligOgGevinstenBetingetSkattefri.filterFelt(Specifications.erUsannEllerNull())
             )
         } forVerdi { it.utgaaendeVerdi } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = balanseverdi,
+            forekomstTypeSpesifikasjon = balanseverdi,
             idVerdi = kodeVerdi.kode,
             feltKoordinat = balanseverdi.beloep,
             feltMedFasteVerdier =
@@ -32,7 +32,7 @@ internal object Balanse : HarKalkyletre {
     }
 
     /**
-     * Denne fungerer kun hvis det er negative tall i tesdata.
+     * Denne fungerer kun hvis det er negative tall i testdata.
      * Dette tegnet: - (minustegn) må være med i testdata
      * Hvis ikke blir det ingen verdi.
      */
@@ -46,7 +46,7 @@ internal object Balanse : HarKalkyletre {
         } forVerdi {
             it.utgaaendeVerdi.der(filter) * -1
         } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = balanseverdi,
+            forekomstTypeSpesifikasjon = balanseverdi,
             idVerdi = kodeVerdi.kode,
             feltKoordinat = balanseverdi.beloep,
             feltMedFasteVerdier =
@@ -59,7 +59,7 @@ internal object Balanse : HarKalkyletre {
     }
 
     /**
-     * Denne fungerer kun hvis det er negative tall i tesdata.
+     * Denne fungerer kun hvis det er negative tall i testdata.
      * Dette tegnet: - (minustegn) må være med i testdata
      * Hvis ikke blir det ingen verdi.
      */
@@ -79,7 +79,7 @@ internal object Balanse : HarKalkyletre {
         } forVerdi {
             it.utgaaendeVerdi * -1
         } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = kapital,
+            forekomstTypeSpesifikasjon = kapital,
             idVerdi = kode_2095.kode,
             feltKoordinat = kapital.beloep,
             feltMedFasteVerdier =
@@ -100,7 +100,7 @@ internal object Balanse : HarKalkyletre {
         } forVerdi {
             it.utgaaendeVerdi * -1
         } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = kapital,
+            forekomstTypeSpesifikasjon = kapital,
             idVerdi = kode_2097.kode,
             feltKoordinat = kapital.beloep,
             feltMedFasteVerdier =
@@ -173,7 +173,7 @@ internal object Balanse : HarKalkyletre {
             1
         }
     } verdiSom NyForekomst(
-        forekomststTypeSpesifikasjon = kapital,
+        forekomstTypeSpesifikasjon = kapital,
         idVerdi = kode_2096.kode,
         feltKoordinat = kapital.beloep,
         feltMedFasteVerdier =

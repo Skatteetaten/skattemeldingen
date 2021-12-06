@@ -10,7 +10,7 @@ internal object Balanse : HarKalkyletre {
                 it.erRealisasjonenUfrivilligOgGevinstenBetingetSkattefri.filterFelt(Specifications.erUsannEllerNull())
             )
         } forVerdi { it.utgaaendeVerdi } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = balanseverdiForAnleggsmiddel,
+            forekomstTypeSpesifikasjon = balanseverdiForAnleggsmiddel,
             idVerdi = kodeVerdi.kode,
             feltKoordinat = balanseverdiForAnleggsmiddel.skattemessigVerdi,
             feltMedFasteVerdier =
@@ -30,7 +30,7 @@ internal object Balanse : HarKalkyletre {
         return summer forekomsterAv gevinstOgTapskonto filter { it.utgaaendeVerdi.filterFelt(filter) } forVerdi {
             it.utgaaendeVerdi.der(filter) * -1
         } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = balanseverdiForAnleggsmiddel,
+            forekomstTypeSpesifikasjon = balanseverdiForAnleggsmiddel,
             idVerdi = kodeVerdi.kode,
             feltKoordinat = balanseverdiForAnleggsmiddel.skattemessigVerdi,
             feltMedFasteVerdier =
@@ -58,7 +58,7 @@ internal object Balanse : HarKalkyletre {
         } forVerdi {
             it.utgaaendeVerdi * -1  //TODO: hvorfor fungerer ikke abs her
         } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = egenkapital,
+            forekomstTypeSpesifikasjon = egenkapital,
             idVerdi = kode_2095.kode,
             feltKoordinat = egenkapital.beloep,
             feltMedFasteVerdier =
@@ -79,7 +79,7 @@ internal object Balanse : HarKalkyletre {
         } forVerdi {
             it.utgaaendeVerdi * -1
         } verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = egenkapital,
+            forekomstTypeSpesifikasjon = egenkapital,
             idVerdi = kode_2097.kode,
             feltKoordinat = egenkapital.beloep,
             feltMedFasteVerdier =
@@ -152,7 +152,7 @@ internal object Balanse : HarKalkyletre {
             1
         }
     } verdiSom NyForekomst(
-        forekomststTypeSpesifikasjon = egenkapital,
+        forekomstTypeSpesifikasjon = egenkapital,
         idVerdi = kode_2096.kode,
         feltKoordinat = egenkapital.beloep,
         feltMedFasteVerdier =

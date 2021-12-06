@@ -1,10 +1,10 @@
 internal object BalanseFormueOgGjeld : HarKalkyletre {
     private val logger = KotlinLogging.logger { }
 
-    fun getFilterForAnleggsmiddel(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Specification<GeneriskModell> {
+    fun getFilterForAnleggsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
             Specification<Any> {
-                hentKodeverdi(it, balansekontoGirVerdsettingsrabattForvenetVerdi)
+                hentKodeverdi(it, balansekontoGirVerdsettingsrabattForventetVerdi)
             }
         return Specifications.og(
             FeltSpecification(
@@ -19,10 +19,10 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
         )
     }
 
-    fun getFilterForOmloepsmiddel(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Specification<GeneriskModell> {
+    fun getFilterForOmloepsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
             Specification<Any> {
-                hentKodeverdi(it, balansekontoGirVerdsettingsrabattForvenetVerdi)
+                hentKodeverdi(it, balansekontoGirVerdsettingsrabattForventetVerdi)
             }
         return Specifications.og(
             FeltSpecification(
@@ -39,7 +39,7 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
 
     private fun hentKodeverdi(
         it: Any?,
-        balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean,
+        balansekontoGirVerdsettingsrabattForventetVerdi: Boolean,
     ): Boolean {
         val kodeVerdi = Kodeliste2021Helper.kodeliste[it as String]
 
@@ -47,12 +47,12 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
             logger.warn("Mottok kodeverdi som ikke var i kodeliste, bør fanges opp av validering: {}",it)
             return false
         }
-        return kodeVerdi.kodetillegg?.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForvenetVerdi
+        return kodeVerdi.kodetillegg?.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForventetVerdi
     }
 
-    fun getFilterForKortsiktigGjeld(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Specification<GeneriskModell> {
+    fun getFilterForKortsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
-            Specification<Any> { hentKodeverdi(it, balansekontoGirVerdsettingsrabattForvenetVerdi) }
+            Specification<Any> { hentKodeverdi(it, balansekontoGirVerdsettingsrabattForventetVerdi) }
         return Specifications.og(
             FeltSpecification(
                 gjeld.type,
@@ -63,9 +63,9 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
         )
     }
 
-    fun getFilterForLangsiktigGjeld(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Specification<GeneriskModell> {
+    fun getFilterForLangsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
-            Specification<Any> { hentKodeverdi(it, balansekontoGirVerdsettingsrabattForvenetVerdi) }
+            Specification<Any> { hentKodeverdi(it, balansekontoGirVerdsettingsrabattForventetVerdi) }
         return Specifications.og(
             FeltSpecification(
                 langsiktigGjeld.gjeld.type,
@@ -76,33 +76,33 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
         )
     }
 
-    private fun summerAnleggsmiddel(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Kalkyle {
+    private fun summerAnleggsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Kalkyle {
         return summer forekomsterAv balanseverdi filter {
-            getFilterForAnleggsmiddel(balansekontoGirVerdsettingsrabattForvenetVerdi)
+            getFilterForAnleggsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi)
         } forVerdi { it.beloep }
     }
 
-    private fun summerOmloepsmiddel(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Kalkyle {
+    private fun summerOmloepsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Kalkyle {
         return summer forekomsterAv balanseverdiForOmloepsmiddel.balanseverdi filter {
-            getFilterForOmloepsmiddel(balansekontoGirVerdsettingsrabattForvenetVerdi)
+            getFilterForOmloepsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi)
         } forVerdi { it.beloep }
     }
 
-    private fun summerKortsiktigGjeld(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Kalkyle {
+    private fun summerKortsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Kalkyle {
         return summer forekomsterAv gjeld filter {
-            getFilterForKortsiktigGjeld(balansekontoGirVerdsettingsrabattForvenetVerdi)
+            getFilterForKortsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi)
         } forVerdi { it.beloep }
     }
 
-    private fun summerLangsiktigGjeld(balansekontoGirVerdsettingsrabattForvenetVerdi: Boolean): Kalkyle {
+    private fun summerLangsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Kalkyle {
         return summer forekomsterAv langsiktigGjeld.gjeld filter {
-            getFilterForLangsiktigGjeld(balansekontoGirVerdsettingsrabattForvenetVerdi)
+            getFilterForLangsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi)
         } forVerdi { it.beloep }
     }
 
     internal val verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabattKalkyle =
         summerAnleggsmiddel(true) + summerOmloepsmiddel(true) verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = samletGjeldOgFormuesobjekter,
+            forekomstTypeSpesifikasjon = samletGjeldOgFormuesobjekter,
             idVerdi = "1",
             feltKoordinat = samletGjeldOgFormuesobjekter.verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabatt,
             feltMedFasteVerdier = { emptyList() }
@@ -110,7 +110,7 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
 
     internal val formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabattKalkyle =
         summerAnleggsmiddel(false) + summerOmloepsmiddel(false) verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = samletGjeldOgFormuesobjekter,
+            forekomstTypeSpesifikasjon = samletGjeldOgFormuesobjekter,
             idVerdi = "1",
             feltKoordinat = samletGjeldOgFormuesobjekter.formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabatt,
             feltMedFasteVerdier = { emptyList() }
@@ -118,7 +118,7 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
 
     internal val samletGjeldKalkyle =
         summerKortsiktigGjeld(false) + summerLangsiktigGjeld(false) verdiSom NyForekomst(
-            forekomststTypeSpesifikasjon = samletGjeldOgFormuesobjekter,
+            forekomstTypeSpesifikasjon = samletGjeldOgFormuesobjekter,
             idVerdi = "1",
             feltKoordinat = samletGjeldOgFormuesobjekter.samletGjeld,
             feltMedFasteVerdier = { emptyList() }
