@@ -795,14 +795,6 @@
             <erDetFysiskeDriftsmidlerIUtgaaendeVerdi>
                 <boolsk>true</boolsk>
             </erDetFysiskeDriftsmidlerIUtgaaendeVerdi>
-            <grunnlagForStartavskrivning>
-                <beloep>
-                    <beloep>80000</beloep>
-                </beloep>
-            </grunnlagForStartavskrivning>
-            <avskrivningssatsForStartavskrivning>
-                <prosent>10</prosent>
-            </avskrivningssatsForStartavskrivning>
         </saldoavskrevetAnleggsmiddel>
         <lineaertavskrevetAnleggsmiddel>
             <id>b104</id>
@@ -984,9 +976,9 @@
     <beregnetNaeringsinntekt>
         <fordeltBeregnetNaeringsinntekt>
             <id>h1</id>
-            <identifikatorForPersoninntekt>
+            <identifikatorForFordeltBeregnetPersoninntekt>
                 <tekst>p1</tekst>
-            </identifikatorForPersoninntekt>
+            </identifikatorForFordeltBeregnetPersoninntekt>
             <naeringstype>
                 <naeringstype>annenNaering</naeringstype>
             </naeringstype>
@@ -1016,9 +1008,12 @@
     <beregnetPersoninntekt>
         <fordeltBeregnetPersoninntekt>
             <id>o1</id>
-            <identifikatorForPersoninntekt>
+            <identifikatorForFordeltBeregnetPersoninntekt>
                 <tekst>p1</tekst>
-            </identifikatorForPersoninntekt>
+            </identifikatorForFordeltBeregnetPersoninntekt>
+            <identifikatorForFordeltBeregnetNaeringsinntekt>
+                <tekst>h1</tekst>
+            </identifikatorForFordeltBeregnetNaeringsinntekt>
             <rentekostnadPaaForetaksgjeld>
                 <beloep>
                     <beloep>15000</beloep>
@@ -1221,13 +1216,16 @@
         <regnskapspliktstype>
             <regnskapspliktstype>1</regnskapspliktstype>
         </regnskapspliktstype>
-        <selskapstype>
-            <selskapstype>enkeltpersonforetak</selskapstype>
-        </selskapstype>
         <regnskapsperiode>
             <start>2021-01-01T00:00:00.000Z</start>
             <slutt>2021-12-31T23:59:59.000Z</slutt>
         </regnskapsperiode>
+        <virksomhetsstype>
+            <virksomhetstype>enkeltpersonforetak</virksomhetstype>
+        </virksomhetsstype>
+        <regeltypeForAarsregnskap>
+            <regeltypeForAarsregnskap>regnskapslovensAlminneligeRegler</regeltypeForAarsregnskap>
+        </regeltypeForAarsregnskap>
     </virksomhet>
     <samletGjeldOgFormuesobjekter>
         <id>1</id>

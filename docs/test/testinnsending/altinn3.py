@@ -1,12 +1,13 @@
-from skatteetaten_api import main_relay
 import requests
 from pathlib import Path
 
 # Slå av sertifikat verifikasjon i test
 import urllib3
+
 urllib3.disable_warnings()
 
 ALTINN_URL = "https://skd.apps.tt02.altinn.no"
+
 
 def hent_altinn_token(idporten_token: dict) -> dict:
     altinn3 = "https://platform.tt02.altinn.no/authentication/api/v1/exchange/id-porten"
@@ -42,17 +43,20 @@ def opprett_ny_instans(header: dict, fnr: str, appnavn: str = "skd/sirius-skatte
     r.raise_for_status()
     return r.json()
 
-def opprett_ny_instans_med_inntektsaar(header: dict, fnr: str, inntektsaar: str, appnavn: str = "skd/sirius-skattemelding-v1") -> dict:
+
+def opprett_ny_instans_med_inntektsaar(header: dict, inntektsaar: str, appnavn: str = "skd/sirius-skattemelding-v1",
+                                       fnr: str = None, orgnr=None) -> dict:
+
+    instans_owner = {"personNumber": fnr} if fnr else {"organisationNumber": orgnr}
+
     payload = {
-        "instanceOwner": {
-            "personNumber": fnr
-        },
+        "instanceOwner": instans_owner,
         "appOwner": {
             "labels": ["gr", "x2"]
         },
         "appId": appnavn,
         "dataValues": {"inntektsaar": inntektsaar},
-        "dueBefore": "2020-06-01T12:00:00Z",
+        "dueBefore": "2022-06-01T12:00:00Z",
         "visibleAfter": "2019-05-20T00:00:00Z",
         "title": {"nb": "Skattemelding"}
     }
@@ -61,7 +65,10 @@ def opprett_ny_instans_med_inntektsaar(header: dict, fnr: str, inntektsaar: str,
     r.raise_for_status()
     return r.json()
 
-def last_opp_metadata(instans_data: dict, token: dict, xml: str = None, appnavn: str = "skd/sirius-skattemelding-v1") -> None:
+
+def last_opp_metadata(instans_data: dict, token: dict, xml: str = None,
+                      appnavn: str = "skd/sirius-skattemelding-v1") -> requests:
+
     id = instans_data['id']
     data_id = instans_data['data'][0]['id']
 
@@ -71,7 +78,9 @@ def last_opp_metadata(instans_data: dict, token: dict, xml: str = None, appnavn:
     r.raise_for_status()
     return r
 
-def last_opp_metadata_json(instans_data: dict, token: dict, inntektsaar: int = 2021, appnavn: str = "skd/sirius-skattemelding-v2") -> None:
+
+def last_opp_metadata_json(instans_data: dict, token: dict, inntektsaar: int = 2021,
+                           appnavn: str = "skd/sirius-skattemelding-v2") -> requests:
     id = instans_data['id']
     data_id = instans_data['data'][0]['id']
 
@@ -84,8 +93,8 @@ def last_opp_metadata_json(instans_data: dict, token: dict, inntektsaar: int = 2
 
 
 def last_opp_skattedata(instans_data: dict, token: dict, xml: str,
-                        data_type: str ="skattemelding",
-                        appnavn: str = "skd/sirius-skattemelding-v1") -> None:
+                        data_type: str = "skattemelding",
+                        appnavn: str = "skd/sirius-skattemelding-v1") -> requests:
     url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}/data?dataType={data_type}"
     token["content-type"] = "text/xml"
     token["Content-Disposition"] = "attachment; filename=skattemelding.xml"
@@ -97,7 +106,6 @@ def last_opp_skattedata(instans_data: dict, token: dict, xml: str,
 def last_opp_vedlegg(instans_data: dict, token: dict, vedlegg_fil, content_type: str,
                      data_type="skattemelding-vedlegg",
                      appnavn: str = "skd/sirius-skattemelding-v1") -> requests:
-
     url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}/data?dataType={data_type}"
     filnavn = Path(vedlegg_fil).name
     token["content-type"] = content_type
@@ -111,7 +119,8 @@ def last_opp_vedlegg(instans_data: dict, token: dict, vedlegg_fil, content_type:
     return r
 
 
-def endre_prosess_status(instans_data: dict, token: dict, neste_status: str, appnavn: str = "skd/sirius-skattemelding-v1") -> str:
+def endre_prosess_status(instans_data: dict, token: dict, neste_status: str,
+                         appnavn: str = "skd/sirius-skattemelding-v1") -> str:
     if neste_status not in ["start", "next", "completeProcess"]:
         raise NotImplementedError
 
@@ -120,11 +129,13 @@ def endre_prosess_status(instans_data: dict, token: dict, neste_status: str, app
     r.raise_for_status()
     return r.text
 
-def hent_instans(instans_data: dict, token: dict, appnavn: str = "skd/sirius-skattemelding-v1") -> dict:
+
+def hent_instans(instans_data: dict, token: dict, appnavn: str = "skd/sirius-skattemelding-v1") -> requests:
     url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}"
     r = requests.get(url, headers=token, verify=False)
     r.raise_for_status()
     return r
+
 
 if __name__ == '__main__':
     print("Dette er en rekke med metoder jupyter notebook applikasjonen bruker")
