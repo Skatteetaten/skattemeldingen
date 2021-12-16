@@ -7,7 +7,7 @@ description: "Api-beskrivelser"
 
 Det tilbys to sett med API-er:
 
-- Skatteetatens-API: har tjenester for hent- og validering av skattemedlinger.
+- Skatteetatens-API: har tjenester for hent- og validering av skattemedlinger, eiendomskalkulator, hent vedlegg og foreløpig avrenging.
 - Altinn3-API: for: har tjenester for opprettelse og innsending av en skattemeldinger.
 
 ![apier.png](../api-v1-pilot/apier.png)
@@ -229,7 +229,7 @@ skattemeldingOgNaeringsspesifikasjonRequest:
 - innsendingsinformasjon 
   - innsendingstype - [ikkeKomplett | komplett]
   - opprettetAv - system navn brukt for å gjøre innsendingen
-
+  
 
 **Respons** :
 
@@ -264,6 +264,25 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - veiledningstype – kodeliste [kontrollnavnet i SMIA, mulighetsrom kommer fra dem]
     - forekomstidentifikator – identfikator til felt i skattemeldingen
     - sti – stien til elementet med veiledning
+
+
+## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument
+Hvis dere har behov for å gjøre beregninger før Skatteetaten har publisert utkast for et inntektsår, kan dere kalle denne tjenesten.
+Den er helt lik som valideringstjenesten, men krever ikke `dokumentreferanseTilGjeldendeDokument`.
+
+**URL** : `POST https://<env>/api/skattemelding/v2/validertest/<inntektsaar>/<identifikator>`
+
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/validertest/2021/01028312345`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse`
+- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
+- `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige`
+
+**Body** 
+Likt som valider ovenfor
+
 
 ## Hent vedlegg
 
@@ -1001,6 +1020,57 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-050: støtter ikke inntektsaar: <inntektsår>.
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
+
+
+## Forløpig avregning
+Tjenesten avregning er en tjeneste som mottar fødselsnummer og beregnet skatt og retunerer avregning. Denne tjenesten vil IKKE ta høyde for eventuelte tidligere skatteoppgjør for aktuelt inntektsår. Dvs at hvis skattyter har et skatteoppgjør og fått utbetalt tilgode, og skal gjøre en endring så vil denne tjenesten avregne som om det var første skatteoppgjør
+
+*URL** : `POST https://<env>/api/skattemelding/v2/avregning/avregn/{inntektsaar}/{identifikator}`
+```json
+{
+  "beregnetSkatt" : 10000
+}
+```
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse.`
+- `<inntektsaar>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
+- `<identifikator>: Fødsels eller D -nummer for parten som skal avregnes .`
+- `<beregnetSkatt>: Sum beregnet skatt for aktuelt inntektsår.`
+
+**Respons**
+responsen er json med disse feltene. Spørsmålstegn indikerer at feltet ikke er obligatorisk og dersom det ikke er noe verdi i dette feltet, blir det ikke retunert
+
+- beregnetSkatt: Long,
+- forskuddstrekk: Long?,
+- manueltKorrigertForskuddstrekk: Long?,
+- manueltRegistrertForskuddstrekk: Long?,
+- nektetGodskrevet: Long?,
+- tilbakebetaltFoerAvregning: Long?,
+- utskrevetForskuddsskatt: Long?,
+- betaltTilleggsforskudd: Long?,
+- restskatt: Long?,
+- overskytende: Long?,
+- rentetillegg: Long?,
+- rentegodtgjoerelse: Long?,
+- beregnedeDebetAvsavnsrenter: Long?,
+- beregnedeKreditAvsavnsrenter: Long?,
+- forskuddPaaRestskatt: Long?,
+- ubetaltForskuddsskatt: Long?,
+- utbetaltEtterTidligereSkatteoppgjoer: Long?,
+- innbetaltEtterTidligereSkatteoppgjoer: Long?,
+- aaBetale: Long?,
+- tilGode: Long?,
+- aaBetaleFrafaltUnderOrdinaerBeloepsgrense: Long?,
+- aaBetaleFrafaltUnderBeloepsgrenseForSjoemenn: Long?,
+- tilGodeBlirIkkeUtbetaltUnderOrdinaerBeloepsgrense: Long?,
+- tilGodeBlirIkkeUtbetaltUnderBeloepsgrenseForSjoemenn: Long?,
+- enoekfradrag: Long?,
+- restskattFrafaltUnderOrdinaerBeloepsgrense: Long?,
+- fastsattKildeskattPaaLoenn: Long?,
+- refusjonAvKildeskattPaaLoenn: Long?
+
 
 # Altinn3-API
 
