@@ -784,6 +784,7 @@
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="finansprodukt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/03c54f25-1f09-11e9-9d36-005056821322" type="FinansproduktIAksjesparekonto"/>
           <xsd:element minOccurs="0" name="forvaltningskostnad" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="returprovisjon" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="kontoErAvsluttet" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
