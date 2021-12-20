@@ -1330,14 +1330,17 @@
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
+          <xsd:choice>
+            <xsd:element minOccurs="0" name="kontraktsprisUnderBygging" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+            <xsd:element minOccurs="0" name="dokumentertMarkedsverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          </xsd:choice>
           <xsd:element minOccurs="0" name="byggeaar" type="AarstallMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="kostpris" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="reduksjonForVerdiAvUtstyrTattUtIfmOmbyggingEllerPaakostning" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="kontraktsprisUnderBygging" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="dokumentertMarkedsverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="kostprisEllerAnskaffelsespris" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="paakostningIInntektsaaret" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="reduksjonForVerdiAvUtstyrTattUtIfmOmbyggingEllerPaakostningIInntektsaaret" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="beregnetMarkedsverdi" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="beregnetMarkedsverdiIAaretFoerInntektsaaret" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForSkipFiskeOgFangstfartoey" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
-          <xsd:element minOccurs="0" name="formuesverdiForSkipFiskeOgFangstfartoey" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
