@@ -322,7 +322,7 @@
       <xsd:element minOccurs="0" name="saldoavskrivningPrivatBruk" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element name="antallKilometerYrkeskjoering" type="HeltallMedInnkapsling"/>
       <xsd:element name="antallKilometerKjoertIAar" type="HeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="antallMaanederTilDisposisjon" type="HeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="disponertIPeriode" type="PeriodePerDatoMedInnkapsling"/>
       <xsd:element minOccurs="0" name="erElektroniskKjoerebokFoertVedroerendeYrkeskjoering" type="BoolskMedInnkapsling"/>
       <xsd:element name="erYrkesbilenIBrukPrivat" type="BoolskMedInnkapsling"/>
       <xsd:element minOccurs="0" name="tilbakefoertBilkostnadForPrivatBrukAvYrkesbil" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
@@ -705,6 +705,12 @@
   <xsd:complexType name="BiltypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="biltype" type="Biltype"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PeriodePerDatoMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="start" type="DatoMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="slutt" type="DatoMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="KommunenummerMedInnkapsling">
