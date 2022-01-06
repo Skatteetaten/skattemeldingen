@@ -917,7 +917,7 @@
   <xsd:complexType name="BeloepIValuta">
     <xsd:sequence>
       <xsd:element name="beloepINok" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="beloepIValuta" type="BeloepMedInnkapsling" />
+      <xsd:element name="beloepIValuta" type="BeloepMedInnkapsling"/>
       <xsd:element minOccurs="0" name="valutakode" type="ValutakodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="valutakurs" type="ValutakursMedInnkapsling" />
     </xsd:sequence>
