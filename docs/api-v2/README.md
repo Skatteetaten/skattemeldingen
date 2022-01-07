@@ -151,7 +151,7 @@ Det serialiserte dokumentinnholdet er skattemelding eller næringsopplysninger i
 Dette er formattert i henhold til https://datatracker.ietf.org/doc/html/rfc4648.
 Responsen fra Skatteetaten vil alltid inneholde base64 som er formatert på denne måten.
 
-Eksempel:
+Eksempel (inneholder linjeskift for lesbarhet):
 
     <content>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHNrYXR0ZW1lbGRpbmcgeG1s
     bnM9InVybjpubzpza2F0dGVldGF0ZW46ZmFzdHNldHRpbmc6Zm9ybXVlaW5udGVrdDpza2F0dGVt
