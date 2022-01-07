@@ -139,21 +139,19 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
     - type – kodeliste – [skattemeldingUtkastPersonligSkattepliktig|skattemeldingFastsattPersonligSkattepliktig]
     - id – dokumentidentifikator til dokumentet i skatteetatens system.
     - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold i base64 encodet mime format
-  - naeringsopplysningsdokument
-    – complex type - id – dokumentidentifikator til dokumentet i skatteetatens system
-
+    - content – serialisert dokumentinnhold i base64 encodet format
+  - naeringsopplysningsdokument – complex type 
+    - id – dokumentidentifikator til dokumentet i skatteetatens system
     - encoding – kodeliste – [utf-8]
     - content – serialisert dokumentinnhold
 
 ### Serialisert dokumentinnhold
 
-Det serialiserte dokumentinnholdet er skattemelding eller næringsopplysninger i base64 encodet mime format.
-Dette er formattert i henhold til https://tools.ietf.org/html/rfc2045#section-6.8 som har et linjeskift etter 76 karakterer. Vi støtter også lange
-linjer med base64 encodet innhold, men det er enklere å håndtere mime-formatert tekst når det er mime - encodet.
-Responsen fra Skatteetaten vil alltid inneholde base 64 som er formatert på denne måten.
+Det serialiserte dokumentinnholdet er skattemelding eller næringsopplysninger i base64 encodet format.
+Dette er formattert i henhold til https://datatracker.ietf.org/doc/html/rfc4648.
+Responsen fra Skatteetaten vil alltid inneholde base64 som er formatert på denne måten.
 
-Eksempel:
+Eksempel (inneholder linjeskift for lesbarhet):
 
     <content>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHNrYXR0ZW1lbGRpbmcgeG1s
     bnM9InVybjpubzpza2F0dGVldGF0ZW46ZmFzdHNldHRpbmc6Zm9ybXVlaW5udGVrdDpza2F0dGVt
