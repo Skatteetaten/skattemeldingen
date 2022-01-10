@@ -1019,6 +1019,7 @@
         <xsd:sequence>
           <xsd:element minOccurs="0" name="vurderesForSkattebegrensningParagraf174LitenSkatteevne" type="BoolskMedInnkapsling"/>
           <xsd:element minOccurs="0" name="rettTilSkattebegrensningParagraf174LitenSkatteevneForegaaendeAar" type="BoolskMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="korrigeringIAlminneligInntektFoerSaerfradrag" type="BeloepSomHeltallMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1179,7 +1180,7 @@
           <xsd:element name="naeringstype" type="NaeringstypeMedInnkapsling"/>
           <xsd:element minOccurs="0" name="naeringsinntekt" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="underskudd" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="personinntekt" type="PersoninntektSomKanSamordnes"/>
+          <xsd:element minOccurs="0" name="personinntekt" type="SamordnetPersoninntekt"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1293,7 +1294,7 @@
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="ikkeInnrapportertInntektKnyttetTilAktivDeltakelseIFiskeSomLottaker" type="InntektKnyttetTilFiskeOgFangst"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="kostnadVedAktivDeltakelseIFiskeSomLottaker" type="KostnadKnyttetTilFiskeOgFangst"/>
           <xsd:element minOccurs="0" name="beregnetNaeringsinntektForLottaker" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
-          <xsd:element minOccurs="0" name="personinntektForLottaker" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="personinntektForLottaker" type="PersoninntektSomKanSamordnes"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="oppdragsgiver" type="Oppdragsgiver"/>
           <xsd:element minOccurs="0" name="underskuddForLottaker" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
         </xsd:sequence>
@@ -2240,7 +2241,10 @@
   </xsd:simpleType>
   <xsd:complexType name="SamordnetPersoninntekt">
     <xsd:sequence>
-      <xsd:element name="fordeltBeregnetPersoninntektFraNaeringsspesifikasjon" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="fordeltBeregnetPersoninntektFraNaeringsspesifikasjon" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+        <xsd:element minOccurs="0" name="fordeltBeregnetPersoninntektOverfoertFraEktefelle" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      </xsd:choice>
       <xsd:element minOccurs="0" name="fremfoerbarNegativPersoninntektFraTidligereAar" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="fordeltBeregnetPersoninntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltall"/>
       <xsd:element minOccurs="0" name="personinntektTilSamordningOverfoertFraDenneForekomst" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
@@ -2253,13 +2257,6 @@
   <xsd:complexType name="NaeringstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="naeringstype" type="Naeringstype"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="PersoninntektSomKanSamordnes">
-    <xsd:sequence>
-      <xsd:element name="personinntektFoerSamordning" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="personinntektTilSamordningOverfoertFraDenneForekomst" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="personinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SykepengerOgAnnenInntektMvFraOppgavegiver">
@@ -2319,6 +2316,16 @@
       <xsd:element name="kostnad" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element name="kostnadstype" type="KostnadstypeKnyttetTilFiskeOgFangstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="beskrivelse" type="TekstMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PersoninntektSomKanSamordnes">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="beregnetPersoninntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+        <xsd:element minOccurs="0" name="personinntektFoerSamordning" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="personinntektTilSamordningOverfoertFraDenneForekomst" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="personinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Oppdragsgiver">
