@@ -355,6 +355,8 @@
       <xsd:element minOccurs="0" name="sumGevinstVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="sumTapVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvHelBuskapPaaGaardsbrukVedOpphoerAvDriftsgren" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="inngaaendeVerdiFraErvervetGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="verdiAvRealisertGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="grunnlagForAaretsInntektsOgFradragsfoering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="satsForInntektsfoeringOgInntektsfradrag" type="ProsentMedInnkapsling"/>
       <xsd:element minOccurs="0" name="inntektFraGevinstOgTapskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
@@ -646,6 +648,8 @@
       <xsd:element minOccurs="0" name="inngaaendeVerdiPaaToemmerkonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="driftsresultatSomKanOverfoeresTilToemmerkonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="andelAvDriftsresultatSomOverfoeresTilToemmerkonto" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="inngaaendeVerdiFraErvervetToemmerkonto" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="verdiPaaAndelAvRealisertToemmerkonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element name="grunnlagForInntektOgFradragPaaToemmerkontoIInntektsaaret" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="skogfond" type="Skogfond"/>
       <xsd:element minOccurs="0" name="ekstraordinaerFordelingAvToemmeravvirkningEtterNaturkatastrofe" type="EkstraordinaerFordelingAvToemmeravvirkningEtterNaturkatastrofe"/>
