@@ -237,7 +237,7 @@
       <xsd:element name="id" type="Tekst"/>
       <xsd:element name="finansproduktnavn" type="NavnMedInnkapsling"/>
       <xsd:element minOccurs="0" name="kontonummer" type="TekstMedInnkapsling"/>
-      <xsd:element name="finansprodukttype" type="TekstMedInnkapsling"/>
+      <xsd:element name="finansprodukttype" type="AnnetFinansprodukttypeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="finansproduktidentifikator" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="finansproduktidentifikatortype" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling"/>
@@ -386,6 +386,11 @@
       <xsd:element name="navn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940" type="Navn"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="AnnetFinansprodukttypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="annetFinansprodukttype" type="AnnetFinansprodukttype"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="Lommebok">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
@@ -507,6 +512,9 @@
       <xsd:minLength value="1"/>
       <xsd:maxLength value="200"/>
     </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="AnnetFinansprodukttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_finansprodukt.xml">
+    <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Formuesobjekttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_formuesobjekttypeUpersonligSkattepliktig.xml">
     <xsd:restriction base="xsd:string"/>

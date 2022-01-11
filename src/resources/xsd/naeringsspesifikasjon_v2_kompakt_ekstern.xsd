@@ -113,7 +113,7 @@
       <xsd:element name="regnskapspliktstype" type="RegnskapspliktstypeMedInnkapsling"/>
       <xsd:element name="regnskapsperiode" type="Periode"/>
       <xsd:element name="virksomhetsstype" type="VirksomhetstypeMedInnkapsling"/>
-      <xsd:element name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskapMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskapMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvOmloepsmiddel">
