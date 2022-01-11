@@ -359,6 +359,7 @@
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element name="fordringshaver" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b574089c-d96a-11e6-8d9b-005056821322" type="NavnMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="fordringshaveridentifikator" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="gjeldsbeloep" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/2b2920ae-e7e6-11e8-b7e4-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="paaloepteRenter" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
         </xsd:sequence>
@@ -1165,6 +1166,7 @@
           <xsd:choice>
             <xsd:element minOccurs="0" name="skyldner" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408ba-d96a-11e6-8d9b-005056821322" type="NavnMedInnkapsling"/>
           </xsd:choice>
+          <xsd:element minOccurs="0" name="skyldneridentifikator" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="formuesverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fd4-dfe5-11e7-9101-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="opptjenteRenter" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247ff2-dfe5-11e7-9101-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
         </xsd:sequence>

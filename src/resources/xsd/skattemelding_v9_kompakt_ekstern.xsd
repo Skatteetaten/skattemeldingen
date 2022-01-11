@@ -347,6 +347,7 @@
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element name="fordringshaver" type="NavnMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="fordringshaveridentifikator" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="gjeldsbeloep" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="paaloepteRenter" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
         </xsd:sequence>
@@ -1150,6 +1151,7 @@
           <xsd:choice>
             <xsd:element minOccurs="0" name="skyldner" type="NavnMedInnkapsling"/>
           </xsd:choice>
+          <xsd:element minOccurs="0" name="skyldneridentifikator" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="formuesverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="opptjenteRenter" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
