@@ -571,6 +571,7 @@
           <xsd:element minOccurs="0" name="dokumenterteKostnaderTilArbeidsOgBesoeksreiserInnenforEOeS" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408ca-d96a-11e6-8d9b-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="besoeksreiseTilHjemInnenforEOeS" type="BesoeksreiseTilHjemInnenforEOeS"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="besoeksreiseTilHjemUtenforEOeS" type="BesoeksreiseTilHjemUtenforEOeS"/>
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2011,6 +2012,7 @@
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="fradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408ae-d96a-11e6-8d9b-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2134,7 +2136,7 @@
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="barnSomGirRettTilForeldrefradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fc0-dfe5-11e7-9101-005056821322" type="BarnSomGirRettTilForeldrefradrag"/>
           <xsd:element minOccurs="0" name="antallBarn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fc0-dfe5-11e7-9101-005056821322" skatt:erAvledet="true" type="Antall"/>
           <xsd:element minOccurs="0" name="totaltForeldrefradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/c2c49949-4582-11e9-9dac-005056821322" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
-          <xsd:element minOccurs="0" name="andelAvForeldrefradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2c94-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="AndelAvForeldrefradrag"/>
+          <xsd:element minOccurs="0" name="andelAvForeldrefradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2c94-a9e1-11e8-8514-005056821322" type="AndelAvForeldrefradrag"/>
           <xsd:element minOccurs="0" name="andelAvForeldrefradragTilordnetEktefelle" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/c2c49945-4582-11e9-9dac-005056821322" type="BeloepSomHeltallMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
@@ -2791,7 +2793,7 @@
   </xsd:complexType>
   <xsd:complexType name="AndelAvForeldrefradrag">
     <xsd:sequence>
-      <xsd:element name="opprinneligProsentandel" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/2b2920af-e7e6-11e8-b7e4-005056821322" type="ProsentMedInnkapsling"/>
+      <xsd:element name="opprinneligProsentandel" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/2b2920af-e7e6-11e8-b7e4-005056821322" skatt:erAvledet="true" type="ProsentMedInnkapsling"/>
       <xsd:element name="beloepsandel" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2c94-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
       <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
     </xsd:sequence>

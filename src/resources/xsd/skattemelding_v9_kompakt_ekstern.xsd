@@ -559,6 +559,7 @@
           <xsd:element minOccurs="0" name="dokumenterteKostnaderTilArbeidsOgBesoeksreiserInnenforEOeS" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="besoeksreiseTilHjemInnenforEOeS" type="BesoeksreiseTilHjemInnenforEOeS"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="besoeksreiseTilHjemUtenforEOeS" type="BesoeksreiseTilHjemUtenforEOeS"/>
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1997,6 +1998,7 @@
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="fradrag" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2120,7 +2122,7 @@
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="barnSomGirRettTilForeldrefradrag" type="BarnSomGirRettTilForeldrefradrag"/>
           <xsd:element minOccurs="0" name="antallBarn" skatt:erAvledet="true" type="Antall"/>
           <xsd:element minOccurs="0" name="totaltForeldrefradrag" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
-          <xsd:element minOccurs="0" name="andelAvForeldrefradrag" skatt:erAvledet="true" type="AndelAvForeldrefradrag"/>
+          <xsd:element minOccurs="0" name="andelAvForeldrefradrag" type="AndelAvForeldrefradrag"/>
           <xsd:element minOccurs="0" name="andelAvForeldrefradragTilordnetEktefelle" type="BeloepSomHeltallMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
@@ -2781,7 +2783,7 @@
   </xsd:complexType>
   <xsd:complexType name="AndelAvForeldrefradrag">
     <xsd:sequence>
-      <xsd:element name="opprinneligProsentandel" type="ProsentMedInnkapsling"/>
+      <xsd:element name="opprinneligProsentandel" skatt:erAvledet="true" type="ProsentMedInnkapsling"/>
       <xsd:element name="beloepsandel" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
       <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
