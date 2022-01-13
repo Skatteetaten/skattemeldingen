@@ -309,7 +309,7 @@
         <xsd:sequence>
           <xsd:element minOccurs="0" name="innberettetSparebeloepTilBoligsparingForUngdomINorskBankOppspartISkattleggingsperioden" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="tilleggIBeregnetSkattVedVilkaarsbruddForBoligsparingForUngdom" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="beregnetSparebeloepTilBoligsparingForUngdomISkattleggingsperioden" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="beregnetSparebeloepTilBoligsparingForUngdomISkattleggingsperioden" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
