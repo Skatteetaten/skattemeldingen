@@ -176,6 +176,7 @@
       <xsd:element minOccurs="0" name="tilleggsinformasjonVedKildeskattPaaPensjon" type="TilleggsinformasjonVedKildeskattPaaPensjon"/>
       <xsd:element minOccurs="0" name="tilleggsinformasjonVedSaerskiltSkattepliktEtterPetroleumsskatteloven" type="TilleggsinformasjonVedSaerskiltSkattepliktEtterPetroleumsskatteloven"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="annenFordring" type="AnnenFordring"/>
+      <xsd:element minOccurs="0" name="reduksjonAvGjeldOgGjeldsrenter" type="ReduksjonAvGjeldOgGjeldsrenter"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Naering">
@@ -1156,6 +1157,16 @@
           <xsd:element minOccurs="0" name="skyldneridentifikator" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="formuesverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="opptjenteRenter" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ReduksjonAvGjeldOgGjeldsrenter">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="gjeldsreduksjonForFastEiendomUtenforSvalbardUnntattBeskatningPaaSvalbard" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="gjeldsrentereduksjonForFormueUtenforSvalbardUnntattBeskatningPaaSvalbard" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
