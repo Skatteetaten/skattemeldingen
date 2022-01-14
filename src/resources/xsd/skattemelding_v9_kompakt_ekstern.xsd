@@ -97,7 +97,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonsinntekt" type="Pensjonsinntekt"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="individuellPensjonsordning" type="IndividuellPensjonsordning"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonspremie" type="PensjonspremierIArbeidsforhold"/>
-      <xsd:element minOccurs="0" name="fagforeningskontingent" type="Fagforeningskontingent"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fagforeningskontingent" type="Fagforeningskontingent"/>
       <xsd:element minOccurs="0" name="reiserIArbeidsforhold" type="ReiserIArbeidsforhold"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="minstefradragOgKostnader" type="MinstefradragOgKostnaderKnyttetTilArbeidOgAnnenInntekt"/>
       <xsd:element minOccurs="0" name="arbeidsoppholdUtenforHjemmet" type="ArbeidsoppholdUtenforHjemmet"/>
@@ -105,7 +105,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="oevrigeMinstefradrag" type="OevrigeMinstefradrag"/>
       <xsd:element minOccurs="0" name="standardfradrag" type="StandardfradragForUtenlandskeSjoefolkOgSokkelarbeidere"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="annenArbeidsinntekt" type="AnnenArbeidsinntekt"/>
-      <xsd:element minOccurs="0" name="fradragForIndividuellSparingTilPensjon" type="FradragForIndividuellSparingTilPensjon"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fradragForIndividuellSparingTilPensjon" type="FradragForIndividuellSparingTilPensjon"/>
       <xsd:element minOccurs="0" name="saerskiltInntektsfradragIBarnsInntekt" type="SaerskiltInntektsfradragIBarnsInntekt"/>
       <xsd:element minOccurs="0" name="omberegningsresultatForEtterbetaltePensjonerOgTrygdeytelser" type="OmberegningsresultatForEtterbetaltePensjonerOgTrygdeytelser"/>
       <xsd:element minOccurs="0" name="forskuddstrekkBarnepensjonOverfoeresForelder" type="Boolsk"/>
@@ -719,6 +719,7 @@
           <xsd:element name="saerfradrag" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
           <xsd:element maxOccurs="unbounded" name="utvidetBarnetrygd" type="UtvidetBarnetrygd"/>
           <xsd:element minOccurs="0" name="opplysningerInnrapportertFraNAVErFeil" type="BoolskMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
