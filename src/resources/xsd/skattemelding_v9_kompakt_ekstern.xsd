@@ -1180,9 +1180,9 @@
           <xsd:element name="naeringstype" skatt:erAvledet="true" type="Naeringstype"/>
           <xsd:element minOccurs="0" name="andelAvSkattemessigResultatTilordnetInnehaver" skatt:erAvledet="true" type="Prosent"/>
           <xsd:element minOccurs="0" name="naeringsinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="naeringsinntektTilordnetInnehaver" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="naeringsinntektTilordnetInnehaver" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="underskuddTilordnetInnehaver" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="underskuddTilordnetInnehaver" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="samordnetPersoninntekt" type="SamordnetPersoninntekt"/>
         </xsd:sequence>
       </xsd:extension>
