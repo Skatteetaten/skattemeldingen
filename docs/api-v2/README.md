@@ -136,7 +136,7 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 - dokumenter – konvolutt for dokumenter
 
   - skattemeldingdokument – complex type
-    - type – kodeliste – [skattemeldingUtkastPersonligSkattepliktig|skattemeldingFastsattPersonligSkattepliktig]
+    - type – [valg fra xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
     - id – dokumentidentifikator til dokumentet i skatteetatens system.
     - encoding – kodeliste – [utf-8]
     - content – serialisert dokumentinnhold i base64 encodet format
