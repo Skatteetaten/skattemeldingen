@@ -33,7 +33,6 @@
                 <spraak>se_NO</spraak>
             </spraakTekst>
         </visningsnavn>
-        <begrepsreferanse>aaa</begrepsreferanse>
         <kodetillegg>
             <oppgavekodeISL>35513</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
@@ -85,6 +84,7 @@
             <kategori>PensjonEllerTrygd</kategori>
             <etterbetalingstypeISL>alder</etterbetalingstypeISL>
             <harPensjonsgrad>ja</harPensjonsgrad>
+            <loenntrekkordningenRegel>Pensjon</loenntrekkordningenRegel>
             <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>avtalefestetPensjon</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -245,6 +245,7 @@
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
+            <presentasjonsrekkefoelge>utland</presentasjonsrekkefoelge>
         </kodetillegg>
     </kode>
     <kode>
@@ -411,7 +412,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>21</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-            <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <beskrivelseIAMelding>fastBilgodtgjoerelse</beskrivelseIAMelding>
             <beskrivelseIAMelding>kilometergodtgjoerelseBil</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -491,6 +492,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>147</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <beskrivelseIAMelding>bolig</beskrivelseIAMelding>
             <beskrivelseIAMelding>kostDoegn</beskrivelseIAMelding>
             <beskrivelseIAMelding>losji</beskrivelseIAMelding>
@@ -803,16 +805,17 @@
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
             <visningskategori>Lønn</visningskategori>
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-            <sats>589</sats>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>31</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+            <sats>589</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaHotell</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>utgiftsgodtgjoerelse</fordel>
         </kodetillegg>
     </kode>
@@ -853,6 +856,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>35</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <sats>91</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaHybelBrakkePrivat</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -900,6 +904,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>37</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <sats>300</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingTilLangtransportsjaafoerForKjoeringIUtlandet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -947,6 +952,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>33</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <sats>164</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaPensjonat</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -1237,6 +1243,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>73</presentasjonsrekkefoelge>
@@ -1450,6 +1457,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>141</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <beskrivelseIAMelding>besoeksreiserHjemmetAnnet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -1714,13 +1722,14 @@
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>53</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <beskrivelseIAMelding>besoeksreiserHjemmetAnnet</beskrivelseIAMelding>
             <beskrivelseIAMelding>besoeksreiserHjemmetKilometergodtgjoerelseBil</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>utgiftsgodtgjoerelse</fordel>
         </kodetillegg>
     </kode>
@@ -1834,6 +1843,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>27</presentasjonsrekkefoelge>
@@ -2101,6 +2111,7 @@
             <oppgavekodeISL>35522</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
+            <loenntrekkordningenRegel>Pensjon</loenntrekkordningenRegel>
             <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>PensjonEllerTrygd</kategori>
             <beskrivelseIAMelding>engangsutbetalingInnskuddspensjon</beskrivelseIAMelding>
@@ -2279,6 +2290,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Lønn</visningskategori>
             <visningskategori>Næring</visningskategori>
+            <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>149</presentasjonsrekkefoelge>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -2870,15 +2882,16 @@
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
             <visningskategori>Lønn</visningskategori>
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-            <sats>65</sats>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>47</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+            <sats>65</sats>
             <beskrivelseIAMelding>losjiEgenBrakkeCampingvogn</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>utgiftsgodtgjoerelse</fordel>
         </kodetillegg>
     </kode>
@@ -2896,7 +2909,7 @@
                 <spraak>nb_NO</spraak>
             </spraakTekst>
             <spraakTekst>
-                <tekst>Lott eller par til fiskarar og fangstfolk</tekst>
+                <tekst>Lott eller part til fiskarar og fangstfolk</tekst>
                 <spraak>nn_NO</spraak>
             </spraakTekst>
             <spraakTekst>
@@ -3398,15 +3411,16 @@
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
             <visningskategori>Lønn</visningskategori>
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-            <sats>1</sats>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>25</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+            <sats>1</sats>
             <beskrivelseIAMelding>kilometergodtgjoerelsePassasjertillegg</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>utgiftsgodtgjoerelse</fordel>
         </kodetillegg>
     </kode>
@@ -3569,6 +3583,7 @@
             <harPensjonsgrad>ja</harPensjonsgrad>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
+            <presentasjonsrekkefoelge>utland</presentasjonsrekkefoelge>
         </kodetillegg>
     </kode>
     <kode>
@@ -4093,7 +4108,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>57</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-            <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <beskrivelseIAMelding>stipend</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
@@ -4177,6 +4192,7 @@
             <harPensjonsgrad>ja</harPensjonsgrad>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
+            <loenntrekkordningenRegel>Pensjon</loenntrekkordningenRegel>
             <kategori>PensjonEllerTrygd</kategori>
             <etterbetalingstypeISL>alder#fom2015</etterbetalingstypeISL>
             <etterbetalingstypeISL>ufore#tom2014</etterbetalingstypeISL>
@@ -4217,6 +4233,7 @@
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
+            <loenntrekkordningenRegel>Pensjon</loenntrekkordningenRegel>
             <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>PensjonEllerTrygd</kategori>
             <etterbetalingstypeISL>ufore</etterbetalingstypeISL>
@@ -4515,15 +4532,16 @@
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
             <visningskategori>Lønn</visningskategori>
             <overskuddKanOverstyres>nei</overskuddKanOverstyres>
-            <sats>3,50</sats>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>23</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+            <sats>3,50</sats>
             <beskrivelseIAMelding>kilometergodtgjoerelseBil</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>utgiftsgodtgjoerelse</fordel>
         </kodetillegg>
     </kode>
@@ -4559,15 +4577,16 @@
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
             <visningskategori>Lønn</visningskategori>
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-            <sats>93</sats>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>39</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+            <sats>93</sats>
             <beskrivelseIAMelding>besoeksreiserHjemmetKost</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>utgiftsgodtgjoerelse</fordel>
         </kodetillegg>
     </kode>
@@ -4608,6 +4627,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>41</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <sats>589</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaHotellBeordringUtover28Doegn</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4650,14 +4670,15 @@
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
             <visningskategori>Lønn</visningskategori>
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-            <sats>589</sats>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>43</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+            <sats>589</sats>
             <beskrivelseIAMelding>reiseKostMedOvernattingPaaHotellBeordringUtover28Doegn</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>utgiftsgodtgjoerelse</fordel>
         </kodetillegg>
     </kode>
@@ -4693,15 +4714,16 @@
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
             <visningskategori>Lønn</visningskategori>
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-            <sats>400</sats>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>45</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+            <sats>400</sats>
             <beskrivelseIAMelding>reiseKostUtenOvernatting</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>utgiftsgodtgjoerelse</fordel>
         </kodetillegg>
     </kode>
@@ -4814,6 +4836,7 @@
             <visningsfelt>beloep</visningsfelt>
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
             <visningskategori>Lønn</visningskategori>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <overskuddKanOverstyres>nei</overskuddKanOverstyres>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>59</presentasjonsrekkefoelge>
@@ -4849,6 +4872,7 @@
         <kodetillegg>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
+            <presentasjonsrekkefoelge>utland</presentasjonsrekkefoelge>
         </kodetillegg>
     </kode>
     <kode>
@@ -5055,9 +5079,10 @@
             <oppgavekodeISL>36586</oppgavekodeISL>
             <visningsfelt>beloep</visningsfelt>
             <visningskategori>Pensjon</visningskategori>
-            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <kategori>YtelseFraOffentlige</kategori>
             <etterbetalingstypeISL>ufore</etterbetalingstypeISL>
+            <loenntrekkordningenRegel>Uføre</loenntrekkordningenRegel>
+            <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
             <beskrivelseIAMelding>ufoeretrygd</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -5099,15 +5124,16 @@
             <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
             <visningskategori>Lønn</visningskategori>
             <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-            <sats>435</sats>
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>49</presentasjonsrekkefoelge>
+            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+            <sats>435</sats>
             <beskrivelseIAMelding>reiseNattillegg</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
             <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
             <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-            <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
             <fordel>utgiftsgodtgjoerelse</fordel>
         </kodetillegg>
     </kode>
@@ -5148,7 +5174,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>69</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-            <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <beskrivelseIAMelding>annet</beskrivelseIAMelding>
             <minstefradrag>minstefradragIInntekt</minstefradrag>
             <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
@@ -5195,7 +5221,7 @@
             <kategori>Lønn</kategori>
             <presentasjonsrekkefoelge>29</presentasjonsrekkefoelge>
             <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-            <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+            <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
             <beskrivelseIAMelding>arbeidsoppholdKost</beskrivelseIAMelding>
             <beskrivelseIAMelding>arbeidsoppholdLosji</beskrivelseIAMelding>
             <beskrivelseIAMelding>besoeksreiserHjemmetAnnet</beskrivelseIAMelding>
