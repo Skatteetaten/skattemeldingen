@@ -986,7 +986,7 @@
       <xsd:element minOccurs="0" name="beloepFraBomturerRegistrertPaaTaksameter" type="BeloepSomHeltall"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Bransje">
+  <xsd:simpleType name="Bransje" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_bransjetype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Uri" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e148-9fe1-11e5-a9f8-e4115b280940">
@@ -1132,7 +1132,7 @@
   <xsd:simpleType name="FormuesobjektVedRealisasjonEllerUtleieMellomSelskapOgNaerstaaendeMv" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_formuesobjektVedRealisasjonEllerUtleieMellomSelskapOgNaerstaaendeMv.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
-  <xsd:simpleType name="Taksametertype">
+  <xsd:simpleType name="Taksametertype" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_taksametertype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Antall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e145-9fe1-11e5-a9f8-e4115b280940">

@@ -2751,7 +2751,7 @@
       <xsd:element minOccurs="0" name="foreloepigBeregnetKostnadForKostOgLosji" skatt:erAvledet="true" type="BeloepSomHeltall"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Fradragsrettstype">
+  <xsd:simpleType name="Fradragsrettstype" skatt:eksternKodeliste="inline">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="fullFradragsrett"/>
       <xsd:enumeration value="ingenFradragsrett"/>
@@ -3043,10 +3043,10 @@
       <xsd:element name="seksjonsnummer" type="Seksjonsnummer"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="DyreartKnyttetTilJaktrettighet">
+  <xsd:simpleType name="DyreartKnyttetTilJaktrettighet" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_dyreartKnyttetTilJaktrettighet.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
-  <xsd:simpleType name="RettighetstypeKnyttetTilSkogeiendom">
+  <xsd:simpleType name="RettighetstypeKnyttetTilSkogeiendom" skatt:eksternKodeliste="/formuesOgInntektsskatt/2021_rettighetKnyttetTilSkogeiendom.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="AarOgMaaned" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e149-9fe1-11e5-a9f8-e4115b280940">
