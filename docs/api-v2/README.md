@@ -1230,7 +1230,7 @@ Neste trinn er å laste opp skattemeldingsdata.
 Det anbefales å gjøre ny validering etter oppdatering av skattemelding.xml.  
 
 Forklaring av attributter til vedlegg-seksjonen i skattemelding.xml
-- id: Identifiserer vedlegget. Denne ideen hentes fra responsen ved opplasting av vedlegget. Se beskrivelse [Last opp vedlegg](#last-opp-vedlegg-ved-behov)
+- id: Identifiserer vedlegget. Denne ideen hentes fra responsen ved opplasting av vedlegget. Se beskrivelse "Last opp vedlegg (ved behov)"
 - vedleggsnavn: Forklarende navn på vedlegget. (ikke påkrevd)
 - vedleggsfil/opprinneligFilnavn: Filnavnet som filen hadde da vedlegget ble lastet opp.
 - vedleggsfil/opprinneligFiltype: Filtypen som filen hadde da vedlegget ble lastet opp.  (jpg, pdf, osv.)
