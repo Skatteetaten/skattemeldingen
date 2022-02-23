@@ -676,8 +676,8 @@
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="omsetningAvRaafiskPerSalg" type="OmsetningAvRaafiskPerSalg"/>
-          <xsd:element minOccurs="0" name="samletInntekt" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
-          <xsd:element minOccurs="0" name="inntektEtterBunnfradrag" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="samletInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="inntektEtterBunnfradrag" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
