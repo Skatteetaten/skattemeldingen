@@ -69,12 +69,12 @@ For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen
 
 Når callback-URL blir kalt må klienten plukke ut JWT-tokenet fra responsen og legge det i header-feltet Authorization og kalle skattemeldings-API. For detaljer, se [demo klient](sending/demo-2020.ipynb)
 
-URL til skattemeldings-API i test er: https://mp-test.sits.no/
+URL til skattemeldings-API i test er: https://idporten-api-sbstest.sits.no/
 
 Første testen bør være å teste at klienten når frem, dette kan gjøres ved å kalle ping tjenesten:
 
-- `GET https://<env>/api/eksterntapi/formueinntekt/skattemelding/ping`
-- `Eksempel: GET https://mp-test.sits.no/api/eksterntapi/formueinntekt/skattemelding/ping`
+- `GET https://<env>/api/skattemelding/v2/ping`
+- `Eksempel: GET https://idporten-api-sbstest.sits.no/api/skattemelding/v2/ping`
 
 For nærmere beskrivelse av skattemelding-API og Altinn3-API, se kapitelet [API](docs/documentation/api-v1-pilot/README.md)
 

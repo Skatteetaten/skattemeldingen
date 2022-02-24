@@ -90,7 +90,7 @@ API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungere
 
 | Miljø        | Adresse                         |
 | ------------ | ------------------------------- |
-| Test         | mp-test.sits.no                 |
+| Test         | idporten-api-sbstest.sits.no    |
 | Produksjon   | idporten.api.skatteetaten.no    |
 
 

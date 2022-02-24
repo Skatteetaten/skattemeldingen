@@ -22,7 +22,6 @@ from jose import jwt
 CLIENT_ID = '8d7adad7-b497-40d0-8897-9a9d86c95306'
 AUTH_DOMAIN = 'oidc-ver2.difi.no/idporten-oidc-provider'
 ALGORITHMS = ["RS256"]
-API_AUDIENCE = 'https://mp-test.sits.no/api/eksterntapi/formueinntekt/skattemelding/'
 
 
 # En enkel webserver som venter på callback fra browseren, og lagrer
@@ -123,10 +122,9 @@ def main_relay(**kwargs) -> dict:
                '&response_type=code'
                '&state={}'
                '&nonce={}'
-               '&resource={}'
                '&code_challenge={}'
                '&code_challenge_method=S256'
-               '&ui_locales=nb'.format(client_id, port, state, nonce, API_AUDIENCE, pkce_challenge)), safe='?&=_')
+               '&ui_locales=nb'.format(client_id, port, state, nonce, pkce_challenge)), safe='?&=_')
     print(u)
 
     # Open web browser to get ID-porten authorization token
@@ -186,15 +184,13 @@ def main_relay(**kwargs) -> dict:
         js['access_token'],
         jwks,
         algorithms=ALGORITHMS,
-        issuer="https://" + AUTH_DOMAIN + "/",
-        audience=API_AUDIENCE
+        issuer="https://" + AUTH_DOMAIN + "/"
     )
     at_encoded = js['access_token'].split(".", 3)[1]
     access_token = json.loads(urlsafe_b64decode(at_encoded + "==").decode())
     assert access_token['client_id'] == client_id
     assert access_token['token_type'] == "Bearer"
     assert access_token['acr'] == "Level3"
-    assert access_token['aud'] == API_AUDIENCE
 
     print("The token is good, expires in {} seconds".format(access_token['exp'] - int(time.time())))
     print("\nBearer {}".format(js['access_token']))
