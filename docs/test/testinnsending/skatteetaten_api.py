@@ -190,7 +190,6 @@ def main_relay(**kwargs) -> dict:
     access_token = json.loads(urlsafe_b64decode(at_encoded + "==").decode())
     assert access_token['client_id'] == client_id
     assert access_token['token_type'] == "Bearer"
-    assert access_token['acr'] == "Level3"
 
     print("The token is good, expires in {} seconds".format(access_token['exp'] - int(time.time())))
     print("\nBearer {}".format(js['access_token']))
