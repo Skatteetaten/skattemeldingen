@@ -44,7 +44,7 @@ Figuren under skisserer hvordan innloggingsprosessen vil se ut:
 
 #### Registrering av et sluttbrukersystem i ID-porten
 
-Når et sluttbrukersystem initierer en påloggingsprosess mot ID-porten må SBS sende med en klient-ID. Denne klient-id-en er unik for SBS-typen og vil bli tildelt ved at programvareleverandøren av SBS på forhånd har gjennomført en registrering (onboarding) i en selvbetjeningsportal hos Digdir/Difi. Dette er beskrevet her: https://difi.github.io/felleslosninger/oidc_index.html. Lenken beskriver også standarden OIDC som ID-porten er basert på.
+Når et sluttbrukersystem initierer en påloggingsprosess mot ID-porten må SBS sende med en klient-ID. Denne klient-id-en er unik for SBS-typen og vil bli tildelt ved at programvareleverandøren av SBS på forhånd har gjennomført en registrering (onboarding) i en selvbetjeningsportal hos Digdir/Difi. Dette er beskrevet her: https://docs.digdir.no/docs/idporten/oidc/. Lenken beskriver også standarden OIDC som ID-porten er basert på.
 
 Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir slik at dere kan få tildelt en klient-ID.
 
@@ -77,7 +77,7 @@ Bruk av Maskinporten forutsetter at organisasjonen har et virksomhetssertifikat 
 
 ![maskinporten.png](../api-v1-pilot/maskinporten.png)
 
-Les detaljer om maksinporten her: https://difi.github.io/felleslosninger/maskinporten_guide_apikonsument.html
+Les detaljer om maksinporten her: https://docs.digdir.no/docs/Maskinporten/maskinporten_guide_apikonsument
 
 ## Autorisasjon
 

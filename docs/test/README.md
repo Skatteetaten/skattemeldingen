@@ -46,17 +46,17 @@ Et kundeforhold hos DigDir gir tilgang til deres selvbetjeningsløsning som igje
 **Nyttige lenker:**
 
 - Klienten bruker test-miljøet i DigDir, "verifikasjon 2": https://samarbeid.difi.no/node/232
-- OIDC-integrasjonen er beskrevet her: https://difi.github.io/felleslosninger/oidc_index.html
+- OIDC-integrasjonen er beskrevet her: https://docs.digdir.no/docs/idporten/oidc/
 - Hvordan lage en klient i selvregistreringen: https://minside-samarbeid.difi.no/organization-home/services/service-admin#/
 
 ## Logge inn hos ID-porten
 
 Klienten må foreta følgende REST kall mot ID-porten:
 
-- Starte system browser og gjøre autorisasjonskall mot ID-porten. Les mer om det her: https://difi.github.io/felleslosninger/oidc_protocol_authorize.html
+- Starte system browser og gjøre autorisasjonskall mot ID-porten. Les mer om det her: https://docs.digdir.no/docs/idporten/oidc/oidc_protocol_authorize
 - Brukeren blir da sendt til ID-porten for innlogging. Dere kan benytte eksisterende test-brukere som dere benytter til test mot skattemeldingen i dag.
 - Sette opp en webserver som venter på callback fra browseren. Etter vellykket pålogging i ID-porten sendes brukes til denne webserveren. Denne webserveren må være satt til å lytte på callback-URL http://localhost:12345/token (ref. forrige kapittel).
-- Gjøre et tokenforespørsel. Les mer om det her: https://difi.github.io/felleslosninger/oidc_protocol_token.html
+- Gjøre et tokenforespørsel. Les mer om det her: https://docs.digdir.no/docs/idporten/oidc/oidc_protocol_token
 
 Vi benytter følgende testmiljø hos ID-porten:
 
