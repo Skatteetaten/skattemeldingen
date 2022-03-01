@@ -1840,7 +1840,7 @@
         <xsd:sequence>
           <xsd:element minOccurs="0" name="andelAvFormuesverdi" type="ProsentMedInnkapsling"/>
           <xsd:element minOccurs="0" name="formuesspesifikasjonForSkogeiendomINorge" type="FormuesspesifikasjonForSkogeiendomINorge"/>
-          <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="sergMatrikkelnummer" type="SergMatrikkelnummer"/>
         </xsd:sequence>
@@ -2630,7 +2630,7 @@
       <xsd:element minOccurs="0" name="anvendtPrissone" skatt:erAvledet="true" type="Tekst"/>
       <xsd:element minOccurs="0" name="kostnadssjablong" skatt:erAvledet="true" type="Tekst"/>
       <xsd:element minOccurs="0" name="avkastningsverdiPerEiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element maxOccurs="4" name="tilvekst" type="Tilvekstspesifikasjon"/>
+      <xsd:element minOccurs="0" maxOccurs="4" name="tilvekst" type="Tilvekstspesifikasjon"/>
       <xsd:element minOccurs="0" name="sumTilvekst" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="korrigertKostnadssjablong" type="Tekst"/>
       <xsd:element minOccurs="0" name="anvendtKostnadssjablong" skatt:erAvledet="true" type="Tekst"/>
