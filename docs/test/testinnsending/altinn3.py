@@ -44,8 +44,8 @@ def opprett_ny_instans(header: dict, fnr: str, appnavn: str = "skd/sirius-skatte
     return r.json()
 
 
-def opprett_ny_instans_med_inntektsaar(header: dict, inntektsaar: str, appnavn: str = "skd/sirius-skattemelding-v1",
-                                       fnr: str = None, orgnr=None) -> dict:
+def opprett_ny_instans_med_inntektsaar(header: dict, inntektsaar: str, fnr: str = None, orgnr=None,
+                                       appnavn: str = "skd/sirius-skattemelding-v1") -> dict:
 
     instans_owner = {"personNumber": fnr} if fnr else {"organisationNumber": orgnr}
 
