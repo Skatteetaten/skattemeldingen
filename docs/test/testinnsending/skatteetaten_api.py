@@ -48,10 +48,12 @@ class BrowserRedirectHandler(BaseHTTPRequestHandler):
 def random_bytes(n: int) -> bytes:
     return bytearray(random.getrandbits(8) for _ in range(n))
 
+
 def base64_response(s: str, encoding: str) -> str:
     base64_bytes = s.encode(encoding)
     message_bytes = base64.b64decode(base64_bytes)
     return message_bytes.decode(encoding)
+
 
 def decode_dokument(dokument):
     orginal_conten = dokument["content"]
@@ -73,6 +75,7 @@ def iter_dokumenter(d):
             pass
     return d
 
+
 def base64_decode_response(r: requests):
 
     if not r: # ikke 200 ok
@@ -83,12 +86,14 @@ def base64_decode_response(r: requests):
         utkast_resp[k] = v
     return xmltodict.unparse(utkast_resp)
 
+
 def skattemelding_visning(instans_data: dict,
                           appnavn: str = "skd/formueinntekt-skattemelding-v2") -> None:
     instans_id = instans_data['id']
     url_visning = f"https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId={appnavn}&instansId={instans_id}"
     webbrowser.open(url_visning, new=0, autoraise=True)
     return url_visning
+
 
 def main_relay(**kwargs) -> dict:
     # disabled - idporten fails to register 127.0.0.1 and dynamic port numbers for now
