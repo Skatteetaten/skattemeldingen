@@ -2,7 +2,7 @@
 
 ## 2021
 
-Sist oppdatert 10. november 2021
+Sist oppdatert 3. mars 2022
 
 * [Lede- og hjelpetekster for skattemelding](2021/tekster_skattemelding.json)
 * [Lede- og hjelpetekster for næringsspesifikasjon](2021/tekster_naering.json)
@@ -10,7 +10,7 @@ Sist oppdatert 10. november 2021
 
 ## 2020
 
-Sist oppdatert 10. november 2021
+Sist oppdatert 3. mars 2022
 
 * [Lede- og hjelpetekster for skattemelding](2020/tekster_skattemelding.json)
 * [Lede- og hjelpetekster for næringsspesifikasjon](2020/tekster_naering.json)
