@@ -1,21 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.aar_2021
-
-import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.HarKalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.Kalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.PostProsessering
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.felter.SyntetiskFelt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.felter.der
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.itererForekomster
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.aar_2021.UnderskuddTilFremfoering.hjelpeBeregninger.inntektFoerAnvendelseAvUnderskudd
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.aar_2021.UnderskuddTilFremfoering.hjelpeBeregninger.restFremfoertUnderskudd
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.aar_2021.UnderskuddTilFremfoering.hjelpeBeregninger.restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.aar_2021.UnderskuddTilFremfoering.hjelpeBeregninger.samletUnderSkuddEllerSamletInntekt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.aar_2021.UnderskuddTilFremfoering.hjelpeBeregninger.underhaandsakkordMotregnetFremfoertUnderskudd
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.inntektOgUnderskudd
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
-
 object UnderskuddTilFremfoering : HarKalkyletre, PostProsessering {
 
     internal object hjelpeBeregninger {

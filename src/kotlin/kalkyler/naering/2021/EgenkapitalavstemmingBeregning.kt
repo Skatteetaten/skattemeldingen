@@ -1,23 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v2_2021
-
-import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.HarKalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.Kalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.FeltSpecification
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.avrundTilToDesimalerString
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.felter.FeltKoordinat
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.InlineKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.Verdi
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.summer
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.minusNullsafe
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.plusNullsafe
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.mapping.HarGeneriskModell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.egenkapitalavstemming
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.egenkapitalavstemming.egenkapitalendring
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.egenkapitalavstemming.prinsippendring
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.InformasjonsElement
-
 object EgenkapitalavstemmingBeregning : InlineKalkyle() {
 
     private fun summerForekomsterAvEgenkapitalendring(

@@ -1,18 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v2_2021
-
-import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.HarKalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.Kalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.PostProsessering
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.felter.SyntetiskFelt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.felter.der
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.ForekomstOgVerdi
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.itererForekomster
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.spesifikasjonAvSkattemessigVerdiPaaFordring
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.spesifikasjonAvVarelager
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
-
 object SpesifikasjonAvOmloepsmiddel : HarKalkyletre, PostProsessering {
 
     internal object BeregnendeFelter {

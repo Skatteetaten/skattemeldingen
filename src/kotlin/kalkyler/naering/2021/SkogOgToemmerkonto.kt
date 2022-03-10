@@ -1,15 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v2_2021
-
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.HarKalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.Kalkyletre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.PostProsessering
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.felter.SyntetiskFelt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.itererForekomster
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v2_2021.SkogOgToemmerkonto.hjelpeberegninger.inntektEllerInntektsfradragFraToemmerkonto
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.skogOgToemmerkonto
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
-
 internal object SkogOgToemmerkonto : HarKalkyletre, PostProsessering {
 
     internal object hjelpeberegninger {

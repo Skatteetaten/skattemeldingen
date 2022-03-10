@@ -1,19 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v2_2021
-
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.GenerellBeregner
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.mapping.NaeringsregisterMapping
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.aarsresultat
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.annenDriftsinntekt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.annenDriftskostnad
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.balanseverdiForAnleggsmiddel
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.egenkapital
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.fordeltBeregnetNaeringsinntekt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.fordeltBeregnetPersoninntekt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.resultatregnskapOgBalanse_2021
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.skattemessigResultat
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.virksomhet
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
-
 class Naeringsberegner2021(
     val naeringsregisterMapping: NaeringsregisterMapping
 ) : GenerellBeregner(
@@ -28,11 +12,6 @@ internal val filtrerInput: (GeneriskModell) -> GeneriskModell = { filtrerBortSpe
 
 internal val filtrerResultat: (GeneriskModell) -> GeneriskModell = { filtrerBortFordelBeregnetInntekt(it) }
 
-/**
- * Gitt at regnskapsplitypen er 2, så skal kode_7099.kode ha grunnlag, som betyr at den må filtrers bort. Fordi dette
- * er et felt vi beregner oss frem til, basert på grunnlaget.
- * Resten filteres automatisk på 1 og 5, kalkylene kjører kun når regnskapspliktypene er 1 og 5 for disse.
- */
 private fun filtrerBortSpesifikkeTyperFraInput(generiskModell: GeneriskModell): GeneriskModell {
     val regnskapsPliktype = generiskModell.gruppe(virksomhet.gruppe).felt(virksomhet.regnskapspliktstype.key).verdi()
     val balanse = balanseverdiForAnleggsmiddel.balanseverdi.forekomstType[1]
