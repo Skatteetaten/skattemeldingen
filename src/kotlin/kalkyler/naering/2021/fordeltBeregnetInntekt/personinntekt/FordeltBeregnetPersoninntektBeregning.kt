@@ -1,9 +1,29 @@
 object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
+
+    val skjermingsgrunnlagtyper = listOf(
+        skjermingsgrunnlagstype_2021.kode_saldogruppeA.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeB.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeC.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeC2.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeD.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeE.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeF.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeG.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeH.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeI.kode,
+        skjermingsgrunnlagstype_2021.kode_saldogruppeJ.kode,
+        skjermingsgrunnlagstype_2021.kode_lineaertavskrevetAnleggsmiddel.kode,
+        skjermingsgrunnlagstype_2021.kode_ikkeAvskrivbartAnleggsmiddel.kode,
+        skjermingsgrunnlagstype_2021.kode_ervervetImmatriellRettighet.kode,
+        skjermingsgrunnlagstype_2021.kode_aktivertForskningsOgUtviklingskostnad.kode,
+        skjermingsgrunnlagstype_2021.kode_varelager.kode,
+        skjermingsgrunnlagstype_2021.kode_kundefordring.kode,
+    )
+
     override fun kalkulertPaa(naeringsopplysninger: HarGeneriskModell): Verdi {
         val gm = naeringsopplysninger.tilGeneriskModell()
 
-        val selskapstype = gm.verdiFor(virksomhet.selskapstype.key)
-        return if (selskapstype == selskapstype_2021.kode_enkeltpersonforetak.kode) {
+        return if (skalBeregnePersoninntekt(gm)) {
             val beregnetSkjermingsgrunnlag = beregnSkjermingsgrunnlag(gm)
 
             //Personinntekt
@@ -26,7 +46,7 @@ object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
                     if (it.value.size != 1) {
                         error(
                             "Vi kan ikke ha mer enn én forekomst av fordeltBeregnetPersoninntekt per identifikatorForFordeltBeregnetPersoninntekt, " +
-                                    "identifikatorForFordeltBeregnetPersoninntekt=${it.key}, har verdier=${it.value}"
+                                "identifikatorForFordeltBeregnetPersoninntekt=${it.key}, har verdier=${it.value}"
                         )
                     }
 
@@ -40,8 +60,11 @@ object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
                     if (fordeltSkattemessigResultatEtterKorreksjonBeloep != null
                         && fordeltSkattemessigResultatEtterKorreksjonBeloep.isNotEmpty()
                     ) {
-                        val beregnetAaretsBergnedePersoninntektFoerFordelingOgSamordning =
-                            beregnAaretsBergnedePersoninntektFoerFordelingOgSamordning(
+                        val beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning = overstyrtVerdiHvisOverstyrt(
+                            gm,
+                            fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning.key
+                        )
+                            ?: beregnAaretsBeregnedePersoninntektFoerFordelingOgSamordning(
                                 personForekomst,
                                 fordeltSkattemessigResultatEtterKorreksjonBeloep.sumOf { s -> BigDecimal(s) }
                             )
@@ -53,19 +76,23 @@ object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
                                     fordeltBeregnetPersoninntekt.forekomstType[0] to personForekomst.rotIdVerdi(),
                                     fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning.gruppe to "fixed"
                                 ),
-                                beregnetAaretsBergnedePersoninntektFoerFordelingOgSamordning
+                                beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning
                             )
                         )
 
-                        if (beregnetAaretsBergnedePersoninntektFoerFordelingOgSamordning != BigDecimal.ZERO) {
+                        if (beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning != BigDecimal.ZERO) {
                             val andelAvPersoninntektTilordnetInnehaver =
                                 personForekomst.verdiFor(fordeltBeregnetPersoninntekt.andelAvPersoninntektTilordnetInnehaver.key)
                                     ?: "100"
-                            val beregnetAaretsBergnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver =
-                                beregnAaretsBergnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver(
-                                    beregnetAaretsBergnedePersoninntektFoerFordelingOgSamordning,
-                                    BigDecimal(andelAvPersoninntektTilordnetInnehaver)
+                            val beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver =
+                                overstyrtVerdiHvisOverstyrt(
+                                    gm,
+                                    fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver.key
                                 )
+                                    ?: beregnAaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver(
+                                        beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning,
+                                        BigDecimal(andelAvPersoninntektTilordnetInnehaver)
+                                    )
 
                             resultat = resultat.erstattEllerLeggTilFelter(
                                 InformasjonsElement(
@@ -74,7 +101,7 @@ object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
                                         fordeltBeregnetPersoninntekt.forekomstType[0] to personForekomst.rotIdVerdi(),
                                         fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver.gruppe to "fixed"
                                     ),
-                                    beregnetAaretsBergnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver
+                                    beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver
                                 )
                             )
                         }
@@ -105,59 +132,30 @@ object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
                             { it.verdiFor(fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.skjermingsgrunnlagstype.key) },
                             {
                                 (BigDecimal(it.verdiFor(fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.inngaaendeVerdi.key)) +
-                                        BigDecimal(it.verdiFor(fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.utgaaendeVerdi.key)))
+                                    BigDecimal(it.verdiFor(fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.utgaaendeVerdi.key)))
                                     .divideInternal(
                                         BigDecimal(2)
                                     )
                             })
-                val skjermingsgrunnlagtyper = listOf(
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeA.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeB.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeC.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeC2.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeD.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeE.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeF.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeG.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeH.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeI.kode,
-                    skjermingsgrunnlagstype_2021.kode_saldogruppeJ.kode,
-                    skjermingsgrunnlagstype_2021.kode_lineaertavskrevetAnleggsmiddel.kode,
-                    skjermingsgrunnlagstype_2021.kode_ikkeAvskrivbartAnleggsmiddel.kode,
-                    skjermingsgrunnlagstype_2021.kode_ervervetImmatriellRettighet.kode,
-                    skjermingsgrunnlagstype_2021.kode_aktivertForskningsOgUtviklingskostnad.kode,
-                    skjermingsgrunnlagstype_2021.kode_varelager.kode,
-                    skjermingsgrunnlagstype_2021.kode_kundefordring.kode,
-                )
 
                 if (gjennomsnittsverdier.isNotEmpty()) {
-                    val foersteLedd = gjennomsnittsverdier
-                        .filter { skjermingsgrunnlagtyper.contains(it.key) }
-                        .flatMap { it.value }
-                        .fold(BigDecimal.ZERO, BigDecimal::add)
+                    val sumSkjermingsgrunnlagFoerGjeldsfradrag =
+                        overstyrtVerdiHvisOverstyrt(
+                            gm,
+                            fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagFoerGjeldsfradrag.key
+                        )
+                            ?: beregnSumSkjermingsgrunnlagFoerGjeldsfradrag(gjennomsnittsverdier)
 
-                    val leverandoergjeld =
-                        gjennomsnittsverdier
-                            .filter { it.key == skjermingsgrunnlagstype_2021.kode_leverandoergjeld.kode }
-                            .flatMap { it.value }
-                            .fold(BigDecimal.ZERO, BigDecimal::add)
-
-                    val foretaksgjeld = gjennomsnittsverdier
-                        .filter { it.key == skjermingsgrunnlagstype_2021.kode_foretaksgjeld.kode }
-                        .flatMap { it.value }
-                        .fold(BigDecimal.ZERO, BigDecimal::add)
-
-                    val sumSkjermingsgrunnlagFoerGjeldsfradrag = if ((foersteLedd - leverandoergjeld).signum() == -1) {
-                        BigDecimal.ZERO
-                    } else {
-                        foersteLedd - leverandoergjeld
-                    }
                     val sumSkjermingsgrunnlagEtterGjeldsfradrag =
-                        if ((sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld).signum() == -1) {
-                            BigDecimal.ZERO
-                        } else {
-                            sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld
-                        }
+                        overstyrtVerdiHvisOverstyrt(
+                            gm,
+                            fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagEtterGjeldsfradrag.key
+                        )
+                            ?: beregnSumSkjermingsgrunnlagEtterGjeldsfradrag(
+                                gjennomsnittsverdier,
+                                sumSkjermingsgrunnlagFoerGjeldsfradrag
+                            )
+
                     val skjermingsrente =
                         fordeltBeregnetPersoninntektForekomst.verdiFor(fordeltBeregnetPersoninntekt.skjermingsrente.key)
                             ?.let { BigDecimal(it).divideInternal(BigDecimal(100)) }
@@ -167,14 +165,16 @@ object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
                             ?.let { BigDecimal(it) }
                             ?: BigDecimal(12)).divideInternal(BigDecimal(12))
 
-                    val skjermingsfradrag =
-                        if (sumSkjermingsgrunnlagFoerGjeldsfradrag.signum() == -1) {
-                            BigDecimal.ZERO
-                        } else if (skjermingsrente != null) {
-                            sumSkjermingsgrunnlagEtterGjeldsfradrag * faktorForSkjermingsrente * skjermingsrente
-                        } else {
-                            null
-                        }
+                    val skjermingsfradrag = overstyrtVerdiHvisOverstyrt(
+                        gm,
+                        fordeltBeregnetPersoninntekt.skjermingsfradrag.key
+                    )
+                        ?: beregnSkjermingsfradrag(
+                            sumSkjermingsgrunnlagFoerGjeldsfradrag,
+                            skjermingsrente,
+                            sumSkjermingsgrunnlagEtterGjeldsfradrag,
+                            faktorForSkjermingsrente
+                        )
 
                     //BigDecimal(product.stripTrailingZeros().toPlainString())
                     val idPersonInntekt = fordeltBeregnetPersoninntektForekomst.rotIdVerdi()!!
@@ -217,7 +217,59 @@ object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
             .collect(GeneriskModell.collectorFraGm())
     }
 
-    private fun beregnAaretsBergnedePersoninntektFoerFordelingOgSamordning(
+    private fun beregnSumSkjermingsgrunnlagFoerGjeldsfradrag(
+        gjennomsnittsverdier: Map<String, List<BigDecimal>>
+    ): BigDecimal {
+        val foersteLedd = gjennomsnittsverdier
+            .filter { skjermingsgrunnlagtyper.contains(it.key) }
+            .flatMap { it.value }
+            .fold(BigDecimal.ZERO, BigDecimal::add)
+
+        val leverandoergjeld =
+            gjennomsnittsverdier
+                .filter { it.key == skjermingsgrunnlagstype_2021.kode_leverandoergjeld.kode }
+                .flatMap { it.value }
+                .fold(BigDecimal.ZERO, BigDecimal::add)
+
+        return if ((foersteLedd - leverandoergjeld).signum() == -1) {
+            BigDecimal.ZERO
+        } else {
+            foersteLedd - leverandoergjeld
+        }
+    }
+
+    private fun beregnSumSkjermingsgrunnlagEtterGjeldsfradrag(
+        gjennomsnittsverdier: Map<String, List<BigDecimal>>,
+        sumSkjermingsgrunnlagFoerGjeldsfradrag: BigDecimal
+    ): BigDecimal {
+        val foretaksgjeld = gjennomsnittsverdier
+            .filter { it.key == skjermingsgrunnlagstype_2021.kode_foretaksgjeld.kode }
+            .flatMap { it.value }
+            .fold(BigDecimal.ZERO, BigDecimal::add)
+
+        return if ((sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld).signum() == -1) {
+            BigDecimal.ZERO
+        } else {
+            sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld
+        }
+    }
+
+    private fun beregnSkjermingsfradrag(
+        sumSkjermingsgrunnlagFoerGjeldsfradrag: BigDecimal,
+        skjermingsrente: BigDecimal?,
+        sumSkjermingsgrunnlagEtterGjeldsfradrag: BigDecimal,
+        faktorForSkjermingsrente: BigDecimal
+    ): BigDecimal? {
+        return if (sumSkjermingsgrunnlagFoerGjeldsfradrag.signum() == -1) {
+            BigDecimal.ZERO
+        } else if (skjermingsrente != null) {
+            sumSkjermingsgrunnlagEtterGjeldsfradrag * faktorForSkjermingsrente * skjermingsrente
+        } else {
+            null
+        }
+    }
+
+    private fun beregnAaretsBeregnedePersoninntektFoerFordelingOgSamordning(
         fordeltBeregnetPersoninntektForekomst: GeneriskModell,
         fordeltSkattemessigResultatEtterKorreksjon: BigDecimal
     ): BigDecimal {
@@ -259,14 +311,14 @@ object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
             )
     }
 
-    private fun beregnAaretsBergnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver(
+    private fun beregnAaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver(
         aaretsBeregnedePersoninntektFoerFordelingOgSamordning: BigDecimal,
         andelAvPersoninntektTilordnetInnehaver: BigDecimal
     ): BigDecimal {
         return aaretsBeregnedePersoninntektFoerFordelingOgSamordning
             .times(andelAvPersoninntektTilordnetInnehaver)
             .div(BigDecimal(100))
-            .setScale(0, RoundingMode.HALF_EVEN)
+            .avrundTilToDesimaler()
     }
 
     private fun leggTilInformasjonselement(
@@ -280,8 +332,7 @@ object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
                 InformasjonsElement(
                     key,
                     id,
-                    verdi.setScale(2, RoundingMode.HALF_UP)
-                        .stripTrailingZeros().toPlainString()
+                    verdi.avrundTilToDesimalerString()
                 )
             )
         }

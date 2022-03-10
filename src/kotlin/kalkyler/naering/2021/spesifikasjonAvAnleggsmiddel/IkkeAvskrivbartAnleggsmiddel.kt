@@ -1,4 +1,4 @@
-internal object SpesifikasjonAvIkkeAvskrivbare : HarKalkyletre, PostProsessering {
+internal object IkkeAvskrivbartAnleggsmiddel : HarKalkyletre, PostProsessering {
 
     internal object beregnedeFelter {
         val utgaaendeVerdiPositivOgNegativ =

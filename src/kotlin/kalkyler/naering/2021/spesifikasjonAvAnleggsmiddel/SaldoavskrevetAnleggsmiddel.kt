@@ -1,5 +1,6 @@
-val saldoAvskrevetForekomster = itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel
-internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
+internal object SaldoavskrevetAnleggsmiddel : HarKalkyletre, PostProsessering {
+
+    val saldoAvskrevetForekomster = itererForekomster forekomsterAv saldoavskrevetAnleggsmiddel
 
     internal object beregnedeFelter {
         val aaretsAvskrivningMellomverdi = SyntetiskFelt(
@@ -163,7 +164,8 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
                     Specifications.binaryFeltSpec(
                         beregnedeFelter.utgaaendeVerdiMellomverdi,
                         it.nedreGrenseForAvskrivning
-                    ) { utgaaendeVerdi, nedreGrenseForAvskrivning
+                    ) {
+                            utgaaendeVerdi, nedreGrenseForAvskrivning,
                         ->
                         utgaaendeVerdi < nedreGrenseForAvskrivning
                     }
@@ -180,7 +182,8 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
                         Specifications.binaryFeltSpec(
                             beregnedeFelter.utgaaendeVerdiMellomverdi,
                             it.nedreGrenseForAvskrivning
-                        ) { utgaaendeVerdi, nedreGrenseForAvskrivning
+                        ) {
+                                utgaaendeVerdi, nedreGrenseForAvskrivning,
                             ->
                             utgaaendeVerdi > nedreGrenseForAvskrivning
                         }
@@ -322,7 +325,7 @@ internal object SpesifikasjonAvBalanse : HarKalkyletre, PostProsessering {
         listOf {
             der(
                 saldoavskrevetAnleggsmiddel, { f ->
-                    f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() + (f.grunnlagForStartavskrivning * f.avskrivningssatsForStartavskrivning.prosent()) somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning
+                    f.grunnlagForAvskrivningOgInntektsfoering * f.avskrivningssats.prosent() somFelt saldoavskrevetAnleggsmiddel.aaretsAvskrivning
                 }, it.grunnlagForAvskrivningOgInntektsfoering.filterFelt(
                     derVerdiErStoerreEnn(0)
                 )

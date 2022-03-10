@@ -8,14 +8,38 @@ internal object Resultatregnskapet : HarKalkyletre {
             )
         )
     }
-    val salgsinntekterKalkyle =
-        summer forekomsterAv salgsinntekt.inntekt forVerdi { it.beloep }
 
-    val annenDriftsinntektKalkyle =
+    private val summerHvisRegnskapsplikttype2 = summer gitt ForekomstOgVerdi(virksomhet) {
+        it.regnskapspliktstype.filterFelt(
+            Specifications.harEnAvVerdiene(
+                Regnskapspliktstype.type_2
+            )
+        )
+    }
+
+    private fun salgsinntekterMedKategori(
+        kategori: KodelisteResultatregnskapOgBalanse.Kategori
+    ): SammensattUttrykk<salgsinntekt.inntekt> {
+        return summer forekomsterAv salgsinntekt.inntekt filter { forekomst ->
+            FeltSpecification(forekomst.type) {
+                KodelisteResultatregnskapOgBalanse.salgsinntektKategori(it) == kategori
+            }
+        }
+    }
+
+    private val sumPositivSalgsinntektKalkyle =
+        salgsinntekterMedKategori(KodelisteResultatregnskapOgBalanse.Kategori.POSITIV) forVerdi { it.beloep }
+
+    private val sumNegativSalgsinntektKalkyle =
+        salgsinntekterMedKategori(KodelisteResultatregnskapOgBalanse.Kategori.NEGATIV) forVerdi { it.beloep }
+
+    internal val sumSalgsinntektKalkyle = sumPositivSalgsinntektKalkyle - sumNegativSalgsinntektKalkyle
+
+    val sumAnnenDriftsinntektKalkyle =
         summer forekomsterAv annenDriftsinntekt.inntekt forVerdi { it.beloep }
 
     val sumDriftsinntekterKalkyle: Kalkyle =
-        (salgsinntekterKalkyle + annenDriftsinntektKalkyle) verdiSom sumDriftsinntekt
+        (sumSalgsinntektKalkyle + sumAnnenDriftsinntektKalkyle) verdiSom sumDriftsinntekt
 
     internal val aaretsAvskrivningForSaldoavskrevetAnleggsmiddel = summer gitt ForekomstOgVerdi(virksomhet, {
         it.regnskapspliktstype.filterFelt(
@@ -82,9 +106,9 @@ internal object Resultatregnskapet : HarKalkyletre {
 
     internal val aaretsInntektsfoeringAvNegativSaldoKalkyle =
         vederlagVedRealisasjonOgUttakInntektsfoertIAarLinear +
-                vederlagVedRealisasjonOgUttakInntektsfoertIAarIkkeAvskrivbart +
-                vederlagVedRealisasjonOgUttakInntektsfoertIAarSaldo +
-                aaretsInntektsfoeringAvNegativSaldo verdiSom NyForekomst(
+            vederlagVedRealisasjonOgUttakInntektsfoertIAarIkkeAvskrivbart +
+            vederlagVedRealisasjonOgUttakInntektsfoertIAarSaldo +
+            aaretsInntektsfoeringAvNegativSaldo verdiSom NyForekomst(
             forekomstTypeSpesifikasjon = annenDriftsinntekt.inntekt,
             idVerdi = kode_3895.kode,
             feltKoordinat = annenDriftsinntekt.inntekt.beloep,
@@ -98,7 +122,7 @@ internal object Resultatregnskapet : HarKalkyletre {
 
     internal val annenDriftsinntektstypeFradragKalkyle =
         summeringGevinstOgTap forekomsterAv gevinstOgTapskonto filter
-                { it.inntektsfradragFraGevinstOgTapskonto.filterFelt(derVerdiErStoerreEnn(0)) } forVerdi { it.inntektsfradragFraGevinstOgTapskonto } verdiSom NyForekomst(
+            { it.inntektsfradragFraGevinstOgTapskonto.filterFelt(derVerdiErStoerreEnn(0)) } forVerdi { it.inntektsfradragFraGevinstOgTapskonto } verdiSom NyForekomst(
             annenDriftskostnad.kostnad,
             kode_7890.kode,
             annenDriftskostnad.kostnad.beloep,
@@ -109,9 +133,46 @@ internal object Resultatregnskapet : HarKalkyletre {
             }
         )
 
+    internal val inntektFraToemmerkontoKalkyle =
+        summeringGevinstOgTap forekomsterAv skogOgToemmerkonto forVerdi { it.inntektFraToemmerkonto } verdiSom NyForekomst(
+            forekomstTypeSpesifikasjon = annenDriftsinntekt.inntekt,
+            idVerdi = kode_3910.kode,
+            feltKoordinat = annenDriftsinntekt.inntekt.beloep,
+            feltMedFasteVerdier =
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_3910.kode)
+                )
+            }
+        )
+
+    internal val inntektsfradragFraToemmerkontoKalkyle =
+        summeringGevinstOgTap forekomsterAv skogOgToemmerkonto forVerdi { it.inntektsfradragFraToemmerkonto } verdiSom NyForekomst(
+            annenDriftskostnad.kostnad,
+            kode_7911.kode,
+            annenDriftskostnad.kostnad.beloep,
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_7911.kode)
+                )
+            }
+        )
+
+    internal val andelAvDriftsresultatOverfoertTilToemmerkontoKalkyle =
+        summeringGevinstOgTap forekomsterAv skogOgToemmerkonto forVerdi { it.andelAvDriftsresultatOverfoertTilToemmerkonto } verdiSom NyForekomst(
+            annenDriftskostnad.kostnad,
+            kode_7910.kode,
+            annenDriftskostnad.kostnad.beloep,
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_7910.kode)
+                )
+            }
+        )
+
     internal val tilbakefoertKostnadForPrivatBrukAvNaeringsbil =
         summer forekomsterAv transportmiddelINaering filter
-                { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil.filterFelt(Specifications.derVerdiErStoerreEnnEllerLik(0)) } forVerdi { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil * -1 } verdiSom NyForekomst(
+            { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil.filterFelt(Specifications.derVerdiErStoerreEnnEllerLik(0)) } forVerdi { it.tilbakefoertBilkostnadForPrivatBrukAvYrkesbil } verdiSom NyForekomst(
             annenDriftskostnad.kostnad,
             kode_7099.kode,
             annenDriftskostnad.kostnad.beloep,
@@ -122,9 +183,43 @@ internal object Resultatregnskapet : HarKalkyletre {
             }
         )
 
-    val sumVarekostnadKalkyle = summer forekomsterAv varekostnad.kostnad forVerdi { it.beloep }
+    private fun varekostnaderMedKategori(
+        kategori: KodelisteResultatregnskapOgBalanse.Kategori
+    ): SammensattUttrykk<varekostnad.kostnad> {
+        return summer forekomsterAv varekostnad.kostnad filter { forekomst ->
+            FeltSpecification(forekomst.type) {
+                KodelisteResultatregnskapOgBalanse.varekostnadKategori(it) == kategori
+            }
+        }
+    }
+
+    private val sumPositivVarekostnadKalkyle =
+        varekostnaderMedKategori(KodelisteResultatregnskapOgBalanse.Kategori.POSITIV) forVerdi { it.beloep }
+
+    private val sumNegativVarekostnadKalkyle =
+        varekostnaderMedKategori(KodelisteResultatregnskapOgBalanse.Kategori.NEGATIV) forVerdi { it.beloep }
+
+    val sumVarekostnadKalkyle = sumPositivVarekostnadKalkyle - sumNegativVarekostnadKalkyle
+
     val sumLoennskostnadKalkyle = summer forekomsterAv loennskostnad.kostnad forVerdi { it.beloep }
-    val sumAnnenDriftskostnadKalkyle = summer forekomsterAv annenDriftskostnad.kostnad forVerdi { it.beloep }
+
+    private fun andreDriftskostnaderMedKategori(
+        kategori: KodelisteResultatregnskapOgBalanse.Kategori
+    ): SammensattUttrykk<annenDriftskostnad.kostnad> {
+        return summer forekomsterAv annenDriftskostnad.kostnad filter { forekomst ->
+            FeltSpecification(forekomst.type) {
+                KodelisteResultatregnskapOgBalanse.annenDriftskostnadKategori(it) == kategori
+            }
+        }
+    }
+
+    private val sumPositivAnnenDriftskostnadKalkyle =
+        andreDriftskostnaderMedKategori(KodelisteResultatregnskapOgBalanse.Kategori.POSITIV) forVerdi { it.beloep }
+
+    private val sumNegativAnnenDriftskostnadKalkyle =
+        andreDriftskostnaderMedKategori(KodelisteResultatregnskapOgBalanse.Kategori.NEGATIV) forVerdi { it.beloep }
+
+    val sumAnnenDriftskostnadKalkyle = sumPositivAnnenDriftskostnadKalkyle - sumNegativAnnenDriftskostnadKalkyle
 
     internal val sumDriftskostnaderKalkyle =
         (sumVarekostnadKalkyle + sumLoennskostnadKalkyle + sumAnnenDriftskostnadKalkyle) verdiSom sumDriftskostnad
@@ -134,18 +229,56 @@ internal object Resultatregnskapet : HarKalkyletre {
     val sumFinanskostnadKalkyle =
         summer forekomsterAv finanskostnad.kostnad forVerdi { it.beloep } verdiSom sumFinanskostnad
 
-    val sumEkstraordinaerePosterKalkyle =
-        summer forekomsterAv ekstraordinaerPost.post forVerdi { it.beloep } verdiSom sumEkstraordinaerPost
+    private fun ekstraordinaerePosterMedKategoriForRegnskapsplikttype2(
+        kategori: KodelisteResultatregnskapOgBalanse.Kategori
+    ): SammensattUttrykk<ekstraordinaerPost.post> {
+        return summerHvisRegnskapsplikttype2 forekomsterAv ekstraordinaerPost.post filter { forekomst ->
+            FeltSpecification(forekomst.type) {
+                KodelisteResultatregnskapOgBalanse.ekstraordinaerPostKategori(it) == kategori
+            }
+        }
+    }
 
-    val sumSkattekostnadKalkyle =
-        summer forekomsterAv skattekostnad.kostnad forVerdi { it.beloep } verdiSom sumSkattekostnad
+    private val sumPositivEkstraordinaerPostKalkyle =
+        ekstraordinaerePosterMedKategoriForRegnskapsplikttype2(
+            KodelisteResultatregnskapOgBalanse.Kategori.POSITIV
+        ) forVerdi { it.beloep }
+
+    private val sumNegativEkstraordinaerPostKalkyle =
+        ekstraordinaerePosterMedKategoriForRegnskapsplikttype2(
+            KodelisteResultatregnskapOgBalanse.Kategori.NEGATIV
+        ) forVerdi { it.beloep }
+
+    val sumEkstraordinaerPostKalkyle = (sumPositivEkstraordinaerPostKalkyle
+        - sumNegativEkstraordinaerPostKalkyle) verdiSom sumEkstraordinaerPost
+
+    private fun skattekostnaderMedKategoriForRegnskapsplikttype2(
+        kategori: KodelisteResultatregnskapOgBalanse.Kategori
+    ): SammensattUttrykk<skattekostnad.kostnad> {
+        return summerHvisRegnskapsplikttype2 forekomsterAv skattekostnad.kostnad filter { forekomst ->
+            FeltSpecification(forekomst.type) {
+                KodelisteResultatregnskapOgBalanse.skattekostnadKategori(it) == kategori
+            }
+        }
+    }
+
+    private val sumPositivSkattekostnadKalkyle =
+        skattekostnaderMedKategoriForRegnskapsplikttype2(
+            KodelisteResultatregnskapOgBalanse.Kategori.POSITIV
+        ) forVerdi { it.beloep }
+
+    private val sumNegativSkattekostnadKalkyle =
+        skattekostnaderMedKategoriForRegnskapsplikttype2(
+            KodelisteResultatregnskapOgBalanse.Kategori.NEGATIV
+        ) forVerdi { it.beloep }
+
+    val sumSkattekostnadKalkyle = (sumPositivSkattekostnadKalkyle
+        - sumNegativSkattekostnadKalkyle) verdiSom sumSkattekostnad
 
     val aarsresultatKalkyle =
-        (
-                sumDriftsinntekterKalkyle -
-                        sumDriftskostnaderKalkyle) +
-                (sumFinansinntektKalkyle - sumFinanskostnadKalkyle) +
-                (sumEkstraordinaerePosterKalkyle + sumSkattekostnadKalkyle) verdiSom aarsresultat
+        (sumDriftsinntekterKalkyle - sumDriftskostnaderKalkyle) +
+            (sumFinansinntektKalkyle - sumFinanskostnadKalkyle) +
+            (sumEkstraordinaerPostKalkyle - sumSkattekostnadKalkyle) verdiSom aarsresultat
 
     private val tre = Kalkyletre(
         aaretsAvskrivning,
@@ -153,11 +286,14 @@ internal object Resultatregnskapet : HarKalkyletre {
         annenDriftsinntektstypeFradragKalkyle,
         tilbakefoertKostnadForPrivatBrukAvNaeringsbil,
         aaretsInntektsfoeringAvNegativSaldoKalkyle,
+        inntektFraToemmerkontoKalkyle,
+        inntektsfradragFraToemmerkontoKalkyle,
+        andelAvDriftsresultatOverfoertTilToemmerkontoKalkyle,
         sumDriftsinntekterKalkyle,
         sumDriftskostnaderKalkyle,
         sumFinansinntektKalkyle,
         sumFinanskostnadKalkyle,
-        sumEkstraordinaerePosterKalkyle,
+        sumEkstraordinaerPostKalkyle,
         sumSkattekostnadKalkyle,
         aarsresultatKalkyle
     )

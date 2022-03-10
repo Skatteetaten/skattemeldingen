@@ -2,6 +2,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
 
     internal object beregnedeFelter {
         val bilensAlder = SyntetiskFelt(transportmiddelINaering, "bilensAlder")
+        val antallDagerTilDisposisjon = SyntetiskFelt(transportmiddelINaering, "antallDagerTilDisposisjon")
+        val antallMaanederTilDisposisjon = SyntetiskFelt(transportmiddelINaering, "antallMaanederTilDisposisjon")
         val satsBeregningsgrunnlag1 = SyntetiskFelt(transportmiddelINaering, "satsBeregningsgrunnlag1")
         val beregningsgrunnlagAlt1 = SyntetiskFelt(transportmiddelINaering, "beregningsgrunnlagAlt1")
         val prosentAvBilensVerdi = SyntetiskFelt(transportmiddelINaering, "prosentAvBilensVerdi")
@@ -9,8 +11,60 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
         val kmSatsForPrivatBruk = SyntetiskFelt(transportmiddelINaering, "kmSatsForPrivatBruk")
     }
 
-    internal val initielleBeregningerKalkyle = itererForekomster forekomsterAv transportmiddelINaering forVerdi
-        { it.aarForFoerstegangsregistrering - naeringsopplysninger.inntektsaar somFelt bilensAlder.abs() }
+    internal val bilensAlderKalkyle = itererForekomster forekomsterAv transportmiddelINaering forVerdi
+        { it.aarForFoerstegangsregistrering - naeringsspesifikasjon.inntektsaar somFelt bilensAlder.abs() }
+
+    internal val disponertIPeriodeSkalVaereInnenforInntektsaarKalkyle = object : InlineKalkyle() {
+        override fun kalkulertPaa(naeringsopplysninger: HarGeneriskModell): Verdi {
+            val gm = naeringsopplysninger.tilGeneriskModell()
+            val inntektsaar = gm.verdiFor(naeringsspesifikasjon.inntektsaar.key)!!.toInt()
+
+            val nyeElementer = mutableListOf<InformasjonsElement>()
+            gm.grupper(transportmiddelINaering.forekomstType[0])
+                .forEach { forekomst ->
+                    val disponertFraOgMed = forekomst.verdiFor(transportmiddelINaering.disponertFraOgMedDato.key)
+                        ?.let { parseLocalDateOrLocalDateTime(it) }
+                    val disponertTilOgMed = forekomst.verdiFor(transportmiddelINaering.disponertTilOgMedDato.key)
+                        ?.let { parseLocalDateOrLocalDateTime(it) }
+
+                    if (disponertFraOgMed != null && disponertTilOgMed != null) {
+                        var datoStart = datoInnenforInntektsaar(disponertFraOgMed, inntektsaar)
+                        var datoSlutt = datoInnenforInntektsaar(disponertTilOgMed, inntektsaar)
+
+                        if (datoStart > datoSlutt) {
+                            val temp = datoSlutt
+                            datoSlutt = datoStart
+                            datoStart = temp
+                        }
+
+                        nyeElementer.add(
+                            forekomst.felt(transportmiddelINaering.disponertFraOgMedDato.key)
+                                .element()
+                                .medVerdi(datoStart.toString())
+                        )
+                        nyeElementer.add(
+                            forekomst.felt(transportmiddelINaering.disponertTilOgMedDato.key)
+                                .element()
+                                .medVerdi(datoSlutt.toString())
+                        )
+                    }
+                }
+
+            return Verdi(GeneriskModell.fra(nyeElementer))
+        }
+    }
+
+    internal val antallDagerTilDisposisjonKalkyle = itererForekomster forekomsterAv transportmiddelINaering forVerdi
+        {
+            it.disponertFraOgMedDato.dato()
+                .dagerMellom(it.disponertTilOgMedDato.dato()) somFelt antallDagerTilDisposisjon.abs()
+        }
+
+    internal val antallMaanederTilDisposisjonKalkyle = itererForekomster forekomsterAv transportmiddelINaering forVerdi
+        {
+            it.disponertFraOgMedDato.dato()
+                .maanederMellom(it.disponertTilOgMedDato.dato()) somFelt antallMaanederTilDisposisjon.abs()
+        }
 
     internal val initielleBeregningerAvSatsPersonbilEllerBilRegistrertFor9PassasjererEllerFlere =
         itererForekomster forekomsterAv transportmiddelINaering filter {
@@ -28,9 +82,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 1,
-                                verdi,
                                 transportmiddelINaering,
-                                FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
+                                beregnedeFelter.satsBeregningsgrunnlag1.key
                             )
                         )
                     },
@@ -45,9 +98,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 0.75,
-                                verdi,
                                 transportmiddelINaering,
-                                FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
+                                beregnedeFelter.satsBeregningsgrunnlag1.key
                             )
                         )
                     },
@@ -62,9 +114,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 0.75,
-                                verdi,
                                 transportmiddelINaering,
-                                FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
+                                beregnedeFelter.satsBeregningsgrunnlag1.key
                             )
                         )
                     },
@@ -79,9 +130,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 0.5625,
-                                verdi,
                                 transportmiddelINaering,
-                                FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
+                                beregnedeFelter.satsBeregningsgrunnlag1.key
                             )
                         )
                     },
@@ -108,9 +158,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 0.6,
-                                verdi,
                                 transportmiddelINaering,
-                                FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
+                                beregnedeFelter.satsBeregningsgrunnlag1.key
                             )
                         )
                     },
@@ -124,9 +173,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 0.45,
-                                verdi,
                                 transportmiddelINaering,
-                                FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
+                                beregnedeFelter.satsBeregningsgrunnlag1.key
                             )
                         )
                     },
@@ -151,9 +199,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 1,
-                                verdi,
                                 transportmiddelINaering,
-                                FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
+                                beregnedeFelter.satsBeregningsgrunnlag1.key
                             )
                         )
                     },
@@ -167,9 +214,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         somFelt(
                             SyntetiskFeltMedVerdi(
                                 0.75,
-                                verdi,
                                 transportmiddelINaering,
-                                FeltKoordinat(beregnedeFelter.satsBeregningsgrunnlag1.key)
+                                beregnedeFelter.satsBeregningsgrunnlag1.key
                             )
                         )
                     },
@@ -197,7 +243,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
             satsVedProsentAvBilensVerdiUnderInnslagspunkt2 +
             beregningsgrunnlagAlt1.andelOver(innslagspunktTrinn2Beregningsgrunnlag) *
             satsVedProsentAvBilensVerdiOverInnslagspunkt2) *
-            (it.antallMaanederTilDisposisjon / 12) somFelt beregnedeFelter.prosentAvBilensVerdi
+            (antallMaanederTilDisposisjon / 12) somFelt beregnedeFelter.prosentAvBilensVerdi
     }
 
     internal val prosentAvBilensVerdiVarebilEllerLastebil =
@@ -219,7 +265,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
                         bunnfradragSjablongberegningVarebliOgLastebil
                     )).andelOver(innslagspunktTrinn2Beregningsgrunnlag) *
                 satsVedProsentAvBilensVerdiOverInnslagspunkt2) *
-                (it.antallMaanederTilDisposisjon / 12) somFelt beregnedeFelter.prosentAvBilensVerdi
+                (antallMaanederTilDisposisjon / 12) somFelt beregnedeFelter.prosentAvBilensVerdi
         }
 
     internal val kmSatsForPrivatBruk = itererForekomster forekomsterAv transportmiddelINaering filter {
@@ -268,7 +314,7 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
             it, {
                 it.listeprisSomNy *
                     bilensAlder.powFrom(sats1SaldoavskrivningPrivatBruk) *
-                    sats2SaldoavskrivningPrivatBruk * (it.antallMaanederTilDisposisjon / 12) somFelt saldoavskrivningPrivatBruk
+                    sats2SaldoavskrivningPrivatBruk * (antallDagerTilDisposisjon / 365) somFelt saldoavskrivningPrivatBruk
             }, FeltSpecification(it.leasingleie, eller(derVerdiErNull(), derVerdiErLik(0))),
             it.erYrkesbilenIBrukPrivat.filterFelt(Specifications.erSann())
         )
@@ -392,23 +438,28 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
             }
         )
 
+    internal val kalkyletre = Kalkyletre(
+        disponertIPeriodeSkalVaereInnenforInntektsaarKalkyle,
+        bilensAlderKalkyle,
+        antallDagerTilDisposisjonKalkyle,
+        antallMaanederTilDisposisjonKalkyle,
+        initielleBeregningerAvSatsPersonbilEllerBilRegistrertFor9PassasjererEllerFlere,
+        initielleBeregningerAvSatsElEllerHydrogenbil,
+        initielleBeregningerAvSatsVareEllerLastebil,
+        kmSatsForPrivatBruk,
+        kmSatsForPrivatBrukLastebil,
+        saldoavskrivningPrivatBrukKalkyle,
+        beregningsgrunnlag1Kalkyle,
+        prosentAvBilensVerdiKalkyle,
+        prosentAvBilensVerdiVarebilEllerLastebil,
+        prosentandelAvFaktiskeKostnaderKalkyle,
+        tilbakefoertBilkostnadForPrivatBrukAvNaeringsbilKalkyle,
+        tilbakefoertBilkostnadForPrivatBrukAvNaeringsbilKalkyleVarebil,
+        tilbakefoertBilkostnadForPrivatBrukAvNaeringsbilKalkyleLastebil
+    )
+
     override fun getKalkyletre(): Kalkyletre {
-        return Kalkyletre(
-            initielleBeregningerKalkyle,
-            initielleBeregningerAvSatsPersonbilEllerBilRegistrertFor9PassasjererEllerFlere,
-            initielleBeregningerAvSatsElEllerHydrogenbil,
-            initielleBeregningerAvSatsVareEllerLastebil,
-            kmSatsForPrivatBruk,
-            kmSatsForPrivatBrukLastebil,
-            saldoavskrivningPrivatBrukKalkyle,
-            beregningsgrunnlag1Kalkyle,
-            prosentAvBilensVerdiKalkyle,
-            prosentAvBilensVerdiVarebilEllerLastebil,
-            prosentandelAvFaktiskeKostnaderKalkyle,
-            tilbakefoertBilkostnadForPrivatBrukAvNaeringsbilKalkyle,
-            tilbakefoertBilkostnadForPrivatBrukAvNaeringsbilKalkyleVarebil,
-            tilbakefoertBilkostnadForPrivatBrukAvNaeringsbilKalkyleLastebil
-        ).medPostprosessering(this)
+        return kalkyletre.medPostprosessering(this)
     }
 
     /**
@@ -419,6 +470,8 @@ internal object TransportmiddelNaering : HarKalkyletre, PostProsessering {
             !(it.key == beregnedeFelter.prosentAvBilensVerdi.key
                 || it.key == beregningsgrunnlagAlt1.key
                 || it.key == bilensAlder.key
+                || it.key == antallDagerTilDisposisjon.key
+                || it.key == antallMaanederTilDisposisjon.key
                 || it.key == beregnedeFelter.satsBeregningsgrunnlag1.key
                 || it.key == prosentandelAvFaktiskeKostnader.key
                 || it.key == beregnedeFelter.kmSatsForPrivatBruk.key)

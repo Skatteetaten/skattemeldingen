@@ -1,15 +1,48 @@
 internal object Balanse : HarKalkyletre {
 
-    private val regnskapspliktstype1Og5Filter = summer gitt ForekomstOgVerdi(virksomhet) {
-        it.regnskapspliktstype.filterFelt(
-            Specifications.harEnAvVerdiene(
-                Regnskapspliktstype.type_1,
-                Regnskapspliktstype.type_5
-            )
-        )
-    }
+    internal val sumBalanseverdiForEiendelKalkyle =
+        BalanseverdiForAnleggsmiddel.sumBalanseverdiForAnleggsmiddelKalkyle
+            .plus(BalanseverdiForOmloepsmiddel.sumBalanseverdiForOmloepsmiddelKalkyle) verdiSom sumBalanseverdiForEiendel
 
-    private fun lagBalanseForekomst(saldogruppe: String, kodeVerdi: KodeVerdi, filter: Specification<Any>): Kalkyle {
+    private val kalkyletre = Kalkyletre(
+        BalanseverdiForAnleggsmiddel.goodWill,
+        BalanseverdiForAnleggsmiddel.forretningsBygg,
+        BalanseverdiForAnleggsmiddel.byggAnleggHotell,
+        BalanseverdiForAnleggsmiddel.elektrotekniskUtrustningIKraftforetak,
+        BalanseverdiForAnleggsmiddel.fastTekniskInstallasjonIByggninger,
+        BalanseverdiForAnleggsmiddel.personbilerMaskinerInventar,
+        BalanseverdiForAnleggsmiddel.skipRigger,
+        BalanseverdiForAnleggsmiddel.flyHelikopter,
+        BalanseverdiForAnleggsmiddel.vareOgLastebilerBusser,
+        BalanseverdiForAnleggsmiddel.varebilerMedNullutslipp,
+        BalanseverdiForAnleggsmiddel.kontormaskiner,
+        BalanseverdiForAnleggsmiddel.negativGevinstOgTapskonto,
+        BalanseverdiForAnleggsmiddel.negativToemmerkonto,
+        BalanseverdiForAnleggsmiddel.driftsmidlerSomAvskrivesLineaertKalkyle,
+        BalanseverdiForAnleggsmiddel.sumBalanseverdiForAnleggsmiddelKalkyle,
+        BalanseverdiForOmloepsmiddel.kundefordringKalkyle,
+        BalanseverdiForOmloepsmiddel.balanseverdi1400Kalkyle,
+        BalanseverdiForOmloepsmiddel.balanseverdi1401Kalkyle,
+        BalanseverdiForOmloepsmiddel.sumBalanseverdiForOmloepsmiddelKalkyle,
+        sumBalanseverdiForEiendelKalkyle,
+        Egenkapital.negativSaldoKalkyle,
+        Egenkapital.ufrivilligRealisasjonKalkyle,
+        Egenkapital.positivGevinstOgTapskonto,
+        Egenkapital.positivToemmerkonto,
+    )
+
+    override fun getKalkyletre(): Kalkyletre {
+        return kalkyletre
+    }
+}
+
+internal object BalanseverdiForAnleggsmiddel {
+
+    private fun lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(
+        saldogruppe: String,
+        kodeVerdi: KodeVerdi,
+        filter: Specification<Any>
+    ): Kalkyle {
         return regnskapspliktstype1Og5Filter forekomsterAv saldoavskrevetAnleggsmiddel filter {
             Specifications.og(
                 it.saldogruppe.filterFelt(
@@ -19,9 +52,9 @@ internal object Balanse : HarKalkyletre {
                 it.erRealisasjonenUfrivilligOgGevinstenBetingetSkattefri.filterFelt(Specifications.erUsannEllerNull())
             )
         } forVerdi { it.utgaaendeVerdi } verdiSom NyForekomst(
-            forekomstTypeSpesifikasjon = balanseverdi,
+            forekomstTypeSpesifikasjon = balanseverdiForAnleggsmiddel.balanseverdi,
             idVerdi = kodeVerdi.kode,
-            feltKoordinat = balanseverdi.beloep,
+            feltKoordinat = balanseverdiForAnleggsmiddel.balanseverdi.beloep,
             feltMedFasteVerdier =
             {
                 listOf(
@@ -31,40 +64,151 @@ internal object Balanse : HarKalkyletre {
         )
     }
 
-    /**
-     * Denne fungerer kun hvis det er negative tall i testdata.
-     * Dette tegnet: - (minustegn) må være med i testdata
-     * Hvis ikke blir det ingen verdi.
-     */
-    private fun lagBalanseForGevinstOgTapskonto(
-        kodeVerdi: KodeVerdi,
-        filter: Specification<Any>,
+    internal val goodWill =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_b.kode, kode_1080, Specifications.allwaysTrue())
 
-        ): Kalkyle {
-        return regnskapspliktstype1Og5Filter forekomsterAv gevinstOgTapskonto filter {
-            it.utgaaendeVerdi.filterFelt(filter)
+    internal val forretningsBygg =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_i.kode, kode_1105, Specifications.allwaysTrue())
+
+    internal val byggAnleggHotell =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_h.kode, kode_1115, Specifications.allwaysTrue())
+
+    internal val elektrotekniskUtrustningIKraftforetak =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_g.kode, kode_1117, Specifications.allwaysTrue())
+
+    internal val fastTekniskInstallasjonIByggninger =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_j.kode, kode_1120, derVerdiErStoerreEnn(0))
+
+    internal val personbilerMaskinerInventar =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_d.kode, kode_1205, derVerdiErStoerreEnn(0))
+
+    internal val skipRigger =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_e.kode, kode_1221, Specifications.allwaysTrue())
+
+    internal val flyHelikopter =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_f.kode, kode_1225, Specifications.allwaysTrue())
+
+    internal val vareOgLastebilerBusser =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_c.kode, kode_1238, derVerdiErStoerreEnn(0))
+
+    internal val varebilerMedNullutslipp =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_c2.kode, kode_1239, derVerdiErStoerreEnn(0))
+
+    internal val kontormaskiner =
+        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(kode_a.kode, kode_1280, derVerdiErStoerreEnn(0))
+
+    internal val negativGevinstOgTapskonto =
+        regnskapspliktstype1Og5Filter forekomsterAv gevinstOgTapskonto filter {
+            it.utgaaendeVerdi.filterFelt(derVerdiErMindreEnn(0))
         } forVerdi {
-            it.utgaaendeVerdi.der(filter) * -1
+            it.utgaaendeVerdi.der(derVerdiErMindreEnn(0)) * -1
         } verdiSom NyForekomst(
-            forekomstTypeSpesifikasjon = balanseverdi,
-            idVerdi = kodeVerdi.kode,
-            feltKoordinat = balanseverdi.beloep,
+            forekomstTypeSpesifikasjon = balanseverdiForAnleggsmiddel.balanseverdi,
+            idVerdi = kode_1296.kode,
+            feltKoordinat = balanseverdiForAnleggsmiddel.balanseverdi.beloep,
             feltMedFasteVerdier =
             {
                 listOf(
-                    FeltOgVerdi(it.type, kodeVerdi.kode)
+                    FeltOgVerdi(it.type, kode_1296.kode)
                 )
             }
         )
-    }
 
-    /**
-     * Denne fungerer kun hvis det er negative tall i testdata.
-     * Dette tegnet: - (minustegn) må være med i testdata
-     * Hvis ikke blir det ingen verdi.
-     */
-    private fun lagBalanseForNegativSaldo(): Kalkyle {
-        return regnskapspliktstype1Og5Filter forekomsterAv saldoavskrevetAnleggsmiddel filter {
+    internal val negativToemmerkonto =
+        regnskapspliktstype1Og5Filter forekomsterAv skogOgToemmerkonto filter {
+            it.utgaaendeVerdiPaaToemmerkonto.filterFelt(derVerdiErMindreEnn(0))
+        } forVerdi {
+            it.utgaaendeVerdiPaaToemmerkonto.der(derVerdiErMindreEnn(0)) * -1
+        } verdiSom NyForekomst(
+            forekomstTypeSpesifikasjon = balanseverdiForAnleggsmiddel.balanseverdi,
+            idVerdi = kode_1298.kode,
+            feltKoordinat = balanseverdiForAnleggsmiddel.balanseverdi.beloep,
+            feltMedFasteVerdier =
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_1298.kode)
+                )
+            }
+        )
+
+    internal val driftsmidlerSomAvskrivesLineaertKalkyle =
+        regnskapspliktstype1Og5Filter forekomsterAv lineaertavskrevetAnleggsmiddel forVerdi {
+            it.utgaaendeVerdi
+        } verdiSom NyForekomst(
+            forekomstTypeSpesifikasjon = balanseverdiForAnleggsmiddel.balanseverdi,
+            idVerdi = kode_1295.kode,
+            feltKoordinat = balanseverdiForAnleggsmiddel.balanseverdi.beloep,
+            feltMedFasteVerdier =
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_1295.kode)
+                )
+            }
+        )
+
+    internal val sumBalanseverdiForAnleggsmiddelKalkyle =
+        summer forekomsterAv balanseverdiForAnleggsmiddel.balanseverdi forVerdi {
+            it.beloep
+        } verdiSom sumBalanseverdiForAnleggsmiddel
+}
+
+internal object BalanseverdiForOmloepsmiddel {
+
+    internal val kundefordringKalkyle =
+        regnskapspliktstype1Filter forekomsterAv spesifikasjonAvSkattemessigVerdiPaaFordring forVerdi {
+            it.skattemessigVerdiPaaKundefordring
+        } verdiSom NyForekomst(
+            forekomstTypeSpesifikasjon = balanseverdiForOmloepsmiddel.balanseverdi,
+            idVerdi = kode_1500.kode,
+            feltKoordinat = balanseverdiForOmloepsmiddel.balanseverdi.beloep,
+            feltMedFasteVerdier =
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_1500.kode)
+                )
+            }
+        )
+
+    internal val balanseverdi1400Kalkyle =
+        regnskapspliktstype1Og5Filter forekomsterAv spesifikasjonAvVarelager forVerdi {
+            it.sumVerdiAvVarelager - it.selvprodusertVareBenyttetIEgenProduksjon
+        } verdiSom NyForekomst(
+            forekomstTypeSpesifikasjon = balanseverdiForOmloepsmiddel.balanseverdi,
+            idVerdi = kode_1400.kode,
+            feltKoordinat = balanseverdiForOmloepsmiddel.balanseverdi.beloep,
+            feltMedFasteVerdier =
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_1400.kode)
+                )
+            }
+        )
+
+    internal val balanseverdi1401Kalkyle =
+        regnskapspliktstype1Og5Filter forekomsterAv spesifikasjonAvVarelager forVerdi {
+            it.selvprodusertVareBenyttetIEgenProduksjon
+        } verdiSom NyForekomst(
+            forekomstTypeSpesifikasjon = balanseverdiForOmloepsmiddel.balanseverdi,
+            idVerdi = kode_1401.kode,
+            feltKoordinat = balanseverdiForOmloepsmiddel.balanseverdi.beloep,
+            feltMedFasteVerdier =
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_1401.kode)
+                )
+            }
+        )
+
+    internal val sumBalanseverdiForOmloepsmiddelKalkyle =
+        summer forekomsterAv balanseverdiForOmloepsmiddel.balanseverdi forVerdi {
+            it.beloep
+        } verdiSom sumBalanseverdiForOmloepsmiddel
+}
+
+internal object Egenkapital {
+
+    internal val negativSaldoKalkyle =
+        regnskapspliktstype1Og5Filter forekomsterAv saldoavskrevetAnleggsmiddel filter {
             Specifications.og(
                 it.saldogruppe.filterFelt(
                     Specifications.harEnAvVerdiene(
@@ -77,11 +221,11 @@ internal object Balanse : HarKalkyletre {
                 ), it.utgaaendeVerdi.filterFelt(derVerdiErMindreEnn(0))
             )
         } forVerdi {
-            it.utgaaendeVerdi * -1
+            it.utgaaendeVerdi * -1  //TODO: hvorfor fungerer ikke abs her
         } verdiSom NyForekomst(
-            forekomstTypeSpesifikasjon = kapital,
+            forekomstTypeSpesifikasjon = egenkapital.kapital,
             idVerdi = kode_2095.kode,
-            feltKoordinat = kapital.beloep,
+            feltKoordinat = egenkapital.kapital.beloep,
             feltMedFasteVerdier =
             {
                 listOf(
@@ -89,10 +233,9 @@ internal object Balanse : HarKalkyletre {
                 )
             }
         )
-    }
 
-    private fun lagBalanseForUfrivilligRealisasjon(): Kalkyle {
-        return regnskapspliktstype1Og5Filter forekomsterAv saldoavskrevetAnleggsmiddel filter {
+    internal val ufrivilligRealisasjonKalkyle =
+        regnskapspliktstype1Og5Filter forekomsterAv saldoavskrevetAnleggsmiddel filter {
             Specifications.og(
                 it.erRealisasjonenUfrivilligOgGevinstenBetingetSkattefri.filterFelt(Specifications.erSann()),
                 it.utgaaendeVerdi.filterFelt(Specifications.erNegativ())
@@ -100,9 +243,9 @@ internal object Balanse : HarKalkyletre {
         } forVerdi {
             it.utgaaendeVerdi * -1
         } verdiSom NyForekomst(
-            forekomstTypeSpesifikasjon = kapital,
+            forekomstTypeSpesifikasjon = egenkapital.kapital,
             idVerdi = kode_2097.kode,
-            feltKoordinat = kapital.beloep,
+            feltKoordinat = egenkapital.kapital.beloep,
             feltMedFasteVerdier =
             {
                 listOf(
@@ -110,115 +253,55 @@ internal object Balanse : HarKalkyletre {
                 )
             }
         )
-    }
 
-    internal val goodWill = lagBalanseForekomst(kode_b.kode, kode_1080, Specifications.allwaysTrue())
+    internal val positivGevinstOgTapskonto =
+        regnskapspliktstype1Og5Filter forekomsterAv gevinstOgTapskonto forVerdi {
+            it.utgaaendeVerdi.der(derVerdiErStoerreEnn(0)) * if (false) {
+                -1
+            } else {
+                1
+            }
+        } verdiSom NyForekomst(
+            forekomstTypeSpesifikasjon = egenkapital.kapital,
+            idVerdi = kode_2096.kode,
+            feltKoordinat = egenkapital.kapital.beloep,
+            feltMedFasteVerdier =
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_2096.kode)
+                )
+            }
+        )
 
-    internal val forretningsBygg = lagBalanseForekomst(kode_i.kode, kode_1105, Specifications.allwaysTrue())
+    internal val positivToemmerkonto =
+        regnskapspliktstype1Og5Filter forekomsterAv skogOgToemmerkonto forVerdi {
+            it.utgaaendeVerdiPaaToemmerkonto.der(derVerdiErStoerreEnn(0)) * if (false) {
+                -1
+            } else {
+                1
+            }
+        } verdiSom NyForekomst(
+            forekomstTypeSpesifikasjon = egenkapital.kapital,
+            idVerdi = kode_2098.kode,
+            feltKoordinat = egenkapital.kapital.beloep,
+            feltMedFasteVerdier =
+            {
+                listOf(
+                    FeltOgVerdi(it.type, kode_2098.kode)
+                )
+            }
+        )
+}
 
-    internal val byggAnleggHotell = lagBalanseForekomst(kode_h.kode, kode_1115, Specifications.allwaysTrue())
-
-    internal val elektrotekniskUtrustningIKraftforetak =
-        lagBalanseForekomst(kode_g.kode, kode_1117, Specifications.allwaysTrue())
-
-    internal val fastTekniskInstallasjonIByggninger =
-        lagBalanseForekomst(kode_j.kode, kode_1120, derVerdiErStoerreEnn(0))
-
-    internal val personbilerMaskinerInventar = lagBalanseForekomst(kode_d.kode, kode_1205, derVerdiErStoerreEnn(0))
-
-    internal val skipRigger = lagBalanseForekomst(kode_e.kode, kode_1221, Specifications.allwaysTrue())
-
-    internal val flyHelikopter = lagBalanseForekomst(kode_f.kode, kode_1225, Specifications.allwaysTrue())
-
-    internal val vareOgLastebilerBusser = lagBalanseForekomst(kode_c.kode, kode_1238, derVerdiErStoerreEnn(0))
-
-    internal val varebilerMedNullutslipp = lagBalanseForekomst(kode_c2.kode, kode_1239, derVerdiErStoerreEnn(0))
-
-    internal val kontormaskiner = lagBalanseForekomst(kode_a.kode, kode_1280, derVerdiErStoerreEnn(0))
-
-    internal val negativGevinstOgTapskonto = lagBalanseForGevinstOgTapskonto(kode_1296, derVerdiErMindreEnn(0))
-
-    internal val sumAnleggsmiddelSkattemessigVerdiKalkyle =
-        summer forekomsterAv balanseverdi forVerdi {
-            it.beloep
-        } verdiSom sumBalanseverdiForAnleggsmiddel
-
-    internal val sumOmloepsmiddelSkattemessigVerdiKalkyle =
-        summer forekomsterAv balanseverdiForOmloepsmiddel.balanseverdi forVerdi {
-            it.beloep
-        } verdiSom sumBalanseverdiForOmloepsmiddel
-
-    internal val sumEiendelSkattemessigVerdiKalkyle = sumAnleggsmiddelSkattemessigVerdiKalkyle.plus(
-        sumOmloepsmiddelSkattemessigVerdiKalkyle
-    ) verdiSom sumBalanseverdiForEiendel
-
-    internal val sumLangsiktigGjeldSkattemessigVerdiKalkyle =
-        summer forekomsterAv langsiktigGjeld.gjeld forVerdi {
-            it.beloep
-        } verdiSom sumLangsiktigGjeld
-
-    internal val sumKortsiktigGjeldSkattemessigVerdiKalkyle =
-        summer forekomsterAv kortsiktigGjeld.gjeld forVerdi {
-            it.beloep
-        } verdiSom sumKortsiktigGjeld
-
-    internal val negativSaldoKalkyle = lagBalanseForNegativSaldo()
-
-    internal val ufrivilligRealisasjonKalkyle = lagBalanseForUfrivilligRealisasjon()
-
-    internal val positivGevinstOgTapskonto = regnskapspliktstype1Og5Filter forekomsterAv gevinstOgTapskonto forVerdi {
-        it.utgaaendeVerdi.der(derVerdiErStoerreEnn(0)) * if (false) {
-            -1
-        } else {
-            1
-        }
-    } verdiSom NyForekomst(
-        forekomstTypeSpesifikasjon = kapital,
-        idVerdi = kode_2096.kode,
-        feltKoordinat = kapital.beloep,
-        feltMedFasteVerdier =
-        {
-            listOf(
-                FeltOgVerdi(it.type, kode_2096.kode)
-            )
-        }
+private val regnskapspliktstype1Og5Filter = summer gitt ForekomstOgVerdi(virksomhet) {
+    it.regnskapspliktstype.filterFelt(
+        Specifications.harEnAvVerdiene(
+            Regnskapspliktstype.type_1,
+            Regnskapspliktstype.type_5
+        )
     )
+}
 
-    internal val sumEgenkapitalKalkyle =
-        summer forekomsterAv kapital forVerdi {
-            it.beloep
-        } verdiSom sumEgenkapital
-
-    internal val sumGjeldOgEgenkapitalSkattemessigVerdiKalkyle =
-        sumLangsiktigGjeldSkattemessigVerdiKalkyle.plus(sumKortsiktigGjeldSkattemessigVerdiKalkyle)
-            .plus(sumEgenkapitalKalkyle) verdiSom sumGjeldOgEgenkapital
-
-    private val kalkyletre = Kalkyletre(
-        goodWill,
-        forretningsBygg,
-        byggAnleggHotell,
-        elektrotekniskUtrustningIKraftforetak,
-        fastTekniskInstallasjonIByggninger,
-        personbilerMaskinerInventar,
-        skipRigger,
-        flyHelikopter,
-        vareOgLastebilerBusser,
-        varebilerMedNullutslipp,
-        kontormaskiner,
-        negativGevinstOgTapskonto,
-        sumAnleggsmiddelSkattemessigVerdiKalkyle,
-        sumOmloepsmiddelSkattemessigVerdiKalkyle,
-        sumEiendelSkattemessigVerdiKalkyle,
-        sumLangsiktigGjeldSkattemessigVerdiKalkyle,
-        sumKortsiktigGjeldSkattemessigVerdiKalkyle,
-        negativSaldoKalkyle,
-        ufrivilligRealisasjonKalkyle,
-        positivGevinstOgTapskonto,
-        sumEgenkapitalKalkyle,
-        sumGjeldOgEgenkapitalSkattemessigVerdiKalkyle
-    )
-
-    override fun getKalkyletre(): Kalkyletre {
-        return kalkyletre
-    }
+private val regnskapspliktstype1Filter = summer gitt ForekomstOgVerdi(virksomhet) {
+    it.regnskapspliktstype.filterFelt(Specifications.derVerdiErLik(Regnskapspliktstype.type_1))
 }

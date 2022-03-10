@@ -72,7 +72,9 @@ internal object FordeltBeregnetNaeringsinntektBeregning : HarKalkyletre {
         itererForekomster forekomsterAv fordeltBeregnetNaeringsinntekt forVerdi {
             it.fordeltSkattemessigResultat +
                 it.sjablongberegnetInntektFraBiomasseVedproduksjon +
-                it.korreksjonFraReindrift somFelt it.fordeltSkattemessigResultatEtterKorreksjon
+                it.korreksjonFraReindrift -
+                it.fradragForRenterINaeringPaaSvalbard -
+                it.fremfoertUnderskuddIEnkeltpersonforetakPaaSvalbardFraTidligereAar somFelt it.fordeltSkattemessigResultatEtterKorreksjon
         }
 
     internal val skattemessigResultatForNaeringEtterKorreksjonTilordnetInnehaverKalkyle =
