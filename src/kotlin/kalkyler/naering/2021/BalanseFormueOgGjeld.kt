@@ -1,7 +1,36 @@
+package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v2_2021
+
+import mu.KotlinLogging
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.Kodeliste2021Helper
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.HarKalkyletre
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.api.Kalkyletre
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.FeltSpecification
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.Kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.NyForekomst
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specification
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.Specifications
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.ForekomstOgVerdi
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.SammensattUttrykk
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.summer
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.Regnskapspliktstype
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.balanseverdiForAnleggsmiddel.balanseverdi
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.balanseverdiForOmloepsmiddel
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.egenkapital
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.kortsiktigGjeld
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.kortsiktigGjeld.gjeld
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.langsiktigGjeld
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.samletGjeldOgFormuesobjekter
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.sumEgenkapital
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.sumGjeldOgEgenkapital
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.sumKortsiktigGjeld
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.sumLangsiktigGjeld
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.virksomhet
+import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
+
 internal object BalanseFormueOgGjeld : HarKalkyletre {
     private val logger = KotlinLogging.logger { }
 
-    fun getFilterForAnleggsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
+    private fun getFilterForAnleggsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
             Specification<Any> {
                 hentKodeverdi(it, balansekontoGirVerdsettingsrabattForventetVerdi)
@@ -19,7 +48,7 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
         )
     }
 
-    fun getFilterForOmloepsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
+    private fun getFilterForOmloepsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
             Specification<Any> {
                 hentKodeverdi(it, balansekontoGirVerdsettingsrabattForventetVerdi)
@@ -44,13 +73,13 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
         val kodeVerdi = Kodeliste2021Helper.kodeliste[it as String]
 
         if (kodeVerdi == null) {
-            logger.warn("Mottok kodeverdi som ikke var i kodeliste, bør fanges opp av validering: {}",it)
+            logger.warn("Mottok kodeverdi som ikke var i kodeliste, bør fanges opp av validering: {}", it)
             return false
         }
         return kodeVerdi.kodetillegg?.BalansekontoGirVerdsettingsrabatt == balansekontoGirVerdsettingsrabattForventetVerdi
     }
 
-    fun getFilterForKortsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
+    private fun getFilterForKortsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
             Specification<Any> { hentKodeverdi(it, balansekontoGirVerdsettingsrabattForventetVerdi) }
         return Specifications.og(
@@ -63,7 +92,7 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
         )
     }
 
-    fun getFilterForLangsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
+    private fun getFilterForLangsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Specification<GeneriskModell> {
         val balansekontoSpecification =
             Specification<Any> { hentKodeverdi(it, balansekontoGirVerdsettingsrabattForventetVerdi) }
         return Specifications.og(
@@ -76,26 +105,36 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
         )
     }
 
+    private val regnskapspliktstype1Og5Filter = summer gitt
+        ForekomstOgVerdi(virksomhet) {
+            it.regnskapspliktstype.filterFelt(
+                Specifications.harEnAvVerdiene(
+                    Regnskapspliktstype.type_1,
+                    Regnskapspliktstype.type_5,
+                )
+            )
+        }
+
     private fun summerAnleggsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Kalkyle {
-        return summer forekomsterAv balanseverdi filter {
+        return regnskapspliktstype1Og5Filter forekomsterAv balanseverdi filter {
             getFilterForAnleggsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi)
         } forVerdi { it.beloep }
     }
 
     private fun summerOmloepsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Kalkyle {
-        return summer forekomsterAv balanseverdiForOmloepsmiddel.balanseverdi filter {
+        return regnskapspliktstype1Og5Filter forekomsterAv balanseverdiForOmloepsmiddel.balanseverdi filter {
             getFilterForOmloepsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi)
         } forVerdi { it.beloep }
     }
 
     private fun summerKortsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Kalkyle {
-        return summer forekomsterAv gjeld filter {
+        return regnskapspliktstype1Og5Filter forekomsterAv gjeld filter {
             getFilterForKortsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi)
         } forVerdi { it.beloep }
     }
 
     private fun summerLangsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): Kalkyle {
-        return summer forekomsterAv langsiktigGjeld.gjeld filter {
+        return regnskapspliktstype1Og5Filter forekomsterAv langsiktigGjeld.gjeld filter {
             getFilterForLangsiktigGjeld(balansekontoGirVerdsettingsrabattForventetVerdi)
         } forVerdi { it.beloep }
     }
@@ -124,10 +163,48 @@ internal object BalanseFormueOgGjeld : HarKalkyletre {
             feltMedFasteVerdier = { emptyList() }
         )
 
+    private fun egenkapitalMedKategori(
+        kategori: KodelisteResultatregnskapOgBalanse.Kategori,
+    ): SammensattUttrykk<egenkapital.kapital> {
+        return summer forekomsterAv egenkapital.kapital filter { forekomst ->
+            FeltSpecification(forekomst.type) {
+                KodelisteResultatregnskapOgBalanse.egenkapitalKategori(it) == kategori
+            }
+        }
+    }
+
+    internal val kapitalMedPositivKategori =
+        egenkapitalMedKategori(KodelisteResultatregnskapOgBalanse.Kategori.POSITIV) forVerdi { it.beloep }
+    internal val kapitalMedNegativKategori =
+        egenkapitalMedKategori(KodelisteResultatregnskapOgBalanse.Kategori.NEGATIV) forVerdi { it.beloep }
+
+    internal val sumEgenkapitalKalkyle =
+        kapitalMedPositivKategori
+            .minus(kapitalMedNegativKategori) verdiSom sumEgenkapital
+
+    internal val sumLangsiktigGjeldSkattemessigVerdiKalkyle =
+        summer forekomsterAv langsiktigGjeld.gjeld forVerdi {
+            it.beloep
+        } verdiSom sumLangsiktigGjeld
+
+    internal val sumKortsiktigGjeldSkattemessigVerdiKalkyle =
+        summer forekomsterAv kortsiktigGjeld.gjeld forVerdi {
+            it.beloep
+        } verdiSom sumKortsiktigGjeld
+
+    internal val sumGjeldOgEgenkapitalKalkyle =
+        sumLangsiktigGjeldSkattemessigVerdiKalkyle
+            .plus(sumKortsiktigGjeldSkattemessigVerdiKalkyle)
+            .plus(sumEgenkapitalKalkyle) verdiSom sumGjeldOgEgenkapital
+
     internal val kalkyletre = Kalkyletre(
         verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabattKalkyle,
         formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabattKalkyle,
-        samletGjeldKalkyle
+        samletGjeldKalkyle,
+        sumEgenkapitalKalkyle,
+        sumLangsiktigGjeldSkattemessigVerdiKalkyle,
+        sumKortsiktigGjeldSkattemessigVerdiKalkyle,
+        sumGjeldOgEgenkapitalKalkyle
     )
 
     override fun getKalkyletre(): Kalkyletre {

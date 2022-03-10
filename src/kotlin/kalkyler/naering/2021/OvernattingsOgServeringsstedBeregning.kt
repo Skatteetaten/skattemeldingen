@@ -1,3 +1,12 @@
+package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v2_2021
+
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.InlineKalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.Verdi
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.mapping.HarGeneriskModell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.overnattingsOgServeringssted
+import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
+import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.InformasjonsElement
+
 object OvernattingsOgServeringsstedBeregning : InlineKalkyle() {
 
     override fun kalkulertPaa(naeringsopplysninger: HarGeneriskModell): Verdi {
