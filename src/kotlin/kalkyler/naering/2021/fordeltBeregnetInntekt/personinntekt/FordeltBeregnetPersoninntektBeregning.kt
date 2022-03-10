@@ -1,25 +1,3 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v2_2021.fordeltBeregnetInntekt.personinntekt
-
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.avrundTilToDesimaler
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.avrundTilToDesimalerString
-import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.felter.FeltKoordinat
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.InlineKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.domene.dsl.kalkyle.Verdi
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.divideInternal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.dsl.domene.kalkyler.v2_2021.fordeltBeregnetInntekt.skalBeregnePersoninntekt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.mapping.HarGeneriskModell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.fordeltBeregnetNaeringsinntekt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.fordeltBeregnetPersoninntekt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.skjermingsgrunnlagstype_2021
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.virksomhet
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.v2_2021.virksomhetstype_2021
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.GeneriskModell
-import ske.fastsetting.formueinntekt.skattemelding.core.generiskmapping.jsonobjekter.InformasjonsElement
-
-/**
- * Spesifisert her: https://wiki.sits.no/display/SIR/FR-Personinntekt+fra+ENK
- */
 object FordeltBeregnetPersoninntektBeregning : InlineKalkyle() {
 
     val skjermingsgrunnlagtyper = listOf(
