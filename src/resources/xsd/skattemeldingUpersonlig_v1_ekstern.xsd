@@ -256,7 +256,7 @@
       <xsd:element minOccurs="0" name="kontonummer" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="erOmfattetAvFritaksmetoden" type="BoolskMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="antall" type="AntallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="antall" type="DesimaltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="gjelderFlereVirtuelleValutaer" type="BoolskMedInnkapsling"/>
       <xsd:element minOccurs="0" name="kapitalinntektFraVirtuellValuta" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvVirtuellValuta" type="BeloepSomHeltallMedInnkapsling"/>
@@ -471,7 +471,7 @@
         <xsd:sequence>
           <xsd:element minOccurs="0" name="andelAvFormuesverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ece785b5-fd92-11ea-b057-0050568214e4" type="ProsentMedInnkapsling"/>
           <xsd:element minOccurs="0" name="formuesspesifikasjonForSkogeiendomINorge" type="FormuesspesifikasjonForSkogeiendomINorge"/>
-          <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="sergMatrikkelnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e115-9fe1-11e5-a9f8-e4115b280940" type="SergMatrikkelnummer"/>
         </xsd:sequence>
@@ -703,7 +703,7 @@
       <xsd:element minOccurs="0" name="anvendtPrissone" skatt:erAvledet="true" type="Tekst"/>
       <xsd:element minOccurs="0" name="kostnadssjablong" skatt:erAvledet="true" type="Tekst"/>
       <xsd:element minOccurs="0" name="avkastningsverdiPerEiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element maxOccurs="4" name="tilvekst" type="Tilvekstspesifikasjon"/>
+      <xsd:element maxOccurs="4" minOccurs="0" name="tilvekst" type="Tilvekstspesifikasjon"/>
       <xsd:element minOccurs="0" name="sumTilvekst" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="korrigertKostnadssjablong" type="Tekst"/>
       <xsd:element minOccurs="0" name="anvendtKostnadssjablong" skatt:erAvledet="true" type="Tekst"/>
