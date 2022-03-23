@@ -573,6 +573,7 @@
           <xsd:element minOccurs="0" name="fradragForKostnaderKnyttetTilArbeid" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="fradragForKostnaderKnyttetTilAnnenInntekt" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="kostnad" type="KostnadKnyttetTilArbeidOgAnnenInntekt"/>
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>

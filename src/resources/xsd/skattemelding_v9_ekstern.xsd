@@ -585,6 +585,7 @@
           <xsd:element minOccurs="0" name="fradragForKostnaderKnyttetTilArbeid" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="fradragForKostnaderKnyttetTilAnnenInntekt" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="kostnad" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b574089a-d96a-11e6-8d9b-005056821322" type="KostnadKnyttetTilArbeidOgAnnenInntekt"/>
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
