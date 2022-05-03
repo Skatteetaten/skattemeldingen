@@ -13,10 +13,28 @@
       "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
+      "kontrollnavn": "N_AVVIK_GLD_NÆRING_SMIA",
+      "kontrollformel": "sakstype(Personlig)\n\t.kontekst(ValideringSkattepliktig) {\n\n//kontrollen gir utslag dersom skattyters partsnr finnes i kontrolllisten (innrapportert naeringsinntekt hoyere enn driftsinntekt) og \n//skattepliktig ikke har oppgitt driftsinntekt \n//kontrollen gir oppgave i SMIA\n      \nval partsnr = skattepliktGjeldende\n        .forForekomsterAv(skatteplikt)\n        .verdiFor { fastsattEllerGrunnlag(partsnummerSomTekst) }\n\n        val oppgittDriftsinntektINaeringsspesifikasjon = naeringsspesifikasjon\n            .forForekomsterAv(sti(resultatregnskap, sumDriftsinntekt))\n            \n       naeringsspesifikasjon          \n            .utslagFor {\n                \n         val finnesIKontrollisteNaeringsinntekt = finnesIKontrolliste (\n              \tskattemelding.kontrollKontekst.inntektsaar,\n              \t\"kontrolliste - innrapportert naeringsinntekt hoyere enn driftsinntekt\",\n              \tlisteAv (partsnr)\n              )                  \n                hvis(finnesIKontrollisteNaeringsinntekt og ((beloepSomTall ikkeEr oppgitt) eller (beloepSomTall erLik 0))\n                )\n                {\n                    betjeningsstrategiSettesTil(\n                        myndighetsfastsettingMedVarselOgVedtak,\n                        ingen,\n                        1,\n                        Gruppering settesLik Næring\n                    )\n                }\n            }}\t",
+      "hjelpetekstSME": "",
+      "BetjeningsstrategiSkattepliktig": "ingen"
+    },
+    {
       "kontrollnavn": "N_AVVIK_RENTER_OBLIGASJONER",
       "kontrollformel": "sakstype(Upersonlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag når selskapet har opplysninger om renteinntekt av obligasjon/sertifikat og summen av disse er høyere\n    //enn beløp ført i post 8090 i resultatregnskapet\n    //kontrollen gir merknad i valideringstjenesten\n\n    val renterObligasjonManglerIResultat = naeringsspesifikasjon\n        .forForekomsterAv(sti(resultatregnskap, finansinntekt))\n        .forForekomsterAv(inntekt)\n        .filtrer { type.finnesBlant(\"8090\") }\n        .summer { beloepSomGruppe.beloepSomTall }\n\n    skattemeldingUpersonlig\n        .utslagFor {\n            val sumRenteinntektObligasjon =\n                forForekomsterAv(sti(spesifikasjonAvForholdRelevanteForBeskatning, obligasjonOgSertifikat))\n                    .summer { renteinntektAvObligasjonOgSertifikatSomTall }\n\n            val avvikRenter = sumRenteinntektObligasjon - renterObligasjonManglerIResultat\n\n            hvis(renterObligasjonManglerIResultat erMindreEnn sumRenteinntektObligasjon) {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1,\n                    Avviksbeloep settesTil avvikRenter\n                )\n            }\n        }\n}",
       "hjelpetekstSME": "Det er avvik mellom renteinntekt av obligasjon og sertifikat rapportert i konto 8090 i resultatregnskapet og summen av renteinntektene som er spesifisert pr obligasjon eller sertifikat i skattemeldingen.",
       "BetjeningsstrategiSkattepliktig": "merknadStandard"
+    },
+    {
+      "kontrollnavn": "N_AVVIK_SKATTEMESSIG_RESULTAT",
+      "kontrollformel": "sakstype(Personlig, Upersonlig)\n   .kontekst(ValideringSkattepliktig)\n{\n//kontrollen gir utslag dersom summen av alle forekomster av fordelt skattemessig resultat for næring avviker fra skattemessig resultat\n//kontrollen medfører at innleveringen avvises.\nval sumFordeltSkattemessigResultat = naeringsspesifikasjon\n    .forForekomsterAv(fordeltBeregnetNaeringsinntekt)\n    .summer { fordeltSkattemessigResultat.beloepSomTall }\n\nnaeringsspesifikasjon\n    .forForekomsterAv(sti(beregnetNaeringsinntekt, skattemessigResultat))    \n    .utslagFor {\n        hvis((beloepSomTall) erUlik (sumFordeltSkattemessigResultat)) {\n            betjeningsstrategiSettesTil(\n                ikke, merknadStandard, 1\n            )\n        }\n    }\n}\n",
+      "hjelpetekstSME": "Det er avvik mellom det skattemessige resultatet og summen av fordelte næringsinntekter. Et aksjeselskap kan bare ha en fordelt næringsinntekt, mens et enkeltpersonforetak kan ha flere.",
+      "BetjeningsstrategiSkattepliktig": "merknadStandard"
+    },
+    {
+      "kontrollnavn": "N_AVVIK_SUM_FORDELT_NÆRINGSINNTEKT",
+      "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag dersom summen av alle forekomster av fordelt skattemessig resultat for næring avviker fra skattemessig resultat\n    //kontrollen medfører arbeidsoppgave i SMIA\n    val sumFordeltSkattemessigResultat = naeringsspesifikasjon\n        .forForekomsterAv(fordeltBeregnetNaeringsinntekt)\n        .summer { fordeltSkattemessigResultat.beloepSomTall }\n\n    naeringsspesifikasjon\n        .forForekomsterAv(sti(beregnetNaeringsinntekt, skattemessigResultat))\n        .utslagFor {\n\n            val differanseSkattemessigResultat = beloepSomTall - sumFordeltSkattemessigResultat\n\n            hvis((differanseSkattemessigResultat erStørreEnn 10000) eller (differanseSkattemessigResultat erMindreEnn -10000))\n            {\n                betjeningsstrategiSettesTil(\n                    myndighetsfastsettingMedVarselOgVedtak, ingen, 1,\n                    Avviksbeloep settesTil differanseSkattemessigResultat\n                )\n            }\n        }\n}",
+      "hjelpetekstSME": "",
+      "BetjeningsstrategiSkattepliktig": "ingen"
     },
     {
       "kontrollnavn": "N_AVVIK_TAP_OBLIGASJONER",
@@ -170,27 +188,21 @@
     },
     {
       "kontrollnavn": "N_FRADRAG_ELEKTR_KOMMUNIKASJON",
-      "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    val partsnr = skattepliktGjeldende\n        .forForekomsterAv(skatteplikt)\n        .verdiFor { fastsattEllerGrunnlag(partsnummerSomTekst) }\n\n    // Kontrollen gir utslag dersom skattyter har oppgitt kostnader til elektroniske kommunikasjonstjenester på konto 6995, men som ikke har tilbakeført for privat bruk på konto 6998\n    // AB-test på skattytere som har tallet 2, 3, 4, 5, 6, 7, 8, 9 i 7.siffer i partsnummeret\n    // Gir merknad\n    naeringsspesifikasjon\n        .forForekomsterAv(sti(resultatregnskap, driftskostnad, annenDriftskostnadSomGruppe))\n        .utslagFor {\n\n            val harElektroniskKommunkasjon = forForekomsterAv(kostnad)\n                .filtrer { type erLik \"6995\" }\n                .summer { beloepSomGruppe.beloepSomTall }\n\n            val harTilbakeførtElKomm = forForekomsterAv(kostnad)\n                .filtrer { type erLik \"6998\" }\n                .summer { beloepSomGruppe.beloepSomTall }\n\n            hvis((harElektroniskKommunkasjon erStørreEnnEllerLik 5000) og (ikke(harTilbakeførtElKomm erStørreEnn 0) og\n                (partsnr.tegnFraIndeks(7).finnesBlant(\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\")))\n            ) {\n                betjeningsstrategiSettesTil(ikke,\n                    merknadStandard,\n                    1,\n                    kortTypeReferanse settesLik \"kontorlokaler\")\n            }\n        }\n}",
-      "hjelpetekstSME": "Har du brukt mobiltelefon, bredbånd, telefon, e.l. privat? Da skal deler av kostnadene tilbakeføres på konto 6998. <a href="
-      https: //www.skatteetaten.no/bedrift-og-organisasjon/skatt/skattemelding-naringsdrivende/fradrag/fradragsveiviser-for-enk/kostnader-til-mobiltelefon-bredband-telefon-mm/" target="_blank">Les mer om hvordan du beregner den private fordelen her. </a>",
-      "BetjeningsstrategiSkattepliktig"
-      :
-      "merknadStandard"
+      "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    val partsnr = skattepliktGjeldende\n        .forForekomsterAv(skatteplikt)\n        .verdiFor { fastsattEllerGrunnlag(partsnummerSomTekst) }\n\n    val harRegnskapspliktstypeLik1Eller5 = naeringsspesifikasjon\n        .forForekomsterAv(virksomhet)\n        .hvorMinstEnForekomst { regnskapspliktstype.finnesBlant(\"1\", \"5\") }\n\n    // Kontrollen gir utslag dersom skattyter har oppgitt kostnader til elektroniske kommunikasjonstjenester på konto 6995, men som ikke har tilbakeført for privat bruk på konto 6998\n    // AB-test på skattytere som har tallet 2, 3, 4, 5, 6, 7, 8, 9 i 7.siffer i partsnummeret\n    // Gir merknad\n    naeringsspesifikasjon\n        .forForekomsterAv(sti(resultatregnskap, driftskostnad, annenDriftskostnadSomGruppe))\n        .utslagFor {\n\n            val harElektroniskKommunkasjon = forForekomsterAv(kostnad)\n                .filtrer { type erLik \"6995\" }\n                .summer { beloepSomGruppe.beloepSomTall }\n\n            val harTilbakeførtElKomm = forForekomsterAv(kostnad)\n                .filtrer { type erLik \"6998\" }\n                .summer { beloepSomGruppe.beloepSomTall }\n\n            hvis(harRegnskapspliktstypeLik1Eller5 og (harElektroniskKommunkasjon erStørreEnnEllerLik 5000) og (ikke(\n                harTilbakeførtElKomm erStørreEnn 0) og\n                (partsnr.tegnFraIndeks(7).finnesBlant(\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\")))\n            ) {\n                betjeningsstrategiSettesTil(ikke,\n                    merknadStandard,\n                    1,\n                    kortTypeReferanse settesLik \"kontorlokaler\")\n            }\n        }\n}",
+      "hjelpetekstSME": "Har du brukt mobiltelefon, bredbånd, telefon, e.l. privat? Da skal deler av kostnadene tilbakeføres på konto 6998. <a href=\"https://www.skatteetaten.no/bedrift-og-organisasjon/skatt/skattemelding-naringsdrivende/fradrag/fradragsveiviser-for-enk/kostnader-til-mobiltelefon-bredband-telefon-mm/\" target=\"_blank\">Les mer om hvordan du beregner den private fordelen her. </a>",
+      "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
       "kontrollnavn": "N_FRADRAG_ELEKTR_KOMMUNIKASJON_IKKE_MERKNAD",
-      "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    val partsnr = skattepliktGjeldende\n        .forForekomsterAv(skatteplikt)\n        .verdiFor { fastsattEllerGrunnlag(partsnummerSomTekst) }\n\n    // Kontrollen gir IKKE utslag dersom skattyter har oppgitt kostnader til elektroniske kommunikasjonstjenester på konto 6995, men som ikke har tilbakeført for privat bruk på konto 6998\n    // AB-test på skattytere som har tallet 0 eller 1 i 7.siffer i partsnummeret\n    // Gir ingen merknad\n\n    naeringsspesifikasjon\n        .forForekomsterAv(sti(resultatregnskap, driftskostnad, annenDriftskostnadSomGruppe))\n        .utslagFor {\n\n            val harElektroniskKommunkasjon = forForekomsterAv(kostnad)\n                .filtrer { type erLik \"6995\" }\n                .summer { beloepSomGruppe.beloepSomTall }\n\n            val harTilbakeførtElKomm = forForekomsterAv(kostnad)\n                .filtrer { type erLik \"6998\" }\n                .summer { beloepSomGruppe.beloepSomTall }\n\n            hvis((harElektroniskKommunkasjon erStørreEnnEllerLik 5000) og (ikke(harTilbakeførtElKomm erStørreEnn 0) og\n                (partsnr.tegnFraIndeks(7).finnesBlant(\"0\", \"1\"))))\n            {\n                betjeningsstrategiSettesTil(ikke, merknadIngen, 1)\n            }\n        }\n}",
+      "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    val partsnr = skattepliktGjeldende\n        .forForekomsterAv(skatteplikt)\n        .verdiFor { fastsattEllerGrunnlag(partsnummerSomTekst) }\n\n    // Kontrollen gir IKKE utslag dersom skattyter har oppgitt kostnader til elektroniske kommunikasjonstjenester på konto 6995, men som ikke har tilbakeført for privat bruk på konto 6998\n    // AB-test på skattytere som har tallet 0 eller 1 i 7.siffer i partsnummeret\n    // Gir ingen merknad\n\n    naeringsspesifikasjon\n        .forForekomsterAv(sti(resultatregnskap, driftskostnad, annenDriftskostnadSomGruppe))\n        .utslagFor {\n\n            val harElektroniskKommunkasjon = forForekomsterAv(kostnad)\n                .filtrer { type erLik \"6995\" }\n                .summer { beloepSomGruppe.beloepSomTall }\n\n            val harTilbakefoertElKomm = forForekomsterAv(kostnad)\n                .filtrer { type erLik \"6998\" }\n                .summer { beloepSomGruppe.beloepSomTall }\n\n            hvis((harElektroniskKommunkasjon erStørreEnnEllerLik 5000) og (ikke(harTilbakefoertElKomm erStørreEnn 0) og\n                (partsnr.tegnFraIndeks(7).finnesBlant(\"0\", \"1\")))\n            ) {\n                betjeningsstrategiSettesTil(ikke, merknadIngen, 1)\n            }\n        }\n}",
       "hjelpetekstSME": "",
       "BetjeningsstrategiSkattepliktig": "merknadIngen"
     },
     {
       "kontrollnavn": "N_FRADRAG_HJEMMEKONTOR",
       "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag dersom skattytere hvor forretningsadresse er lik bostedsadresse i folkeregisteret og beløp i feltet 'Leie lokale' er mellom kr 1800 - 150 000.\n    //AB-test på skattytere som har tallet 2, 3, 4, 5, 6, 7, 8, 9 i 7.siffer i partsnummeret\n    //kontrollen gir merknad\n\n    val partsnr = skattepliktGjeldende\n        .forForekomsterAv(skatteplikt)\n        .verdiFor { fastsattEllerGrunnlag(partsnummerSomTekst) }\n\n    naeringsspesifikasjon\n        .forForekomsterAv(resultatregnskap.driftskostnad.annenDriftskostnadSomGruppe)\n        .utslagFor {\n\n            val harLeiekostnad = forForekomsterAv(kostnad)\n                .filtrer { type erLik \"6300\" }\n                .summer { beloepSomGruppe.beloepSomTall }\n\n            val finnesIKontrollisteHjemmekontor = finnesIKontrolliste(\n                skattemelding.kontrollKontekst.inntektsaar,\n                \"kontrolliste - fradrag hjemmekontor\",\n                listeAv(partsnr)\n            )\n\n            hvis(finnesIKontrollisteHjemmekontor og ((harLeiekostnad erStørreEnnEllerLik 18000) og (harLeiekostnad erMindreEnnEllerLik 150000))\n                og (partsnr.tegnFraIndeks(7).finnesBlant(\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\"))\n            ) {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1, kortTypeReferanse settesLik \"kontorlokaler\"\n                )\n            }\n        }\n}",
-      "hjelpetekstSME": "Har du beregnet fradrag for hjemmekontor? Det er kun hvis du har et eget/egne rom i hjemmet som utelukkende benyttes i inntektserverv at du kan fradragsføre kostnader til hjemmekontor. Gå til <a href="
-      https: //www.skatteetaten.no/bedrift-og-organisasjon/skatt/skattemelding-naringsdrivende/fradrag/fradragsveiviser-for-enk/fradrag-for-kontor/hjemmekontor/" target="_blank">Hjemmekontor</a> for å lese mer om regelverket og hvordan du beregner fradraget. Merk at du ikke kan få fradrag for beregnet husleie i egen bolig.",
-      "BetjeningsstrategiSkattepliktig"
-      :
-      "merknadStandard"
+      "hjelpetekstSME": "Har du beregnet fradrag for hjemmekontor? Det er kun hvis du har et eget/egne rom i hjemmet som utelukkende benyttes i inntektserverv at du kan fradragsføre kostnader til hjemmekontor. Gå til <a href=\"https://www.skatteetaten.no/bedrift-og-organisasjon/skatt/skattemelding-naringsdrivende/fradrag/fradragsveiviser-for-enk/fradrag-for-kontor/hjemmekontor/\" target=\"_blank\">Hjemmekontor</a> for å lese mer om regelverket og hvordan du beregner fradraget. Merk at du ikke kan få fradrag for beregnet husleie i egen bolig.",
+      "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
       "kontrollnavn": "N_FRADRAG_HJEMMEKONTOR_IKKE_MERKNAD",
@@ -241,6 +253,12 @@
       "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
+      "kontrollnavn": "N_IKKEØKONOMISK_AKTIVITET_ELLER_VIRKSOMHET",
+      "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag dersom skattepliktig de tre foregående inntektsårene (2018-2020) har sum driftsinntekter på under kr 50 000 og underskudd i næring, og\n    //har driftsinntekter under kr 50 000 og underskudd i inntektsåret.\n    //kontrollen gir merknad\n    val partsnr = skattepliktGjeldende\n        .forForekomsterAv(skatteplikt)\n        .verdiFor { fastsattEllerGrunnlag(partsnummerSomTekst) }\n\n    val harLavDriftsinntektIInntektsåret = naeringsspesifikasjon\n        .forForekomsterAv(sti(resultatregnskap, driftsinntekt, sumDriftsinntekt))\n        .summer { beloepSomTall }\n\n    naeringsspesifikasjon\n        .fokusområde(\"Fokusområde\")\n        .forForekomsterAv(fordeltBeregnetNaeringsinntekt)\n        .utslagFor {\n            val finnesIKontrollisteIkkeAktivitetEllerVirksomhet = finnesIKontrolliste(\n                skattemelding.kontrollKontekst.inntektsaar,\n                \"kontrolliste - ikke aktivitet eller virksomhet\",\n                listeAv(partsnr)\n            )\n\n            hvis(finnesIKontrollisteIkkeAktivitetEllerVirksomhet og (harLavDriftsinntektIInntektsåret erMindreEnn 50000) og (fordeltSkattemessigResultat.beloepSomTall erMindreEnn 0)) {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1\n                )\n            }\n        }\n}",
+      "hjelpetekstSME": "Du har over flere år oppgitt underskudd i næring. Er du næringsdrivende? For veiledende svar på om du er næringsdrivende og skal oppgi inntekt/underskudd i næring, gå til <a href=\"https://www.skatteetaten.no/bedrift-og-organisasjon/starte-og-drive/er-jeg-naringsdrivende/\" target=\"_blank\">Er jeg næringsdrivende?</a> Hvis du ikke driver næringsvirksomhet og ønsker å avslutte ditt foretak, kan du gå til <a href=\"https://www.skatteetaten.no/bedrift-og-organisasjon/starte-og-drive/avslutte-bedrift/\" target=\"_blank\">Avslutte bedrift </a>for å få veiledning til hva du må gjøre.",
+      "BetjeningsstrategiSkattepliktig": "merknadStandard"
+    },
+    {
       "kontrollnavn": "N_INNEHAVERSANDEL_OVER_100",
       "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag dersom innehavers andel er satt til over 100 %\n    //kontrollen gir merknad i valideringstjenesten\n    naeringsspesifikasjon\n        .forForekomsterAv(fordeltBeregnetNaeringsinntekt)\n        .utslagFor {\n            hvis((andelAvSkattemessigResultatTilordnetInnehaver) erStørreEnn 100) {\n                betjeningsstrategiSettesTil(\n                    ikke, merknadStandard, 1\n                )\n            }\n        }\n}",
       "hjelpetekstSME": "Innehaverens andel kan ikke være høyere enn 100 prosent.",
@@ -261,12 +279,7 @@
     {
       "kontrollnavn": "N_KOMPENSASJONSYTELSE_NAV_AVVIK_GLD",
       "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag når beløpet fylt ut på feltet 'Kompensasjon for tapt inntekt' avviker fra innrapportert beløp fra NAV. Gjelder både når beløpet er større eller mindre enn innrapportert beløp.\n    //kontrollen gir merknad i valideringstjenesten\n\n    skattemelding\n        .forForekomsterAv(sti(oppgavegiver, sykepengerOgAnnenInntektMvFraOppgavegiver))\n\n        .utslagFor {\n\n            val harKompensasjonNAV = filtrer { behandlingsart erLik \"KOMP_PERS_INNT\" }\n                .hvorMinstEnForekomst { grunnlag(beloepSomGruppe.beloepSomTall) er oppgitt }\n\n            val fastsattKompensasjonNAV = filtrer { behandlingsart erLik \"KOMP_PERS_INNT\" }\n                .summer { fastsatt(beloepSomGruppe.beloepSomTall) }\n\n            val grunnlagKompensasjonNAV = filtrer { behandlingsart erLik \"KOMP_PERS_INNT\" }\n                .summer { grunnlag(beloepSomGruppe.beloepSomTall) }\n\n            val differanseKompensasjonNAV = fastsattKompensasjonNAV - grunnlagKompensasjonNAV\n\n            hvis(harKompensasjonNAV og (differanseKompensasjonNAV erUlik 0))\n            {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1,\n                    Avviksbeloep settesTil differanseKompensasjonNAV\n                )\n            }\n        }\n}",
-      "hjelpetekstSME": "Du har endret beløpet i feltet "
-      kompensasjon
-      for
-      tapt
-      inntekt
-      ". Beløpet er innrapportert av NAV og skal skattlegges i utbetalingsåret. Hvis du mener innrapportert beløp er feil, må du kontakte NAV.",
+      "hjelpetekstSME": "Du har endret beløpet i feltet \"kompensasjon for tapt inntekt\". Beløpet er innrapportert av NAV og skal skattlegges i utbetalingsåret. Hvis du mener innrapportert beløp er feil, må du kontakte NAV.",
       "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
@@ -332,11 +345,8 @@
     {
       "kontrollnavn": "N_MVA_FJERNLEVERBARE_TJENESTER",
       "kontrollformel": "sakstype(Personlig, Upersonlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag når skattyter ikke har inntekter i post 3000 og 3100, og har kostnader i post 6700 fremmed tjeneste og/eller 7330 salgs-og reklamekostnader\n    //Kan ha verdier i øvrige inntekts- og kostnadsposter\n    //kontrollen gir merknad i valideringstjenesten\n    naeringsspesifikasjon\n        .utslagFor {\n            val harIkkeSalgsinntekt3000Og3100 =\n                forForekomsterAv(sti(resultatregnskap, driftsinntekt, salgsinntektSomGruppe))\n                    .forForekomsterAv(inntekt)\n                    .harIngenForekomsterDer { type.finnesBlant(\"3000\", \"3100\") }\n\n            val harAndreKostnader6700Eller7330 =\n                forForekomsterAv(sti(resultatregnskap, driftskostnad, annenDriftskostnadSomGruppe))\n                    .forForekomsterAv(kostnad)\n                    .filtrer { type.finnesBlant(\"6700\", \"7330\") }\n                    .summer { beloepSomGruppe.beloepSomTall }\n\n            hvis(harIkkeSalgsinntekt3000Og3100 og (harAndreKostnader6700Eller7330 erStørreEnn 0)) {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1\n                )\n            }\n        }\n}",
-      "hjelpetekstSME": "Har du kjøpt tjenester fra utlandet? Det kan medføre at du må beregne og betale merverdiavgift selv om du ikke er registrert i Merverdiavgiftsregisteret. <a href="
-      https: //www.skatteetaten.no/bedrift-og-organisasjon/avgifter/mva/utland/tjenester/" target="_blank">Gå til Merverdiavgift på tjenester virksomheten har kjøpt fra utlandet </a>for å få svar på om du skal beregne merverdiavgift, og hvordan du skal rapportere dette.",
-      "BetjeningsstrategiSkattepliktig"
-      :
-      "merknadStandard"
+      "hjelpetekstSME": "Har du kjøpt tenester frå utlandet? Det kan føre til at du må berekne og betale meirverdiavgift sjølv om du ikkje er registrert i Meirverdiavgiftsregisteret. <a href=\"https://www.skatteetaten.no/bedrift-og-organisasjon/avgifter/mva/utland/tjenester/\" target=\"_blank\">Gå til Meirverdiavgift på tenester verksemda har kjøpt frå utlandet </a>for å få svar på om du skal berekne meirverdiavgift, og korleis du skal rapportere dette.",
+      "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
       "kontrollnavn": "N_NEDSKREVET_VERDI_DRIFTSMIDDEL",
@@ -379,6 +389,18 @@
       "kontrollformel": "sakstype(Upersonlig)\n.kontekst(ValideringSkattepliktig) {\n    skattemeldingUpersonlig\n        .forForekomsterAv(sti(spesifikasjonAvForholdRelevanteForBeskatning, obligasjonOgSertifikat))\n        .utslagFor {\n            hvis(rentepapiretsNavn er oppgitt og ((kontofoerersNavn ikkeEr oppgitt) eller\n                (kontonummer ikkeEr oppgitt) eller\n                (finansproduktidentifikator ikkeEr oppgitt) eller\n                (finansproduktidentifikatortype ikkeEr oppgitt) eller\n                (landkode ikkeEr oppgitt) eller\n                (antallObligasjonOgSertifikat ikkeEr oppgitt)))\n            {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1,\n                )\n            }\n        }\n}",
       "hjelpetekstSME": "Det mangler en eller flere opplysninger om rapportert obligasjon eller sertifikat. Vi ønsker at følgende felter fylles ut; kontofoerersNavn, kontonummer, finansproduktidentifikator, finansproduktidentifikatortype, landkode og antallObligasjonOgSertifikat.",
       "BetjeningsstrategiSkattepliktig": "merknadStandard"
+    },
+    {
+      "kontrollnavn": "N_NEGATIV_SALDO_IFJOR",
+      "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag dersom skattyters partsnr finnes i kontrolliste (negativ saldo) og\n    //skattyter ikke har inntektsført andel av negativ saldo\n    //kontrollen gir oppgave i SMIA\n    val partsnr = skattepliktGjeldende\n        .forForekomsterAv(skatteplikt)\n        .verdiFor { partsnummerSomTekst }\n\n\tval harIkkeOppgittNegativSaldo = naeringsspesifikasjon\n         .forForekomsterAv(sti(spesifikasjonAvAnleggsmiddel, saldoavskrevetAnleggsmiddel))\n         .harIngenForekomsterDer { fastsatt(avskrivningssats) er oppgitt}    \n         \nnaeringsspesifikasjon\n        .utslagFor {\n            val finnesIKontrollisteNegativSaldo = finnesIKontrolliste(\n                skattemelding.kontrollKontekst.inntektsaar,\n                \"kontrolliste - negativ saldo\",\n                listeAv(partsnr)\n            )\n            \n            val verdiFraNegativSaldo = hentKontrolliste(\n    \t\t\t\tskattemelding.kontrollKontekst.inntektsaar,\n    \t\t\t\t\"kontrolliste - negativ saldo\",\n    \t\t\t\tlisteAv(partsnr)\n    \t\t\t\t)\n    \t\t\t\t.forForekomsterAv {verdi}\n       \t\t\t\t.summer{verdiSomTall1}\n\n            hvis(finnesIKontrollisteNegativSaldo og harIkkeOppgittNegativSaldo) {\n                betjeningsstrategiSettesTil(\n                    myndighetsfastsettingMedVarselOgVedtak,\n                    merknadTips,\n                    1,\n                  \tGruppering settesLik Næring,\n                  \tAvviksbeloep settesTil verdiFraNegativSaldo\n                )\n            }\n        }\n}\n",
+      "hjelpetekstSME": "",
+      "BetjeningsstrategiSkattepliktig": "merknadTips"
+    },
+    {
+      "kontrollnavn": "N_NEGATIV_SALDO_IFJOR_IKKE_SKJEMA",
+      "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag dersom skattyters partsnr finnes i kontrolliste (kontrolliste - mangler negativ saldo) og\n    //skattyter ikke har inntektsført andel av negativ saldo\n    //kontrollen gir oppgave i SMIA\n    val partsnr = skattepliktGjeldende\n        .forForekomsterAv(skatteplikt)\n        .verdiFor { partsnummerSomTekst }\n\n\tval harIkkeOppgittNegativSaldo = naeringsspesifikasjon\n         .forForekomsterAv(sti(spesifikasjonAvAnleggsmiddel, saldoavskrevetAnleggsmiddel))\n         .harIngenForekomsterDer { fastsatt(avskrivningssats) er oppgitt}    \n         \nnaeringsspesifikasjon\n        .utslagFor {\n            val finnesIKontrollisteNegativSaldo = finnesIKontrolliste(\n                skattemelding.kontrollKontekst.inntektsaar,\n                \"kontrolliste - mangler negativ saldo\",\n                listeAv(partsnr)\n            )\n            \n            val verdiFraNegativSaldo = hentKontrolliste(\n    \t\t\t\tskattemelding.kontrollKontekst.inntektsaar,\n    \t\t\t\t\"kontrolliste - mangler negativ saldo\",\n    \t\t\t\tlisteAv(partsnr)\n    \t\t\t\t)\n    \t\t\t\t.forForekomsterAv {verdi}\n       \t\t\t\t.summer{verdiSomTall1}\n\n            hvis(finnesIKontrollisteNegativSaldo og harIkkeOppgittNegativSaldo) {\n                betjeningsstrategiSettesTil(\n                    myndighetsfastsettingMedVarselOgVedtak,\n                    ingen,\n                    1,\n                  \tGruppering settesLik Næring,\n                  \tAvviksbeloep settesTil verdiFraNegativSaldo\n                )\n            }\n        }\n}",
+      "hjelpetekstSME": "",
+      "BetjeningsstrategiSkattepliktig": "ingen"
     },
     {
       "kontrollnavn": "N_PERMANENT_FORSKJELL_BESKRIVELSE",
@@ -443,7 +465,7 @@
     {
       "kontrollnavn": "N_SKOGBRUK_DIFFERANSE_FRADRAG",
       "kontrollformel": "sakstype(Personlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag når sjablongberegnet fradrag i skogbruk i fordelt beregnet næringsinntekt er ulik summen av sjablongberegnet fradrag pr tømmerkonto\n    //kontrollen gir merknad i valideringstjenesten\n    val sumSjablongberegnetFradragISkogbruk = naeringsspesifikasjon\n        .forForekomsterAv(sti(skogbruk, skogOgToemmerkonto))\n        .summer { inntektOgKostnad.sjablongberegnetFradragKnyttetTilBiomasseOgVedproduksjon.beloepSomTall }\n\n\n    naeringsspesifikasjon\n        .forForekomsterAv(fordeltBeregnetNaeringsinntekt)\n        .utslagFor {\n            val næringstypeSkogbruk = hvorMinstEnForekomst { naeringstype erLik \"skogbruk\" }\n\n            val differanseSjablongberegnetFradrag =\n                sjablongberegnetInntektFraBiomasseVedproduksjon.beloepSomTall + sumSjablongberegnetFradragISkogbruk\n            //må bruke pluss i beregningen siden sjablongberegnetInntektFraBiomasseVedproduksjon.beloepSomTall angis med minus i fordeltBeregnetNaeringsinntekt\n\n            hvis(næringstypeSkogbruk og (sjablongberegnetInntektFraBiomasseVedproduksjon.beloepSomTall erUlik (sumSjablongberegnetFradragISkogbruk * -1))) {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1,\n                    Avviksbeloep settesTil differanseSjablongberegnetFradrag\n                )\n            }\n        }\n}",
-      "hjelpetekstSME": "Det er differanse i overføring av sjablongberegnet inntekt fra biomasse- og vedproduksjon. Beløpet som er ført til fradrag i skogbruk må legges til i jordbruksinntekten.",
+      "hjelpetekstSME": "Det er differanse mellom sjablongberegnet fradrag i temaet \"Fordelt beregnet næringsinntekt\" og summen av sjablongberegnet fradrag beregnet i temaet \"Skog og tømmerkonto\".",
       "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
@@ -467,46 +489,13 @@
     {
       "kontrollnavn": "N_SYKEPENGER_AVVIK_GLD",
       "kontrollformel": "sakstype(Personlig)\n            .kontekst(ValideringSkattepliktig) {\n\n//kontrollen gir utslag når beløpet fylt ut på feltet 'Sykepenger for selvstendig næringsdrivende' avviker fra innrapportert beløp fra NAV. Gjelder både når beløpet er større eller mindre enn innrapportert beløp.\n\n                skattemelding\n                    .forForekomsterAv(sti(oppgavegiver, sykepengerOgAnnenInntektMvFraOppgavegiver))\n\n                    .utslagFor {\n\n                        val harSykepengerNAV = filtrer { behandlingsart erLik \"SYKEPENGER_NAER\" }\n                            .hvorMinstEnForekomst { grunnlag(beloepSomGruppe.beloepSomTall) er oppgitt }\n\n                        val fastsattSykepengerNAV = filtrer { behandlingsart erLik \"SYKEPENGER_NAER\" }\n                            .summer { fastsatt(beloepSomGruppe.beloepSomTall) }\n\n                        val grunnlagSykepengerNAV = filtrer { behandlingsart erLik \"SYKEPENGER_NAER\" }\n                            .summer { grunnlag(beloepSomGruppe.beloepSomTall) }\n\n                        val differanseSykepengerNAV = fastsattSykepengerNAV - grunnlagSykepengerNAV\n\n                        hvis(harSykepengerNAV og (differanseSykepengerNAV erUlik 0))\n\n                        {\n                            betjeningsstrategiSettesTil(\n                                ikke,\n                                merknadStandard,\n                                1,\n                                Avviksbeloep settesTil differanseSykepengerNAV\n                            )\n                        }\n                    }\n            }",
-      "hjelpetekstSME": "Du har endret beløpet i feltet "
-      Sykepenger
-      for
-      selvstendig
-      næringsdrivende
-      ". Beløpet er innrapportert av NAV og skal skattlegges i utbetalingsåret. Hvis du mener innrapportert beløp er feil, må du kontakte NAV.",
+      "hjelpetekstSME": "Du har endret beløpet i feltet \"Sykepenger for selvstendig næringsdrivende\". Beløpet er innrapportert av NAV og skal skattlegges i utbetalingsåret. Hvis du mener innrapportert beløp er feil, må du kontakte NAV.",
       "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
       "kontrollnavn": "N_TAP_FORDRINGER_KONTRAKTER",
       "kontrollformel": "sakstype(Personlig, Upersonlig)\n.kontekst(ValideringSkattepliktig) {\n    //kontrollen gir utslag dersom skattyter i post 7830 eller 7860 har oppgitt mer enn 20 000 i kostander\n    //kontrollen gir merknad i valideringstjenesten og SME\n    naeringsspesifikasjon\n        .forForekomsterAv(resultatregnskap.driftskostnad.annenDriftskostnadSomGruppe)\n        .forForekomsterAv(kostnad)\n        .filtrer { type.finnesBlant(\"7830\", \"7860\") }\n        .utslagFor {\n            hvis(beloepSomTall erStørreEnn 20_000)\n            {\n                betjeningsstrategiSettesTil(\n                    ikke, merknadStandard, 1)\n            }\n        }\n}",
-      "hjelpetekstSME": "Alle vilkårene under må være oppfylt før et tap kan fradragsføres skattemessig i virksomheten.<br>Sjekk om du oppfyller vilkårene:<ul>
-      <li>Du
-      må
-      drive
-      virksomhet</li><li>Det
-      må
-      være
-      tilstrekkelig
-      tilknytning
-      mellom
-      fordringen
-      og
-      din
-      virksomhet</li><li>Tapet
-      må
-      være
-      endelig
-      konstatert
-      tapt</li></ul>Merk: Omsetningssvikt
-      f.eks.
-      på
-      grunn
-      av
-      koronapandemien
-      regnes
-      ikke
-      som
-      tap.
-      ",
+      "hjelpetekstSME": "Alle vilkårene under må være oppfylt før et tap kan fradragsføres skattemessig i virksomheten.<br>Sjekk om du oppfyller vilkårene:<ul>\n<li>Du må drive virksomhet</li><li>Det må være tilstrekkelig tilknytning mellom fordringen og din virksomhet</li><li>Tapet må være endelig konstatert tapt</li></ul>Merk: Omsetningssvikt f.eks. på grunn av koronapandemien regnes ikke som tap.",
       "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
@@ -530,35 +519,7 @@
     {
       "kontrollnavn": "N_UFULLSTENDIG_STOETTE_ORDNING",
       "kontrollformel": "//Kontrollen gir utslag når selskap rapporterer ufullstendige opplysninger knyttet til skatte- og avgiftsordrninger. Alle opplysningene må fylles ut.\n//KOntrollen gir merknad i valideringstjenesten.\n        sakstype(Upersonlig)\n            .kontekst(ValideringSkattepliktig) {\n\n                val gyldigeStøtteordninger = skatteOgAvgiftsordningOmfattetAvOffentligStoette_2021\n                    .forForekomsterAv { kode }\n                    .verdierFor { tekniskNavn }\n\n                val harStøtteordning = skattemeldingUpersonlig\n                    .forForekomsterAv(sti(spesifikasjonAvForholdRelevanteForBeskatning,\n                        tilleggsinformasjonKnyttetTilMottakAvSkatteOgAvgiftsordningOmfattetAvOffentligStoette,\n                        skatteOgAvgiftsordningOmfattetAvOffentligStoette))\n                    .hvorMinstEnForekomst {\n                        (fastsatt(skatteOgAvgiftsordning) er oppgitt) og\n                            (fastsatt(skatteOgAvgiftsordning).finnesBlant(gyldigeStøtteordninger))\n                    }\n\n                skattemeldingUpersonlig\n                    .forForekomsterAv(sti(spesifikasjonAvForholdRelevanteForBeskatning,\n                        tilleggsinformasjonKnyttetTilMottakAvSkatteOgAvgiftsordningOmfattetAvOffentligStoette))\n                    .utslagFor {\n                        hvis(harStøtteordning og (varIOekonomiskeVanskerVedSistAvlagtRegnskapsaar ikkeEr oppgitt) eller\n                            (erIKonsern ikkeEr oppgitt) eller\n                            (harUtestaaendeBetalingskravKnyttetTilUlovligUtdeltStatsstoette ikkeEr oppgitt) eller\n                            (erLitenEllerMellomstorBedrift ikkeEr oppgitt) eller\n                            (harMottattAnnenOffentligStoette ikkeEr oppgitt)\n                        ) {\n                            betjeningsstrategiSettesTil(ikke, merknadStandard, 1)\n                        }\n                    }\n            }",
-      "hjelpetekstSME": "Alle vilkårene under må være oppfylt før et tap kan fradragsføres skattemessig i virksomheten.<br>Sjekk om du oppfyller vilkårene:<ul>
-      <li>Du
-      må
-      drive
-      virksomhet</li><li>Det
-      må
-      være
-      tilstrekkelig
-      tilknytning
-      mellom
-      fordringen
-      og
-      din
-      virksomhet</li><li>Tapet
-      må
-      være
-      endelig
-      konstatert
-      tapt</li></ul>Merk: Omsetningssvikt
-      f.eks.
-      på
-      grunn
-      av
-      koronapandemien
-      regnes
-      ikke
-      som
-      tap.
-      ",
+      "hjelpetekstSME": "Når selskapet mottar offentlig støtte i form av skatte- eller avgiftsfordeler må alle spørsmålene i temaet \"Tilleggsinformasjon knyttet til mottak av skatte og avgiftsordning omfattet av offentlig støtte\" besvares.",
       "BetjeningsstrategiSkattepliktig": "merknadStandard"
     },
     {
@@ -570,13 +531,13 @@
     {
       "kontrollnavn": "N_UGYLDIG_BILTYPE",
       "kontrollformel": "sakstype(Personlig, Upersonlig)\n.kontekst(ValideringSkattepliktig)\n{\n    val gyldigeBiltyper = biltype_2021\n        .forForekomsterAv { kode }\n        .verdierFor { tekniskNavn }\n\n    //Kontrollen gir utslag dersom skattyter har oppgitt en biltype som ikke finnes i kodelisten 2021_biltype\n    naeringsspesifikasjon\n        .utslagFor {\n\n            val feilTypeBil = forForekomsterAv(sti(spesifikasjonAvAnleggsmiddel, transportmiddelINaering))\n                .hvorMinstEnForekomst {\n                    (fastsatt(biltype) er oppgitt) og\n                        (fastsatt(biltype).finnesIkkeBlant(gyldigeBiltyper))\n                }\n\n            hvis(feilTypeBil)\n            {\n                betjeningsstrategiSettesTil(ikke, faktiskFeil, 1)\n            }\n        }\n}",
-      "hjelpetekstSME": "",
+      "hjelpetekstSME": "Det er brukt en biltype som ikke er forenlig med kodelisten over biltyper.",
       "BetjeningsstrategiSkattepliktig": "faktiskFeil"
     },
     {
       "kontrollnavn": "N_UGYLDIG_BRANSJETYPE",
       "kontrollformel": "sakstype(Personlig, Upersonlig)\n.kontekst(ValideringSkattepliktig)\n{\n    val gyldigeBransjetyper = bransjetype_2021\n        .forForekomsterAv { kode }\n        .verdierFor { tekniskNavn }\n\n    //Kontrollen gir utslag dersom skattyter har oppgitt en bransjetype som ikke finnes i kodelisten 2021_bransjetype\n    naeringsspesifikasjon\n        .utslagFor {\n\n            val feilTypeBil = forForekomsterAv(sti(andreForhold, loeyveForDrosjeOgGodstransport))\n                .hvorMinstEnForekomst {\n                    (fastsatt(bransje) er oppgitt) og\n                        (fastsatt(bransje).finnesIkkeBlant(gyldigeBransjetyper))\n                }\n\n            hvis(feilTypeBil)\n            {\n                betjeningsstrategiSettesTil(ikke, faktiskFeil, 1)\n            }\n        }\n}",
-      "hjelpetekstSME": "",
+      "hjelpetekstSME": "Det er brukt en bransjetype som ikke er forenlig med kodelisten over bransjetyper.",
       "BetjeningsstrategiSkattepliktig": "faktiskFeil"
     },
     {
@@ -630,7 +591,7 @@
     {
       "kontrollnavn": "N_UGYLDIG_NÆRINGSEIENDOMSTYPE",
       "kontrollformel": "sakstype(Upersonlig)\n.kontekst(ValideringSkattepliktig) {\n    // Kontrollen gir utslag dersom skattyter oppgir en næringseiendomstype som ikke er gyldig\n    // Kontrollen medfører at innleveringen avvises\n    skattemeldingUpersonlig\n        .forForekomsterAv(formuesgrunnlagIkkeUtleidNaeringseiendomINorge)\n        .utslagFor {\n\n            val harIkkeUtleidNæringseiendomINorge = hvorMinstEnForekomst {\n                naeringseiendomstype.finnesIkkeBlant(\n                    \"industri\",\n                    \"verksted\",\n                    \"lager\",\n                    \"hotell\",\n                    \"butikkEllerKjoepesenter\",\n                    \"kontor\",\n                    \"tomtGrunnarealHovedfunksjon\",\n                    \"annet\")\n            }\n\n            hvis(harIkkeUtleidNæringseiendomINorge)\n            {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    faktiskFeil,\n                    1\n                )\n            }\n        }\n}",
-      "hjelpetekstSME": "",
+      "hjelpetekstSME": "Det er brukt en næringseiendomstype som ikke er forenlig med kodelisten over næringseiendomstyper.",
       "BetjeningsstrategiSkattepliktig": "faktiskFeil"
     },
     {
@@ -666,13 +627,13 @@
     {
       "kontrollnavn": "N_UGYLDIG_SKJERMINGSGRUNNLAGSTYPE",
       "kontrollformel": "sakstype(Personlig, Upersonlig)\n.kontekst(ValideringSkattepliktig)\n{\n    val gyldigeSkjermingsgrunnlagstyper = skjermingsgrunnlagstype_2021\n        .forForekomsterAv { kode }\n        .verdierFor { tekniskNavn }\n\n    //Kontrollen gir utslag dersom skattyter har oppgitt en skjermingsgrunnlagstype som ikke finnes i kodelistene\n    naeringsspesifikasjon\n        .utslagFor {\n\n            val feilSkjermingsgrunnlagstype =\n                forForekomsterAv(sti(fordeltBeregnetPersoninntekt, spesifikasjonAvSkjermingsgrunnlag))\n                    .hvorMinstEnForekomst {\n                        (fastsatt(skjermingsgrunnlagstype) er oppgitt) og\n                            (fastsatt(skjermingsgrunnlagstype).finnesIkkeBlant(\n                                gyldigeSkjermingsgrunnlagstyper))\n                    }\n\n\n            hvis(feilSkjermingsgrunnlagstype)\n            {\n                betjeningsstrategiSettesTil(ikke, faktiskFeil, 1)\n            }\n        }\n}",
-      "hjelpetekstSME": "",
+      "hjelpetekstSME": "Det er brukt en skjermingsgrunnlagstype som ikke er forenlig med kodelisten over skjermingsgrunnlagstyper.",
       "BetjeningsstrategiSkattepliktig": "faktiskFeil"
     },
     {
       "kontrollnavn": "N_UGYLDIG_TAKSAMETERTYPE",
       "kontrollformel": "sakstype(Personlig, Upersonlig)\n.kontekst(ValideringSkattepliktig)\n{\n    val gyldigeTaksametertyper = taksametertype_2021\n        .forForekomsterAv { kode }\n        .verdierFor { tekniskNavn }\n\n    //Kontrollen gir utslag dersom skattyter har oppgitt en taksametertype som ikke finnes i kodelistene\n    naeringsspesifikasjon\n        .utslagFor {\n\n            val feilTaksametertype = forForekomsterAv(sti(andreForhold, loeyveForDrosjeOgGodstransport))\n                .forForekomsterAv(kjoeretoey)\n                .hvorMinstEnForekomst {\n                    (fastsatt(taksametertype) er oppgitt) og\n                        (fastsatt(taksametertype).finnesIkkeBlant(gyldigeTaksametertyper))\n                }\n\n\n            hvis(feilTaksametertype)\n            {\n                betjeningsstrategiSettesTil(ikke, faktiskFeil, 1)\n            }\n        }\n}",
-      "hjelpetekstSME": "",
+      "hjelpetekstSME": "Det er brukt en taksametertype som ikke er forenlig med kodelisten over taksametertyper.",
       "BetjeningsstrategiSkattepliktig": "faktiskFeil"
     },
     {
