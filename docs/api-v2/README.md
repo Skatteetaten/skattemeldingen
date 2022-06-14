@@ -243,7 +243,7 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - Content – serialisert dokumentinnhold
 - avvikEtterBeregning – konvolutt for avvik funnet etter beregning
   - avvik – complex type
-    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021_avvikskodeVedValidertMedFeil.xml)
+    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
     - beregnetVerdi – verdien som ble beregnet
@@ -1235,7 +1235,7 @@ Forklaring av attributter til vedlegg-seksjonen i skattemelding.xml
 - vedleggsfil/opprinneligFilnavn: Filnavnet som filen hadde da vedlegget ble lastet opp.
 - vedleggsfil/opprinneligFiltype: Filtypen som filen hadde da vedlegget ble lastet opp.  (jpg, pdf, osv.)
 - vedleggsfil/filensOpprinneligDatoOgTid: Tidspunkt for når vedlegget ble lastet opp
-- vedleggstype/vedleggskategori: Vedleggstype som velges ut fra en kodeliste.  [2021_vedleggskategori.xml](../../src/resources/kodeliste/2021_vedleggskategori.xml)
+- vedleggstype/vedleggskategori: Vedleggstype som velges ut fra en kodeliste.  [2021_vedleggskategori.xml](../../src/resources/kodeliste/2021/2021_vedleggskategori.xml)
 - informasjonselementidentifikator: Sti som bekriver hvilket felt vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom. Stien bygges opp av skattemeldingsdokumentets xml-struktur. Eksempel: "/skattemelding/bankLaanOgForsikring/konto/paaloepteRenter/beloepUtenHensynTilValgtPrioritertFradragstype/beloep/beloepIValuta/beloep" Se fullstendig eksempel: ../../src/resources/eksempler/v2/personligSkattemeldingV9EksempelFeltvedlegg.xml
 - forekomstidentifikator: Forekomstid til feltet som vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom.
 - utvekslingsarkividentifikator: Dette er nøkkelen til dokumentet i Skatteetatens arkiv. Nøkkelen skal ikke fylles ut av SBS.
