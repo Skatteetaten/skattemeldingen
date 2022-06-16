@@ -114,7 +114,7 @@
     <xsd:sequence>
       <xsd:element name="regnskapspliktstype" type="RegnskapspliktstypeMedInnkapsling"/>
       <xsd:element name="regnskapsperiode" type="Periode"/>
-      <xsd:element name="virksomhetsstype" type="VirksomhetstypeMedInnkapsling"/>
+      <xsd:element name="virksomhetstype" type="VirksomhetstypeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskapMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -336,7 +336,6 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
       <xsd:element name="gevinstOgTapskontoIdentifikator" type="TekstMedInnkapsling"/>
-      <xsd:element name="naeringsidentifikator" type="TekstMedInnkapsling"/>
       <xsd:element name="kommunenummer" type="KommunenummerMedInnkapsling"/>
       <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="sumGevinstVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaper"/>
@@ -943,14 +942,14 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="salgsinntektOgUttakFraSkurtoemmerMassevirkeRotsalgMv" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="salgsinntektOgUttakAvVedOgBiomasse" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="andreDriftsinntekter" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="leieinntekterFraJaktFiskeTorvuttakMv" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="inntektFraGevinstOgTapskonto" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="inntektsfradragFraGevinstOgTapskonto" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="inntektsfoeringAvNegativSaldo" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="driftskostnader" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="andelAvDriftskostnaderTilJaktFiskeMv" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="driftsresultatFraJaktFiskeOgLeieinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+      <xsd:element minOccurs="0" name="andreDriftsinntekter" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="leieinntekterFraJaktFiskeTorvuttakMv" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="inntektFraGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="inntektsfradragFraGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="inntektsfoeringAvNegativSaldo" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="driftskostnader" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="andelAvDriftskostnaderTilJaktFiskeMv" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="driftsresultatFraJaktFiskeOgLeieinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="sjablongberegnetFradragKnyttetTilBiomasseOgVedproduksjon" type="BeloepMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -1051,13 +1050,6 @@
   <xsd:simpleType name="Antall">
     <xsd:restriction base="Heltall"/>
   </xsd:simpleType>
-  <xsd:complexType name="BeloepSomHeltallMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="beloepSomHeltall" type="BeloepSomHeltall"/>
-
-
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="Skjermingsgrunnlagstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_skjermingsgrunnlagstype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
