@@ -2,7 +2,7 @@
 <xsd:schema xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v3" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-05-05T07:46:27.797+0200" name="generertDato"/>
+      <xsd:attribute fixed="2022-06-23T09:11:29.345+0200" name="generertDato"/>
       <xsd:attribute fixed="v3" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Næringsspesifikasjon v3" name="modellnavn"/>
@@ -174,7 +174,6 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="loeyveForDrosjeOgGodstransport" type="LoeyveForDrosjeOgGodstransport"/>
     </xsd:sequence>
   </xsd:complexType>
-
   <xsd:complexType name="Skogbruk">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogOgToemmerkonto" type="SkogOgToemmerkonto"/>
@@ -189,7 +188,6 @@
       <xsd:element minOccurs="0" name="informasjonselementidentifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/76732227-497c-11e9-b1c5-005056821322" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="forekomstidentifikator" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="utvekslingsarkividentifikator" type="TekstMedInnkapsling"/>
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepMedSkattemessigeEgenskaperOgOverstyring">
@@ -431,8 +429,6 @@
   <xsd:complexType name="RegnskapspliktstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="regnskapspliktstype" type="Regnskapspliktstype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Periode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52b6d-9fe1-11e5-a9f8-e4115b280940">
@@ -455,15 +451,11 @@
   <xsd:complexType name="VirksomhetstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="virksomhetstype" type="Virksomhetstype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="RegeltypeForAarsregnskapMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskap"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvSkattemessigVerdiPaaFordring">
@@ -667,8 +659,6 @@
   <xsd:complexType name="TekstMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="tekst" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940" type="Tekst"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Vedleggsfil" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/76732229-497c-11e9-b1c5-005056821322">
@@ -676,28 +666,21 @@
       <xsd:element minOccurs="0" name="opprinneligFilnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/da121902-3b33-ef4b-9414-0b4125cba560" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="opprinneligFiltype" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8f2fe6f2-3b83-2445-bae2-3e70f836fd19" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="filensOpprinneligDatoOgTid" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/76732226-497c-11e9-b1c5-005056821322" type="DatoKlokkeslettMedInnkapsling"/>
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="VedleggskategoriMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="vedleggskategori" type="Vedleggskategori"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="beloep" type="BeloepMed2Desimaler"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BoolskMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940 " type="Boolsk"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Salgsinntekt">
@@ -770,15 +753,11 @@
   <xsd:complexType name="DatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940 " type="Dato"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SaldogruppeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="saldogruppe" type="Saldogruppe"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ProsentMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5d2b8b80-b7e8-11e7-aa27-0050568351d2">
@@ -787,8 +766,6 @@
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="prosent" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5d2b8b80-b7e8-11e7-aa27-0050568351d2" type="Prosent"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ForretningsbyggAnskaffetFoer01011984">
@@ -801,22 +778,16 @@
   <xsd:complexType name="HeltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940 " type="Heltall"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AarstallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="aarstall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940" type="Aarstall"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BiltypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="biltype" type="Biltype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="PeriodePerDatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb4799-e484-11e6-9cb3-005056821322">
@@ -839,15 +810,11 @@
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="kommunenummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f3-9fe1-11e5-a9f8-e4115b280940 " type="Kommunenummer"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="NaeringstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="naeringstype" type="Naeringstype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Reindrift">
@@ -875,15 +842,11 @@
   <xsd:complexType name="PermanentForskjellstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="permanentForskjellstype" type="PermanentForskjellstype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="MidlertidigForskjellstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="midlertidigForskjellstype" type="MidlertidigForskjellstype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Regnskapspliktstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_regnskapsplikttype.xml">
@@ -893,7 +856,6 @@
       <xsd:enumeration value="5"/>
     </xsd:restriction>
   </xsd:simpleType>
-
   <xsd:simpleType name="Virksomhetstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_virksomhetstype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
@@ -903,8 +865,6 @@
   <xsd:complexType name="VerditypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="verditype" type="Verditype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="ResultatOgBalanseregnskapstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_resultatregnskapOgBalanse.xml">
@@ -913,8 +873,6 @@
   <xsd:complexType name="EgenkapitalendringstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="egenkapitalendringstype" type="Egenkapitalendringstype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Kassasystem">
@@ -1068,8 +1026,6 @@
   <xsd:complexType name="DatoKlokkeslettMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aee-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="datoKlokkeslett" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aee-9fe1-11e5-a9f8-e4115b280940" type="DatoKlokkeslett"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Vedleggskategori" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_vedleggskategori.xml">
@@ -1101,8 +1057,6 @@
   <xsd:complexType name="ResultatOgBalanseregnskapstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="resultatOgBalanseregnskapstype" type="ResultatOgBalanseregnskapstype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Balanseregnskapsforekomst">
@@ -1132,13 +1086,10 @@
   <xsd:simpleType name="Biltype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_biltype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
-  <xsd:simpleType name="Kommunenummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f3-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:annotation>
-      <xsd:documentation>nummer for kommune</xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="Tekst">
-      <xsd:pattern value="([0-9]){4}"/>
-      <xsd:length value="4"/>
+  <xsd:simpleType name="Kommunenummer" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_aktiveKommunenummer.xml">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([0-9]){4}" />
+      <xsd:length value="4" />
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="Naeringstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_naeringstype.xml">
@@ -1147,8 +1098,6 @@
   <xsd:complexType name="SkjermingsgrunnlagstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="skjermingsgrunnlagstype" type="Skjermingsgrunnlagstype"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="PermanentForskjellstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_permanentForskjellstype.xml">
