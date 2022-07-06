@@ -27,7 +27,7 @@ Konkret må sluttbrukersystemet gjøre følgende:
 Skatteetaten har tilgjengeliggjort en testapplikasjoner som viser hvordan trinnene beskrevet over kan utføres.
 Den er skrevet i [jupyter notebook formatet](https://jupyter.org/):
 
-1. [Jupyter notebook demo for henting, validering og innsending](testinnsending/demo-2020.ipynb). Last ned katalogen testinnsending og kjør skriptet demo.ipynb (skriptet vil utføre alle trinn som inngår i prosessen: hente/velidere skattemelding og innsending av skattemelding til Altinn)  
+1. [Jupyter notebook demo for henting, validering og innsending](testinnsending/person-enk-med-vedlegg-2021.ipynb). Last ned katalogen testinnsending og kjør skriptet demo.ipynb (skriptet vil utføre alle trinn som inngår i prosessen: hente/velidere skattemelding og innsending av skattemelding til Altinn)  
 2. [Eksempel XML-er](../../src/resources/eksempler)
 
 ## Ta i bruk ID-porten
@@ -76,7 +76,7 @@ Første testen bør være å teste at klienten når frem, dette kan gjøres ved 
 - `GET https://<env>/api/skattemelding/v2/ping`
 - `Eksempel: GET https://idporten-api-sbstest.sits.no/api/skattemelding/v2/ping`
 
-For nærmere beskrivelse av skattemelding-API og Altinn3-API, se kapitelet [API](docs/documentation/api-v1-pilot/README.md)
+For nærmere beskrivelse av skattemelding-API og Altinn3-API, se kapitelet [API](docs/documentation/api-v2/README.md)
 
 # Se skattemelding i portal
 

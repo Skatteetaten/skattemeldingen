@@ -18,14 +18,14 @@ def hent_altinn_token(idporten_token: dict) -> dict:
     return altinn_header
 
 
-def hent_party_id(token: dict, appnavn: str = "skd/sirius-skattemelding-v1") -> str:
+def hent_party_id(token: dict, appnavn: str = "skd/formueinntekt-skattemelding-v2") -> str:
     url = f"{ALTINN_URL}/{appnavn}/api/v1/profile/user"
     r = requests.get(url, headers=token, verify=False)
     r.raise_for_status()
     return str(r.json()["partyId"])
 
 
-def opprett_ny_instans(header: dict, fnr: str, appnavn: str = "skd/sirius-skattemelding-v1") -> dict:
+def opprett_ny_instans(header: dict, fnr: str, appnavn: str = "skd/formueinntekt-skattemelding-v2") -> dict:
     payload = {
         "instanceOwner": {
             "personNumber": fnr
@@ -45,7 +45,7 @@ def opprett_ny_instans(header: dict, fnr: str, appnavn: str = "skd/sirius-skatte
 
 
 def opprett_ny_instans_med_inntektsaar(header: dict, inntektsaar: str, fnr: str = None, orgnr=None,
-                                       appnavn: str = "skd/sirius-skattemelding-v1") -> dict:
+                                       appnavn: str = "skd/formueinntekt-skattemelding-v2") -> dict:
 
     instans_owner = {"personNumber": fnr} if fnr else {"organisationNumber": orgnr}
 
@@ -67,7 +67,7 @@ def opprett_ny_instans_med_inntektsaar(header: dict, inntektsaar: str, fnr: str 
 
 
 def last_opp_metadata(instans_data: dict, token: dict, xml: str = None,
-                      appnavn: str = "skd/sirius-skattemelding-v1") -> requests:
+                      appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
 
     id = instans_data['id']
     data_id = instans_data['data'][0]['id']
@@ -94,7 +94,7 @@ def last_opp_metadata_json(instans_data: dict, token: dict, inntektsaar: int = 2
 
 def last_opp_skattedata(instans_data: dict, token: dict, xml: str,
                         data_type: str = "skattemelding",
-                        appnavn: str = "skd/sirius-skattemelding-v1") -> requests:
+                        appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
     url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}/data?dataType={data_type}"
     token["content-type"] = "text/xml"
     token["Content-Disposition"] = "attachment; filename=skattemelding.xml"
@@ -105,7 +105,7 @@ def last_opp_skattedata(instans_data: dict, token: dict, xml: str,
 
 def last_opp_vedlegg(instans_data: dict, token: dict, vedlegg_fil, content_type: str,
                      data_type="skattemelding-vedlegg",
-                     appnavn: str = "skd/sirius-skattemelding-v1") -> requests:
+                     appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
     url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}/data?dataType={data_type}"
     filnavn = Path(vedlegg_fil).name
     token["content-type"] = content_type
@@ -120,7 +120,7 @@ def last_opp_vedlegg(instans_data: dict, token: dict, vedlegg_fil, content_type:
 
 
 def endre_prosess_status(instans_data: dict, token: dict, neste_status: str,
-                         appnavn: str = "skd/sirius-skattemelding-v1") -> str:
+                         appnavn: str = "skd/formueinntekt-skattemelding-v2") -> str:
     if neste_status not in ["start", "next", "completeProcess"]:
         raise NotImplementedError
 
@@ -130,7 +130,7 @@ def endre_prosess_status(instans_data: dict, token: dict, neste_status: str,
     return r.text
 
 
-def hent_instans(instans_data: dict, token: dict, appnavn: str = "skd/sirius-skattemelding-v1") -> requests:
+def hent_instans(instans_data: dict, token: dict, appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
     url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}"
     r = requests.get(url, headers=token, verify=False)
     r.raise_for_status()
