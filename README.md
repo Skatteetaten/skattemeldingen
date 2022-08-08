@@ -15,9 +15,7 @@ Denne leseveiledningen + funksjonell beskrivelse (PDF fil). Vi anbefaler at du l
 
 ## Docs
 
-**api-v1-pilot** – API beskrivelser for inntektsår 2020, skal fases ut og kan ikke benyttes for 2021
-
-**api-v2** – API beskrivelser for inntektsår 2021 - må brukes for 2021 og for upersonlig og vil på sikt helt erstatte V1
+**api-v2** – API beskrivelser for inntektsår 2021 - må brukes for 2021 og for upersonlig.
 
 **faq** – spørsmål/svar fra brukerstøttekanal (teknisk/fag)
 
@@ -35,13 +33,9 @@ Denne leseveiledningen + funksjonell beskrivelse (PDF fil). Vi anbefaler at du l
 
 **XSD for skattemelding og næringsspesifikasjon**
 
-Næringsopplysninger_v1 – XSD for næringsspesifikasjon 2020
-
 Næringsspesifikasjon_v2 – XSD for næringsspesifikasjon 2021
 
 skattemeldingUpersonlig_v1 – XSD for skattemelding AS 2021
-
-skattemelding_v8 – XSD for skattemelding person 2020
 
 skattemelding_v9 –  XSD skattemelding person 2021
 
@@ -57,14 +51,6 @@ skattemeldingognaeringsspesifikasjonforespoerselresponse_v2 – XSD for hente ut
 skattemeldingognaeringsspesifikasjonresponse_v2 - xsd for valideringsresultat
 
 
-V1 versjoner (kun for 2020):
-
-skattemeldingerognaeringsopplysningerequest_v1 -
-
-skattemeldingognaeringsopplysningerforespoerselresponse_v1 –- skattemeldingerognaeringsopplysningerresponse_v1 -
-
-Skattemeldingsapp_v1 – XSD for å instansiere V1 Altinn 3 instans (skal kun bruke for 2020 pilot, for 2021 se beskrivelse under "Opprette en instans i Altinn" under mappe API
-
 Øvrige XSDer:
 
 Beregnet_skatt_v3- XSD for beregnet skatt
@@ -78,18 +64,7 @@ skatteberegningsgrunnlag_v6 – XSD for summert skattegrunnlag for visning
 
 Tilhørende XSD for næringsspesifikasjon_v2
 
-**Eksempler**
-
-**V1**
-
-Naeringsingopplysninger-ENK-Eksempel.xml – eksempelfil næringsspesifikasjon 2020
-
-skattemelding_v8_eksempel1.xml – eksempelfil skattemelding 2020
-
-skattemeldingerognaeringsopplysninger_forespoersel.xml – eksempel på konvolutt forespørsel v1
-
-skattemeldingerognaeringsopplysninger_response.xml – eksempel på konvolutt respons v1
-
+**Eksempel**
 
 **V2**
 

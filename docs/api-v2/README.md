@@ -10,7 +10,7 @@ Det tilbys to sett med API-er:
 - Skatteetatens-API: har tjenester for hent- og validering av skattemedlinger, eiendomskalkulator, hent vedlegg og foreløpig avrenging.
 - Altinn3-API: for: har tjenester for opprettelse og innsending av en skattemeldinger.
 
-![apier.png](../api-v1-pilot/apier.png)
+![apier.png](apier.png)
 
 # Skatteetatens-API
 
@@ -34,13 +34,13 @@ Autentisering skjer enten via ID-porten eller Maskinporten:
 
 Via ID-porten kan selve sluttbrukeren autentiseres og da via sitt personnummer.
 
-![idporten.png](../api-v1-pilot/idporten.png)
+![idporten.png](idporten.png)
 
 #### Dataflyt og sekvensdiagram
 
 Figuren under skisserer hvordan innloggingsprosessen vil se ut:
 
-![ID-porten_program.png](../api-v1-pilot/ID-porten_program.png)
+![ID-porten_program.png](ID-porten_program.png)
 
 #### Registrering av et sluttbrukersystem i ID-porten
 
@@ -63,7 +63,7 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
 - Sett ønskede verdier for levetiden på autoriasjons-, access og refresh-token.
 - Et eksempel på hvordan integrasjonen kan bli seende ut:
 
-![id-porten_integrasjon.png](../api-v1-pilot/id-porten_integrasjon.png)
+![id-porten_integrasjon.png](id-porten_integrasjon.png)
 
 ### Maskin-porten
 
@@ -75,7 +75,7 @@ En autentisering gjort via Maskinporten tilrettelegger for høyere grad av autom
 
 Bruk av Maskinporten forutsetter at organisasjonen har et virksomhetssertifikat eller tilsvarende mekanisme. Figuren under skisserer hvordan samhandlingen fungerer:
 
-![maskinporten.png](../api-v1-pilot/maskinporten.png)
+![maskinporten.png](maskinporten.png)
 
 Les detaljer om maksinporten her: https://docs.digdir.no/docs/Maskinporten/maskinporten_guide_apikonsument
 
@@ -128,8 +128,8 @@ API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt i
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingognaeringsopplysningerforespoerselresponse_v1_kompakt.xsd)
-- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
+- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
@@ -182,7 +182,7 @@ API som returnerer siste gjeldende skattemeldingen av gitt type for skatteplikti
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsopplysningerforespoerselresponse_v1.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/informasjonsmodell/xsd/skattemeldingognaeringsopplysningerforespoerselresponse_v1_kompakt.xsd)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
 - Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
 For nærmere beskrivelse av felt i XSDen, se forrige kapittel.
@@ -231,8 +231,8 @@ skattemeldingOgNaeringsspesifikasjonRequest:
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonresponse_v2_kompakt.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
-- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](../../src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonresponse_v2.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
+- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](../../src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingOgNaeringsspesifikasjonResponse:
 
@@ -307,7 +307,7 @@ Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners 
 
 ### Testdata
 
-Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](../api-v1-pilot/Syntetiske_eiendommer.xlsx)
+Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer.xlsx)
 
 ### Søk
 
@@ -1176,8 +1176,7 @@ https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#
 
 ### Oppdater skjema-metadata til instansen (Kun hvis alternativ 2 benyttes ved opprettelse av instans)
 
-_Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten, som beskrevet i 
-api-v1-pilot/index.md._
+_Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten.
 
 Neste trinn er å laste opp meta-data om skattemeldingen. Meta-data skal være en json tilsvarende eksempelet under. 
 
@@ -1255,7 +1254,7 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 
 **Body :** `data-binary '../skattemelding.xml'.`
 Innholdet i filen skattemelding.xml skal være på format:
-- Iht. XSD: [skattemeldingognaeringsopplysningerforespoerselresponse_v1_kompakt.xsd](../../src/resources/xsd)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd)
 - Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/v2)
 
 Merk at det er samme format som benyttes ved kall til valideringstjensten.
