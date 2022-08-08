@@ -80,7 +80,7 @@ def last_opp_metadata(instans_data: dict, token: dict, xml: str = None,
 
 
 def last_opp_metadata_json(instans_data: dict, token: dict, inntektsaar: int = 2021,
-                           appnavn: str = "skd/sirius-skattemelding-v2") -> requests:
+                           appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
     id = instans_data['id']
     data_id = instans_data['data'][0]['id']
 
