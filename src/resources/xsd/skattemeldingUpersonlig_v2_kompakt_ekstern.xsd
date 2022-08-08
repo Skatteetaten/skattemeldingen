@@ -2,7 +2,7 @@
 <xsd:schema xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v2" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v2">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-06-23T09:11:42.554+0200" name="generertDato"/>
+      <xsd:attribute fixed="2022-06-17T11:44:49.125+0200" name="generertDato" />
       <xsd:attribute fixed="v2" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v2" name="modellnavn" />
@@ -133,13 +133,15 @@
   <xsd:complexType name="Inntekt">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="naeringsinntekt" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="mottattKonsernbidrag" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletMottattKonsernbidrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="mottattKonsernbidrag" type="MottattKonsernbidrag" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Inntektsfradrag">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="underskudd" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="yttKonsernbidrag" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletAvgittKonsernbidrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="avgittKonsernbidrag" type="AvgittKonsernbidrag" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="UnderskuddTilFremfoering">
@@ -339,6 +341,26 @@
   <xsd:complexType name="BeloepSomHeltallMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="beloepSomHeltall" type="BeloepSomHeltall" />
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MottattKonsernbidrag">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="avgiversOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="avgiversOrganisasjonsnavn" type="OrganisasjonsnavnMedInnkapsling" />
+      <xsd:element name="konsernbidrag" type="Konsernbidrag" />
+      <xsd:element name="konserntilknytning" type="Konserntilknytning" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AvgittKonsernbidrag">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="mottakersOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="mottakersOrganisasjonsnavn" type="OrganisasjonsnavnMedInnkapsling" />
+      <xsd:element name="konsernbidrag" type="Konsernbidrag" />
+      <xsd:element name="konserntilknytning" type="Konserntilknytning" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BoolskMedInnkapsling">
@@ -493,6 +515,24 @@
   <xsd:simpleType name="BeloepSomHeltall">
     <xsd:restriction base="Heltall" />
   </xsd:simpleType>
+  <xsd:complexType name="Konsernbidrag">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="beloepMedSkattemessigVirkning" type="BeloepSomHeltallMedInnkapsling" />
+        <xsd:element minOccurs="0" name="beloepMedSkattemessigVirkningJustertIhtFinansskatteregel" type="BeloepSomHeltallMedInnkapsling" />
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="beloepUtenSkattemessigVirkning" type="BeloepSomHeltallMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Konserntilknytning">
+    <xsd:sequence>
+      <xsd:element name="konserntilknytningstype" type="KonserntilknytningstypeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beskrivelseAvKonserntilknytning" type="TekstMedInnkapsling" />
+      <xsd:element name="stemmerettsbegrensningForeligger" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aarsakTilStemmerettsbegrensning" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="ervervstidspunkt" type="DatoMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Isinnummer">
     <xsd:restriction base="Tekst">
       <xsd:pattern value="[A-Z]{2}[0-9A-Z]{9}[0-9]{1}" />
@@ -718,6 +758,13 @@
       <xsd:element minOccurs="0" name="seksjonsnummer" type="SeksjonsnummerMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="KonserntilknytningstypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="konserntilknytningstype" type="Konserntilknytningstype" />
+
+
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Kommunenummer" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_aktiveKommunenummer.xml">
     <xsd:restriction base="xsd:string">
       <xsd:pattern value="([0-9]){4}" />
@@ -918,6 +965,9 @@
       <xsd:element name="seksjonsnummer" type="Seksjonsnummer" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="Konserntilknytningstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/konserntilknytningstype.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
   <xsd:simpleType name="NorskPersonidentifikator">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
