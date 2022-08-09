@@ -1059,7 +1059,7 @@
   <xsd:complexType name="TilleggsinformasjonVedOpphoerAvMedlemskapIFolketrygden">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
-      <xsd:element name="startdatoForOpphoer" type="DatoMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="startdatoForOpphoer" type="DatoMedInnkapsling"/>
       <xsd:element minOccurs="0" name="startdatoForFritakFraTrygdeavgiftsplikt" type="DatoMedInnkapsling"/>
       <xsd:element minOccurs="0" name="sluttdatoForFritakFraTrygdeavgiftsplikt" type="DatoMedInnkapsling"/>
       <xsd:element minOccurs="0" name="oppfyllerIkkeVilkaarForOpphoerAvMedlemskapIFolketrygden" type="BoolskMedInnkapsling"/>

@@ -1059,7 +1059,7 @@
   <xsd:complexType name="TilleggsinformasjonVedOpphoerAvMedlemskapIFolketrygden">
     <xsd:sequence>
       <xsd:element name="id" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940" type="Tekst"/>
-      <xsd:element name="startdatoForOpphoer" type="DatoMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="startdatoForOpphoer" type="DatoMedInnkapsling"/>
       <xsd:element minOccurs="0" name="startdatoForFritakFraTrygdeavgiftsplikt" type="DatoMedInnkapsling"/>
       <xsd:element minOccurs="0" name="sluttdatoForFritakFraTrygdeavgiftsplikt" type="DatoMedInnkapsling"/>
       <xsd:element minOccurs="0" name="oppfyllerIkkeVilkaarForOpphoerAvMedlemskapIFolketrygden" type="BoolskMedInnkapsling"/>
