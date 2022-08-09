@@ -184,7 +184,6 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="naeringsinntektMv" type="NaeringsinntektMv"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="naeringsinntektMvFordeltFraEktefelle" type="NaeringsinntektMvFordeltFraEktefelle"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="oppgavegiver" type="Oppgavegiver"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="forenkledeNaeringsopplysninger" type="ForenkledeNaeringsopplysninger"/>
       <xsd:element minOccurs="0" name="jordbruksfradrag" type="SaerskiltFradragINaeringsinntektForJordbrukMv"/>
       <xsd:element minOccurs="0" name="saerskiltFradragForFiskereOgFangstfolk" type="SaerskiltFradragForFiskereOgFangstfolk"/>
       <xsd:element minOccurs="0" name="saerskiltFradragForReindrift" type="SaerskiltFradragForReindrift"/>
@@ -1207,19 +1206,6 @@
           <xsd:element minOccurs="0" name="oppgavegiversOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="sykepengerOgAnnenInntektMvFraOppgavegiver" type="SykepengerOgAnnenInntektMvFraOppgavegiver"/>
           <xsd:element minOccurs="0" name="inntektFraUtbetalingTilSelvstendigNaeringsdrivende" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-        </xsd:sequence>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="ForenkledeNaeringsopplysninger">
-    <xsd:complexContent>
-      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
-        <xsd:sequence>
-          <xsd:element name="naeringstype" type="NaeringstypeMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="driftsinntekter" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ec4a64f6-5d65-8f47-9998-b8259210be59" type="BeloepSomHeltallMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="driftskostnader" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/1679f2de-d624-f643-b41b-afe38190c279" type="BeloepSomHeltallMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="naeringsinntekt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb4779-e484-11e6-9cb3-005056821322" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
