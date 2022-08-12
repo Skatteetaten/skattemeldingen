@@ -130,14 +130,14 @@
   </xsd:simpleType>
   <xsd:complexType name="Inntekt">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="naeringsinntekt" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="naeringsinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="samletMottattKonsernbidrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="mottattKonsernbidrag" type="MottattKonsernbidrag"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Inntektsfradrag">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="underskudd" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="samletAvgittKonsernbidrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="avgittKonsernbidrag" type="AvgittKonsernbidrag"/>
     </xsd:sequence>
