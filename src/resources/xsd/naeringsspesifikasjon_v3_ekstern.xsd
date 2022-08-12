@@ -2,7 +2,7 @@
 <xsd:schema xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v3" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-06-23T09:11:29.345+0200" name="generertDato"/>
+      <xsd:attribute fixed="2022-06-23T13:00:25.336+0200" name="generertDato"/>
       <xsd:attribute fixed="v3" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Næringsspesifikasjon v3" name="modellnavn"/>
@@ -38,7 +38,6 @@
   </xsd:complexType>
   <xsd:complexType name="SamletGjeldOgFormuesobjekter">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabatt" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabatt" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="samletGjeld" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
@@ -155,7 +154,6 @@
         <xsd:element minOccurs="0" name="utsattSkattefordel" type="BeloepMedSkattemessigeEgenskaper"/>
         <xsd:element minOccurs="0" name="utsattSkatt" type="BeloepMedSkattemessigeEgenskaper"/>
       </xsd:choice>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="inngaaendeEgenkapital" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="sumTilleggIEgenkapital" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="sumFradragIEgenkapital" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
@@ -213,31 +211,26 @@
   </xsd:complexType>
   <xsd:complexType name="Finansinntekt">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntekt" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Finanskostnad">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kostnad" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="EkstraordinaerPost">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="post" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Skattekostnad">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kostnad" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ResultatkomponentForIFRSForetak">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="resultatkomponentForIFRSForetak" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -460,7 +453,6 @@
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvSkattemessigVerdiPaaFordring">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="kundefordringOgIkkeFakturertDriftsinntekt" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="konstatertTapPaaKundefordring" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="konstatertTapPaaKundefordringIFjor" type="BeloepMedSkattemessigeEgenskaper"/>
@@ -562,7 +554,6 @@
   </xsd:complexType>
   <xsd:complexType name="YtelseMellomAksjonaerEllerNaerstaaendeOgSelskapEllerSelskapetsDatterselskap">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="laan" type="Laan"/>
       <xsd:element minOccurs="0" name="sikkerhetsstillelse" type="Sikkerhetsstillelse"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonOgUtleieAvFormuesobjektMv" type="RealisasjonOgUtleieAvFormuesobjektMv"/>
@@ -685,31 +676,26 @@
   </xsd:complexType>
   <xsd:complexType name="Salgsinntekt">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntekt" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnnenDriftsinntekt">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntekt" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Varekostnad">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kostnad" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Loennskostnad">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kostnad" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnnenDriftskostnad">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kostnad" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -722,31 +708,26 @@
   </xsd:complexType>
   <xsd:complexType name="BalanseverdiForAnleggsmiddel">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="balanseverdi" type="Balanseregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BalanseverdiForOmloepsmiddel">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="balanseverdi" type="Balanseregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="LangsiktigGjeld">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjeld" type="Balanseregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="KortsiktigGjeld">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjeld" type="Balanseregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Egenkapital">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kapital" type="Balanseregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
