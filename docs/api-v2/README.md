@@ -244,6 +244,7 @@ skattemeldingOgNaeringsspesifikasjonResponse:
 - avvikEtterBeregning – konvolutt for avvik funnet etter beregning
   - avvik – complex type
     - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
+      - OBS! manglerSkattemelding kan henvise til følgende dokumenttyper : skattemelding, skattemeldingUpersonlig og selskapsmelding 
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
     - beregnetVerdi – verdien som ble beregnet
@@ -251,7 +252,7 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - sti – stien til elementet som har avvik
 - avvikVedValidering – konvolutt for avvik funnet ved validering
   - avvik – complex type
-    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021_avvikskodeVedValidertMedFeil.xml
+    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021_avvikskodeVedValidertMedFeil.xml)
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
     - beregnetVerdi – verdien som ble beregnet
