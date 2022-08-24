@@ -212,7 +212,7 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 **Body** :
 
 - Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2.xsd)
-- Eksempel XML: [personligSkattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/v2/personligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
+- Eksempel XML: [personligSkattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/2021/personligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
 
 skattemeldingOgNaeringsspesifikasjonRequest:
 - dokumenter
@@ -232,7 +232,7 @@ skattemeldingOgNaeringsspesifikasjonRequest:
 **Respons** :
 
 - Iht. XSD: [skattemeldingognaeringsspesifikasjonresponse_v2.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
-- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](../../src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
+- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](../../src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingOgNaeringsspesifikasjonResponse:
 
@@ -1256,7 +1256,7 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 **Body :** `data-binary '../skattemelding.xml'.`
 Innholdet i filen skattemelding.xml skal være på format:
 - Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd)
-- Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/v2)
+- Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/2021)
 
 Merk at det er samme format som benyttes ved kall til valideringstjensten.
 
