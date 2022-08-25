@@ -48,6 +48,7 @@ Et kundeforhold hos DigDir gir tilgang til deres selvbetjeningsløsning som igje
 - Klienten bruker test-miljøet i DigDir, "verifikasjon 2": https://samarbeid.difi.no/node/232
 - OIDC-integrasjonen er beskrevet her: https://docs.digdir.no/docs/idporten/oidc/
 - Hvordan lage en klient i selvregistreringen: https://minside-samarbeid.difi.no/organization-home/services/service-admin#/
+- Tenor testdatasøk: https://www.skatteetaten.no/skjema/testdata
 
 ## Logge inn hos ID-porten
 
