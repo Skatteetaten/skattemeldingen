@@ -6,11 +6,11 @@
   <artifactId>skattemeldingen</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <skattemelding.mapping.version>1.227.0</skattemelding.mapping.version>
+    <skattemelding.mapping.version>1.357.0</skattemelding.mapping.version>
 
   </properties>
 
-  <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
+  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
   <version>1-SNAPSHOT</version>
 
   <dependencyManagement>
@@ -39,14 +39,14 @@
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
+                  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
                   <artifactId>skattemelding-mapping-resources</artifactId>
                   <version>${skattemelding.mapping.version}</version>
                   <outputDirectory>src/resources/xsd</outputDirectory>
                   <includes>*ekstern*.xsd</includes>
                 </artifactItem>
                 <artifactItem>
-                  <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
+                  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
                   <artifactId>skattemelding-mapping-resources</artifactId>
                   <version>${skattemelding.mapping.version}</version>
                   <outputDirectory>src/resources/</outputDirectory>
