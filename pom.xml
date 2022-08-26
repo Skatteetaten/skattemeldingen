@@ -6,7 +6,7 @@
   <artifactId>skattemeldingen</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <skattemelding.mapping.version>1.357.0</skattemelding.mapping.version>
+    <skattemelding.mapping.version>feature_SH_15356-SNAPSHOT</skattemelding.mapping.version>
 
   </properties>
 
@@ -43,21 +43,16 @@
                   <artifactId>skattemelding-mapping-resources</artifactId>
                   <version>${skattemelding.mapping.version}</version>
                   <outputDirectory>src/resources/xsd</outputDirectory>
-                  <includes>*ekstern*.xsd</includes>
-                </artifactItem>
-                <artifactItem>
-                  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
-                  <artifactId>skattemelding-mapping-resources</artifactId>
-                  <version>${skattemelding.mapping.version}</version>
-                  <outputDirectory>src/resources/</outputDirectory>
-                  <includes>xsd//*ekstern.xsd</includes>
+                  <includes>**/*ekstern.xsd</includes>
+                  <fileMappers>
+                      <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
+                  </fileMappers>
                 </artifactItem>
               </artifactItems>
             </configuration>
           </execution>
         </executions>
       </plugin>
-
     </plugins>
   </build>
 </project>
