@@ -48,6 +48,21 @@
                       <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
                   </fileMappers>
                 </artifactItem>
+                <artifactItem>
+                  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
+                  <artifactId>skattemelding-mapping-resources</artifactId>
+                  <version>${skattemelding.mapping.version}</version>
+                  <outputDirectory>src/resources/kodeliste</outputDirectory>
+                  <includes>kodelister/*.xml</includes>
+                  <excludes>kodelister/2018_*.xml,kodelister/2019_*.xml</excludes>
+                  <fileMappers>
+                    <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
+                    <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                      <pattern>(\d{4})(_.*\.xml)</pattern>
+                      <replacement>$1/$1$2</replacement>
+                    </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                  </fileMappers>
+                </artifactItem>
               </artifactItems>
             </configuration>
           </execution>
