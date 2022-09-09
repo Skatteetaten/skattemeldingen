@@ -1367,6 +1367,8 @@
       <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetOmfattetAvEOeSregler" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
       <xsd:element minOccurs="0" name="personinntektUnderlagtBeskatningIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
       <xsd:element minOccurs="0" name="harLoennOgPensjonUnderlagtBeskatningIUtlandetFraLandIEOeSOver90ProsentAvSumInntekt" skatt:erAvledet="true" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="inntektsskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+      <xsd:element minOccurs="0" name="formuesskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregningAvSkattenedsettelseEtterDenAlternativeFordelingsmetoden">
