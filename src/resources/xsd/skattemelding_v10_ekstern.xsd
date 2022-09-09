@@ -1244,6 +1244,7 @@
           <xsd:element minOccurs="0" name="beloepsandelAvJordbruksfradragOverfoertFraEktefelle" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5f90f749-f16f-11e8-bd7b-005056823b15" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="saerskiltFradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2ca2-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="korrigeringerIGrunnlagForSaerskiltFradragForJordbrukMv" type="KorrigeringerIGrunnlagForSaerskiltFradragForJordbrukMv"/>
+          <xsd:element name="vilkaarForJordbruksfradragErOppfylt" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
