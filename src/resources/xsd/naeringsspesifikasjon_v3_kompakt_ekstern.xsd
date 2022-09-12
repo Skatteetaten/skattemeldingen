@@ -85,7 +85,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="ikkeAvskrivbartAnleggsmiddel" type="IkkeAvskrivbartAnleggsmiddel"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="saldoavskrevetAnleggsmiddel" type="SaldoavskrevetAnleggsmiddel"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="lineaertavskrevetAnleggsmiddel" type="LineaertavskrevetAnleggsmiddel"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="transportmiddelINaering" type="TransportmiddelINaering"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="motorkjoeretoeyINaering" type="MotorkjoeretoeyINaering"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="gevinstOgTapskonto" type="GevinstOgTapskonto"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -305,14 +305,16 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="TransportmiddelINaering">
+  <xsd:complexType name="MotorkjoeretoeyINaering">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
       <xsd:element name="kjennemerke" type="TekstMedInnkapsling"/>
       <xsd:element name="aarForFoerstegangsregistrering" type="AarstallMedInnkapsling"/>
       <xsd:element name="biltype" type="BiltypeMedInnkapsling"/>
-      <xsd:element name="listeprisSomNy" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="driftskostnader" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="listeprisSomNy" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="drivstoffkostnad" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="vedlikeholdskostnad" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="kostnadTilForsikringOgAvgift" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="leasingleie" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="saldoavskrivningPrivatBruk" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element name="antallKilometerYrkeskjoering" type="HeltallMedInnkapsling"/>
