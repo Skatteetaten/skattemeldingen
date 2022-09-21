@@ -95,7 +95,7 @@
       <xsd:element minOccurs="0" name="grunnlagForSkattefradragForPensjonsinntekt" type="GrunnlagForSkattefradragForPensjonsinntekt"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonsinntekt" type="Pensjonsinntekt"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="individuellPensjonsordning" type="IndividuellPensjonsordning"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonspremie" type="PensjonspremierIArbeidsforhold"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonspremie" type="PensjonspremieTilPensjonsordningIArbeidsforhold"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fagforeningskontingent" type="Fagforeningskontingent"/>
       <xsd:element minOccurs="0" name="reiserIArbeidsforhold" type="ReiserIArbeidsforhold"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="minstefradragOgKostnader" type="MinstefradragOgKostnaderKnyttetTilArbeidOgAnnenInntekt"/>
@@ -536,12 +536,13 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="PensjonspremierIArbeidsforhold">
+  <xsd:complexType name="PensjonspremieTilPensjonsordningIArbeidsforhold">
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element name="id" type="Tekst"/>
-          <xsd:element name="samletPensjonsinnbetalingTilPensjonsordningIArbeidsforholdPerSkattleggingsperiode" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="behandlingsart" type="TekstMedInnkapsling"/>
+          <xsd:element name="fradragForPensjonspremieTilPensjonsordningIArbeidsforhold" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
