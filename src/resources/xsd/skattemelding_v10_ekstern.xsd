@@ -95,7 +95,7 @@
       <xsd:element minOccurs="0" name="grunnlagForSkattefradragForPensjonsinntekt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fdb-dfe5-11e7-9101-005056821322" type="GrunnlagForSkattefradragForPensjonsinntekt"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonsinntekt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247ffa-dfe5-11e7-9101-005056821322" type="Pensjonsinntekt"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="individuellPensjonsordning" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1c9-9fe1-11e5-a9f8-e4115b280940" type="IndividuellPensjonsordning"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonspremie" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408af-d96a-11e6-8d9b-005056821322" type="PensjonspremieTilPensjonsordningIArbeidsforhold"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonspremie" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408af-d96a-11e6-8d9b-005056821322" type="PensjonspremierIArbeidsforhold"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fagforeningskontingent" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b5740898-d96a-11e6-8d9b-005056821322" type="Fagforeningskontingent"/>
       <xsd:element minOccurs="0" name="reiserIArbeidsforhold" skatt:begrepsreferanse="http://begrepskatalog/begrep/8ea2df51-7662-11e6-a74e-7e18b36b3fd9" type="ReiserIArbeidsforhold"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="minstefradragOgKostnader" type="MinstefradragOgKostnaderKnyttetTilArbeidOgAnnenInntekt"/>
@@ -536,13 +536,13 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="PensjonspremieTilPensjonsordningIArbeidsforhold" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408af-d96a-11e6-8d9b-005056821322">
+  <xsd:complexType name="PensjonspremierIArbeidsforhold" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408af-d96a-11e6-8d9b-005056821322">
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element name="id" type="Tekst"/>
-          <xsd:element minOccurs="0" name="behandlingsart" type="TekstMedInnkapsling"/>
-          <xsd:element name="fradragForPensjonspremieTilPensjonsordningIArbeidsforhold" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d6f3-4c6c-11e8-bb3e-005056821322" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>        </xsd:sequence>
+          <xsd:element name="samletPensjonsinnbetalingTilPensjonsordningIArbeidsforholdPerSkattleggingsperiode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d6f3-4c6c-11e8-bb3e-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+        </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1244,7 +1244,6 @@
           <xsd:element minOccurs="0" name="beloepsandelAvJordbruksfradragOverfoertFraEktefelle" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5f90f749-f16f-11e8-bd7b-005056823b15" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="saerskiltFradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2ca2-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="korrigeringerIGrunnlagForSaerskiltFradragForJordbrukMv" type="KorrigeringerIGrunnlagForSaerskiltFradragForJordbrukMv"/>
-          <xsd:element name="vilkaarForJordbruksfradragErOppfylt" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1368,8 +1367,6 @@
       <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetOmfattetAvEOeSregler" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
       <xsd:element minOccurs="0" name="personinntektUnderlagtBeskatningIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
       <xsd:element minOccurs="0" name="harLoennOgPensjonUnderlagtBeskatningIUtlandetFraLandIEOeSOver90ProsentAvSumInntekt" skatt:erAvledet="true" type="BoolskMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="inntektsskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
-      <xsd:element minOccurs="0" name="formuesskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregningAvSkattenedsettelseEtterDenAlternativeFordelingsmetoden">

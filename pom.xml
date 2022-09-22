@@ -48,6 +48,29 @@
                       <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
                   </fileMappers>
                 </artifactItem>
+
+                <artifactItem>
+                  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
+                  <artifactId>skattemelding-mapping-resources</artifactId>
+                  <version>${skattemelding.mapping.version}</version>
+                  <outputDirectory>src/resources/xsd</outputDirectory>
+                  <includes>**/beregnet_skatt*.xsd</includes>
+                  <fileMappers>
+                    <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
+                  </fileMappers>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
+                  <artifactId>skattemelding-mapping-resources</artifactId>
+                  <version>${skattemelding.mapping.version}</version>
+                  <outputDirectory>src/resources/xsd</outputDirectory>
+                  <includes>**/beregnetSkattUpersonlig*.xsd</includes>
+                  <fileMappers>
+                    <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
+                  </fileMappers>
+                </artifactItem>
+
                 <artifactItem>
                   <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
                   <artifactId>skattemelding-mapping-resources</artifactId>
