@@ -142,7 +142,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="obligasjonOgSertifikat" type="ObligasjonOgSertifikat"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="annetFinansprodukt" type="AnnetFinansprodukt"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="investeringIOppstartsselskap" type="InvesteringIOppstartsselskap"/>
-      <xsd:element minOccurs="0" name="fradragForInvesteringIOppstartsselskap" type="FradragForInvesteringIOppstartsselskap"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fradragForInvesteringIOppstartsselskap" type="FradragForInvesteringIOppstartsselskap"/>
       <xsd:element minOccurs="0" name="forvaltningskostnader" type="Forvaltningskostnader"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellValuta" type="VirtuellValuta"/>
     </xsd:sequence>
@@ -931,9 +931,14 @@
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="FradragForInvesteringIOppstartsselskap">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="beloep" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
-    </xsd:sequence>
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
+          <xsd:element minOccurs="0" name="beloep" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="Forvaltningskostnader">
     <xsd:complexContent>

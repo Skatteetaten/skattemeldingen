@@ -142,7 +142,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="obligasjonOgSertifikat" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/1e33309b-6837-11e6-a7ce-fac03dffe1d7" type="ObligasjonOgSertifikat"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="annetFinansprodukt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8ea2df1c-7662-11e6-a74e-7e18b36b3fd9" type="AnnetFinansprodukt"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="investeringIOppstartsselskap" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/975db8c0-0fae-11eb-8086-0050568351d2" type="InvesteringIOppstartsselskap"/>
-      <xsd:element minOccurs="0" name="fradragForInvesteringIOppstartsselskap" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8c0c8910-0fae-11eb-8086-0050568351d2" type="FradragForInvesteringIOppstartsselskap"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fradragForInvesteringIOppstartsselskap" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8c0c8910-0fae-11eb-8086-0050568351d2" type="FradragForInvesteringIOppstartsselskap"/>
       <xsd:element minOccurs="0" name="forvaltningskostnader" type="Forvaltningskostnader"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellValuta" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/be8d9cd0-0fae-11eb-8086-0050568351d2" type="VirtuellValuta"/>
     </xsd:sequence>
@@ -930,9 +930,14 @@
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="FradragForInvesteringIOppstartsselskap" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8c0c8910-0fae-11eb-8086-0050568351d2">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="beloep" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8c0c8910-0fae-11eb-8086-0050568351d2" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
-    </xsd:sequence>
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
+          <xsd:element minOccurs="0" name="beloep" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8c0c8910-0fae-11eb-8086-0050568351d2" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="Forvaltningskostnader">
     <xsd:complexContent>
