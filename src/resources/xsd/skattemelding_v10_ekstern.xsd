@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10">
   <xsd:annotation>
     <xsd:documentation>
       <xsd:attribute fixed="2022-09-07T08:35:42.579+0200" name="generertDato"/>
@@ -698,9 +697,11 @@
           <xsd:element minOccurs="0" name="restskattOver12G" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="loennsinntektMedTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="loennsinntektUtenTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="pensjonsinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="ufoereytelse" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="pensjonsinntektMedTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="pensjonsinntektUtenTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="ufoereytelseMedTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForSkattleggingVedLoennstrekkPaaSvalbardPerArbeidsgiver" type="GrunnlagForSkattleggingVedLoennstrekkPaaSvalbardPerArbeidsgiver"/>
+          <xsd:element minOccurs="0" name="ufoereytelseUtenTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="positivtAvviksbeloepMellomTrukketOgBeregnetTrekkbeloep" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="negativtAvviksbeloepMellomTrukketOgBeregnetTrekkbeloep" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="samletNaeringsinntektTilordnetInnehaver" skatt:erAvledet="true" type="BeloepSomHeltall"/>
@@ -2102,8 +2103,10 @@
       <xsd:element minOccurs="0" name="trukketSkattOgAvgift" type="BeloepSomHeltall"/>
       <xsd:element minOccurs="0" name="loennsinntektMedTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
       <xsd:element minOccurs="0" name="loennsinntektUtenTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="pensjonsinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="ufoereytelse" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="pensjonsinntektMedTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="pensjonsinntektUtenTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="ufoereytelseMedTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="ufoereytelseUtenTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OppholdskostnaderVedPassOgStellAvBarn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52ae7-9fe1-11e5-a9f8-e4115b280940">
