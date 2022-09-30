@@ -1935,7 +1935,7 @@
     <xsd:sequence>
       <xsd:element name="id" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940" type="Tekst"/>
       <xsd:element minOccurs="0" name="beloep" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/2b2920ab-e7e6-11e8-b7e4-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-      <xsd:element name="kalendermaaned" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb4756-e484-11e6-9cb3-005056821322" type="AarOgMaanedMedInnkapsling"/>
+      <xsd:element name="kalendermaaned" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb4756-e484-11e6-9cb3-005056821322" type="MaanedMedInnkapsling"/>
       <xsd:element minOccurs="0" name="pensjonsgrad" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb4798-e484-11e6-9cb3-005056821322" type="PensjonsgradMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -2687,11 +2687,6 @@
   <xsd:simpleType name="Pensjonstype" skatt:begrepsreferanse="http://begrepskatalog/begrep/cf247ffc-dfe5-11e7-9101-005056821322" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_behandlingsartOgPensjonstype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
-  <xsd:complexType name="AarOgMaanedMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e149-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="aarOgMaaned" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e149-9fe1-11e5-a9f8-e4115b280940" type="AarOgMaaned"/>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="PensjonsgradMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb4798-e484-11e6-9cb3-005056821322">
     <xsd:sequence>
       <xsd:element name="pensjonsgrad" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb4798-e484-11e6-9cb3-005056821322" type="Pensjonsgrad"/>
@@ -3050,9 +3045,6 @@
   </xsd:simpleType>
   <xsd:simpleType name="RettighetstypeKnyttetTilSkogeiendom" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_rettighetKnyttetTilSkogeiendom.xml">
     <xsd:restriction base="xsd:string"/>
-  </xsd:simpleType>
-  <xsd:simpleType name="AarOgMaaned" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e149-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="xsd:gYearMonth"/>
   </xsd:simpleType>
   <xsd:simpleType name="Pensjonsgrad" skatt:begrepsreferanse="http://begrepskatalog.skead.no/begrep/dcfb4798-e484-11e6-9cb3-005056821322">
     <xsd:restriction base="Prosent"/>
