@@ -56,9 +56,8 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
   - Verdien i feltet "Integrasjonens identifikator" (kalt klient-ID over) er en GUID som tildeles av Digdir/Difi og som SBS må sende med i kallet til ID-porten.
 - Velg _"API-klient"_ under "Difi-tjeneste".
 - Velg så et scope som angir hvilken offentlig API-tjeneste registreringen gjelder for:
-  - **Merk:** Gammelt scope _"skatteetaten:skattemeldingen"_ er byttet til _"skatteetaten:formueinntekt/skattemelding"_
   - Klikk på knappen "Rediger Scopes" og velg _"skatteetaten:formueinntekt/skattemelding"_ fra lista over scopes.
-  - PS: hvis dere ikke finner scopet _"skatteetaten:formueinntekt/skattemelding"_ i lista må dere ta kontakt med skatteetaten slik at vi kan gi dere tilgang til scopet (i mellom tiden kan dere forsatt bruke denne integrasjonen da skatteetaen pt. ikke sjekker scope ved validering av access tokenet. Men denne sjekken er noe vi på et seinere tidspunkt kommer til å slå på).
+  - PS: hvis dere ikke finner scopet _"skatteetaten:formueinntekt/skattemelding"_ i lista må dere ta [kontakt med skatteetaten](mailto:skattemelding-sbs-brukerstotte@skatteetaten.no) slik at vi kan gi dere tilgang til scopet (i mellom tiden kan dere forsatt bruke denne integrasjonen da skatteetaen pt. ikke sjekker scope ved validering av access tokenet. Men denne sjekken er noe vi på et seinere tidspunkt kommer til å slå på).
 - Skriv inn et redirect uri-er (komma seperert og uten mellomrom). Dette er Uri-(er) som klienten får lov å gå til etter innlogging (ref. pilnummer 6 i figuren over)
 - Sett ønskede verdier for levetiden på autoriasjons-, access og refresh-token.
 - Et eksempel på hvordan integrasjonen kan bli seende ut:
@@ -252,7 +251,7 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - sti – stien til elementet som har avvik
 - avvikVedValidering – konvolutt for avvik funnet ved validering
   - avvik – complex type
-    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021_avvikskodeVedValidertMedFeil.xml)
+    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
     - beregnetVerdi – verdien som ble beregnet
