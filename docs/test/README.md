@@ -64,11 +64,11 @@ Vi benytter følgende testmiljø hos ID-porten:
 - /authorize endpoint: https://oidc-ver2.difi.no/idporten-oidc-provider/authorize
 - /token endpoint: https://oidc-ver2.difi.no/idporten-oidc-provider/token
 
-For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen [hent.py](sending/skatteetaten_api.py)
+For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen [hent.py](testinnsending/skatteetaten_api.py)
 
 ## Kalle skattemeldings-API
 
-Når callback-URL blir kalt må klienten plukke ut JWT-tokenet fra responsen og legge det i header-feltet Authorization og kalle skattemeldings-API. For detaljer, se [demo klient](sending/demo-2020.ipynb)
+Når callback-URL blir kalt må klienten plukke ut JWT-tokenet fra responsen og legge det i header-feltet Authorization og kalle skattemeldings-API. For detaljer, se [demo klient](./testinnsending/person-enk-2022.ipynb)
 
 URL til skattemeldings-API i test er: https://idporten-api-sbstest.sits.no/
 
@@ -77,7 +77,7 @@ Første testen bør være å teste at klienten når frem, dette kan gjøres ved 
 - `GET https://<env>/api/skattemelding/v2/ping`
 - `Eksempel: GET https://idporten-api-sbstest.sits.no/api/skattemelding/v2/ping`
 
-For nærmere beskrivelse av skattemelding-API og Altinn3-API, se kapitelet [API](docs/documentation/api-v2/README.md)
+For nærmere beskrivelse av skattemelding-API og Altinn3-API, se kapitelet [API](/docs/api-v2/README.md)
 
 # Se skattemelding i portal
 
@@ -88,7 +88,7 @@ Det er også mulig å gå direkte til skattemelding portalen.
 Direkte URL til skattemelding portal: https://skatt-sbstest.sits.no/web/skattemeldingen/2021
 
 
-Bruk MinID innlogging; fnr på testbruker, password01 og Pinkode 12345.
+Bruk TestId innlogging; fnr på testbruker
 
 Merk at dere også kan endre/tilføye opplysninger og sende inn skattemelding. Fastsatt skattemelding (endret skattemelding) vil da også være tilgjengelig for nedlasting. Se kapittel 4.3.6.3 i implementasjonsguide.
 
