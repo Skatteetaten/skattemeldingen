@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-09-07T08:35:42.708+0200" name="generertDato"/>
+      <xsd:attribute fixed="2022-10-05T09:33:01.919+0200" name="generertDato"/>
       <xsd:attribute fixed="10.0" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v10" name="modellnavn"/>
@@ -95,7 +95,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonsinntekt" type="Pensjonsinntekt"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="individuellPensjonsordning" type="IndividuellPensjonsordning"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonspremie" type="PensjonspremieTilPensjonsordningIArbeidsforhold"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fagforeningskontingent" type="Fagforeningskontingent"/>
+      <xsd:element minOccurs="0" name="fagforeningskontingent" type="Fagforeningskontingent"/>
       <xsd:element minOccurs="0" name="reiserIArbeidsforhold" type="ReiserIArbeidsforhold"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="minstefradragOgKostnader" type="MinstefradragOgKostnaderKnyttetTilArbeidOgAnnenInntekt"/>
       <xsd:element minOccurs="0" name="arbeidsoppholdUtenforHjemmet" type="ArbeidsoppholdUtenforHjemmet"/>
@@ -550,9 +550,9 @@
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
-          <xsd:element name="id" type="Tekst"/>
           <xsd:element name="samletBetaltFagforeningskontingentPerSkattleggingsperiode" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="inntektsfradragForFagforeningskontingent" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="inntektsfradragForFagforeningskontingent" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
