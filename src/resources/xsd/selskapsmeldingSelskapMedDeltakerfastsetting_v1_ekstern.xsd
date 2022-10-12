@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:selskapsmelding:selskapmeddeltakerfastsetting:ekstern:v1" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:selskapsmelding:selskapmeddeltakerfastsetting:ekstern:v1">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-08-30T13:59:03.102+0200" name="generertDato"/>
+      <xsd:attribute fixed="2022-09-14T11:10:21.082+0200" name="generertDato"/>
       <xsd:attribute fixed="v1" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Selskapsmelding for selskap med deltakerfastsetting v1" name="modellnavn"/>
@@ -66,6 +66,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="obligasjonOgSertifikat" type="ObligasjonOgSertifikat"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="verdipapirfond" type="Verdipapirfond"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellValuta" type="VirtuellValuta"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fondskonto" type="Fondskonto"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Eierforhold">
@@ -152,7 +153,7 @@
       <xsd:element minOccurs="0" name="finansproduktidentifikatortype" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="erOmfattetAvFritaksmetoden" type="BoolskMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="antallAksjer" type="DesimaltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="antallAksjer" type="AntallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="utbytte" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAksje" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvAksje" type="BeloepSomHeltallMedInnkapsling"/>
@@ -222,6 +223,20 @@
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvVirtuellValuta" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="lommebok" type="Lommebok"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="boers" type="Boers"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Fondskonto" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/eb25e890-0fa6-11eb-8086-0050568351d2">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="forsikringsselskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="forsikringsselskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="kontonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940" type="KontonummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erOmfattetAvFritaksmetoden" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvOgUttakFraAksjedel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvOgUttakFraAksjedel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvOgUttakFraRentedel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvOgUttakFraRentedel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattefrittUttak" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Deltaker">
@@ -435,6 +450,13 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="boersnavn" type="TekstMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KontonummerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="kontonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940 " type="Kontonummer"/>
+
+
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="NorskPersonidentifikatorMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/88804c46-ff43-11e6-9d97-005056825ca0">
@@ -713,6 +735,9 @@
   </xsd:simpleType>
   <xsd:simpleType name="AnnetFinansprodukttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_finansprodukt.xml">
     <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Kontonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Tekst"/>
   </xsd:simpleType>
   <xsd:simpleType name="NorskPersonidentifikator">
     <xsd:restriction base="Tekst"/>
