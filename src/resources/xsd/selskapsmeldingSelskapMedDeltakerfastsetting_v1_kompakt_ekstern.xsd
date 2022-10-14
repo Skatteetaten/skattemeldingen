@@ -235,13 +235,14 @@
     <xsd:sequence>
       <xsd:choice>
         <xsd:element name="deltakerensNorskePersonidentifikator" type="NorskPersonidentifikatorMedInnkapsling"/>
-        <xsd:element name="deltakerensOrganisasjonsnummer" type="OrganisasjonsnavnMedInnkapsling"/>
+        <xsd:element name="deltakerensOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
       </xsd:choice>
-      <xsd:element minOccurs="0" name="deltakersAndelAvFormue" type="DeltakersAndelAvFormue"/>
       <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="deltakerensNavn" type="NavnMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="deltakersAndelAvInntekt" type="DeltakersAndelAvInntekt"/>
+      <xsd:element minOccurs="0" name="deltakersAndelAvFormue" type="DeltakersAndelAvFormue"/>
       <xsd:element name="selskapsandelIProsent" type="ProsentMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="grunnlagForDeltakersAndelAvInntekt" type="GrunnlagForDeltakersAndelAvInntekt"/>
+      <xsd:element minOccurs="0" name="deltakersAndelAvInntekt" type="DeltakersAndelAvInntekt"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Tekst">
@@ -445,23 +446,27 @@
       <xsd:element name="andelAvNettoformue" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="DeltakersAndelAvInntekt">
-    <xsd:sequence>
-      <xsd:choice>
-        <xsd:sequence>
-          <xsd:element minOccurs="0" name="alminneligInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
-          <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
-        </xsd:sequence>
-        <xsd:sequence>
-          <xsd:element name="andelAvSamletInntektFraSDF" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
-          <xsd:element name="andelAvSamletUnderskuddFraSDF" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
-        </xsd:sequence>
-      </xsd:choice>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="ProsentMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="prosent" type="Prosent"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GrunnlagForDeltakersAndelAvInntekt">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="andelAvSamletInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+        <xsd:element minOccurs="0" name="andelAvSamletUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DeltakersAndelAvInntekt">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="alminneligInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+        <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+      </xsd:choice>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Uri">
