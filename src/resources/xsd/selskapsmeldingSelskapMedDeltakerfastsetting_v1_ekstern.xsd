@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:selskapsmelding:selskapmeddeltakerfastsetting:ekstern:v1" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:selskapsmelding:selskapmeddeltakerfastsetting:ekstern:v1">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-09-14T11:10:21.082+0200" name="generertDato"/>
+      <xsd:attribute fixed="2022-09-20T08:00:33.527+0200" name="generertDato"/>
       <xsd:attribute fixed="v1" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Selskapsmelding for selskap med deltakerfastsetting v1" name="modellnavn"/>
@@ -243,13 +243,14 @@
     <xsd:sequence>
       <xsd:choice>
         <xsd:element name="deltakerensNorskePersonidentifikator" type="NorskPersonidentifikatorMedInnkapsling"/>
-        <xsd:element name="deltakerensOrganisasjonsnummer" type="OrganisasjonsnavnMedInnkapsling"/>
+        <xsd:element name="deltakerensOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
       </xsd:choice>
-      <xsd:element minOccurs="0" name="deltakersAndelAvFormue" type="DeltakersAndelAvFormue"/>
       <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="deltakerensNavn" type="NavnMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="deltakersAndelAvInntekt" type="DeltakersAndelAvInntekt"/>
+      <xsd:element minOccurs="0" name="deltakersAndelAvFormue" type="DeltakersAndelAvFormue"/>
       <xsd:element name="selskapsandelIProsent" type="ProsentMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="grunnlagForDeltakersAndelAvInntekt" type="GrunnlagForDeltakersAndelAvInntekt"/>
+      <xsd:element minOccurs="0" name="deltakersAndelAvInntekt" type="DeltakersAndelAvInntekt"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Tekst" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
@@ -471,25 +472,27 @@
       <xsd:element name="andelAvNettoformue" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="DeltakersAndelAvInntekt">
-    <xsd:sequence>
-      <xsd:choice>
-        <xsd:sequence>
-          <xsd:element minOccurs="0" name="alminneligInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
-          <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
-        </xsd:sequence>
-        <xsd:sequence>
-          <xsd:element name="andelAvSamletInntektFraSDF" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
-          <xsd:element name="andelAvSamletUnderskuddFraSDF" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
-        </xsd:sequence>
-      </xsd:choice>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="ProsentMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5d2b8b80-b7e8-11e7-aa27-0050568351d2">
     <xsd:sequence>
       <xsd:element name="prosent" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5d2b8b80-b7e8-11e7-aa27-0050568351d2" type="Prosent"/>
 
 
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GrunnlagForDeltakersAndelAvInntekt">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="andelAvSamletInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+        <xsd:element minOccurs="0" name="andelAvSamletUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DeltakersAndelAvInntekt">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="alminneligInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+        <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+      </xsd:choice>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Uri" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e148-9fe1-11e5-a9f8-e4115b280940">
