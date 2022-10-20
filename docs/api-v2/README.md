@@ -142,7 +142,38 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
   - naeringsopplysningsdokument – complex type 
     - id – dokumentidentifikator til dokumentet i skatteetatens system
     - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold
+    - content – serialisert dokumentinnhold i base64 encodet format
+  - utvidetVeiledningdokument - complex type
+    - id – dokumentidentifikator til dokumentet i skatteetatens system
+    - encoding – kodeliste – [utf-8]
+    - content – serialisert dokumentinnhold i base64 encodet format
+
+### Utvidet veiledning
+
+Fra og med inntektsår 2022 er det mulig å etterspørre eventuelle ubesvarte utvidede veiledninger som del av dette API'et, som kan sees i response-spesifikasjonen over. 
+
+En utvidet veiledning representerer opplysninger som Skatteetaten har om skatteyter som muligens burde vært oppgitt i skattmeldingen, men som ikke er det. 
+
+`content`-delen av `utvidetVeiledningdokument` inneholder en skattemelding-xml med foreslått tillegg for skatteyter. Dette er ikke en fullstendig XML ihht. skattemelding-XSD og vil ikke nødvendigvis validere mot sistnevnte. 
+Normalt inneholder dokumentet informasjon som tilsvarer en entitet i skattemeldingen. I de tilfeller det er flere, så betyr det i praksis at Skatteetaten foreslår at en av entitetene skal legges til (ikke alle).
+
+Det kan være mange `utvidetVeiledningdokument` i `skattemeldingerOgNaeringsopplysningerforespoerselResponse`, en per opplysning Skattetaten ønsker at skatteyter skal ta stilling til.
+
+Bare "ubesvarte" utvidede veiledninger returneres i responsen. En veiledning kan besvares på to måter:
+- Gjennom Skatteetatens innleveringsportal for personlige skatteytere, der de kan velge å avvise eller legge til opplysningene
+- Ved innsending av `komplett` skattemelding fra et sluttbrukersystem. Når en slik innsending er fullført og fører til fastsetting, så vil alle ubesvarte veiledninger _på fastsettingstidspunktet_ bli besvart som at de er "hentet av SBS".
+  - OBS! Siden nye utvidede veiledninger kan oppstå fortløpende, så finnes det en risiko for at det har kommet nye mellom tidspunktet hvor SBS henter veiledningene og fastsetting utføres. Det er derfor en risiko for at veiledninger som ikke har blitt hentet av SBSen og fremvist bruker blir besvart som det. 
+
+**URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>?inkluderUtvidetVeiledning=<inkluderUtvidetVeiledning>`
+
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/2022/974761076?inkluderUtvidetVeiledning=true`
+
+**Forespørsel** :
+
+- `<inkluderUtvidetVeiledning>: Hvorvidt man ønsker å hente eventuelle ubesvarte utvidede veiledninger. Settes til 'true' eller 'false'`
+  - dersom request parameteren ikke sendes med som del av URL'en, så settes den til 'false' som default
+  - denne fungerer bare dersom `<inntektsaar>` er 2022 eller senere. Hvis request parameteren sendes med ved tidligere år så vil den ignoreres. 
+
 
 ### Serialisert dokumentinnhold
 
@@ -184,7 +215,7 @@ API som returnerer siste gjeldende skattemeldingen av gitt type for skatteplikti
 - Iht. XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
 - Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
-For nærmere beskrivelse av felt i XSDen, se forrige kapittel.
+For nærmere beskrivelse av felt i XSDen eller hvordan man henter ut utvidede veiledninger, se forrige kapittel.
 
 ## Valider skattemelding
 

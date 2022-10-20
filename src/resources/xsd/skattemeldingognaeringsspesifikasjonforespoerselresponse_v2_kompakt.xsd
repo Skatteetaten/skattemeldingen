@@ -24,6 +24,7 @@
     <xsd:sequence>
       <xsd:element name="skattemeldingdokument" type="Skattemeldingdokument" />
       <xsd:element minOccurs="0" name="naeringsspesifikasjondokument" type="Dokument" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="utvidetVeiledningdokument" type="Dokument" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Dokument">
