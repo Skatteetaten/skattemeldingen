@@ -86,6 +86,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="andelAvInntektFelleskostnaderFormueOgGjeldIBoligselskap" type="AndelAvInntektFelleskostnaderFormueOgGjeldIBoligselskap"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kapitalisertFesteavgift" type="KapitalisertFesteavgift"/>
       <xsd:element minOccurs="0" name="rettighetKnyttetTilSkogeiendom" type="RettighetKnyttetTilSkogeiendom"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kapitalkostnadOgKapitalinntektFraSkogeiendomUtenforNaeringsvirksomhet" type="KapitalkostnadOgKapitalinntektFraSkogeiendomUtenforNaeringsvirksomhet"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ArbeidTrygdOgPensjon">
@@ -478,8 +479,17 @@
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForJaktOgFiskerettighet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForUtleidRettighet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForRettighetKnyttetTilSkogeiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="kapitalkostnadFraSkogEiendomUtenforNaering" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="kapitalinntektFraSkogeiendomUtenforNaering" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="KapitalkostnadOgKapitalinntektFraSkogeiendomUtenforNaeringsvirksomhet">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
+          <xsd:element minOccurs="0" name="kapitalkostnad" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="kapitalinntekt" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
