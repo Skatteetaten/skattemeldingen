@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-10-05T09:33:01.799+0200" name="generertDato"/>
+      <xsd:attribute fixed="2022-10-24T09:25:02.909+0200" name="generertDato"/>
       <xsd:attribute fixed="10.0" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v10" name="modellnavn"/>
@@ -33,6 +33,7 @@
       <xsd:element minOccurs="0" name="skattemeldingOpprettet" type="DokumentOpprettet"/>
       <xsd:element minOccurs="0" name="metodeForAaUnngaaDobbeltbeskatning" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d752-4c6c-11e8-bb3e-005056821322" type="MetodeForAaUnngaaDobbeltbeskatning"/>
       <xsd:element minOccurs="0" name="formueOgInntektISelskapMedDeltakerfastsetting" type="FormueOgInntektISelskapMedDeltakerfastsetting"/>
+      <xsd:element minOccurs="0" name="gjelderSkjoennsfastsetting" type="Boolsk"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="EntitetMedSkattemessigeEgenskaper">
