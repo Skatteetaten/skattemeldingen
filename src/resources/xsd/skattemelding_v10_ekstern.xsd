@@ -2039,7 +2039,7 @@
           <xsd:element maxOccurs="unbounded" name="arbeidssted" type="SpesifikasjonAvArbeidssted"/>
           <xsd:element maxOccurs="unbounded" name="pendlerbolig" type="SpesifikasjonAvPendlerbolig"/>
           <xsd:element minOccurs="0" name="fradragsrettSiste24Maaneder" skatt:erAvledet="true" type="Fradragsrettstype"/>
-          <xsd:element name="mottokFradragForPendleroppholdILoepetAvToForegaaendeInntektsaar" type="GenerelleSvarord"/>
+          <xsd:element name="mottokFradragForPendleroppholdILoepetAvToForegaaendeInntektsaar" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
