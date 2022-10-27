@@ -194,6 +194,7 @@
       <xsd:element minOccurs="0" name="grunnlagForBeregningAvNaeringsinntektOgSaerskiltFradragForFiskereOgFangstfolkKnyttetTilLottaker" type="GrunnlagForBeregningAvNaeringsinntektOgSaerskiltFradragForFiskereOgFangstfolkKnyttetTilLottaker"/>
       <xsd:element minOccurs="0" name="fradragForTidligereAarsFramfoerbareUnderskuddVedDriftAvVaaningshus" type="FradragForTidligereAarsFramfoerbareUnderskuddVedDriftAvVaaningshus"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesspesifikasjonForSkipFiskeOgFangstfartoey" type="FormuesspesifikasjonForSkipFiskeOgFangstfartoeyMv"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="annetFradragKnyttetTilNaeringsvirksomhet" type="AnnetFradragKnyttetTilNaeringsvirksomhet"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DokumentOpprettet">
@@ -1375,6 +1376,16 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+  <xsd:complexType name="AnnetFradragKnyttetTilNaeringsvirksomhet">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="annetFradrag" type="AnnetFradrag"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
   <xsd:simpleType name="Brukeridentifikatortype" skatt:eksternKodeliste="inline">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="partsnummer"/>
@@ -2370,6 +2381,13 @@
       <xsd:element minOccurs="0" name="overfoertFraBarnTilForelder" type="OverfoertFraBarnTilForelder"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="AnnetFradrag">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="beloep" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
+      <xsd:element name="fradragstype" type="FradragstypeINaeringsvirksomhetMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="KravOmKreditfradragForUtenlandskSkatt">
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
@@ -2874,6 +2892,11 @@
       <xsd:element name="behandlingsart" type="TekstMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="FradragstypeINaeringsvirksomhetMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="fradragstypeINaeringsvirksomhet" type="FradragstypeINaeringsvirksomhet"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="FremfoertUtenlandskSkattPerInntektsaar">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
@@ -3082,6 +3105,9 @@
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="KostnadstypeKnyttetTilFiskeOgFangst" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_kostnadKnyttetTilFiskeOgFangst.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="FradragstypeINaeringsvirksomhet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_fradragstypeINaeringsvirksomhet.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Beloep">
