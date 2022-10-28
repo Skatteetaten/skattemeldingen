@@ -1939,6 +1939,8 @@
           <xsd:element name="id" type="Tekst"/>
           <xsd:element name="beloep" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="girRettTilSaerskiltFradragForSjoefolk" type="BoolskMedInnkapsling"/>
+          <xsd:element maxOccurs="unbounded" name="elektroniskKommunikasjonPerArbeidsgiver" type="ElektroniskKommunikasjonPerArbeidsgiver"/>
+          <xsd:element minOccurs="0" name="erLoennFraDenNorskeStat" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2702,6 +2704,14 @@
       <xsd:element minOccurs="0" name="erLoennFraDenNorskeStat" type="BoolskMedInnkapsling"/>
       <xsd:element minOccurs="0" name="erEtterbetaling" type="BoolskMedInnkapsling"/>
       <xsd:element minOccurs="0" name="referertAarForEtterbetaling" type="AarstallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ElektroniskKommunikasjonPerArbeidsgiver">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="organisasjonsnavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="organisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element name="innberettetBeloep" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Antall">
