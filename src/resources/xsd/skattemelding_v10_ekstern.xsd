@@ -1938,6 +1938,8 @@
           <xsd:element name="id" type="Tekst"/>
           <xsd:element name="beloep" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/6c325cd8-ff95-11e8-a756-005056823b15" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="girRettTilSaerskiltFradragForSjoefolk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408c3-d96a-11e6-8d9b-005056821322" type="BoolskMedInnkapsling"/>
+          <xsd:element maxOccurs="unbounded" name="elektroniskKommunikasjonPerArbeidsgiver" type="ElektroniskKommunikasjonPerArbeidsgiver"/>
+          <xsd:element minOccurs="0" name="erLoennFraDenNorskeStat" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2701,6 +2703,14 @@
       <xsd:element minOccurs="0" name="erLoennFraDenNorskeStat" type="BoolskMedInnkapsling"/>
       <xsd:element minOccurs="0" name="erEtterbetaling" type="BoolskMedInnkapsling"/>
       <xsd:element minOccurs="0" name="referertAarForEtterbetaling" type="AarstallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ElektroniskKommunikasjonPerArbeidsgiver">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="organisasjonsnavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="organisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element name="innberettetBeloep" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Antall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e145-9fe1-11e5-a9f8-e4115b280940">
