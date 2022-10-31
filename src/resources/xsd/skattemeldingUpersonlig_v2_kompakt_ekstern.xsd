@@ -26,6 +26,7 @@
       <xsd:element minOccurs="0" name="opplysningerOmSkattesubjekt" type="OpplysningerOmSkattesubjekt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="vedlegg" type="Vedlegg" />
       <xsd:element minOccurs="0" name="gjelderSkjoennsfastsetting" type="Boolsk" />
+      <xsd:element minOccurs="0" name="gjelderForhaandsfastsetting" type="Forhaandsfastsetting" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OpplysningerOmSkattesubjekt">
@@ -40,6 +41,11 @@
       <xsd:element minOccurs="0" name="harFastDriftsstedIUtlandet" type="Boolsk" />
       <xsd:element minOccurs="0" name="landForLandRapporteringspliktigForetak" type="Selskap" />
       <xsd:element minOccurs="0" name="harYtelseMellomAksjonaerEllerNaerstaaendeOgSelskapEllerSelskapetsDatterselskap" type="Boolsk" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Forhaandsfastsetting">
+    <xsd:sequence>
+      <xsd:element name="innsendingsformat" type="ForhaandsfastsettingsformattypeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Selskap">
@@ -120,6 +126,11 @@
   <xsd:simpleType name="Organisasjonsnummer">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
+  <xsd:complexType name="ForhaandsfastsettingsformattypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="forhaandsfastsettingsformattype" type="Forhaandsfastsettingsformattype" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Organisasjonsnavn">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
@@ -353,6 +364,9 @@
       <xsd:element name="vedleggskategori" type="Vedleggskategori" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="Forhaandsfastsettingsformattype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/forhaandsfastsettingsformattype.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
   <xsd:complexType name="BeloepSomHeltallMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="beloepSomHeltall" type="BeloepSomHeltall" />
