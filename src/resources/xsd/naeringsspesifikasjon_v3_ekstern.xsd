@@ -97,6 +97,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="lineaertavskrevetAnleggsmiddel" type="LineaertavskrevetAnleggsmiddel"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="motorkjoeretoeyINaering" type="MotorkjoeretoeyINaering"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="gevinstOgTapskonto" type="GevinstOgTapskonto"/>
+      <xsd:element minOccurs="0" name="saerskiltAnleggsmiddelIKraftverk" type="SaerskiltAnleggsmiddelIKraftverk"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeregnetNaeringsinntekt">
@@ -383,6 +384,11 @@
       <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="stammerGevinstOgTapskontoenFraRealisasjonAvTomtFraAlminneligJordbrukEllerSkogbruk" type="BoolskMedInnkapsling"/>
       <xsd:element minOccurs="0" name="stammerGevinstOgTapskontoenFraGevinstFraRealisasjonAvAlminneligGaardsbrukEllerSkogbruk" type="BoolskMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SaerskiltAnleggsmiddelIKraftverk">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="samletAvskrivningForSaerskiltAnleggsmiddelIKraftverk" type="BeloepMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FordeltBeregnetNaeringsinntekt">
