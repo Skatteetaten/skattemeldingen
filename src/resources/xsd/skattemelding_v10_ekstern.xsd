@@ -705,7 +705,7 @@
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="beregnetTrekkbeloepForSkattOgAvgift" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="trukketSkattOgAvgift" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="trukketSkattOgAvgift" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="restskattOver12G" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="loennsinntektMedTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="loennsinntektUtenTrygdeavgiftsplikt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
@@ -1289,9 +1289,9 @@
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
-          <xsd:element minOccurs="0" name="grunnlagForBeregningAvSaerskiltFradragForReindrift" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="totaltSaerskiltFradragForReindriftFoerFordelingTilFraEktefelle" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="beloepsandelAvTotaltSaerskiltFradragForReindriftTilordnetInnehaver" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="grunnlagForBeregningAvSaerskiltFradragForReindrift" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="totaltSaerskiltFradragForReindriftFoerFordelingTilFraEktefelle" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="beloepsandelAvTotaltSaerskiltFradragForReindriftTilordnetInnehaver" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="beloepsandelAvSaerskiltFradragForReindriftOverfoertFraEktefelle" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5f90f749-f16f-11e8-bd7b-005056823b15" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="saerskiltFradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2ca2-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
         </xsd:sequence>
@@ -1302,9 +1302,9 @@
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
-          <xsd:element minOccurs="0" name="grunnlagForBeregningAvSaerskiltFradragForSkiferproduksjon" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="totaltSaerskiltFradragForSkiferproduksjonFoerFordelingTilFraEktefelle" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="beloepsandelAvTotaltSaerskiltFradragForSkiferproduksjonTllordnetInnehaver" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="grunnlagForBeregningAvSaerskiltFradragForSkiferproduksjon" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="totaltSaerskiltFradragForSkiferproduksjonFoerFordelingTilFraEktefelle" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="beloepsandelAvTotaltSaerskiltFradragForSkiferproduksjonTllordnetInnehaver" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="beloepsandelAvSaerskiltFradragForSkiferproduksjonOverfoertFraEktefelle" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5f90f749-f16f-11e8-bd7b-005056823b15" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="saerskiltFradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2ca2-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
         </xsd:sequence>
@@ -2410,8 +2410,8 @@
   <xsd:complexType name="FremfoertUtenlandskSkatt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fd7-dfe5-11e7-9101-005056821322">
     <xsd:sequence>
       <xsd:element maxOccurs="5" minOccurs="0" name="fremfoertUtenlandskSkattPerInntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fd7-dfe5-11e7-9101-005056821322" type="FremfoertUtenlandskSkattPerInntektsaar"/>
-      <xsd:element minOccurs="0" name="samletFremfoertUtenlandskFormuesskatt" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="samletFremfoertUtenlandskInntektsskatt" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="samletFremfoertUtenlandskFormuesskatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="samletFremfoertUtenlandskInntektsskatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepSomHeltallMedLand">
@@ -2519,7 +2519,7 @@
       <xsd:element minOccurs="0" name="beregnetMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3295-98ef-11ea-8a84-005056828ed3" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="grunnlagForBeregnetMarkedsverdi" type="GrunnlagForBeregnetMarkedsverdiForBolig"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="useksjonertBoenhet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd5f-2964-11e6-b2bc-96405985e0fa" type="UseksjonertBoenhet"/>
-      <xsd:element minOccurs="0" name="formuesverdiForFlerboligbygning" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fd6-dfe5-11e7-9101-005056821322" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="formuesverdiForFlerboligbygning" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fd6-dfe5-11e7-9101-005056821322" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="markedsverdiErGrunnlagForBeregningAvFormuesverdiForFlerboligbygning" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
