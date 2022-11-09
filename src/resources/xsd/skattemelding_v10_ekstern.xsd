@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-11-02T11:53:32.997+0100" name="generertDato"/>
+      <xsd:attribute fixed="2022-11-02T13:58:30.124+0100" name="generertDato"/>
       <xsd:attribute fixed="10.0" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v10" name="modellnavn"/>
@@ -1264,6 +1264,7 @@
           <xsd:element minOccurs="0" name="saerskiltFradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2ca2-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="korrigeringerIGrunnlagForSaerskiltFradragForJordbrukMv" type="KorrigeringerIGrunnlagForSaerskiltFradragForJordbrukMv"/>
           <xsd:element name="vilkaarForJordbruksfradragErOppfylt" type="BoolskMedInnkapsling"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="jordbruksfradragPerKommune" type="FradragPerKommune"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1294,6 +1295,7 @@
           <xsd:element minOccurs="0" name="beloepsandelAvTotaltSaerskiltFradragForReindriftTilordnetInnehaver" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="beloepsandelAvSaerskiltFradragForReindriftOverfoertFraEktefelle" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5f90f749-f16f-11e8-bd7b-005056823b15" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="saerskiltFradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2ca2-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="saerskiltFradragForReindriftPerKommune" type="FradragPerKommune"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1307,6 +1309,7 @@
           <xsd:element minOccurs="0" name="beloepsandelAvTotaltSaerskiltFradragForSkiferproduksjonTllordnetInnehaver" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="beloepsandelAvSaerskiltFradragForSkiferproduksjonOverfoertFraEktefelle" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5f90f749-f16f-11e8-bd7b-005056823b15" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="saerskiltFradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2ca2-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="saerskiltFradragForSkiferproduksjonPerKommune" type="FradragPerKommune"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2328,6 +2331,14 @@
       <xsd:element minOccurs="0" name="inntektSomIkkeInngaarIDriftsinntektFoerFordelingTilFraEktefelle" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="kostnadSomIkkeInngaarIDriftskostnadFoerFordelingTilFraEktefelle" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="leieinntektFraJordbruksdriftFraSelskapMedDeltakerfastsettingSomInngaarIDriftsinntekt" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FradragPerKommune">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="kommunenummer" type="KommunenummerMedInnkapsling"/>
+      <xsd:element name="prosentandel" type="ProsentMedInnkapsling"/>
+      <xsd:element name="andelAvFradragPerKommune" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DriftstidIFiskeOgFangst">
