@@ -55,7 +55,8 @@ def opprett_ny_instans_med_inntektsaar(header: dict, inntektsaar: str, fnr: str 
             "labels": ["gr", "x2"]
         },
         "appId": appnavn,
-        "dataValues": {"inntektsaar": inntektsaar},
+        "dataValues": {"inntektsaar": inntektsaar,
+                       "skalBekreftesAvRevisor": True},
         "dueBefore": "2022-06-01T12:00:00Z",
         "visibleAfter": "2019-05-20T00:00:00Z",
         "title": {"nb": "Skattemelding"}
