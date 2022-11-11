@@ -1,5 +1,14 @@
 # Tekstfiler
 
+## 2022
+
+Sist oppdatert 11. november 2022
+
+* [Lede- og hjelpetekster for skattemelding](2022/tekster_skattemelding.json)
+* [Lede- og hjelpetekster for næringsspesifikasjon](2022/tekster_naering.json)
+* [Lede- og hjelpetekster for skattemelding upersonlig](2022/tekster_upersonlig.json)
+* [Lede- og hjelpetekster for SDF](2022/tekster_sdf.json)
+
 ## 2021
 
 Sist oppdatert 3. mars 2022
