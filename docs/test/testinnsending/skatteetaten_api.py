@@ -18,10 +18,26 @@ import xmltodict
 import requests
 from jose import jwt
 
-
 CLIENT_ID = '8d7adad7-b497-40d0-8897-9a9d86c95306'
 AUTH_DOMAIN = 'oidc-ver2.difi.no/idporten-oidc-provider'
 ALGORITHMS = ["RS256"]
+
+
+def valider(payload, inntektsår=2022, s: requests.Session() = None, tin: str = "", idporten_header: dict = dict):
+    url_valider = f'https://idporten-api-sbstest.sits.no/api/skattemelding/v2/valider/{inntektsår}/{tin}'
+    header = dict(idporten_header)
+    header["Content-Type"] = "application/xml"
+    return s.post(url_valider, headers=header, data=payload)
+
+
+def print_request_as_curl(r):
+    command = "curl -X {method} -H {headers} -d '{data}' '{uri}'"
+    method = r.request.method
+    uri = r.request.url
+    data = r.request.body
+    headers = ['"{0}: {1}"'.format(k, v) for k, v in r.request.headers.items()]
+    headers = " -H ".join(headers)
+    print(command.format(method=method, headers=headers, data=data, uri=uri))
 
 
 # En enkel webserver som venter på callback fra browseren, og lagrer
@@ -64,7 +80,7 @@ def decode_dokument(dokument):
 
 def iter_dokumenter(d):
     for k, v in d.items():
-        if k == 'dokument': #valider response har en liste med dokumenter
+        if k == 'dokument':  # valider response har en liste med dokumenter
             for dok in v:
                 decode_dokument(dok)
         elif k == "skattemeldingdokument":
@@ -77,8 +93,7 @@ def iter_dokumenter(d):
 
 
 def base64_decode_response(r: requests):
-
-    if not r: # ikke 200 ok
+    if not r:  # ikke 200 ok
         return r.text
     utkast_resp = xmltodict.parse(r.text)
     for k, v in utkast_resp.items():
@@ -201,4 +216,3 @@ def main_relay(**kwargs) -> dict:
 
     header = {'Authorization': 'Bearer ' + js['access_token']}
     return header
-

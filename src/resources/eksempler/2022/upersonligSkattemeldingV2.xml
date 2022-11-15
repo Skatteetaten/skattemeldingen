@@ -3,11 +3,10 @@
     <partsnummer>{partsnummer}</partsnummer>
     <inntektsaar>2022</inntektsaar>
     <inntektOgUnderskudd>
-
         <inntekt>
-            <naeringsinntekt>
-                <beloepSomHeltall>62000</beloepSomHeltall>
-            </naeringsinntekt>
+            <samletMottattKonsernbidrag>
+                <beloepSomHeltall>300</beloepSomHeltall>
+            </samletMottattKonsernbidrag>
             <mottattKonsernbidrag>
                 <id>1</id>
                 <avgiversOrganisasjonsnummer>
@@ -30,8 +29,11 @@
         </inntekt>
         <inntektsfradrag>
             <underskudd>
-                <beloepSomHeltall>300</beloepSomHeltall>
+                <beloepSomHeltall>1057000</beloepSomHeltall>
             </underskudd>
+            <samletAvgittKonsernbidrag>
+                <beloepSomHeltall>100</beloepSomHeltall>
+            </samletAvgittKonsernbidrag>
             <avgittKonsernbidrag>
                 <id>1</id>
                 <mottakersOrganisasjonsnummer>
@@ -52,10 +54,18 @@
                 </mottakersKonserntilknytning>
             </avgittKonsernbidrag>
         </inntektsfradrag>
-        <samletInntekt>
+        <underskuddTilFremfoering>
+            <fremfoerbartUnderskuddIInntekt>
+                <beloep>
+                    <beloepSomHeltall>1056800</beloepSomHeltall>
+                </beloep>
+            </fremfoerbartUnderskuddIInntekt>
+        </underskuddTilFremfoering>
+        <samletUnderskudd>
             <beloep>
-                <beloepSomHeltall>62200</beloepSomHeltall>
+                <beloepSomHeltall>1056800</beloepSomHeltall>
             </beloep>
-        </samletInntekt>
+        </samletUnderskudd>
+        <konsernbidragSkalBekreftesAvRevisor>true</konsernbidragSkalBekreftesAvRevisor>
     </inntektOgUnderskudd>
 </skattemelding>

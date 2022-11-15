@@ -1,3 +1,5 @@
+from datetime import datetime, timezone, timedelta
+
 import requests
 from pathlib import Path
 
@@ -7,6 +9,39 @@ import urllib3
 urllib3.disable_warnings()
 
 ALTINN_URL = "https://skd.apps.tt02.altinn.no"
+
+def oppret_instans_payload(fnr: str = None,
+                           orgnr: str = None,
+                           appnavn: str = "skd/formueinntekt-skattemelding-v2",
+                           inntektsaar: str = None,
+                           testmiljoe: str = None,
+                           skalBekreftesAvRevisor: bool = False):
+
+    visible_after = datetime.now(timezone.utc)
+    due_before = visible_after + timedelta(days=30)
+    visible_after_iso_date = visible_after.astimezone().isoformat()
+    due_before_iso_format = due_before.astimezone().isoformat()
+
+    instans_owner = {"personNumber": fnr} if fnr else {"organisationNumber": orgnr}
+    default_payload = {"instanceOwner": instans_owner,
+                       "appOwner": {
+                           "labels": ["gr", "x2"]
+                       }, "appId": appnavn, "dueBefore": due_before_iso_format, "visibleAfter": visible_after_iso_date,
+                       "title": {"nb": "Skattemelding"}}
+
+    data_values = {}
+
+    if inntektsaar:
+        data_values["inntektsaar"] = inntektsaar
+        default_payload["dataValues"] = data_values
+    if skalBekreftesAvRevisor:
+        data_values["skalBekreftesAvRevisor"] = skalBekreftesAvRevisor
+        default_payload["dataValues"] = data_values
+    if testmiljoe:
+        data_values["testmiljoe"] = testmiljoe
+        default_payload["dataValues"] = data_values
+
+    return default_payload
 
 
 def hent_altinn_token(idporten_token: dict) -> dict:
@@ -26,40 +61,27 @@ def hent_party_id(token: dict, appnavn: str = "skd/formueinntekt-skattemelding-v
 
 
 def opprett_ny_instans(header: dict, fnr: str, appnavn: str = "skd/formueinntekt-skattemelding-v2") -> dict:
-    payload = {
-        "instanceOwner": {
-            "personNumber": fnr
-        },
-        "appOwner": {
-            "labels": ["gr", "x2"]
-        },
-        "appId": appnavn,
-        "dueBefore": "2020-06-01T12:00:00Z",
-        "visibleAfter": "2019-05-20T00:00:00Z",
-        "title": {"nb": "Skattemelding"}
-    }
+    payload = oppret_instans_payload(fnr, appnavn)
+
+    url = f"{ALTINN_URL}/{appnavn}/instances/"
+    r = requests.post(url, headers=header, json=payload, verify=False)
+    r.raise_for_status()
+    return r.json()
+
+def opprett_ny_instans_med_inntektsaar(header: dict, inntektsaar: str, testmiljoe: str, fnr: str = None, orgnr=None,
+                                       appnavn: str = "skd/formueinntekt-skattemelding-v2") -> dict:
+    payload = oppret_instans_payload(fnr, orgnr, appnavn, inntektsaar, testmiljoe)
+
     url = f"{ALTINN_URL}/{appnavn}/instances/"
     r = requests.post(url, headers=header, json=payload, verify=False)
     r.raise_for_status()
     return r.json()
 
 
-def opprett_ny_instans_med_inntektsaar(header: dict, inntektsaar: str, fnr: str = None, orgnr=None,
-                                       appnavn: str = "skd/formueinntekt-skattemelding-v2") -> dict:
-
-    instans_owner = {"personNumber": fnr} if fnr else {"organisationNumber": orgnr}
-
-    payload = {
-        "instanceOwner": instans_owner,
-        "appOwner": {
-            "labels": ["gr", "x2"]
-        },
-        "appId": appnavn,
-        "dataValues": {"inntektsaar": inntektsaar},
-        "dueBefore": "2022-06-01T12:00:00Z",
-        "visibleAfter": "2019-05-20T00:00:00Z",
-        "title": {"nb": "Skattemelding"}
-    }
+def opprett_ny_instans_med_inntektsaar_og_revisorsBekreftelse(header: dict, inntektsaar: str, testmiljoe: str = None,
+                                                              fnr: str = None, orgnr=None,
+                                                              appnavn: str = "skd/formueinntekt-skattemelding-v2") -> dict:
+    payload = oppret_instans_payload(fnr, orgnr, appnavn, inntektsaar, testmiljoe, skalBekreftesAvRevisor=True)
     url = f"{ALTINN_URL}/{appnavn}/instances/"
     r = requests.post(url, headers=header, json=payload, verify=False)
     r.raise_for_status()
