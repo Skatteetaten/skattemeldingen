@@ -12,10 +12,11 @@ Konsernbidrag (`konsernbidragSkalBekreftesAvRevisor`)
 Forskning og utvikling (`prosjektSkalBekreftesAvRevisor`)
 
 ### Selskapsmelding
-? 
+Forskning og utvikling (`prosjektSkalBekreftesAvRevisor`)?
+
 
 ### Næringsspesifikasjon
-Hele
+Hele dokumentet skal signeres, så her ligger signeres elementet på rotnorden (`skalBekreftesAvRevisor`)
 
 ## Altinn3
 For å starte signeringssteget i Altinn3 så må instansen opprettes med paramteret
@@ -59,8 +60,10 @@ Bekreftelsesstegene kan fullføres:
 Etter to `next` sendes skattemeldingen inn (går til feedback steget), og Skatt vil retunere en kvittering (ok/ikke ok)
 
 ## Signeringsdokumenet
-TODO: Lenke til xsd
+Signeringsdokumenten har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`. 
+
 ![informasjonsmodell.png](revisors_bekreftelse.png)
+
 Bekreftelse: referere informasjonselementidentifikator (entitet) som signeres og ev forekomstidentifikator
 Vedlegg: peke på informasjonselementidentifikator (entitet) vedlegget peker mot
 Vedlegg brukes kun hvis revisors signatur (erBekreftetGodkjent) er false og man laster opp dokumentasjon om hvorfor
