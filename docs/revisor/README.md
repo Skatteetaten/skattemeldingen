@@ -1,7 +1,6 @@
 # Revisors signering
 
-Enkelte elementer i skattemelding og næringsspesifikasjonen kan signeres av revisor, her beskrvies hvilke elementer og
-hvordan det utføres.
+Hvis dere har et tema/forekomst i skattemeldingen eller i næringsspesifikasjonen som skal signeres av revisor, så beskrives det her hvordan det skal gjennomføres
 
 ## Elementer som kan få signering av revisor
 
@@ -25,61 +24,33 @@ Hele dokumentet skal signeres, så her ligger signeres elementet på rotnorden (
 
 ## Altinn3
 
-For å starte signeringssteget i Altinn3 så må instansen opprettes med paramteret
+For å aktivere signeringssteget i Altinn3 så må instansen opprettes med paramteret
 `"skalBekreftesAvRevisor": true` i `"dataValues":` elemenet. Eksempel på opprettet instans data vil da være:
 
-```js
+```json
 {
-    "instanceOwner"
-:
-    {
-        "organisationNumber"
-    :
-        "99999999"
-    }
-,
-    "appOwner"
-:
-    {
-        "labels"
-    :
-        [
-            "gr",
-            "x2"
-        ]
-    }
-,
-    "appId"
-:
-    "skd/formueinntekt-skattemelding-v2",
-        "dataValues"
-:
-    {
-        "inntektsaar"
-    :
-        2022,
-            "skalBekreftesAvRevisor"
-    :
-        true
-    }
-,
-    "dueBefore"
-:
-    "2023-06-01T12:00:00Z",
-        "visibleAfter"
-:
-    "2023-01-20T00:00:00Z",
-        "title"
-:
-    {
-        "nb"
-    :
-        "Skattemelding"
-    }
+  "instanceOwner": {
+    "organisationNumber": "99999999"
+  },
+  "appOwner": {
+    "labels": [
+      "gr",
+      "x2"
+    ]
+  },
+  "appId": "skd/formueinntekt-skattemelding-v2",
+  "dataValues": {
+    "inntektsaar": 2022,
+    "skalBekreftesAvRevisor": true
+  },
+  "dueBefore": "2023-06-01T12:00:00Z",
+  "visibleAfter": "2023-01-20T00:00:00Z",
+  "title": {
+    "nb": "Skattemelding"
+  }
 }
 ```
-
-Dersom instansen er merket med ‘skalBekreftesAvRevisor’ er det to bekreftelsessteg.
+Dersom skattemeldingen eller næringsspesifiasjonen skal bekreftes av revisor så må _både_ altinn3 instansen og innholdet i skattemeldingen/næringsspesifikasjonen være satt korrekt.
 
 Bekreftelsesstegene kan fullføres:
 
@@ -92,7 +63,7 @@ Bekreftelsesstegene kan fullføres:
 
 Etter to `next` sendes skattemeldingen inn (går til feedback steget), og Skatt vil retunere en kvittering (ok/ikke ok)
 
-## Signeringsdokumenet
+## Bekreftelsesdokument
 
 Signeringsdokumenten har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
 
@@ -105,10 +76,9 @@ Signeringsdokumenten har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
 ## Feilhåndtering
 
 Siden informasjonen om revisors signatur er fordelt mellom både Altinn instansen og informasjon i
-skattemeldingen/næringsspesifikasjonen så kan det oppstå innkonsistens mellom disse to.
+skattemeldingen/næringsspesifikasjonen så kan det oppstå innkonsistens mellom disse to. 
 
 Gitt følgende styring av revisors bekreftelseflag
-
 
 | Altinn3 | Skattemelding/Næringspesifikasjon | Oppførsel |
 |---------|-----------------------------------|-----------|
@@ -117,12 +87,15 @@ Gitt følgende styring av revisors bekreftelseflag
 | Nei     | Ja                                | Case2     |
 | Nei     | Nei                               | Normal    |
 
-
 ### Case 1a, Revisorsteg i Altinn aktiveres, men ingen flagg i skattemeldingen/næringsspesifikasjonen
-Her vil skattepliktig bli veiledet i visningsklienten at revisor ikke har noe å signere, og vil mest sanysnlig bli tatt ut i kontroll om det ikke rettes
+
+Her vil skattepliktig bli veiledet i visningsklienten at revisor ikke har noe å signere, og vil mest sanysnlig bli tatt
+ut i kontroll om det ikke rettes
 
 ### Case 1b, Revisorsteg i Altinn aktiveres, men selskapet har ingen revisor
+
 Innsender/regnskapsfører har mulighet til å slette instansen i Task2_rev
 
-### Case2: Revisorsteg i Altinn aktveres ikke, men skattemeldingen/næringspesifikasjonen har satt flagget
+### Case 2: Revisorsteg i Altinn aktveres ikke, men skattemeldingen/næringspesifikasjonen har satt flagget
+
 Slipper igjennom og blir fastsatt, vil bli fanget opp på kontroll. 
