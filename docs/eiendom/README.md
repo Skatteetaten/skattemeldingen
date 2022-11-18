@@ -1,7 +1,7 @@
 # Eiendom
 
 Denne guiden er ment som en "kom i gang på eiendom". 
-Den beskriver en tiltenkt flyt, forholdet mellom entitene fast eiendom og formuesgrunnlaget for eiendommen.
+Den beskriver en tiltenkt flyt, forholdet mellom tema/forekomst fast eiendom og formuesgrunnlaget for eiendommen.
 Tilslutt følger det en del eksempler på forskjellige eiendomsstyper 
 
 ## Prosess
