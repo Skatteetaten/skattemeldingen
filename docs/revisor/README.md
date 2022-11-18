@@ -20,7 +20,7 @@ Forskning og utvikling (`prosjektSkalBekreftesAvRevisor`)
 
 ### Næringsspesifikasjon
 
-Hele dokumentet skal signeres, så her ligger signeres elementet på rotnorden (`skalBekreftesAvRevisor`)
+Hele dokumentet skal signeres, så her ligger signeringselementet på rotnoden (`skalBekreftesAvRevisor`)
 
 ## Altinn3
 
