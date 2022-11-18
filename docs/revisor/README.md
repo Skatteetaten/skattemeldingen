@@ -65,7 +65,7 @@ Etter to `next` sendes skattemeldingen inn (går til feedback steget), og Skatt 
 
 ## Bekreftelsesdokument
 
-Signeringsdokumenten har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
+Signeringsdokumentet har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
 
 ![informasjonsmodell.png](revisors_bekreftelse.png)
 
