@@ -24,7 +24,7 @@ finne **formuesverdi** som inngår i skatteberegningen
     - ikke utleid næringseiendom
 - Hvis eiendommen ikke er en av disse, f.eks utleid næringseiendom og fritidsbolig, så må alle obligatoriske felter
   fylles ut for eiendomsstypen, og markedsverdien egenfastsettes
-- Når markedsverdien funnet, så må en fastsette eierandel og andel formuesverdi. (for selskaper skal andel formuesverdi
+- Når markedsverdien er funnet, så må en fastsette eierandel og andel formuesverdi. (for selskaper skal andel formuesverdi
   og eierandel være lik). Den eierandelen skatteetaten sitter på vil bli retunert når en henter formuesgrunnlaget. 
 - Da skal informasjonselementene i FastEiendom og FastEiendomSomFormuesobjekt være korrekt utfylt og klar til å bli lagt
   inn i skattemeldingen
