@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-11-02T13:58:30.124+0100" name="generertDato"/>
+      <xsd:attribute fixed="2022-11-07T17:09:33.900+0100" name="generertDato"/>
       <xsd:attribute fixed="10.0" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v10" name="modellnavn"/>
@@ -1249,6 +1249,7 @@
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="sykepengerOgAnnenInntektMvFraOppgavegiver" type="SykepengerOgAnnenInntektMvFraOppgavegiver"/>
           <xsd:element minOccurs="0" name="naeringstype" type="NaeringstypeMedInnkapsling"/>
           <xsd:element minOccurs="0" name="inntektFraUtbetalingTilSelvstendigNaeringsdrivende" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="inntektFraUtbetalingTilSelvstendigNaeringsdrivendeOverGrenseverdi" type="BeloepSomHeltall"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
