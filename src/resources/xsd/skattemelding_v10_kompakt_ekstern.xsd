@@ -145,7 +145,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="investeringIOppstartsselskap" type="InvesteringIOppstartsselskap"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fradragForInvesteringIOppstartsselskap" type="FradragForInvesteringIOppstartsselskap"/>
       <xsd:element minOccurs="0" name="forvaltningskostnader" type="Forvaltningskostnader"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellValuta" type="VirtuellValuta"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellEiendel" type="VirtuellEiendel"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GaveOgArv">
@@ -963,21 +963,24 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="VirtuellValuta">
+  <xsd:complexType name="VirtuellEiendel">
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element name="id" type="Tekst"/>
-          <xsd:element minOccurs="0" name="virtuellValutanavn" type="TekstMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="navn" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="kontonummer" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="antall" type="DesimaltallMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="formuesverdiForVirtuellValuta" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvVirtuellValuta" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvVirtuellValuta" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
-          <xsd:element minOccurs="0" name="annenSkattepliktigKapitalinntektFraVirtuellValuta" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
-          <xsd:element minOccurs="0" name="gjelderFlereVirtuelleValutaer" type="BoolskMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="formuesverdiForVirtuellEiendel" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvVirtuellEiendel" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvVirtuellEiendel" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
+          <xsd:element minOccurs="0" name="annenSkattepliktigKapitalinntektFraVirtuellEiendel" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="gjelderFlereVirtuelleEiendeler" type="BoolskMedInnkapsling"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="lommebok" type="Lommebok"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="boers" type="Boers"/>
+          <xsd:element minOccurs="0" name="inntektVedUtvinning" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="kostnadVedUtvinning" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
+          <xsd:element minOccurs="0" name="forvaltningskostnadForVirtuellEiendel" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
