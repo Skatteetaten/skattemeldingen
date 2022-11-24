@@ -1491,6 +1491,9 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
 
 #### formuesspesifikasjonForSkogeiendomIUtlandet <a name="formuesspesifikasjonForSkogeiendomIUtlandet"></a>
 ```xml
+
+OSB! formuesverdiForNaeringseiendom må fastsettes på egenhånd for denne typen, selv om den står som avledet=true i xsd'n. 
+
 <fasteEiendommer>
     <fastEiendomSomFormuesobjekt>
         <id>7a836bf0418eb694dac13a3397b2587c807345f6</id>
