@@ -33,6 +33,7 @@
       <xsd:element minOccurs="0" name="skalBekreftesAvRevisor" type="Boolsk"/>
       <xsd:element minOccurs="0" name="skogbruk" type="Skogbruk"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="vedlegg" type="Vedlegg"/>
+      <xsd:element minOccurs="0" name="funksjonellValuta" type="FunksjonellValuta"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SamletGjeldOgFormuesobjekter">
@@ -43,6 +44,13 @@
       <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabattTilordnetInnehaver" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabattTilordnetInnehaver" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
       <xsd:element minOccurs="0" name="samletGjeldTilordnetInnehaver" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FunksjonellValuta">
+    <xsd:sequence>
+      <xsd:element name="valutakurs" type="ValutakursMedInnkapsling"/>
+      <xsd:element name="valutakode" type="ValutakodeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="valutaverdi" type="HeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Tekst">
@@ -998,6 +1006,16 @@
   <xsd:simpleType name="Naeringstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_naeringstype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
+  <xsd:complexType name="ValutakodeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="valutakode" type="Valutakode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ValutakursMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="valutakurs" type="Valutakurs"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="SkjermingsgrunnlagstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="skjermingsgrunnlagstype" type="Skjermingsgrunnlagstype"/>
@@ -1035,6 +1053,12 @@
   </xsd:simpleType>
   <xsd:simpleType name="Antall">
     <xsd:restriction base="Heltall"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Valutakode">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Valutakurs">
+    <xsd:restriction base="Desimaltall"/>
   </xsd:simpleType>
   <xsd:simpleType name="Skjermingsgrunnlagstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_skjermingsgrunnlagstype.xml">
     <xsd:restriction base="xsd:string"/>
