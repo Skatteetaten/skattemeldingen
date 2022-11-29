@@ -38,12 +38,19 @@
   </xsd:complexType>
   <xsd:complexType name="SamletGjeldOgFormuesobjekter">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabatt" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
-      <xsd:element minOccurs="0" name="formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabatt" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
-      <xsd:element minOccurs="0" name="samletGjeld" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
-      <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabattTilordnetInnehaver" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
-      <xsd:element minOccurs="0" name="formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabattTilordnetInnehaver" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+      <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+      <xsd:element minOccurs="0" name="formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+      <xsd:element minOccurs="0" name="samletGjeld" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="samletGjeldOgFormuesobjekterTilordnetInnehaverPerKommune" type="SamletGjeldOgFormuesobjekterTilordnetInnehaverPerKommune"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SamletGjeldOgFormuesobjekterTilordnetInnehaverPerKommune">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
       <xsd:element minOccurs="0" name="samletGjeldTilordnetInnehaver" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+      <xsd:element minOccurs="0" name="formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabattTilordnetInnehaver" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
+      <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabattTilordnetInnehaver" type="BeloepMedSkattemessigeEgenskaperOgOverstyring"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FunksjonellValuta">

@@ -188,7 +188,7 @@
       <xsd:element minOccurs="0" name="saerskiltFradragForFiskereOgFangstfolk" type="SaerskiltFradragForFiskereOgFangstfolk"/>
       <xsd:element minOccurs="0" name="saerskiltFradragForReindrift" type="SaerskiltFradragForReindrift"/>
       <xsd:element minOccurs="0" name="saerskiltFradragForSkiferproduksjon" type="SaerskiltFradragForSkiferproduksjon"/>
-      <xsd:element minOccurs="0" name="samletGjeldOgFormuesobjekterINaering" type="SamletGjeldOgFormuesobjekterINaering"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="samletGjeldOgFormuesobjekterINaering" type="SamletGjeldOgFormuesobjekterINaering"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="samletGjeldOgFormuesobjekterINaeringFordeltFraEktefelle" type="SamletGjeldOgFormuesobjekterINaeringFordeltFraEktefelle"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="oppgavegiverBarnepassIBarnepasserensHjem" type="Oppgavegiver"/>
       <xsd:element minOccurs="0" name="grunnlagForBeregningAvNaeringsinntektOgSaerskiltFradragForFiskereOgFangstfolkKnyttetTilLottaker" type="GrunnlagForBeregningAvNaeringsinntektOgSaerskiltFradragForFiskereOgFangstfolkKnyttetTilLottaker"/>
@@ -1322,6 +1322,7 @@
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesobjekterINaeringOmfattetAvVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="formuesverdiForFormuesobjekterINaeringIkkeOmfattetAvVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="samletGjeldINaering" skatt:erAvledet="true" type="BeloepSomHeltall"/>
