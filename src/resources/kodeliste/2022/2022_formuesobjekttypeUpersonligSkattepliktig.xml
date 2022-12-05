@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><kodeliste xmlns="urn:no:skatteetaten:kodelistebibliotek:domain:v1">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kodeliste xmlns="urn:no:skatteetaten:kodelistebibliotek:domain:v1">
   <tekniskNavn>2022_formuesobjekttypeUpersonligSkattepliktig</tekniskNavn>
   <beskrivelse>
     <spraakTekst>
@@ -7,19 +8,6 @@
     </spraakTekst>
   </beskrivelse>
   <kode>
-    <tekniskNavn>formuesobjektOmfattetAvVerdsettingsrabatt</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Formuesobjekt med verdsettingsrabatt</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <harVerdsettingsrabatt>ja</harVerdsettingsrabatt>
-      <verdsettingsrabattsats>0.55</verdsettingsrabattsats>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>formuesobjektIkkeOmfattetAvVerdsettingsrabatt</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -27,6 +15,32 @@
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
+  </kode>
+  <kode>
+    <tekniskNavn>formuesobjektOmfattetAvVerdsettingsrabattAksjerNaeringseiendomMv</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Formuesobjekt med verdsettingsrabatt - aksjer, næringseiendom mv.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <harVerdsettingsrabatt>ja</harVerdsettingsrabatt>
+      <verdsettingsrabattsats>0.75</verdsettingsrabattsats>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>formuesobjektOmfattetAvVerdsettingsrabattDriftsmidlerMv</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Formuesobjekt med verdsettingsrabatt - driftsmidler mv.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <harVerdsettingsrabatt>ja</harVerdsettingsrabatt>
+      <verdsettingsrabattsats>0.75</verdsettingsrabattsats>
+    </kodetillegg>
   </kode>
   <lokaltForvaltet>true</lokaltForvaltet>
 </kodeliste>
