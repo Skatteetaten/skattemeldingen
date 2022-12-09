@@ -280,13 +280,17 @@
           <xsd:element name="bankensNavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8ea2df23-7662-11e6-a74e-7e18b36b3fd9" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940" type="OrganisasjonsnummerMedInnkapsling"/>
           <xsd:element name="kontonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="prosentandelAvGjeldOgPaaloepteRenter" type="ProsentMedInnkapsling"/>
           <xsd:element minOccurs="0" name="erBoligsparekontoIAnnenEOeSStat" skatt:begrepsreferanse="http://data.skatteetaten.no/begrep/cf247fc7-dfe5-11e7-9101-005056821322" type="BoolskMedInnkapsling"/>
           <xsd:element minOccurs="0" name="innskudd" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e324-9fe1-11e5-a9f8-e4115b280940" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="opptjenteRenter" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="gjeld" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/410ade56-9202-11e6-8b61-82ab1fa1f30b" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="andelAvGjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="paaloepteRenter" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1b0-9fe1-11e5-a9f8-e4115b280940" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
+          <xsd:element minOccurs="0" name="andelAvPaaloepteRenter" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="tilbakefoertRente" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/1e3330c5-6837-11e6-a7ce-fac03dffe1d7" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="betalteMisligholdteRenter" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1ab-9fe1-11e5-a9f8-e4115b280940" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="andelAvBetalteMisligholdteRenter" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="tapValutalaan" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf24801e-dfe5-11e7-9101-005056821322" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="gevinstValutalaan" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8ea2df37-7662-11e6-a74e-7e18b36b3fd9" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="sparebeloepTilBoligsparingForUngdomOppspartISkattleggingsperiodenPerKonto" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2c9e-a9e1-11e8-8514-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper"/>

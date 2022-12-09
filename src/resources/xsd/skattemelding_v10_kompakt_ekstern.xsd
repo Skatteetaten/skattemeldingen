@@ -280,13 +280,17 @@
           <xsd:element name="bankensNavn" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="organisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
           <xsd:element name="kontonummer" type="TekstMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="prosentandelAvGjeldOgPaaloepteRenter" type="ProsentMedInnkapsling"/>
           <xsd:element minOccurs="0" name="erBoligsparekontoIAnnenEOeSStat" type="BoolskMedInnkapsling"/>
           <xsd:element minOccurs="0" name="innskudd" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="opptjenteRenter" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="gjeld" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="andelAvGjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="paaloepteRenter" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
+          <xsd:element minOccurs="0" name="andelAvPaaloepteRenter" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="tilbakefoertRente" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="betalteMisligholdteRenter" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="andelAvBetalteMisligholdteRenter" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="tapValutalaan" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="gevinstValutalaan" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="sparebeloepTilBoligsparingForUngdomOppspartISkattleggingsperiodenPerKonto" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
