@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-11-07T17:32:01.913+0100" name="generertDato"/>
+      <xsd:attribute fixed="2022-11-23T11:59:57.383+0100" name="generertDato"/>
       <xsd:attribute fixed="10.0" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v10" name="modellnavn"/>
@@ -177,6 +177,7 @@
       <xsd:element minOccurs="0" name="tilleggsinformasjonVedSaerskiltSkattepliktEtterPetroleumsskatteloven" type="TilleggsinformasjonVedSaerskiltSkattepliktEtterPetroleumsskatteloven"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="annenFordring" type="AnnenFordring"/>
       <xsd:element minOccurs="0" name="reduksjonAvGjeldOgGjeldsrenter" type="ReduksjonAvGjeldOgGjeldsrenter"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="engangserstatningTilBarn" type="EngangserstatningTilBarn"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Naering">
@@ -295,6 +296,7 @@
           <xsd:element minOccurs="0" name="gevinstValutalaan" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="sparebeloepTilBoligsparingForUngdomOppspartISkattleggingsperiodenPerKonto" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="finansinstitusjonidentifikator" type="Finansinstitusjonidentifikator"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -372,6 +374,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="nettoLeieinntektEllerUnderskuddFraFastEiendomSomUtleieobjektOverfoertFraEktefelle" type="NettoLeieinntektEllerUnderskuddFraFastEiendomSomUtleieobjektOverfoertFraEktefelle"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fastEiendomSomKaarytelse" type="FastEiendomSomKaarytelse"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogeiendomINorgeSomFormuesobjekt" type="SkogeiendomINorgeSomFormuesobjekt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="forholdVedFastEiendomKnyttetTilEngangserstatningTilBarn" type="ForholdVedFastEiendomKnyttetTilEngangserstatningTilBarn"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="VerdiForAnnetPrivatInnboOgLoesoere">
@@ -409,6 +412,7 @@
           <xsd:element minOccurs="0" name="antattMarkedsverdiForKjoeretoey" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="antattVerdiSomNyttKjoeretoey" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="formuesverdiForKjoeretoey" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -445,6 +449,7 @@
           <xsd:element minOccurs="0" name="andelAvFradragsberettigetKostnadBoligsameie" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="boligsameietsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
           <xsd:element minOccurs="0" name="boligsameietsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -460,6 +465,7 @@
           <xsd:element minOccurs="0" name="andelAvFradragsberettigetFelleskostnadBoligselskap" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="boligselskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
           <xsd:element minOccurs="0" name="boligselskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -817,6 +823,7 @@
           <xsd:element minOccurs="0" name="forvaltningskostnad" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="returprovisjon" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="kontoErAvsluttet" type="BoolskMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -845,6 +852,7 @@
           <xsd:element minOccurs="0" name="oppgavegiversNavn" type="Organisasjonsnavn"/>
           <xsd:element minOccurs="0" name="forvaltningskostnad" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="returprovisjon" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -866,6 +874,7 @@
           <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvAksje" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvAksje" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="benyttetSkjermingsfradrag" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -886,6 +895,7 @@
           <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvAksje" type="FradragMedLoennsomhetsvurderingMv"/>
           <xsd:element minOccurs="0" name="benyttetSkjermingsfradragPaaUtbytte" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="benyttetSkjermingsfradragPaaGevinstVedRealisasjonAvAksje" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -905,6 +915,7 @@
           <xsd:element minOccurs="0" name="renteinntektAvObligasjonOgSertifikat" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvObligasjonOgSertifikat" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvObligasjonOgSertifikat" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1201,6 +1212,7 @@
           <xsd:element minOccurs="0" name="skyldneridentifikator" type="TekstMedInnkapsling"/>
           <xsd:element minOccurs="0" name="formuesverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="opptjenteRenter" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1211,6 +1223,18 @@
         <xsd:sequence>
           <xsd:element minOccurs="0" name="gjeldsreduksjonForFastEiendomUtenforSvalbardUnntattBeskatningPaaSvalbard" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="gjeldsrentereduksjonForFormueUtenforSvalbardUnntattBeskatningPaaSvalbard" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EngangserstatningTilBarn">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
+          <xsd:element minOccurs="0" name="samletOpprinneligErstatningsbeloep" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="saerskiltFastsattSkattForBarnPaaEngangserstatning" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="engangserstatning" type="Engangserstatning"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1599,6 +1623,7 @@
           <xsd:element minOccurs="0" name="premiefond" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="gjenkjoepsverdiAvKapitalforsikringsavtale" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="gjenkjoepsverdiAvIndividuellLivrente" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1627,6 +1652,7 @@
           <xsd:element minOccurs="0" name="annenUtbetalingFraSkadeforsikring" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="returAvPremieFraSkadeforsikring" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="dagpengerVedSykehusoppholdMvFraBarneforsikring" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1895,6 +1921,17 @@
           <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall"/>
           <xsd:element minOccurs="0" name="sergMatrikkelnummer" type="SergMatrikkelnummer"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ForholdVedFastEiendomKnyttetTilEngangserstatningTilBarn">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
+          <xsd:element minOccurs="0" name="barnetsAndelAvNettoLeieinntektFraFastEiendom" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="barnetsAndelAvGevinstVedRealisasjonAvFastEiendom" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2308,6 +2345,14 @@
       <xsd:element name="generelleSvarord" type="GenerelleSvarord"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="Engangserstatning">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="utbetalingsaar" type="AarstallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="utbetaltBeloep" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="opptjenteRenter" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Naeringstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_naeringstype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
@@ -2508,6 +2553,8 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="formuesverdiForSelveidFritidseiendom" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="markedsverdiForSelveidFritidseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="andelAvFormuesverdiOmfattetAvSkattefrihetForEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForTomt">
@@ -2534,6 +2581,8 @@
       <xsd:element minOccurs="0" name="boligbruk" type="BoligbrukskodeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="beregnetMarkedsverdiForBolig" type="BeregnetMarkedsverdiForBolig"/>
       <xsd:element minOccurs="0" name="formuesverdiForBolig" type="FormuesverdiForBolig"/>
+      <xsd:element minOccurs="0" name="andelAvFormuesverdiOmfattetAvSkattefrihetForEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForFlerboligbygning">
