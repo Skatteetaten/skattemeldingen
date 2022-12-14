@@ -25,6 +25,7 @@
       <xsd:element minOccurs="0" name="selskapsmeldingOpprettet" type="DokumentOpprettet"/>
 
       <xsd:element minOccurs="0" name="gjelderSkjoennsfastsetting" type="Boolsk"/>
+      <xsd:element minOccurs="0" name="formueOgInntektISelskapMedDeltakerfastsetting" type="FormueOgInntektISelskapMedDeltakerfastsetting"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
@@ -87,6 +88,12 @@
   <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="xsd:boolean"/>
   </xsd:simpleType>
+  <xsd:complexType name="FormueOgInntektISelskapMedDeltakerfastsetting">
+    <xsd:sequence>
+
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelAvFormueOgInntekt" type="DeltakersAndelAvFormueOgInntekt"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="BeloepSomHeltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e147-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="beloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e147-9fe1-11e5-a9f8-e4115b280940" type="BeloepSomHeltall"/>
@@ -290,6 +297,22 @@
     <xsd:sequence>
       <xsd:element name="kildedokumentidentifikator" type="Uri"/>
       <xsd:element minOccurs="0" name="kildedokumenttype" type="Tekst"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DeltakersAndelAvFormueOgInntekt">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForNettoformue" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="gjeld" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="tapVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="underskudd" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="alminneligInntekt" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="utbetalingMvTilDeltaker" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="BeloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
