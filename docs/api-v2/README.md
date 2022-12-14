@@ -109,22 +109,22 @@ eksisterende løsninger.
 
 ## Oppsummering API endepunkt
 
-| TYPE | API path                                                                                                                           | Virkshomhetssertifikat |
-|------|------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| GET  | [/api/skattemelding/v2/ping](#ping)                                                                                                | JA                     |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#hentGjeldende)                                                            | Nei                    |
+| TYPE | API path                                                                                                                                 | Virkshomhetssertifikat |
+|------|------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
+| GET  | [/api/skattemelding/v2/ping](#ping)                                                                                                      | JA                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#hentGjeldende)                                                                | Nei                    |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#hentGjeldendeUtvidet) | Nei                    |
 | GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#hentType)                                                            | Nei                    |
-| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#valider)                                                            | Nei                    |
-| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#validerTest)                                                    | Planlagt               |
+| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#valider)                                                              | Nei                    |
+| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#validerTest)                                                      | Planlagt               |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#hentVedlegg)                                            | Nei                    |
-| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#eiendomSoek)                                                      | Ja                     |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#eiendomSoek)                                                        | Ja                     |
 | GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#hentFormuesgrunnlag)         | Nei                    |
-| GET  | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiBolig)                        | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                           | Ja                     |
-| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)        | Nei                    |
-| GET  | [/api/skattemelding/v2/avregning/avregn/{inntektsaar}/{identifikator}](#avregning)                                                 |                        |
+| GET  | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiBolig)                          | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                  | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                             | Ja                     |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)              | Nei                    |
+| GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/<\identifikator\>](#avregning)                                                   | Nei                    |
 
 | Miljø                             | Adresse                      |
 |-----------------------------------|------------------------------|
