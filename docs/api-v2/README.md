@@ -1,4 +1,3 @@
-
 ---
 icon: "cloud"
 title: "API"
@@ -7,21 +6,26 @@ description: "Api-beskrivelser"
 
 Det tilbys to sett med API-er:
 
-- Skatteetatens-API: har tjenester for hent- og validering av skattemedlinger, eiendomskalkulator, hent vedlegg og foreløpig avrenging.
+- Skatteetatens-API: har tjenester for hent- og validering av skattemedlinger, eiendomskalkulator, hent vedlegg og
+  foreløpig avrenging.
 - Altinn3-API: for: har tjenester for opprettelse og innsending av en skattemeldinger.
 
 ![apier.png](apier.png)
 
 # Skatteetatens-API
 
-Skatteetaten har utviklet en demo klient (i python/jupyter notebook) som viser hvordan koble seg på ID-porten og kalle skatteetatens-API, og sende inn skattemeldingen med vedlegg via Altinn3:
+Skatteetaten har utviklet en demo klient (i python/jupyter notebook) som viser hvordan koble seg på ID-porten og kalle
+skatteetatens-API, og sende inn skattemeldingen med vedlegg via Altinn3:
 [jupyter notebook](../test/testinnsending/person-enk-med-vedlegg-2021.ipynb)
 
 ## Autentisering
 
-Når en skattepliktig skal benytte et sluttbrukersystem for å sende inn skattemeldingen og næringsopplysninger gjennom API må sluttbrukeren og/eller sluttbrukersystemet være autentisert og autorisert gjennom en påloggingsprosess.
+Når en skattepliktig skal benytte et sluttbrukersystem for å sende inn skattemeldingen og næringsopplysninger gjennom
+API må sluttbrukeren og/eller sluttbrukersystemet være autentisert og autorisert gjennom en påloggingsprosess.
 
-Ved kall til skattemelding-API ønsker skatteetaten å kjenne til identiteten til innsender. Identiteten til pålogget bruker, kombinert med informasjon fra Altinn autorisasjon vil avgjøre hvilken person/selskap en pålogget bruker kan hente skattemeldingen til eller sende inn skattemelding for.
+Ved kall til skattemelding-API ønsker skatteetaten å kjenne til identiteten til innsender. Identiteten til pålogget
+bruker, kombinert med informasjon fra Altinn autorisasjon vil avgjøre hvilken person/selskap en pålogget bruker kan
+hente skattemeldingen til eller sende inn skattemelding for.
 
 Autentisering skjer enten via ID-porten eller Maskinporten:
 
@@ -44,21 +48,31 @@ Figuren under skisserer hvordan innloggingsprosessen vil se ut:
 
 #### Registrering av et sluttbrukersystem i ID-porten
 
-Når et sluttbrukersystem initierer en påloggingsprosess mot ID-porten må SBS sende med en klient-ID. Denne klient-id-en er unik for SBS-typen og vil bli tildelt ved at programvareleverandøren av SBS på forhånd har gjennomført en registrering (onboarding) i en selvbetjeningsportal hos Digdir/Difi. Dette er beskrevet her: https://docs.digdir.no/docs/idporten/oidc/. Lenken beskriver også standarden OIDC som ID-porten er basert på.
+Når et sluttbrukersystem initierer en påloggingsprosess mot ID-porten må SBS sende med en klient-ID. Denne klient-id-en
+er unik for SBS-typen og vil bli tildelt ved at programvareleverandøren av SBS på forhånd har gjennomført en
+registrering (onboarding) i en selvbetjeningsportal hos Digdir/Difi. Dette er beskrevet
+her: https://docs.digdir.no/docs/idporten/oidc/. Lenken beskriver også standarden OIDC som ID-porten er basert på.
 
 Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir slik at dere kan få tildelt en klient-ID.
 
 #### Hvordan opprette ID-porten interasjon hos DigDir
 
-- Først må en integrasjon hos DigDir (gamle DIFI) opprettes gjennom deres [selvbetjeningsløsning](https://selvbetjening-samarbeid-ver2.difi.no/).
+- Først må en integrasjon hos DigDir (gamle DIFI) opprettes gjennom
+  deres [selvbetjeningsløsning](https://selvbetjening-samarbeid-ver2.difi.no/).
 - Klikk på integrasjoner under Ver2, klikk så på knappen "ny Integrasjon".
-- Det er denne integrasjonen som deres applikasjon vil snakke med seinere når deres sluttbruker skal autentisere seg mot ID-porten.
-  - Verdien i feltet "Integrasjonens identifikator" (kalt klient-ID over) er en GUID som tildeles av Digdir/Difi og som SBS må sende med i kallet til ID-porten.
+- Det er denne integrasjonen som deres applikasjon vil snakke med seinere når deres sluttbruker skal autentisere seg mot
+  ID-porten.
+    - Verdien i feltet "Integrasjonens identifikator" (kalt klient-ID over) er en GUID som tildeles av Digdir/Difi og
+      som SBS må sende med i kallet til ID-porten.
 - Velg _"API-klient"_ under "Difi-tjeneste".
 - Velg så et scope som angir hvilken offentlig API-tjeneste registreringen gjelder for:
-  - Klikk på knappen "Rediger Scopes" og velg _"skatteetaten:formueinntekt/skattemelding"_ fra lista over scopes.
-  - PS: hvis dere ikke finner scopet _"skatteetaten:formueinntekt/skattemelding"_ i lista må dere ta [kontakt med skatteetaten](mailto:skattemelding-sbs-brukerstotte@skatteetaten.no) slik at vi kan gi dere tilgang til scopet (i mellom tiden kan dere forsatt bruke denne integrasjonen da skatteetaen pt. ikke sjekker scope ved validering av access tokenet. Men denne sjekken er noe vi på et seinere tidspunkt kommer til å slå på).
-- Skriv inn et redirect uri-er (komma seperert og uten mellomrom). Dette er Uri-(er) som klienten får lov å gå til etter innlogging (ref. pilnummer 6 i figuren over)
+    - Klikk på knappen "Rediger Scopes" og velg _"skatteetaten:formueinntekt/skattemelding"_ fra lista over scopes.
+    - PS: hvis dere ikke finner scopet _"skatteetaten:formueinntekt/skattemelding"_ i lista må dere
+      ta [kontakt med skatteetaten](mailto:skattemelding-sbs-brukerstotte@skatteetaten.no) slik at vi kan gi dere
+      tilgang til scopet (i mellom tiden kan dere forsatt bruke denne integrasjonen da skatteetaen pt. ikke sjekker
+      scope ved validering av access tokenet. Men denne sjekken er noe vi på et seinere tidspunkt kommer til å slå på).
+- Skriv inn et redirect uri-er (komma seperert og uten mellomrom). Dette er Uri-(er) som klienten får lov å gå til etter
+  innlogging (ref. pilnummer 6 i figuren over)
 - Sett ønskede verdier for levetiden på autoriasjons-, access og refresh-token.
 - Et eksempel på hvordan integrasjonen kan bli seende ut:
 
@@ -66,13 +80,20 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
 
 ### Maskin-porten
 
-Maskinporten sørger for sikker autentisering og tilgangskontroll for datautveksling mellom virksomheter. Løsningen garanterer identiteten mellom virksomheter og gjør det mulig å binde sammen systemer.
+Maskinporten sørger for sikker autentisering og tilgangskontroll for datautveksling mellom virksomheter. Løsningen
+garanterer identiteten mellom virksomheter og gjør det mulig å binde sammen systemer.
 
-Et sluttbrukersystem som kjører på en sikker server kan integreres i Maskinporten og da være autentisert med sitt organisasjonsnummer. Det vil da være organisasjonen som autentiserer seg. Hvilken sluttbruker som utfører hvilken handling i deres system må organisasjonen selv holde kontroll på. En forutsetning for bruk av Maskinporten er derfor at organisasjonen har bygget et godt tilgangskontroll av sine sluttbrukere.
+Et sluttbrukersystem som kjører på en sikker server kan integreres i Maskinporten og da være autentisert med sitt
+organisasjonsnummer. Det vil da være organisasjonen som autentiserer seg. Hvilken sluttbruker som utfører hvilken
+handling i deres system må organisasjonen selv holde kontroll på. En forutsetning for bruk av Maskinporten er derfor at
+organisasjonen har bygget et godt tilgangskontroll av sine sluttbrukere.
 
-En autentisering gjort via Maskinporten tilrettelegger for høyere grad av automatisering da det ikke krever en personlig kodebrikke eller liknende. Vi tror Maskinporten vil passe for store selskap og regnskapsførere som skal levere skattemeldingen for mange.
+En autentisering gjort via Maskinporten tilrettelegger for høyere grad av automatisering da det ikke krever en personlig
+kodebrikke eller liknende. Vi tror Maskinporten vil passe for store selskap og regnskapsførere som skal levere
+skattemeldingen for mange.
 
-Bruk av Maskinporten forutsetter at organisasjonen har et virksomhetssertifikat eller tilsvarende mekanisme. Figuren under skisserer hvordan samhandlingen fungerer:
+Bruk av Maskinporten forutsetter at organisasjonen har et virksomhetssertifikat eller tilsvarende mekanisme. Figuren
+under skisserer hvordan samhandlingen fungerer:
 
 ![maskinporten.png](maskinporten.png)
 
@@ -80,30 +101,30 @@ Les detaljer om maksinporten her: https://docs.digdir.no/docs/Maskinporten/maski
 
 ## Autorisasjon
 
-API-ene som tilbys vil sjekke at sluttbrukeren eller eier av sluttbrukersystemet har tilgang til å utføre operasjoner gjennom API-et. Slik tilgangskontroll/autorisering skjer via Altinns autorisasjonskomponent.
+API-ene som tilbys vil sjekke at sluttbrukeren eller eier av sluttbrukersystemet har tilgang til å utføre operasjoner
+gjennom API-et. Slik tilgangskontroll/autorisering skjer via Altinns autorisasjonskomponent.
 
-Dette betyr at sluttbrukeren eller eier av sluttbrukersystemet må ha de nødvendige rollene i Altinn. Dette blir som i eksisterende løsninger.
-
+Dette betyr at sluttbrukeren eller eier av sluttbrukersystemet må ha de nødvendige rollene i Altinn. Dette blir som i
+eksisterende løsninger.
 
 ## Oppsummering API endepunkt
 
-| TYPE | API path                                                                                                  | Virkshomhetssertifikat |
-|------|-----------------------------------------------------------------------------------------------------------|------------------------|
-| GET  | /api/skattemelding/v2/ping                                                                                | JA                     |
-| GET  | /api/skattemelding/v2/<inntektsaar>/<identifikator>/                                                      | Nei                    |
-| GET  | /api/skattemelding/v2/<inntektsaar>/<identifikator>/                                                      | Nei                    |
-| GET  | /api/skattemelding/v2/<inntektsaar>/<identifikator>?inkluderUtvidetVeiledning=<inkluderUtvidetVeiledning> | Nei                    |
-| GET  | /api/skattemelding/v2/<type>/<inntektsaar>/<identifikator>/                                               | Nei                    |
-| POST | /api/skattemelding/v2/valider/<inntektsaar>/<identifikator>                                               | Nei                    |
-| POST | /api/skattemelding/v2/validertest/<inntektsaar>/<identifikator>                                           | Planlagt               |
-| GET  | /api/skattemelding/v2/<inntektsaar>/<identifikator>/vedlegg/<vedleggId>                                   | Nei                    |
-| GET  | /api/skattemelding/v2/eiendom/soek/<inntektsår>?query=<tekst>                                             | Ja                     |
-| GET  | /api/skattemelding/v2/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>        | Nei                    |
-| GET  | /api/skattemelding/v2/eiendom/markedsverdi/bolig/<inntektsår>/<eiendomsidentifikator>                     | Ja                     |
-| POST | /api/skattemelding/v2/eiendom/markedsverdi/flerbolig/<inntektsår>/<eiendomsidentifikator>                 | Ja                     |
-| POST | /api/skattemelding/v2/eiendom/utleieverdi/<inntektsår>/<eiendomsidentifikator>                            | Ja                     |
-| POST | /api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning                                    | Nei                    |
-
+| TYPE | API path                                                                                                                           | Virkshomhetssertifikat |
+|------|------------------------------------------------------------------------------------------------------------------------------------|------------------------|
+| GET  | [/api/skattemelding/v2/ping](#ping)                                                                                                | JA                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#hentGjeldende)                                                            | Nei                    |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#hentGjeldendeUtvidet) | Nei                    |
+| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#hentType)                                                            | Nei                    |
+| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#valider)                                                            | Nei                    |
+| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#validerTest)                                                    | Planlagt               |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#hentVedlegg)                                            | Nei                    |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#eiendomSoek)                                                      | Ja                     |
+| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#hentFormuesgrunnlag)         | Nei                    |
+| GET  | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiBolig)                        | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                           | Ja                     |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)        | Nei                    |
+| GET  | [/api/skattemelding/v2/avregning/avregn/{inntektsaar}/{identifikator}](#avregning)                                                 |                        |
 
 | Miljø                             | Adresse                      |
 |-----------------------------------|------------------------------|
@@ -112,11 +133,9 @@ Dette betyr at sluttbrukeren eller eier av sluttbrukersystemet må ha de nødven
 | Produksjon                        | idporten.api.skatteetaten.no |
 | Produksjon virkshometsstertifikat | api.skatteetaten.no          |
 
-## Ping tjeneste
+## Ping tjeneste <a name="ping"></a>
 
 API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungerer.
-
-
 
 **URL** : `GET https://<env>/api/skattemelding/v2/ping`
 
@@ -128,16 +147,19 @@ API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungere
 
 ```json
 {
-    "ping": "pong"
+  "ping": "pong"
 }
 ```
 
-## Hent skattemelding
+## Hent skattemelding <a name="hentGjeldende"></a>
 
-API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt inntektsår. Den siste gjeldende skattemeldingen kan enten være utkast eller fastsatt:
+API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt inntektsår. Den siste gjeldende
+skattemeldingen kan enten være utkast eller fastsatt:
 
-- Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og data fra skattemeldingen tidligere år.
-- Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist. Dette kan også inneholde et eller flere myndighetsfastsatte felter.
+- Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og
+  data fra skattemeldingen tidligere år.
+- Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist.
+  Dette kan også inneholde et eller flere myndighetsfastsatte felter.
 
 **URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/`
 
@@ -151,53 +173,68 @@ API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt i
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
-- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
+- Iht.
+  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
+- Eksempel
+  XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
 - dokumenter – konvolutt for dokumenter
 
-  - skattemeldingdokument – complex type
-    - type – [valg fra xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
-    - id – dokumentidentifikator til dokumentet i skatteetatens system.
-    - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold i base64 encodet format
-  - naeringsopplysningsdokument – complex type 
-    - id – dokumentidentifikator til dokumentet i skatteetatens system
-    - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold i base64 encodet format
-  - utvidetVeiledningdokument - complex type
-    - id – dokumentidentifikator til dokumentet i skatteetatens system
-    - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold i base64 encodet format
+    - skattemeldingdokument – complex type
+      -
+      type – [valg fra xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
+        - id – dokumentidentifikator til dokumentet i skatteetatens system.
+        - encoding – kodeliste – [utf-8]
+        - content – serialisert dokumentinnhold i base64 encodet format
+    - naeringsopplysningsdokument – complex type
+        - id – dokumentidentifikator til dokumentet i skatteetatens system
+        - encoding – kodeliste – [utf-8]
+        - content – serialisert dokumentinnhold i base64 encodet format
+    - utvidetVeiledningdokument - complex type
+        - id – dokumentidentifikator til dokumentet i skatteetatens system
+        - encoding – kodeliste – [utf-8]
+        - content – serialisert dokumentinnhold i base64 encodet format
 
-### Utvidet veiledning
+### Utvidet veiledning <a name="hentGjeldendeUtvidet"></a>
 
-Fra og med inntektsår 2022 er det mulig å etterspørre eventuelle ubesvarte utvidede veiledninger som del av dette API'et, som kan sees i response-spesifikasjonen over. 
+Fra og med inntektsår 2022 er det mulig å etterspørre eventuelle ubesvarte utvidede veiledninger som del av dette
+API'et, som kan sees i response-spesifikasjonen over.
 
-En utvidet veiledning representerer opplysninger som Skatteetaten har om skatteyter som muligens burde vært oppgitt i skattmeldingen, men som ikke er det. Disse opplysningene er gjerne ikke komplette, og kan derfor ikke forhåndsutfylles.
+En utvidet veiledning representerer opplysninger som Skatteetaten har om skatteyter som muligens burde vært oppgitt i
+skattmeldingen, men som ikke er det. Disse opplysningene er gjerne ikke komplette, og kan derfor ikke forhåndsutfylles.
 
-`content`-delen av `utvidetVeiledningdokument` inneholder en skattemelding-xml med foreslått tillegg for skatteyter. Dette er ikke en fullstendig XML ihht. skattemelding-XSD og vil ikke nødvendigvis validere mot sistnevnte. 
-Normalt inneholder dokumentet informasjon som tilsvarer en entitet i skattemeldingen. I de tilfeller det er flere, så betyr det i praksis at Skatteetaten foreslår at en av entitetene skal legges til (ikke alle).
+`content`-delen av `utvidetVeiledningdokument` inneholder en skattemelding-xml med foreslått tillegg for skatteyter.
+Dette er ikke en fullstendig XML ihht. skattemelding-XSD og vil ikke nødvendigvis validere mot sistnevnte.
+Normalt inneholder dokumentet informasjon som tilsvarer en entitet i skattemeldingen. I de tilfeller det er flere, så
+betyr det i praksis at Skatteetaten foreslår at en av entitetene skal legges til (ikke alle).
 
-Det kan være mange `utvidetVeiledningdokument` i `skattemeldingerOgNaeringsopplysningerforespoerselResponse`, en per opplysning Skattetaten ønsker at skatteyter skal ta stilling til.
+Det kan være mange `utvidetVeiledningdokument` i `skattemeldingerOgNaeringsopplysningerforespoerselResponse`, en per
+opplysning Skattetaten ønsker at skatteyter skal ta stilling til.
 
 Bare "ubesvarte" utvidede veiledninger returneres i responsen. En veiledning kan besvares på to måter:
-- Gjennom Skatteetatens innleveringsportal for personlige skatteytere, der de kan velge å avvise eller legge til opplysningene
-- Ved innsending av `komplett` skattemelding fra et sluttbrukersystem. Når en slik innsending er fullført og fører til fastsetting, så vil alle ubesvarte veiledninger _på fastsettingstidspunktet_ bli besvart som at de er "hentet av SBS".
-  - OBS! Siden nye utvidede veiledninger kan oppstå fortløpende, så finnes det en risiko for at det har kommet nye mellom tidspunktet hvor SBS henter veiledningene og fastsetting utføres. Det er derfor en risiko for at veiledninger som ikke har blitt hentet av SBSen og fremvist bruker blir besvart som det. 
 
-**URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>?inkluderUtvidetVeiledning=<inkluderUtvidetVeiledning>`
+- Gjennom Skatteetatens innleveringsportal for personlige skatteytere, der de kan velge å avvise eller legge til
+  opplysningene
+- Ved innsending av `komplett` skattemelding fra et sluttbrukersystem. Når en slik innsending er fullført og fører til
+  fastsetting, så vil alle ubesvarte veiledninger _på fastsettingstidspunktet_ bli besvart som at de er "hentet av SBS".
+    - OBS! Siden nye utvidede veiledninger kan oppstå fortløpende, så finnes det en risiko for at det har kommet nye
+      mellom tidspunktet hvor SBS henter veiledningene og fastsetting utføres. Det er derfor en risiko for at
+      veiledninger som ikke har blitt hentet av SBSen og fremvist bruker blir besvart som det.
 
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/2022/974761076?inkluderUtvidetVeiledning=true`
+**URL
+** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>?inkluderUtvidetVeiledning=<inkluderUtvidetVeiledning>`
+
+**Eksempel URL
+** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/2022/974761076?inkluderUtvidetVeiledning=true`
 
 **Forespørsel** :
 
 - `<inkluderUtvidetVeiledning>: Hvorvidt man ønsker å hente eventuelle ubesvarte utvidede veiledninger. Settes til 'true' eller 'false'`
-  - dersom request parameteren ikke sendes med som del av URL'en, så settes den til 'false' som default
-  - denne fungerer bare dersom `<inntektsaar>` er 2022 eller senere. Hvis request parameteren sendes med ved tidligere år så vil den ignoreres. 
-
+    - dersom request parameteren ikke sendes med som del av URL'en, så settes den til 'false' som default
+    - denne fungerer bare dersom `<inntektsaar>` er 2022 eller senere. Hvis request parameteren sendes med ved tidligere
+      år så vil den ignoreres.
 
 ### Serialisert dokumentinnhold
 
@@ -217,12 +254,15 @@ Eksempel (inneholder linjeskift for lesbarhet):
     MC0yMVQwNjozMjowNi45OTMwMzlaPC9vcHByZXR0ZXREYXRvPgogIDwvc2thdHRlbWVsZGluZ09w
     cHJldHRldD4KPC9za2F0dGVtZWxkaW5nPg==<content>
 
-## Hent Skattemelding (basert på type)
+## Hent Skattemelding (basert på type)  <a name="hentType"></a>
 
-API som returnerer siste gjeldende skattemeldingen av gitt type for skattepliktige for gitt inntektsår. Følgende type skattemeldinger er støttet:
+API som returnerer siste gjeldende skattemeldingen av gitt type for skattepliktige for gitt inntektsår. Følgende type
+skattemeldinger er støttet:
 
-- Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og data fra skattemeldingen tidligere år.
-- Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist. Dette kan også inneholde et eller flere myndighetsfastsatte felter.
+- Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og
+  data fra skattemeldingen tidligere år.
+- Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist.
+  Dette kan også inneholde et eller flere myndighetsfastsatte felter.
 
 **URL** : `GET https://<env>/api/skattemelding/v2/<type>/<inntektsaar>/<identifikator>/`
 
@@ -236,22 +276,26 @@ API som returnerer siste gjeldende skattemeldingen av gitt type for skatteplikti
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
-- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
+- Iht.
+  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
+- Eksempel
+  XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
 For nærmere beskrivelse av felt i XSDen eller hvordan man henter ut utvidede veiledninger, se forrige kapittel.
 
-## Valider skattemelding
+## Valider skattemelding <a name="valider"></a>
 
-Tjenesten validerer innholdet i en skattemelding og returnerer en respons med eventuelle feil, avvik og advarsler. Tjenesten vil foreta følgende:
+Tjenesten validerer innholdet i en skattemelding og returnerer en respons med eventuelle feil, avvik og advarsler.
+Tjenesten vil foreta følgende:
 
 1. Kontroll av meldingsformatet.
 2. Kontroll av innholdet og sammensetningen av elementene i skattemeldingen.
 3. Beregninger/kalkyler.
 
-Skatteetaten ønsker at valideringstjenesten blir kalt i forkant av innsending av skattemeldingen. Dette for å sikre at skattemeldingen er korrekt og vil mest sannsynligvis bli godkjent ved innsending.
-Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som sendes inn i valideringstjenesten på noen måte. Skatteetaten anser at disse dataene eies av den skattepliktige og ikke av skatteetaten.
-
+Skatteetaten ønsker at valideringstjenesten blir kalt i forkant av innsending av skattemeldingen. Dette for å sikre at
+skattemeldingen er korrekt og vil mest sannsynligvis bli godkjent ved innsending.
+Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som sendes inn i valideringstjenesten på noen
+måte. Skatteetaten anser at disse dataene eies av den skattepliktige og ikke av skatteetaten.
 
 **URL** : `POST https://<env>/api/skattemelding/v2/valider/<inntektsaar>/<identifikator>`
 
@@ -265,62 +309,70 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 
 **Body** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2.xsd)
-- Eksempel XML: [personligSkattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/2021/personligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
+- Iht.
+  XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2.xsd)
+- Eksempel
+  XML: [personligSkattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/2021/personligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
 
 skattemeldingOgNaeringsspesifikasjonRequest:
+
 - dokumenter
-  - dokument
-    - type - [skattemeldingPersonlig | skattemeldingUpersonlig | naeringsspesifikasjon]
-    - encoding - kodeliste – [utf-8]
-    - content - base64 encodet xml dokument 
+    - dokument
+        - type - [skattemeldingPersonlig | skattemeldingUpersonlig | naeringsspesifikasjon]
+        - encoding - kodeliste – [utf-8]
+        - content - base64 encodet xml dokument
 - dokumentreferanseTilGjeldendeDokument
-  - dokumenttype (samme som dokumenter.dokument.type)
-  - dokumentidentifikator - referanse hentet fra hentSkattemelding kall. Bruk referansen til skattemeldingen
-- inntektsår - fire siffer for inntektsår innsendingen gjelder. husk å bruk riktig xsd versjon for skattemeldingen og næringspesifikasjon for tilhørende inntektsår
-- innsendingsinformasjon 
-  - innsendingstype - [ikkeKomplett | komplett]
-  - opprettetAv - system navn brukt for å gjøre innsendingen
-  
+    - dokumenttype (samme som dokumenter.dokument.type)
+    - dokumentidentifikator - referanse hentet fra hentSkattemelding kall. Bruk referansen til skattemeldingen
+- inntektsår - fire siffer for inntektsår innsendingen gjelder. husk å bruk riktig xsd versjon for skattemeldingen og
+  næringspesifikasjon for tilhørende inntektsår
+- innsendingsinformasjon
+    - innsendingstype - [ikkeKomplett | komplett]
+    - opprettetAv - system navn brukt for å gjøre innsendingen
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonresponse_v2.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
-- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](../../src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
+- Iht.
+  XSD: [skattemeldingognaeringsspesifikasjonresponse_v2.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
+- Eksempel
+  XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](../../src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingOgNaeringsspesifikasjonResponse:
 
 - Dokumenter – konvolutt for relevante dokumenter
-  - Dokument – complex type
-    - Type – kodeliste [skattemeldingPersonligEtterBeregning|beregnetSkattPersonlig|summertSkattegrunnlagForVisningPersonlig|naeringsspesifikasjonEtterBeregning|skattemeldingUpersonligEtterBeregning|beregnetSkattUpersonlig|summertSkattegrunnlagForVisningUpersonlig]
-    - Encoding – kodeliste – [utf-8]
-    - Content – serialisert dokumentinnhold
+    - Dokument – complex type
+        - Type –
+          kodeliste [skattemeldingPersonligEtterBeregning|beregnetSkattPersonlig|summertSkattegrunnlagForVisningPersonlig|naeringsspesifikasjonEtterBeregning|skattemeldingUpersonligEtterBeregning|beregnetSkattUpersonlig|summertSkattegrunnlagForVisningUpersonlig]
+        - Encoding – kodeliste – [utf-8]
+        - Content – serialisert dokumentinnhold
 - avvikEtterBeregning – konvolutt for avvik funnet etter beregning
-  - avvik – complex type
-    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
-      - OBS! manglerSkattemelding kan henvise til følgende dokumenttyper : skattemelding, skattemeldingUpersonlig og selskapsmelding 
-    - forekomstidentifikator – identifikator av felt i skattemeldingen
-    - mottattVerdi – verdien som ble sendt inn
-    - beregnetVerdi – verdien som ble beregnet
-    - avvikIVerdi – avviket mellom den innsendte verdien og den beregnede verdien
-    - sti – stien til elementet som har avvik
+    - avvik – complex type
+        - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
+            - OBS! manglerSkattemelding kan henvise til følgende dokumenttyper : skattemelding, skattemeldingUpersonlig
+              og selskapsmelding
+        - forekomstidentifikator – identifikator av felt i skattemeldingen
+        - mottattVerdi – verdien som ble sendt inn
+        - beregnetVerdi – verdien som ble beregnet
+        - avvikIVerdi – avviket mellom den innsendte verdien og den beregnede verdien
+        - sti – stien til elementet som har avvik
 - avvikVedValidering – konvolutt for avvik funnet ved validering
-  - avvik – complex type
-    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
-    - forekomstidentifikator – identifikator av felt i skattemeldingen
-    - mottattVerdi – verdien som ble sendt inn
-    - beregnetVerdi – verdien som ble beregnet
-    - avvikIVerdi – avviket mellom den innsendte verdien og den beregnede verdien
-    - sti – stien til elementet som har avvik
+    - avvik – complex type
+        - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
+        - forekomstidentifikator – identifikator av felt i skattemeldingen
+        - mottattVerdi – verdien som ble sendt inn
+        - beregnetVerdi – verdien som ble beregnet
+        - avvikIVerdi – avviket mellom den innsendte verdien og den beregnede verdien
+        - sti – stien til elementet som har avvik
 - veiledningEtterKontroll – konvolutt for veiledninger
-  - veiledning – complex type
-    - veiledningstype – kodeliste [kontrollnavnet i SMIA, mulighetsrom kommer fra dem]
-    - forekomstidentifikator – identfikator til felt i skattemeldingen
-    - sti – stien til elementet med veiledning
+    - veiledning – complex type
+        - veiledningstype – kodeliste [kontrollnavnet i SMIA, mulighetsrom kommer fra dem]
+        - forekomstidentifikator – identfikator til felt i skattemeldingen
+        - sti – stien til elementet med veiledning
 
+## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument <a name="validerTest"></a>
 
-## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument
-Hvis dere har behov for å gjøre beregninger før Skatteetaten har publisert utkast for et inntektsår, kan dere kalle denne tjenesten.
+Hvis dere har behov for å gjøre beregninger før Skatteetaten har publisert utkast for et inntektsår, kan dere kalle
+denne tjenesten.
 Den er helt lik som valideringstjenesten, men krever ikke `dokumentreferanseTilGjeldendeDokument`.
 
 **URL** : `POST https://<env>/api/skattemelding/v2/validertest/<inntektsaar>/<identifikator>`
@@ -333,17 +385,18 @@ Den er helt lik som valideringstjenesten, men krever ikke `dokumentreferanseTilG
 - `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
 - `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige`
 
-**Body** 
+**Body**
 Likt som valider ovenfor
 
+## Hent vedlegg <a name="hentVedlegg"></a>
 
-## Hent vedlegg
-
-Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, enten fastsatt i gjeldende/nyeste skattemelding eller fra tidligere fastsettinger.
+Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, enten fastsatt i gjeldende/nyeste
+skattemelding eller fra tidligere fastsettinger.
 
 **URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/vedlegg/<vedleggId>`
 
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/<inntektsaar>/<identifikator>/vedlegg/<vedleggId>`
+**Eksempel URL
+** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/<inntektsaar>/<identifikator>/vedlegg/<vedleggId>`
 
 **Forespørsel** :
 
@@ -358,21 +411,25 @@ Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, en
 
 ## Eiendom API
 
-Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners formuesgrunnlag og for å beregne eiendommers markedsverdi.
+Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners formuesgrunnlag og for å beregne
+eiendommers markedsverdi.
 
 ### Testdata
 
 Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer.xlsx)
 
-### Søk
+### Søk <a name="eiendomSoek"></a>
 
-Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
+Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og
+andelsnr/aksjeboenhetsnr)
 
 **URL** : `GET https://<env>/api/skattemelding/v2/eiendom/soek/<inntektsår>?query=<tekst>`
 
-**Eksempel URL vegadress** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2021?query=Storgata 1`
+**Eksempel URL vegadress
+** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2021?query=Storgata 1`
 
-**Eksempel URL matrikkelnummer** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2021?query=36/120`
+**Eksempel URL matrikkelnummer
+** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/soek/2021?query=36/120`
 
 **Forespørsel** :
 
@@ -452,15 +509,19 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 
 - `sergEiendomsidentifikator: eiendomsidentifkator som skal benyttes for å hente eiendom og formuesinformajon.`
 
-### Hent formuesgrunnlag
+### Hent formuesgrunnlag <a name="hentFormuesgrunnlag"></a>
 
 Hent formuesgrunnlag for valgt unik eiendomsidentifikator og inntektsår.
 
-Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektsår, og at formuesopplysninger vil variere basert på hvilken eiendomstype eiendomsidentifikator har. Noen detaljer vil fjernes fra responsen hvis skatteyter ikke er eier av eiendommen.
+Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektsår, og at formuesopplysninger vil variere
+basert på hvilken eiendomstype eiendomsidentifikator har. Noen detaljer vil fjernes fra responsen hvis skatteyter ikke
+er eier av eiendommen.
 
-**URL** : `GET https://<env>/api/skattemelding/v2/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>`
+**URL
+** : `GET https://<env>/api/skattemelding/v2/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>`
 
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/formuesgrunnlag/2021/1/02095300173`
+**Eksempel URL
+** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/formuesgrunnlag/2021/1/02095300173`
 
 **Forespørsel** :
 
@@ -541,13 +602,15 @@ Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektså
 - `formuesspesifikasjonFor*: innholder eiendommens formuesspesifikasjon og gjeldende skatteyters andel av formuesverdi. Detaljer som xxxx er med hvis skatteyter er eier av eiendommen. * Kan ha følgende verdier: Bolig, Flerboligbygning, SkalIkkeFastsettes, Tomt, SelveidFritidseiendom, AnnenFastEiendomInnenforInntektsgivendeAktivitet, AnnenFastEiendomUtenforInntektsgivendeAktivitet.`
 - `ukjentEiendomINorge: hvis vi ikke støtter denne eiendomstypen.`
 
-### Beregn markedsverdi for bolig
+### Beregn markedsverdi for bolig <a name="markedsverdiBolig"></a>
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
-Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert markedsverdi vil ikke hensyntas.
+Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert
+markedsverdi vil ikke hensyntas.
 
-Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
+Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de
+beregnede feltene.
 
 **URL** : `POST https://<env>/api/skattemelding/v2/eiendom/markedsverdi/bolig/<inntektsår>/<eiendomsidentifikator>`
 
@@ -707,19 +770,22 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - `dokumentertMarkedsverdi: dokumentert markedsverdi når denne er innefor reglene slik at den er hensynstatt.`
 - `justertMarkedsverdi: justert markedsverdi er med når dokumentert markedsverdi er hensynstatt.`
 
-### Beregn markedsverdi for flerbolig
+### Beregn markedsverdi for flerbolig <a name="markedsverdiFlerbolig"></a>
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
 Det beregnes markedsverdi for hver useksjonert boenhet.
 
-Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert markedsverdi vil ikke hensyntas.
+Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert
+markedsverdi vil ikke hensyntas.
 
-Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
+Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de
+beregnede feltene.
 
 **URL** : `POST https://<env>/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/<inntektsår>/<eiendomsidentifikator>`
 
-**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/2021/102`
+**Eksempel URL
+** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/2021/102`
 
 **Forespørsel** :
 
@@ -956,13 +1022,16 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
-### Beregn utleieverdi for ikke-utleid næringseiendom
+### Beregn utleieverdi for ikke-utleid næringseiendom <a name="markedsverdiIkkeUtiledNaeringseiendom"></a>
 
-BeregnetUtleieverdi er basert på næringssjablong fra SSB hvor næringstype, areal, bystatus, sentralitet og skatteleggingsperiode inngår i beregningen.
+BeregnetUtleieverdi er basert på næringssjablong fra SSB hvor næringstype, areal, bystatus, sentralitet og
+skatteleggingsperiode inngår i beregningen.
 
-Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert markedsverdi vil ikke hensyntas.
+Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert
+markedsverdi vil ikke hensyntas.
 
-Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
+Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de
+beregnede feltene.
 
 **URL** : `POST https://<env>/api/skattemelding/v2/eiendom/utleieverdi/<inntektsår>/<eiendomsidentifikator>`
 
@@ -992,14 +1061,14 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 
 ```json
 {
-    "formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge": [
-        {
-            "eiendomstype": "ikkeUtleidNaeringseiendomINorge",
-            "naeringseiendomstype": "tomtGrunnarealHovedfunksjon",
-            "areal": "250",
-            "dokumentertMarkedsverdi": "200000"
-        }
-    ]
+  "formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge": [
+    {
+      "eiendomstype": "ikkeUtleidNaeringseiendomINorge",
+      "naeringseiendomstype": "tomtGrunnarealHovedfunksjon",
+      "areal": "250",
+      "dokumentertMarkedsverdi": "200000"
+    }
+  ]
 }
 ```
 
@@ -1007,15 +1076,15 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 
 ```json
 {
-    "formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge": [
-        {
-            "eiendomstype": "ikkeUtleidNaeringseiendomINorge",
-            "naeringseiendomstype": "tomtGrunnarealHovedfunksjon",
-            "areal": "250",
-            "beregnetUtleieverdi": "250000",
-            "utleieverdi": "250000"
-        }
-    ]
+  "formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge": [
+    {
+      "eiendomstype": "ikkeUtleidNaeringseiendomINorge",
+      "naeringseiendomstype": "tomtGrunnarealHovedfunksjon",
+      "areal": "250",
+      "beregnetUtleieverdi": "250000",
+      "utleieverdi": "250000"
+    }
+  ]
 }
 ```
 
@@ -1074,14 +1143,18 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
+## Forløpig avregning <a name="avregning"></a>
 
-## Forløpig avregning
-Tjenesten avregning er en tjeneste som mottar fødselsnummer og beregnet skatt og retunerer avregning. Denne tjenesten vil IKKE ta høyde for eventuelte tidligere skatteoppgjør for aktuelt inntektsår. Dvs at hvis skattyter har et skatteoppgjør og fått utbetalt tilgode, og skal gjøre en endring så vil denne tjenesten avregne som om det var første skatteoppgjør
+Tjenesten avregning er en tjeneste som mottar fødselsnummer og beregnet skatt og retunerer avregning. Denne tjenesten
+vil IKKE ta høyde for eventuelte tidligere skatteoppgjør for aktuelt inntektsår. Dvs at hvis skattyter har et
+skatteoppgjør og fått utbetalt tilgode, og skal gjøre en endring så vil denne tjenesten avregne som om det var første
+skatteoppgjør
 
 *URL** : `POST https://<env>/api/skattemelding/v2/avregning/avregn/{inntektsaar}/{identifikator}`
+
 ```json
 {
-  "beregnetSkatt" : 10000
+  "beregnetSkatt": 10000
 }
 ```
 
@@ -1093,7 +1166,8 @@ Tjenesten avregning er en tjeneste som mottar fødselsnummer og beregnet skatt o
 - `<beregnetSkatt>: Sum beregnet skatt for aktuelt inntektsår.`
 
 **Respons**
-responsen er json med disse feltene. Spørsmålstegn indikerer at feltet ikke er obligatorisk og dersom det ikke er noe verdi i dette feltet, blir det ikke retunert
+responsen er json med disse feltene. Spørsmålstegn indikerer at feltet ikke er obligatorisk og dersom det ikke er noe
+verdi i dette feltet, blir det ikke retunert
 
 - beregnetSkatt: Long,
 - forskuddstrekk: Long?,
@@ -1124,10 +1198,10 @@ responsen er json med disse feltene. Spørsmålstegn indikerer at feltet ikke er
 - fastsattKildeskattPaaLoenn: Long?,
 - refusjonAvKildeskattPaaLoenn: Long?
 
-
 # Altinn3-API
 
-For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjennom et klient API (typisk skattepliktige som bruker et sluttbrukersystem) tilbyr Altinn API-er med følgende funksjonalitet:
+For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjennom et klient API (typisk skattepliktige
+som bruker et sluttbrukersystem) tilbyr Altinn API-er med følgende funksjonalitet:
 
 1. opprette en instans i Altinn
 2. populere instansen med metadata
@@ -1135,9 +1209,12 @@ For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjenn
 4. populere instansen med skattemeldingsdata
 5. trigger neste steg slik at instansen havner i status _Bekreftelse_ (betyr "data lastet opp").
 6. trigger neste steg slik at instansen havner i status _Tilbakemelding_ (betyr "skattemeldingen innsendt").
-7. hente kvittering/tilbakemelding. Merk at det kan gå litt tid før kvittering er tilgjengelig (Skatteetaten må laste ned, behandle innsendingen og laste opp kvitteringen)
+7. hente kvittering/tilbakemelding. Merk at det kan gå litt tid før kvittering er tilgjengelig (Skatteetaten må laste
+   ned, behandle innsendingen og laste opp kvitteringen)
 
-Les mer om Altinn API-ene på [altinn sine sider](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/). Altinn har utviklet POSTMAN skript som viser hvordan deres APIer kan bli kalt. Postman skriptene [finnes her](https://github.com/Altinn/altinn-studio/blob/master/src/test/Postman/collections/App.postman_collection.json)
+Les mer om Altinn API-ene på [altinn sine sider](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/). Altinn
+har utviklet POSTMAN skript som viser hvordan deres APIer kan bli kalt. Postman
+skriptene [finnes her](https://github.com/Altinn/altinn-studio/blob/master/src/test/Postman/collections/App.postman_collection.json)
 
 Tjenestene listet under kalles for å sende inn skattemelding til Altinn.
 
@@ -1149,13 +1226,17 @@ _Merk at Base URL-en_ til applikasjonen vår i Altinn er:
 
 ## Hent token
 
-Første trinn er å få generert et autentiseringstoken i Altinn. Autentisering skjer enten via maskinporten eller ID-porten. Les mer om det på [altinn sine sider](https://docs.altinn.studio/api/authentication/)
+Første trinn er å få generert et autentiseringstoken i Altinn. Autentisering skjer enten via maskinporten eller
+ID-porten. Les mer om det på [altinn sine sider](https://docs.altinn.studio/api/authentication/)
 
-Tokenet fra maskinporten/ID-porten brukes til å veksle det inn i et Altinn JWT access token. Det er Altinn tokenet som brukes videre til å kalle Altinn-APIer beskervet under.
+Tokenet fra maskinporten/ID-porten brukes til å veksle det inn i et Altinn JWT access token. Det er Altinn tokenet som
+brukes videre til å kalle Altinn-APIer beskervet under.
 
-**Testmiljø:** `curl --location --request GET 'https://platform.tt02.altinn.no//authentication/api/v1/exchange/id-porten' \ --header 'Authorization: Bearer <ID-porten/maskinporten Token>'`
+**Testmiljø:
+** `curl --location --request GET 'https://platform.tt02.altinn.no//authentication/api/v1/exchange/id-porten' \ --header 'Authorization: Bearer <ID-porten/maskinporten Token>'`
 
-**Produksjonsmiljø:** `curl --location --request GET 'https://platform.altinn.no//authentication/api/v1/exchange/id-porten' \ --header 'Authorization: Bearer <ID-porten/maskinporten Token>'`
+**Produksjonsmiljø:
+** `curl --location --request GET 'https://platform.altinn.no//authentication/api/v1/exchange/id-porten' \ --header 'Authorization: Bearer <ID-porten/maskinporten Token>'`
 
 Responsen til dette kallet vil være et Altinn-token, dette tokenet skal brukes i kallene under.
 <br />
@@ -1164,9 +1245,11 @@ Responsen til dette kallet vil være et Altinn-token, dette tokenet skal brukes 
 
 Altinn krever at det brukes Altinn sin interne ID-en, kalt _PartyId_ ved kall til Altinn tjenestene.
 
-**Testmiljø:** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
+**Testmiljø:
+** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
 
-**Produksjonsmiljø:** `curl --location --request GET 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
+**Produksjonsmiljø:
+** `curl --location --request GET 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/api/v1/profile/user' \ --header 'Authorization: Bearer <altinn Token>'`
 
 <br />
 
@@ -1175,71 +1258,89 @@ Merk at partyId kan også fås ved å opprette instans basert på fødselsnummer
 ## Opprett en instans i Altinn
 
 Det er to måter å opprette en instans i Altinn på.
-Alternativ 1 er foretrukket, og innebærer å sende med inntektsaar i payloaden. Dette gjør "Oppdater skjema-metadata til instansen" overflødig.
+Alternativ 1 er foretrukket, og innebærer å sende med inntektsaar i payloaden. Dette gjør "Oppdater skjema-metadata til
+instansen" overflødig.
 
 ### Opprett en instans i Altinn (Alternativ 1)
 
-For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen være `formueinntekt-skattemelding-v2`
+For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen
+være `formueinntekt-skattemelding-v2`
 
 Beskrivelse: `inntektsaar: Inntektsår skattemeldingen gjelder for`
 
-Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige respons og bruk det i body under. 
+Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige respons og
+bruk det i body under.
 
+**Testmiljø:
+** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
+**Produksjonsmiljø:
+** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
+En instans kan også opprettes ved å oppgi fødselsnummer (i stedet for partyId) i payloaden, da vil partyId bli retunert
+i responsen og kan brukes til å gjøre resterende kall mot Altinn.
 
-En instans kan også opprettes ved å oppgi fødselsnummer (i stedet for partyId) i payloaden, da vil partyId bli retunert i responsen og kan brukes til å gjøre resterende kall mot Altinn.
+**Testmiljø:
+** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
+**Produksjonsmiljø:
+** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2", "dataValues":{"inntektsaar":2021} }'`
-
-Merk at skattemelding for "personlige skattepliktige med næring (ENK)" skal alltid sendes inn på personens fødselsnummer (det kan ikke benyttes orgnummer til ENK).
+Merk at skattemelding for "personlige skattepliktige med næring (ENK)" skal alltid sendes inn på personens
+fødselsnummer (det kan ikke benyttes orgnummer til ENK).
 
 Les mer om endepunktet på Altinn sine sider:
 https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#create-instance
 
-**Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere til å hente/oppdatere instansen.
+**Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere
+til å hente/oppdatere instansen.
 <br />
 
-
 ### Opprett en instans i Altinn (Alternativ 2)
-For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen være `formueinntekt-skattemelding-v2`
 
+For å opprette en instans av skattemeldingen i Altinn3, så skal det tekniske navnet på instansen
+være `formueinntekt-skattemelding-v2`
 
-Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige responsen og bruk det i body under.
+Første trinn i innsendingsløpet er opprettelse av en instans av skattemeldingen. Plukk ut partyId fra forrige responsen
+og bruk det i body under.
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
+**Testmiljø:
+** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
+**Produksjonsmiljø:
+** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "partyId": "50006875" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
 
-En instans kan også opprettes ved å oppgi fødselsnummer (i stedet for partyId) i payloaden, da vil partyId bli retunert i responsen og kan brukes til å gjøre resterende kall mot Altinn.
+En instans kan også opprettes ved å oppgi fødselsnummer (i stedet for partyId) i payloaden, da vil partyId bli retunert
+i responsen og kan brukes til å gjøre resterende kall mot Altinn.
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
+**Testmiljø:
+** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
+**Produksjonsmiljø:
+** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{ "instanceOwner": { "personNumber": "12345678910" }, "appId" : "skd/formueinntekt-skattemelding-v2" }'`
 
-Merk at skattemelding for "personlige skattepliktige med næring (ENK)" skal alltid sendes inn på personens fødselsnummer (det kan ikke benyttes orgnummer til ENK).
+Merk at skattemelding for "personlige skattepliktige med næring (ENK)" skal alltid sendes inn på personens
+fødselsnummer (det kan ikke benyttes orgnummer til ENK).
 
 Les mer om endepunktet på Altinn sine sider:
 https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#create-instance
 
-**Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere til å hente/oppdatere instansen.
+**Respons** : Metadata om instansen som ble opprettet. En unik instanceId vil være med i responen og kan brukes seinere
+til å hente/oppdatere instansen.
 <br />
 
 ### Oppdater skjema-metadata til instansen (Kun hvis alternativ 2 benyttes ved opprettelse av instans)
 
 _Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten.
 
-Neste trinn er å laste opp meta-data om skattemeldingen. Meta-data skal være en json tilsvarende eksempelet under. 
+Neste trinn er å laste opp meta-data om skattemeldingen. Meta-data skal være en json tilsvarende eksempelet under.
 
 ```json
 {
   "inntektsaar": 2021
 }
 ```
+
 Beskrivelse: `inntektsaar: Inntektsår skattemeldingen gjelder for`
 
 Plukk ut _id_ og _data.id_ fra forrige responsen og bruk de på slutten av url-en under:
@@ -1247,30 +1348,37 @@ Plukk ut _id_ og _data.id_ fra forrige responsen og bruk de på slutten av url-e
 - erstatt 50028539/82652921-88e4-47d9-9551-b9da483e86c2 med verdien fra _id_
 - erstatt 58c560b4-90a2-42ac-af26-98e1e60336cd med verdien fra _data.id_
 
-**Testmiljø:** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data/58c560b4-90a2-42ac-af26-98e1e60336cd' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{"inntetksaar": 2021}'`
+**Testmiljø:
+** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data/58c560b4-90a2-42ac-af26-98e1e60336cd' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{"inntetksaar": 2021}'`
 
-**Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data/58c560b4-90a2-42ac-af26-98e1e60336cd' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{"inntetksaar": 2021}'`
+**Produksjonsmiljø:
+** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data/58c560b4-90a2-42ac-af26-98e1e60336cd' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <altinn Token>' \ --data-raw '{"inntetksaar": 2021}'`
 
 <br />
 
 ## Last opp vedlegg (ved behov)
 
-Opplasting av vedlegg utføres etter instansopprettelse og før innsending av skattemeldingdata. 
+Opplasting av vedlegg utføres etter instansopprettelse og før innsending av skattemeldingdata.
 
 Ved opplasting av vedlegg må denne prosedyren følges:
+
 1. Last opp vedlegg til instans
-2. Oppdater skattemelding.xml med vedleggsreferanse(er) iht. XSD: [skattemelding_v9_kompakt_ekstern.xsd](../../src/resources/xsd). 
-   - Ved oppdatering av skattemelding med referanser til vedlegg trengs en vedleggsId. Denne vedleggsId-en finner man i 
-    responsen til kallet for opplasting av vedlegg. 
+2. Oppdater skattemelding.xml med vedleggsreferanse(er) iht.
+   XSD: [skattemelding_v9_kompakt_ekstern.xsd](../../src/resources/xsd).
+    - Ved oppdatering av skattemelding med referanser til vedlegg trengs en vedleggsId. Denne vedleggsId-en finner man i
+      responsen til kallet for opplasting av vedlegg.
 
 Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 Merk at dataType skal settes til **skattemelding-vedlegg**.
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: application/pdf' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel_Vedlegg.pdf'`
+**Testmiljø:
+** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: application/pdf' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel_Vedlegg.pdf'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: application/pdf' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel_vedlegg.pdf'`
+**Produksjonsmiljø:
+** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: application/pdf' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel_vedlegg.pdf'`
 
-**Merk** 
+**Merk**
+
 - Aksepterte content-types er: application/pdf, image/jpeg og image/png
 - Content-disposition skal være: **attachment; filename=\<filnavn>**
 
@@ -1280,41 +1388,55 @@ Merk at dataType skal settes til **skattemelding-vedlegg**.
 
 Neste trinn er å laste opp skattemeldingsdata.
 
-**Merk:** Hvis vedlegg er lastet opp til instansen må disse være lagt til i skattemeldingen før opplasting av skattemelding.xml. 
-Det anbefales å gjøre ny validering etter oppdatering av skattemelding.xml.  
+**Merk:** Hvis vedlegg er lastet opp til instansen må disse være lagt til i skattemeldingen før opplasting av
+skattemelding.xml.
+Det anbefales å gjøre ny validering etter oppdatering av skattemelding.xml.
 
 Forklaring av attributter til vedlegg-seksjonen i skattemelding.xml
-- id: Identifiserer vedlegget. Denne ideen hentes fra responsen ved opplasting av vedlegget. Se beskrivelse "Last opp vedlegg (ved behov)"
+
+- id: Identifiserer vedlegget. Denne ideen hentes fra responsen ved opplasting av vedlegget. Se beskrivelse "Last opp
+  vedlegg (ved behov)"
 - vedleggsnavn: Forklarende navn på vedlegget. (ikke påkrevd)
 - vedleggsfil/opprinneligFilnavn: Filnavnet som filen hadde da vedlegget ble lastet opp.
 - vedleggsfil/opprinneligFiltype: Filtypen som filen hadde da vedlegget ble lastet opp.  (jpg, pdf, osv.)
 - vedleggsfil/filensOpprinneligDatoOgTid: Tidspunkt for når vedlegget ble lastet opp
-- vedleggstype/vedleggskategori: Vedleggstype som velges ut fra en kodeliste.  [2021_vedleggskategori.xml](../../src/resources/kodeliste/2021/2021_vedleggskategori.xml)
-- informasjonselementidentifikator: Sti som bekriver hvilket felt vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom. Stien bygges opp av skattemeldingsdokumentets xml-struktur. Eksempel: "/skattemelding/bankLaanOgForsikring/konto/paaloepteRenter/beloepUtenHensynTilValgtPrioritertFradragstype/beloep/beloepIValuta/beloep" Se fullstendig eksempel: ../../src/resources/eksempler/v2/personligSkattemeldingV9EksempelFeltvedlegg.xml
-- forekomstidentifikator: Forekomstid til feltet som vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom.
-- utvekslingsarkividentifikator: Dette er nøkkelen til dokumentet i Skatteetatens arkiv. Nøkkelen skal ikke fylles ut av SBS.
+- vedleggstype/vedleggskategori: Vedleggstype som velges ut fra en
+  kodeliste.  [2021_vedleggskategori.xml](../../src/resources/kodeliste/2021/2021_vedleggskategori.xml)
+- informasjonselementidentifikator: Sti som bekriver hvilket felt vedlegget tilhører. Hvis vedlegget ikke skal tilhøre
+  et felt, skal denne være tom. Stien bygges opp av skattemeldingsdokumentets xml-struktur. Eksempel: "
+  /skattemelding/bankLaanOgForsikring/konto/paaloepteRenter/beloepUtenHensynTilValgtPrioritertFradragstype/beloep/beloepIValuta/beloep"
+  Se fullstendig eksempel: ../../src/resources/eksempler/v2/personligSkattemeldingV9EksempelFeltvedlegg.xml
+- forekomstidentifikator: Forekomstid til feltet som vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal
+  denne være tom.
+- utvekslingsarkividentifikator: Dette er nøkkelen til dokumentet i Skatteetatens arkiv. Nøkkelen skal ikke fylles ut av
+  SBS.
 
 Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 (ved ved en hvilken som helst xml-fil). Merk at dataType skal settes til **skattemeldingOgNaeringsspesifikasjon**.
 
-**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemeldingOgNaeringsspesifikasjon' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen..xml'`
+**Testmiljø:
+** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemeldingOgNaeringsspesifikasjon' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen..xml'`
 
-**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemeldingOgNaeringsspesifikasjon' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen..xml'`
+**Produksjonsmiljø:
+** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemeldingOgNaeringsspesifikasjon' \ --header 'Content-Disposition: attachment; filename=skattemelding.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel1_skattemeldingen..xml'`
 
 **Merk** følgende i curl-kommandoen over:
-- content-type skal være **text/xml** (i dokumetasjonen hos altinn3 står det at content-type skal være application/xml, det er feil)
-- Content-Disposition skal være **attachment; filename=skattemelding.xml** (skattemelding.xml skal ikke ha double quotes. Dette vil gi feil: filename="skattemelding.xml").
 
-
+- content-type skal være **text/xml** (i dokumetasjonen hos altinn3 står det at content-type skal være application/xml,
+  det er feil)
+- Content-Disposition skal være **attachment; filename=skattemelding.xml** (skattemelding.xml skal ikke ha double
+  quotes. Dette vil gi feil: filename="skattemelding.xml").
 
 **Body :** `data-binary '../skattemelding.xml'.`
 Innholdet i filen skattemelding.xml skal være på format:
+
 - Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd)
 - Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/2021)
 
 Merk at det er samme format som benyttes ved kall til valideringstjensten.
 
-**Respons :** `Respons vil inneholde metadata om objektet som ble opprettet. En unik identifikator (id) vil bli retunert som seinere kan brukes til å oppdatere, sjekke status etc..`
+**Respons :
+** `Respons vil inneholde metadata om objektet som ble opprettet. En unik identifikator (id) vil bli retunert som seinere kan brukes til å oppdatere, sjekke status etc..`
 
 <br />
 
@@ -1324,46 +1446,66 @@ Når data opplastingen er gjort kan følgende kall gjøres for å få instansen 
 
 Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 
-**Testmiljø:** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`
+**Testmiljø:
+** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`
 
-**Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`  
+**Produksjonsmiljø:
+** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw '''`  
 <br />
 
 ## Åpne visningsklient for å se beregnet skattemelding med næringsspesifikasjon
-Skatteetaten tilbyr en visningsklient for å se innholdet av skattemelding og næringsspesifikasjon slik skatteetaten ser den.
 
-Url'en til visningsklient kan åpnes fra nettleser: 
+Skatteetaten tilbyr en visningsklient for å se innholdet av skattemelding og næringsspesifikasjon slik skatteetaten ser
+den.
 
-**Testmiljø:** `https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId=50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c`
+Url'en til visningsklient kan åpnes fra nettleser:
 
-**Produksjonsmiljø:** `https://skatt.skatteetaten.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId=50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c`
+**Testmiljø:
+** `https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId=50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c`
+
+**Produksjonsmiljø:
+** `https://skatt.skatteetaten.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId=50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c`
 
 - Erstatt 50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c med verdien _id_ fra instansen
 
 ## Trigge prosess/next for å få prosessen til status _Tilbakemelding_
 
-Gjør kall under for å gjøre seg ferdig med instansen/innsendingen, dette slik at skatteetaten kan plukke den opp og behandle:
+Gjør kall under for å gjøre seg ferdig med instansen/innsendingen, dette slik at skatteetaten kan plukke den opp og
+behandle:
 
 Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det på slutten av url-en under.
 
-**Testmiljø:** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw ''`
+**Testmiljø:
+** `curl --location --request PUT 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw ''`
 
-**Produksjonsmiljø:** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw ''`
+**Produksjonsmiljø:
+** `curl --location --request PUT 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/process/next' \ --header 'Content-Type: application/json' \ --header 'Authorization: Bearer <Altinn Token>' \ --data-raw ''`
 
 <br />
 
 ## Hente kvittering
 
-Etter at innsendingen er blitt behandlet hos skatteetaten vil det bli lastet opp en kvitteirng/tilbakemelding på instansen i altinn.
+Etter at innsendingen er blitt behandlet hos skatteetaten vil det bli lastet opp en kvitteirng/tilbakemelding på
+instansen i altinn.
 Kvitteringen (xml-fil) kan lastes ned ved å:
-1. hente ut instans-data:
-  * **Testmiljø:** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed' \ --header 'Authorization: Bearer <altinn Token>'`
-  * **Produksjonsmiljø:** `curl --location --request GET 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed' \ --header 'Authorization: Bearer <altinn Token>'`
 
-   Les mer om det hos Altinn [get-instance](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#get-instance)
+1. hente ut instans-data:
+
+* **Testmiljø:
+  ** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed' \ --header 'Authorization: Bearer <altinn Token>'`
+* **Produksjonsmiljø:
+  ** `curl --location --request GET 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed' \ --header 'Authorization: Bearer <altinn Token>'`
+
+Les mer om det hos
+Altinn [get-instance](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#get-instance)
+
 2. plukke ut id-en til vedlegget 'tilbakemelding' fra payloaden i #1 (data --> dataType=tilbakemelding).
 3. bruke Id-en fra #2 og kalle følgende API for å hente ut tilbakemeldingen:
-  * **Testmiljø:** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/{{appId}}/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed/data/<ID til vedlegget>' \ --header 'Authorization: Bearer <altinn Token>'`
-  * **Produksjonsmiljø:** `curl --location --request GET 'https://skd.apps.altinn.no/{{appId}}/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed/data/<ID til vedlegget>' \ --header 'Authorization: Bearer <altinn Token>'`
 
-   Les mer om det hos Altinn [get-data](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/data-elements/#get-data)
+* **Testmiljø:
+  ** `curl --location --request GET 'https://skd.apps.tt02.altinn.no/{{appId}}/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed/data/<ID til vedlegget>' \ --header 'Authorization: Bearer <altinn Token>'`
+* **Produksjonsmiljø:
+  ** `curl --location --request GET 'https://skd.apps.altinn.no/{{appId}}/instances/50006869/060d4d74-dbb9-4ba3-a7d2-968e9b6e31ed/data/<ID til vedlegget>' \ --header 'Authorization: Bearer <altinn Token>'`
+
+Les mer om det hos
+Altinn [get-data](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/data-elements/#get-data)
