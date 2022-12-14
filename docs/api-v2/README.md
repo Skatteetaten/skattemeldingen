@@ -84,14 +84,38 @@ API-ene som tilbys vil sjekke at sluttbrukeren eller eier av sluttbrukersystemet
 
 Dette betyr at sluttbrukeren eller eier av sluttbrukersystemet må ha de nødvendige rollene i Altinn. Dette blir som i eksisterende løsninger.
 
+
+## Oppsummering API endepunkt
+
+| TYPE | API path                                                                                                  | Virkshomhetssertifikat |
+|------|-----------------------------------------------------------------------------------------------------------|------------------------|
+| GET  | /api/skattemelding/v2/ping                                                                                | JA                     |
+| GET  | /api/skattemelding/v2/<inntektsaar>/<identifikator>/                                                      | Nei                    |
+| GET  | /api/skattemelding/v2/<inntektsaar>/<identifikator>/                                                      | Nei                    |
+| GET  | /api/skattemelding/v2/<inntektsaar>/<identifikator>?inkluderUtvidetVeiledning=<inkluderUtvidetVeiledning> | Nei                    |
+| GET  | /api/skattemelding/v2/<type>/<inntektsaar>/<identifikator>/                                               | Nei                    |
+| POST | /api/skattemelding/v2/valider/<inntektsaar>/<identifikator>                                               | Nei                    |
+| POST | /api/skattemelding/v2/validertest/<inntektsaar>/<identifikator>                                           | Planlagt               |
+| GET  | /api/skattemelding/v2/<inntektsaar>/<identifikator>/vedlegg/<vedleggId>                                   | Nei                    |
+| GET  | /api/skattemelding/v2/eiendom/soek/<inntektsår>?query=<tekst>                                             | Ja                     |
+| GET  | /api/skattemelding/v2/eiendom/formuesgrunnlag/<inntektsår>/<eiendomsidentifikator>/<identifikator>        | Nei                    |
+| GET  | /api/skattemelding/v2/eiendom/markedsverdi/bolig/<inntektsår>/<eiendomsidentifikator>                     | Ja                     |
+| POST | /api/skattemelding/v2/eiendom/markedsverdi/flerbolig/<inntektsår>/<eiendomsidentifikator>                 | Ja                     |
+| POST | /api/skattemelding/v2/eiendom/utleieverdi/<inntektsår>/<eiendomsidentifikator>                            | Ja                     |
+| POST | /api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning                                    | Nei                    |
+
+
+| Miljø                             | Adresse                      |
+|-----------------------------------|------------------------------|
+| Test                              | idporten-api-sbstest.sits.no |
+| Test virksomhetsstertifikat       | api-sbstest.sits.no          |
+| Produksjon                        | idporten.api.skatteetaten.no |
+| Produksjon virkshometsstertifikat | api.skatteetaten.no          |
+
 ## Ping tjeneste
 
 API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungerer.
 
-| Miljø        | Adresse                         |
-| ------------ | ------------------------------- |
-| Test         | idporten-api-sbstest.sits.no    |
-| Produksjon   | idporten.api.skatteetaten.no    |
 
 
 **URL** : `GET https://<env>/api/skattemelding/v2/ping`
