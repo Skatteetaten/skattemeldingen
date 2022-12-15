@@ -126,12 +126,12 @@ eksisterende løsninger.
 | POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)              | Nei                    |
 | GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#avregning)                                                   | Nei                    |
 
-| Miljø                             | Adresse                      |
-|-----------------------------------|------------------------------|
-| Test                              | idporten-api-sbstest.sits.no |
-| Test virksomhetsstertifikat       | api-sbstest.sits.no          |
-| Produksjon                        | idporten.api.skatteetaten.no |
-| Produksjon virkshometsstertifikat | api.skatteetaten.no          |
+| Miljø                             | Adresse                      | Scope                                               | Påloggingsmetode      |
+|-----------------------------------|------------------------------|-----------------------------------------------------|-----------------------|
+| Test                              | idporten-api-sbstest.sits.no | skatteetaten:formueinntekt/skattemelding            | OIDC                  |
+| Test virksomhetsstertifikat       | api-sbstest.sits.no          | skatteetaten:formueinntekt/skattemelding/veiledning | Virksomhetssertifikat |
+| Produksjon                        | idporten.api.skatteetaten.no | skatteetaten:formueinntekt/skattemelding            | OIDC                  |
+| Produksjon virkshometsstertifikat | api.skatteetaten.no          | skatteetaten:formueinntekt/skattemelding/veiledning | Virksomhetssertifikat |
 
 ## Ping tjeneste <a name="ping"></a>
 
