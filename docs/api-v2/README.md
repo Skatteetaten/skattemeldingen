@@ -124,7 +124,7 @@ eksisterende løsninger.
 | POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                  | Ja                     |
 | POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                             | Ja                     |
 | POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)              | Nei                    |
-| GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/<\identifikator\>](#avregning)                                                   | Nei                    |
+| GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#avregning)                                                   | Nei                    |
 
 | Miljø                             | Adresse                      |
 |-----------------------------------|------------------------------|
