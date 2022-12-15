@@ -312,6 +312,29 @@ Den er helt lik som valideringstjenesten, men krever ikke `dokumentreferanseTilG
 **Body** 
 Likt som valider ovenfor
 
+## Lagre skattemelding midlertidig for visning
+Hvis dere har behov for å vise skattemeldingen i visningsklienten, kan den lastet opp via dette endepunktet. Skattemeldingen vil bli lagret i 24 timer for visning via URLen som returneres i responsen.
+
+**URL** : `POST https://<env>/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
+
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse`
+
+**Body** 
+Likt som valider ovenfor
+
+**Response**
+
+```json
+{
+  "url": "https://skatt.skatteetaten.no/web/skattemelding-visning/midlertidig-lagret-skattemelding-for-visning?id=<id>"
+}
+```
+- `<id>: Unik identifikator på midlertidig lagret skattemeldingen`
+
 
 ## Hent vedlegg
 
