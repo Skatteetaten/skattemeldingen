@@ -94,7 +94,10 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesobjekt" type="Formuesobjekt"/>
       <xsd:element minOccurs="0" name="gjeld" type="Gjeld"/>
       <xsd:element minOccurs="0" name="samletVerdiFoerEventuellVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+      <xsd:element minOccurs="0" name="samletFormuesverdiEtterVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
       <xsd:element minOccurs="0" name="samletGjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+      <xsd:element minOccurs="0" name="nettoformue" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+      <xsd:element minOccurs="0" name="forholdKnyttetTilFormuesbeskatning" type="ForholdKnyttetTilFormuesbeskatning"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DokumentOpprettet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/df81b854-3474-11e6-af6b-9614a8212dd3">
@@ -386,6 +389,15 @@
   <xsd:complexType name="Gjeld">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="annenGjeld" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ForholdKnyttetTilFormuesbeskatning">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="reduksjonAvGjeldForVerdsettingsrabattPaaEiendel" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="reduksjonAvGjeldForSkattefriFormueIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattefriFormueIUtlandet" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="bokfoertVerdiAvSkattefriFormueIUtlandet" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="formueFritattForFormuesskattSomFoelgeAvBasisbevilgningFraStaten" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FasteEiendommer">
