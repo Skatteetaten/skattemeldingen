@@ -142,6 +142,7 @@
       <xsd:element name="regnskapsperiode" type="Periode"/>
       <xsd:element name="virksomhetstype" type="VirksomhetstypeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskapMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="kontaktperson" type="Kontaktinformasjon"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvOmloepsmiddel">
@@ -531,6 +532,18 @@
       <xsd:element name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskap"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="Kontaktinformasjon" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52ad9-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:annotation>
+      <xsd:documentation>Navn, telefonnummer, sms-nummer og epost-adresse som kan brukes for uformell kontakt med en part</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="navn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940" type="Navn"/>
+      <xsd:element minOccurs="0" name="telefonnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e128-9fe1-11e5-a9f8-e4115b280940" type="Telefonnummer"/>
+      <xsd:element minOccurs="0" name="epostadresse" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e108-9fe1-11e5-a9f8-e4115b280940" type="Epostadresse"/>
+      <xsd:element minOccurs="0" name="mobiltelefonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e116-9fe1-11e5-a9f8-e4115b280940" type="Telefonnummer"/>
+      <xsd:element minOccurs="0" name="smsNummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e126-9fe1-11e5-a9f8-e4115b280940" type="Telefonnummer"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvSkattemessigVerdiPaaFordring">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="kundefordringOgIkkeFakturertDriftsinntekt" type="BeloepMedSkattemessigeEgenskaper"/>
@@ -639,14 +652,14 @@
   <xsd:complexType name="SkogOgToemmerkonto">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
-      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
+      <xsd:element name="driftsenhet" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="inngaaendeVerdiPaaToemmerkonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="driftsresultatSomKanOverfoeresTilToemmerkonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="andelAvDriftsresultatSomOverfoeresTilToemmerkonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="inngaaendeVerdiFraErvervetToemmerkonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="verdiPaaAndelAvRealisertToemmerkonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element name="grunnlagForInntektOgFradragPaaToemmerkontoIInntektsaaret" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="skogfond" type="Skogfond"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogfond" type="Skogfond"/>
       <xsd:element minOccurs="0" name="ekstraordinaerFordelingAvToemmeravvirkningEtterNaturkatastrofe" type="EkstraordinaerFordelingAvToemmeravvirkningEtterNaturkatastrofe"/>
       <xsd:element minOccurs="0" name="inntektOgKostnad" type="InntektOgKostnad"/>
       <xsd:element minOccurs="0" name="satsForInntektsfoeringOgInntektsfradrag" type="ProsentMedInnkapsling"/>
@@ -968,6 +981,31 @@
   <xsd:simpleType name="RegeltypeForAarsregnskap" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_regeltypeForAarsregnskap">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
+  <xsd:simpleType name="Navn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:annotation>
+      <xsd:documentation>et ord som noen el. noe kalles ved, og som henfører det nevnte til en bestemt klasse el. art (eks plantenavn, stoffnavn) el. skiller ut et bestemt individ, eksemplar e l fra en større gruppe (eks personnavn, stedsnavn). (Bokmålsordboka)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="200"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Telefonnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e128-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:annotation>
+      <xsd:documentation>tallkode som telenettet bruker for å få fram teletrafikk til riktig adressat</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Epostadresse" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e108-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:annotation>
+      <xsd:documentation>navngitt elektronisk adresse for mottak av e-post</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:maxLength value="254"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:complexType name="VerditypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="verditype" type="Verditype"/>
@@ -1092,6 +1130,8 @@
   </xsd:simpleType>
   <xsd:complexType name="Skogfond">
     <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
       <xsd:element minOccurs="0" name="utbetaltFraSkogfondkontoTilFormaalMedSkattefordel" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="utbetaltFraSkogfondkontoTilFormaalUtenSkattefordel" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="innbetaltOffentligTilskuddTilSkogfondkonto" type="BeloepMedSkattemessigeEgenskaper"/>
@@ -1117,6 +1157,8 @@
       <xsd:element minOccurs="0" name="inntektFraGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="inntektsfradragFraGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="inntektsfoeringAvNegativSaldo" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="tilleggForPositivMidlertidigForskjell" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="reduksjonForNegativMidlertidigForskjell" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="driftskostnader" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="andelAvDriftskostnaderTilJaktFiskeMv" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="driftsresultatFraJaktFiskeOgLeieinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
