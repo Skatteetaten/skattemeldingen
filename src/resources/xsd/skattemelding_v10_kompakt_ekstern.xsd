@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-12-05T13:52:48.572+0100" name="generertDato"/>
+      <xsd:attribute fixed="2022-12-08T09:58:19.474+0100" name="generertDato"/>
       <xsd:attribute fixed="10.0" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v10" name="modellnavn"/>
@@ -1722,6 +1722,13 @@
       <xsd:element name="boolsk" type="Boolsk"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="BeloepSomHeltallMedSkattemessigeEgenskaper">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv">
     <xsd:sequence>
       <xsd:element name="fradragsberettigetBeloep" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
@@ -1734,13 +1741,6 @@
       <xsd:element name="identifikator" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="identifikatortype" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="utstederland" type="LandkodeMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="BeloepSomHeltallMedSkattemessigeEgenskaper">
-    <xsd:sequence>
-      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="NavnMedInnkapsling">
@@ -1802,7 +1802,7 @@
             <xsd:element minOccurs="0" name="formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge" type="FormuesspesifikasjonForNaeringseiendom"/>
             <xsd:element minOccurs="0" name="formuesspesifikasjonForUtleidFlerboligbygningIUtlandet" type="FormuesspesifikasjonForUtleidFlerboligbygningIUtlandet"/>
             <xsd:element minOccurs="0" name="formuesspesifikasjonForUtleidNaeringseiendom" type="FormuesspesifikasjonForNaeringseiendom"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet" type="FormuesspesifikasjonForNaeringseiendom"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet" type="FormuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet"/>
             <xsd:element minOccurs="0" name="formuesspesifikasjonForSkogeiendomIUtlandet" type="FormuesspesifikasjonForSkogeiendomIUtlandet"/>
           </xsd:choice>
           <xsd:element name="id" type="Tekst"/>
@@ -2567,28 +2567,28 @@
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForSelveidFritidseiendom">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForSelveidFritidseiendom" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForSelveidFritidseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForSelveidFritidseiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
       <xsd:element minOccurs="0" name="andelAvFormuesverdiOmfattetAvSkattefrihetForEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForTomt">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForTomt" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForTomt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForTomt" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForBolig">
@@ -2596,7 +2596,9 @@
       <xsd:element minOccurs="0" name="boligegenskaper" type="Boligegenskaper"/>
       <xsd:element minOccurs="0" name="boligbruk" type="BoligbrukskodeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="beregnetMarkedsverdiForBolig" type="BeregnetMarkedsverdiForBolig"/>
-      <xsd:element minOccurs="0" name="formuesverdiForBolig" type="FormuesverdiForBolig"/>
+      <xsd:element minOccurs="0" name="formuesverdiForBolig" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="formuesaar" type="AarstallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="andelAvFormuesverdiOmfattetAvSkattefrihetForEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
@@ -2618,32 +2620,32 @@
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForBorett">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForBorett" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForBorett" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForBorett" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForRegnskapsbehandletBolig">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForRegnskapsbehandletBolig" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForRegnskapsbehandletBolig" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForRegnskapsbehandletBolig" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForEgenFritaksbehandletBolig">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForEgenFritaksbehandletBolig" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForEgenFritaksbehandletBolig" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForEgenFritaksbehandletBolig" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForRegnskapsbehandletFritidseiendom">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForRegnskapsbehandletFritidseiendom" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForRegnskapsbehandletFritidseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForRegnskapsbehandletFritidseiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForEgenFritaksbehandletFritidseiendom">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForEgenFritaksbehandletFritidseiendom" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForEgenFritaksbehandletFritidseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForEgenFritaksbehandletFritidseiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForGaardsbruk">
@@ -2665,14 +2667,20 @@
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForUtleidFlerboligbygningIUtlandet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForUtleidFlerboligbygningIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForUtleidFlerboligbygningIUtlandet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForUtleidFlerboligbygningIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FormuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet">
+    <xsd:sequence>
+      <xsd:element name="formuesverdiForIkkeUtleidNaeringseiendomIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForSkogeiendomIUtlandet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForSkogeiendomIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForSkogeiendomIUtlandet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForSkogeiendomIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="EiendomstypeMedInnkapsling">
@@ -3033,6 +3041,15 @@
   <xsd:simpleType name="Fradragsvurderingstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_fradragsvurderingstype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
+  <xsd:complexType name="GrunnlagForFormuesverdiForAnnenFastEiendomMv">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="formuesverdiFraForegaaendeInntektsaar" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+        <xsd:element minOccurs="0" name="markedsverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="verdiAvPaakostningMv" type="BeloepIValuta"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="Boligegenskaper">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="boligensAreal" type="HeltallMedInnkapsling"/>
@@ -3051,13 +3068,6 @@
       <xsd:element minOccurs="0" name="grunnlagForBeregnetMarkedsverdiForBolig" type="GrunnlagForBeregnetMarkedsverdiForBolig"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="FormuesverdiForBolig">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForBolig" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="formuesaar" type="AarstallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig" type="BoolskMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregnetMarkedsverdiForBolig">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="boligverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
@@ -3066,9 +3076,7 @@
   </xsd:complexType>
   <xsd:complexType name="UseksjonertBoenhet">
     <xsd:sequence>
-      <xsd:choice>
-        <xsd:element minOccurs="0" name="boligverdiForUseksjonertBoenhet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      </xsd:choice>
+      <xsd:element minOccurs="0" name="boligverdiForUseksjonertBoenhet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element name="id" type="Tekst"/>
       <xsd:element minOccurs="0" name="bruksenhetsnummer" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="boligegenskaper" type="Boligegenskaper"/>
@@ -3084,7 +3092,7 @@
   </xsd:simpleType>
   <xsd:complexType name="GrunnlagForBeregnetUtleieverdiForNaeringseiendom">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="utleieverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="utleieverdiFraSerg" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForNaeringseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="bruttoUtleieinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="aarligUtleieinntektIAaretFoerInntektsaar" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
@@ -3232,7 +3240,7 @@
   <xsd:complexType name="DokumentertMarkedsverdiForBolig">
     <xsd:sequence>
       <xsd:choice>
-        <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBolig" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+        <xsd:element minOccurs="0" name="dokumentertMarkedsverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
         <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBoligIRandsoneEtterKommunereformen" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       </xsd:choice>
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" type="AarstallMedInnkapsling"/>
@@ -3315,7 +3323,7 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="boligverdi" type="HeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForBolig" skatt:erAvledet="true" type="DesimaltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="justertMarkedsverdiForBolig" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="justertMarkedsverdi" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Postnummer">
