@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v2" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v2">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-11-22T13:22:59.479+0100" name="generertDato"/>
+      <xsd:attribute fixed="2022-12-22T10:54:24.860+0100" name="generertDato"/>
       <xsd:attribute fixed="v2" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v2" name="modellnavn"/>
@@ -42,12 +42,12 @@
       <xsd:element minOccurs="0" name="erOmorganisertOverLandegrenser" type="Boolsk"/>
       <xsd:element minOccurs="0" name="erBlittDelAvKonsern" type="Boolsk"/>
       <xsd:element minOccurs="0" name="harMottattEllerOverfoertEiendelerEllerForpliktelser" type="Boolsk"/>
-      <xsd:element minOccurs="0" name="organisasjonsnummerTilNorskKonsernspiss" type="Organisasjonsnummer"/>
-      <xsd:element minOccurs="0" name="utenlandskEierselskap" type="Selskap"/>
       <xsd:element minOccurs="0" name="eierMinst50ProsentAVSelskapEllerInnretningIUtlandet" type="Boolsk"/>
       <xsd:element minOccurs="0" name="harFastDriftsstedIUtlandet" type="Boolsk"/>
       <xsd:element minOccurs="0" name="landForLandRapporteringspliktigForetak" type="Selskap"/>
       <xsd:element minOccurs="0" name="harYtelseMellomAksjonaerEllerNaerstaaendeOgSelskapEllerSelskapetsDatterselskap" type="Boolsk"/>
+      <xsd:element minOccurs="0" name="konsernspissVedUtgangAvForrigeInntektsaar" type="Selskap"/>
+      <xsd:element minOccurs="0" name="konsernspissVedUtgangAvInntektsaaret" type="Selskap"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Forhaandsfastsetting">
@@ -84,7 +84,6 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="obligasjonOgSertifikat" type="ObligasjonOgSertifikat"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="annetFinansprodukt" type="AnnetFinansprodukt"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellValuta" type="VirtuellValuta"/>
-
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fondskonto" type="Fondskonto"/>
       <xsd:element minOccurs="0" name="forholdKunRelevanteForBeskatningPaaSvalbard" type="ForholdKunRelevanteForBeskatningPaaSvalbard"/>
     </xsd:sequence>
@@ -118,38 +117,25 @@
       <xsd:element minOccurs="0" name="utvekslingsarkividentifikator" type="TekstMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="FasteEiendommer">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fastEiendomSomFormuesobjekt" type="FastEiendomSomFormuesobjekt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fastEiendom" type="FastEiendom"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogeiendomINorgeSomFormuesobjekt" type="SkogeiendomINorgeSomFormuesobjekt"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="MetodeForAaUnngaaDobbeltbeskatning">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt" type="FradragINorskSkattForSkattBetaltTilFremmedStat"/>
       <xsd:element minOccurs="0" name="fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskatteland" type="FradragINorskSkattForSkattBetaltTilFremmedStat"/>
       <xsd:element minOccurs="0" name="gjelderBeskatningPaaSvalbard" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="fradragINorskSkattVedSkattleggingAvUtbytteMvFraUtenlandskDatterselskap" type="FradragINorskSkattVedSkattleggingAvUtbytteMvFraUtenlandskDatterselskap"/>
+      <xsd:element minOccurs="0" name="tilbakefoertUtenlandskSkattSenereAar" type="TilbakefoertUtenlandskSkattSenereAar"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="xsd:boolean"/>
   </xsd:simpleType>
-  <xsd:complexType name="SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling">
-    <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="forskningOgUtviklingsprosjekt" type="ForskningOgUtviklingsprosjekt"/>
-      <xsd:element minOccurs="0" name="samletTotalkostnad" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="samletSkattefradrag" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="samletTilleggISkatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="gjelderBeskatningPaaSvalbard" type="BoolskMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:simpleType name="Tekst" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="xsd:string">
-      <xsd:maxLength value="4000"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="Organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="Tekst"/>
-  </xsd:simpleType>
-  <xsd:complexType name="VerdsettingAvAksje">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="samletVerdiBakAksjeneISelskapet" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="BegrensningAvRentefradragIKonsernOgMellomNaerstaaende">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="harPaaloepteRenterLavereEnnTerskelbeloepPerSelskap" type="BoolskMedInnkapsling"/>
@@ -163,11 +149,18 @@
       <xsd:element minOccurs="0" name="annetSelskapSomRapportererPaaVegneAvKonsern" type="Selskap"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="Selskap">
+  <xsd:complexType name="VerdsettingAvAksje">
     <xsd:sequence>
-      <xsd:element name="navn" type="Organisasjonsnavn"/>
-      <xsd:element minOccurs="0" name="identifikator" type="Identifikator"/>
-      <xsd:element minOccurs="0" name="landkode" type="Landkode"/>
+      <xsd:element minOccurs="0" name="samletVerdiBakAksjeneISelskapet" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="forskningOgUtviklingsprosjekt" type="ForskningOgUtviklingsprosjekt"/>
+      <xsd:element minOccurs="0" name="samletTotalkostnad" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="samletSkattefradrag" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="samletTilleggIBeregnetSkatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="gjelderBeskatningPaaSvalbard" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormueOgInntektISelskapMedDeltakerfastsetting">
@@ -175,48 +168,18 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelAvFormueOgInntekt" type="DeltakersAndelAvFormueOgInntekt"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="Selskap">
+    <xsd:sequence>
+      <xsd:element name="navn" type="Organisasjonsnavn"/>
+      <xsd:element minOccurs="0" name="identifikator" type="Identifikator"/>
+      <xsd:element minOccurs="0" name="landkode" type="Landkode"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="ForhaandsfastsettingsformattypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="forhaandsfastsettingsformattype" type="Forhaandsfastsettingsformattype"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="AnnetSelskapIKonsern">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
-      <xsd:element name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="nettoPaaloepteRenter" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="nettoFradragsfoertePaaloepteRenter" type="BeloepSomHeltallMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="DeltakersAndelAvFormueOgInntekt">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
-      <xsd:element minOccurs="0" name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForNettoformue" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="gjeld" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="tapVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="underskudd" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="alminneligInntekt" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="utbetalingMvTilDeltaker" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:simpleType name="Organisasjonsnavn">
-    <xsd:restriction base="Tekst"/>
-  </xsd:simpleType>
-  <xsd:simpleType name="Identifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="Tekst"/>
-  </xsd:simpleType>
-  <xsd:simpleType name="Landkode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e112-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="Tekst">
-      <xsd:pattern value="([A-Z]){2}"/>
-      <xsd:length value="2"/>
-    </xsd:restriction>
-  </xsd:simpleType>
   <xsd:complexType name="Inntekt">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="naeringsinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
@@ -400,13 +363,11 @@
       <xsd:element minOccurs="0" name="formueFritattForFormuesskattSomFoelgeAvBasisbevilgningFraStaten" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="FasteEiendommer">
-    <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fastEiendomSomFormuesobjekt" type="FastEiendomSomFormuesobjekt"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fastEiendom" type="FastEiendom"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogeiendomINorgeSomFormuesobjekt" type="SkogeiendomINorgeSomFormuesobjekt"/>
-    </xsd:sequence>
-  </xsd:complexType>
+  <xsd:simpleType name="Tekst" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4000"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="Brukeridentifikatortype" skatt:begrepsreferanse="http://begrepskatalog/begrep/df81b854-3474-11e6-af6b-9614a8212dd3" skatt:eksternKodeliste="inline">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration skatt:begrepsreferanse="http://begrepskatalog/begrep/20b52adf-9fe1-11e5-a9f8-e4115b280940" value="partsnummer"/>
@@ -456,6 +417,127 @@
       <xsd:element name="vedleggskategori" type="Vedleggskategori"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="EntitetMedSkattemessigeEgenskaper">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="eksternReferanse" type="Tekst"/>
+      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="landkode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e112-9fe1-11e5-a9f8-e4115b280940" type="LandkodeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="overfoertFraBarnTilForelder" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8c2-973b-11e9-bed2-005056821322" type="OverfoertFraBarnTilForelder"/>
+      <xsd:element minOccurs="0" name="saerskiltSkatteplikt" type="SaerskiltSkattepliktMedInnkapsling"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="aarsakTilEndring" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d78d-4c6c-11e8-bb3e-00505682132" type="AarsakTilEndringMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FastEiendomSomFormuesobjekt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8b8-973b-11e9-bed2-005056821322">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:choice>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForSelveidFritidseiendom" type="FormuesspesifikasjonForSelveidFritidseiendom"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForTomt" type="FormuesspesifikasjonForTomt"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8ba-973b-11e9-bed2-005056821322" type="FormuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8bb-973b-11e9-bed2-005056821322" type="FormuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForBolig" type="FormuesspesifikasjonForBolig"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForFlerboligbygning" type="FormuesspesifikasjonForFlerboligbygning"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForSkalIkkeFastsettes" type="FormuesspesifikasjonForSkalIkkeFastsettes"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForBorett" type="FormuesspesifikasjonForBorett"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForRegnskapsbehandletBolig" type="FormuesspesifikasjonForRegnskapsbehandletBolig"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForEgenFritaksbehandletBolig" type="FormuesspesifikasjonForEgenFritaksbehandletBolig"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForRegnskapsbehandletFritidseiendom" type="FormuesspesifikasjonForRegnskapsbehandletFritidseiendom"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForEgenFritaksbehandletFritidseiendom" type="FormuesspesifikasjonForEgenFritaksbehandletFritidseiendom"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForGaardsbruk" type="FormuesspesifikasjonForGaardsbruk"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge" type="FormuesspesifikasjonForNaeringseiendom"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForUtleidFlerboligbygningIUtlandet" type="FormuesspesifikasjonForUtleidFlerboligbygningIUtlandet"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForUtleidNaeringseiendom" type="FormuesspesifikasjonForNaeringseiendom"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet" type="FormuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet"/>
+            <xsd:element minOccurs="0" name="formuesspesifikasjonForSkogeiendomIUtlandet" type="FormuesspesifikasjonForSkogeiendomIUtlandet"/>
+          </xsd:choice>
+          <xsd:element name="id" type="Tekst"/>
+          <xsd:element minOccurs="0" name="eiendomstype" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd09-2964-11e6-b2bc-96405985e0fa" type="EiendomstypeMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="andelAvFormuesverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ece785b5-fd92-11ea-b057-0050568214e4" type="ProsentMedInnkapsling"/>
+          <xsd:element name="internEiendomsidentifikator" type="Tekst"/>
+          <xsd:element minOccurs="0" name="konsekvensAvFordelingsmetodeVedDobbeltbeskatningEtterSkatteavtale" type="KonsekvensAvFordelingsmetodeVedDobbeltbeskatningEtterSkatteavtale"/>
+          <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="FastEiendom" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd0b-2964-11e6-b2bc-96405985e0fa">
+    <xsd:sequence>
+      <xsd:element name="id" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940" type="Tekst"/>
+      <xsd:element minOccurs="0" name="adresseopplysninger" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3293-98ef-11ea-8a84-005056828ed3" type="Adresseopplysninger"/>
+      <xsd:element minOccurs="0" name="sergEiendomsidentifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d329d-98ef-11ea-8a84-005056828ed3" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="eiendommensNavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3298-98ef-11ea-8a84-005056828ed3" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="eksternEiendomsidentifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/108097c9-25fc-11e9-85c0-005056821322" type="EksternEiendomsidentifikator"/>
+      <xsd:element minOccurs="0" name="eierandel" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e17f-9fe1-11e5-a9f8-e4115b280940" type="ProsentMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="eierskifteAvFastEiendom" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcce4745-aec0-6e45-9730-178da0fcea17" type="EierskifteAvFastEiendom"/>
+      <xsd:element name="internEiendomsidentifikator" type="Tekst"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SkogeiendomINorgeSomFormuesobjekt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8b8-973b-11e9-bed2-005056821322">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
+          <xsd:element minOccurs="0" name="andelAvFormuesverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ece785b5-fd92-11ea-b057-0050568214e4" type="ProsentMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="formuesspesifikasjonForSkogeiendomINorge" type="FormuesspesifikasjonForSkogeiendomINorge"/>
+          <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+          <xsd:element minOccurs="0" name="sergMatrikkelnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e115-9fe1-11e5-a9f8-e4115b280940" type="SergMatrikkelnummer"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="FradragINorskSkattForSkattBetaltTilFremmedStat">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektsskattBetaltIUtlandet" type="SkattBetaltIUtlandet"/>
+      <xsd:element minOccurs="0" name="resultatFraNaeringsvirksomhetIUtlandet" type="ResultatFraNaeringsvirksomhetIUtlandet"/>
+      <xsd:element minOccurs="0" name="samletInntektsskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="samletFormuesskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element maxOccurs="5" minOccurs="0" name="fremfoertUtenlandskSkattPerInntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fd7-dfe5-11e7-9101-005056821322" type="FremfoertUtenlandskSkattPerInntektsaar"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesskattBetaltIUtlandet" type="SkattBetaltIUtlandet"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fordelingAvKostnad" type="FordelingAvKostnad"/>
+      <xsd:element minOccurs="0" name="korrigeringIInntekt" type="KorrigeringIInntekt"/>
+      <xsd:element minOccurs="0" name="korrigertNettoinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="samletKostnadTilordnetUtlandetEtterIndirekteFordelingsmetode" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="samletKostnadTilordnetUtlandetEtterIndirekteEllerAnnenFordelingsmetode" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="utlandsinntektFoerAvgittKonsernbidrag" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="norskAndelAvInntektFoerAvgittKonsernbidrag" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="samletUtenlandsinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesobjektUnderlagtBeskatningIUtlandet" type="FormuesobjektUnderlagtBeskatningIUtlandet"/>
+      <xsd:element minOccurs="0" name="nettoformueIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="bruttoformueIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="samletFradragIFormueIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BoolskMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940 " type="Boolsk"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FradragINorskSkattVedSkattleggingAvUtbytteMvFraUtenlandskDatterselskap">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="fremfoertUbenyttetUnderliggendeSelskapsskattFom1995" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element name="fradragsberettigetAndelAvUnderliggendeSelskapsskattIInntektsaaret" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element name="anvendtFradragsberettigetAndelAvUnderliggendeSelskapsskattIInntektsaaret" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="fradragsberettigetAndelAvUnderliggendeSelskapsskattTilFremfoering" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TilbakefoertUtenlandskSkattSenereAar">
+    <xsd:sequence>
+      <xsd:element name="tilbakefoertUtenlandskSkatt" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AnnetSelskapIKonsern">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="nettoPaaloepteRenter" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="nettoFradragsfoertePaaloepteRenter" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregningAvSelskapetsNettoPaaloepteRenter">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="totalePaaloepteRenter" type="BeloepSomHeltallMedInnkapsling"/>
@@ -468,9 +550,6 @@
       <xsd:element minOccurs="0" name="nettoPaaloepteRenter" skatt:erAvledet="true" type="BeloepSomHeltall"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Forhaandsfastsettingsformattype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/forhaandsfastsettingsformattype.xml">
-    <xsd:restriction base="xsd:string"/>
-  </xsd:simpleType>
   <xsd:complexType name="ForskningOgUtviklingsprosjekt">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
@@ -485,35 +564,55 @@
       <xsd:element minOccurs="0" name="samletBruttoSkattefradragFraTidligereAar" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="kostnadIInntektsaaret" type="KostnadIInntektsaaret"/>
       <xsd:element minOccurs="0" name="skattefradragForKostnaderTilForskningOgUtvikling" type="SkattefradragForKostnaderTilForskningOgUtvikling"/>
-      <xsd:element minOccurs="0" name="erSamarbeidsprosjekt" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erSamarbeidsprosjektMellomFlereVirksomheter" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="beskrivelseAvSamarbeidMellomFlereVirksomheter" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="annenOffentligStoette" type="AnnenOffentligStoette"/>
       <xsd:element minOccurs="0" name="prosjektSkalBekreftesAvRevisor" type="Boolsk"/>
+      <xsd:element minOccurs="0" name="samletKostnadSomIkkeInngaarIGrunnlagForSkattefradrag" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="samledeKostnaderIHeleProsjektperioden" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="maksimalGodkjentOffentligStoetteSomAndelAvTotalkostnad" skatt:erAvledet="true" type="ProsentMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="vurderingAvOekonomiskeVanskeligheter" type="VurderingAvOekonomiskeVanskeligheter"/>
+      <xsd:element minOccurs="0" name="maksimaltGodkjentBruttobeloepForOffentligStoette" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="tildeltStoetteUtoverMaksimaltGodkjentBruttobeloepForOffentligStoette" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="FradragINorskSkattForSkattBetaltTilFremmedStat">
+  <xsd:simpleType name="BeloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Heltall"/>
+  </xsd:simpleType>
+  <xsd:complexType name="DeltakersAndelAvFormueOgInntekt">
     <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektsskattBetaltIUtlandet" type="SkattBetaltIUtlandet"/>
-      <xsd:element minOccurs="0" name="resultatFraNaeringsvirksomhetIUtlandet" type="ResultatFraNaeringsvirksomhetIUtlandet"/>
-      <xsd:element minOccurs="0" name="samletInntektsskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="samletFormuesskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element maxOccurs="5" minOccurs="0" name="fremfoertUtenlandskSkattPerInntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fd7-dfe5-11e7-9101-005056821322" type="FremfoertUtenlandskSkattPerInntektsaar"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesskattBetaltIUtlandet" type="SkattBetaltIUtlandet"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fordelingAvKostnad" type="FordelingAvKostnad"/>
-      <xsd:element minOccurs="0" name="korrigeringIInntekt" type="KorrigeringIInntekt"/>
-      <xsd:element minOccurs="0" name="korrigertNettoinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="samletKostnadTilordnetUtlandetEtterIndirekteEllerAnnenFordelingsmetode" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="samletUtenlandsinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="nettoformueIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="bruttoformueIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="samletFradragIFormueIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesobjektUnderlagtBeskatningIUtlandet" type="FormuesobjektUnderlagtBeskatningIUtlandet"/>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForNettoformue" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="gjeld" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="tapVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="underskudd" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="alminneligInntekt" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="utbetalingMvTilDeltaker" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="Organisasjonsnavn">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Identifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Landkode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e112-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="([A-Z]){2}"/>
+      <xsd:length value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Forhaandsfastsettingsformattype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/forhaandsfastsettingsformattype.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
   <xsd:complexType name="BeloepSomHeltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e147-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="beloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e147-9fe1-11e5-a9f8-e4115b280940" type="BeloepSomHeltall"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="MottattKonsernbidrag">
@@ -532,11 +631,6 @@
       <xsd:element minOccurs="0" name="mottakersOrganisasjonsnavn" type="OrganisasjonsnavnMedInnkapsling"/>
       <xsd:element name="konsernbidrag" type="Konsernbidrag"/>
       <xsd:element name="mottakersKonserntilknytning" type="Konserntilknytning"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="BoolskMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940 " type="Boolsk"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OrganisasjonsnavnMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940">
@@ -600,85 +694,12 @@
   <xsd:complexType name="KontonummerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="kontonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940 " type="Kontonummer"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesobjekttypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="formuesobjekttype" type="Formuesobjekttype"/>
     </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="EntitetMedSkattemessigeEgenskaper">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="eksternReferanse" type="Tekst"/>
-      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="landkode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e112-9fe1-11e5-a9f8-e4115b280940" type="LandkodeMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="overfoertFraBarnTilForelder" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8c2-973b-11e9-bed2-005056821322" type="OverfoertFraBarnTilForelder"/>
-      <xsd:element minOccurs="0" name="saerskiltSkatteplikt" type="SaerskiltSkattepliktMedInnkapsling"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="aarsakTilEndring" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d78d-4c6c-11e8-bb3e-00505682132" type="AarsakTilEndringMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="FastEiendomSomFormuesobjekt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8b8-973b-11e9-bed2-005056821322">
-    <xsd:complexContent>
-      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
-        <xsd:sequence>
-          <xsd:choice>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForSelveidFritidseiendom" type="FormuesspesifikasjonForSelveidFritidseiendom"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForTomt" type="FormuesspesifikasjonForTomt"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8ba-973b-11e9-bed2-005056821322" type="FormuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8bb-973b-11e9-bed2-005056821322" type="FormuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForBolig" type="FormuesspesifikasjonForBolig"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForFlerboligbygning" type="FormuesspesifikasjonForFlerboligbygning"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForSkalIkkeFastsettes" type="FormuesspesifikasjonForSkalIkkeFastsettes"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForBorett" type="FormuesspesifikasjonForBorett"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForRegnskapsbehandletBolig" type="FormuesspesifikasjonForRegnskapsbehandletBolig"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForEgenFritaksbehandletBolig" type="FormuesspesifikasjonForEgenFritaksbehandletBolig"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForRegnskapsbehandletFritidseiendom" type="FormuesspesifikasjonForRegnskapsbehandletFritidseiendom"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForEgenFritaksbehandletFritidseiendom" type="FormuesspesifikasjonForEgenFritaksbehandletFritidseiendom"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForGaardsbruk" type="FormuesspesifikasjonForGaardsbruk"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge" type="FormuesspesifikasjonForNaeringseiendom"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForUtleidFlerboligbygningIUtlandet" type="FormuesspesifikasjonForUtleidFlerboligbygningIUtlandet"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForUtleidNaeringseiendom" type="FormuesspesifikasjonForNaeringseiendom"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet" type="FormuesspesifikasjonForNaeringseiendom"/>
-            <xsd:element minOccurs="0" name="formuesspesifikasjonForSkogeiendomIUtlandet" type="FormuesspesifikasjonForSkogeiendomIUtlandet"/>
-          </xsd:choice>
-          <xsd:element name="id" type="Tekst"/>
-          <xsd:element minOccurs="0" name="eiendomstype" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd09-2964-11e6-b2bc-96405985e0fa" type="EiendomstypeMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="andelAvFormuesverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ece785b5-fd92-11ea-b057-0050568214e4" type="ProsentMedInnkapsling"/>
-          <xsd:element name="internEiendomsidentifikator" type="Tekst"/>
-          <xsd:element minOccurs="0" name="konsekvensAvFordelingsmetodeVedDobbeltbeskatningEtterSkatteavtale" type="KonsekvensAvFordelingsmetodeVedDobbeltbeskatningEtterSkatteavtale"/>
-          <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
-          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-        </xsd:sequence>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="FastEiendom" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd0b-2964-11e6-b2bc-96405985e0fa">
-    <xsd:sequence>
-      <xsd:element name="id" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940" type="Tekst"/>
-      <xsd:element minOccurs="0" name="adresseopplysninger" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3293-98ef-11ea-8a84-005056828ed3" type="Adresseopplysninger"/>
-      <xsd:element minOccurs="0" name="sergEiendomsidentifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d329d-98ef-11ea-8a84-005056828ed3" type="TekstMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="eiendommensNavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3298-98ef-11ea-8a84-005056828ed3" type="TekstMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="eksternEiendomsidentifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/108097c9-25fc-11e9-85c0-005056821322" type="EksternEiendomsidentifikator"/>
-      <xsd:element minOccurs="0" name="eierandel" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e17f-9fe1-11e5-a9f8-e4115b280940" type="ProsentMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="eierskifteAvFastEiendom" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcce4745-aec0-6e45-9730-178da0fcea17" type="EierskifteAvFastEiendom"/>
-      <xsd:element name="internEiendomsidentifikator" type="Tekst"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="SkogeiendomINorgeSomFormuesobjekt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8b8-973b-11e9-bed2-005056821322">
-    <xsd:complexContent>
-      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
-        <xsd:sequence>
-          <xsd:element name="id" type="Tekst"/>
-          <xsd:element minOccurs="0" name="andelAvFormuesverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ece785b5-fd92-11ea-b057-0050568214e4" type="ProsentMedInnkapsling"/>
-          <xsd:element minOccurs="0" name="formuesspesifikasjonForSkogeiendomINorge" type="FormuesspesifikasjonForSkogeiendomINorge"/>
-          <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
-          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-          <xsd:element minOccurs="0" name="sergMatrikkelnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e115-9fe1-11e5-a9f8-e4115b280940" type="SergMatrikkelnummer"/>
-        </xsd:sequence>
-      </xsd:extension>
-    </xsd:complexContent>
   </xsd:complexType>
   <xsd:simpleType name="Uri" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e148-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="Tekst"/>
@@ -689,160 +710,6 @@
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Vedleggskategori" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_vedleggskategori.xml">
-    <xsd:restriction base="xsd:string"/>
-  </xsd:simpleType>
-  <xsd:complexType name="PeriodePerDatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb4799-e484-11e6-9cb3-005056821322">
-    <xsd:sequence>
-      <xsd:element name="start" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb47c2-e484-11e6-9cb3-005056821322" type="DatoMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="slutt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52b6e-9fe1-11e5-a9f8-e4115b280940" type="DatoMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="Vedtak">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
-      <xsd:element name="dato" type="DatoMedInnkapsling"/>
-      <xsd:element name="status" type="FoUvedtakstatustypeMedInnkapsling"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="avgrensningIVedtak" type="AvgrensningIVedtak"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="Prosjektstatus">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="dato" type="DatoMedInnkapsling"/>
-      <xsd:element name="status" type="FoUprosjektstatustypeMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="FoUprosjektkategoriMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="fouprosjektkategori" type="FoUprosjektstatustype"/>
-
-
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="DatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940 " type="Dato"/>
-
-
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="KostnadIInntektsaaret">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="kostnad" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="heravPersonalkostnad" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="antallEgneTimer" type="AntallMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="SkattefradragForKostnaderTilForskningOgUtvikling">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="nettoSkattefradragFoerAvkortingMotAnnenOffentligStoette" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-      <xsd:element minOccurs="0" name="skattefradragPerProsjekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
-      <xsd:element minOccurs="0" name="tilleggISkattPerProsjekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="SkattBetaltIUtlandet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d329b-98ef-11ea-8a84-005056828ed3">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst" />
-      <xsd:element name="landkode" type="LandkodeMedInnkapsling" />
-      <xsd:element name="type" type="InntektsEllerFormuestypeVedSkattBetaltIUtlandetMedInnkapsling" />
-      <xsd:element minOccurs="0" name="skatteavtalesats" type="ProsentMedInnkapsling" />
-      <xsd:element name="beloep" type="BeloepIValuta" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="ResultatFraNaeringsvirksomhetIUtlandet">
-    <xsd:sequence>
-      <xsd:choice>
-        <xsd:element minOccurs="0" name="naeringsinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
-        <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
-      </xsd:choice>
-      <xsd:element minOccurs="0" name="samletDriftsinntekt" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletDriftskostnad" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletFinansinntekt" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletFinanskostnad" type="BeloepSomHeltallMedInnkapsling" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:simpleType name="BeloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="Heltall"/>
-  </xsd:simpleType>
-  <xsd:complexType name="FremfoertUtenlandskSkattPerInntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fd7-dfe5-11e7-9101-005056821322">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
-      <xsd:element minOccurs="0" name="inntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940" type="AarstallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="fremfoertUtenlandskFormuesskatt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd1c-2964-11e6-b2bc-96405985e0fa" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="fremfoertUtenlandskInntektsskatt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd1d-2964-11e6-b2bc-96405985e0fa" type="BeloepSomHeltallMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="FordelingAvKostnad">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
-      <xsd:element name="type" type="ResultatOgBalanseregnskapstypeMedInnkapsling"/>
-      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="andelAvKostnadTilordnetUtlandet" type="ProsentMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="beloepTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element name="kostnadsfordelingsmetode" type="KostnadsfordelingsmetodeVedSkattBetaltIUtlandetMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="KorrigeringIInntekt">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="utbytteFraUtenlandskDatterselskap" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="inntektUnderlagtKildeskattIUtlandet" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektTilordnetUtlandet" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="avgittKonsernbidragIUtenlandsinntekt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="FormuesobjektUnderlagtBeskatningIUtlandet">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
-      <xsd:element name="type" type="ResultatOgBalanseregnskapstypeMedInnkapsling"/>
-      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="Konsernbidrag">
-    <xsd:sequence>
-      <xsd:choice>
-        <xsd:element minOccurs="0" name="beloepMedSkattemessigVirkning" type="BeloepSomHeltallMedInnkapsling"/>
-        <xsd:element minOccurs="0" name="beloepMedSkattemessigVirkningJustertIhtFinansskatteregel" type="BeloepSomHeltallMedInnkapsling"/>
-      </xsd:choice>
-      <xsd:element minOccurs="0" name="beloepUtenSkattemessigVirkning" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="beloepMedSkattemessigVirkningTilordnetUtlandet" type="BeloepSomHeltallMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="Konserntilknytning">
-    <xsd:sequence>
-      <xsd:element name="konserntilknytningstype" type="KonserntilknytningstypeMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="beskrivelseAvKonserntilknytning" type="TekstMedInnkapsling"/>
-      <xsd:element name="stemmerettsbegrensningForeligger" type="BoolskMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="aarsakTilStemmerettsbegrensning" type="TekstMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="ervervstidspunkt" type="DatoMedInnkapsling"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:simpleType name="Isinnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e325-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="Tekst">
-      <xsd:pattern value="[A-Z]{2}[0-9A-Z]{9}[0-9]{1}"/>
-      <xsd:length value="12"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="Antall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e145-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="Heltall"/>
-  </xsd:simpleType>
-  <xsd:simpleType name="Desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="xsd:decimal"/>
-  </xsd:simpleType>
-  <xsd:simpleType name="SkatteOgAvgiftsordningstypeOmfattetAvOffentligStoette" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_skatteOgAvgiftsordningOmfattetAvOffentligStoette.xml">
-    <xsd:restriction base="xsd:string"/>
-  </xsd:simpleType>
-  <xsd:simpleType name="Navn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="Tekst">
-      <xsd:minLength value="1"/>
-      <xsd:maxLength value="200"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="AnnetFinansprodukttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_finansprodukt.xml">
-    <xsd:restriction base="xsd:string"/>
-  </xsd:simpleType>
-  <xsd:simpleType name="Kontonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="Tekst"/>
-  </xsd:simpleType>
-  <xsd:simpleType name="Formuesobjekttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_formuesobjekttypeUpersonligSkattepliktig.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:complexType name="KommunenummerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f3-9fe1-11e5-a9f8-e4115b280940">
@@ -870,26 +737,28 @@
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForSelveidFritidseiendom">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForSelveidFritidseiendom" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408a3-d96a-11e6-8d9b-005056821322" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForSelveidFritidseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForSelveidFritidseiendom" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408a3-d96a-11e6-8d9b-005056821322" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
+      <xsd:element minOccurs="0" name="andelAvFormuesverdiOmfattetAvSkattefrihetForEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForTomt">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForTomt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/064f092d-81f1-6e4f-a115-1e88a58cdb89" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForTomt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForTomt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/064f092d-81f1-6e4f-a115-1e88a58cdb89" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8ba-973b-11e9-bed2-005056821322">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8bc-973b-11e9-bed2-005056821322" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8bc-973b-11e9-bed2-005056821322" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8bb-973b-11e9-bed2-005056821322">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8bd-973b-11e9-bed2-005056821322" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/41b9c8bd-973b-11e9-bed2-005056821322" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForBolig">
@@ -897,7 +766,11 @@
       <xsd:element minOccurs="0" name="boligegenskaper" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3296-98ef-11ea-8a84-005056828ed3" type="Boligegenskaper"/>
       <xsd:element minOccurs="0" name="boligbruk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fcfa-2964-11e6-b2bc-96405985e0fa" type="BoligbrukskodeMedInnkapsling"/>
       <xsd:element minOccurs="0" name="beregnetMarkedsverdiForBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3295-98ef-11ea-8a84-005056828ed3" type="BeregnetMarkedsverdiForBolig"/>
-      <xsd:element minOccurs="0" name="formuesverdiForBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd16-2964-11e6-b2bc-96405985e0fa" type="FormuesverdiForBolig"/>
+      <xsd:element minOccurs="0" name="formuesverdiForBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd16-2964-11e6-b2bc-96405985e0fa" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="formuesaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d729-4c6c-11e8-bb3e-005056821322" type="AarstallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="andelAvFormuesverdiOmfattetAvSkattefrihetForEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erGrunnlagForSaerskiltFastsattSkattForBarnPaaEngangserstatning" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForFlerboligbygning">
@@ -917,38 +790,38 @@
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForBorett">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForBorett" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5f777b12-2bf1-b34c-a092-549d1cdd84c0" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForBorett" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForBorett" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5f777b12-2bf1-b34c-a092-549d1cdd84c0" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForRegnskapsbehandletBolig">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForRegnskapsbehandletBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/c2f13032-2540-f84f-a809-3361c4b4439b" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForRegnskapsbehandletBolig" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForRegnskapsbehandletBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/c2f13032-2540-f84f-a809-3361c4b4439b" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForEgenFritaksbehandletBolig">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForEgenFritaksbehandletBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/c571158c-e711-b040-bc74-233876816a50" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForEgenFritaksbehandletBolig" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForEgenFritaksbehandletBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/c571158c-e711-b040-bc74-233876816a50" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForRegnskapsbehandletFritidseiendom">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForRegnskapsbehandletFritidseiendom" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ae369753-9f62-214a-9701-cdcf4b20aa96" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForRegnskapsbehandletFritidseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForRegnskapsbehandletFritidseiendom" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ae369753-9f62-214a-9701-cdcf4b20aa96" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForEgenFritaksbehandletFritidseiendom">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForEgenFritaksbehandletFritidseiendom" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForEgenFritaksbehandletFritidseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForEgenFritaksbehandletFritidseiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForGaardsbruk">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForGaardsbruk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/e90e5f7e-093d-fa4f-af8d-45e365f0a607" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForGaardsbruk" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForGaardsbruk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/e90e5f7e-093d-fa4f-af8d-45e365f0a607" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForGaardsbruk"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForNaeringseiendom">
@@ -964,14 +837,20 @@
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForUtleidFlerboligbygningIUtlandet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForUtleidFlerboligbygningIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForUtleidFlerboligbygningIUtlandet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForUtleidFlerboligbygningIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FormuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet">
+    <xsd:sequence>
+      <xsd:element name="formuesverdiForIkkeUtleidNaeringseiendomIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForSkogeiendomIUtlandet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForSkogeiendomIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="markedsverdiForSkogeiendomIUtlandet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element name="formuesverdiForSkogeiendomIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element name="grunnlagForFormuesverdi" type="GrunnlagForFormuesverdiForAnnenFastEiendomMv"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="EiendomstypeMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd09-2964-11e6-b2bc-96405985e0fa">
@@ -1043,51 +922,175 @@
       <xsd:element minOccurs="0" name="seksjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e124-9fe1-11e5-a9f8-e4115b280940" type="SeksjonsnummerMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="InntektsEllerFormuestypeVedSkattBetaltIUtlandetMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="inntektsEllerFormuestypeVedSkattBetaltIUtlandet" type="InntektsEllerFormuestypeVedSkattBetaltIUtlandet"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="ResultatOgBalanseregnskapstypeMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="resultatOgBalanseregnskapstype" type="ResultatOgBalanseregnskapstype"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="KostnadsfordelingsmetodeVedSkattBetaltIUtlandetMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="kostnadsfordelingstype" type="KostnadsfordelingsmetodeVedSkattBetaltIUtlandet"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="KonserntilknytningstypeMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="konserntilknytningstype" type="Konserntilknytningstype"/>
-
-
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="FoUvedtakstatustypeMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="fouvedtakstatustype" type="FoUprosjektstatustype"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="AvgrensningIVedtak">
+  <xsd:complexType name="SkattBetaltIUtlandet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d329b-98ef-11ea-8a84-005056828ed3">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
-      <xsd:element name="avgrensning" type="TekstMedInnkapsling"/>
+      <xsd:element name="landkode" type="LandkodeMedInnkapsling"/>
+      <xsd:element name="type" type="InntektsEllerFormuestypeVedSkattBetaltIUtlandetMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="anvendtSkattesats" type="ProsentMedInnkapsling"/>
+      <xsd:element name="beloep" type="BeloepIValutaMedSpesifikasjon"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="FoUprosjektstatustypeMedInnkapsling">
+  <xsd:complexType name="ResultatFraNaeringsvirksomhetIUtlandet">
     <xsd:sequence>
-      <xsd:element name="fouprosjektstatustype" type="FoUprosjektstatustype"/>
-
-
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="naeringsinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+        <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="samletDriftsinntekt" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="samletDriftskostnad" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="samletFinansinntekt" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="samletFinanskostnad" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="FoUprosjektstatustype">
+  <xsd:complexType name="FremfoertUtenlandskSkattPerInntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf247fd7-dfe5-11e7-9101-005056821322">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="inntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940" type="AarstallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="fremfoertUtenlandskFormuesskatt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd1c-2964-11e6-b2bc-96405985e0fa" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="fremfoertUtenlandskInntektsskatt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd1d-2964-11e6-b2bc-96405985e0fa" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FordelingAvKostnad">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="type" type="ResultatOgBalanseregnskapstypeMedInnkapsling"/>
+      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="andelAvKostnadTilordnetUtlandet" type="ProsentMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="beloepTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element name="kostnadsfordelingsmetode" type="KostnadsfordelingsmetodeVedSkattBetaltIUtlandetMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KorrigeringIInntekt">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="utbytteFraUtenlandskDatterselskap" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="inntektUnderlagtKildeskattIUtlandet" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektTilordnetUtlandet" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="avgittKonsernbidragIUtenlandsinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+      <xsd:element minOccurs="0" name="mottattKonsernbidragTilordnetUtlandet" type="BeloepSomHeltall"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FormuesobjektUnderlagtBeskatningIUtlandet">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="type" type="ResultatOgBalanseregnskapstypeMedInnkapsling"/>
+      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HeltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940 " type="Heltall"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PeriodePerDatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb4799-e484-11e6-9cb3-005056821322">
+    <xsd:sequence>
+      <xsd:element name="start" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/dcfb47c2-e484-11e6-9cb3-005056821322" type="DatoMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="slutt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52b6e-9fe1-11e5-a9f8-e4115b280940" type="DatoMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Vedtak">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="dato" type="DatoMedInnkapsling"/>
+      <xsd:element name="status" type="FoUvedtakstatustypeMedInnkapsling"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="avgrensningIVedtak" type="AvgrensningIVedtak"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Prosjektstatus">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="dato" type="DatoMedInnkapsling"/>
+      <xsd:element name="status" type="FoUprosjektstatustypeMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FoUprosjektkategoriMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="fouprosjektkategori" type="FoUprosjektstatustype"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940 " type="Dato"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KostnadIInntektsaaret">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="kostnad" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="heravPersonalkostnad" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="antallEgneTimer" type="AntallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SkattefradragForKostnaderTilForskningOgUtvikling">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="nettoSkattefradragFoerAvkortingMotAnnenOffentligStoette" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="skattefradragPerProsjekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+      <xsd:element minOccurs="0" name="tilleggIBeregnetSkattPerProsjekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AnnenOffentligStoette">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="utbetalingAvOffentligStoette" type="UtbetalingAvAnnenOffentligStoette"/>
+      <xsd:element name="virksomhetskategori" type="FoUvirksomhetskategoriMedInnkapsling"/>
+      <xsd:element name="harOmfattendeSpredningGjennomKonferanserPublikasjonerMv" type="BoolskMedInnkapsling"/>
+      <xsd:element name="offentligStoetteSomRedusertArbeidsgiveravgift" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element name="samletBruttoOffentligStoetteIProsjektperioden" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VurderingAvOekonomiskeVanskeligheter">
+    <xsd:sequence>
+      <xsd:element name="varIOekonomiskeVanskeligheterPaaSoeknadstidspunktet" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="grunnlagsdokumentasjon" type="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunnMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Konsernbidrag">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="beloepMedSkattemessigVirkning" type="BeloepSomHeltallMedInnkapsling"/>
+        <xsd:element minOccurs="0" name="beloepMedSkattemessigVirkningJustertIhtFinansskatteregel" type="BeloepSomHeltallMedInnkapsling"/>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="beloepUtenSkattemessigVirkning" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Konserntilknytning">
+    <xsd:sequence>
+      <xsd:element name="konserntilknytningstype" type="KonserntilknytningstypeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="beskrivelseAvKonserntilknytning" type="TekstMedInnkapsling"/>
+      <xsd:element name="stemmerettsbegrensningForeligger" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="aarsakTilStemmerettsbegrensning" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="ervervstidspunkt" type="DatoMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Isinnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e325-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="[A-Z]{2}[0-9A-Z]{9}[0-9]{1}"/>
+      <xsd:length value="12"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Antall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e145-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Heltall"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="xsd:decimal"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="SkatteOgAvgiftsordningstypeOmfattetAvOffentligStoette" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_skatteOgAvgiftsordningOmfattetAvOffentligStoette.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
-  <xsd:simpleType name="Dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:restriction base="xsd:date"/>
+  <xsd:simpleType name="Navn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Tekst">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="200"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="AnnetFinansprodukttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_finansprodukt.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Kontonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Formuesobjekttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_formuesobjekttypeUpersonligSkattepliktig.xml">
+    <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Kommunenummer" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_aktiveKommunenummer.xml">
     <xsd:restriction base="xsd:string">
@@ -1120,11 +1123,13 @@
       <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="BeloepIValutaMedSkattemessigeEgenskaper">
+  <xsd:complexType name="GrunnlagForFormuesverdiForAnnenFastEiendomMv">
     <xsd:sequence>
-      <xsd:element name="beloep" type="BeloepIValuta"/>
-      <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling"/>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="formuesverdiFraForegaaendeInntektsaar" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+        <xsd:element minOccurs="0" name="markedsverdi" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="verdiAvPaakostningMv" type="BeloepIValuta"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Boligegenskaper">
@@ -1137,8 +1142,6 @@
   <xsd:complexType name="BoligbrukskodeMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fcfa-2964-11e6-b2bc-96405985e0fa">
     <xsd:sequence>
       <xsd:element name="boligbruk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fcfa-2964-11e6-b2bc-96405985e0fa" type="Boligbrukskode"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeregnetMarkedsverdiForBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3295-98ef-11ea-8a84-005056828ed3">
@@ -1147,11 +1150,9 @@
       <xsd:element minOccurs="0" name="grunnlagForBeregnetMarkedsverdiForBolig" type="GrunnlagForBeregnetMarkedsverdiForBolig"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="FormuesverdiForBolig">
+  <xsd:complexType name="AarstallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="formuesverdiForBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd16-2964-11e6-b2bc-96405985e0fa" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="formuesaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d729-4c6c-11e8-bb3e-005056821322" type="AarstallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig" type="BoolskMedInnkapsling"/>
+      <xsd:element name="aarstall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940" type="Aarstall"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregnetMarkedsverdiForBolig">
@@ -1162,9 +1163,7 @@
   </xsd:complexType>
   <xsd:complexType name="UseksjonertBoenhet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd5f-2964-11e6-b2bc-96405985e0fa">
     <xsd:sequence>
-      <xsd:choice>
-        <xsd:element minOccurs="0" name="boligverdiForUseksjonertBoenhet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/28455522-e51f-f94a-8c69-21c455f69e78" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-      </xsd:choice>
+      <xsd:element minOccurs="0" name="boligverdiForUseksjonertBoenhet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/28455522-e51f-f94a-8c69-21c455f69e78" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element name="id" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940" type="Tekst"/>
       <xsd:element minOccurs="0" name="bruksenhetsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e101-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling"/>
       <xsd:element minOccurs="0" name="boligegenskaper" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3296-98ef-11ea-8a84-005056828ed3" type="Boligegenskaper"/>
@@ -1178,20 +1177,28 @@
       <xsd:enumeration value="tilleggseiendom"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:complexType name="GrunnlagForFormuesverdiForGaardsbruk">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="formuesverdiFraForegaaendeInntektsaar" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="markedsverdiForVaaningshus" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="verdiAvPaakostningForVaaningshus" type="BeloepIValuta"/>
+      <xsd:element minOccurs="0" name="markedsverdiForOevrigEiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="verdiAvPaakostningForOevrigEiendom" type="BeloepIValuta"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregnetUtleieverdiForNaeringseiendom">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="utleieverdi" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="utleieverdiFraSerg" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForNaeringseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="bruttoUtleieinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="aarligUtleieinntektIAaretFoerInntektsaar" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="aarligUtleieinntektToAarFoerInntektsaar" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="sisteRapporterteUtleieinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="avvikVedAnvendtDokumentertMarkedsverdi" skatt:erAvledet="true" type="Prosent"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="HeltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940 " type="Heltall"/>
+      <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForNaeringseiendom" type="ProsentMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" type="AarstallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="justertMarkedsverdiForNaeringseiendom" type="DesimaltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="datoForDokumentertMarkedsverdiForNaeringseiendom" type="DatoMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="NaeringseiendomstypeMedInnkapsling">
@@ -1218,8 +1225,6 @@
   <xsd:complexType name="MetodeVedDobbeltbeskatningMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatning"/>
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Poststed" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e122-9fe1-11e5-a9f8-e4115b280940">
@@ -1260,6 +1265,13 @@
       <xsd:element minOccurs="0" name="enhetsnummerForBoenhetIBoligselskap" skatt:begrepsreferanse="http://data.skatteetaten.no/begrep/108097ca-25fc-11e9-85c0-005056821322" type="EnhetsnummerForBoenhetIBoligselskap"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="BeloepIValutaMedSkattemessigeEgenskaper">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="BeloepIValuta"/>
+      <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="Tilvekstspesifikasjon">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
@@ -1288,18 +1300,74 @@
       <xsd:element name="seksjonsnummer" type="Seksjonsnummer"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="InntektsEllerFormuestypeVedSkattBetaltIUtlandet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_inntektsEllerFormuestypeVedSkattBetaltIUtlandet.xml">
+  <xsd:complexType name="InntektsEllerFormuestypeVedSkattBetaltIUtlandetMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="inntektsEllerFormuestypeVedSkattBetaltIUtlandet" type="InntektsEllerFormuestypeVedSkattBetaltIUtlandet"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BeloepIValutaMedSpesifikasjon" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="beloepINok" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element name="beloepIValuta" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940" type="BeloepMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="valutakode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a2-9fe1-11e5-a9f8-e4115b280940" type="ValutakodeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="valutakurs" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd65-2964-11e6-b2bc-96405985e0fa" type="ValutakursMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="valutakursspesifikasjon" type="ValutakursspesifikasjonMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultatOgBalanseregnskapstypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="resultatOgBalanseregnskapstype" type="ResultatOgBalanseregnskapstype"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KostnadsfordelingsmetodeVedSkattBetaltIUtlandetMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="kostnadsfordelingstype" type="KostnadsfordelingsmetodeVedSkattBetaltIUtlandet"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FoUvedtakstatustypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="fouvedtakstatustype" type="FoUprosjektstatustype"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AvgrensningIVedtak">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="avgrensning" type="TekstMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FoUprosjektstatustypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="fouprosjektstatustype" type="FoUprosjektstatustype"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="FoUprosjektstatustype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_fouprosjektstatustype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
-  <xsd:simpleType name="ResultatOgBalanseregnskapstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_resultatregnskapOgBalanse.xml">
-    <xsd:restriction base="xsd:string"/>
+  <xsd:simpleType name="Dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="xsd:date"/>
   </xsd:simpleType>
-  <xsd:simpleType name="KostnadsfordelingsmetodeVedSkattBetaltIUtlandet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_kostnadsfordelingsmetodeVedSkattBetaltIUtlandet.xml">
-    <xsd:restriction base="xsd:string"/>
-  </xsd:simpleType>
-  <xsd:simpleType name="Konserntilknytningstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/konserntilknytningstype.xml">
-    <xsd:restriction base="xsd:string"/>
-  </xsd:simpleType>
+  <xsd:complexType name="UtbetalingAvAnnenOffentligStoette">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="utbetalersNavn" type="TekstMedInnkapsling"/>
+      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FoUvirksomhetskategoriMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="fouvirksomhetsstoerrelsestype" type="FoUprosjektstatustype"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunnMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="fouvirksomhetsstoerrelsestype" type="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KonserntilknytningstypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="konserntilknytningstype" type="Konserntilknytningstype"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="NorskPersonidentifikator">
     <xsd:restriction base="Tekst"/>
   </xsd:simpleType>
@@ -1316,11 +1384,6 @@
       <xsd:element name="boligtype" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fcfc-2964-11e6-b2bc-96405985e0fa" type="Boligtypekode"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="AarstallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="aarstall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940" type="Aarstall"/>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="Boligbrukskode" skatt:begrepsreferanse="http://begrepskatalog/begrep/9c33fcfa-2964-11e6-b2bc-96405985e0fa" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_boligbruk.xml">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration skatt:begrepsreferanse="http://begrepskatalog/begrep/410ade80-9202-11e6-8b61-82ab1fa1f30b" value="primaerbolig"/>
@@ -1330,7 +1393,7 @@
   <xsd:complexType name="DokumentertMarkedsverdiForBolig">
     <xsd:sequence>
       <xsd:choice>
-        <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3297-98ef-11ea-8a84-005056828ed3" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+        <xsd:element minOccurs="0" name="dokumentertMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3297-98ef-11ea-8a84-005056828ed3" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
         <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBoligIRandsoneEtterKommunereformen" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       </xsd:choice>
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3294-98ef-11ea-8a84-005056828ed3" type="AarstallMedInnkapsling"/>
@@ -1402,6 +1465,9 @@
       <xsd:totalDigits value="4"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="InntektsEllerFormuestypeVedSkattBetaltIUtlandet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_inntektsEllerFormuestypeVedSkattBetaltIUtlandet.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
   <xsd:complexType name="BeloepMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="beloep" type="BeloepMed2Desimaler"/>
@@ -1417,6 +1483,23 @@
       <xsd:element name="valutakurs" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd65-2964-11e6-b2bc-96405985e0fa" type="Valutakurs"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="ValutakursspesifikasjonMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="valutakursspesifikasjon" type="FoUprosjektstatustype"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="ResultatOgBalanseregnskapstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_resultatregnskapOgBalanse.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="KostnadsfordelingsmetodeVedSkattBetaltIUtlandet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_kostnadsfordelingsmetodeVedSkattBetaltIUtlandet.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_grunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Konserntilknytningstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/konserntilknytningstype.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
   <xsd:simpleType name="Boligtypekode" skatt:begrepsreferanse="http://begrepskatalog/begrep/9c33fcfc-2964-11e6-b2bc-96405985e0fa" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_boligtype.xml">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration skatt:begrepsreferanse="http://begrepskatalog/begrep/9c33fd0a-2964-11e6-b2bc-96405985e0fa" value="enebolig"/>
@@ -1428,7 +1511,7 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="boligverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ec675d4c-0e65-8144-aa88-9bedd74371f6" type="HeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForBolig" skatt:erAvledet="true" type="DesimaltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="justertMarkedsverdiForBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d329a-98ef-11ea-8a84-005056828ed3" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="justertMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d329a-98ef-11ea-8a84-005056828ed3" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Postnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e121-9fe1-11e5-a9f8-e4115b280940">
