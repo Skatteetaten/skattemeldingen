@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v4">
+    <xsd:annotation>
+        <xsd:documentation>
+            <xsd:attribute fixed="2022-11-02T07:04:25.909+0100" name="generertDato"/>
+            <xsd:attribute fixed="v4" name="versjon"/>
+            <xsd:attribute fixed="" name="beskrivelse"/>
+            <xsd:attribute fixed="v4" name="modellnavn"/>
+            <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v4" name="navnerom"/>
+            <xsd:attribute fixed="true" name="begrepsreferanse"/>
+            <xsd:attribute fixed="false" name="dokumentasjon"/>
+            <xsd:attribute fixed="false" name="nillable"/>
+            <xsd:attribute fixed="false" name="modellelement"/>
+            <xsd:attribute fixed="false" name="norskeTegn"/>
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="beregnetSkatt" type="BeregnetSkatt"/>
+    <xsd:complexType name="BeregnetSkatt">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="skatt" type="Skatt"/>
+            <xsd:element minOccurs="0" name="skattefradrag" type="Skattefradrag"/>
+            <xsd:element minOccurs="0" name="oevrig" type="OevrigeResultaterAvBeregning"/>
+            <xsd:element minOccurs="0" name="beregnetSkatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattOgFradragSkalIkkeBeregnes" type="Boolsk"/>
+            <xsd:element minOccurs="0" name="informasjonTilSkattelister" type="InformasjonTilSkattelister"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="InformasjonTilSkattelister">
+        <xsd:sequence>
+            <xsd:element name="organisasjonsnummer" type="Organisasjonsnummer"/>
+            <xsd:element name="kommune" type="Kommunenummer"/>
+            <xsd:element name="nettoinntekt" type="BeloepSomHeltall"/>
+            <xsd:element name="nettoformue" type="BeloepSomHeltall"/>
+            <xsd:element name="beregnetSkatt" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Skatt">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="sumSkatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="formuesskattTilStat" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="inntektsskattTilStat" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="tonnasjeskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="grunnrenteskatt" type="BeloepSomHeltall"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="naturressursskatt" type="BeloepMedSpesifisertKommune"/>
+            <xsd:element minOccurs="0" name="kraftforetaketsSamledeNaturressursskatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="inntektsskattTilStatFraVirksomhetPaaSokkel" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="saerskatt" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Skattefradrag">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="skattefradragForKostnaderTilFoU" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForNaturressursskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skatteverdiAvNegativSamordnetGrunnrenteinntekt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skatteverdiAvUndersoekelsesutgifter" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skatteverdiAvOverskytendeFriinntektVedOpphoer" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skatteverdiAvUdekketUnderskuddVedOpphoer" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForFormuesskattBetaltIUtlandet" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForInntektsskattBetaltIUtlandet" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForSkattBetaltIUtlandetAvAnnenUtenlandsinntekt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForSkattBetaltIUtlandetAvInntektFraVirksomhetEllerNOKUSILavskattland" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForSkattBetaltIUtlandetAvUtbytteEllerOverskuddFraUtenlandskDatterselskap" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="andreSkattefradragForVirksomhetPaaSokkel" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skatteverdiAvUnderskuddOgUbenyttetFriinntekt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OevrigeResultaterAvBeregning">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="renteAvUbenyttetSkattefradragForNaturressursskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForKostnaderTilFoUFoerReduksjon" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="ubenyttetSkattefradragForNaturressursskattInklRenterTilFremfoering" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="ubenyttetSkattefradragForSkattBetaltIUtlandetAvAnnenUtenlandsinntekt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="ubenyttetSkattefradragForSkattBetaltIUtlandetAvInntektFraVirksomhetEllerNOKUSILavskattland" type="BeloepSomHeltall"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="ubenyttetNegativGrunnrenteinntektFraFoer2007TilFremfoering" type="UbenyttetNegativGrunnrenteinntektFraFoer2007"/>
+            <xsd:element minOccurs="0" name="sumFordeltPositivSamordnetGrunnrenteinntekt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="sumGrunnlagForNaturressursskatt" type="BeloepSomHeltall"/>
+            <xsd:element maxOccurs="5" minOccurs="0" name="fremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv" type="FremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv"/>
+            <xsd:element maxOccurs="5" minOccurs="0" name="fremfoerbartSkattefradragForSkattBetaltIUtlandetAvAnnenUtenlandsinntekt" type="FremfoerbartSkattefradragForSkattBetaltIUtlandet"/>
+            <xsd:element maxOccurs="5" minOccurs="0" name="fremfoerbartSkattefradragForSkattBetaltIUtlandetAvInntektFraVirksomhetEllerNOKUSILavskattland" type="FremfoerbartSkattefradragForSkattBetaltIUtlandet"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="FremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv">
+        <xsd:sequence>
+            <xsd:element name="inntektsaar" type="Inntektsaar"/>
+            <xsd:element name="fremfoerbartSkattefradrag" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="FremfoerbartSkattefradragForSkattBetaltIUtlandet">
+        <xsd:sequence>
+            <xsd:element name="inntektsaar" type="Inntektsaar"/>
+            <xsd:element minOccurs="0" name="fremfoerbartSkattefradragForFormuesskattBetaltIUtlandet" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fremfoerbartSkattefradragForInntektsskattBetaltIUtlandet" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="InntektPerInntektsaar">
+        <xsd:sequence>
+            <xsd:element name="inntektsaar" type="Inntektsaar"/>
+            <xsd:element name="beloep" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UbenyttetNegativGrunnrenteinntektFraFoer2007">
+        <xsd:sequence>
+            <xsd:element name="kraftverketsLoepenummer" type="Tekst"/>
+            <xsd:element name="renteAvUbenyttetNegativGrunnrenteinntektFraFoer2007" type="BeloepSomHeltall"/>
+            <xsd:element name="ubenyttetNegativGrunnrenteinntektFraFoer2007InklRente" type="BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="Heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="xsd:long"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="BeloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="Heltall"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="xsd:boolean"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Tekst" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4000"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="Tekst">
+            <xsd:pattern value="[0-9]+"/>
+            <xsd:length value="9"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Kommunenummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f3-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="Tekst">
+            <xsd:pattern value="([0-9]){4}"/>
+            <xsd:length value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="BeloepMedSpesifisertKommune">
+        <xsd:sequence>
+            <xsd:element name="beloep" type="BeloepSomHeltall"/>
+            <xsd:element name="kommune" type="Kommunenummer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="Inntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/fa86c460-d685-11e7-9676-0050568351d2">
+        <xsd:restriction base="Heltall">
+            <xsd:minInclusive value="1000"/>
+            <xsd:totalDigits value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

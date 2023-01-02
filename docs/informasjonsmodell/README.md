@@ -75,6 +75,9 @@ Modeller som kan komme i retur etter beregning. Hvilke modeller som kommer i ret
 |:-----------|:-----------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------|
 | 2020       | [beregnet_skatt_v2.xsd](../../src/resources/xsd/beregnet_skatt_v2.xsd) | NA                                                                                                           | [skatteberegningsgrunnlag_v6.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v6.xsd) |
 | 2021       | [beregnet_skatt_v3.xsd](../../src/resources/xsd/beregnet_skatt_v3.xsd) | [beregnetskatt_upersonligskattyter_v2.xsd](../../src/resources/xsd/beregnetskatt_upersonligskattyter_v2.xsd) | [skatteberegningsgrunnlag_v7.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v7.xsd) |
-| 2022       | [beregnet_skatt_v4.xsd](../../src/resources/xsd/beregnet_skatt_v4.xsd) | [beregnetskatt_upersonligskattyter_v2.xsd](../../src/resources/xsd/beregnetskatt_upersonligskattyter_v2.xsd) | [skatteberegningsgrunnlag_v7.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v7.xsd) |
+| 2022       | [beregnet_skatt_v4.xsd](../../src/resources/xsd/beregnet_skatt_v4.xsd) | [beregnetskatt_upersonligskattyter_v4.xsd](../../src/resources/xsd/beregnetskatt_upersonligskattyter_v4.xsd) | [skatteberegningsgrunnlag_v7.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v7.xsd) |
 
 
+# Poster, felter og temaer i ny skattemelding for næringsdrivende
+
+Beskrivelse av poster og felter i ny skattemelding [ligger på skatteetaten.no](https://www.skatteetaten.no/bedrift-og-organisasjon/skatt/skattemelding-naringsdrivende/ny-skattemelding/poster-felter-og-temaer/)

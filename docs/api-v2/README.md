@@ -7,21 +7,26 @@ description: "Api-beskrivelser"
 
 Det tilbys to sett med API-er:
 
-- Skatteetatens-API: har tjenester for hent- og validering av skattemedlinger, eiendomskalkulator, hent vedlegg og foreløpig avrenging.
+- Skatteetatens-API: har tjenester for hent- og validering av skattemedlinger, eiendomskalkulator, hent vedlegg og
+  foreløpig avrenging.
 - Altinn3-API: for: har tjenester for opprettelse og innsending av en skattemeldinger.
 
 ![apier.png](apier.png)
 
 # Skatteetatens-API
 
-Skatteetaten har utviklet en demo klient (i python/jupyter notebook) som viser hvordan koble seg på ID-porten og kalle skatteetatens-API, og sende inn skattemeldingen med vedlegg via Altinn3:
+Skatteetaten har utviklet en demo klient (i python/jupyter notebook) som viser hvordan koble seg på ID-porten og kalle
+skatteetatens-API, og sende inn skattemeldingen med vedlegg via Altinn3:
 [jupyter notebook](../test/testinnsending/person-enk-med-vedlegg-2021.ipynb)
 
 ## Autentisering
 
-Når en skattepliktig skal benytte et sluttbrukersystem for å sende inn skattemeldingen og næringsopplysninger gjennom API må sluttbrukeren og/eller sluttbrukersystemet være autentisert og autorisert gjennom en påloggingsprosess.
+Når en skattepliktig skal benytte et sluttbrukersystem for å sende inn skattemeldingen og næringsopplysninger gjennom
+API må sluttbrukeren og/eller sluttbrukersystemet være autentisert og autorisert gjennom en påloggingsprosess.
 
-Ved kall til skattemelding-API ønsker skatteetaten å kjenne til identiteten til innsender. Identiteten til pålogget bruker, kombinert med informasjon fra Altinn autorisasjon vil avgjøre hvilken person/selskap en pålogget bruker kan hente skattemeldingen til eller sende inn skattemelding for.
+Ved kall til skattemelding-API ønsker skatteetaten å kjenne til identiteten til innsender. Identiteten til pålogget
+bruker, kombinert med informasjon fra Altinn autorisasjon vil avgjøre hvilken person/selskap en pålogget bruker kan
+hente skattemeldingen til eller sende inn skattemelding for.
 
 Autentisering skjer enten via ID-porten eller Maskinporten:
 
@@ -44,21 +49,31 @@ Figuren under skisserer hvordan innloggingsprosessen vil se ut:
 
 #### Registrering av et sluttbrukersystem i ID-porten
 
-Når et sluttbrukersystem initierer en påloggingsprosess mot ID-porten må SBS sende med en klient-ID. Denne klient-id-en er unik for SBS-typen og vil bli tildelt ved at programvareleverandøren av SBS på forhånd har gjennomført en registrering (onboarding) i en selvbetjeningsportal hos Digdir/Difi. Dette er beskrevet her: https://docs.digdir.no/docs/idporten/oidc/. Lenken beskriver også standarden OIDC som ID-porten er basert på.
+Når et sluttbrukersystem initierer en påloggingsprosess mot ID-porten må SBS sende med en klient-ID. Denne klient-id-en
+er unik for SBS-typen og vil bli tildelt ved at programvareleverandøren av SBS på forhånd har gjennomført en
+registrering (onboarding) i en selvbetjeningsportal hos Digdir/Difi. Dette er beskrevet
+her: https://docs.digdir.no/docs/idporten/oidc/. Lenken beskriver også standarden OIDC som ID-porten er basert på.
 
 Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir slik at dere kan få tildelt en klient-ID.
 
 #### Hvordan opprette ID-porten interasjon hos DigDir
 
-- Først må en integrasjon hos DigDir (gamle DIFI) opprettes gjennom deres [selvbetjeningsløsning](https://selvbetjening-samarbeid-ver2.difi.no/).
+- Først må en integrasjon hos DigDir (gamle DIFI) opprettes gjennom
+  deres [selvbetjeningsløsning](https://selvbetjening-samarbeid-ver2.difi.no/).
 - Klikk på integrasjoner under Ver2, klikk så på knappen "ny Integrasjon".
-- Det er denne integrasjonen som deres applikasjon vil snakke med seinere når deres sluttbruker skal autentisere seg mot ID-porten.
-  - Verdien i feltet "Integrasjonens identifikator" (kalt klient-ID over) er en GUID som tildeles av Digdir/Difi og som SBS må sende med i kallet til ID-porten.
+- Det er denne integrasjonen som deres applikasjon vil snakke med seinere når deres sluttbruker skal autentisere seg mot
+  ID-porten.
+    - Verdien i feltet "Integrasjonens identifikator" (kalt klient-ID over) er en GUID som tildeles av Digdir/Difi og
+      som SBS må sende med i kallet til ID-porten.
 - Velg _"API-klient"_ under "Difi-tjeneste".
 - Velg så et scope som angir hvilken offentlig API-tjeneste registreringen gjelder for:
-  - Klikk på knappen "Rediger Scopes" og velg _"skatteetaten:formueinntekt/skattemelding"_ fra lista over scopes.
-  - PS: hvis dere ikke finner scopet _"skatteetaten:formueinntekt/skattemelding"_ i lista må dere ta [kontakt med skatteetaten](mailto:skattemelding-sbs-brukerstotte@skatteetaten.no) slik at vi kan gi dere tilgang til scopet (i mellom tiden kan dere forsatt bruke denne integrasjonen da skatteetaen pt. ikke sjekker scope ved validering av access tokenet. Men denne sjekken er noe vi på et seinere tidspunkt kommer til å slå på).
-- Skriv inn et redirect uri-er (komma seperert og uten mellomrom). Dette er Uri-(er) som klienten får lov å gå til etter innlogging (ref. pilnummer 6 i figuren over)
+    - Klikk på knappen "Rediger Scopes" og velg _"skatteetaten:formueinntekt/skattemelding"_ fra lista over scopes.
+    - PS: hvis dere ikke finner scopet _"skatteetaten:formueinntekt/skattemelding"_ i lista må dere
+      ta [kontakt med skatteetaten](mailto:skattemelding-sbs-brukerstotte@skatteetaten.no) slik at vi kan gi dere
+      tilgang til scopet (i mellom tiden kan dere forsatt bruke denne integrasjonen da skatteetaen pt. ikke sjekker
+      scope ved validering av access tokenet. Men denne sjekken er noe vi på et seinere tidspunkt kommer til å slå på).
+- Skriv inn et redirect uri-er (komma seperert og uten mellomrom). Dette er Uri-(er) som klienten får lov å gå til etter
+  innlogging (ref. pilnummer 6 i figuren over)
 - Sett ønskede verdier for levetiden på autoriasjons-, access og refresh-token.
 - Et eksempel på hvordan integrasjonen kan bli seende ut:
 
@@ -66,13 +81,20 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
 
 ### Maskin-porten
 
-Maskinporten sørger for sikker autentisering og tilgangskontroll for datautveksling mellom virksomheter. Løsningen garanterer identiteten mellom virksomheter og gjør det mulig å binde sammen systemer.
+Maskinporten sørger for sikker autentisering og tilgangskontroll for datautveksling mellom virksomheter. Løsningen
+garanterer identiteten mellom virksomheter og gjør det mulig å binde sammen systemer.
 
-Et sluttbrukersystem som kjører på en sikker server kan integreres i Maskinporten og da være autentisert med sitt organisasjonsnummer. Det vil da være organisasjonen som autentiserer seg. Hvilken sluttbruker som utfører hvilken handling i deres system må organisasjonen selv holde kontroll på. En forutsetning for bruk av Maskinporten er derfor at organisasjonen har bygget et godt tilgangskontroll av sine sluttbrukere.
+Et sluttbrukersystem som kjører på en sikker server kan integreres i Maskinporten og da være autentisert med sitt
+organisasjonsnummer. Det vil da være organisasjonen som autentiserer seg. Hvilken sluttbruker som utfører hvilken
+handling i deres system må organisasjonen selv holde kontroll på. En forutsetning for bruk av Maskinporten er derfor at
+organisasjonen har bygget et godt tilgangskontroll av sine sluttbrukere.
 
-En autentisering gjort via Maskinporten tilrettelegger for høyere grad av automatisering da det ikke krever en personlig kodebrikke eller liknende. Vi tror Maskinporten vil passe for store selskap og regnskapsførere som skal levere skattemeldingen for mange.
+En autentisering gjort via Maskinporten tilrettelegger for høyere grad av automatisering da det ikke krever en personlig
+kodebrikke eller liknende. Vi tror Maskinporten vil passe for store selskap og regnskapsførere som skal levere
+skattemeldingen for mange.
 
-Bruk av Maskinporten forutsetter at organisasjonen har et virksomhetssertifikat eller tilsvarende mekanisme. Figuren under skisserer hvordan samhandlingen fungerer:
+Bruk av Maskinporten forutsetter at organisasjonen har et virksomhetssertifikat eller tilsvarende mekanisme. Figuren
+under skisserer hvordan samhandlingen fungerer:
 
 ![maskinporten.png](maskinporten.png)
 
@@ -80,19 +102,41 @@ Les detaljer om maksinporten her: https://docs.digdir.no/docs/Maskinporten/maski
 
 ## Autorisasjon
 
-API-ene som tilbys vil sjekke at sluttbrukeren eller eier av sluttbrukersystemet har tilgang til å utføre operasjoner gjennom API-et. Slik tilgangskontroll/autorisering skjer via Altinns autorisasjonskomponent.
+API-ene som tilbys vil sjekke at sluttbrukeren eller eier av sluttbrukersystemet har tilgang til å utføre operasjoner
+gjennom API-et. Slik tilgangskontroll/autorisering skjer via Altinns autorisasjonskomponent.
 
-Dette betyr at sluttbrukeren eller eier av sluttbrukersystemet må ha de nødvendige rollene i Altinn. Dette blir som i eksisterende løsninger.
+Dette betyr at sluttbrukeren eller eier av sluttbrukersystemet må ha de nødvendige rollene i Altinn. Dette blir som i
+eksisterende løsninger.
 
-## Ping tjeneste
+## Oppsummering API endepunkt
+
+| TYPE | API path                                                                                                                                 | Virkshomhetssertifikat |
+|------|------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
+| GET  | [/api/skattemelding/v2/ping](#ping)                                                                                                      | JA                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#hentGjeldende)                                                                | Nei                    |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#hentGjeldendeUtvidet) | Nei                    |
+| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#hentType)                                                            | Nei                    |
+| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#valider)                                                              | Nei                    |
+| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#validerTest)                                                      | Planlagt               |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#hentVedlegg)                                            | Nei                    |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#eiendomSoek)                                                        | Ja                     |
+| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#hentFormuesgrunnlag)         | Nei                    |
+| GET  | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiBolig)                          | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                  | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                             | Ja                     |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)              | Nei                    |
+| GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#avregning)                                                   | Nei                    |
+
+| Miljø                             | Adresse                      | Påloggingsmetode      |
+|-----------------------------------|------------------------------|-----------------------|
+| Test                              | idporten-api-sbstest.sits.no | OIDC                  |
+| Test virksomhetsstertifikat       | api-sbstest.sits.no          | Virksomhetssertifikat |
+| Produksjon                        | idporten.api.skatteetaten.no | OIDC                  |
+| Produksjon virkshometsstertifikat | api.skatteetaten.no          | Virksomhetssertifikat |
+
+## Ping tjeneste <a name="ping"></a>
 
 API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungerer.
-
-| Miljø        | Adresse                         |
-| ------------ | ------------------------------- |
-| Test         | idporten-api-sbstest.sits.no    |
-| Produksjon   | idporten.api.skatteetaten.no    |
-
 
 **URL** : `GET https://<env>/api/skattemelding/v2/ping`
 
@@ -104,16 +148,19 @@ API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungere
 
 ```json
 {
-    "ping": "pong"
+  "ping": "pong"
 }
 ```
 
-## Hent skattemelding
+## Hent skattemelding <a name="hentGjeldende"></a>
 
-API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt inntektsår. Den siste gjeldende skattemeldingen kan enten være utkast eller fastsatt:
+API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt inntektsår. Den siste gjeldende
+skattemeldingen kan enten være utkast eller fastsatt:
 
-- Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og data fra skattemeldingen tidligere år.
-- Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist. Dette kan også inneholde et eller flere myndighetsfastsatte felter.
+- Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og
+  data fra skattemeldingen tidligere år.
+- Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist.
+  Dette kan også inneholde et eller flere myndighetsfastsatte felter.
 
 **URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/`
 
@@ -127,28 +174,31 @@ API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt i
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
-- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
+- Iht.
+  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
+- Eksempel
+  XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
 - dokumenter – konvolutt for dokumenter
 
-  - skattemeldingdokument – complex type
-    - type – [valg fra xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
-    - id – dokumentidentifikator til dokumentet i skatteetatens system.
-    - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold i base64 encodet format
-  - naeringsopplysningsdokument – complex type 
-    - id – dokumentidentifikator til dokumentet i skatteetatens system
-    - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold i base64 encodet format
-  - utvidetVeiledningdokument - complex type
-    - id – dokumentidentifikator til dokumentet i skatteetatens system
-    - encoding – kodeliste – [utf-8]
-    - content – serialisert dokumentinnhold i base64 encodet format
+    - skattemeldingdokument – complex type
+      -
+      type – [valg fra xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
+        - id – dokumentidentifikator til dokumentet i skatteetatens system.
+        - encoding – kodeliste – [utf-8]
+        - content – serialisert dokumentinnhold i base64 encodet format
+    - naeringsopplysningsdokument – complex type
+        - id – dokumentidentifikator til dokumentet i skatteetatens system
+        - encoding – kodeliste – [utf-8]
+        - content – serialisert dokumentinnhold i base64 encodet format
+    - utvidetVeiledningdokument - complex type
+        - id – dokumentidentifikator til dokumentet i skatteetatens system
+        - encoding – kodeliste – [utf-8]
+        - content – serialisert dokumentinnhold i base64 encodet format
 
-### Utvidet veiledning
+### Utvidet veiledning <a name="hentGjeldendeUtvidet"></a>
 
 Fra og med inntektsår 2022 er det mulig å etterspørre eventuelle ubesvarte utvidede veiledninger som del av dette API'et, som kan sees i response-spesifikasjonen over. 
 
@@ -193,12 +243,15 @@ Eksempel (inneholder linjeskift for lesbarhet):
     MC0yMVQwNjozMjowNi45OTMwMzlaPC9vcHByZXR0ZXREYXRvPgogIDwvc2thdHRlbWVsZGluZ09w
     cHJldHRldD4KPC9za2F0dGVtZWxkaW5nPg==<content>
 
-## Hent Skattemelding (basert på type)
+## Hent Skattemelding (basert på type)  <a name="hentType"></a>
 
-API som returnerer siste gjeldende skattemeldingen av gitt type for skattepliktige for gitt inntektsår. Følgende type skattemeldinger er støttet:
+API som returnerer siste gjeldende skattemeldingen av gitt type for skattepliktige for gitt inntektsår. Følgende type
+skattemeldinger er støttet:
 
-- Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og data fra skattemeldingen tidligere år.
-- Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist. Dette kan også inneholde et eller flere myndighetsfastsatte felter.
+- Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og
+  data fra skattemeldingen tidligere år.
+- Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist.
+  Dette kan også inneholde et eller flere myndighetsfastsatte felter.
 
 **URL** : `GET https://<env>/api/skattemelding/v2/<type>/<inntektsaar>/<identifikator>/`
 
@@ -212,14 +265,17 @@ API som returnerer siste gjeldende skattemeldingen av gitt type for skatteplikti
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
-- Eksempel XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
+- Iht.
+  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
+- Eksempel
+  XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
 
 For nærmere beskrivelse av felt i XSDen eller hvordan man henter ut utvidede veiledninger, se forrige kapittel.
 
-## Valider skattemelding
+## Valider skattemelding <a name="valider"></a>
 
-Tjenesten validerer innholdet i en skattemelding og returnerer en respons med eventuelle feil, avvik og advarsler. Tjenesten vil foreta følgende:
+Tjenesten validerer innholdet i en skattemelding og returnerer en respons med eventuelle feil, avvik og advarsler.
+Tjenesten vil foreta følgende:
 
 1. Kontroll av meldingsformatet.
 2. Kontroll av innholdet og sammensetningen av elementene i skattemeldingen.
@@ -294,6 +350,7 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - forekomstidentifikator – identfikator til felt i skattemeldingen
     - sti – stien til elementet med veiledning
 
+## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument <a name="validerTest"></a>
 
 ## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument
 Hvis dere har behov for å gjøre beregninger før Skatteetaten har publisert utkast for et inntektsår, kan dere kalle denne tjenesten.
@@ -312,8 +369,30 @@ Den er helt lik som valideringstjenesten, men krever ikke `dokumentreferanseTilG
 **Body** 
 Likt som valider ovenfor
 
+## Lagre skattemelding midlertidig for visning <a name="midlertidigVisning"></a>
+Hvis dere har behov for å vise skattemeldingen i visningsklienten, kan den lastet opp via dette endepunktet. Skattemeldingen vil bli lagret i 24 timer for visning via URLen som returneres i responsen.
 
-## Hent vedlegg
+**URL** : `POST https://<env>/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
+
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse`
+
+**Body** 
+Likt som valider ovenfor
+
+**Response**
+
+```json
+{
+  "url": "https://skatt.skatteetaten.no/web/skattemelding-visning/midlertidig-lagret-skattemelding-for-visning?id=<id>"
+}
+```
+- `<id>: Unik identifikator på midlertidig lagret skattemeldingen`
+
+## Hent vedlegg <a name="hentVedlegg"></a>
 
 Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, enten fastsatt i gjeldende/nyeste skattemelding eller fra tidligere fastsettinger.
 
@@ -428,7 +507,7 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 
 - `sergEiendomsidentifikator: eiendomsidentifkator som skal benyttes for å hente eiendom og formuesinformajon.`
 
-### Hent formuesgrunnlag
+### Hent formuesgrunnlag <a name="hentFormuesgrunnlag"></a>
 
 Hent formuesgrunnlag for valgt unik eiendomsidentifikator og inntektsår.
 
@@ -517,7 +596,7 @@ Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektså
 - `formuesspesifikasjonFor*: innholder eiendommens formuesspesifikasjon og gjeldende skatteyters andel av formuesverdi. Detaljer som xxxx er med hvis skatteyter er eier av eiendommen. * Kan ha følgende verdier: Bolig, Flerboligbygning, SkalIkkeFastsettes, Tomt, SelveidFritidseiendom, AnnenFastEiendomInnenforInntektsgivendeAktivitet, AnnenFastEiendomUtenforInntektsgivendeAktivitet.`
 - `ukjentEiendomINorge: hvis vi ikke støtter denne eiendomstypen.`
 
-### Beregn markedsverdi for bolig
+### Beregn markedsverdi for bolig <a name="markedsverdiBolig"></a>
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
@@ -683,7 +762,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - `dokumentertMarkedsverdi: dokumentert markedsverdi når denne er innefor reglene slik at den er hensynstatt.`
 - `justertMarkedsverdi: justert markedsverdi er med når dokumentert markedsverdi er hensynstatt.`
 
-### Beregn markedsverdi for flerbolig
+### Beregn markedsverdi for flerbolig <a name="markedsverdiFlerbolig"></a>
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
@@ -932,7 +1011,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
-### Beregn utleieverdi for ikke-utleid næringseiendom
+### Beregn utleieverdi for ikke-utleid næringseiendom <a name="markedsverdiIkkeUtiledNaeringseiendom"></a>
 
 BeregnetUtleieverdi er basert på næringssjablong fra SSB hvor næringstype, areal, bystatus, sentralitet og skatteleggingsperiode inngår i beregningen.
 
@@ -1050,8 +1129,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
-
-## Forløpig avregning
+## Forløpig avregning <a name="avregning"></a>
 Tjenesten avregning er en tjeneste som mottar fødselsnummer og beregnet skatt og retunerer avregning. Denne tjenesten vil IKKE ta høyde for eventuelte tidligere skatteoppgjør for aktuelt inntektsår. Dvs at hvis skattyter har et skatteoppgjør og fått utbetalt tilgode, og skal gjøre en endring så vil denne tjenesten avregne som om det var første skatteoppgjør
 
 *URL** : `POST https://<env>/api/skattemelding/v2/avregning/avregn/{inntektsaar}/{identifikator}`

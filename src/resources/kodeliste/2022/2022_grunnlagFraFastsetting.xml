@@ -22,6 +22,7 @@
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
+      <kommentar>Brukes for å styre rekkefølgen feltene vises i ved innlegging av verdier</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -87,7 +88,6 @@
   </kode>
   <kode>
     <tekniskNavn>andelAvFellesgjeldIBoligselskap</tekniskNavn>
-    <begrepsreferanse>https://begrepskatalog/begrep/9c33fce6-2964-11e6-b2bc-96405985e0fa</begrepsreferanse>
     <kodetillegg>
       <rekkefoelgenummerIKalkulator>4.8.2</rekkefoelgenummerIKalkulator>
       <temakategori>boligOgEiendeler</temakategori>
@@ -216,9 +216,13 @@
   <kode>
     <tekniskNavn>annenGjeld</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.8.1</rekkefoelgenummerIKalkulator>
+      <temakategori>naering</temakategori>
       <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <alias>privatGjeldsbeloep</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>naeringGjeld</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -286,7 +290,18 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>annenSkattepliktigKapitalinntektFraVirtuellValuta</tekniskNavn>
+    <tekniskNavn>annetInntektsfradrag</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
+      <temakategori>arbeidTrygdPensjon</temakategori>
+      <postnummer>3.3.7</postnummer>
+      <kommentarUtfasingSL>Navneendring</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>3.3.7 Andre fradrag</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <alias>fradragForKostnaderKnyttetTilAnnenInntekt</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>arbeidsavklaringspenger</tekniskNavn>
@@ -372,6 +387,13 @@
   </kode>
   <kode>
     <tekniskNavn>barnepensjonFraFolketrygden</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>2.2.1/2</rekkefoelgenummerIKalkulator>
+      <temakategori>familieOgHelse</temakategori>
+      <postnummer>2.6.3</postnummer>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>fHInntekt</temaunderkategori>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>barnepensjonFraIPAOgIPS</tekniskNavn>
@@ -434,6 +456,25 @@
     <tekniskNavn>dagpengerForArbeidsloes</tekniskNavn>
   </kode>
   <kode>
+    <tekniskNavn>dagpengerForFisker</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Brukes i forskudd</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>2.1.7</rekkefoelgenummerIKalkulator>
+      <temakategori>naering</temakategori>
+      <postnummer>2.1.7</postnummer>
+      <kommentarUtfasingSL>Dekkes av dagpengerForNaeringsdrivendeOgFiskere. Brukes i forskudd.</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>2.1.7 Dagpenger for fiskere</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>personNaeringInntekt</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>dagpengerForNaeringsdrivende</tekniskNavn>
     <kodetillegg>
       <rekkefoelgenummerIKalkulator>2.1.7</rekkefoelgenummerIKalkulator>
@@ -443,13 +484,6 @@
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>loennsinntekter</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>dagpengerForNaeringsdrivendeOgFiskere</tekniskNavn>
-    <kodetillegg>
-      <temakategori>naering</temakategori>
-      <temaunderkategori>naeringsinntekter</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -513,6 +547,13 @@
   </kode>
   <kode>
     <tekniskNavn>etterloennOgEtterpensjon</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>2.6.2</rekkefoelgenummerIKalkulator>
+      <temakategori>arbeidTrygdPensjon</temakategori>
+      <postnummer>2.6.2</postnummer>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>etteroppgjoerUfoeretrygdFraFolketrygden</tekniskNavn>
@@ -565,9 +606,35 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>formuesverdiAvPrivatUtestaaendeFordring</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.1.6</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <postnummer>4.1.6</postnummer>
+      <ledetekstForForhaandsfastsetting>4.1.6 Formue av utestående fordringer, gjeldsbrev o.l.</ledetekstForForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>finansAnnetFormue</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>formuesverdiAvUtestaaendeFordring</tekniskNavn>
     <kodetillegg>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>formuesverdiForAndelIRentedelIVerdipapirfond</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.1.5</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <postnummer>4.1.5</postnummer>
+      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>4.1.5 Formue andeler i verdipapirfond - rentedel</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <alias>formuesverdiForVerdipapirfondsandelKnyttetTilRentedel</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>finansAnnetFormue</temaunderkategori>
+      <kommentar>37860 lagt til ifm RF-1159</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -579,7 +646,13 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.3.5</rekkefoelgenummerIKalkulator>
       <beregningsregelISkatteoppgjoer>KopierTilSvalbard:2100</beregningsregelISkatteoppgjoer>
+      <temakategori>boligOgEiendeler</temakategori>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <alias>formuesverdiForAnnenFastEiendomMedSkattepliktigAvkastning</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>boligEindelerFormue</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -591,9 +664,16 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.3.5</rekkefoelgenummerIKalkulator>
       <beregningsregelISkatteoppgjoer>KopierTilSvalbard:2100</beregningsregelISkatteoppgjoer>
+      <temakategori>boligOgEiendeler</temakategori>
+      <postnummer>4.3.5</postnummer>
       <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <alias>formuesverdiForAnnenFastEiendom</alias>
+      <alias>formuesverdiForAnnenFastEiendomUtenSkattepliktigAvkastning</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>boligEindelerFormue</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -687,6 +767,11 @@
   <kode>
     <tekniskNavn>formuesverdiForKjoeretoey</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.2.6</rekkefoelgenummerIKalkulator>
+      <temakategori>boligOgEiendeler</temakategori>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>boligEindelerFormue</temaunderkategori>
       <kommentar>Brukes utelukkende av SIRIUS, lagt til for å unngå eksplisitt håndtering i koden.</kommentar>
     </kodetillegg>
   </kode>
@@ -875,21 +960,6 @@
     </beskrivelse>
   </kode>
   <kode>
-    <tekniskNavn>formuesverdiForAndelIRentedelIVerdipapirfond</tekniskNavn>
-    <kodetillegg>
-      <rekkefoelgenummerIKalkulator>4.1.5</rekkefoelgenummerIKalkulator>
-      <temakategori>finans</temakategori>
-      <postnummer>4.1.5</postnummer>
-      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
-      <ledetekstForForhaandsfastsetting>4.1.5 Formue andeler i verdipapirfond - rentedel</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <alias>formuesverdiForVerdipapirfondsandelKnyttetTilRentedel</alias>
-      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>finansAnnetFormue</temaunderkategori>
-      <kommentar>37860 lagt til ifm RF-1159</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>formuesverdiForVirtuellValuta</tekniskNavn>
     <kodetillegg>
       <kommentar>SH-4773</kommentar>
@@ -897,6 +967,9 @@
   </kode>
   <kode>
     <tekniskNavn>forvaltningskostnaderFinans</tekniskNavn>
+    <kodetillegg>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>forvaltningskostnadKnyttetTilAksjesparekonto</tekniskNavn>
@@ -919,17 +992,9 @@
   </kode>
   <kode>
     <tekniskNavn>fradragForIndividuellSparingTilPensjon</tekniskNavn>
-  </kode>
-  <kode>
-    <tekniskNavn>annetInntektsfradrag</tekniskNavn>
     <kodetillegg>
-      <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
+      <rekkefoelgenummerIKalkulator>3.3.5</rekkefoelgenummerIKalkulator>
       <temakategori>arbeidTrygdPensjon</temakategori>
-      <postnummer>3.3.7</postnummer>
-      <kommentarUtfasingSL>Navneendring</kommentarUtfasingSL>
-      <ledetekstForForhaandsfastsetting>3.3.7 Andre fradrag</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
     </kodetillegg>
   </kode>
@@ -957,8 +1022,11 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.2.7</rekkefoelgenummerIKalkulator>
+      <temakategori>arbeidTrygdPensjon</temakategori>
       <ledetekstForForhaandsfastsetting>3.2.7 Merkostnader ved arbeidsopphold utenfor hjemmet</ledetekstForForhaandsfastsetting>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -971,6 +1039,10 @@
     </beskrivelse>
     <begrepsreferanse>https://data.skatteetaten.no/begrep/20b2e22b-9fe1-11e5-a9f8-e4115b280940</begrepsreferanse>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
+      <temakategori>familieOgHelse</temakategori>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <temaunderkategori>fHFradrag</temaunderkategori>
       <kommentar>SH-3524</kommentar>
     </kodetillegg>
   </kode>
@@ -1007,19 +1079,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>fradragsfoeringAvPositivSaldo</tekniskNavn>
-    <kodetillegg>
-      <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
-      <temakategori>naering</temakategori>
-      <postnummer>3.3.7</postnummer>
-      <ledetekstForForhaandsfastsetting>3.3.7 Fradragsføring av positiv saldo</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>naeringFradrag</temaunderkategori>
-      <kommentar>Rettledning til RF-1084</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>fremfoerbartUnderskuddFraTidligereAar</tekniskNavn>
     <kodetillegg>
       <rekkefoelgenummerIKalkulator>3.3.11</rekkefoelgenummerIKalkulator>
@@ -1041,12 +1100,6 @@
       <postnummer>3.3.11</postnummer>
       <temaunderkategori>naeringFradrag</temaunderkategori>
       <kommentar>RF-1030</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>fremfoertSkattefradragForAndelKildeskattPaaRenterOgRoyaltyMvINokus</tekniskNavn>
-    <kodetillegg>
-      <kommentar>SPAP-11975</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1073,6 +1126,12 @@
     <begrepsreferanse>https://begrepskatalog/begrep/367f2c9b-a9e1-11e8-8514-005056821322</begrepsreferanse>
     <kodetillegg>
       <kommentar>Beregningsgrunnlag - kreditfradrag</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fremfoertSkattefradragForAndelKildeskattPaaRenterOgRoyaltyMvINokus</tekniskNavn>
+    <kodetillegg>
+      <kommentar>SPAP-11975</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1108,6 +1167,36 @@
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>aksjeInntekt</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>gevinstVedRealisasjonAvAndelIAksjedelIVerdipapirfond</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.1.9</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <postnummer>3.1.9</postnummer>
+      <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>3.1.9 Gevinst salg verdipapirfond aksjedel</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <alias>gevinstVedRealisasjonAvVerdipapirfondsandelKnyttetTilAksjedel</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>aksjeInntekt</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>gevinstVedRealisasjonAvAndelIRentedelIVerdipapirfond</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.1.9</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <postnummer>3.1.9</postnummer>
+      <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>3.1.9 Gevinst salg verdipapirfond rentedel</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <alias>gevinstVedRealisasjonAvVerdipapirfondsandelKnyttetTilRentedel</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>finansAnnetInntekt</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -1186,39 +1275,10 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>gevinstVedRealisasjonAvAndelIAksjedelIVerdipapirfond</tekniskNavn>
+    <tekniskNavn>gevinstOgAnnenInntektFraVirtuellEiendel</tekniskNavn>
     <kodetillegg>
-      <rekkefoelgenummerIKalkulator>3.1.9</rekkefoelgenummerIKalkulator>
-      <temakategori>finans</temakategori>
-      <postnummer>3.1.9</postnummer>
-      <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
-      <ledetekstForForhaandsfastsetting>3.1.9 Gevinst salg verdipapirfond aksjedel</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <alias>gevinstVedRealisasjonAvVerdipapirfondsandelKnyttetTilAksjedel</alias>
-      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>aksjeInntekt</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>gevinstVedRealisasjonAvAndelIRentedelIVerdipapirfond</tekniskNavn>
-    <kodetillegg>
-      <rekkefoelgenummerIKalkulator>3.1.9</rekkefoelgenummerIKalkulator>
-      <temakategori>finans</temakategori>
-      <postnummer>3.1.9</postnummer>
-      <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
-      <ledetekstForForhaandsfastsetting>3.1.9 Gevinst salg verdipapirfond rentedel</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <alias>gevinstVedRealisasjonAvVerdipapirfondsandelKnyttetTilRentedel</alias>
-      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>finansAnnetInntekt</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>gevinstVedRealisasjonAvVirtuellValuta</tekniskNavn>
-    <kodetillegg>
-      <kommentar>SH-4773</kommentar>
+      <alias>gevinstVedRealisasjonAvVirtuellValuta</alias>
+      <kommentar>SH-4773 og SPAP-16062</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1315,20 +1375,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>grunnlagForSkattefradragForKostnaderTilFoU</tekniskNavn>
-    <kodetillegg>
-      <kommentarUtfasingSL>Må avklares</kommentarUtfasingSL>
-      <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>grunnlagForSkattefradragForKostnaderTilFoUForSmaaOgMellomstoreBedrifter</tekniskNavn>
-    <kodetillegg>
-      <kommentarUtfasingSL>Må avklares</kommentarUtfasingSL>
-      <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>hyre</tekniskNavn>
   </kode>
   <kode>
@@ -1348,6 +1394,19 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>inntektFraGevinstOgTapskonto</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.1.12</rekkefoelgenummerIKalkulator>
+      <temakategori>naering</temakategori>
+      <postnummer>3.1.12</postnummer>
+      <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
+      <kommentarUtfasingSL>Støttes i næringsspesifikasjonen</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>3.1.12 Inntekt fra gevinst- og tapskonto</ledetekstForForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>naeringInntekt</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>inntektsfradragAvRentefordelPaaLaanIArbeidsforhold</tekniskNavn>
     <kodetillegg>
       <kommentar>#3.3.1</kommentar>
@@ -1357,6 +1416,19 @@
     <tekniskNavn>inntektsfradragAvRentefordelPaaLaanIPensjonsforhold</tekniskNavn>
     <kodetillegg>
       <kommentar>#3.3.1</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>inntektsfradragFraGevinstOgTapskonto</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
+      <temakategori>naering</temakategori>
+      <postnummer>3.3.7</postnummer>
+      <kommentarUtfasingSL>Støttes i næringsspesifikasjonen</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>3.3.7 Inntektsfradrag fra gevinst- og tapskonto</ledetekstForForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>naeringFradrag</temaunderkategori>
+      <kommentar>Rettledning til RF-1219</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1456,6 +1528,13 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>korrigertGlobalAlminneligInntektKreditfradrag</tekniskNavn>
+    <kodetillegg>
+      <kommentarUtfasingSL>Dekkes av ferdigberegninger</kommentarUtfasingSL>
+      <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>krigspensjon</tekniskNavn>
   </kode>
   <kode>
@@ -1475,6 +1554,13 @@
   </kode>
   <kode>
     <tekniskNavn>livrenterIArbeidsforhold</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.1.12</rekkefoelgenummerIKalkulator>
+      <temakategori>bankLaanForsikring</temakategori>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>bankInntekt</temaunderkategori>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>livrenterUtenforArbeidsforholdTermin</tekniskNavn>
@@ -1780,9 +1866,26 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>opptjenteRenterFraPrivatUtestaaendeFordring</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.1.2</rekkefoelgenummerIKalkulator>
+      <temakategori>bankLaanForsikring</temakategori>
+      <postnummer>3.1.2</postnummer>
+      <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+      <ledetekstForForhaandsfastsetting>3.1.2 Renteinntekter av utestående fordringer, gjeldsbrev o.l.</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>bankInntekt</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>opptjenteRenterFraUtestaaendeFordring</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.1.2</rekkefoelgenummerIKalkulator>
+      <temakategori>bankLaanForsikring</temakategori>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>bankInntekt</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -2320,6 +2423,14 @@
       </spraakTekst>
     </beskrivelse>
     <begrepsreferanse>https://begrepskatalog/begrep/1e3330a1-6837-11e6-a7ce-fac03dffe1d7</begrepsreferanse>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.5.1</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <postnummer>4.5.1</postnummer>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>finansAnnetFormue</temaunderkategori>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>premiefondLivsforsikring</tekniskNavn>
@@ -2330,6 +2441,13 @@
       </spraakTekst>
     </beskrivelse>
     <begrepsreferanse>https://begrepskatalog/begrep/1e3330a1-6837-11e6-a7ce-fac03dffe1d7</begrepsreferanse>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.5.1</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>finansAnnetFormue</temaunderkategori>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>premieTilEgenTilleggstrygdForNaeringsdrivende</tekniskNavn>
@@ -2354,7 +2472,10 @@
   <kode>
     <tekniskNavn>reisefradrag</tekniskNavn>
     <kodetillegg>
+      <temakategori>arbeidTrygdPensjon</temakategori>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -2429,13 +2550,13 @@
     <tekniskNavn>renteinntektAvVerdipapirfondsandel</tekniskNavn>
     <kodetillegg>
       <rekkefoelgenummerIKalkulator>3.1.2</rekkefoelgenummerIKalkulator>
-      <temakategori>bankLaanForsikring</temakategori>
+      <temakategori>finans</temakategori>
       <postnummer>3.1.2</postnummer>
       <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
       <ledetekstForForhaandsfastsetting>3.1.2 Renteinntekter verdipapirfond</ledetekstForForhaandsfastsetting>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>bankInntekt</temaunderkategori>
+      <temaunderkategori>finansAnnetInntekt</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -2496,14 +2617,20 @@
   <kode>
     <tekniskNavn>saerfradragForLettereNedsattErvervsevne</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.5.3</rekkefoelgenummerIKalkulator>
       <temakategori>familieOgHelse</temakategori>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>fHFradrag</temaunderkategori>
       <kommentar>Kun SIRIUS</kommentar>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>saerfradragForStoreSykdomskostnader</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.5.4</rekkefoelgenummerIKalkulator>
       <temakategori>familieOgHelse</temakategori>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>fHFradrag</temaunderkategori>
       <kommentar>Kun SIRIUS</kommentar>
     </kodetillegg>
   </kode>
@@ -2519,8 +2646,10 @@
   <kode>
     <tekniskNavn>saerskiltFradragForFiskereOgFangstfolk</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.2.14</rekkefoelgenummerIKalkulator>
       <temakategori>naering</temakategori>
       <ledetekstForForhaandsfastsetting>3.2.14 Fradrag for fiske og fangst</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <temaunderkategori>naeringFradrag</temaunderkategori>
     </kodetillegg>
   </kode>
@@ -2566,6 +2695,9 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>skattefradragForKostnaderTilFoU</tekniskNavn>
+  </kode>
+  <kode>
     <tekniskNavn>skattefriLoennsinntektEllerGodtgjoerelseMedTrygdeavgiftsplikt</tekniskNavn>
     <kodetillegg>
       <kommentar>merket av Jobi som ikke i bruk</kommentar>
@@ -2591,25 +2723,27 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>utbytteFraVerdipapirfond</tekniskNavn>
-    <kodetillegg>
-      <rekkefoelgenummerIKalkulator>3.1.6</rekkefoelgenummerIKalkulator>
-      <temakategori>finans</temakategori>
-      <postnummer>3.1.6</postnummer>
-      <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
-      <ledetekstForForhaandsfastsetting>3.1.6 Utbytte/utdeling verdipapirfond</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <alias>skattepliktigUtbytteFraVerdipapirfondsandel</alias>
-      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>aksjeInntekt</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>skjermingsfradrag</tekniskNavn>
     <kodetillegg>
       <temakategori>finans</temakategori>
       <temaunderkategori>finansAnnetFradrag</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skjermingstilleggTilAlderspensjon</tekniskNavn>
+    <kodetillegg>
+      <temakategori>arbeidTrygdPensjon</temakategori>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
+      <kommentar>SPAP-16062</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skjermingstilleggTilAlderspensjon</tekniskNavn>
+    <kodetillegg>
+      <temakategori>arbeidTrygdPensjon</temakategori>
+      <kommentar>SPAP-16062</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -2788,6 +2922,34 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>tapVedRealisasjonAvAndelIAksjedelIVerdipapirfond</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.3.9</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <postnummer>3.3.9</postnummer>
+      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>3.3.9 Tap salg verdipapirfond aksjedel</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <alias>tapVedRealisasjonAvVerdipapirfondsandelKnyttetTilAksjedel</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>aksjeFradrag</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>tapVedRealisasjonAvAndelIRentedelIVerdipapirfond</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.3.9</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <postnummer>3.3.9</postnummer>
+      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>3.3.9 Tap salg verdipapirfond rentedel</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <alias>tapVedRealisasjonAvVerdipapirfondsandelKnyttetTilRentedel</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>finansAnnetFradrag</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>tapVedRealisasjonAvAnnetFinansprodukt</tekniskNavn>
     <kodetillegg>
       <rekkefoelgenummerIKalkulator>3.3.13</rekkefoelgenummerIKalkulator>
@@ -2840,37 +3002,10 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>tapVedRealisasjonAvAndelIAksjedelIVerdipapirfond</tekniskNavn>
+    <tekniskNavn>tapOgAnnenKostnadFraVirtuellEiendel</tekniskNavn>
     <kodetillegg>
-      <rekkefoelgenummerIKalkulator>3.3.9</rekkefoelgenummerIKalkulator>
-      <temakategori>finans</temakategori>
-      <postnummer>3.3.9</postnummer>
-      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
-      <ledetekstForForhaandsfastsetting>3.3.9 Tap salg verdipapirfond aksjedel</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <alias>tapVedRealisasjonAvVerdipapirfondsandelKnyttetTilAksjedel</alias>
-      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>aksjeFradrag</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>tapVedRealisasjonAvAndelIRentedelIVerdipapirfond</tekniskNavn>
-    <kodetillegg>
-      <rekkefoelgenummerIKalkulator>3.3.9</rekkefoelgenummerIKalkulator>
-      <temakategori>finans</temakategori>
-      <postnummer>3.3.9</postnummer>
-      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
-      <ledetekstForForhaandsfastsetting>3.3.9 Tap salg verdipapirfond rentedel</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <alias>tapVedRealisasjonAvVerdipapirfondsandelKnyttetTilRentedel</alias>
-      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>finansAnnetFradrag</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>tapVedRealisasjonAvVirtuellValuta</tekniskNavn>
-    <kodetillegg>
-      <kommentar>SH-4773</kommentar>
+      <alias>tapVedRealisasjonAvVirtuellValuta</alias>
+      <kommentar>SH-4773 og SPAP-16062</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -3143,6 +3278,27 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>utbytteFraVerdipapirfond</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.1.6</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <postnummer>3.1.6</postnummer>
+      <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>3.1.6 Utbytte/utdeling verdipapirfond</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <alias>skattepliktigUtbytteFraVerdipapirfondsandel</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>aksjeInntekt</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>utgiftsgodtgjoerelseTilBarnepassIBarnepasserensHjem</tekniskNavn>
+    <kodetillegg>
+      <kommentar>#2.1.3, Endret fra overskuddAvUtgiftsgodtgjoerelseTilBarnepassIBarnepasserensHjem</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>utgiftVedRefinansieringAvLaan</tekniskNavn>
     <kodetillegg>
       <temakategori>bankLaanForsikring</temakategori>
@@ -3150,12 +3306,6 @@
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>bankLaanForsikringGjeld</temaunderkategori>
       <kommentar>SH-12494 / SPAP-12237</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>utgiftsgodtgjoerelseTilBarnepassIBarnepasserensHjem</tekniskNavn>
-    <kodetillegg>
-      <kommentar>#2.1.3, Endret fra overskuddAvUtgiftsgodtgjoerelseTilBarnepassIBarnepasserensHjem</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -3204,6 +3354,29 @@
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>aksjeFormue</temaunderkategori>
       <kommentar>Ny 2019: 4.5.2 Formue fondskonto aksjedel</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>verdiFoerVerdsettingsrabattForAndelIAksjedelIVerdipapirfond</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.1.4</rekkefoelgenummerIKalkulator>
+      <temakategori>finans</temakategori>
+      <postnummer>4.1.4</postnummer>
+      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>4.1.4 Formue andeler i verdipapirfond – aksjedel</ledetekstForForhaandsfastsetting>
+      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <alias>formuesverdiForVerdipapirfondsandel</alias>
+      <alias>formuesverdiForVerdipapirfondsandelTilBarn</alias>
+      <alias>verdiFoerVerdsettingsrabattForVerdipapirfondsandelKnyttetTilAksjedel</alias>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>aksjeFormue</temaunderkategori>
+      <kommentar>37857 lagt til ifm RF-1159, formuesrabatt</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -3323,26 +3496,22 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>verdiFoerVerdsettingsrabattForAndelIAksjedelIVerdipapirfond</tekniskNavn>
+    <tekniskNavn>pensjonFraUtlandetSkattepliktigINorge</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
+        <tekst>Brukes i forskudd</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <rekkefoelgenummerIKalkulator>4.1.4</rekkefoelgenummerIKalkulator>
-      <temakategori>finans</temakategori>
-      <postnummer>4.1.4</postnummer>
-      <kommentarUtfasingSL>Alias</kommentarUtfasingSL>
-      <ledetekstForForhaandsfastsetting>4.1.4 Formue andeler i verdipapirfond – aksjedel</ledetekstForForhaandsfastsetting>
+      <rekkefoelgenummerIKalkulator>2.2.2</rekkefoelgenummerIKalkulator>
+      <temakategori>arbeidTrygdPensjon</temakategori>
+      <postnummer>2.2.2</postnummer>
+      <kommentarUtfasingSL>Landkode og trygde- eller skattemessige unntak på mer spesifikke tekniske navn. Brukes i forskudd.</kommentarUtfasingSL>
+      <ledetekstForForhaandsfastsetting>2.2.2 Annen pensjon fra utlandet</ledetekstForForhaandsfastsetting>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <alias>formuesverdiForVerdipapirfondsandel</alias>
-      <alias>formuesverdiForVerdipapirfondsandelTilBarn</alias>
-      <alias>verdiFoerVerdsettingsrabattForVerdipapirfondsandelKnyttetTilAksjedel</alias>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>aksjeFormue</temaunderkategori>
-      <kommentar>37857 lagt til ifm RF-1159, formuesrabatt</kommentar>
+      <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
     </kodetillegg>
   </kode>
   <underkodeliste>
@@ -3450,10 +3619,35 @@
       </spraakTekst>
     </beskrivelse>
     <kode>
-      <tekniskNavn>barnepensjonFraFolketrygdenTilBarn</tekniskNavn>
+      <tekniskNavn>aarsavgiftForKontoIVerdipapirregister</tekniskNavn>
       <kodetillegg>
-        <kommentarUtfasingSL>BarnetsPersonidentifikator på barnepensjonFraFolketrygden</kommentarUtfasingSL>
-        <kommentar>Til barn - brukes tilsynelatende ikke i forhåndsfastsetting eller forskudd</kommentar>
+        <temakategori>finans</temakategori>
+        <kommentarUtfasingSL>Dekkes av forvaltningskostnaderFinans, 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.3.7 Årsavgift VPS konto</ledetekstForForhaandsfastsetting>
+        <alias>aarsavgiftForKontoIVerdipapiregister</alias>
+        <temaunderkategori>finansAnnetFradrag</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>annenSkattepliktigFormueIUtlandet</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.6.2</rekkefoelgenummerIKalkulator>
+        <temakategori>finans</temakategori>
+        <postnummer>4.6.2</postnummer>
+        <kommentarUtfasingSL>Landkode på annenSkattepliktigFormue, 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.6.2 Annen formue i utlandet</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>finansAnnetFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>barnepensjon</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.2.1/2</rekkefoelgenummerIKalkulator>
+        <temakategori>familieOgHelse</temakategori>
+        <postnummer>2.6.3</postnummer>
+        <kommentarUtfasingSL>Dekkes av mer spesifikke tekniske navn, 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.2.1/2 Barnepensjon</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>fHInntekt</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -3553,11 +3747,56 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>formuesverdiAvPrivatUtestaaendeFordringIUtlandet</tekniskNavn>
+      <kodetillegg>
+        <temakategori>finans</temakategori>
+        <kommentarUtfasingSL>Landkode på annenFordring, 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.6.2 Utestående fordring mv. på utenlandsk debitor.</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>finansAnnetFormue</temaunderkategori>
+        <kommentar>8154 fjernet ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>formuesverdiForAndelIFritidsboligselskap</tekniskNavn>
       <kodetillegg>
         <beregningsregelISkatteoppgjoer>KopierTilSvalbard:2100</beregningsregelISkatteoppgjoer>
         <temakategori>boligOgEiendeler</temakategori>
         <kommentarUtfasingSL>Skiller ikke ut enheter i fritidsboligselskap</kommentarUtfasingSL>
+        <temaunderkategori>boligEindelerFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForAnnenFastEiendomMedSkattepliktigAvkastning</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.3.5</rekkefoelgenummerIKalkulator>
+        <beregningsregelISkatteoppgjoer>KopierTilSvalbard:2100</beregningsregelISkatteoppgjoer>
+        <temakategori>boligOgEiendeler</temakategori>
+        <postnummer>4.3.5</postnummer>
+        <kommentarUtfasingSL>Dekkes av formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.3.5 Annen fast eiendom innenfor inntektsgivende aktivitet</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>boligEindelerFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForAnnenFastEiendomUtenSkattepliktigAvkastning</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Inngår kun i bruttoformue ved beregning av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.3.5</rekkefoelgenummerIKalkulator>
+        <temakategori>boligOgEiendeler</temakategori>
+        <postnummer>4.3.5</postnummer>
+        <kommentarUtfasingSL>Dekkes av formuesgrunnlagAnnenFastEiendomUtenforInntektsgivendeAktivitet</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.3.5 Annen fast eiendom utenfor inntektsgivende aktivitet</ledetekstForForhaandsfastsetting>
         <temaunderkategori>boligEindelerFormue</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -3575,6 +3814,57 @@
         <kommentarUtfasingSL>Dekkes av formuesverdiForPrimaerbolig og formuesverdiForSekundaerbolig</kommentarUtfasingSL>
         <temaunderkategori>boligEindelerFormue</temaunderkategori>
         <kommentar>ikke forhåndsfastsetting</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForBuskap</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.4.2</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>4.4.2</postnummer>
+        <kommentarUtfasingSL>Dekkes av formuesverdiForFormuesobjekterINaeringIkkeOmfattetAvVerdsettingsrabatt. Brukes i forskudd., 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.4.2 Buskap</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForCampingvogn</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.2.6</rekkefoelgenummerIKalkulator>
+        <temakategori>boligOgEiendeler</temakategori>
+        <postnummer>4.2.6</postnummer>
+        <kommentarUtfasingSL>Dekkes av formuesverdiForKjoeretoey. Brukes i forskudd., 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.2.6 Campingvogn</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>boligEindelerFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForFastEiendomIUtlandet</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Er annen fast eiendom i kontekst av gjeldsreduksjon for fast eiendom i utlandet unntatt beskatning i Norge etter skatteavtale</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.6.1</rekkefoelgenummerIKalkulator>
+        <beregningsregelISkatteoppgjoer>KopierTilSvalbard:2100</beregningsregelISkatteoppgjoer>
+        <temakategori>boligOgEiendeler</temakategori>
+        <kommentarUtfasingSL>Landkode på alle relevante eiendomstyper, 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.6.1 Formue av fast eiendom i utlandet</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>boligEindelerFormue</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -3608,6 +3898,32 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>formuesverdiForMotorkjoeretoey</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.2.5</rekkefoelgenummerIKalkulator>
+        <beregningsregelISkatteoppgjoer>Ekskluder:2100</beregningsregelISkatteoppgjoer>
+        <temakategori>boligOgEiendeler</temakategori>
+        <postnummer>4.2.5</postnummer>
+        <kommentarUtfasingSL>Dekkes av formuesverdiForKjoeretoey. Brukes i forskudd., 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.2.5 Motorkjøretøy</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>boligEindelerFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForObligasjonMvIUtlandet</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>Landkode på formuesverdiForObligasjonMv, 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.6.2 Formue utenlandske obligasjoner og sertifikater</ledetekstForForhaandsfastsetting>
+        <kommentar>Ny ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>formuesverdiForSelveidBolig</tekniskNavn>
       <beskrivelse>
         <spraakTekst>
@@ -3621,6 +3937,115 @@
         <kommentarUtfasingSL>Dekkes av formuesverdiForPrimaerbolig og formuesverdiForSekundaerbolig</kommentarUtfasingSL>
         <temaunderkategori>boligEindelerFormue</temaunderkategori>
         <kommentar>Registreres enten som pb/sb i forhåndsfastsetting</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForUbetingetOpsjonIArbeidsforhold</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.1.8</rekkefoelgenummerIKalkulator>
+        <temakategori>finans</temakategori>
+        <postnummer>4.1.8</postnummer>
+        <kommentarUtfasingSL>Dekket av annenSkattepliktigFormue. Brukes i forskudd., 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.1.8 Opsjoner i arbeidsforhold</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>finansAnnetFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForUtestaaendeFordringerINaering</tekniskNavn>
+      <kodetillegg>
+        <temakategori>bankLaanForsikring</temakategori>
+        <kommentarUtfasingSL>Dekket av formeusverdiAvUtestaaendeFordring, 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.1.6 Utestående fordringer i næring</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>bankLaanForsikringFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForUtleidNaeringseiendomIUtlandet</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Er annen fast eiendom i kontekst av gjeldsreduksjon for fast eiendom i utlandet unntatt beskatning i Norge etter skatteavtale. Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <beregningsregelISkatteoppgjoer>KopierTilSvalbard:2100</beregningsregelISkatteoppgjoer>
+        <temakategori>naering</temakategori>
+        <kommentarUtfasingSL>Landkode på formuesverdiForNaeringseiendom, 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.6.1 Utleid utenlandsk næringseiendom</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>eiendelerINaering</temaunderkategori>
+        <kommentar>Endret 9. jan, Navn bør speile netto etter verdsettingsrabatt</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>formuesverdiForVarelager</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.4.3</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>4.4.3</postnummer>
+        <kommentarUtfasingSL>Dekkes av formuesverdiForFormuesobjekterINaeringIkkeOmfattetAvVerdsettingsrabatt. Brukes i forskudd., 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.4.3 Varelager</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>fortsettelsesforsikring</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.1.12</rekkefoelgenummerIKalkulator>
+        <temakategori>bankLaanForsikring</temakategori>
+        <postnummer>3.1.12</postnummer>
+        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Dekkes av livrenterIArbeidsforhold, 28.09slettes</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.12 Fortsettelsesforsikring</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>bankInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>gevinstVedRealisasjonAvObligasjonVerdipapirfondRentedelMv</tekniskNavn>
+      <kodetillegg>
+        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Dekkes av gevinstVedRealisasjonAvObligasjon og gevinstVedRealisasjonAvVerdipapirfondsandelKnyttetTilRentedel</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.10 Gevinst verdipapirfond rentedel, obligasjoner/sertifikater</ledetekstForForhaandsfastsetting>
+        <kommentar>Ny ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>gjeldINaering</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.8.1</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>4.8.1</postnummer>
+        <kommentarUtfasingSL>Dekkes av annenGjeld</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.8.1 Gjeld fra næring</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringGjeld</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>gjeldIUtlandet</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.8.3</rekkefoelgenummerIKalkulator>
+        <temakategori>bankLaanForsikring</temakategori>
+        <postnummer>4.8.3</postnummer>
+        <kommentarUtfasingSL>Landkode på annenGjeld. Brukes i forskudd.</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.8.3 Gjeld i utlandet</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>bankLaanForsikringGjeld</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -3638,10 +4063,51 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>grunnlagForSkattefradragForKostnaderTilFoU</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>Må avklares</kommentarUtfasingSL>
+        <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>grunnlagForSkattefradragForKostnaderTilFoUForSmaaOgMellomstoreBedrifter</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>Må avklares</kommentarUtfasingSL>
+        <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>hyretilleggUtenTrekkplikt</tekniskNavn>
       <kodetillegg>
         <kommentarUtfasingSL>Dekkes av hyretillegg</kommentarUtfasingSL>
         <kommentar>TFRI_HYRETILLEGG utgår fra 2018</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>innskuddIUtlandet</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.1.9</rekkefoelgenummerIKalkulator>
+        <temakategori>bankLaanForsikring</temakategori>
+        <postnummer>4.1.9</postnummer>
+        <kommentarUtfasingSL>Lankode på innskudd. Brukes i forskudd.</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.1.9 Bankinnskudd i utlandet</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>bankLaanForsikringFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>innskuddTilBarn</tekniskNavn>
+      <kodetillegg>
+        <temakategori>familieOgHelse</temakategori>
+        <kommentarUtfasingSL>BarnetsPersonidentifikator på innskudd</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.1 Renteinntekter i bank, tilhørende barn 16 år eller yngre</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>barn</temaunderkategori>
+        <kommentar>Til barn -  tilsynelatende i bruk for forhåndsfastsetting (med feil navn), men ikke i forskudd</kommentar>
       </kodetillegg>
     </kode>
     <kode>
@@ -3661,6 +4127,36 @@
       <tekniskNavn>inntektsreduksjonVedAvkastningAvEngangserstatning</tekniskNavn>
       <kodetillegg>
         <kommentarUtfasingSL>Må avklares</kommentarUtfasingSL>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>inntektVedUtleieAvFritidseiendomIUtlandetSomSkattepliktigeHarBrukt</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.8.5</rekkefoelgenummerIKalkulator>
+        <temakategori>boligOgEiendeler</temakategori>
+        <postnummer>2.8.5</postnummer>
+        <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Dekkes av nettoinntektVedUtleieAvFastEiendomMv og underskuddVedUtleieMvAvFastEiendomUtenforNaering</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.8.5 Skattepliktig inntekt ved utleie av fritidseiendom i utlandet som du selv har brukt</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>boligEindelerInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>inntektVedUtleieAvFritidseiendomSomSkattepliktigeHarBrukt</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.8.3</rekkefoelgenummerIKalkulator>
+        <temakategori>boligOgEiendeler</temakategori>
+        <postnummer>2.8.3</postnummer>
+        <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Dekkes av nettoinntektVedUtleieAvFastEiendomMv og underskuddVedUtleieMvAvFastEiendomUtenforNaering. Brukes i forskudd.</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.8.3 Skattepliktig inntekt ved utleie av fritidseiendom som du selv har brukt</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>boligEindelerInntekt</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -3688,13 +4184,6 @@
         <kommentarUtfasingSL>Dekkes av ferdigberegninger</kommentarUtfasingSL>
         <alias>grunnlagForTrinnskattUtenomPersoninntekt</alias>
         <kommentar>Kommunefordelt multiIB</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>korrigertGlobalAlminneligInntektKreditfradrag</tekniskNavn>
-      <kodetillegg>
-        <kommentarUtfasingSL>Dekkes av ferdigberegninger</kommentarUtfasingSL>
-        <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
       </kodetillegg>
     </kode>
     <kode>
@@ -3781,6 +4270,29 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>negativFormuesverdiAvFinansieltDerivat</tekniskNavn>
+      <kodetillegg>
+        <temakategori>finans</temakategori>
+        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.8.1 Negativ verdi av opsjoner/andre finansprodukter</ledetekstForForhaandsfastsetting>
+        <kommentar>39005 lagt til og 21091 fjernet ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>negativPersoninntektInnenAnnenNaering</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>Dekkes av samordnetPersoninntekt</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>1.7.5 Negativ beregnet personinntekt i enkeltpersonforetak annen næring som kan samordnes med arbeidsgodtgjørelse i KS, ANS mv. annen næring</ledetekstForForhaandsfastsetting>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>negativPersoninntektInnenFiskeEllerBarnepassIBarnepasserensHjem</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>Dekkes av samordnetPersoninntekt</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>1.7.2 Negativ beregnet personinntekt i enkeltpersonforetak fiske eller familiebarnehage i eget hjem som kan samordnes med arbeidsgodtgjørelse fra KS, ANS mv. fiske eller familiebarnehage i deltakerens eget hjem</ledetekstForForhaandsfastsetting>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>negativtEtteroppgjoerVedUfoeretrygdFraFolketrygden</tekniskNavn>
       <kodetillegg>
         <kommentarUtfasingSL>Dekkes av samordnetPersoninntekt</kommentarUtfasingSL>
@@ -3799,6 +4311,41 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>nettoinntektVedUtleieAvFastEiendomMvIUtlandet</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.8.5</rekkefoelgenummerIKalkulator>
+        <temakategori>boligOgEiendeler</temakategori>
+        <postnummer>2.8.5</postnummer>
+        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Landkode på nettoinntektVedUtleieAvFastEiendomMv</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.8.5 Nettoinntekt ved utleie mv. av fast eiendom utenfor næring utland</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>boligEindelerInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>opptjenteRenterFraPrivatUtestaaendeFordringIUtlandet</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.1.11</rekkefoelgenummerIKalkulator>
+        <temakategori>bankLaanForsikring</temakategori>
+        <postnummer>3.1.11</postnummer>
+        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Landkode på opptjenteRenterFraPrivatUtestaaendeFordring</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.11 Renteinntekt av utestående fordring mv. på utenlandsk debitor.</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>bankInntekt</temaunderkategori>
+        <kommentar>8155 fjernet ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>opptjenteRenterTilBarn</tekniskNavn>
+      <kodetillegg>
+        <temakategori>familieOgHelse</temakategori>
+        <kommentarUtfasingSL>BarnetsPersonidentifikator på opptjenteRenter</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.1 Renteinntekter i bank, tilhørende barn 16 år eller yngre</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>barn</temaunderkategori>
+        <kommentar>Til barn - tilsynelatende i bruk i forhåndsfastsetting men ikke i forskudd</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>overskuddAvUtgiftsgodtgjoerelseForRegnskapsbehandletBil</tekniskNavn>
       <beskrivelse>
         <spraakTekst>
@@ -3811,6 +4358,43 @@
         <kommentarUtfasingSL>Støttes i næringsspesifikasjonen</kommentarUtfasingSL>
         <temaunderkategori>loennsinntekter</temaunderkategori>
         <kommentar>OK</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>paaloepteRenterFraRentefordelPaaLaanIArbeidsforhold</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.3.1</rekkefoelgenummerIKalkulator>
+        <temakategori>bankLaanForsikring</temakategori>
+        <postnummer>3.3.1</postnummer>
+        <kommentarUtfasingSL>Dekkes av inntektsfradragAvRentefordelPaaLaanIArbeidsforhold</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.3.1 Rentefordel rimelige lån fra arbeidsgiver</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>bankLaanForsikringFradrag</temaunderkategori>
+        <kommentar>RENTEFORDEL_ARBEID - feil navn her</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>paaloepteRenterFraValutalaan</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.3.2 Renter valutalån</ledetekstForForhaandsfastsetting>
+        <kommentar>Ny ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>paaloepteRenterIUtlandet</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.3.2</rekkefoelgenummerIKalkulator>
+        <temakategori>bankLaanForsikring</temakategori>
+        <postnummer>3.3.2</postnummer>
+        <kommentarUtfasingSL>Landkode på paaloepteRenter. Brukes i forskudd.</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.3.2 Gjeldsrenter i utlandet</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>bankLaanForsikringFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -3834,6 +4418,17 @@
       <kodetillegg>
         <kommentarUtfasingSL>Landkode og trygde- eller skattemessige unntak på mer spesifikke tekniske navn</kommentarUtfasingSL>
         <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>pensjonsinnbetalingTilTjenestepensjonsordningIArbeidsforholdIEOES</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.2.12</rekkefoelgenummerIKalkulator>
+        <temakategori>arbeidTrygdPensjon</temakategori>
+        <postnummer>3.2.12</postnummer>
+        <kommentarUtfasingSL>Dekkes av generell pensjonsløsning</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.2.12 Utenlandsk pensjonsordning - tjenestepensjonsordning i arbeidsforhold i en annen EØS-stat</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -3913,6 +4508,43 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>premiefond</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <begrepsreferanse>https://begrepskatalog/begrep/1e3330a1-6837-11e6-a7ce-fac03dffe1d7</begrepsreferanse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.5.1</rekkefoelgenummerIKalkulator>
+        <temakategori>finans</temakategori>
+        <postnummer>4.5.1</postnummer>
+        <kommentarUtfasingSL>Dekkes av premiefondIndividuellPensjonsavtale og premiefondLivsforsikring. Brukes i forskudd.</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.5.1 Premiefond</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>finansAnnetFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>renteinntektAvObligasjonVerdipapirfondRentedelMvIUtlandet</tekniskNavn>
+      <kodetillegg>
+        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Landkode på mer spesifikke tekniske navn</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.11 Renteinntekter utenlandske verdipapirfond rentedel, obligasjoner/sertifikater</ledetekstForForhaandsfastsetting>
+        <kommentar>Ny ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>rentePaaForSentBetaltLoennPensjonFeriepengerOsv</tekniskNavn>
+      <kodetillegg>
+        <temakategori>bankLaanForsikring</temakategori>
+        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+        <ledetekstForForhaandsfastsetting>3.1.2 Renteinntekter av for sent utbetalt lønn/pensjon</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>bankinnskudd</temaunderkategori>
+        <kommentar>merket av Jobi som ikke i bruk</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>skattefriNaturalytelseForFriReiseTilOgFraArbeid</tekniskNavn>
       <kodetillegg>
         <kommentarUtfasingSL>Trygde- eller skattemessig unntak på andre tekniske navn</kommentarUtfasingSL>
@@ -3924,6 +4556,49 @@
       <kodetillegg>
         <kommentarUtfasingSL>Trygde- eller skattemessig unntak på andre tekniske navn</kommentarUtfasingSL>
         <kommentar>merket av Jobi som ikke i bruk</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>skattepliktigUtbytteFraAksjeINOKUSIkkeRegistrertIVerdipapirsentralen</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.1.7</rekkefoelgenummerIKalkulator>
+        <temakategori>finans</temakategori>
+        <postnummer>3.1.7</postnummer>
+        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Dekkes av generell finansløsning. Brukes i forskudd.</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.7 Sum skattepliktig utbytte aksjer i NOKUS-selskap</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>aksjeInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>skattepliktigUtbytteFraAksjeOgVerdipapirfondAksjedel</tekniskNavn>
+      <kodetillegg>
+        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.7 Skattepliktig utbytte aksjer og verdipapirfond aksjedel</ledetekstForForhaandsfastsetting>
+        <kommentar>Ny ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>skattepliktigUtbytteFraVerdipapirfondsandelTilBarn</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <temakategori>familieOgHelse</temakategori>
+        <kommentarUtfasingSL>Barnets personidentifikator på skattepliktigUtbytteFraVerdipapirfondsandel. Brukes i forskudd.</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.6 Utbytte/utdeling verdipapirfond, tilhørende barn 16 år eller yngre</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>barn</temaunderkategori>
+        <kommentar>Til barn - tilsynelatende til bruk i forhåndsfastsettingog i forskudd</kommentar>
       </kodetillegg>
     </kode>
     <kode>
@@ -3945,6 +4620,28 @@
       <kodetillegg>
         <kommentarUtfasingSL>Dekkes av mer spesifikke tekniske navn</kommentarUtfasingSL>
         <kommentar>Ny ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>tapVedRealisasjonAvVerdipapirfondsandelIKombifondKnyttetTilAksjedel</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.3.9</rekkefoelgenummerIKalkulator>
+        <temakategori>finans</temakategori>
+        <postnummer>3.3.9</postnummer>
+        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.3.9 Tap salg verdipapirfond aksjedel kombifond</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>aksjeFradrag</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>tapVedRealisasjonAvVerdipapirfondsandelIKombifondKnyttetTilRentedel</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.3.9</rekkefoelgenummerIKalkulator>
+        <temakategori>finans</temakategori>
+        <postnummer>3.3.9</postnummer>
+        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.3.9 Tap salg verdipapirfond rentedel kombifond</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>finansAnnetFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -4004,6 +4701,91 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>verdiFoerVerdsettingsrabattForAksjeIkkeIVPS</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <beregningsregelISkatteoppgjoer>Ekskluder:2100</beregningsregelISkatteoppgjoer>
+        <temakategori>finans</temakategori>
+        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.1.8 Skattepliktig verdi overf. fra Aksjeoppgaven</ledetekstForForhaandsfastsetting>
+        <alias>formuesverdiForAksjeIkkeIVPS</alias>
+        <temaunderkategori>aksjerFondObligasjonerOgSparing</temaunderkategori>
+        <kommentar>20915 fjernet ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>verdiFoerVerdsettingsrabattForAksjeIUtlandet</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.6.2</rekkefoelgenummerIKalkulator>
+        <temakategori>finans</temakategori>
+        <postnummer>4.6.2</postnummer>
+        <kommentarUtfasingSL>Landkode på verdiFoerVerdsettingsrabattForAksje</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.6.2 Formue av utenlandske aksjer i verdipapirregisteret (VPS)</ledetekstForForhaandsfastsetting>
+        <alias>formuesverdiForAksjeIUtlandet</alias>
+        <temaunderkategori>aksjeFormue</temaunderkategori>
+        <kommentar>37872 lagt til og 8139 fjernet ifm RF-1159</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>verdiFoerVerdsettingsrabattForAksjeIVPS</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.1.7</rekkefoelgenummerIKalkulator>
+        <temakategori>finans</temakategori>
+        <postnummer>4.1.7</postnummer>
+        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.1.7 Formue av børsnoterte norske aksjer  (i VPS)</ledetekstForForhaandsfastsetting>
+        <alias>formuesverdiForAksjeIVPS</alias>
+        <temaunderkategori>aksjeFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>verdiFoerVerdsettingsrabattForBilerMaskinerOgInventar</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon. Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.4.1</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>4.4.1</postnummer>
+        <kommentarUtfasingSL>Dekkes av verdiFoerVerdsettingsrabattForFormuesobjekterINaeringOmfattetAvVerdsettingsrabatt. Brukes i forskudd.</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.4.1 Biler,  maskiner og inventar</ledetekstForForhaandsfastsetting>
+        <alias>formuesverdiForBilerMaskinerOgInventar</alias>
+        <temaunderkategori>naeringFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>verdiFoerVerdsettingsrabattForInventarLoesoereVedUtleie</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>4.2.3</rekkefoelgenummerIKalkulator>
+        <temakategori>boligOgEiendeler</temakategori>
+        <postnummer>4.2.3</postnummer>
+        <kommentarUtfasingSL>Dekkes av verdiFoerVerdsettingsrabattForFormueInnenforInntektsgivendeAktivitet</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>4.2.3 Formue av inventar/løsøre ved utleie</ledetekstForForhaandsfastsetting>
+        <alias>formuesverdiForInventarLoesoereVedUtleie</alias>
+        <temaunderkategori>boligEindelerFormue</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>verdiFoerVerdsettingsrabattForVerdipapirfondsandelKnyttetTilAksjedelTilBarn</tekniskNavn>
       <beskrivelse>
         <spraakTekst>
@@ -4030,30 +4812,6 @@
       </spraakTekst>
     </beskrivelse>
     <kode>
-      <tekniskNavn>aarsavgiftForKontoIVerdipapirregister</tekniskNavn>
-      <kodetillegg>
-        <temakategori>finans</temakategori>
-        <kommentarUtfasingSL>Dekkes av forvaltningskostnaderFinans</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.3.7 Årsavgift VPS konto</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <alias>aarsavgiftForKontoIVerdipapiregister</alias>
-        <temaunderkategori>finansAnnetFradrag</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>annenSkattepliktigFormueIUtlandet</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.6.2</rekkefoelgenummerIKalkulator>
-        <temakategori>finans</temakategori>
-        <postnummer>4.6.2</postnummer>
-        <kommentarUtfasingSL>Landkode på annenSkattepliktigFormue</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.6.2 Annen formue i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>finansAnnetFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
       <tekniskNavn>arbeidsreise</tekniskNavn>
       <beskrivelse>
         <spraakTekst>
@@ -4065,22 +4823,15 @@
         <rekkefoelgenummerIKalkulator>3.2.8</rekkefoelgenummerIKalkulator>
         <temakategori>arbeidTrygdPensjon</temakategori>
         <postnummer>3.2.8</postnummer>
-        <kommentarUtfasingSL>Dekkes av reisefradrag. Brukes i forskudd.</kommentarUtfasingSL>
+        <kommentarUtfasingSL>Dekkes av reisefradrag. Brukes i forskudd, 28.09slettes</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.2.8/3.2.9 Fradrag for reise mellom hjem og arbeid</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
-      <tekniskNavn>barnepensjon</tekniskNavn>
+      <tekniskNavn>annenSkattepliktigKapitalinntektFraVirtuellValuta</tekniskNavn>
       <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.2.1/2</rekkefoelgenummerIKalkulator>
-        <temakategori>familieOgHelse</temakategori>
-        <postnummer>2.6.3</postnummer>
-        <kommentarUtfasingSL>Dekkes av mer spesifikke tekniske navn</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.2.1/2 Barnepensjon</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>fHInntekt</temaunderkategori>
+        <kommentar>SPAP-16062</kommentar>
       </kodetillegg>
     </kode>
     <kode>
@@ -4090,6 +4841,13 @@
         <ledetekstForForhaandsfastsetting>2.6.3 Barnepensjon og livrente til dine barn som er 16 år eller yngre</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <kommentar>Til barn - brukes tilsynelatende i forhåndsfastsetting, men ikke i forskudd</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>barnepensjonFraFolketrygdenTilBarn</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>BarnetsPersonidentifikator på barnepensjonFraFolketrygden</kommentarUtfasingSL>
+        <kommentar>Til barn - brukes tilsynelatende ikke i forhåndsfastsetting eller forskudd</kommentar>
       </kodetillegg>
     </kode>
     <kode>
@@ -4104,9 +4862,8 @@
         <rekkefoelgenummerIKalkulator>3.2.9</rekkefoelgenummerIKalkulator>
         <temakategori>arbeidTrygdPensjon</temakategori>
         <postnummer>3.2.9</postnummer>
-        <kommentarUtfasingSL>Dekkes av fradragForMerkostnadVedArbeidsoppholdUtenforHjemmet. Brukes i forskudd.</kommentarUtfasingSL>
+        <kommentarUtfasingSL>Dekkes av fradragForMerkostnadVedArbeidsoppholdUtenforHjemmet. Brukes i forskudd., 28.09slettes</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.2.8/3.2.9 Fradrag for besøksreiser hjem</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -4129,7 +4886,6 @@
         <temakategori>familieOgHelse</temakategori>
         <kommentarUtfasingSL>Dekket av kodeliste under fradragForKostnaderKnyttetTilArbeid</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.2.2 Fradragsberettiget premie til syke- og ulykkesforsikring</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <temaunderkategori>helse</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -4145,256 +4901,16 @@
         <rekkefoelgenummerIKalkulator>3.2.8</rekkefoelgenummerIKalkulator>
         <temakategori>arbeidTrygdPensjon</temakategori>
         <postnummer>3.2.8</postnummer>
-        <kommentarUtfasingSL>Dekket av fradragForMerkostnadVedArbeidsoppholdUtenforHjemmet. Brukes i forskudd.</kommentarUtfasingSL>
+        <kommentarUtfasingSL>Dekket av fradragForMerkostnadVedArbeidsoppholdUtenforHjemmet. Brukes i forskudd., 28.09slettes</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.2.9.6 Bompenger og fergeutgifter</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
-      <tekniskNavn>dagpengerForFisker</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
+      <tekniskNavn>dagpengerForNaeringsdrivendeOgFiskere</tekniskNavn>
       <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.1.7</rekkefoelgenummerIKalkulator>
         <temakategori>naering</temakategori>
-        <postnummer>2.1.7</postnummer>
-        <kommentarUtfasingSL>Dekkes av dagpengerForNaeringsdrivendeOgFiskere. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.1.7 Dagpenger for fiskere</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>personNaeringInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiAvPrivatUtestaaendeFordring</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.1.6</rekkefoelgenummerIKalkulator>
-        <temakategori>finans</temakategori>
-        <postnummer>4.1.6</postnummer>
-        <ledetekstForForhaandsfastsetting>4.1.6 Formue av utestående fordringer, gjeldsbrev o.l.</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>finansAnnetFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiAvPrivatUtestaaendeFordringIUtlandet</tekniskNavn>
-      <kodetillegg>
-        <temakategori>finans</temakategori>
-        <kommentarUtfasingSL>Landkode på annenFordring</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.6.2 Utestående fordring mv. på utenlandsk debitor.</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <temaunderkategori>finansAnnetFormue</temaunderkategori>
-        <kommentar>8154 fjernet ifm RF-1159</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForAnnenFastEiendomMedSkattepliktigAvkastning</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.3.5</rekkefoelgenummerIKalkulator>
-        <beregningsregelISkatteoppgjoer>KopierTilSvalbard:2100</beregningsregelISkatteoppgjoer>
-        <temakategori>boligOgEiendeler</temakategori>
-        <postnummer>4.3.5</postnummer>
-        <kommentarUtfasingSL>Dekkes av formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.3.5 Annen fast eiendom innenfor inntektsgivende aktivitet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForAnnenFastEiendomUtenSkattepliktigAvkastning</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Inngår kun i bruttoformue ved beregning av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.3.5</rekkefoelgenummerIKalkulator>
-        <temakategori>boligOgEiendeler</temakategori>
-        <postnummer>4.3.5</postnummer>
-        <kommentarUtfasingSL>Dekkes av formuesgrunnlagAnnenFastEiendomUtenforInntektsgivendeAktivitet</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.3.5 Annen fast eiendom utenfor inntektsgivende aktivitet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForBuskap</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.4.2</rekkefoelgenummerIKalkulator>
-        <temakategori>naering</temakategori>
-        <postnummer>4.4.2</postnummer>
-        <kommentarUtfasingSL>Dekkes av formuesverdiForFormuesobjekterINaeringIkkeOmfattetAvVerdsettingsrabatt. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.4.2 Buskap</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>naeringFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForCampingvogn</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.2.6</rekkefoelgenummerIKalkulator>
-        <temakategori>boligOgEiendeler</temakategori>
-        <postnummer>4.2.6</postnummer>
-        <kommentarUtfasingSL>Dekkes av formuesverdiForKjoeretoey. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.2.6 Campingvogn</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForFastEiendomIUtlandet</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Er annen fast eiendom i kontekst av gjeldsreduksjon for fast eiendom i utlandet unntatt beskatning i Norge etter skatteavtale</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.6.1</rekkefoelgenummerIKalkulator>
-        <beregningsregelISkatteoppgjoer>KopierTilSvalbard:2100</beregningsregelISkatteoppgjoer>
-        <temakategori>boligOgEiendeler</temakategori>
-        <kommentarUtfasingSL>Landkode på alle relevante eiendomstyper</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.6.1 Formue av fast eiendom i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForMotorkjoeretoey</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.2.5</rekkefoelgenummerIKalkulator>
-        <beregningsregelISkatteoppgjoer>Ekskluder:2100</beregningsregelISkatteoppgjoer>
-        <temakategori>boligOgEiendeler</temakategori>
-        <postnummer>4.2.5</postnummer>
-        <kommentarUtfasingSL>Dekkes av formuesverdiForKjoeretoey. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.2.5 Motorkjøretøy</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForObligasjonMvIUtlandet</tekniskNavn>
-      <kodetillegg>
-        <kommentarUtfasingSL>Landkode på formuesverdiForObligasjonMv</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.6.2 Formue utenlandske obligasjoner og sertifikater</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <kommentar>Ny ifm RF-1159</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForUbetingetOpsjonIArbeidsforhold</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.1.8</rekkefoelgenummerIKalkulator>
-        <temakategori>finans</temakategori>
-        <postnummer>4.1.8</postnummer>
-        <kommentarUtfasingSL>Dekket av annenSkattepliktigFormue. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.1.8 Opsjoner i arbeidsforhold</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>finansAnnetFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForUtestaaendeFordringerINaering</tekniskNavn>
-      <kodetillegg>
-        <temakategori>bankLaanForsikring</temakategori>
-        <kommentarUtfasingSL>Dekket av annenFordring</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.1.6 Utestående fordringer i næring</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <temaunderkategori>bankLaanForsikringFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForUtleidNaeringseiendomIUtlandet</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Er annen fast eiendom i kontekst av gjeldsreduksjon for fast eiendom i utlandet unntatt beskatning i Norge etter skatteavtale. Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <beregningsregelISkatteoppgjoer>KopierTilSvalbard:2100</beregningsregelISkatteoppgjoer>
-        <temakategori>naering</temakategori>
-        <kommentarUtfasingSL>Landkode på formuesverdiForNaeringseiendom</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.6.1 Utleid utenlandsk næringseiendom</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <temaunderkategori>eiendelerINaering</temaunderkategori>
-        <kommentar>Endret 9. jan, Navn bør speile netto etter verdsettingsrabatt</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>formuesverdiForVarelager</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.4.3</rekkefoelgenummerIKalkulator>
-        <temakategori>naering</temakategori>
-        <postnummer>4.4.3</postnummer>
-        <kommentarUtfasingSL>Dekkes av formuesverdiForFormuesobjekterINaeringIkkeOmfattetAvVerdsettingsrabatt. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.4.3 Varelager</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>naeringFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>fortsettelsesforsikring</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.1.12</rekkefoelgenummerIKalkulator>
-        <temakategori>bankLaanForsikring</temakategori>
-        <postnummer>3.1.12</postnummer>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Dekkes av livrenterIArbeidsforhold</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.12 Fortsettelsesforsikring</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>bankInntekt</temaunderkategori>
+        <temaunderkategori>naeringsinntekter</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -4405,10 +4921,21 @@
         <postnummer>3.3.6</postnummer>
         <kommentarUtfasingSL>Landkode på fradragsberettigetTapVedRealisasjonAvFastEiendom</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.6 Fradragsberettiget tap ved salg eller annen realisasjon av fast eiendom i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>boligEindelerFradrag</temaunderkategori>
         <kommentar>RF-1030</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>fradragsfoeringAvPositivSaldo</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>3.3.7</postnummer>
+        <ledetekstForForhaandsfastsetting>3.3.7 Fradragsføring av positiv saldo</ledetekstForForhaandsfastsetting>
+        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+        <temaunderkategori>naeringFradrag</temaunderkategori>
+        <kommentar>Rettledning til RF-1084</kommentar>
       </kodetillegg>
     </kode>
     <kode>
@@ -4440,7 +4967,6 @@
         <postnummer>3.3.7</postnummer>
         <kommentarUtfasingSL>Dekkes av fradragForGaverTilFrivilligeOrganisasjoner</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.7 Gaver gitt til organisasjoner i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>fHFradrag</temaunderkategori>
         <kommentar>http://www.skatteetaten.no/no/Person/Selvangivelse/Finn-post/3/3/7/. Fjernet ORID ifm at ny ORID ble lagt inn for feltet fradragForGaverTilFrivilligeOrganisasjoner som skal brukes både av SL og SIRIUS</kommentar>
@@ -4465,19 +4991,7 @@
         <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
         <kommentarUtfasingSL>Landkode på gevinstVedRealisasjonAvFastEiendom</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.1.11 Gevinst ved salg eller annen realisasjon av fast eiendom i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>boligEindelerInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>gevinstVedRealisasjonAvObligasjonVerdipapirfondRentedelMv</tekniskNavn>
-      <kodetillegg>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Dekkes av gevinstVedRealisasjonAvObligasjon og gevinstVedRealisasjonAvVerdipapirfondsandelKnyttetTilRentedel</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.10 Gevinst verdipapirfond rentedel, obligasjoner/sertifikater</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <kommentar>Ny ifm RF-1159</kommentar>
       </kodetillegg>
     </kode>
     <kode>
@@ -4490,7 +5004,6 @@
         <kommentarUtfasingSL>Dekkes av gevinstVedRealisasjonAvVerdipapirfondsandelKnyttetTilAksjedel</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.1.9 Gevinst salg verdipapirfond aksjedel kombifond</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>aksjeInntekt</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -4504,40 +5017,7 @@
         <kommentarUtfasingSL>Dekkes av gevinstVedRealisasjonAvVerdipapirfondsandelKnyttetTilRentedel</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.1.9 Gevinst salg verdipapirfond rentedel kombifond</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>finansAnnetInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>gjeldINaering</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.8.1</rekkefoelgenummerIKalkulator>
-        <temakategori>naering</temakategori>
-        <postnummer>4.8.1</postnummer>
-        <kommentarUtfasingSL>Dekkes av annenGjeld</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.8.1 Gjeld fra næring</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>naeringGjeld</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>gjeldIUtlandet</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.8.3</rekkefoelgenummerIKalkulator>
-        <temakategori>bankLaanForsikring</temakategori>
-        <postnummer>4.8.3</postnummer>
-        <kommentarUtfasingSL>Landkode på annenGjeld. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.8.3 Gjeld i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>bankLaanForsikringGjeld</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -4549,7 +5029,6 @@
         <kommentarUtfasingSL>Dekkes av saerfradragForLettereNedsattErvervsevne</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.5.3 Særfradrag for lettere nedsatt ervervsevne</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>fHFradrag</temaunderkategori>
         <kommentar>RF-1030</kommentar>
       </kodetillegg>
@@ -4563,7 +5042,6 @@
         <kommentarUtfasingSL>Dekkes av saerfradragForStoreSykdomskostnader</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.5.4 Særfradrag for store sykdomsutgifter</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>fHFradrag</temaunderkategori>
         <kommentar>RF-1030</kommentar>
       </kodetillegg>
@@ -4579,115 +5057,8 @@
       <kodetillegg>
         <temakategori>naering</temakategori>
         <kommentarUtfasingSL>Dekkes av saerskiltFradragForFiskereOgFangstfolk. Brukes i forskudd.</kommentarUtfasingSL>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>naeringInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>innskuddIUtlandet</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.1.9</rekkefoelgenummerIKalkulator>
-        <temakategori>bankLaanForsikring</temakategori>
-        <postnummer>4.1.9</postnummer>
-        <kommentarUtfasingSL>Lankode på innskudd. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.1.9 Bankinnskudd i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>bankLaanForsikringFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>innskuddTilBarn</tekniskNavn>
-      <kodetillegg>
-        <temakategori>familieOgHelse</temakategori>
-        <kommentarUtfasingSL>BarnetsPersonidentifikator på innskudd</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.1 Renteinntekter i bank, tilhørende barn 16 år eller yngre</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <temaunderkategori>barn</temaunderkategori>
-        <kommentar>Til barn -  tilsynelatende i bruk for forhåndsfastsetting (med feil navn), men ikke i forskudd</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>inntektFraGevinstOgTapskonto</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.1.12</rekkefoelgenummerIKalkulator>
-        <temakategori>naering</temakategori>
-        <postnummer>3.1.12</postnummer>
-        <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Støttes i næringsspesifikasjonen</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.12 Inntekt fra gevinst- og tapskonto</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>naeringInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>inntektsfoeringAvNegativSaldo</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.1.12</rekkefoelgenummerIKalkulator>
-        <temakategori>naering</temakategori>
-        <postnummer>3.1.12</postnummer>
-        <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Støttes i næringsspesifikasjonen</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.12 Inntektsføring negativ saldo</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>naeringInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>inntektsfradragFraGevinstOgTapskonto</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
-        <temakategori>naering</temakategori>
-        <postnummer>3.3.7</postnummer>
-        <kommentarUtfasingSL>Støttes i næringsspesifikasjonen</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.3.7 Inntektsfradrag fra gevinst- og tapskonto</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>naeringFradrag</temaunderkategori>
-        <kommentar>Rettledning til RF-1219</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>inntektVedUtleieAvFritidseiendomIUtlandetSomSkattepliktigeHarBrukt</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.8.5</rekkefoelgenummerIKalkulator>
-        <temakategori>boligOgEiendeler</temakategori>
-        <postnummer>2.8.5</postnummer>
-        <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Dekkes av nettoinntektVedUtleieAvFastEiendomMv og underskuddVedUtleieMvAvFastEiendomUtenforNaering</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.8.5 Skattepliktig inntekt ved utleie av fritidseiendom i utlandet som du selv har brukt</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>inntektVedUtleieAvFritidseiendomSomSkattepliktigeHarBrukt</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.8.3</rekkefoelgenummerIKalkulator>
-        <temakategori>boligOgEiendeler</temakategori>
-        <postnummer>2.8.3</postnummer>
-        <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Dekkes av nettoinntektVedUtleieAvFastEiendomMv og underskuddVedUtleieMvAvFastEiendomUtenforNaering. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.8.3 Skattepliktig inntekt ved utleie av fritidseiendom som du selv har brukt</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerInntekt</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -4704,20 +5075,6 @@
       </kodetillegg>
     </kode>
     <kode>
-      <tekniskNavn>livrenterSomGjelderBarn16AarEllerYngreUtenforArbeidsforhold</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.6.2</rekkefoelgenummerIKalkulator>
-        <temakategori>familieOgHelse</temakategori>
-        <postnummer>2.6.2</postnummer>
-        <kommentarUtfasingSL>Dekkes av ufoererenterOgLivrenterUtenforArbeidsforhold</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.6.2 Livrente utenfor arbeidsforhold til barn som er 16 år eller yngre</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>fHInntekt</temaunderkategori>
-        <kommentar>burde hete …IOgUtenfor…</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
       <tekniskNavn>loennsinntektSomGrunnlagForSaerskiltFradragForSjoefolk</tekniskNavn>
       <kodetillegg>
         <rekkefoelgenummerIKalkulator>2.1.2</rekkefoelgenummerIKalkulator>
@@ -4729,37 +5086,6 @@
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>loennsinntekter</temaunderkategori>
         <kommentar>Håndtering av behandlingsart knyttet til denne posten er fjernet.</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>loennsinntektTilBarn</tekniskNavn>
-      <kodetillegg>
-        <kommentarUtfasingSL>BarnetsPersonidentifikator på loennsinntekt</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.4.1 Lønn til barn som er 12 år eller yngre</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <kommentar>Til barn - kan ikke håndteres som tilsvarende for foreldre, da behandlingsarten og regelverket er avvikende</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>loennsinntektUtenTrygdeavgiftspliktOgMedTrekkplikt</tekniskNavn>
-      <kodetillegg>
-        <kommentarUtfasingSL>Dekkes av trygde- eller skattemessige unntak</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.1.1.5 Trekkpliktig lønn uten trygdeavgift</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <kommentar>Brukes kun av forhåndsfastsetting</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>merkostnaderForKostVedArbeidsoppholdUtenforHjemmet</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.2.7</rekkefoelgenummerIKalkulator>
-        <temakategori>arbeidTrygdPensjon</temakategori>
-        <postnummer>3.2.7</postnummer>
-        <kommentarUtfasingSL>Dekkes av fradragForMerkostnadVedArbeidsoppholdUtenforHjemmet</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.2.7 Merkostnader for kost ved arbeidsopphold utenfor hjemmet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -4783,74 +5109,6 @@
       </kodetillegg>
     </kode>
     <kode>
-      <tekniskNavn>negativFormuesverdiAvFinansieltDerivat</tekniskNavn>
-      <kodetillegg>
-        <temakategori>finans</temakategori>
-        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.8.1 Negativ verdi av opsjoner/andre finansprodukter</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <kommentar>39005 lagt til og 21091 fjernet ifm RF-1159</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>negativPersoninntektInnenAnnenNaering</tekniskNavn>
-      <kodetillegg>
-        <kommentarUtfasingSL>Dekkes av samordnetPersoninntekt</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>1.7.5 Negativ beregnet personinntekt i enkeltpersonforetak annen næring som kan samordnes med arbeidsgodtgjørelse i KS, ANS mv. annen næring</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>negativPersoninntektInnenFiskeEllerBarnepassIBarnepasserensHjem</tekniskNavn>
-      <kodetillegg>
-        <kommentarUtfasingSL>Dekkes av samordnetPersoninntekt</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>1.7.2 Negativ beregnet personinntekt i enkeltpersonforetak fiske eller familiebarnehage i eget hjem som kan samordnes med arbeidsgodtgjørelse fra KS, ANS mv. fiske eller familiebarnehage i deltakerens eget hjem</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>nettoinntektVedUtleieAvFastEiendomMvIUtlandet</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.8.5</rekkefoelgenummerIKalkulator>
-        <temakategori>boligOgEiendeler</temakategori>
-        <postnummer>2.8.5</postnummer>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Landkode på nettoinntektVedUtleieAvFastEiendomMv</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.8.5 Nettoinntekt ved utleie mv. av fast eiendom utenfor næring utland</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>opptjenteRenterFraPrivatUtestaaendeFordring</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.1.2</rekkefoelgenummerIKalkulator>
-        <temakategori>bankLaanForsikring</temakategori>
-        <postnummer>3.1.2</postnummer>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <ledetekstForForhaandsfastsetting>3.1.2 Renteinntekter av utestående fordringer, gjeldsbrev o.l.</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>bankInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>opptjenteRenterFraPrivatUtestaaendeFordringIUtlandet</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.1.11</rekkefoelgenummerIKalkulator>
-        <temakategori>bankLaanForsikring</temakategori>
-        <postnummer>3.1.11</postnummer>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Landkode på opptjenteRenterFraPrivatUtestaaendeFordring</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.11 Renteinntekt av utestående fordring mv. på utenlandsk debitor.</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>bankInntekt</temaunderkategori>
-        <kommentar>8155 fjernet ifm RF-1159</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
       <tekniskNavn>opptjenteRenterIUtlandet</tekniskNavn>
       <kodetillegg>
         <rekkefoelgenummerIKalkulator>3.1.11</rekkefoelgenummerIKalkulator>
@@ -4860,60 +5118,7 @@
         <kommentarUtfasingSL>Landkode på opptjenteRenter</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.1.11 Renter på bankinnskudd i utenlandsk bank</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>bankInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>opptjenteRenterTilBarn</tekniskNavn>
-      <kodetillegg>
-        <temakategori>familieOgHelse</temakategori>
-        <kommentarUtfasingSL>BarnetsPersonidentifikator på opptjenteRenter</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.1 Renteinntekter i bank, tilhørende barn 16 år eller yngre</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <temaunderkategori>barn</temaunderkategori>
-        <kommentar>Til barn - tilsynelatende i bruk i forhåndsfastsetting men ikke i forskudd</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>paaloepteRenterFraRentefordelPaaLaanIArbeidsforhold</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.3.1</rekkefoelgenummerIKalkulator>
-        <temakategori>bankLaanForsikring</temakategori>
-        <postnummer>3.3.1</postnummer>
-        <kommentarUtfasingSL>Dekkes av inntektsfradragAvRentefordelPaaLaanIArbeidsforhold</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.3.1 Rentefordel rimelige lån fra arbeidsgiver</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>bankLaanForsikringFradrag</temaunderkategori>
-        <kommentar>RENTEFORDEL_ARBEID - feil navn her</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>paaloepteRenterFraValutalaan</tekniskNavn>
-      <kodetillegg>
-        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.3.2 Renter valutalån</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <kommentar>Ny ifm RF-1159</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>paaloepteRenterIUtlandet</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.3.2</rekkefoelgenummerIKalkulator>
-        <temakategori>bankLaanForsikring</temakategori>
-        <postnummer>3.3.2</postnummer>
-        <kommentarUtfasingSL>Landkode på paaloepteRenter. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.3.2 Gjeldsrenter i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>bankLaanForsikringFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -4924,47 +5129,8 @@
         <postnummer>3.3.7</postnummer>
         <kommentarUtfasingSL>Dekkes av fradragForPengetilskudd</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.7 Tilskudd til vitenskapelig forskning</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>fHFradrag</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>pensjonFraUtlandetSkattefriINorge</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.2.5</rekkefoelgenummerIKalkulator>
-        <temakategori>arbeidTrygdPensjon</temakategori>
-        <postnummer>2.2.5</postnummer>
-        <kommentarUtfasingSL>Landkode og trygde- eller skattemessige unntak på mer spesifikke tekniske navn. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.2.5 Skattefri pensjon fra utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>pensjonFraUtlandetSkattepliktigINorge</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.2.2</rekkefoelgenummerIKalkulator>
-        <temakategori>arbeidTrygdPensjon</temakategori>
-        <postnummer>2.2.2</postnummer>
-        <kommentarUtfasingSL>Landkode og trygde- eller skattemessige unntak på mer spesifikke tekniske navn. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.2.2 Annen pensjon fra utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -4975,7 +5141,6 @@
         <postnummer>3.3.5</postnummer>
         <kommentarUtfasingSL>Landkode på pensjonsinnbetalingTilAvtaleOmSkattefavorisertIndividuellSparingTilPensjonTegnetFomNov2017</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.5 Utenlandsk pensjonsordning - Individuell pensjonssparing i en annen EØS-stat (tilsvarende ny norsk IPS)</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
@@ -4987,7 +5152,6 @@
         <temakategori>arbeidTrygdPensjon</temakategori>
         <postnummer>3.3.5</postnummer>
         <ledetekstForForhaandsfastsetting>3.3.5 Individuell pensjonssparing (ny IPS) i Norge</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
@@ -5014,20 +5178,6 @@
         <postnummer>3.3.5</postnummer>
         <kommentarUtfasingSL>Landkode på pensjonsinnbetalingTilIPS</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.5 Utenlandsk pensjonsordning - Individuell pensjonsavtale i en annen EØS-stat (tilsvarende norsk IPS)</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>pensjonsinnbetalingTilTjenestepensjonsordningIArbeidsforholdIEOES</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.2.12</rekkefoelgenummerIKalkulator>
-        <temakategori>arbeidTrygdPensjon</temakategori>
-        <postnummer>3.2.12</postnummer>
-        <kommentarUtfasingSL>Dekkes av generell pensjonsløsning</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.2.12 Utenlandsk pensjonsordning - tjenestepensjonsordning i arbeidsforhold i en annen EØS-stat</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
@@ -5041,26 +5191,6 @@
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>personNaeringInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>premiefond</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <begrepsreferanse>https://begrepskatalog/begrep/1e3330a1-6837-11e6-a7ce-fac03dffe1d7</begrepsreferanse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.5.1</rekkefoelgenummerIKalkulator>
-        <temakategori>finans</temakategori>
-        <postnummer>4.5.1</postnummer>
-        <kommentarUtfasingSL>Dekkes av premiefondIndividuellPensjonsavtale og premiefondLivsforsikring. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.5.1 Premiefond</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>finansAnnetFormue</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
@@ -5085,24 +5215,125 @@
       </kodetillegg>
     </kode>
     <kode>
-      <tekniskNavn>renteinntektAvObligasjonVerdipapirfondRentedelMvIUtlandet</tekniskNavn>
+      <tekniskNavn>skattepliktigEtterloennOgEtterpensjon</tekniskNavn>
       <kodetillegg>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Landkode på mer spesifikke tekniske navn</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.11 Renteinntekter utenlandske verdipapirfond rentedel, obligasjoner/sertifikater</ledetekstForForhaandsfastsetting>
+        <rekkefoelgenummerIKalkulator>2.6.2</rekkefoelgenummerIKalkulator>
+        <temakategori>arbeidTrygdPensjon</temakategori>
+        <postnummer>2.6.2</postnummer>
+        <kommentarUtfasingSL>Dekkes av mer spesifikke tekniske navn</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.6.2 Skattepliktig etterlønn og etterpensjon</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <kommentar>Ny ifm RF-1159</kommentar>
+        <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
-      <tekniskNavn>rentePaaForSentBetaltLoennPensjonFeriepengerOsv</tekniskNavn>
+      <tekniskNavn>skattepliktigInntektVedKorttidsutleie</tekniskNavn>
       <kodetillegg>
-        <temakategori>bankLaanForsikring</temakategori>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <ledetekstForForhaandsfastsetting>3.1.2 Renteinntekter av for sent utbetalt lønn/pensjon</ledetekstForForhaandsfastsetting>
+        <rekkefoelgenummerIKalkulator>2.8.6</rekkefoelgenummerIKalkulator>
+        <temakategori>boligOgEiendeler</temakategori>
+        <postnummer>2.8.6</postnummer>
+        <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Dekkes av generell utleieløsning</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.8.6 Skattepliktig inntekt ved korttidsutleie av egen bolig</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <temaunderkategori>bankinnskudd</temaunderkategori>
-        <kommentar>merket av Jobi som ikke i bruk</kommentar>
+        <temaunderkategori>boligEindelerInntekt</temaunderkategori>
+        <kommentar>Ny i 2018</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>underskuddVedUtleieMvAvFastEiendomUtenforNaeringIUtlandet</tekniskNavn>
+      <kodetillegg>
+        <temakategori>boligOgEiendeler</temakategori>
+        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Landkode på underskuddVedUtleieMvAvFastEiendomUtenforNaering</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.3.12 Underskudd ved utleie mv. av fast eiendom i utlandet</ledetekstForForhaandsfastsetting>
+        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+        <temaunderkategori>boligEindelerFradrag</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <lokaltForvaltet>true</lokaltForvaltet>
+  </underkodeliste>
+  <underkodeliste>
+    <tekniskNavn>2022_grunnlagFraForhaandsfastsettingEllerSkattekalkulator</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Liste skattegrunnlagsobjekter som ikke skal videreføres. For 2022 gjelder dette tekniske navn som kun er relevante for SL.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kode>
+      <tekniskNavn>inntektsfoeringAvNegativSaldo</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.1.12</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>3.1.12</postnummer>
+        <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
+        <kommentarUtfasingSL>Støttes i næringsspesifikasjonen</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.1.12 Inntektsføring negativ saldo</ledetekstForForhaandsfastsetting>
+        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+        <temaunderkategori>naeringInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>livrenterSomGjelderBarn16AarEllerYngreUtenforArbeidsforhold</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.6.2</rekkefoelgenummerIKalkulator>
+        <temakategori>familieOgHelse</temakategori>
+        <postnummer>2.6.2</postnummer>
+        <kommentarUtfasingSL>Dekkes av ufoererenterOgLivrenterUtenforArbeidsforhold</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.6.2 Livrente utenfor arbeidsforhold til barn som er 16 år eller yngre</ledetekstForForhaandsfastsetting>
+        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+        <temaunderkategori>fHInntekt</temaunderkategori>
+        <kommentar>burde hete …IOgUtenfor…</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>loennsinntektTilBarn</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>BarnetsPersonidentifikator på loennsinntekt</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.4.1 Lønn til barn som er 12 år eller yngre</ledetekstForForhaandsfastsetting>
+        <kommentar>Til barn - kan ikke håndteres som tilsvarende for foreldre, da behandlingsarten og regelverket er avvikende</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>loennsinntektUtenTrygdeavgiftspliktOgMedTrekkplikt</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>Dekkes av trygde- eller skattemessige unntak</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.1.1.5 Trekkpliktig lønn uten trygdeavgift</ledetekstForForhaandsfastsetting>
+        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+        <kommentar>Brukes kun av forhåndsfastsetting</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>merkostnaderForKostVedArbeidsoppholdUtenforHjemmet</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>3.2.7</rekkefoelgenummerIKalkulator>
+        <temakategori>arbeidTrygdPensjon</temakategori>
+        <postnummer>3.2.7</postnummer>
+        <kommentarUtfasingSL>Dekkes av fradragForMerkostnadVedArbeidsoppholdUtenforHjemmet</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>3.2.7 Merkostnader for kost ved arbeidsopphold utenfor hjemmet</ledetekstForForhaandsfastsetting>
+        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+        <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>pensjonFraUtlandetSkattefriINorge</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Brukes i forskudd</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.2.5</rekkefoelgenummerIKalkulator>
+        <temakategori>arbeidTrygdPensjon</temakategori>
+        <postnummer>2.2.5</postnummer>
+        <kommentarUtfasingSL>Landkode og trygde- eller skattemessige unntak på mer spesifikke tekniske navn. Brukes i forskudd.</kommentarUtfasingSL>
+        <ledetekstForForhaandsfastsetting>2.2.5 Skattefri pensjon fra utlandet</ledetekstForForhaandsfastsetting>
+        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+        <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
+        <kommentar>Må beholdes for skattekalkulator inntil videre</kommentar>
       </kodetillegg>
     </kode>
     <kode>
@@ -5151,106 +5382,6 @@
       </kodetillegg>
     </kode>
     <kode>
-      <tekniskNavn>skattepliktigEtterloennOgEtterpensjon</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.6.2</rekkefoelgenummerIKalkulator>
-        <temakategori>arbeidTrygdPensjon</temakategori>
-        <postnummer>2.6.2</postnummer>
-        <kommentarUtfasingSL>Dekkes av mer spesifikke tekniske navn</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.6.2 Skattepliktig etterlønn og etterpensjon</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>skattepliktigInntektVedKorttidsutleie</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>2.8.6</rekkefoelgenummerIKalkulator>
-        <temakategori>boligOgEiendeler</temakategori>
-        <postnummer>2.8.6</postnummer>
-        <kildeskattPaaLonnRegel>Diskvalifiserer</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Dekkes av generell utleieløsning</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>2.8.6 Skattepliktig inntekt ved korttidsutleie av egen bolig</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerInntekt</temaunderkategori>
-        <kommentar>Ny i 2018</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>skattepliktigUtbytteFraAksjeINOKUSIkkeRegistrertIVerdipapirsentralen</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.1.7</rekkefoelgenummerIKalkulator>
-        <temakategori>finans</temakategori>
-        <postnummer>3.1.7</postnummer>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Dekkes av generell finansløsning. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.7 Sum skattepliktig utbytte aksjer i NOKUS-selskap</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>aksjeInntekt</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>skattepliktigUtbytteFraAksjeOgVerdipapirfondAksjedel</tekniskNavn>
-      <kodetillegg>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.7 Skattepliktig utbytte aksjer og verdipapirfond aksjedel</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <kommentar>Ny ifm RF-1159</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>skattepliktigUtbytteFraVerdipapirfondsandelTilBarn</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <temakategori>familieOgHelse</temakategori>
-        <kommentarUtfasingSL>Barnets personidentifikator på skattepliktigUtbytteFraVerdipapirfondsandel. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.1.6 Utbytte/utdeling verdipapirfond, tilhørende barn 16 år eller yngre</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <temaunderkategori>barn</temaunderkategori>
-        <kommentar>Til barn - tilsynelatende til bruk i forhåndsfastsettingog i forskudd</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>tapVedRealisasjonAvVerdipapirfondsandelIKombifondKnyttetTilAksjedel</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.3.9</rekkefoelgenummerIKalkulator>
-        <temakategori>finans</temakategori>
-        <postnummer>3.3.9</postnummer>
-        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.3.9 Tap salg verdipapirfond aksjedel kombifond</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>aksjeFradrag</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>tapVedRealisasjonAvVerdipapirfondsandelIKombifondKnyttetTilRentedel</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>3.3.9</rekkefoelgenummerIKalkulator>
-        <temakategori>finans</temakategori>
-        <postnummer>3.3.9</postnummer>
-        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.3.9 Tap salg verdipapirfond rentedel kombifond</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>finansAnnetFradrag</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
       <tekniskNavn>underskuddAvEnkeltpersonforetakFordeltFraEktefelle</tekniskNavn>
       <kodetillegg>
         <temakategori>naering</temakategori>
@@ -5258,110 +5389,6 @@
         <ledetekstForForhaandsfastsetting>3.2.19 Underskudd fra næring fordelt fra ektefelle</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <temaunderkategori>naeringFradrag</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>underskuddVedUtleieMvAvFastEiendomUtenforNaeringIUtlandet</tekniskNavn>
-      <kodetillegg>
-        <temakategori>boligOgEiendeler</temakategori>
-        <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
-        <kommentarUtfasingSL>Landkode på underskuddVedUtleieMvAvFastEiendomUtenforNaering</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>3.3.12 Underskudd ved utleie mv. av fast eiendom i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <temaunderkategori>boligEindelerFradrag</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>verdiFoerVerdsettingsrabattForAksjeIkkeIVPS</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <beregningsregelISkatteoppgjoer>Ekskluder:2100</beregningsregelISkatteoppgjoer>
-        <temakategori>finans</temakategori>
-        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.1.8 Skattepliktig verdi overf. fra Aksjeoppgaven</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <alias>formuesverdiForAksjeIkkeIVPS</alias>
-        <temaunderkategori>aksjerFondObligasjonerOgSparing</temaunderkategori>
-        <kommentar>20915 fjernet ifm RF-1159</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>verdiFoerVerdsettingsrabattForAksjeIUtlandet</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.6.2</rekkefoelgenummerIKalkulator>
-        <temakategori>finans</temakategori>
-        <postnummer>4.6.2</postnummer>
-        <kommentarUtfasingSL>Landkode på verdiFoerVerdsettingsrabattForAksje</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.6.2 Formue av utenlandske aksjer i verdipapirregisteret (VPS)</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <alias>formuesverdiForAksjeIUtlandet</alias>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>aksjeFormue</temaunderkategori>
-        <kommentar>37872 lagt til og 8139 fjernet ifm RF-1159</kommentar>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>verdiFoerVerdsettingsrabattForAksjeIVPS</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon.</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.1.7</rekkefoelgenummerIKalkulator>
-        <temakategori>finans</temakategori>
-        <postnummer>4.1.7</postnummer>
-        <kommentarUtfasingSL>Dekkes av generell finansløsning</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.1.7 Formue av børsnoterte norske aksjer  (i VPS)</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <alias>formuesverdiForAksjeIVPS</alias>
-        <temaunderkategori>aksjeFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>verdiFoerVerdsettingsrabattForBilerMaskinerOgInventar</tekniskNavn>
-      <beskrivelse>
-        <spraakTekst>
-          <tekst>Omfattet av verdsettingsrabatt som gir gjeldsreduksjon. Brukes i forskudd</tekst>
-          <spraak>no</spraak>
-        </spraakTekst>
-      </beskrivelse>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.4.1</rekkefoelgenummerIKalkulator>
-        <temakategori>naering</temakategori>
-        <postnummer>4.4.1</postnummer>
-        <kommentarUtfasingSL>Dekkes av verdiFoerVerdsettingsrabattForFormuesobjekterINaeringOmfattetAvVerdsettingsrabatt. Brukes i forskudd.</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.4.1 Biler,  maskiner og inventar</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <alias>formuesverdiForBilerMaskinerOgInventar</alias>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>naeringFormue</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
-      <tekniskNavn>verdiFoerVerdsettingsrabattForInventarLoesoereVedUtleie</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.2.3</rekkefoelgenummerIKalkulator>
-        <temakategori>boligOgEiendeler</temakategori>
-        <postnummer>4.2.3</postnummer>
-        <kommentarUtfasingSL>Dekkes av verdiFoerVerdsettingsrabattForFormueInnenforInntektsgivendeAktivitet</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.2.3 Formue av inventar/løsøre ved utleie</ledetekstForForhaandsfastsetting>
-        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <alias>formuesverdiForInventarLoesoereVedUtleie</alias>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-        <temaunderkategori>boligEindelerFormue</temaunderkategori>
       </kodetillegg>
     </kode>
     <lokaltForvaltet>true</lokaltForvaltet>
