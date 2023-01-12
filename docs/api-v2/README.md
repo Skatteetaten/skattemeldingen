@@ -1225,7 +1225,7 @@ For næringspesifikasjonen
 
 ### Klargjør part for forhåndsfastsetting: <a name="klargjoer-part-for-forhaandsfastsetting"></a> 
 Dette kallet skal kjøres for å klargjøre en part for forhåndsfastsetting 
-dersom skattemeldingen ikke er klar på forhåndsfastsetting tidspunktet
+dersom skattemeldingen ikke er klar på forhåndsfastsettingtidspunktet
 
 **URL** `POST https://<env>/api/skattemelding/v2/klargjoerforhaandsfastsetting/<inntektsår>/<identifikator>`
 
@@ -1237,6 +1237,45 @@ dersom skattemeldingen ikke er klar på forhåndsfastsetting tidspunktet
 - `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
 - `<identifikator>: Organisasjonsnummer som krever forhåndsfastsetting.`
 
+**Respons**
+Ved vellykket klargjøring: 
+```json
+{
+  "status": "OK"
+}
+```
+
+Part som har utkast tilgjenglig: 
+```json
+{
+  "status": "PART_HAR_GJELDENDE",
+  "melding": "part har allerede gjeldende skattemelding for part, inntektsaar=2022, partType=upersonlig"
+}
+```
+
+Innteksår ikke støttet
+```json
+{
+  "status": "FORHAANDSFASTSETTING_ER_IKKE_STOETTET_FOR_INNTEKTSAAR",
+  "melding": "forhåndsfastsetting er ikke støttet for dette inntektsåret, inntektsaar=2021"
+}
+```
+
+Partstype ikke støttet (per nå støttes kun upersonlig skattemelding)
+```json
+{
+  "status": "PART_TYPE_ER_IKKE_STOETTET",
+  "melding": "forhåndsfastsetting er ikke støttet for denne partstypen, inntektsaar=2023, partType=personlig"
+}
+```
+
+Andre feiltilstander
+```json
+{
+  "status": "UKJENT",
+  "melding": "feil tilstand oppdaget ifm klargjøring av forhåndsfastsetting, inntektsaar=2023, partType=personlig"
+}
+```
 
 # Altinn3-API
 
