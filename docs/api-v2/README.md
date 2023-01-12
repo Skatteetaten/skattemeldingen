@@ -126,6 +126,7 @@ eksisterende løsninger.
 | POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                             | Ja                     |
 | POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)              | Nei                    |
 | GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#avregning)                                                   | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#klargjoer-part-for-forhaandsfastsetting)        | Nei                    |
 
 | Miljø                             | Adresse                      | Påloggingsmetode      |
 |-----------------------------------|------------------------------|-----------------------|
@@ -1177,6 +1178,64 @@ responsen er json med disse feltene. Spørsmålstegn indikerer at feltet ikke er
 - restskattFrafaltUnderOrdinaerBeloepsgrense: Long?,
 - fastsattKildeskattPaaLoenn: Long?,
 - refusjonAvKildeskattPaaLoenn: Long?
+
+## Forhåndsfastsetting <a name="Forhandsfastsetting"></a>
+Det er mulig å be om forhåndsfastsetting for upersonlige skattemelding før ordinær fastsettingsperioden starter.
+For eksempel, så skal et selskap kunne få forhåndsfastsetting i mars i 2023. Da skal skattemeldingen for 2022 og 2023 leveres.
+
+Skattemeldingen 2022 leveres i 2022-modellen, som "vanlig". I tillegg skal skattemeldingen for 2023 leveres, også den i 2022-modellen.
+
+Dersom en skal forhåndsfastsette før skattemeldingen er tilgjenglig via vanlig hent api'et så må en kjøre et "klargjøringskall". 
+Når skattemeldingen er tilgjenglig så må skattemeldingen inneholde 
+
+```xml
+<skattemelding xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v2">
+    <partsnummer>900408015031</partsnummer>
+    <inntektsaar>2023</inntektsaar>
+<!--    resten av skattemelding innformasjon her-->
+    <gjelderForhaandsfastsetting>
+      <innsendingsformat>
+        <forhaandsfastsettingsformattype>fjoraaretsSkattemelding</forhaandsfastsettingsformattype>
+      </innsendingsformat>
+    </gjelderForhaandsfastsetting>
+</skattemelding>
+```
+I tillegg så må en i skattemeldingOgNaeringsspesifikasjonRequest anngi hvilket navnerom skattemeldingen er lagret på. 
+Dersom en skal forhåndsfastsette 2022 og 2023 nå i februrar 2022 så skal følgende være satt:
+
+For skattemeldingen dokumentet:
+```xml
+<dokument>
+    <type>skattemeldingUpersonlig</type>
+    <encoding>utf-8</encoding>
+    <content><!-- base64-enkodet innhold her --></content>
+    <navneromVedForhaandsfastsetting>urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v2</navneromVedForhaandsfastsetting>
+</dokument>
+```
+
+For næringspesifikasjonen
+```xml
+    <dokument>
+    <type>naeringsspesifikasjon</type>
+    <encoding>utf-8</encoding>
+    <content><!-- base64-enkodet innhold her --></content>
+    <navneromVedForhaandsfastsetting>urn:no:skatteetaten:fastsetting:formueinntekt:naeringsopplysninger:ekstern:v3</navneromVedForhaandsfastsetting>
+</dokument>
+```
+
+### Klargjør part for forhåndsfastsetting: <a name="klargjoer-part-for-forhaandsfastsetting"></a> 
+Dette kallet skal kjøres for å klargjøre en part for forhåndsfastsetting 
+dersom skattemeldingen ikke er klar på forhåndsfastsetting tidspunktet
+
+**URL** `POST https://<env>/api/skattemelding/v2/klargjoerforhaandsfastsetting/<inntektsår>/<identifikator>`
+
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/klargjoerforhaandsfastsetting/2023/312787016`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse.`
+- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
+- `<identifikator>: Organisasjonsnummer som krever forhåndsfastsetting.`
 
 
 # Altinn3-API
