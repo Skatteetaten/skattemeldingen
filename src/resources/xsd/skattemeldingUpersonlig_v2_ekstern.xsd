@@ -521,7 +521,7 @@
       <xsd:element minOccurs="0" name="fremfoertUbenyttetUnderliggendeSelskapsskattFom1995" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element name="fradragsberettigetAndelAvUnderliggendeSelskapsskattIInntektsaaret" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element name="anvendtFradragsberettigetAndelAvUnderliggendeSelskapsskattIInntektsaaret" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="fradragsberettigetAndelAvUnderliggendeSelskapsskattTilFremfoering" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="fradragsberettigetAndelAvUnderliggendeSelskapsskattTilFremfoering" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="TilbakefoertUtenlandskSkattSenereAar">
@@ -1485,7 +1485,7 @@
   </xsd:complexType>
   <xsd:complexType name="ValutakursspesifikasjonMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="valutakursspesifikasjon" type="FoUprosjektstatustype"/>
+      <xsd:element name="valutakursspesifikasjon" type="Valutakursspesifikasjon"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="ResultatOgBalanseregnskapstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_resultatregnskapOgBalanse.xml">
@@ -1552,5 +1552,8 @@
   </xsd:simpleType>
   <xsd:simpleType name="Valutakurs" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd65-2964-11e6-b2bc-96405985e0fa">
     <xsd:restriction base="Desimaltall"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Valutakursspesifikasjon" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_valutakursspesifikasjon.xml">
+    <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
 </xsd:schema>
