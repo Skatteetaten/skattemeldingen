@@ -2589,7 +2589,7 @@
   </xsd:complexType>
   <xsd:complexType name="FoUprosjektkategoriMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="fouprosjektkategori" type="FoUprosjektstatustype"/>
+      <xsd:element name="fouprosjektkategori" type="FoUprosjektkategori"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="KostnadIInntektsaaret">
@@ -2619,6 +2619,7 @@
     <xsd:sequence>
       <xsd:element name="varIOekonomiskeVanskeligheterPaaSoeknadstidspunktet" type="BoolskMedInnkapsling"/>
       <xsd:element minOccurs="0" name="grunnlagsdokumentasjon" type="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="grunnlagsdokumentasjonsdato" type="DatoMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="NorskPersonidentifikator">
@@ -3132,7 +3133,7 @@
       <xsd:element name="fouprosjektstatustype" type="FoUprosjektstatustype"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="FoUprosjektstatustype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_fouprosjektstatustype.xml">
+  <xsd:simpleType name="FoUprosjektkategori" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_fouprosjektkategori.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:complexType name="BeloepSomHeltallMedOverstyring">
@@ -3150,12 +3151,12 @@
   </xsd:complexType>
   <xsd:complexType name="FoUvirksomhetskategoriMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="fouvirksomhetsstoerrelsestype" type="FoUprosjektstatustype"/>
+      <xsd:element name="fouvirksomhetskategori" type="FoUvirksomhetskategori"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunnMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="fouvirksomhetsstoerrelsestype" type="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn"/>
+      <xsd:element name="grunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn" type="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepMedInnkapsling">
@@ -3359,6 +3360,12 @@
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="FradragstypeINaeringsvirksomhet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_fradragstypeINaeringsvirksomhet.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="FoUprosjektstatustype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_fouprosjektstatustype.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="FoUvirksomhetskategori" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_fouvirksomhetskategori.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_grunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn.xml">
