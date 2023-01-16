@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v10">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-12-22T10:54:29.412+0100" name="generertDato"/>
+      <xsd:attribute fixed="2023-01-03T12:43:09.289+0100" name="generertDato"/>
       <xsd:attribute fixed="10.0" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v10" name="modellnavn"/>
@@ -179,6 +179,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="annenFordring" type="AnnenFordring"/>
       <xsd:element minOccurs="0" name="reduksjonAvGjeldOgGjeldsrenter" type="ReduksjonAvGjeldOgGjeldsrenter"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="engangserstatningTilBarn" type="EngangserstatningTilBarn"/>
+      <xsd:element minOccurs="0" name="utflyttingsskatt" type="Utflyttingsskatt"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Naering">
@@ -1254,6 +1255,14 @@
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Utflyttingsskatt">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="spesifikasjonAvUtflyttingOgUtflyttingsskatt" type="SpesifikasjonAvUtflyttingOgUtflyttingsskatt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="aksjeOgAnnetFinansproduktOmfattetAvUtflyttingsskatt" type="AksjeOgAnnetFinansproduktOmfattetAvUtflyttingsskatt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="opsjonerIArbeidsforholdOmfattetAvUtflyttingsskatt" type="OpsjonerIArbeidsforholdOmfattetAvUtflyttingsskatt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="andelISelskapMedDeltakerfastsettingOmfattetAvUtflyttingsskatt" type="AndelISelskapMedDeltakerfastsettingOmfattetAvUtflyttingsskatt"/>
+    </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="NaeringsinntektMv">
     <xsd:complexContent>
@@ -2404,6 +2413,47 @@
       <xsd:element minOccurs="0" name="opptjenteRenter" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvUtflyttingOgUtflyttingsskatt">
+    <xsd:sequence>
+      <xsd:element name="aarsakTilUtflyttingsskatt" type="AarsakTilUtflyttingsskattMedInnkapsling"/>
+      <xsd:element name="kravOmUtsattBeskatning" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="land" type="LandkodeMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AksjeOgAnnetFinansproduktOmfattetAvUtflyttingsskatt">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="kontofoerersNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="isinnummer" type="IsinnummerMedInnkapsling"/>
+      <xsd:element name="finansprodukttype" type="FinansproduktOmfattetAvUtflyttingsskattMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigLatentGevinstVedRealisasjonAvAksjeOgAnnetFinansprodukt" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigLatentTapVedRealisasjonAvAksjeOgAnnetFinansprodukt" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvAksjeOgAnnetFinansprodukt" type="RealisasjonOmfattetAvUtflyttingsskatt"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OpsjonerIArbeidsforholdOmfattetAvUtflyttingsskatt">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigLatentGevinstVedRealisasjonAvOpsjonIArbeidsforhold" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigLatentTapVedRealisasjonAvOpsjonIArbeidsforhold" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvOpsjonIArbeidsforhold" type="RealisasjonOmfattetAvUtflyttingsskatt"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AndelISelskapMedDeltakerfastsettingOmfattetAvUtflyttingsskatt">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="ansvarsform" type="AnsvarsformForSelskapMedDeltakerfastsettingMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigLatentGevinstVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigLatentTapVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvAndelISelskapMedDeltakerfastsetting" type="RealisasjonOmfattetAvUtflyttingsskatt"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Naeringstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_naeringstype.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
@@ -3084,6 +3134,29 @@
   <xsd:simpleType name="GenerelleSvarord" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/generelleSvarord.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
+  <xsd:complexType name="AarsakTilUtflyttingsskattMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="aarsakTilUtflyttingsskatt" type="AarsakTilUtflyttingsskatt"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FinansproduktOmfattetAvUtflyttingsskattMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="finansproduktOmfattetAvUtflyttingsskatt" type="FinansproduktOmfattetAvUtflyttingsskatt"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RealisasjonOmfattetAvUtflyttingsskatt">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="realisasjonsaar" type="AarstallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjon" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjon" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AnsvarsformForSelskapMedDeltakerfastsettingMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="ansvarsformForSelskapMedDeltakerfastsetting" type="AnsvarsformForSelskapMedDeltakerfastsetting"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="VilkaarstypeForSaerskiltFradragForFiskereOgFangstfolk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_vilkaarstypeForSaerskiltFradragForFiskereOgFangstfolk.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
@@ -3353,6 +3426,15 @@
       <xsd:element name="adressebrukskategori" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f7-9fe1-11e5-a9f8-e4115b280940" type="Adressebrukskategori"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="AarsakTilUtflyttingsskatt" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_aarsakTilUtflyttingsskatt.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="FinansproduktOmfattetAvUtflyttingsskatt" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_finansproduktOmfattetAvUtflyttingsskatt.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="AnsvarsformForSelskapMedDeltakerfastsetting" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_ansvarsformForSelskapMedDeltakerfastsetting.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
   <xsd:simpleType name="InntektstypeKnyttetTilFiskeOgFangst" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_inntektKnyttetTilFiskeOgFangst.xml">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
