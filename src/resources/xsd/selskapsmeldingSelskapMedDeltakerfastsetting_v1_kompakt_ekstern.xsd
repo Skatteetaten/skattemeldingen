@@ -672,7 +672,7 @@
       <xsd:element minOccurs="0" name="annetTilleggTilSkjermingsfradrag" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="annenReduksjonISkjermingsfradrag" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="skjermingsfradragTilAnvendelseOgFremfoering" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="anvendtSkjermingsfradragIInntektsaar" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="anvendtSkjermingsfradragIInntektsaar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="skjermingsfradragTilFremfoeringFoerMotregningMotGevinst" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="skjermingsfradragTilFremfoeringTilNesteInntektsaar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>

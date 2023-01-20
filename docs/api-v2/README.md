@@ -120,13 +120,14 @@ eksisterende løsninger.
 | POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#validerTest)                                                                    | Planlagt               |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#hentVedlegg)                                                          | Nei                    |
 | GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#eiendomSoek)                                                                      | Ja                     |
-| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#hentFormuesgrunnlag)                       | Nei                    |
-| GET  | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiBolig)                                        | Ja                     |
+| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#hentFormuesgrunnlag)                       | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiBolig)                                        | Ja                     |
 | POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                                | Ja                     |
 | POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                                           | Ja                     |
 | POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)                            | Nei                    |
 | POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#til-midlertidig-lagret-skattemelding-for-visning) | Nei                    |
 | GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#avregning)                                                                 | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#klargjoer-part-for-forhaandsfastsetting)                      | Nei                    |
 
 | Miljø                             | Adresse                      | Påloggingsmetode      |
 |-----------------------------------|------------------------------|-----------------------|
@@ -1202,6 +1203,103 @@ responsen er json med disse feltene. Spørsmålstegn indikerer at feltet ikke er
 - fastsattKildeskattPaaLoenn: Long?,
 - refusjonAvKildeskattPaaLoenn: Long?
 
+## Forhåndsfastsetting <a name="Forhandsfastsetting"></a>
+Det er mulig å be om forhåndsfastsetting for upersonlige skattemelding før ordinær fastsettingsperioden starter.
+For eksempel, så skal et selskap kunne få forhåndsfastsetting i mars i 2023. Da skal skattemeldingen for 2022 og 2023 leveres.
+
+Skattemeldingen 2022 leveres i 2022-modellen, som "vanlig". I tillegg skal skattemeldingen for 2023 leveres, også den i 2022-modellen.
+
+Dersom en skal forhåndsfastsette før skattemeldingen er tilgjenglig via vanlig hent api'et så må en kjøre et "klargjøringskall". 
+Når skattemeldingen er tilgjenglig så må skattemeldingen inneholde 
+
+```xml
+<skattemelding xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v2">
+    <partsnummer>900408015031</partsnummer>
+    <inntektsaar>2023</inntektsaar>
+<!--    resten av skattemelding innformasjon her-->
+    <gjelderForhaandsfastsetting>
+      <innsendingsformat>
+        <forhaandsfastsettingsformattype>fjoraaretsSkattemelding</forhaandsfastsettingsformattype>
+      </innsendingsformat>
+    </gjelderForhaandsfastsetting>
+</skattemelding>
+```
+I tillegg så må en i skattemeldingOgNaeringsspesifikasjonRequest anngi hvilket navnerom skattemeldingen er lagret på. 
+Dersom en skal forhåndsfastsette 2022 og 2023 nå i februrar 2022 så skal følgende være satt:
+
+For skattemeldingen dokumentet:
+```xml
+<dokument>
+    <type>skattemeldingUpersonlig</type>
+    <encoding>utf-8</encoding>
+    <content><!-- base64-enkodet innhold her --></content>
+    <navneromVedForhaandsfastsetting>urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v2</navneromVedForhaandsfastsetting>
+</dokument>
+```
+
+For næringspesifikasjonen
+```xml
+    <dokument>
+    <type>naeringsspesifikasjon</type>
+    <encoding>utf-8</encoding>
+    <content><!-- base64-enkodet innhold her --></content>
+    <navneromVedForhaandsfastsetting>urn:no:skatteetaten:fastsetting:formueinntekt:naeringsopplysninger:ekstern:v3</navneromVedForhaandsfastsetting>
+</dokument>
+```
+
+### Klargjør part for forhåndsfastsetting: <a name="klargjoer-part-for-forhaandsfastsetting"></a> 
+Dette kallet skal kjøres for å klargjøre en part for forhåndsfastsetting 
+dersom skattemeldingen ikke er klar på forhåndsfastsettingtidspunktet
+
+**URL** `POST https://<env>/api/skattemelding/v2/klargjoerforhaandsfastsetting/<inntektsår>/<identifikator>`
+
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/klargjoerforhaandsfastsetting/2023/312787016`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse.`
+- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
+- `<identifikator>: Organisasjonsnummer som krever forhåndsfastsetting.`
+
+**Respons**
+Ved vellykket klargjøring: 
+```json
+{
+  "status": "OK"
+}
+```
+
+Part som har utkast tilgjenglig: 
+```json
+{
+  "status": "PART_HAR_GJELDENDE",
+  "melding": "part har allerede gjeldende skattemelding for part, inntektsaar=2022, partType=upersonlig"
+}
+```
+
+Innteksår ikke støttet
+```json
+{
+  "status": "FORHAANDSFASTSETTING_ER_IKKE_STOETTET_FOR_INNTEKTSAAR",
+  "melding": "forhåndsfastsetting er ikke støttet for dette inntektsåret, inntektsaar=2021"
+}
+```
+
+Partstype ikke støttet (per nå støttes kun upersonlig skattemelding)
+```json
+{
+  "status": "PART_TYPE_ER_IKKE_STOETTET",
+  "melding": "forhåndsfastsetting er ikke støttet for denne partstypen, inntektsaar=2023, partType=personlig"
+}
+```
+
+Andre feiltilstander
+```json
+{
+  "status": "UKJENT",
+  "melding": "feil tilstand oppdaget ifm klargjøring av forhåndsfastsetting, inntektsaar=2023, partType=personlig"
+}
+```
 
 # Altinn3-API
 
