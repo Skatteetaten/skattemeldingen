@@ -7,6 +7,9 @@
     </spraakTekst>
   </beskrivelse>
   <kode>
+    <tekniskNavn>aaretsFremfoerbareNegativPersoninntekt</tekniskNavn>
+  </kode>
+  <kode>
     <tekniskNavn>alderspensjonFraFolketrygden</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -49,7 +52,7 @@
       <rekkefoelgenummerIKalkulator>4.5.3</rekkefoelgenummerIKalkulator>
       <beregningsregelISkatteoppgjoer>Ekskluder:2100</beregningsregelISkatteoppgjoer>
       <temakategori>boligOgEiendeler</temakategori>
-      <postnummer>4.5.3</postnummer>
+      <postnummer>4.8.2</postnummer>
       <ledetekstForForhaandsfastsetting>4.5.3 Andel av formue i boligselskap/-sameie</ledetekstForForhaandsfastsetting>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
@@ -178,25 +181,11 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>andelIFellesTilleggIAlminneligInntektFraSDFInnenAnnenNaering</tekniskNavn>
+    <tekniskNavn>andelIFellesTilleggIAlminneligInntektFraSDF</tekniskNavn>
     <kodetillegg>
       <rekkefoelgenummerIKalkulator>2.7.11</rekkefoelgenummerIKalkulator>
       <temakategori>naering</temakategori>
-      <postnummer>2.7.11</postnummer>
-      <ledetekstForForhaandsfastsetting>2.7.11 Tilleggsinntekt for selskap med deltakerfastsetting</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>naeringInntekt</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>andelIFellesTilleggIAlminneligInntektFraSDFInnenBarnepassIBarnepasserensHjem</tekniskNavn>
-    <kodetillegg>
-      <rekkefoelgenummerIKalkulator>2.7.10</rekkefoelgenummerIKalkulator>
-      <temakategori>naering</temakategori>
-      <postnummer>2.7.10</postnummer>
-      <ledetekstForForhaandsfastsetting>2.7.10 Tilleggsinntekt fra selskap med deltakerfastsetting,  fiske og familiebarnehage</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIForhaandsfastsetting>ja</brukIForhaandsfastsetting>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>naeringInntekt</temaunderkategori>
     </kodetillegg>
@@ -986,6 +975,7 @@
       <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
       <temakategori>familieOgHelse</temakategori>
       <postnummer>3.3.7</postnummer>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>fHFradrag</temaunderkategori>
       <kommentar>Lagt inn pga feil mapping i SIRIUS og mottak av fradrag direkte fra SL</kommentar>
     </kodetillegg>
@@ -995,6 +985,8 @@
     <kodetillegg>
       <rekkefoelgenummerIKalkulator>3.3.5</rekkefoelgenummerIKalkulator>
       <temakategori>arbeidTrygdPensjon</temakategori>
+      <postnummer>3.3.5</postnummer>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
     </kodetillegg>
   </kode>
@@ -1041,7 +1033,6 @@
     <kodetillegg>
       <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
       <temakategori>familieOgHelse</temakategori>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <temaunderkategori>fHFradrag</temaunderkategori>
       <kommentar>SH-3524</kommentar>
     </kodetillegg>
@@ -1318,6 +1309,16 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>gjeldINaering</tekniskNavn>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.8.1</rekkefoelgenummerIKalkulator>
+      <temakategori>naering</temakategori>
+      <postnummer>4.8.1</postnummer>
+      <ledetekstForForhaandsfastsetting>4.8.1 Gjeld fra næring</ledetekstForForhaandsfastsetting>
+      <temaunderkategori>naeringGjeld</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>gjeldPaaAnnetFinansprodukt</tekniskNavn>
   </kode>
   <kode>
@@ -1440,6 +1441,13 @@
       </spraakTekst>
     </beskrivelse>
     <begrepsreferanse>https://begrepskatalog/begrep/b57408ac-d96a-11e6-8d9b-005056821322</begrepsreferanse>
+    <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.2.11</rekkefoelgenummerIKalkulator>
+      <temakategori>arbeidTrygdPensjon</temakategori>
+      <postnummer>3.2.11</postnummer>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>inntektsskattBetaltIUtlandet</tekniskNavn>
@@ -2031,12 +2039,10 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>overskuddAvSDFInnenAnnenNaering</tekniskNavn>
+    <tekniskNavn>overskuddAvSDF</tekniskNavn>
     <kodetillegg>
       <rekkefoelgenummerIKalkulator>2.7.8</rekkefoelgenummerIKalkulator>
       <temakategori>naering</temakategori>
-      <postnummer>2.7.8</postnummer>
-      <ledetekstForForhaandsfastsetting>2.7.8 Overskudd av selskap med deltakerfastsetting</ledetekstForForhaandsfastsetting>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <brukIKalkulator>meldingompersoninntekt </brukIKalkulator>
       <temaunderkategori>naeringInntekt</temaunderkategori>
@@ -2045,25 +2051,7 @@
   <kode>
     <tekniskNavn>overskuddAvSDFInnenBarnepassIBarnepasserensHjem</tekniskNavn>
     <kodetillegg>
-      <rekkefoelgenummerIKalkulator>2.1.3</rekkefoelgenummerIKalkulator>
-      <temakategori>naering</temakategori>
-      <postnummer>2.1.3</postnummer>
-      <ledetekstForForhaandsfastsetting>2.1.3 Sum næringsinntekt fra selskap med deltakerfastsetting som driver familiebarnehage i eget hjem</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <brukIKalkulator>meldingompersoninntekt </brukIKalkulator>
-      <temaunderkategori>naeringInntekt</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>overskuddAvSDFInnenFiske</tekniskNavn>
-    <kodetillegg>
-      <rekkefoelgenummerIKalkulator>2.7.7</rekkefoelgenummerIKalkulator>
-      <temakategori>naering</temakategori>
-      <postnummer>2.7.7</postnummer>
-      <ledetekstForForhaandsfastsetting>2.7.7 Overskudd av selskap med deltakerfastsetting innen fiske eller familiebarnehage</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <brukIKalkulator>meldingompersoninntekt </brukIKalkulator>
-      <temaunderkategori>naeringInntekt</temaunderkategori>
+      <kommentar>SPAP-16895</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -2477,15 +2465,9 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>reduksjonISkattefradragForKostnaderTilFoU</tekniskNavn>
-    <kodetillegg>
-      <kommentarUtfasingSL>Må avklares</kommentarUtfasingSL>
-      <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>reisefradrag</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.2.8</rekkefoelgenummerIKalkulator>
       <temakategori>arbeidTrygdPensjon</temakategori>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
@@ -2576,6 +2558,7 @@
   <kode>
     <tekniskNavn>renteinntektMedEkstrabeskatningForLaanTilSelskap</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.1.3</rekkefoelgenummerIKalkulator>
       <temakategori>bankLaanForsikring</temakategori>
       <postnummer>3.1.3</postnummer>
       <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
@@ -2663,7 +2646,6 @@
       <rekkefoelgenummerIKalkulator>3.2.14</rekkefoelgenummerIKalkulator>
       <temakategori>naering</temakategori>
       <ledetekstForForhaandsfastsetting>3.2.14 Fradrag for fiske og fangst</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <temaunderkategori>naeringFradrag</temaunderkategori>
     </kodetillegg>
   </kode>
@@ -2679,9 +2661,12 @@
   <kode>
     <tekniskNavn>saerskiltFradragForSjoefolk</tekniskNavn>
     <kodetillegg>
-      <temakategori>naering</temakategori>
+      <rekkefoelgenummerIKalkulator>2.1.2</rekkefoelgenummerIKalkulator>
+      <temakategori>arbeidTrygdPensjon</temakategori>
+      <postnummer>2.1.2</postnummer>
       <ledetekstForForhaandsfastsetting>3.2.13 Særskilt fradrag for sjøfolk</ledetekstForForhaandsfastsetting>
-      <temaunderkategori>naeringFradrag</temaunderkategori>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
+      <temaunderkategori>loennsinntekter</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -2746,17 +2731,11 @@
   <kode>
     <tekniskNavn>skjermingstilleggTilAlderspensjon</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>2.1.8.1</rekkefoelgenummerIKalkulator>
       <temakategori>arbeidTrygdPensjon</temakategori>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
-      <kommentar>SPAP-16062</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>skjermingstilleggTilAlderspensjon</tekniskNavn>
-    <kodetillegg>
-      <temakategori>arbeidTrygdPensjon</temakategori>
       <kommentar>SPAP-16062</kommentar>
     </kodetillegg>
   </kode>
@@ -3045,6 +3024,12 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>tilleggIBeregnetSkattKnyttetTilSkattefunn</tekniskNavn>
+    <kodetillegg>
+      <kommentar>SPAP-16729</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>tilleggIBeregnetSkattKnyttetTilVilkaarsbruddVedBSU</tekniskNavn>
   </kode>
   <kode>
@@ -3217,29 +3202,12 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>underskuddFraSDFInnenAnnenNaering</tekniskNavn>
+    <tekniskNavn>underskuddFraSDF</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.2.19</rekkefoelgenummerIKalkulator>
       <temakategori>naering</temakategori>
-      <ledetekstForForhaandsfastsetting>3.2.19 Sum underskudd fra selskap med deltakerfastsetting som driver annen næring</ledetekstForForhaandsfastsetting>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <temaunderkategori>naeringFradrag</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>underskuddFraSDFInnenBarnepassIBarnepasserensHjem</tekniskNavn>
-    <kodetillegg>
-      <temakategori>naering</temakategori>
-      <ledetekstForForhaandsfastsetting>3.2.19 Sum underskudd fra selskap med deltakerfastsetting som driver familiebarnehage i eget hjem</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-      <temaunderkategori>naeringFradrag</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>underskuddFraSDFInnenFiskeOgFangst</tekniskNavn>
-    <kodetillegg>
-      <temakategori>naering</temakategori>
-      <ledetekstForForhaandsfastsetting>3.2.19 Sum underskudd fra selskap med deltakerfastsetting som driver fiske</ledetekstForForhaandsfastsetting>
-      <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
+      <brukIKalkulator>BrukesDirekte</brukIKalkulator>
       <temaunderkategori>naeringFradrag</temaunderkategori>
     </kodetillegg>
   </kode>
@@ -3315,10 +3283,11 @@
   <kode>
     <tekniskNavn>utgiftVedRefinansieringAvLaan</tekniskNavn>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>3.3.2</rekkefoelgenummerIKalkulator>
       <temakategori>bankLaanForsikring</temakategori>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
       <brukIKalkulator>BrukesDirekte</brukIKalkulator>
-      <temaunderkategori>bankLaanForsikringGjeld</temaunderkategori>
+      <temaunderkategori>bankLaanForsikringFradrag</temaunderkategori>
       <kommentar>SH-12494 / SPAP-12237</kommentar>
     </kodetillegg>
   </kode>
@@ -3437,6 +3406,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <rekkefoelgenummerIKalkulator>4.1.8</rekkefoelgenummerIKalkulator>
       <temakategori>finans</temakategori>
       <ledetekstForForhaandsfastsetting>4.5.4 Annen formue innenfor inntektsgivende aktivitet</ledetekstForForhaandsfastsetting>
       <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
@@ -4035,17 +4005,6 @@
       </kodetillegg>
     </kode>
     <kode>
-      <tekniskNavn>gjeldINaering</tekniskNavn>
-      <kodetillegg>
-        <rekkefoelgenummerIKalkulator>4.8.1</rekkefoelgenummerIKalkulator>
-        <temakategori>naering</temakategori>
-        <postnummer>4.8.1</postnummer>
-        <kommentarUtfasingSL>Dekkes av annenGjeld</kommentarUtfasingSL>
-        <ledetekstForForhaandsfastsetting>4.8.1 Gjeld fra næring</ledetekstForForhaandsfastsetting>
-        <temaunderkategori>naeringGjeld</temaunderkategori>
-      </kodetillegg>
-    </kode>
-    <kode>
       <tekniskNavn>gjeldIUtlandet</tekniskNavn>
       <beskrivelse>
         <spraakTekst>
@@ -4540,6 +4499,13 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>reduksjonISkattefradragForKostnaderTilFoU</tekniskNavn>
+      <kodetillegg>
+        <kommentarUtfasingSL>Må avklares</kommentarUtfasingSL>
+        <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>renteinntektAvObligasjonVerdipapirfondRentedelMvIUtlandet</tekniskNavn>
       <kodetillegg>
         <kildeskattPaaLonnRegel>DiskvalifisererHvisGlobal</kildeskattPaaLonnRegel>
@@ -4843,6 +4809,26 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>andelIFellesTilleggIAlminneligInntektFraSDFInnenAnnenNaering</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.7.11</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>2.7.11</postnummer>
+        <ledetekstForForhaandsfastsetting>2.7.11 Tilleggsinntekt for selskap med deltakerfastsetting</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>andelIFellesTilleggIAlminneligInntektFraSDFInnenBarnepassIBarnepasserensHjem</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.7.10</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>2.7.10</postnummer>
+        <ledetekstForForhaandsfastsetting>2.7.10 Tilleggsinntekt fra selskap med deltakerfastsetting,  fiske og familiebarnehage</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>annenSkattepliktigKapitalinntektFraVirtuellValuta</tekniskNavn>
       <kodetillegg>
         <kommentar>SPAP-16062</kommentar>
@@ -4890,7 +4876,6 @@
         <kommentarUtfasingSL>Dekkes av inntektsfradragForFagforeningskontingent. Brukes i forskudd.</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.2.11 Fagforeningskontingent</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -4967,7 +4952,6 @@
         <kommentarUtfasingSL>Dekkes av fradragForGaverTilFrivilligeOrganisasjoner</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.7 Gave til frivillige organisasjoner</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>fHFradrag</temaunderkategori>
         <kommentar>Bør utgå, beholdes for online skatteberegning</kommentar>
       </kodetillegg>
@@ -4981,7 +4965,6 @@
         <postnummer>3.3.7</postnummer>
         <kommentarUtfasingSL>Dekkes av fradragForGaverTilFrivilligeOrganisasjoner</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.7 Gaver gitt til organisasjoner i utlandet</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>fHFradrag</temaunderkategori>
         <kommentar>http://www.skatteetaten.no/no/Person/Selvangivelse/Finn-post/3/3/7/. Fjernet ORID ifm at ny ORID ble lagt inn for feltet fradragForGaverTilFrivilligeOrganisasjoner som skal brukes både av SL og SIRIUS</kommentar>
       </kodetillegg>
@@ -5069,8 +5052,10 @@
         </spraakTekst>
       </beskrivelse>
       <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.3.1</rekkefoelgenummerIKalkulator>
         <temakategori>naering</temakategori>
         <kommentarUtfasingSL>Dekkes av saerskiltFradragForFiskereOgFangstfolk. Brukes i forskudd.</kommentarUtfasingSL>
+        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>naeringInntekt</temaunderkategori>
       </kodetillegg>
@@ -5097,7 +5082,6 @@
         <kommentarUtfasingSL>Dekkes av saerskiltFradragForSjoefolk</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>2.1.2 Lønn til sjøfolk</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>loennsinntekter</temaunderkategori>
         <kommentar>Håndtering av behandlingsart knyttet til denne posten er fjernet.</kommentar>
       </kodetillegg>
@@ -5136,6 +5120,36 @@
       </kodetillegg>
     </kode>
     <kode>
+      <tekniskNavn>overskuddAvSDFInnenAnnenNaering</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.7.8</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>2.7.8</postnummer>
+        <ledetekstForForhaandsfastsetting>2.7.8 Overskudd av selskap med deltakerfastsetting</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>overskuddAvSDFInnenBarnepassIBarnepasserensHjem</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.1.3</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>2.1.3</postnummer>
+        <ledetekstForForhaandsfastsetting>2.1.3 Sum næringsinntekt fra selskap med deltakerfastsetting som driver familiebarnehage i eget hjem</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>overskuddAvSDFInnenFiske</tekniskNavn>
+      <kodetillegg>
+        <rekkefoelgenummerIKalkulator>2.7.7</rekkefoelgenummerIKalkulator>
+        <temakategori>naering</temakategori>
+        <postnummer>2.7.7</postnummer>
+        <ledetekstForForhaandsfastsetting>2.7.7 Overskudd av selskap med deltakerfastsetting innen fiske eller familiebarnehage</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringInntekt</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
       <tekniskNavn>pengetilskuddTilVitenskapeligForskning</tekniskNavn>
       <kodetillegg>
         <rekkefoelgenummerIKalkulator>3.3.7</rekkefoelgenummerIKalkulator>
@@ -5143,6 +5157,7 @@
         <postnummer>3.3.7</postnummer>
         <kommentarUtfasingSL>Dekkes av fradragForPengetilskudd</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.7 Tilskudd til vitenskapelig forskning</ledetekstForForhaandsfastsetting>
+        <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>fHFradrag</temaunderkategori>
       </kodetillegg>
@@ -5155,7 +5170,6 @@
         <postnummer>3.3.5</postnummer>
         <kommentarUtfasingSL>Landkode på pensjonsinnbetalingTilAvtaleOmSkattefavorisertIndividuellSparingTilPensjonTegnetFomNov2017</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.5 Utenlandsk pensjonsordning - Individuell pensjonssparing i en annen EØS-stat (tilsvarende ny norsk IPS)</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -5166,7 +5180,6 @@
         <temakategori>arbeidTrygdPensjon</temakategori>
         <postnummer>3.3.5</postnummer>
         <ledetekstForForhaandsfastsetting>3.3.5 Individuell pensjonssparing (ny IPS) i Norge</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -5179,7 +5192,6 @@
         <postnummer>3.3.5</postnummer>
         <ledetekstForForhaandsfastsetting>3.3.5 Individuell pensjonsavtale (IPS)</ledetekstForForhaandsfastsetting>
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -5192,7 +5204,6 @@
         <postnummer>3.3.5</postnummer>
         <kommentarUtfasingSL>Landkode på pensjonsinnbetalingTilIPS</kommentarUtfasingSL>
         <ledetekstForForhaandsfastsetting>3.3.5 Utenlandsk pensjonsordning - Individuell pensjonsavtale i en annen EØS-stat (tilsvarende norsk IPS)</ledetekstForForhaandsfastsetting>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -5214,7 +5225,6 @@
         <temakategori>arbeidTrygdPensjon</temakategori>
         <postnummer>3.2.9</postnummer>
         <kommentarUtfasingSL>Dekkes av reisefradrag</kommentarUtfasingSL>
-        <brukIKalkulator>BrukesDirekte</brukIKalkulator>
         <temaunderkategori>arbeidOgPensjonFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
@@ -5252,6 +5262,30 @@
         <brukIForhaandsfastsetting>Ja</brukIForhaandsfastsetting>
         <temaunderkategori>boligEindelerInntekt</temaunderkategori>
         <kommentar>Ny i 2018</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>underskuddFraSDFInnenAnnenNaering</tekniskNavn>
+      <kodetillegg>
+        <temakategori>naering</temakategori>
+        <ledetekstForForhaandsfastsetting>3.2.19 Sum underskudd fra selskap med deltakerfastsetting som driver annen næring</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringFradrag</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>underskuddFraSDFInnenBarnepassIBarnepasserensHjem</tekniskNavn>
+      <kodetillegg>
+        <temakategori>naering</temakategori>
+        <ledetekstForForhaandsfastsetting>3.2.19 Sum underskudd fra selskap med deltakerfastsetting som driver familiebarnehage i eget hjem</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringFradrag</temaunderkategori>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>underskuddFraSDFInnenFiskeOgFangst</tekniskNavn>
+      <kodetillegg>
+        <temakategori>naering</temakategori>
+        <ledetekstForForhaandsfastsetting>3.2.19 Sum underskudd fra selskap med deltakerfastsetting som driver fiske</ledetekstForForhaandsfastsetting>
+        <temaunderkategori>naeringFradrag</temaunderkategori>
       </kodetillegg>
     </kode>
     <kode>
