@@ -81,3 +81,4 @@ Modeller som kan komme i retur etter beregning. Hvilke modeller som kommer i ret
 # Poster, felter og temaer i ny skattemelding for næringsdrivende
 
 Beskrivelse av poster og felter i ny skattemelding [ligger på skatteetaten.no](https://www.skatteetaten.no/bedrift-og-organisasjon/skatt/skattemelding-naringsdrivende/ny-skattemelding/poster-felter-og-temaer/)
+Det er også laget en [oversikt over hvilke teamer i næringsspesifikasjonen som er aktuell for hver type skattemelding](temaINaeringsspesifikasjonen.md) 
