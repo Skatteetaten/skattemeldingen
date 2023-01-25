@@ -110,23 +110,24 @@ eksisterende løsninger.
 
 ## Oppsummering API endepunkt
 
-| TYPE | API path                                                                                                                                 | Virkshomhetssertifikat |
-|------|------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| GET  | [/api/skattemelding/v2/ping](#ping)                                                                                                      | JA                     |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#hentGjeldende)                                                                | Nei                    |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#hentGjeldendeUtvidet) | Nei                    |
-| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#hentType)                                                            | Nei                    |
-| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#valider)                                                              | Nei                    |
-| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#validerTest)                                                      | Planlagt               |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#hentVedlegg)                                            | Nei                    |
-| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#eiendomSoek)                                                        | Ja                     |
-| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#hentFormuesgrunnlag)         | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiBolig)                          | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                  | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                             | Ja                     |
-| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)              | Nei                    |
-| GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#avregning)                                                   | Nei                    |
-| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#klargjoer-part-for-forhaandsfastsetting)        | Nei                    |
+| TYPE | API path                                                                                                                                               | Virkshomhetssertifikat |
+|------|--------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
+| GET  | [/api/skattemelding/v2/ping](#ping)                                                                                                                    | JA                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#hentGjeldende)                                                                              | Nei                    |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#hentGjeldendeUtvidet)               | Nei                    |
+| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#hentType)                                                                          | Nei                    |
+| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#valider)                                                                            | Nei                    |
+| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#validerTest)                                                                    | Planlagt               |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#hentVedlegg)                                                          | Nei                    |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#eiendomSoek)                                                                      | Ja                     |
+| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#hentFormuesgrunnlag)                       | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiBolig)                                        | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                                | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                                           | Ja                     |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)                            | Nei                    |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#til-midlertidig-lagret-skattemelding-for-visning) | Nei                    |
+| GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#avregning)                                                                 | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#klargjoer-part-for-forhaandsfastsetting)                      | Nei                    |
 
 | Miljø                             | Adresse                      | Påloggingsmetode      |
 |-----------------------------------|------------------------------|-----------------------|
@@ -373,6 +374,7 @@ Likt som valider ovenfor
 ## Lagre skattemelding midlertidig for visning <a name="midlertidigVisning"></a>
 Hvis dere har behov for å vise skattemeldingen i visningsklienten, kan den lastet opp via dette endepunktet. Skattemeldingen vil bli lagret i 24 timer for visning via URLen som returneres i responsen.
 
+### Enkeltpersonsforetak
 **URL** : `POST https://<env>/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
 
 **Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
@@ -391,7 +393,29 @@ Likt som valider ovenfor
   "url": "https://skatt.skatteetaten.no/web/skattemelding-visning/midlertidig-lagret-skattemelding-for-visning?id=<id>"
 }
 ```
-- `<id>: Unik identifikator på midlertidig lagret skattemeldingen`
+- `<id>: Unik identifikator på midlertidig lagret skattemelding`
+
+### Selskap
+**URL** : `POST https://<env>/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>`
+
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/910236490`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse`
+- `<identifikator>: Organisasjonsnummer til den skattepliktige`
+
+**Body** 
+Likt som valider ovenfor
+
+**Response**
+
+```json
+{
+  "url": "https://skatt.skatteetaten.no/web/skattemelding-visning/midlertidig-lagret-skattemelding-for-visning?id=<id>"
+}
+```
+- `<id>: Unik identifikator på midlertidig lagret skattemelding`
 
 ## Hent vedlegg <a name="hentVedlegg"></a>
 
