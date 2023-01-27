@@ -139,27 +139,34 @@ Gitt følgende eksempel på en eiendomstype tomt, som går fra tomt til en sekun
 ```xml
 
 <fastEiendomSomFormuesobjekt>
-    <formuesspesifikasjonForTomt>
-        <formuesverdiForTomt>
-            <beloep>
-                <beloepSomHeltall>48400</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForTomt>
-    </formuesspesifikasjonForTomt>
-    <id>e9513d76f3ed78d35f7b1e0a66bfe32e857ce27a</id>
-    <eiendomstype>
-        <eiendomstype>tomt</eiendomstype>
-    </eiendomstype>
-    <andelAvFormuesverdi>
-        <prosent>50.00</prosent>
-    </andelAvFormuesverdi>
-    <internEiendomsidentifikator>internId1</internEiendomsidentifikator>
-    <formuesverdiForFormuesandel>
+  <formuesspesifikasjonForTomt>
+    <formuesverdiForTomt>
+      <beloep>
+        <beloepSomHeltall>48400</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForTomt>
+    <grunnlagForFormuesverdi>
+      <formuesverdiFraForegaaendeInntektsaar>
         <beloep>
-            <beloepSomHeltall>24200</beloepSomHeltall>
+          <beloepSomHeltall>48400</beloepSomHeltall>
         </beloep>
-    </formuesverdiForFormuesandel>
-    <verdiFoerVerdsettingsrabattForFormuesandel>24200</verdiFoerVerdsettingsrabattForFormuesandel>
+      </formuesverdiFraForegaaendeInntektsaar>
+    </grunnlagForFormuesverdi>
+  </formuesspesifikasjonForTomt>
+  <id>e9513d76f3ed78d35f7b1e0a66bfe32e857ce27a</id>
+  <eiendomstype>
+    <eiendomstype>tomt</eiendomstype>
+  </eiendomstype>
+  <andelAvFormuesverdi>
+    <prosent>50.00</prosent>
+  </andelAvFormuesverdi>
+  <internEiendomsidentifikator>internId1</internEiendomsidentifikator>
+  <formuesverdiForFormuesandel>
+    <beloep>
+      <beloepSomHeltall>24200</beloepSomHeltall>
+    </beloep>
+  </formuesverdiForFormuesandel>
+  <verdiFoerVerdsettingsrabattForFormuesandel>24200</verdiFoerVerdsettingsrabattForFormuesandel>
 </fastEiendomSomFormuesobjekt>
 ```
 
@@ -171,74 +178,72 @@ reglene for gitt eiendomstype
 ```xml
 
 <fastEiendomSomFormuesobjekt>
-    <formuesspesifikasjonForBolig>
-        <boligegenskaper>
-            <boligensAreal>
-                <heltall>350</heltall>
-            </boligensAreal>
-            <boligtype>
-                <boligtype>enebolig</boligtype>
-            </boligtype>
-            <byggeaar>
-                <aarstall>2021</aarstall>
-            </byggeaar>
-        </boligegenskaper>
-        <boligbruk>
-            <boligbruk>sekundaerbolig</boligbruk>
-        </boligbruk>
-        <beregnetMarkedsverdiForBolig>
-            <beregnetMarkedsverdiForBolig>
-                <beloep>
-                    <beloepSomHeltall>5876718</beloepSomHeltall>
-                </beloep>
-            </beregnetMarkedsverdiForBolig>
-            <grunnlagForBeregnetMarkedsverdiForBolig>
-                <boligverdi>
-                    <beloep>
-                        <beloepINok>
-                            <beloepSomHeltall>5876718</beloepSomHeltall>
-                        </beloepINok>
-                        <beloepIValuta>
-                            <beloep>5876718</beloep>
-                        </beloepIValuta>
-                        <valutakode>
-                            <valutakode>NOK</valutakode>
-                        </valutakode>
-                        <valutakurs>
-                            <valutakurs>1</valutakurs>
-                        </valutakurs>
-                    </beloep>
-                </boligverdi>
-            </grunnlagForBeregnetMarkedsverdiForBolig>
-        </beregnetMarkedsverdiForBolig>
-        <formuesverdiForBolig>
-            <formuesverdiForBolig>
-                <beloep>
-                    <beloepSomHeltall>5582882</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForBolig>
-            <formuesaar>
-                <aarstall>2021</aarstall>
-            </formuesaar>
-            <markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig>
-                <boolsk>false</boolsk>
-            </markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig>
-        </formuesverdiForBolig>
-    </formuesspesifikasjonForBolig>
-    <id>d7ca573f0b7aabd4496b974d74f0fa3e263e58ae</id>
-    <eiendomstype>
-        <eiendomstype>selveidBolig</eiendomstype>
-    </eiendomstype>
-    <andelAvFormuesverdi>
-        <prosent>50.00</prosent>
-    </andelAvFormuesverdi>
-    <internEiendomsidentifikator>internId1</internEiendomsidentifikator>
-    <formuesverdiForFormuesandel>
+  <formuesspesifikasjonForBolig>
+    <boligegenskaper>
+      <boligensAreal>
+        <heltall>106</heltall>
+      </boligensAreal>
+      <boligtype>
+        <boligtype>enebolig</boligtype>
+      </boligtype>
+      <byggeaar>
+        <aarstall>1952</aarstall>
+      </byggeaar>
+    </boligegenskaper>
+    <boligbruk>
+      <boligbruk>primaerbolig</boligbruk>
+    </boligbruk>
+    <beregnetMarkedsverdiForBolig>
+      <beregnetMarkedsverdiForBolig>
         <beloep>
-            <beloepSomHeltall>2791441</beloepSomHeltall>
+          <beloepSomHeltall>1996025</beloepSomHeltall>
         </beloep>
-    </formuesverdiForFormuesandel>
-    <verdiFoerVerdsettingsrabattForFormuesandel>2938359</verdiFoerVerdsettingsrabattForFormuesandel>
+      </beregnetMarkedsverdiForBolig>
+      <grunnlagForBeregnetMarkedsverdiForBolig>
+        <boligverdi>
+          <beloep>
+            <beloepINok>
+              <beloepSomHeltall>1996025</beloepSomHeltall>
+            </beloepINok>
+            <beloepIValuta>
+              <beloep>1996025</beloep>
+            </beloepIValuta>
+            <valutakode>
+              <valutakode>NOK</valutakode>
+            </valutakode>
+            <valutakurs>
+              <valutakurs>1</valutakurs>
+            </valutakurs>
+          </beloep>
+        </boligverdi>
+      </grunnlagForBeregnetMarkedsverdiForBolig>
+    </beregnetMarkedsverdiForBolig>
+    <formuesverdiForBolig>
+      <beloep>
+        <beloepSomHeltall>499006</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForBolig>
+    <markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig>
+      <boolsk>false</boolsk>
+    </markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig>
+    <formuesaar>
+      <aarstall>2022</aarstall>
+    </formuesaar>
+  </formuesspesifikasjonForBolig>
+  <id>11d8ee5d25bfbda04cab8560ffc11dc5ed7714ac</id>
+  <eiendomstype>
+    <eiendomstype>selveidBolig</eiendomstype>
+  </eiendomstype>
+  <andelAvFormuesverdi>
+    <prosent>50.00</prosent>
+  </andelAvFormuesverdi>
+  <internEiendomsidentifikator>11d8ee5d25bfbda04cab8560ffc11dc5ed7714acfastEiendom</internEiendomsidentifikator>
+  <formuesverdiForFormuesandel>
+    <beloep>
+      <beloepSomHeltall>249503</beloepSomHeltall>
+    </beloep>
+  </formuesverdiForFormuesandel>
+  <verdiFoerVerdsettingsrabattForFormuesandel>998013</verdiFoerVerdsettingsrabattForFormuesandel>
 </fastEiendomSomFormuesobjekt>
 ```
 
@@ -255,60 +260,67 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
         <formuesspesifikasjonForSelveidFritidseiendom>
             <formuesverdiForSelveidFritidseiendom>
                 <beloep>
-                    <beloepSomHeltall>10066</beloepSomHeltall>
+                    <beloepSomHeltall>122415</beloepSomHeltall>
                 </beloep>
             </formuesverdiForSelveidFritidseiendom>
+            <grunnlagForFormuesverdi>
+                <formuesverdiFraForegaaendeInntektsaar>
+                    <beloep>
+                        <beloepSomHeltall>122415</beloepSomHeltall>
+                    </beloep>
+                </formuesverdiFraForegaaendeInntektsaar>
+            </grunnlagForFormuesverdi>
         </formuesspesifikasjonForSelveidFritidseiendom>
-        <id>e9fdf6396b022dc99b007a254e237434308fd134</id>
+        <id>03e5d02800be0c36b78dfefd8d2e39c49e63140f</id>
         <eiendomstype>
             <eiendomstype>selveidFritidseiendom</eiendomstype>
         </eiendomstype>
         <andelAvFormuesverdi>
             <prosent>50.00</prosent>
         </andelAvFormuesverdi>
-        <internEiendomsidentifikator>e9fdf6396b022dc99b007a254e237434308fd134fastEiendom</internEiendomsidentifikator>
+        <internEiendomsidentifikator>03e5d02800be0c36b78dfefd8d2e39c49e63140ffastEiendom</internEiendomsidentifikator>
         <formuesverdiForFormuesandel>
             <beloep>
-                <beloepSomHeltall>5033</beloepSomHeltall>
+                <beloepSomHeltall>61208</beloepSomHeltall>
             </beloep>
         </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>5033</verdiFoerVerdsettingsrabattForFormuesandel>
+        <verdiFoerVerdsettingsrabattForFormuesandel>61208</verdiFoerVerdsettingsrabattForFormuesandel>
     </fastEiendomSomFormuesobjekt>
     <fastEiendom>
-        <id>e9fdf6396b022dc99b007a254e237434308fd134fastEiendom</id>
+        <id>03e5d02800be0c36b78dfefd8d2e39c49e63140ffastEiendom</id>
         <adresseopplysninger>
             <poststed>
                 <poststedsnavn>
-                    <tekst>SOLSAND</tekst>
+                    <tekst>ISE</tekst>
                 </poststedsnavn>
                 <postnummer>
-                    <postnummer>1101</postnummer>
+                    <postnummer>3431</postnummer>
                 </postnummer>
             </poststed>
             <vegadresse>
                 <adressenavn>
-                    <tekst>Liksomveien</tekst>
+                    <tekst>Vei 210</tekst>
                 </adressenavn>
                 <adressenummer>
                     <husnummer>
-                        <tekst>1</tekst>
+                        <tekst>614</tekst>
                     </husnummer>
                 </adressenummer>
             </vegadresse>
         </adresseopplysninger>
         <sergEiendomsidentifikator>
-            <tekst>200000000</tekst>
+            <tekst>FellesBolig</tekst>
         </sergEiendomsidentifikator>
         <eksternEiendomsidentifikator>
             <kommunenummer>
-                <kommunenummer>1833</kommunenummer>
+                <kommunenummer>0301</kommunenummer>
             </kommunenummer>
             <sergMatrikkelnummer>
                 <gaardsnummer>
-                    <gaardsnummer>10</gaardsnummer>
+                    <gaardsnummer>56</gaardsnummer>
                 </gaardsnummer>
                 <bruksnummer>
-                    <bruksnummer>0</bruksnummer>
+                    <bruksnummer>5</bruksnummer>
                 </bruksnummer>
                 <festenummer>
                     <festenummer>0</festenummer>
@@ -321,7 +333,7 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
         <eierandel>
             <prosent>50.00</prosent>
         </eierandel>
-        <internEiendomsidentifikator>e9fdf6396b022dc99b007a254e237434308fd134fastEiendom</internEiendomsidentifikator>
+        <internEiendomsidentifikator>03e5d02800be0c36b78dfefd8d2e39c49e63140ffastEiendom</internEiendomsidentifikator>
     </fastEiendom>
 </fasteEiendommer>
 ```
@@ -331,78 +343,50 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
 ```xml
 
 <fasteEiendommer>
-    <fastEiendomSomFormuesobjekt>
-        <formuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet>
-            <formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet>
-                <beloep>
-                    <beloepSomHeltall>130052</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet>
-        </formuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet>
-        <id>55c2594d7bfbca828d7a995e840a8b1987909ed6</id>
-        <eiendomstype>
-            <eiendomstype>annenFastEiendomInnenforInntektsgivendeAktivitet</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>50.00</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>55c2594d7bfbca828d7a995e840a8b1987909ed6fastEiendom</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>65026</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>86701</verdiFoerVerdsettingsrabattForFormuesandel>
-    </fastEiendomSomFormuesobjekt>
-    <fastEiendom>
-        <id>55c2594d7bfbca828d7a995e840a8b1987909ed6fastEiendom</id>
-        <adresseopplysninger>
-            <poststed>
-                <poststedsnavn>
-                    <tekst>ISFJORDEN</tekst>
-                </poststedsnavn>
-                <postnummer>
-                    <postnummer>9855</postnummer>
-                </postnummer>
-            </poststed>
-            <vegadresse>
-                <adressenavn>
-                    <tekst>Surnadalsøra</tekst>
-                </adressenavn>
-                <adressenummer>
-                    <husnummer>
-                        <tekst>4</tekst>
-                    </husnummer>
-                </adressenummer>
-            </vegadresse>
-        </adresseopplysninger>
-        <sergEiendomsidentifikator>
-            <tekst>2401188</tekst>
-        </sergEiendomsidentifikator>
-        <eksternEiendomsidentifikator>
-            <kommunenummer>
-                <kommunenummer>1528</kommunenummer>
-            </kommunenummer>
-            <sergMatrikkelnummer>
-                <gaardsnummer>
-                    <gaardsnummer>44</gaardsnummer>
-                </gaardsnummer>
-                <bruksnummer>
-                    <bruksnummer>441</bruksnummer>
-                </bruksnummer>
-                <festenummer>
-                    <festenummer>0</festenummer>
-                </festenummer>
-                <seksjonsnummer>
-                    <seksjonsnummer>0</seksjonsnummer>
-                </seksjonsnummer>
-            </sergMatrikkelnummer>
-        </eksternEiendomsidentifikator>
-        <eierandel>
-            <prosent>50.00</prosent>
-        </eierandel>
-        <internEiendomsidentifikator>55c2594d7bfbca828d7a995e840a8b1987909ed6fastEiendom</internEiendomsidentifikator>
-    </fastEiendom>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet>
+      <formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet>
+        <beloep>
+          <beloepSomHeltall>11000000</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet>
+      <grunnlagForFormuesverdi>
+        <formuesverdiFraForegaaendeInntektsaar>
+          <beloep>
+            <beloepSomHeltall>11000000</beloepSomHeltall>
+          </beloep>
+        </formuesverdiFraForegaaendeInntektsaar>
+      </grunnlagForFormuesverdi>
+    </formuesspesifikasjonForAnnenFastEiendomInnenforInntektsgivendeAktivitet>
+    <id>70c95dbe16ac82024592a4beb51813bc5dddb48b</id>
+    <eiendomstype>
+      <eiendomstype>annenFastEiendomInnenforInntektsgivendeAktivitet</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>20.00</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>39a8dddb8dc6a8efeef34619e78e8b2386f7f6bd</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>2200000</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>2933333</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>39a8dddb8dc6a8efeef34619e78e8b2386f7f6bd</id>
+    <adresseopplysninger>
+      <internasjonalAdresse>
+        <landkode>
+          <landkode>DK</landkode>
+        </landkode>
+      </internasjonalAdresse>
+    </adresseopplysninger>
+    <eierandel>
+      <prosent>20.00</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>39a8dddb8dc6a8efeef34619e78e8b2386f7f6bd</internEiendomsidentifikator>
+  </fastEiendom>
 </fasteEiendommer>
 ```
 
@@ -411,58 +395,75 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
 ```xml
 
 <fasteEiendommer>
-    <fastEiendomSomFormuesobjekt>
-        <formuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet>
-            <formuesverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet>
-                <beloep>
-                    <beloepSomHeltall>1210</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet>
-        </formuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet>
-        <id>ee44e00c18733f721380094eb0f2c8e33a7d1c04</id>
-        <eiendomstype>
-            <eiendomstype>annenFastEiendomUtenforInntektsgivendeAktivitet</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>50.00</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>ee44e00c18733f721380094eb0f2c8e33a7d1c04fastEiendom</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>605</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>605</verdiFoerVerdsettingsrabattForFormuesandel>
-    </fastEiendomSomFormuesobjekt>
-    <fastEiendom>
-        <id>ee44e00c18733f721380094eb0f2c8e33a7d1c04fastEiendom</id>
-        <sergEiendomsidentifikator>
-            <tekst>1336882</tekst>
-        </sergEiendomsidentifikator>
-        <eksternEiendomsidentifikator>
-            <kommunenummer>
-                <kommunenummer>1867</kommunenummer>
-            </kommunenummer>
-            <sergMatrikkelnummer>
-                <gaardsnummer>
-                    <gaardsnummer>50</gaardsnummer>
-                </gaardsnummer>
-                <bruksnummer>
-                    <bruksnummer>88</bruksnummer>
-                </bruksnummer>
-                <festenummer>
-                    <festenummer>0</festenummer>
-                </festenummer>
-                <seksjonsnummer>
-                    <seksjonsnummer>0</seksjonsnummer>
-                </seksjonsnummer>
-            </sergMatrikkelnummer>
-        </eksternEiendomsidentifikator>
-        <eierandel>
-            <prosent>50.00</prosent>
-        </eierandel>
-        <internEiendomsidentifikator>ee44e00c18733f721380094eb0f2c8e33a7d1c04fastEiendom</internEiendomsidentifikator>
-    </fastEiendom>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet>
+      <formuesverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet>
+        <beloep>
+          <beloepSomHeltall>1580</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForAnnenFastEiendomUtenforInntektsgivendeAktivitet>
+      <grunnlagForFormuesverdi>
+        <formuesverdiFraForegaaendeInntektsaar>
+          <beloep>
+            <beloepSomHeltall>1580</beloepSomHeltall>
+          </beloep>
+        </formuesverdiFraForegaaendeInntektsaar>
+      </grunnlagForFormuesverdi>
+    </formuesspesifikasjonForAnnenFastEiendomUtenforInntektsgivendeAktivitet>
+    <id>0d19170cd4c76b6a21f5a947bd5331d8a286de1e</id>
+    <eiendomstype>
+      <eiendomstype>annenFastEiendomUtenforInntektsgivendeAktivitet</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>50.00</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>0d19170cd4c76b6a21f5a947bd5331d8a286de1efastEiendom</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>790</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>790</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>0d19170cd4c76b6a21f5a947bd5331d8a286de1efastEiendom</id>
+    <adresseopplysninger>
+      <poststed>
+        <poststedsnavn>
+          <tekst>LIER</tekst>
+        </poststedsnavn>
+        <postnummer>
+          <postnummer>3894</postnummer>
+        </postnummer>
+      </poststed>
+    </adresseopplysninger>
+    <sergEiendomsidentifikator>
+      <tekst>605573</tekst>
+    </sergEiendomsidentifikator>
+    <eksternEiendomsidentifikator>
+      <kommunenummer>
+        <kommunenummer>3407</kommunenummer>
+      </kommunenummer>
+      <sergMatrikkelnummer>
+        <gaardsnummer>
+          <gaardsnummer>84</gaardsnummer>
+        </gaardsnummer>
+        <bruksnummer>
+          <bruksnummer>86</bruksnummer>
+        </bruksnummer>
+        <festenummer>
+          <festenummer>0</festenummer>
+        </festenummer>
+        <seksjonsnummer>
+          <seksjonsnummer>0</seksjonsnummer>
+        </seksjonsnummer>
+      </sergMatrikkelnummer>
+    </eksternEiendomsidentifikator>
+    <eierandel>
+      <prosent>50.00</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>0d19170cd4c76b6a21f5a947bd5331d8a286de1efastEiendom</internEiendomsidentifikator>
+  </fastEiendom>
 </fasteEiendommer>
 ```
 
@@ -813,129 +814,191 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
 
 ```xml
 <fasteEiendommer>
-    <fastEiendomSomFormuesobjekt>
-        <id>9a1d78805b8e00487ae238b64ae4145f6971e6b2</id>
-        <formuesspesifikasjonForBorett>
-            <formuesverdiForBorett>
-                <beloep>
-                    <beloepSomHeltall>309000</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForBorett>
-        </formuesspesifikasjonForBorett>
-        <eiendomstype>
-            <eiendomstype>borett</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>50.00</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>a7f977ece468e0702a7be9165b5a9319bad27718</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>154500</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>154500</verdiFoerVerdsettingsrabattForFormuesandel>
-    </fastEiendomSomFormuesobjekt>
-    <fastEiendom>
-        <id>a7f977ece468e0702a7be9165b5a9319bad27718</id>
-        <adresseopplysninger>
-            <internasjonalAdresse>
-                <landkode>
-                    <landkode>ES</landkode>
-                </landkode>
-            </internasjonalAdresse>
-        </adresseopplysninger>
-        <eierandel>
-            <prosent>50.00</prosent>
-        </eierandel>
-        <internEiendomsidentifikator>a7f977ece468e0702a7be9165b5a9319bad27718</internEiendomsidentifikator>
-    </fastEiendom>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForBorett>
+      <formuesverdiForBorett>
+        <beloep>
+          <beloepSomHeltall>8187500</beloepSomHeltall>
+        </beloep>
+        <metodeVedDobbeltbeskatning>
+          <metodeVedDobbeltbeskatning>kredit</metodeVedDobbeltbeskatning>
+        </metodeVedDobbeltbeskatning>
+      </formuesverdiForBorett>
+      <grunnlagForFormuesverdi>
+        <formuesverdiFraForegaaendeInntektsaar>
+          <beloep>
+            <beloepSomHeltall>8187500</beloepSomHeltall>
+          </beloep>
+          <metodeVedDobbeltbeskatning>
+            <metodeVedDobbeltbeskatning>kredit</metodeVedDobbeltbeskatning>
+          </metodeVedDobbeltbeskatning>
+        </formuesverdiFraForegaaendeInntektsaar>
+      </grunnlagForFormuesverdi>
+    </formuesspesifikasjonForBorett>
+    <id>3b71212afb5e5819c96b213e5d69419400deda6f</id>
+    <eiendomstype>
+      <eiendomstype>borett</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>80.00</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>a7f977ece468e0702a7be9165b5a9319bad27718</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>6550000</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>6550000</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>1a3325a4d54438eaf9c4ff37c1b06e82b7ae8e47</id>
+    <adresseopplysninger>
+      <internasjonalAdresse>
+        <landkode>
+          <landkode>FR</landkode>
+        </landkode>
+      </internasjonalAdresse>
+    </adresseopplysninger>
+    <eierandel>
+      <prosent>80.00</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>1a3325a4d54438eaf9c4ff37c1b06e82b7ae8e47</internEiendomsidentifikator>
+  </fastEiendom>
 </fasteEiendommer>
 ```
 
 #### formuesspesifikasjonForRegnskapsbehandletBolig <a name="formuesspesifikasjonForRegnskapsbehandletBolig"></a>
 ```xml
 <fasteEiendommer>
-    <fastEiendomSomFormuesobjekt>
-        <id>fa9e9681b38bbf4ebfbd197fbfcfb147094e36b6</id>
-        <formuesspesifikasjonForRegnskapsbehandletBolig>
-            <formuesverdiForRegnskapsbehandletBolig>
-                <beloep>
-                    <beloepSomHeltall>3844880</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForRegnskapsbehandletBolig>
-        </formuesspesifikasjonForRegnskapsbehandletBolig>
-        <eiendomstype>
-            <eiendomstype>regnskapsbehandletBolig</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>100.00</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>40608f14f91095f7ceb1e6a9ab8e1e8e1529878c</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>3844880</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>6990691</verdiFoerVerdsettingsrabattForFormuesandel>
-    </fastEiendomSomFormuesobjekt>
-    <fastEiendom>
-        <id>40608f14f91095f7ceb1e6a9ab8e1e8e1529878c</id>
-        <adresseopplysninger>
-            <internasjonalAdresse>
-                <landkode>
-                    <landkode>GB</landkode>
-                </landkode>
-            </internasjonalAdresse>
-        </adresseopplysninger>
-        <eierandel>
-            <prosent>100.00</prosent>
-        </eierandel>
-        <internEiendomsidentifikator>40608f14f91095f7ceb1e6a9ab8e1e8e1529878c</internEiendomsidentifikator>
-    </fastEiendom>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForRegnskapsbehandletBolig>
+      <formuesverdiForRegnskapsbehandletBolig>
+        <beloep>
+          <beloepSomHeltall>6000000</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForRegnskapsbehandletBolig>
+      <grunnlagForFormuesverdi>
+        <formuesverdiFraForegaaendeInntektsaar>
+          <beloep>
+            <beloepSomHeltall>6000000</beloepSomHeltall>
+          </beloep>
+        </formuesverdiFraForegaaendeInntektsaar>
+      </grunnlagForFormuesverdi>
+    </formuesspesifikasjonForRegnskapsbehandletBolig>
+    <id>b6dc6adbece493ed0aac37b0e7d8f1ca9aec3501</id>
+    <eiendomstype>
+      <eiendomstype>regnskapsbehandletBolig</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>100.00</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>41e49ef7a924a72611dcfc90fcafc18d76ab0df0</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>6000000</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>8000000</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>41e49ef7a924a72611dcfc90fcafc18d76ab0df0</id>
+    <adresseopplysninger>
+      <internasjonalAdresse>
+        <landkode>
+          <landkode>DK</landkode>
+        </landkode>
+      </internasjonalAdresse>
+    </adresseopplysninger>
+    <eierandel>
+      <prosent>100.00</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>41e49ef7a924a72611dcfc90fcafc18d76ab0df0</internEiendomsidentifikator>
+  </fastEiendom>
 </fasteEiendommer>
 ```
 
 #### formuesspesifikasjonForEgenFritaksbehandletBolig <a name="formuesspesifikasjonForEgenFritaksbehandletBolig"></a>
 ```xml
 <fasteEiendommer>
-    <fastEiendomSomFormuesobjekt>
-        <id>e3bd5f45bd4ea345601795066c56f280c820a938</id>
-        <formuesspesifikasjonForEgenFritaksbehandletBolig>
-            <formuesverdiForEgenFritaksbehandletBolig>
-                <beloep>
-                    <beloepSomHeltall>203861</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForEgenFritaksbehandletBolig>
-        </formuesspesifikasjonForEgenFritaksbehandletBolig>
-        <eiendomstype>
-            <eiendomstype>egenFritaksbehandletBolig</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>100.00</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>ad1cba61c035cba2311f44fc9e102f5a98e0c1bc</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>203861</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>203861</verdiFoerVerdsettingsrabattForFormuesandel>
-    </fastEiendomSomFormuesobjekt>
-    <fastEiendom>
-        <id>ad1cba61c035cba2311f44fc9e102f5a98e0c1bc</id>
-        <adresseopplysninger>
-            <internasjonalAdresse>
-                <landkode>
-                    <landkode>FR</landkode>
-                </landkode>
-            </internasjonalAdresse>
-        </adresseopplysninger>
-        <eierandel>
-            <prosent>100.00</prosent>
-        </eierandel>
-        <internEiendomsidentifikator>ad1cba61c035cba2311f44fc9e102f5a98e0c1bc</internEiendomsidentifikator>
-    </fastEiendom>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForEgenFritaksbehandletBolig>
+      <formuesverdiForEgenFritaksbehandletBolig>
+        <beloep>
+          <beloepSomHeltall>121787</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForEgenFritaksbehandletBolig>
+      <grunnlagForFormuesverdi>
+        <formuesverdiFraForegaaendeInntektsaar>
+          <beloep>
+            <beloepSomHeltall>121787</beloepSomHeltall>
+          </beloep>
+        </formuesverdiFraForegaaendeInntektsaar>
+      </grunnlagForFormuesverdi>
+    </formuesspesifikasjonForEgenFritaksbehandletBolig>
+    <id>ba3bdf292a8ea56810ab8872385a203b64ac6d31</id>
+    <eiendomstype>
+      <eiendomstype>egenFritaksbehandletBolig</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>100.00</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>ba3bdf292a8ea56810ab8872385a203b64ac6d31fastEiendom</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>121787</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>121787</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>ba3bdf292a8ea56810ab8872385a203b64ac6d31fastEiendom</id>
+    <adresseopplysninger>
+      <poststed>
+        <poststedsnavn>
+          <tekst>LUND</tekst>
+        </poststedsnavn>
+        <postnummer>
+          <postnummer>4610</postnummer>
+        </postnummer>
+      </poststed>
+      <vegadresse>
+        <adressenavn>
+          <tekst>Vei 505</tekst>
+        </adressenavn>
+        <adressenummer>
+          <husnummer>
+            <tekst>74</tekst>
+          </husnummer>
+        </adressenummer>
+      </vegadresse>
+    </adresseopplysninger>
+    <sergEiendomsidentifikator>
+      <tekst>999</tekst>
+    </sergEiendomsidentifikator>
+    <eksternEiendomsidentifikator>
+      <kommunenummer>
+        <kommunenummer>2100</kommunenummer>
+      </kommunenummer>
+      <sergMatrikkelnummer>
+        <gaardsnummer>
+          <gaardsnummer>48</gaardsnummer>
+        </gaardsnummer>
+        <bruksnummer>
+          <bruksnummer>317</bruksnummer>
+        </bruksnummer>
+        <festenummer>
+          <festenummer>0</festenummer>
+        </festenummer>
+        <seksjonsnummer>
+          <seksjonsnummer>36</seksjonsnummer>
+        </seksjonsnummer>
+      </sergMatrikkelnummer>
+    </eksternEiendomsidentifikator>
+    <eierandel>
+      <prosent>100.00</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>ba3bdf292a8ea56810ab8872385a203b64ac6d31fastEiendom</internEiendomsidentifikator>
+  </fastEiendom>
 </fasteEiendommer>
 ```
 
@@ -1002,21 +1065,28 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
 ```xml
 <fasteEiendommer>
   <fastEiendomSomFormuesobjekt>
-    <id>a585162b90a8e906e3a4979093fea1bf9b511548</id>
     <formuesspesifikasjonForEgenFritaksbehandletFritidseiendom>
       <formuesverdiForEgenFritaksbehandletFritidseiendom>
         <beloep>
           <beloepSomHeltall>1166886</beloepSomHeltall>
         </beloep>
       </formuesverdiForEgenFritaksbehandletFritidseiendom>
+      <grunnlagForFormuesverdi>
+        <formuesverdiFraForegaaendeInntektsaar>
+          <beloep>
+            <beloepSomHeltall>1166886</beloepSomHeltall>
+          </beloep>
+        </formuesverdiFraForegaaendeInntektsaar>
+      </grunnlagForFormuesverdi>
     </formuesspesifikasjonForEgenFritaksbehandletFritidseiendom>
+    <id>01796b2d4c55f7d533a94c1f7c90c63ff78d9853</id>
     <eiendomstype>
       <eiendomstype>egenFritaksbehandletFritidseiendom</eiendomstype>
     </eiendomstype>
     <andelAvFormuesverdi>
       <prosent>50.00</prosent>
     </andelAvFormuesverdi>
-    <internEiendomsidentifikator>9b1cd0049edb03d2abcb33b6500f8a4164ed7b70</internEiendomsidentifikator>
+    <internEiendomsidentifikator>41dae048882333a02019a348dbb5546fa8795945</internEiendomsidentifikator>
     <formuesverdiForFormuesandel>
       <beloep>
         <beloepSomHeltall>583443</beloepSomHeltall>
@@ -1025,7 +1095,7 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
     <verdiFoerVerdsettingsrabattForFormuesandel>583443</verdiFoerVerdsettingsrabattForFormuesandel>
   </fastEiendomSomFormuesobjekt>
   <fastEiendom>
-    <id>9b1cd0049edb03d2abcb33b6500f8a4164ed7b70</id>
+    <id>41dae048882333a02019a348dbb5546fa8795945</id>
     <adresseopplysninger>
       <internasjonalAdresse>
         <landkode>
@@ -1036,7 +1106,7 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
     <eierandel>
       <prosent>50.00</prosent>
     </eierandel>
-    <internEiendomsidentifikator>9b1cd0049edb03d2abcb33b6500f8a4164ed7b70</internEiendomsidentifikator>
+    <internEiendomsidentifikator>41dae048882333a02019a348dbb5546fa8795945</internEiendomsidentifikator>
   </fastEiendom>
 </fasteEiendommer>
 ```
@@ -1047,28 +1117,35 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
 
 <fasteEiendommer>
     <fastEiendomSomFormuesobjekt>
-        <formuesspesifikasjonForGaardsbruk>
-            <formuesverdiForGaardsbruk>
-                <beloep>
-                    <beloepSomHeltall>1582327</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForGaardsbruk>
-        </formuesspesifikasjonForGaardsbruk>
-        <id>c89c8965fdf79b0ed2046688b7de960af71999da</id>
-        <eiendomstype>
-            <eiendomstype>gaardsbruk</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>100.00</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>c89c8965fdf79b0ed2046688b7de960af71999dafastEiendom</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>1582327</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>2109769</verdiFoerVerdsettingsrabattForFormuesandel>
-    </fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForGaardsbruk>
+      <formuesverdiForGaardsbruk>
+        <beloep>
+          <beloepSomHeltall>1582327</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForGaardsbruk>
+      <grunnlagForFormuesverdi>
+        <formuesverdiFraForegaaendeInntektsaar>
+          <beloep>
+            <beloepSomHeltall>1582327</beloepSomHeltall>
+          </beloep>
+        </formuesverdiFraForegaaendeInntektsaar>
+      </grunnlagForFormuesverdi>
+    </formuesspesifikasjonForGaardsbruk>
+    <id>c89c8965fdf79b0ed2046688b7de960af71999da</id>
+    <eiendomstype>
+      <eiendomstype>gaardsbruk</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>100.00</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>c89c8965fdf79b0ed2046688b7de960af71999dafastEiendom</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>1582327</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>2109769</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
     <fastEiendom>
         <id>c89c8965fdf79b0ed2046688b7de960af71999dafastEiendom</id>
         <adresseopplysninger>
@@ -1126,411 +1203,329 @@ formuesverdiForFormuesandel og verdiFoerVerdsettingsrabattForFormuesandel
 ```xml
 
 <fasteEiendommer>
-    <fastEiendomSomFormuesobjekt>
-        <formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge>
-            <formuesverdiForNaeringseiendom>
-                <beloep>
-                    <beloepSomHeltall>4137329</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForNaeringseiendom>
-            <beregnetUtleieverdiForNaeringseiendom>
-                <beloep>
-                    <beloepSomHeltall>5516438</beloepSomHeltall>
-                </beloep>
-            </beregnetUtleieverdiForNaeringseiendom>
-            <grunnlagForBeregnetUtleieverdiForNaeringseiendom>
-                <utleieverdi>
-                    <beloep>
-                        <beloepINok>
-                            <beloepSomHeltall>5516438</beloepSomHeltall>
-                        </beloepINok>
-                        <beloepIValuta>
-                            <beloep>5516438</beloep>
-                        </beloepIValuta>
-                        <valutakode>
-                            <valutakode>NOK</valutakode>
-                        </valutakode>
-                        <valutakurs>
-                            <valutakurs>1</valutakurs>
-                        </valutakurs>
-                    </beloep>
-                </utleieverdi>
-            </grunnlagForBeregnetUtleieverdiForNaeringseiendom>
-            <areal>
-                <heltall>210</heltall>
-            </areal>
-            <naeringseiendomstype>
-                <naeringseiendomstype>hotell</naeringseiendomstype>
-            </naeringseiendomstype>
-        </formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge>
-        <id>17972202a6f998fe5d17248ff57ee57ebd777f0a</id>
-        <eiendomstype>
-            <eiendomstype>ikkeUtleidNaeringseiendomINorge</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>50.00</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>17972202a6f998fe5d17248ff57ee57ebd777f0afastEiendom</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>2068664</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>2758219</verdiFoerVerdsettingsrabattForFormuesandel>
-    </fastEiendomSomFormuesobjekt>
-    <fastEiendom>
-        <id>17972202a6f998fe5d17248ff57ee57ebd777f0afastEiendom</id>
-        <adresseopplysninger>
-            <poststed>
-                <poststedsnavn>
-                    <tekst>SLINDE</tekst>
-                </poststedsnavn>
-                <postnummer>
-                    <postnummer>9288</postnummer>
-                </postnummer>
-            </poststed>
-            <vegadresse>
-                <adressenavn>
-                    <tekst>Platous gate</tekst>
-                </adressenavn>
-                <adressenummer>
-                    <husnummer>
-                        <tekst>36</tekst>
-                    </husnummer>
-                </adressenummer>
-            </vegadresse>
-        </adresseopplysninger>
-        <sergEiendomsidentifikator>
-            <tekst>268779</tekst>
-        </sergEiendomsidentifikator>
-        <eksternEiendomsidentifikator>
-            <kommunenummer>
-                <kommunenummer>3411</kommunenummer>
-            </kommunenummer>
-            <sergMatrikkelnummer>
-                <gaardsnummer>
-                    <gaardsnummer>11</gaardsnummer>
-                </gaardsnummer>
-                <bruksnummer>
-                    <bruksnummer>1892</bruksnummer>
-                </bruksnummer>
-                <festenummer>
-                    <festenummer>0</festenummer>
-                </festenummer>
-                <seksjonsnummer>
-                    <seksjonsnummer>0</seksjonsnummer>
-                </seksjonsnummer>
-            </sergMatrikkelnummer>
-        </eksternEiendomsidentifikator>
-        <eierandel>
-            <prosent>50.00</prosent>
-        </eierandel>
-        <internEiendomsidentifikator>17972202a6f998fe5d17248ff57ee57ebd777f0afastEiendom</internEiendomsidentifikator>
-    </fastEiendom>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge>
+      <formuesverdiForNaeringseiendom>
+        <beloep>
+          <beloepSomHeltall>2466347</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForNaeringseiendom>
+      <beregnetUtleieverdiForNaeringseiendom>
+        <beloep>
+          <beloepSomHeltall>3288462</beloepSomHeltall>
+        </beloep>
+      </beregnetUtleieverdiForNaeringseiendom>
+      <grunnlagForBeregnetUtleieverdiForNaeringseiendom>
+        <utleieverdiFraSerg>
+          <beloep>
+            <beloepSomHeltall>3288462</beloepSomHeltall>
+          </beloep>
+        </utleieverdiFraSerg>
+      </grunnlagForBeregnetUtleieverdiForNaeringseiendom>
+      <areal>
+        <heltall>100</heltall>
+      </areal>
+      <naeringseiendomstype>
+        <naeringseiendomstype>tomtGrunnarealHovedfunksjon</naeringseiendomstype>
+      </naeringseiendomstype>
+    </formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge>
+    <id>e2600a1bb801d734f0d8a0cd8c3cabdb103e63f3</id>
+    <eiendomstype>
+      <eiendomstype>ikkeUtleidNaeringseiendomINorge</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>10.00</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>e2600a1bb801d734f0d8a0cd8c3cabdb103e63f3fastEiendom</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>246635</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>328846</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>e2600a1bb801d734f0d8a0cd8c3cabdb103e63f3fastEiendom</id>
+    <sergEiendomsidentifikator>
+      <tekst>1924291</tekst>
+    </sergEiendomsidentifikator>
+    <eksternEiendomsidentifikator>
+      <kommunenummer>
+        <kommunenummer>1108</kommunenummer>
+      </kommunenummer>
+      <sergMatrikkelnummer>
+        <gaardsnummer>
+          <gaardsnummer>74</gaardsnummer>
+        </gaardsnummer>
+        <bruksnummer>
+          <bruksnummer>81</bruksnummer>
+        </bruksnummer>
+        <festenummer>
+          <festenummer>0</festenummer>
+        </festenummer>
+        <seksjonsnummer>
+          <seksjonsnummer>0</seksjonsnummer>
+        </seksjonsnummer>
+      </sergMatrikkelnummer>
+    </eksternEiendomsidentifikator>
+    <eierandel>
+      <prosent>10.00</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>e2600a1bb801d734f0d8a0cd8c3cabdb103e63f3fastEiendom</internEiendomsidentifikator>
+  </fastEiendom>
 </fasteEiendommer>
 ```
 
 #### formuesspesifikasjonForUtleidFlerboligbygningIUtlandet <a name="formuesspesifikasjonForUtleidFlerboligbygningIUtlandet"></a>
 ```xml
 <fasteEiendommer>
-            <fastEiendomSomFormuesobjekt>
-                <formuesspesifikasjonForUtleidFlerboligbygningIUtlandet>
-                    <formuesverdiForUtleidFlerboligbygningIUtlandet>
-                        <beloep>
-                            <beloepSomHeltall>780000</beloepSomHeltall>
-                        </beloep>
-                    </formuesverdiForUtleidFlerboligbygningIUtlandet>
-                    <markedsverdiForUtleidFlerboligbygningIUtlandet>
-                        <beloep>
-                            <beloepINok>
-                                <beloepSomHeltall>4000000</beloepSomHeltall>
-                            </beloepINok>
-                            <beloepIValuta>
-                                <beloep>4000000</beloep>
-                            </beloepIValuta>
-                            <valutakode>
-                                <valutakode>NOK</valutakode>
-                            </valutakode>
-                            <valutakurs>
-                                <valutakurs>1</valutakurs>
-                            </valutakurs>
-                        </beloep>
-                    </markedsverdiForUtleidFlerboligbygningIUtlandet>
-                </formuesspesifikasjonForUtleidFlerboligbygningIUtlandet>
-                <id>63a224e8-69c7-437e-9aae-fec08eb91b6c</id>
-                <eiendomstype>
-                    <eiendomstype>utleidFlerboligbygningIUtlandet</eiendomstype>
-                </eiendomstype>
-                <andelAvFormuesverdi>
-                    <prosent>100</prosent>
-                </andelAvFormuesverdi>
-                <internEiendomsidentifikator>4864a0fc-bc23-4b30-90fc-eca2699bf034</internEiendomsidentifikator>
-                <formuesverdiForFormuesandel>
-                    <beloep>
-                        <beloepSomHeltall>780000</beloepSomHeltall>
-                    </beloep>
-                </formuesverdiForFormuesandel>
-                <verdiFoerVerdsettingsrabattForFormuesandel>1200000</verdiFoerVerdsettingsrabattForFormuesandel>
-            </fastEiendomSomFormuesobjekt>
-            <fastEiendom>
-                <id>37f9d349-69da-467d-99ef-3a04769f5954</id>
-                <adresseopplysninger>
-                    <vegadresse>
-                        <adressenavn>
-                            <tekst>st</tekst>
-                        </adressenavn>
-                    </vegadresse>
-                    <internasjonalAdresse>
-                        <landkode>
-                            <landkode>GB</landkode>
-                        </landkode>
-                    </internasjonalAdresse>
-                </adresseopplysninger>
-                <eierandel>
-                    <prosent>100</prosent>
-                </eierandel>
-                <internEiendomsidentifikator>4864a0fc-bc23-4b30-90fc-eca2699bf034</internEiendomsidentifikator>
-            </fastEiendom>
-        </fasteEiendommer>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForUtleidFlerboligbygningIUtlandet>
+      <formuesverdiForUtleidFlerboligbygningIUtlandet>
+        <beloep>
+          <beloepSomHeltall>19000000</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForUtleidFlerboligbygningIUtlandet>
+      <grunnlagForFormuesverdi>
+        <formuesverdiFraForegaaendeInntektsaar>
+          <beloep>
+            <beloepSomHeltall>19000000</beloepSomHeltall>
+          </beloep>
+        </formuesverdiFraForegaaendeInntektsaar>
+      </grunnlagForFormuesverdi>
+    </formuesspesifikasjonForUtleidFlerboligbygningIUtlandet>
+    <id>cd47695500eff1e51f57abf63671d94e701e6bff</id>
+    <eiendomstype>
+      <eiendomstype>utleidFlerboligbygningIUtlandet</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>100.00</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>80847b9a5730b0cfb283c3135625a3885839b6fb</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>19000000</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>25333333</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>80847b9a5730b0cfb283c3135625a3885839b6fb</id>
+    <adresseopplysninger>
+      <internasjonalAdresse>
+        <landkode>
+          <landkode>FR</landkode>
+        </landkode>
+      </internasjonalAdresse>
+    </adresseopplysninger>
+    <eierandel>
+      <prosent>100.00</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>80847b9a5730b0cfb283c3135625a3885839b6fb</internEiendomsidentifikator>
+  </fastEiendom>
+</fasteEiendommer>
 ```
 
 #### formuesspesifikasjonForUtleidNaeringseiendom <a name="formuesspesifikasjonForUtleidNaeringseiendom"></a>
 ```xml
 <fasteEiendommer>
-    <fastEiendomSomFormuesobjekt>
-        <formuesspesifikasjonForUtleidNaeringseiendom>
-            <formuesverdiForNaeringseiendom>
-                <beloep>
-                    <beloepSomHeltall>3000000</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForNaeringseiendom>
-            <beregnetUtleieverdiForNaeringseiendom>
-                <beloep>
-                    <beloepSomHeltall>4000000</beloepSomHeltall>
-                </beloep>
-            </beregnetUtleieverdiForNaeringseiendom>
-            <grunnlagForBeregnetUtleieverdiForNaeringseiendom>
-                <dokumentertMarkedsverdiForNaeringseiendom>
-                    <beloep>
-                        <beloepINok>
-                            <beloepSomHeltall>4000000</beloepSomHeltall>
-                        </beloepINok>
-                        <beloepIValuta>
-                            <beloep>4000000</beloep>
-                        </beloepIValuta>
-                        <valutakurs>
-                            <valutakurs>1</valutakurs>
-                        </valutakurs>
-                    </beloep>
-                </dokumentertMarkedsverdiForNaeringseiendom>
-                <bruttoUtleieinntekt>
-                    <beloep>
-                        <beloepINok>
-                            <beloepSomHeltall>140000</beloepSomHeltall>
-                        </beloepINok>
-                        <beloepIValuta>
-                            <beloep>140000</beloep>
-                        </beloepIValuta>
-                        <valutakurs>
-                            <valutakurs>1</valutakurs>
-                        </valutakurs>
-                    </beloep>
-                </bruttoUtleieinntekt>
-                <aarligUtleieinntektIAaretFoerInntektsaar>
-                    <beloep>
-                        <beloepINok>
-                            <beloepSomHeltall>100000</beloepSomHeltall>
-                        </beloepINok>
-                        <beloepIValuta>
-                            <beloep>100000</beloep>
-                        </beloepIValuta>
-                        <valutakurs>
-                            <valutakurs>1</valutakurs>
-                        </valutakurs>
-                    </beloep>
-                </aarligUtleieinntektIAaretFoerInntektsaar>
-                <aarligUtleieinntektToAarFoerInntektsaar>
-                    <beloep>
-                        <beloepINok>
-                            <beloepSomHeltall>900000</beloepSomHeltall>
-                        </beloepINok>
-                        <beloepIValuta>
-                            <beloep>900000</beloep>
-                        </beloepIValuta>
-                        <valutakurs>
-                            <valutakurs>1</valutakurs>
-                        </valutakurs>
-                    </beloep>
-                </aarligUtleieinntektToAarFoerInntektsaar>
-            </grunnlagForBeregnetUtleieverdiForNaeringseiendom>
-            <areal>
-                <heltall>400</heltall>
-            </areal>
-            <naeringseiendomstype>
-                <naeringseiendomstype>annet</naeringseiendomstype>
-            </naeringseiendomstype>
-            <antallMaanederUtleid>
-                <antall>12</antall>
-            </antallMaanederUtleid>
-            <oevrigTilVisningAvUtleidNaeringseiendom>
-                <aarligUtleieinntekt>140000</aarligUtleieinntekt>
-                <gjennomsnittligUtleieinntekt>380000</gjennomsnittligUtleieinntekt>
-            </oevrigTilVisningAvUtleidNaeringseiendom>
-        </formuesspesifikasjonForUtleidNaeringseiendom>
-        <id>9d1d5d70-4349-4d44-ba52-4cb93b67cdab</id>
-        <eiendomstype>
-            <eiendomstype>naeringseiendom</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>100</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>0998d36c-106f-49d6-9ef4-98a970683cf1fastEiendom</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>3000000</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>4000000</verdiFoerVerdsettingsrabattForFormuesandel>
-    </fastEiendomSomFormuesobjekt>
-    <fastEiendom>
-        <id>0998d36c-106f-49d6-9ef4-98a970683cf1fastEiendom</id>
-        <adresseopplysninger>
-            <poststed>
-                <poststedsnavn>
-                    <tekst>TØRBERGET</tekst>
-                </poststedsnavn>
-                <postnummer>
-                    <postnummer>5679</postnummer>
-                </postnummer>
-            </poststed>
-            <vegadresse>
-                <adressenavn>
-                    <tekst>Strandavegen</tekst>
-                </adressenavn>
-                <adressenummer>
-                    <husnummer>
-                        <tekst>2</tekst>
-                    </husnummer>
-                </adressenummer>
-            </vegadresse>
-        </adresseopplysninger>
-        <sergEiendomsidentifikator>
-            <tekst>1149729</tekst>
-        </sergEiendomsidentifikator>
-        <eksternEiendomsidentifikator>
-            <kommunenummer>
-                <kommunenummer>4631</kommunenummer>
-            </kommunenummer>
-            <sergMatrikkelnummer>
-                <gaardsnummer>
-                    <gaardsnummer>950</gaardsnummer>
-                </gaardsnummer>
-                <bruksnummer>
-                    <bruksnummer>87</bruksnummer>
-                </bruksnummer>
-            </sergMatrikkelnummer>
-        </eksternEiendomsidentifikator>
-        <eierandel>
-            <prosent>100</prosent>
-        </eierandel>
-        <eierskifteAvFastEiendom>
-            <erEierskifteTinglyst>
-                <boolsk>true</boolsk>
-            </erEierskifteTinglyst>
-            <datoForOverdragelse>
-                <dato>2022-01-01</dato>
-            </datoForOverdragelse>
-        </eierskifteAvFastEiendom>
-        <internEiendomsidentifikator>0998d36c-106f-49d6-9ef4-98a970683cf1fastEiendom</internEiendomsidentifikator>
-    </fastEiendom>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForUtleidNaeringseiendom>
+      <formuesverdiForNaeringseiendom>
+        <beloep>
+          <beloepSomHeltall>105468</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForNaeringseiendom>
+      <beregnetUtleieverdiForNaeringseiendom>
+        <beloep>
+          <beloepSomHeltall>140625</beloepSomHeltall>
+        </beloep>
+      </beregnetUtleieverdiForNaeringseiendom>
+      <grunnlagForBeregnetUtleieverdiForNaeringseiendom>
+        <sisteRapporterteUtleieinntekt>
+          <beloep>
+            <beloepINok>
+              <beloepSomHeltall>10000</beloepSomHeltall>
+            </beloepINok>
+            <beloepIValuta>
+              <beloep>10000</beloep>
+            </beloepIValuta>
+            <valutakode>
+              <valutakode>NOK</valutakode>
+            </valutakode>
+            <valutakurs>
+              <valutakurs>1</valutakurs>
+            </valutakurs>
+          </beloep>
+        </sisteRapporterteUtleieinntekt>
+        <aarForMottattMarkedsverdi>
+          <aarstall>2020</aarstall>
+        </aarForMottattMarkedsverdi>
+        <justertMarkedsverdiForNaeringseiendom>
+          <desimaltall>2354</desimaltall>
+        </justertMarkedsverdiForNaeringseiendom>
+        <datoForDokumentertMarkedsverdiForNaeringseiendom>
+          <dato>2020-01-01</dato>
+        </datoForDokumentertMarkedsverdiForNaeringseiendom>
+      </grunnlagForBeregnetUtleieverdiForNaeringseiendom>
+      <areal>
+        <heltall>200</heltall>
+      </areal>
+      <naeringseiendomstype>
+        <naeringseiendomstype>fritidseiendom</naeringseiendomstype>
+      </naeringseiendomstype>
+    </formuesspesifikasjonForUtleidNaeringseiendom>
+    <id>3217adfe-e09e-40d1-89f3-32101aa82a8b</id>
+    <eiendomstype>
+      <eiendomstype>naeringseiendom</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>100</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>4ed19445-209b-486b-a982-033c48a9ad41</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>105468</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>140625</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>1b76c56b-1699-4dff-81e8-aeec2d19eb9b</id>
+    <adresseopplysninger>
+      <vegadresse>
+        <adressenavn>
+          <tekst>asdasd</tekst>
+        </adressenavn>
+      </vegadresse>
+      <internasjonalAdresse>
+        <landkode>
+          <landkode>FR</landkode>
+        </landkode>
+      </internasjonalAdresse>
+    </adresseopplysninger>
+    <eierandel>
+      <prosent>100</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>4ed19445-209b-486b-a982-033c48a9ad41</internEiendomsidentifikator>
+  </fastEiendom>
 </fasteEiendommer>
 ```
 
 #### formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet <a name="formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet"></a>
 ```xml
 <fasteEiendommer>
-    <fastEiendomSomFormuesobjekt>
-        <id>f3b9e236067805c14998654db161913e52153a02</id>
-        <eiendomstype>
-            <eiendomstype>ikkeUtleidNaeringseiendomIUtlandet</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>100.00</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>de7707a9a10f8caf039078ede5187c3b60aeedaa</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>30000</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>30000</verdiFoerVerdsettingsrabattForFormuesandel>
-        <formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet>
-            <formuesverdiForNaeringseiendom>
-                <beloep>
-                    <beloepSomHeltall>30000</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForNaeringseiendom>
-        </formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet>
-    </fastEiendomSomFormuesobjekt>
-    <fastEiendom>
-        <id>de7707a9a10f8caf039078ede5187c3b60aeedaa</id>
-        <adresseopplysninger>
-            <internasjonalAdresse>
-                <landkode>
-                    <landkode>VE</landkode>
-                </landkode>
-            </internasjonalAdresse>
-        </adresseopplysninger>
-        <eierandel>
-            <prosent>100.00</prosent>
-        </eierandel>
-        <internEiendomsidentifikator>de7707a9a10f8caf039078ede5187c3b60aeedaa</internEiendomsidentifikator>
-    </fastEiendom>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet>
+      <formuesverdiForIkkeUtleidNaeringseiendomIUtlandet>
+        <beloep>
+          <beloepSomHeltall>30000</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForIkkeUtleidNaeringseiendomIUtlandet>
+      <grunnlagForFormuesverdi>
+        <formuesverdiFraForegaaendeInntektsaar>
+          <beloep>
+            <beloepSomHeltall>30000</beloepSomHeltall>
+          </beloep>
+        </formuesverdiFraForegaaendeInntektsaar>
+      </grunnlagForFormuesverdi>
+    </formuesspesifikasjonForIkkeUtleidNaeringseiendomIUtlandet>
+    <id>7186db69e9cc262176bdda5474a83f7a1c7363c3</id>
+    <eiendomstype>
+      <eiendomstype>ikkeUtleidNaeringseiendomIUtlandet</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>100.00</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>b670f452063f84938fa15043a1237c7133d18efe</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>30000</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>30000</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>b670f452063f84938fa15043a1237c7133d18efe</id>
+    <adresseopplysninger>
+      <internasjonalAdresse>
+        <landkode>
+          <landkode>VE</landkode>
+        </landkode>
+      </internasjonalAdresse>
+    </adresseopplysninger>
+    <eierandel>
+      <prosent>100.00</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>b670f452063f84938fa15043a1237c7133d18efe</internEiendomsidentifikator>
+  </fastEiendom>
 </fasteEiendommer>
 ```
 
 #### formuesspesifikasjonForSkogeiendomIUtlandet <a name="formuesspesifikasjonForSkogeiendomIUtlandet"></a>
+OSB! formuesverdiForNaeringseiendom må fastsettes på egen hånd for denne typen, selv om den står som avledet=true i xsd'n.
+
 ```xml
-
-OSB! formuesverdiForNaeringseiendom må fastsettes på egen hånd for denne typen, selv om den står som avledet=true i xsd'n. 
-
 <fasteEiendommer>
-    <fastEiendomSomFormuesobjekt>
-        <id>7a836bf0418eb694dac13a3397b2587c807345f6</id>
-        <eiendomstype>
-            <eiendomstype>skogeiendomIUtlandet</eiendomstype>
-        </eiendomstype>
-        <andelAvFormuesverdi>
-            <prosent>100.00</prosent>
-        </andelAvFormuesverdi>
-        <internEiendomsidentifikator>e826dfea513cdedad533d3a4bd2dbafbdb0b032e</internEiendomsidentifikator>
-        <formuesverdiForFormuesandel>
-            <beloep>
-                <beloepSomHeltall>50850</beloepSomHeltall>
-            </beloep>
-        </formuesverdiForFormuesandel>
-        <verdiFoerVerdsettingsrabattForFormuesandel>92455</verdiFoerVerdsettingsrabattForFormuesandel>
-        <formuesspesifikasjonForSkogeiendomIUtlandet>
-            <formuesverdiForSkogeiendomIUtlandet>
-                <beloep>
-                    <beloepSomHeltall>50850</beloepSomHeltall>
-                </beloep>
-            </formuesverdiForSkogeiendomIUtlandet>
-        </formuesspesifikasjonForSkogeiendomIUtlandet>
-    </fastEiendomSomFormuesobjekt>
-    <fastEiendom>
-        <id>e826dfea513cdedad533d3a4bd2dbafbdb0b032e</id>
-        <adresseopplysninger>
-            <internasjonalAdresse>
-                <landkode>
-                    <landkode>SE</landkode>
-                </landkode>
-            </internasjonalAdresse>
-        </adresseopplysninger>
-        <eierandel>
-            <prosent>100.00</prosent>
-        </eierandel>
-        <internEiendomsidentifikator>e826dfea513cdedad533d3a4bd2dbafbdb0b032e</internEiendomsidentifikator>
-    </fastEiendom>
+  <fastEiendomSomFormuesobjekt>
+    <formuesspesifikasjonForSkogeiendomIUtlandet>
+      <formuesverdiForSkogeiendomIUtlandet>
+        <beloep>
+          <beloepSomHeltall>60000</beloepSomHeltall>
+        </beloep>
+      </formuesverdiForSkogeiendomIUtlandet>
+      <grunnlagForFormuesverdi>
+        <markedsverdi>
+          <beloep>
+            <beloepINok>
+              <beloepSomHeltall>100000</beloepSomHeltall>
+            </beloepINok>
+            <beloepIValuta>
+              <beloep>100000</beloep>
+            </beloepIValuta>
+            <valutakode>
+              <valutakode>NOK</valutakode>
+            </valutakode>
+            <valutakurs>
+              <valutakurs>1</valutakurs>
+            </valutakurs>
+          </beloep>
+        </markedsverdi>
+      </grunnlagForFormuesverdi>
+    </formuesspesifikasjonForSkogeiendomIUtlandet>
+    <id>dce7b845-5e5a-4374-9a31-b4da501c2a1e</id>
+    <eiendomstype>
+      <eiendomstype>skogeiendomIUtlandet</eiendomstype>
+    </eiendomstype>
+    <andelAvFormuesverdi>
+      <prosent>100</prosent>
+    </andelAvFormuesverdi>
+    <internEiendomsidentifikator>17eb9e86-3d79-41bd-9a17-d9f0a34cca65</internEiendomsidentifikator>
+    <formuesverdiForFormuesandel>
+      <beloep>
+        <beloepSomHeltall>60000</beloepSomHeltall>
+      </beloep>
+    </formuesverdiForFormuesandel>
+    <verdiFoerVerdsettingsrabattForFormuesandel>80000</verdiFoerVerdsettingsrabattForFormuesandel>
+  </fastEiendomSomFormuesobjekt>
+  <fastEiendom>
+    <id>bfb438de-cc8d-4813-81e1-1daec55e5e73</id>
+    <adresseopplysninger>
+      <vegadresse>
+        <adressenavn>
+          <tekst>asd</tekst>
+        </adressenavn>
+      </vegadresse>
+      <internasjonalAdresse>
+        <landkode>
+          <landkode>AZ</landkode>
+        </landkode>
+      </internasjonalAdresse>
+    </adresseopplysninger>
+    <eierandel>
+      <prosent>100</prosent>
+    </eierandel>
+    <internEiendomsidentifikator>17eb9e86-3d79-41bd-9a17-d9f0a34cca65</internEiendomsidentifikator>
+  </fastEiendom>
 </fasteEiendommer>
 ```
