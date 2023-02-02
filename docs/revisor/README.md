@@ -24,8 +24,12 @@ Hele dokumentet skal signeres, så her ligger signeringselementet på rotnoden (
 
 ## Altinn3
 
-For å aktivere signeringssteget i Altinn3 så må instansen opprettes med paramteret
-`"skalBekreftesAvRevisor": true` i `"dataValues":` elemenet. Eksempel på opprettet instans data vil da være:
+**For å aktivere** signeringssteget i Altinn3 så må instansen opprettes med paramteret
+`"skalBekreftesAvRevisor": true` i `"dataValues":` elemenet. 
+
+_Det er viktig at dataValues settes ved opprettelse av Altinn3 instansen._
+
+Eksempel på opprettet instans data vil da være:
 
 ```json
 {
@@ -72,6 +76,19 @@ Signeringsdokumentet har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
 - Bekreftelse: referere informasjonselementidentifikator (entitet) som signeres og ev forekomstidentifikator
 - Vedlegg: peke på informasjonselementidentifikator (entitet) vedlegget skal brukes kun hvis revisors signatur (
   erBekreftetGodkjent) er false og man laster opp dokumentasjon om hvorfor
+- Bekreftelsedokumentet kan også lages ved å bruke skatteetatens klient for revisors bekreftelse. Har status som illustrert nedenfor, så kan en gå til innboksen til selskapet som har opprettet instansen, gå til instansen og følge lenken som fører til tjenesten som revisor kan bruke for å signere og laste opp bekreftelsedokument 
+```json
+  {
+  "currentTask": {
+    "flow": 4,
+    "elementId": "Task_2Revisor",
+    "name": "BekreftelseRevisor",
+    "altinnTaskType": "confirmation",
+    "flowType": "CompleteCurrentMoveToNext"
+  }
+}
+```
+
 
 ## Feilhåndtering
 
