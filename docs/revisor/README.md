@@ -124,7 +124,7 @@ Alt kan håndteres fra sluttbrukersystemet.
 ### Last opp revisorsBekreftelse vedlegg
 Når instansen metadata `currentTask.elementid = Task_2Revisor` så kan revisors bekreftelse xml laste som vedlegg til Altinn3 instansen.
 
-Hvis en av bekreftelsene er avslag `erBekreftetGodkjent = false`, så må det dokumenteres. Last opp vedlegg til instansen. Hver bekreftelse kan ha flere vedlegg, se eksempel nedenfor
+Hvis en av bekreftelsene er et avslag (`erBekreftetGodkjent = false`), så kan det dokumenteres ved hjelp av et vedlegg. Last opp vedlegg til instansen. Det kan være flere vedlegg for en bekreftelse, se eksempelet nedenfor
 
 **Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=revisor-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: image/png' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@./Testfiler/vedlegg_revisor1.png'`
 
@@ -216,4 +216,3 @@ revisorsBekreftelse.xml eksempel
     </vedlegg>
 </revisorsBekreftelse>
 ```
-
