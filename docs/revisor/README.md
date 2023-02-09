@@ -122,7 +122,7 @@ Sluttbrukersystemer trenger ikke å gå via Altinn og skatteetatens visningklien
 Alt kan håndteres fra sluttbrukersystemet.
 
 ### Last opp revisorsBekreftelse vedlegg
-Når instansen metadata `currentTask.elementid = Task_2Revisor` så kan revisors bekreftelse xml laste som vedlegg til Altinn3 instansen.
+Når instansen metadata `currentTask.elementid = Task_2Revisor` så kan revisors bekreftelse xml lastes opp som vedlegg til Altinn3 instansen.
 
 Hvis en av bekreftelsene er et avslag (`erBekreftetGodkjent = false`), så kan det dokumenteres ved hjelp av et vedlegg. Last opp vedlegg til instansen. Det kan være flere vedlegg for en bekreftelse, se eksempelet nedenfor
 
