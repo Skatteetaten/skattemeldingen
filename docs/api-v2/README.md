@@ -1413,10 +1413,13 @@ Neste trinn er å laste opp meta-data om skattemeldingen. Meta-data skal være e
 
 ```json
 {
-  "inntektsaar": 2021
+  "inntektsaar": 2021,
+  "skalBekreftesAvRevisor": false
 }
 ```
-Beskrivelse: `inntektsaar: Inntektsår skattemeldingen gjelder for`
+Beskrivelse: 
+- `inntektsaar: Inntektsår skattemeldingen gjelder for`
+- `skalBekreftesAvRevisor: Settes til true om det er forekomster som skal bekreftes av revisor`
 
 Plukk ut _id_ og _data.id_ fra forrige responsen og bruk de på slutten av url-en under:
 
