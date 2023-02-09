@@ -146,7 +146,8 @@ Når revisor-bekreftelse xml'n er lastet, så må en pålogget bruker med rettig
 **Merk**
 - dataType=revisor-bekreftelse
 
-revisorsBekreftelse.xml eksempel
+revisorsBekreftelse.xml eksempel:
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <revisorsBekreftelse xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:revisorsbekreftelse:ekstern:v1">
@@ -216,3 +217,9 @@ revisorsBekreftelse.xml eksempel
     </vedlegg>
 </revisorsBekreftelse>
 ```
+
+**Merk:**
+`informasjonselementidentifikator`: xpath til elemetet som skal bekreftes
+`forekomstidentifikator`: forekomstidentifikator til xpath elementet
+`erBekreftetGodkjent`: true/false, om elmentet er bekreftet av revisor eller ikke
+`//vedlegg//id`: id til vedlegget i altinn3 instansen
