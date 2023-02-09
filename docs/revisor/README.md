@@ -76,7 +76,7 @@ Signeringsdokumentet har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
 ## Feilhåndtering
 
 Siden informasjonen om revisors signatur er fordelt mellom både Altinn instansen og informasjon i
-skattemeldingen/næringsspesifikasjonen så kan det oppstå innkonsistens mellom disse to. 
+skattemeldingen/næringsspesifikasjonen så kan det oppstå innkonsistens mellom disse to.
 
 Gitt følgende styring av revisors bekreftelseflag
 
@@ -98,4 +98,105 @@ Innsender/regnskapsfører har mulighet til å slette instansen i Task2_rev
 
 ### Case 2: Revisorsteg i Altinn aktveres ikke, men skattemeldingen/næringspesifikasjonen har satt flagget
 
-Slipper igjennom og blir fastsatt, vil bli fanget opp på kontroll. 
+Slipper igjennom og blir fastsatt, vil bli fanget opp på kontroll.
+
+## Opplasntning og håndtering av revisors bekreftelse fra sluttbrukersystem
+Sluttbrukersystemer trenger ikke å gå via Altinn og skatteetatens visningklient for å håndtere revisors signatur.
+Alt kan håndteres fra sluttbrukersystemet.
+
+### Last opp revisorsBekreftelse vedlegg
+Når instansen metadata `currentTask.elementid = Task_2Revisor` så kan revisors bekreftelse xml laste som vedlegg til Altinn3 instansen.
+
+Hvis en av bekreftelsene er avslag `erBekreftetGodkjent = false`, så må det dokumenteres. Last opp vedlegg til instansen. Hver bekreftelse kan ha flere vedlegg, se eksempel nedenfor
+
+**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=revisor-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: image/png' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@./Testfiler/vedlegg_revisor1.png'`
+
+**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=revisor-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: image/png' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@./Testfiler/vedlegg_revisor1.png`
+
+**Merk**
+- dataType=revisor-vedlegg
+- Aksepterte content-types er: application/pdf, image/jpeg og image/png
+- Content-disposition skal være: **attachment; filename=\<filnavn>**
+
+
+Id'n til vedlegget legges inn i revisorsBekreftelse.xml, når denne xml'n er ferdig bygd opp, lastes den opp på instansen.
+Når revisor-bekreftelse xml'n er lastet, så må en pålogget bruker med rettigheter til revisoren sette instansen klar til henting ved å kalle `next`
+
+**Testmiljø:** `curl --location --request POST 'https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=revisor-bekreftelse' \ --header 'Content-Disposition: attachment; filename=revisorsBekreftelse.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@./Testfiler/revisor_bekreftelse.xml'`
+
+**Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=revisor-bekreftelse' \ --header 'Content-Disposition: attachment; filename=revisorsBekreftelse.xml' \ --header 'Content-Type: text/xml' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@./Testfiler/revisor_bekreftelse.xml`
+
+**Merk**
+- dataType=revisor-bekreftelse
+
+revisorsBekreftelse.xml eksempel
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<revisorsBekreftelse xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:revisorsbekreftelse:ekstern:v1">
+    <bekreftelse>
+        <id>6b3eeb0f-537c-40dc-8de7-0180fec01a4c</id>
+        <informasjonselementidentifikator>
+            \skattemelding\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\forskningOgUtviklingsprosjekt
+        </informasjonselementidentifikator>
+        <forekomstidentifikator>1</forekomstidentifikator>
+        <erBekreftetGodkjent>false</erBekreftetGodkjent>
+    </bekreftelse>
+    <bekreftelse>
+        <id>014db24d-5cf3-4814-9621-16b56804ce59</id>
+        <informasjonselementidentifikator>\naeringsspesifikasjon</informasjonselementidentifikator>
+        <erBekreftetGodkjent>true</erBekreftetGodkjent>
+    </bekreftelse>
+    <partsnummer>900416193856</partsnummer>
+    <inntektsaar>2022</inntektsaar>
+    <bekreftetAv>KORREKT PRESENTASJON</bekreftetAv>
+    <vedlegg>
+        <id>73e84423-45d2-4a4e-adad-4a4956069956</id>
+        <vedleggsfil>
+            <opprinneligFilnavn>
+                <tekst>vedlegg_revisor3.png</tekst>
+            </opprinneligFilnavn>
+        </vedleggsfil>
+        <informasjonselementidentifikator>
+            <tekst>
+                \skattemelding\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\forskningOgUtviklingsprosjekt
+            </tekst>
+        </informasjonselementidentifikator>
+        <forekomstidentifikator>
+            <tekst>1</tekst>
+        </forekomstidentifikator>
+    </vedlegg>
+    <vedlegg>
+        <id>8433c570-58cc-417d-93ad-05c54ee8816c</id>
+        <vedleggsfil>
+            <opprinneligFilnavn>
+                <tekst>vedlegg_revisor2.png</tekst>
+            </opprinneligFilnavn>
+        </vedleggsfil>
+        <informasjonselementidentifikator>
+            <tekst>
+                \skattemelding\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\forskningOgUtviklingsprosjekt
+            </tekst>
+        </informasjonselementidentifikator>
+        <forekomstidentifikator>
+            <tekst>1</tekst>
+        </forekomstidentifikator>
+    </vedlegg>
+    <vedlegg>
+        <id>8043f993-e6e2-4f3d-8af3-fa831a495c03</id>
+        <vedleggsfil>
+            <opprinneligFilnavn>
+                <tekst>vedlegg_revisor1.png</tekst>
+            </opprinneligFilnavn>
+        </vedleggsfil>
+        <informasjonselementidentifikator>
+            <tekst>
+                \skattemelding\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\forskningOgUtviklingsprosjekt
+            </tekst>
+        </informasjonselementidentifikator>
+        <forekomstidentifikator>
+            <tekst>1</tekst>
+        </forekomstidentifikator>
+    </vedlegg>
+</revisorsBekreftelse>
+```
+

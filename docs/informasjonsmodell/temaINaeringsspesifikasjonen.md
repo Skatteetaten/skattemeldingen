@@ -23,7 +23,7 @@ Tabellen nedenfor gir en oversikt over hvilke temaer som hører til hvilken type
 | Skogbruk                                                   |     x     |             |     |
 |                                                            |           |             |     |
 | Spesifikasjon av anleggsmiddel:                            |           |             |     |
-| Motorkjøretøy i næring                                     |     x     |             |     |
+| Motorkjøretøy i næring                                     |     x     |             |  x  |
 | Saldoavskrevet anleggsmiddel                               |     x     |      x      |  x  |
 | Lineært avskrivbart anleggsmiddel                          |     x     |      x      |  x  |
 | Ikke avskrivbart anleggsmiddel                             |     x     |      x      |  x  |
@@ -33,4 +33,6 @@ Tabellen nedenfor gir en oversikt over hvilke temaer som hører til hvilken type
 | **Spesifikasjon av omløpsmiddel:**                         |           |             |     |
 | Skattemessig verdi på fordring                             |     x     |      x      |  x  |
 | Varelager                                                  |     x     |      x      |  x  |
+|                                                            |           |             |     |
+| Sum gjeld og formue                                        |     x     |             |     |
 
