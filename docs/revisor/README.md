@@ -146,21 +146,22 @@ Når revisor-bekreftelse xml'n er lastet, så må en pålogget bruker med rettig
 **Merk**
 - dataType=revisor-bekreftelse
 
-revisorsBekreftelse.xml eksempel
+revisorsBekreftelse.xml eksempel:
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <revisorsBekreftelse xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:revisorsbekreftelse:ekstern:v1">
     <bekreftelse>
         <id>6b3eeb0f-537c-40dc-8de7-0180fec01a4c</id>
         <informasjonselementidentifikator>
-            \skattemelding\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\forskningOgUtviklingsprosjekt
+            \\skattemelding\\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\\forskningOgUtviklingsprosjekt
         </informasjonselementidentifikator>
         <forekomstidentifikator>1</forekomstidentifikator>
         <erBekreftetGodkjent>false</erBekreftetGodkjent>
     </bekreftelse>
     <bekreftelse>
         <id>014db24d-5cf3-4814-9621-16b56804ce59</id>
-        <informasjonselementidentifikator>\naeringsspesifikasjon</informasjonselementidentifikator>
+        <informasjonselementidentifikator>\\naeringsspesifikasjon</informasjonselementidentifikator>
         <erBekreftetGodkjent>true</erBekreftetGodkjent>
     </bekreftelse>
     <partsnummer>900416193856</partsnummer>
@@ -175,7 +176,7 @@ revisorsBekreftelse.xml eksempel
         </vedleggsfil>
         <informasjonselementidentifikator>
             <tekst>
-                \skattemelding\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\forskningOgUtviklingsprosjekt
+                \\skattemelding\\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\\forskningOgUtviklingsprosjekt
             </tekst>
         </informasjonselementidentifikator>
         <forekomstidentifikator>
@@ -191,7 +192,7 @@ revisorsBekreftelse.xml eksempel
         </vedleggsfil>
         <informasjonselementidentifikator>
             <tekst>
-                \skattemelding\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\forskningOgUtviklingsprosjekt
+                \\skattemelding\\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\\forskningOgUtviklingsprosjekt
             </tekst>
         </informasjonselementidentifikator>
         <forekomstidentifikator>
@@ -207,7 +208,7 @@ revisorsBekreftelse.xml eksempel
         </vedleggsfil>
         <informasjonselementidentifikator>
             <tekst>
-                \skattemelding\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\forskningOgUtviklingsprosjekt
+                \\skattemelding\\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\\forskningOgUtviklingsprosjekt
             </tekst>
         </informasjonselementidentifikator>
         <forekomstidentifikator>
@@ -216,3 +217,9 @@ revisorsBekreftelse.xml eksempel
     </vedlegg>
 </revisorsBekreftelse>
 ```
+
+**Merk:**
+`informasjonselementidentifikator`: xpath til elemetet som skal bekreftes
+`forekomstidentifikator`: forekomstidentifikator til xpath elementet
+`erBekreftetGodkjent`: true/false, om elmentet er bekreftet av revisor eller ikke
+`//vedlegg//id`: id til vedlegget i altinn3 instansen
