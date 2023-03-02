@@ -128,6 +128,7 @@ eksisterende løsninger.
 | POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#til-midlertidig-lagret-skattemelding-for-visning) | Nei                    |
 | GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#avregning)                                                                 | Nei                    |
 | POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#klargjoer-part-for-forhaandsfastsetting)                      | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#klargjoer-part-som-mangler-utkast)                                            | Nei                    |
 
 | Miljø                             | Adresse                      | Påloggingsmetode      |
 |-----------------------------------|------------------------------|-----------------------|
@@ -1300,6 +1301,16 @@ Andre feiltilstander
   "melding": "feil tilstand oppdaget ifm klargjøring av forhåndsfastsetting, inntektsaar=2023, partType=personlig"
 }
 ```
+
+# Klargjør part som mangler utkast <a name="klargjoer-part-som-mangler-utkast"></a>
+Dersom dere har en organsiasjon som av eller annen årsak mangler utkast (får feilmelding http 403, skattemelding ikke tilgjenglig) for et aktivt inntektsår, så kan dere bruke dette API'et for for å klargjøre parten.
+Det API'et støttes kun for enhetstyper som skal levere skattemelding upersonlig. 
+
+**URL** `POST https://<env>/api/skattemelding/v2/klargjoerpart/<inntektsår>/<identifikator>`
+
+**Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/klargjoerpart/2023/312787016`
+
+
 
 # Altinn3-API
 
