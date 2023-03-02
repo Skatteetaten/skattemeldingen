@@ -1,38 +1,47 @@
 # Tema i Næringsspesifikasjonen og type innsending
-Tabellen nedenfor gir en oversikt over hvilke temaer som hører til hvilken type innsending for 2022
 
+Dette er en oversikt over innholdet i næringsspesifikasjon, fordelt etter de ulike tema og undertema<br/>
+Vær oppmerksom på at begrepene som brukes i oversikten er de som ligger i informasjonsmodellen til
+næringsspesifikasjonen (tekniske
+begreper). https://github.com/Skatteetaten/skattemeldingen/tree/master/src/resources/xsd
 
-| Tema                                                       | Personlig | Upersonlige | SDF |
-|:-----------------------------------------------------------|:---------:|:-----------:|:---:|
-| **Andre forhold**                                          |           |             |     |
-| Overnatting- serveringssted                                |     x     |      x      |  x  |
-| Drosje- og godstransport                                   |     x     |      x      |  x  |
-| Ytelser mellom nærstående                                  |           |      x      |  x  |
-|                                                            |           |             |     |
-| Balanseregnskap                                            |     x     |      x      |  x  |
-| Beregnet næringsinntekt                                    |     x     |      x      |  x  |
-|                                                            |           |             |     |
-| Beregnet personinntekt                                     |     x     |             |     |
-| Egenkapitalavstemming                                      |     x     |      x      |  x  |
-|                                                            |           |             |     |
-| **Forskjell mellom regnskapsmessig og skattemessig verdi** |           |             |     |
-| Midlertidig forskjell                                      |     x     |      x      |  x  |
-| Permanent forskjell                                        |     x     |      x      |  x  |
-|                                                            |           |             |     |
-| Resultatregnskap                                           |     x     |      x      |  x  |
-| Skogbruk                                                   |     x     |             |     |
-|                                                            |           |             |     |
-| Spesifikasjon av anleggsmiddel:                            |           |             |     |
-| Motorkjøretøy i næring                                     |     x     |             |  x  |
-| Saldoavskrevet anleggsmiddel                               |     x     |      x      |  x  |
-| Lineært avskrivbart anleggsmiddel                          |     x     |      x      |  x  |
-| Ikke avskrivbart anleggsmiddel                             |     x     |      x      |  x  |
-| Særskilt anleggsmiddel i kraftverk                         |     x     |             |     |
-| Gevinst- og tapskonto                                      |     x     |      x      |  x  |
-|                                                            |           |             |     |
-| **Spesifikasjon av omløpsmiddel:**                         |           |             |     |
-| Skattemessig verdi på fordring                             |     x     |      x      |  x  |
-| Varelager                                                  |     x     |      x      |  x  |
-|                                                            |           |             |     |
-| Sum gjeld og formue                                        |     x     |             |     |
+| Tema                                                                             | Personlig<br/>Ingen regnskapslikt | Personlig<br/>Full regnskapslikt | SDF<br/>Begrenset regnskapslikt | SDF<br/>Full regnskapslikt | Upersonlige <br/>Full regnskapslikt |
+|:---------------------------------------------------------------------------------|:---------------------------------:|:--------------------------------:|:-------------------------------:|:--------------------------:|:-----------------------------------:|
+| **AndreForhold**                                                                 |                                   |                                  |                                 |                            |                                     |
+| LøyveForDrosjeOgGodstransport                                                    |                 x                 |                x                 |                x                |             x              |                  x                  |
+| LøyveForDrosjeOgGodstransport                                                    |                 x                 |                x                 |                x                |             x              |                  x                  |
+| YtelseMellomAksjonærDeltakerEllerNærståendeOgSelskapEllerSelskapetsDatterselskap |                                   |                                  |                x                |             x              |                  x                  |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **Balanseregnskap**                                                              |                 x                 |                x                 |                x                |             x              |                  x                  |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **BeregnetNæringsinntekt**                                                       |                 x                 |                x                 |                x                |             x              |                  x                  |
+| Reindrift                                                                        |                 x                 |                x                 |                                 |                            |                                     |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **BeregnetPersoninntekt**                                                        |                 x                 |                x                 |                                 |                            |                                     |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **Egenkapitalavstemming**                                                        |                 x                 |                x                 |                x                |             x              |                  x                  |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **ForskjellMellomRegnskapsmessigOgSkattemessigVerdi**                            |                                   |                                  |                                 |                            |                                     |
+| PermanentForskjell                                                               |                                   |                x                 |                                 |             x              |                  x                  |
+| MidlertidigForskjell                                                             |                                   |                x                 |                                 |             x              |                  x                  |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **Resultatregnskap**                                                             |                 x                 |                x                 |                x                |             x              |                  x                  |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **Skogbruk**                                                                     |                 x                 |                x                 |                                 |                            |                                     |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **SpesifikasjonAvAnleggsmiddel**                                                 |                                   |                                  |                                 |                            |                                     |
+| SærskiltAnleggsmiddelIKraftverk                                                  |                 x                 |                x                 |                                 |                            |                                     |
+| IkkeAvskrivbartAnleggsmiddel                                                     |                 x                 |                x                 |                x                |             x              |                  x                  |
+| LineærtavskrevetAnleggsmiddel                                                    |                 x                 |                x                 |                x                |             x              |                  x                  |
+| SaldoavskrevetAnleggsmiddel                                                      |                 x                 |                x                 |                x                |             x              |                  x                  |
+| MotorkjøretøyINæring                                                             |                 x                 |                x                 |                x                |             x              |                  x                  |
+| GevinstOgTapskonto                                                               |                 x                 |                x                 |                x                |             x              |                  x                  |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **SpesifikasjonAvOmløpsmiddel**                                                  |                                   |                                  |                                 |                            |                                     |
+| SpesifikasjonAvSkattemessigVerdiPåFordring                                       |                 x                 |                x                 |                x                |             x              |                  x                  |
+| SpesifikasjonAvVarelager                                                         |                 x                 |                x                 |                x                |             x              |                  x                  |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **Virksomhet**                                                                   |                 x                 |                x                 |                x                |             x              |                  x                  |
+| <br/>                                                                            |                                   |                                  |                                 |                            |                                     |
+| **SamletGjeldOgFormuesobjekter**                                                 |                 x                 |                x                 |                                 |                            |                                     |
 
