@@ -18,7 +18,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>500</satsverdi>
       <satstype>minGrunnlagsbeloep</satstype>
-      <kildereferanse>Skatteloven § 6-50, 5.ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-50, 5.ledd</kildereferanse>
       <beregning>GaverTilFrivillige</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -35,7 +35,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>25000</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven § 6-50, 5.ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-50, 5.ledd</kildereferanse>
       <beregning>GaverTilFrivillige</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -52,7 +52,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>4392</satsverdi>
       <satstype>maksFordel</satstype>
-      <kildereferanse>FSFIN § 5-11-10</kildereferanse>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-11-10</kildereferanse>
       <beregning>ElektroniskKommunikasjon</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -69,7 +69,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>5800</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven § 6-20, 3. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-20, 3. ledd</kildereferanse>
       <beregning>Fagforeningskontingent</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -86,7 +86,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>10000</satsverdi>
       <satstype>skattefrittBeloep</satstype>
-      <kildereferanse>Skatteloven § 5-15, 1. ledd, bokstav o</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 5-15, 1. ledd, bokstav o</kildereferanse>
       <beregning>LoennTilBarnUnder13Aar</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -103,7 +103,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>10000</satsverdi>
       <satstype>skattefrittBeloep</satstype>
-      <kildereferanse>Skatteloven  § 7-2, 2. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven)  § 7-2, 2. ledd</kildereferanse>
       <beregning>UtleieAvFastEiendom</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -120,7 +120,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>85</satsverdi>
       <satstype>sjablongsats</satstype>
-      <kildereferanse>Skatteloven  § 7-2, 2. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven)  § 7-2, 2. ledd</kildereferanse>
       <beregning>UtleieAvFastEiendom</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -137,7 +137,41 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>27500</satsverdi>
       <satstype>maksSparebeloep</satstype>
-      <kildereferanse>Skatteloven §16-10, 3. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §16-10, 3. ledd</kildereferanse>
+      <beregning>BoligsparingForUngdom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>boligsparingForUngdom.skattefradragssats</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for skattefradrag</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>20</satsverdi>
+      <satstype>skattefradragssats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §16-10, 2. ledd</kildereferanse>
+      <beregning>BoligsparingForUngdom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>boligsparingForUngdom.maksAlder</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks alder for skattefradrag for bsu</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>aar</satsenhet>
+      <satsverdi>33</satsverdi>
+      <satstype>maksAlder</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §16-10, 1. ledd</kildereferanse>
       <beregning>BoligsparingForUngdom</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -254,24 +288,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>passOgStellAvBarn.satsForAvstandsfradrag</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Kilometersats</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/km</satsenhet>
-      <satsverdi>1.65</satsverdi>
-      <satstype>verdsettingssats</satstype>
-      <kildereferanse>Takseringsreger § 1-3-8</kildereferanse>
-      <beregning>PassOgStellAvBarn</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>passOgStellAVBarn.fradragForFoersteBarn</tekniskNavn>
+    <tekniskNavn>passOgStellAvBarn.fradragForFoersteBarn</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>FradragForFoersteBarn</tekst>
@@ -284,14 +301,14 @@
       <intervallFra>1</intervallFra>
       <satstype>maksFradrag</satstype>
       <intervallenhet>antallBarn</intervallenhet>
-      <kildereferanse>SSV §6-2</kildereferanse>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. §6-2</kildereferanse>
       <beregning>PassOgStellAvBarn</beregning>
       <intervallTilOgMed>1</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>passOgStellAVBarn.fradragForPaafoelgendeBarn</tekniskNavn>
+    <tekniskNavn>passOgStellAvBarn.fradragForPaafoelgendeBarn</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>FradragForPaafoelgendeBarn</tekst>
@@ -303,9 +320,25 @@
       <satsverdi>15000</satsverdi>
       <intervallFra>2</intervallFra>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>SSV §6-2</kildereferanse>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. §6-2</kildereferanse>
       <beregning>PassOgStellAvBarn</beregning>
       <intervallTilOgMed>uendelig</intervallTilOgMed>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>passOgStellAvBarn.fordelingMedAnnenPart</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Prosentsats for fordeling med annen part</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>50</satsverdi>
+      <satstype>fordelingsfaktor</satstype>
+      <beregning>PassOgStellAvBarn</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
@@ -438,7 +471,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>versettingAvSkog.skogfaktor</tekniskNavn>
+    <tekniskNavn>verdsettingAvSkog.skogfaktor</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Skogfaktor</tekst>
@@ -446,6 +479,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <satsenhet>faktor</satsenhet>
       <satsverdi>5</satsverdi>
       <satstype>faktor</satstype>
       <kildereferanse>Takseringsregler § 3-1-1</kildereferanse>
@@ -462,7 +496,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>beløp</satsenhet>
+      <satsenhet>beloepINok</satsenhet>
       <satsverdi>315</satsverdi>
       <satstype>gjennomsnitt</satstype>
       <kildereferanse>Takseringsregler § 4-5</kildereferanse>
@@ -479,7 +513,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>beløp</satsenhet>
+      <satsenhet>beloepINok</satsenhet>
       <satsverdi>300</satsverdi>
       <satstype>gjennomsnitt</satstype>
       <kildereferanse>Takseringsregler § 4-5</kildereferanse>
@@ -496,7 +530,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>beløp</satsenhet>
+      <satsenhet>beloepINok</satsenhet>
       <satsverdi>260</satsverdi>
       <satstype>gjennomsnitt</satstype>
       <kildereferanse>Takseringsregler § 4-5</kildereferanse>
@@ -513,7 +547,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>beløp</satsenhet>
+      <satsenhet>beloepINok</satsenhet>
       <satsverdi>185</satsverdi>
       <satstype>gjennomsnitt</satstype>
       <kildereferanse>Takseringsregler §4-6</kildereferanse>
@@ -530,7 +564,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>beløp</satsenhet>
+      <satsenhet>beloepINok</satsenhet>
       <satsverdi>210</satsverdi>
       <satstype>gjennomsnitt</satstype>
       <kildereferanse>Takseringsregler §4-6</kildereferanse>
@@ -547,7 +581,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>beløp</satsenhet>
+      <satsenhet>beloepINok</satsenhet>
       <satsverdi>235</satsverdi>
       <satstype>gjennomsnitt</satstype>
       <kildereferanse>Takseringsregler §4-6</kildereferanse>
@@ -567,7 +601,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>15000</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven § 6-47, 1. ledd, bokstav c</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-47, 1. ledd, bokstav c</kildereferanse>
       <beregning>IndividuellPensjonsordning</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -584,7 +618,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>15000</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven § 6-47, 1. ledd, bokstav d</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-47, 1. ledd, bokstav d</kildereferanse>
       <beregning>IndividuellPensjonsordning</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -601,7 +635,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>15000</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven § 6-47, 1. ledd, bokstav d, 2. punktum</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-47, 1. ledd, bokstav d, 2. punktum</kildereferanse>
       <beregning>IndividuellPensjonsordning</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -618,7 +652,7 @@
       <satsenhet>beloepINok/måned</satsenhet>
       <satsverdi>4373</satsverdi>
       <satstype>særfradrag</satstype>
-      <kildereferanse>SSV § 6-6</kildereferanse>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. § 6-6</kildereferanse>
       <beregning>SaerfradragForEnsligForsoerger</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -635,7 +669,7 @@
       <satsenhet>beloepINok/måned</satsenhet>
       <satsverdi>2187</satsverdi>
       <satstype>særfradrag</satstype>
-      <kildereferanse>SSV § 6-6</kildereferanse>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. § 6-6</kildereferanse>
       <beregning>SaerfradragForEnsligForsoerger</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -649,83 +683,10 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <satsenhet>faktor</satsenhet>
       <satsverdi>0.064</satsverdi>
       <satstype>kalkulasjonsfaktor</satstype>
-      <kildereferanse>FSFIN § 4-10-5, kunngjøres i januar i året etter inntektsåret</kildereferanse>
-      <beregning>FastEiendomSomFormuesobjekt</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>verdsettingAvNaeringseiendom.verdsettingsrabattsats</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>verdsettingsrabattsatsNaeringseiendom</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>prosent</satsenhet>
-      <satsverdi>75</satsverdi>
-      <satstype>versettingsrabattsats</satstype>
-      <kildereferanse>Skatteloven §4-10, 7. ledd</kildereferanse>
-      <beregning>FastEiendomSomFormuesobjekt</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>verdsettingAvPrimaerbolig.verdsettingsrabattsatsLav</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>verdsettingsrabattsatsPrimaerbolig (FaktorPrimaerboligDokumentertMarkedsverdi)</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>prosent</satsenhet>
-      <satsverdi>25</satsverdi>
-      <intervallFra>0</intervallFra>
-      <satstype>verdsettingsfaktor</satstype>
-      <intervallenhet>beløp</intervallenhet>
-      <kildereferanse>Skatteloven §4-10 2. ledd</kildereferanse>
-      <beregning>FastEiendomSomFormuesobjekt</beregning>
-      <intervallTilOgMed>10000000</intervallTilOgMed>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>verdsettingAvPrimaerbolig.verdsettingsrabattsatsHoey</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>verdsettingsrabattsatsPrimaerbolig (FaktorPrimaerboligDokumentertMarkedsverdi)</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>prosent</satsenhet>
-      <satsverdi>50</satsverdi>
-      <intervallFra>10000000</intervallFra>
-      <satstype>verdsettingsfaktor</satstype>
-      <intervallenhet>beløp</intervallenhet>
-      <kildereferanse>Skatteloven §4-10 2. ledd</kildereferanse>
-      <beregning>FastEiendomSomFormuesobjekt</beregning>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>verdsettingAvSekundaerbolig.verdsettingsrabattsats</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>verdsettingsrabattsatsSekundaerbolig (FaktorSekundaerboligDokumentertMarkedsverdi)</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>prosent</satsenhet>
-      <satsverdi>95</satsverdi>
-      <satstype>verdsettingsfaktor</satstype>
-      <kildereferanse>Skatteloven §4-10 3. ledd</kildereferanse>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 4-10-5, kunngjøres i januar i året etter inntektsåret https://www.skatteetaten.no/satser/kalkulasjonsfaktor---formuesverdsettelse-av-naringseiendom/</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -793,7 +754,24 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>10</satsverdi>
       <satstype>korreksjonsfaktor</satstype>
-      <kildereferanse>FSFIN §4-10-4 (RF-1098, post 176)</kildereferanse>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) §4-10-4 (RF-1098, post 176)</kildereferanse>
+      <beregning>FastEiendomSomFormuesobjekt</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>verdsettingAvVaaningshus.verdsettingFraBeregnetMarkedsverdi</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Taksering av våningshus</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>25</satsverdi>
+      <satstype>verdsettingsfaktor</satstype>
+      <kildereferanse>Takseringsregler § 3-1-2 og Lov om skatt av formue og inntekt (skatteloven) §4-10, 2l edd</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -827,7 +805,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>700</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven §6-47 1. ledd, bokstav e</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §6-47 1. ledd, bokstav e</kildereferanse>
       <beregning>KostnaderKnyttetTilArbeidOgAnnenInntekt</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -844,7 +822,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>58250</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven §6-49, 2. ledd og SSV §6-3</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §6-49, 2. ledd og Stortingsvedtak om skatt av inntekt og formue mv. §6-3</kildereferanse>
       <beregning>SaerskiltInntektsfradragIBarnsInntekt</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -861,7 +839,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>10000</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven § 6-42</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-42</kildereferanse>
       <beregning>TilskuddTilVitenskapeligForskning</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -878,7 +856,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>10</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Skatteloven § 6-42</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-42</kildereferanse>
       <beregning>TilskuddTilVitenskapeligForskning</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -918,7 +896,39 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettHotel</tekniskNavn>
+    <tekniskNavn>skattPaaAlminneligInntekt.satsForFinansskattepliktigVirksomhet</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>SkattesatsAlminnelingInntektForFinansskattepliktigVirksomhet</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>25</satsverdi>
+      <satstype>skattesats</satstype>
+      <kildereferanse>Skattesatser 2022</kildereferanse>
+      <beregningskontekst>selskapsmelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skjermingsrenteForPersonligeAksjonaererOgDeltakereIAnsvarligSelskapMv</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Skjermingsrente for personlige aksjonærer og deltakere i ansvarlig selskap mv.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>1.7</satsverdi>
+      <satstype>skjermingsrente</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 10-42. 5. ledd og https://www.skatteetaten.no/satser/skjermingsrente-for-aksjer-og-enkeltpersonforetak/</kildereferanse>
+      <beregningskontekst>selskapsmelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettHotell</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Overskudd diett hotell - overskuddsberegning / egenfastsetting (DIETT_HOTELL)</tekst>
@@ -1116,7 +1126,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>4000</satsverdi>
       <satstype>bunnfradrag</satstype>
-      <kildereferanse>FSFIN §5-15-6</kildereferanse>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) §5-15-6</kildereferanse>
       <beregning>AnnenArbeidsinntektFraOmsetningAvRaafisk</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1320,7 +1330,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>1000000</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven §6-53</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §6-53</kildereferanse>
       <beregning>FradragForInvesteringIOppstartsselskap</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1337,7 +1347,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>30000</satsverdi>
       <satstype>grenseverdi</satstype>
-      <kildereferanse>Skatteloven §6-53</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §6-53</kildereferanse>
       <beregning>FradragForInvesteringIOppstartsselskap</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1354,7 +1364,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>195000</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven § 8-1, 5. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 5. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1371,7 +1381,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>93000</satsverdi>
       <satstype>grenseverdi</satstype>
-      <kildereferanse>Skatteloven § 8-1, 5. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 5. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1388,7 +1398,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>38</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Skatteloven § 8-1, 5. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 5. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1405,7 +1415,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>195000</satsverdi>
       <satstype>maksfradrag</satstype>
-      <kildereferanse>Skatteloven § 8-1, 6. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 6. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1422,7 +1432,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>93000</satsverdi>
       <satstype>grenseverdi</satstype>
-      <kildereferanse>Skatteloven § 8-1, 6. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 6. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1439,7 +1449,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>38</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Skatteloven § 8-1, 6. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 6. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1456,7 +1466,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>142000</satsverdi>
       <satstype>maksfradrag</satstype>
-      <kildereferanse>Skatteloven § 8-1, 7. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 7. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1473,7 +1483,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>54200</satsverdi>
       <satstype>grenseverdi</satstype>
-      <kildereferanse>Skatteloven § 8-1, 7. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 7. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1490,9 +1500,25 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>32</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Skatteloven § 8-1, 7. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 7. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fradragsvurdering.maksimaltFradragForSaerskiltFradragINaeringsinntektForJordbrukMvReindriftOgSkiferproduksjon</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks samlet fradrag i primærnæring</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>195000</satsverdi>
+      <satstype>maksfradrag</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 8. ledd</kildereferanse>
+      <beregningskontekst>fradragsOgLoennsomhetsvurdering</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
@@ -1507,7 +1533,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>154000</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven § 6-60, 1. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-60, 1. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1524,9 +1550,25 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>30</satsverdi>
       <satstype>maksFradrag</satstype>
-      <kildereferanse>Skatteloven § 6-60, 1. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-60, 1. ledd</kildereferanse>
       <beregning>OevrigeFradragFraVirksomhetInnenPrimaernaering</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fradragsvurdering.maksimaltFradragForSaerskiltFradragForFiskereOgFangstfolkOgSaerskiltFradragForSjoefolk</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks samlet fradrag mellom sjøfolk og fiskere og fangstfolk</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>154000</satsverdi>
+      <satstype>maks</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-60, 2. ledd</kildereferanse>
+      <beregningskontekst>fradragsOgLoennsomhetsvurdering</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
@@ -1547,44 +1589,10 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>reiseMellomHjemOgFastArbeidssted.fradragForDagligReisePerKilometerLav</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Lav sats reisevei    Opphvet</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/km</satsenhet>
-      <satstype>kilometersats</satstype>
-      <intervallenhet>kilometerantall</intervallenhet>
-      <kildereferanse>Opphvet</kildereferanse>
-      <beregning>ReiseIArbeidsforhold</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>reiseMellomHjemOgFastArbeidssted.fradragForDagligReisePerKilometerHoey</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Høy sats reisevei      Opphvet</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/km</satsenhet>
-      <satstype>kilometersats</satstype>
-      <intervallenhet>kilometerantall</intervallenhet>
-      <kildereferanse>Opphvet</kildereferanse>
-      <beregning>ReiseIArbeidsforhold</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>reiseMellomHjemOgFastArbeidssted.fradragForDagligReisePerKilometer</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Sats pr. km uansett reiselengde</tekst>
+        <tekst>Sats pr. km uansett reiselengde. Brukes både ifm reisefradrag og ifm kjøring av barn innenfor fradrag for pass og stell av barn.</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
@@ -1592,9 +1600,9 @@
       <satsenhet>beloepINok/km</satsenhet>
       <satsverdi>1.65</satsverdi>
       <satstype>kilometersats</satstype>
-      <intervallenhet>kilometerantall</intervallenhet>
-      <kildereferanse>Takseringsregler §1-3-8,</kildereferanse>
+      <kildereferanse>Takseringsregler §1-3-8</kildereferanse>
       <beregning>ReiseIArbeidsforhold</beregning>
+      <beregning>PassOgStellAvBarn</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
@@ -1610,7 +1618,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>3300</satsverdi>
       <satstype>grenseverdi</satstype>
-      <kildereferanse>FSFIN § 6-44-4 første ledd</kildereferanse>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 6-44-4 første ledd</kildereferanse>
       <beregning>ReiseIArbeidsforhold</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1644,7 +1652,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>40000</satsverdi>
       <satstype>maksfradrag</satstype>
-      <kildereferanse>Skatteloven § 6-70, 2. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-70, 2. ledd</kildereferanse>
       <beregning>Standardfradrag</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1660,7 +1668,7 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>10</satsverdi>
-      <kildereferanse>Skatteloven § 6-70, 2. ledd</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-70, 2. ledd</kildereferanse>
       <beregning>Standardfradrag</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1676,7 +1684,8 @@
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>83000</satsverdi>
-      <kildereferanse>Skatteloven § 6-61, 1. ledd</kildereferanse>
+      <satstype>maksFradrag</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-61, 1. ledd</kildereferanse>
       <beregning>SaerskiltFradragForSjoefolk</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1708,6 +1717,7 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>30</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-61, 1. ledd</kildereferanse>
       <beregning>SaerskiltFradragForSjoefolk</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1723,8 +1733,26 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>67</satsverdi>
-      <kildereferanse>Skatteloven §6-83</kildereferanse>
+      <satstype>særfradrag</satstype>
+      <kildereferanse>Forskrift om utfasing av særfradraget for store sykdomsutgifter §3</kildereferanse>
       <beregning>SaerfradragForStoreSykdomskostnader</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>saerfradragForStoreSykdomskostnader.nedreKostnadsramme</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Særfradrag  for store sykdomskostnader - nedre kostnadsramme (overgangsregel fra 2010 og 2011)</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>9180</satsverdi>
+      <satstype>grenseverdi</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §6-83, 1. ledd</kildereferanse>
+      <beregning>SaerfradragForLettereNedsattErvervsevne</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
@@ -1732,22 +1760,31 @@
     <tekniskNavn>saerfradragForLettereNedsattErvervsevne.maksimaltFradrag</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Særfradrag for lettere nedsatt ervervsevne</tekst>
+        <tekst>Særfradrag for lettere nedsatt ervervsevne - maks fradrag</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>9180</satsverdi>
-      <kildereferanse>Skatteloven §6-82</kildereferanse>
+      <satstype>maksFradrag</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §6-82</kildereferanse>
       <beregning>SaerfradragForLettereNedsattErvervsevne</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>verdsettingAvKjoeretoey.verdsettingssatsEtterRegistreringsaar</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Private biler/motorsykler/snøscootere/bobil verdsettes med utgangspunkt i hovedimportørs listepris ved registrering som ny.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
     <kodetillegg>
       <inntektsår-15-29>1000kr</inntektsår-15-29>
+      <satstype>verdsettingssats</satstype>
+      <beregning>Kjoeretoey</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <inntektsaar>75</inntektsaar>
       <inntektsaar-2>55</inntektsaar-2>
@@ -1769,7 +1806,15 @@
   </kode>
   <kode>
     <tekniskNavn>verdsettingAvSkipFiskeOgFangsfartoeyMv.verdsettingssatsEtterLeveringsaar</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Verdsetting av skip, borefartøyer, boligrigger, fiskefartøyer, taubåter mv med kjent kostpris.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
     <kodetillegg>
+      <satstype>verdsettingssats</satstype>
+      <beregning>Skip, fiske- og fangstfartøy</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <inntektsaar>85</inntektsaar>
       <inntektsaar-2>61</inntektsaar-2>
@@ -1779,6 +1824,7 @@
       <inntektsaar-3>52</inntektsaar-3>
       <inntektsaar-12>12</inntektsaar-12>
       <inntektsaar-6>31</inntektsaar-6>
+      <kildereferanse>Takseringsregler § 2-1-4 a.</kildereferanse>
       <inntektsaar-5>37</inntektsaar-5>
       <inntektsaar-14>10</inntektsaar-14>
       <inntektsaar-8>22</inntektsaar-8>
@@ -1790,29 +1836,53 @@
   </kode>
   <kode>
     <tekniskNavn>grunnbeloepIFolketrygden.1G</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Folketrygdens grunnbeløp</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>111477</satsverdi>
+      <satstype>grunnbeløp</satstype>
       <kildereferanse>https://www.nav.no/grunnbelopet</kildereferanse>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <beregning>Svalbard</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>grunnbeloepIFolketrygden.12G</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>12 ganger folketrygdens grunnbeløp som benyttes for trinnskattbeskatning på Svalbard.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>1337724</satsverdi>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <kildereferanse>https://www.nav.no/grunnbelopet</kildereferanse>
+      <beregning>Svalbard</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>skjermingsrenteForEkstraSkattPaaLaan</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Lån til et selskap som omfattes av aksjonær- og deltakermodellen medfører ekstraskatt på lånerenter utover et visst nivå (skjermingsrenten).</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
     <kodetillegg>
       <november>2.4</november>
       <satsenhet>prosent</satsenhet>
       <januar>0.4</januar>
       <august>1.3</august>
       <mars>0.9</mars>
+      <satstype>skjermingsrente</satstype>
+      <beregning>Privat fordringring utenfor virksomhet til selskap</beregning>
       <april>0.9</april>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <september>2</september>
@@ -1836,6 +1906,8 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>19</satsverdi>
+      <satstype>skattefradragssats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 16-40 1. ledd</kildereferanse>
       <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1851,7 +1923,212 @@
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>25000000</satsverdi>
-      <kildereferanse>FSFIN § 5-13-8</kildereferanse>
+      <satstype>maksfradrag</satstype>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-8</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.utviklingsprosjektLitenBedriftSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>60</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.utviklingsprosjektLitenBedriftIkkeSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>45</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.forskningsprosjektLitenBedriftSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>80</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.forskningsprosjektLitenBedriftIkkeSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>70</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.utviklingsprosjektMellomstorBedriftSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>50</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.utviklingsprosjektMellomstorBedriftIkkeSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>35</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.forskningsprosjektMellomstorBedriftSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>75</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.forskningsprosjektMellomstorBedriftIkkeSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>60</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.utviklingsprosjektStorBedriftSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>40</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.utviklingsprosjektStorBedriftIkkeSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>25</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.forskningsprosjektStorBedriftSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>65</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
+      <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefradragForKostnaderTilForskningOgUtvikling.prosentsatsForMaksOffentligStoette.forskningsprosjektStorBedriftIkkeSamarbeidEllerOmfattende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maks prosentsats for offentlig støtte av totalkostnad</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>50</satsverdi>
+      <satstype>maksandel</satstype>
+      <kildereferanse>KOMMISJONSFORORDNING (EU) nr. 651/2014, Kapittel 3, Avsnitt 4, Artikkel 25</kildereferanse>
       <beregning>SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1860,13 +2137,15 @@
     <tekniskNavn>privatBrukAvBil.personbilGrenseverdiForSjablongberegning</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Sats under grenseverdi for sjablongberegning</tekst>
+        <tekst>Grenseverdi for sjablongberegning</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>329600</satsverdi>
+      <satstype>grenseverdi</satstype>
+      <kildereferanse>FSSD § 5-13-1</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -1882,6 +2161,8 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>30</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -1897,6 +2178,8 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>20</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -1913,7 +2196,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>100</satsverdi>
       <intervallFra>0</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -1931,7 +2216,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
       <intervallFra>3</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -1949,7 +2236,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
       <intervallFra>0</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -1967,7 +2256,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>56.25</satsverdi>
       <intervallFra>3</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -1984,7 +2275,8 @@
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>150000</satsverdi>
-      <kildereferanse>FSFIN § 5-13-1 fjerde ledd</kildereferanse>
+      <satstype>grenseverdi</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2000,6 +2292,8 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>50</satsverdi>
+      <satstype>bunnfradragssats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2016,7 +2310,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <intervallFra>0</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2034,7 +2330,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>60</satsverdi>
       <intervallFra>3</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2052,7 +2350,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
       <intervallFra>0</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2070,7 +2370,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>56.25</satsverdi>
       <intervallFra>3</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2088,7 +2390,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>100</satsverdi>
       <intervallFra>0</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2106,7 +2410,9 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
       <intervallFra>3</intervallFra>
+      <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2123,6 +2429,8 @@
     <kodetillegg>
       <satsenhet>km</satsenhet>
       <satsverdi>40000</satsverdi>
+      <satstype>grenseverdi</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2138,16 +2446,25 @@
     <kodetillegg>
       <satsenhet>beloep/km</satsenhet>
       <satsverdi>3.4</satsverdi>
-      <kildereferanse>FSFIN § 5-13-1</kildereferanse>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>privatBrukAvBil.saldoavskrivning</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Saldoavskrivning</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>17</satsverdi>
+      <satstype>avskrvningssats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2163,6 +2480,8 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2178,6 +2497,8 @@
     <kodetillegg>
       <satsenhet>faktor</satsenhet>
       <satsverdi>4</satsverdi>
+      <satstype>faktor</satstype>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) §14-5-10</kildereferanse>
       <beregning>Omløpsmidler</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2193,6 +2514,7 @@
     <kodetillegg>
       <intervallFra>-15000</intervallFra>
       <intervallenhet>beloepINok</intervallenhet>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §14-40</kildereferanse>
       <beregning>Anleggsmidler</beregning>
       <intervallTilOgMed>15000</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2209,7 +2531,10 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>2,1</satsverdi>
+      <satstype>skjermingsrente</satstype>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 10‑12‑1</kildereferanse>
       <beregning>Personinntekt</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
@@ -2223,7 +2548,213 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>85</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §8-2. 2. ledd, bokstav a</kildereferanse>
       <beregning>Skogfond</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>utkastproduksjon.grenseverdiForInntektFraUtbetalingTilSelvstendigNaeringsdrivende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Grenseverdi for prefill av inntekt</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>50000</satsverdi>
+      <satstype>grenseverdi</satstype>
+      <kildereferanse>Skatteforvaltningsforskriften §8-2-1</kildereferanse>
+      <beregning>preutfyllingsregler</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>utkastproduksjon.grenseverdiForAnnenArbeidsinntektFraOmsetningAvRaafisk</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Grenseverdi for prefill av inntekt</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>50000</satsverdi>
+      <satstype>grenseverdi</satstype>
+      <kildereferanse>Skatteforvaltningsforskriften §8-2-1</kildereferanse>
+      <beregning>preutfyllingsregler</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rettighetKnyttetTilSkogeiendom.jaktrettighet.elgEldreOkse</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Verdi av jaktrettighet per felte dyr</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok/dyr</satsenhet>
+      <satsverdi>10200</satsverdi>
+      <satstype>satsPerDyr</satstype>
+      <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
+      <beregning>Rettigheter knyttet til skogeiendom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rettighetKnyttetTilSkogeiendom.jaktrettighet.elgUngdyrEldreHunndyr</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Verdi av jaktrettighet per felte dyr</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok/dyr</satsenhet>
+      <satsverdi>8000</satsverdi>
+      <satstype>satsPerDyr</satstype>
+      <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
+      <beregning>Rettigheter knyttet til skogeiendom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rettighetKnyttetTilSkogeiendom.jaktrettighet.elgKalv</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Verdi av jaktrettighet per felte dyr</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok/dyr</satsenhet>
+      <satsverdi>3400</satsverdi>
+      <satstype>satsPerDyr</satstype>
+      <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
+      <beregning>Rettigheter knyttet til skogeiendom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rettighetKnyttetTilSkogeiendom.jaktrettighet.reinsdyrVoksen</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Verdi av jaktrettighet per felte dyr</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok/dyr</satsenhet>
+      <satsverdi>1900</satsverdi>
+      <satstype>satsPerDyr</satstype>
+      <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
+      <beregning>Rettigheter knyttet til skogeiendom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rettighetKnyttetTilSkogeiendom.jaktrettighet.hjortVoksen</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Verdi av jaktrettighet per felte dyr</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok/dyr</satsenhet>
+      <satsverdi>3500</satsverdi>
+      <satstype>satsPerDyr</satstype>
+      <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
+      <beregning>Rettigheter knyttet til skogeiendom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>kapitaliseringsfaktor</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Benyttes ved beregningen av formuesverdien på varige rettigheter, utleierettigheter, formuesverdien på retten til å kreve festeavgift og gjeldsfradrag.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>faktor</satsenhet>
+      <satsverdi>10</satsverdi>
+      <satstype>faktor</satstype>
+      <kildereferanse>Takseringsregler § 2-1-5</kildereferanse>
+      <beregning>Rettigheter knyttet til skogeiendom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>svalbard.skattesatsForLoennstrekkLavSats</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Skatten beregnes med en lav sats for inntekt opp til 12 ganger folketrygdens grunnbeløp</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>8</satsverdi>
+      <satstype>skattesats</satstype>
+      <kildereferanse>Lov om skatt til Svalbard (Svalbardskatteloven) § 3-1 og Svalbardmeldingen kapittel 3.</kildereferanse>
+      <beregning>Skatt på Svalbard</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>svalbard.skattesatsForLoennstrekkHoeySats</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Skatten beregnes med en høy sats for inntekt fra 12 ganger folketrygdens grunnbeløp</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>22</satsverdi>
+      <satstype>skattesats</satstype>
+      <kildereferanse>Lov om skatt til Svalbard (Svalbardskatteloven) § 3-1 og Svalbardmeldingen kapittel 3.</kildereferanse>
+      <beregning>Skatt på Svalbard</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>svalbard.trygdeavgiftssatsForLoennMv</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for beregning av trygdeavgift av lønn og tilsvarende ytelser.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>8</satsverdi>
+      <satstype>trygdeavgiftssats</satstype>
+      <kildereferanse>Lov om skatt til Svalbard (Svalbardskatteloven) § 3-1 og Svalbardmeldingen kapittel 3.</kildereferanse>
+      <beregning>Skatt på Svalbard</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>svalbard.trygdeavgiftssatsForPensjonerMv</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for beregning av trygdeavgift av pensjon og tilsvarende ytelser.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>5.1</satsverdi>
+      <satstype>trygdeavgiftssats</satstype>
+      <kildereferanse>Lov om skatt til Svalbard (Svalbardskatteloven) § 3-1 og Svalbardmeldingen kapittel 3.</kildereferanse>
+      <beregning>Skatt på Svalbard</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
   </kode>
   <lokaltForvaltet>true</lokaltForvaltet>
