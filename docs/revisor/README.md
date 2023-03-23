@@ -65,7 +65,7 @@ Bekreftelsesstegene kan fullføres:
 2. Andre steg, revisor signerer, utføres ved å laste opp et signeringsdokument og deretter ‘next’, tilgangsstyrt
    (beskrivelse av dokumetet på neste side).
 
-Etter to `next` sendes skattemeldingen inn (går til feedback steget), og Skatt vil retunere en kvittering (ok/ikke ok)
+Etter to `next` sendes skattemeldingen inn (går til feedback steget), og Skatt vil returnere en kvittering (ok/ikke ok)
 
 ## Bekreftelsesdokument
 
@@ -73,8 +73,8 @@ Signeringsdokumentet har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
 
 ![informasjonsmodell.png](revisors_bekreftelse.png)
 
-- Bekreftelse: referere informasjonselementidentifikator (entitet) som signeres og ev forekomstidentifikator
-- Vedlegg: peke på informasjonselementidentifikator (entitet) vedlegget skal brukes kun hvis revisors signatur (
+- Bekreftelse: peke på informasjonselementidentifikator (entitet) som signeres og evt forekomstidentifikator
+- Vedlegg: peke på samme informasjonselementidentifikator (entitet) og evt. forekomstidentifikator som bekreftelsen man ønsker å dokumentere med vedlegg. Skal brukes kun hvis revisors signatur (
   erBekreftetGodkjent) er false og man laster opp dokumentasjon om hvorfor
 - Bekreftelsedokumentet kan også lages ved å bruke skatteetatens klient for revisors bekreftelse. Har status som illustrert nedenfor, så kan en gå til innboksen til selskapet som har opprettet instansen, gå til instansen og følge lenken som fører til tjenesten som revisor kan bruke for å signere og laste opp bekreftelsedokument 
 ```json
@@ -93,7 +93,7 @@ Signeringsdokumentet har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
 ## Feilhåndtering
 
 Siden informasjonen om revisors signatur er fordelt mellom både Altinn instansen og informasjon i
-skattemeldingen/næringsspesifikasjonen så kan det oppstå innkonsistens mellom disse to.
+skattemeldingen/næringsspesifikasjonen så kan det oppstå inkonsistens mellom disse to.
 
 Gitt følgende styring av revisors bekreftelseflag
 
