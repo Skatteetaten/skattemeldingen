@@ -154,14 +154,14 @@ revisorsBekreftelse.xml eksempel:
     <bekreftelse>
         <id>6b3eeb0f-537c-40dc-8de7-0180fec01a4c</id>
         <informasjonselementidentifikator>
-            \\skattemelding\\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\\forskningOgUtviklingsprosjekt
+            /skattemelding/spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling/forskningOgUtviklingsprosjekt
         </informasjonselementidentifikator>
         <forekomstidentifikator>1</forekomstidentifikator>
         <erBekreftetGodkjent>false</erBekreftetGodkjent>
     </bekreftelse>
     <bekreftelse>
         <id>014db24d-5cf3-4814-9621-16b56804ce59</id>
-        <informasjonselementidentifikator>\\naeringsspesifikasjon</informasjonselementidentifikator>
+        <informasjonselementidentifikator>/naeringsspesifikasjon</informasjonselementidentifikator>
         <erBekreftetGodkjent>true</erBekreftetGodkjent>
     </bekreftelse>
     <partsnummer>900416193856</partsnummer>
@@ -176,7 +176,7 @@ revisorsBekreftelse.xml eksempel:
         </vedleggsfil>
         <informasjonselementidentifikator>
             <tekst>
-                \\skattemelding\\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\\forskningOgUtviklingsprosjekt
+                /skattemelding/spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling/forskningOgUtviklingsprosjekt
             </tekst>
         </informasjonselementidentifikator>
         <forekomstidentifikator>
@@ -192,7 +192,7 @@ revisorsBekreftelse.xml eksempel:
         </vedleggsfil>
         <informasjonselementidentifikator>
             <tekst>
-                \\skattemelding\\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\\forskningOgUtviklingsprosjekt
+                /skattemelding/spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling/forskningOgUtviklingsprosjekt
             </tekst>
         </informasjonselementidentifikator>
         <forekomstidentifikator>
@@ -208,7 +208,7 @@ revisorsBekreftelse.xml eksempel:
         </vedleggsfil>
         <informasjonselementidentifikator>
             <tekst>
-                \\skattemelding\\spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling\\forskningOgUtviklingsprosjekt
+                /skattemelding/spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling/forskningOgUtviklingsprosjekt
             </tekst>
         </informasjonselementidentifikator>
         <forekomstidentifikator>
@@ -219,7 +219,7 @@ revisorsBekreftelse.xml eksempel:
 ```
 
 **Merk:**
-`informasjonselementidentifikator`: xpath til elemetet som skal bekreftes
+`informasjonselementidentifikator`: xpath til elementet som skal bekreftes
 `forekomstidentifikator`: forekomstidentifikator til xpath elementet
-`erBekreftetGodkjent`: true/false, om elmentet er bekreftet av revisor eller ikke
-`//vedlegg//id`: id til vedlegget i altinn3 instansen
+`erBekreftetGodkjent`: true/false, om elementet er bekreftet av revisor eller ikke
+`/vedlegg/id`: id til vedlegget i altinn3 instansen
