@@ -83,7 +83,7 @@ personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml - eksempel på konvo
 upersonligSkattemeldingV1.xml – eksempelfil på skattemelding upersonlig (AS) for 2021
 
 
-[Funksjonell spesifikasjon.pdf - oppdatert 02. jan 2023](Funksjonell%20spesifikasjon%20-%2002.01.2023.pdf)
+[Funksjonell spesifikasjon.pdf - oppdatert 29. mars 2023](Funksjonell%20spesifikasjon%20-%2029.03.2023.pdf)
 
 ## Brukerstøtte
 Ved spørsmål eller ønske om tilgang til slack opprett en brukerstøtte sak ved å sende en e-post til skattemelding-sbs-brukerstotte@skatteetaten.no
