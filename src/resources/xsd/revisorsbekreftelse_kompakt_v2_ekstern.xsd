@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:revisorsbekreftelse:ekstern:v2" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:revisorsbekreftelse:ekstern:v2">
+  <xsd:annotation>
+    <xsd:documentation>
+      <xsd:attribute fixed="2023-04-14T08:29:39.208+0200" name="generertDato"/>
+      <xsd:attribute fixed="v2" name="versjon"/>
+      <xsd:attribute fixed="Skatteforvaltningsforskriften § 8-2-6.Revisors signatur&#10;Når skattepliktige har plikt til å ha revisor, skal næringsoppgave være signert av revisor. (gjelder også SDF ref. § 8-9-4)" name="beskrivelse"/>
+      <xsd:attribute fixed="Revisors bekreftelse v2" name="modellnavn"/>
+      <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:revisorsbekreftelse:ekstern:v2" name="navnerom"/>
+      <xsd:attribute fixed="false" name="begrepsreferanse"/>
+      <xsd:attribute fixed="false" name="dokumentasjon"/>
+      <xsd:attribute fixed="false" name="nillable"/>
+      <xsd:attribute fixed="false" name="modellelement"/>
+      <xsd:attribute fixed="false" name="norskeTegn"/>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="revisorsBekreftelse" type="RevisorsBekreftelse"/>
+  <xsd:complexType name="RevisorsBekreftelse">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="bekreftelse" type="Bekreftelse"/>
+      <xsd:element name="partsnummer" type="Partsnummer"/>
+      <xsd:element name="inntektsaar" type="Aarstall"/>
+      <xsd:element minOccurs="0" name="bekreftetAv" type="Navn"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="vedlegg" type="Vedlegg"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Bekreftelse">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="informasjonselementidentifikator" type="Tekst"/>
+      <xsd:element minOccurs="0" name="forekomstidentifikator" type="Tekst"/>
+      <xsd:element name="erBekreftetGodkjent" type="Boolsk"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Heltall">
+    <xsd:restriction base="xsd:long"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Partsnummer">
+    <xsd:restriction base="Heltall"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Aarstall">
+    <xsd:restriction base="xsd:gYear"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Tekst">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4000"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Navn">
+    <xsd:restriction base="Tekst">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="200"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Vedlegg">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="vedleggsnavn" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="vedleggsfil" type="Vedleggsfil"/>
+      <xsd:element minOccurs="0" name="vedleggstype" type="VedleggskategoriMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="informasjonselementidentifikator" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="forekomstidentifikator" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="utvekslingsarkividentifikator" type="TekstMedInnkapsling"/>
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Boolsk">
+    <xsd:restriction base="xsd:boolean"/>
+  </xsd:simpleType>
+  <xsd:complexType name="TekstMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="tekst" type="Tekst"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Vedleggsfil">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="opprinneligFilnavn" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="opprinneligFiltype" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="filensOpprinneligDatoOgTid" type="DatoKlokkeslettMedInnkapsling"/>
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VedleggskategoriMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="vedleggskategori" type="Vedleggskategori"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="DatoKlokkeslettMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="datoKlokkeslett" type="DatoKlokkeslett"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Vedleggskategori" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_vedleggskategori.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Tilstand" skatt:eksternKodeliste="inline">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="egenfastsetting"/>
+      <xsd:enumeration value="endretEgenfastsetting"/>
+      <xsd:enumeration value="ugyldigEgenfastsetting"/>
+      <xsd:enumeration value="varsletMyndighetsfastsetting"/>
+      <xsd:enumeration value="vedtattMyndighetsfastsetting"/>
+      <xsd:enumeration value="varsletKontroll"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DatoKlokkeslett">
+    <xsd:restriction base="xsd:dateTime"/>
+  </xsd:simpleType>
+  <xsd:complexType name="Brukeridentifikator">
+    <xsd:sequence>
+      <xsd:element name="identifikator" type="Tekst"/>
+      <xsd:element name="identifikatortype" type="Brukeridentifikatortype"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Kildedokumentreferanse">
+    <xsd:sequence>
+      <xsd:element name="kildedokumentidentifikator" type="Uri"/>
+      <xsd:element minOccurs="0" name="kildedokumenttype" type="Tekst"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Brukeridentifikatortype" skatt:eksternKodeliste="inline">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="partsnummer"/>
+      <xsd:enumeration value="saksbehandleridentifikator"/>
+      <xsd:enumeration value="systemidentifikator"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Uri">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+</xsd:schema>
