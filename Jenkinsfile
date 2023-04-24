@@ -31,7 +31,7 @@ def config = [
       } catch(Exception ex) {
         echo ex.toString()
       }
-    }
+    },
     cleanWs                 : true,
     github                  : [
       enabled               : true,
