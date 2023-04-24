@@ -2,7 +2,7 @@
 
 ## 2022
 
-Sist oppdatert 7. mars 2023
+Sist oppdatert 20. april 2023
 
 * [Lede- og hjelpetekster for skattemelding](2022/tekster_skattemelding.json)
 * [Lede- og hjelpetekster for næringsspesifikasjon](2022/tekster_naering.json)
