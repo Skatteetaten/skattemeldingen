@@ -21,7 +21,7 @@ def config = [
     checkstyle              : false,
     compileProperties       : "-U",
     mavenDeploy             : false,
-    deployTo: "",
+    deployTo: "ingenting",
     callbackSuccess: { props ->
       git.add()
 
