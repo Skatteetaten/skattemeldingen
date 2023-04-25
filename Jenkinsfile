@@ -10,8 +10,6 @@ def config = [
     iqOrganizationName      : "Team Sirius IO",
     iqCredentialsId         : "ioteam-iq",
     iqBreakOnUnstable       : false,
-    artifactId              : 'skattemeldingen',
-    groupId                 : 'no.skatteetaten.fastsetting.formueinntekt.skattemelding',
     publishToNpm            : false,
     deployToNexus           : false,
     openShiftBuild          : false,
