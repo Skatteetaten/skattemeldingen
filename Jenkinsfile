@@ -21,10 +21,10 @@ def config = [
     mavenDeploy             : false,
     deployTo: false,
     callbackSuccess: { props ->
-      git.add()
+    sh "git add ."
 
       try {
-        git.commit("Oppdaterer skattemelding.mapping.version og skattemeldingtekst-mapping.version")
+        sh "git commit -am \"Oppdaterer skattemelding.mapping.version og skattemeldingtekst-mapping.version\""
         echo "Pusher commit til ${env.BRANCH_NAME}"
         pushCommit(props.credentialsId, env.BRANCH_NAME)
       } catch(Exception ex) {
