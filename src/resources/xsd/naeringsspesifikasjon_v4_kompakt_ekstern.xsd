@@ -773,7 +773,7 @@
   <xsd:complexType name="Balanseregnskapsforekomst">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
-      <xsd:element name="beloep" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="kundeportefoeljebeloep" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="selskapsportefoeljebeloep" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element name="type" type="ResultatOgBalanseregnskapstypeMedInnkapsling"/>
