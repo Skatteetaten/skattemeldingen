@@ -355,9 +355,10 @@ skattemeldingOgNaeringsspesifikasjonResponse:
 
 ## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument <a name="validerTest"></a>
 
-## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument
 Hvis dere har behov for å gjøre beregninger før Skatteetaten har publisert utkast for et inntektsår, kan dere kalle denne tjenesten.
 Den er helt lik som valideringstjenesten, men krever ikke `dokumentreferanseTilGjeldendeDokument`.
+
+Denne tjenesten skal ikke brukes for validering for innsending, da vi har en del kontroller som sjekker mot gjeldende utkast, og det gjør ikke denne. 
 
 **URL** : `POST https://<env>/api/skattemelding/v2/validertest/<inntektsaar>/<identifikator>`
 
