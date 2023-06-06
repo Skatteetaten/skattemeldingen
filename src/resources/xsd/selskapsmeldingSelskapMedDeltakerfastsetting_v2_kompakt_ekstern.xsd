@@ -94,6 +94,8 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="verdipapirfond" type="Verdipapirfond"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellValuta" type="VirtuellValuta"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fondskonto" type="Fondskonto"/>
+      <xsd:element minOccurs="0" name="rettighetKnyttetTilSkogeiendom" type="RettighetKnyttetTilSkogeiendom"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kapitalisertFesteavgift" type="KapitalisertFesteavgift"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Eierforhold">
@@ -284,6 +286,41 @@
       <xsd:element minOccurs="0" name="skattefrittUttak" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="EntitetMedSkattemessigeEgenskaper">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="eksternReferanse" type="Tekst"/>
+      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="overfoertFraBarnTilForelder" type="OverfoertFraBarnTilForelder"/>
+      <xsd:element minOccurs="0" name="saerskiltSkatteplikt" type="SaerskiltSkattepliktMedInnkapsling"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="aarsakTilEndring" type="AarsakTilEndringMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RettighetKnyttetTilSkogeiendom">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="jaktrettighet" type="VerdiPaaJaktrettighetPerDyreart"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="leieinntektFraUtleidRettighet" type="LeieinntektFraUtleidRettighet"/>
+          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForJaktOgFiskerettighet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForUtleidRettighet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForRettighetKnyttetTilSkogeiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="KapitalisertFesteavgift">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
+          <xsd:element minOccurs="0" name="mottattFesteavgift" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForKapitalisertFesteavgift" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+          <xsd:element minOccurs="0" name="gjeldsfradragForKapitalisertFesteavgift" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
   <xsd:complexType name="Deltaker">
     <xsd:sequence>
       <xsd:choice>
@@ -459,6 +496,50 @@
 
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="OverfoertFraBarnTilForelder">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="andelOverfoert" type="ProsentMedInnkapsling"/>
+      <xsd:element name="barnetsPersonidentifikator" type="NorskPersonidentifikatorMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="barnetsNavn" type="Personnavn"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SaerskiltSkattepliktMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="saerskiltSkatteplikt" type="SaerskiltSkatteplikt"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AarsakTilEndringMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="aarsakTilEndring" type="AarsakTilEndring"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VerdiPaaJaktrettighetPerDyreart">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="dyreartKnyttetTilJaktrettighet" type="DyreartKnyttetTilJaktrettighetMedInnkapsling"/>
+      <xsd:element name="antallFelteDyr" type="AntallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LeieinntektFraUtleidRettighet">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="rettighetstype" type="RettighetstypeKnyttetTilSkogeiendomMedInnkapsling"/>
+      <xsd:element name="beloep" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="beskrivelse" type="Tekst"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BeloepSomHeltallMedSkattemessigeEgenskaper">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="NorskPersonidentifikatorMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="norskPersonidentifikator" type="NorskPersonidentifikator"/>
@@ -617,6 +698,60 @@
   <xsd:simpleType name="Kontonummer">
     <xsd:restriction base="Tekst"/>
   </xsd:simpleType>
+  <xsd:simpleType name="Kommunenummer" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_aktiveKommunenummer.xml">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([0-9]){4}"/>
+      <xsd:length value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Personnavn">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="fornavn" type="NavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="mellomnavn" type="NavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="etternavn" type="NavnMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="SaerskiltSkatteplikt" skatt:eksternKodeliste="/formuesOgInntektsskatt/2023_saerskiltSkatteplikt.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="AarsakTilEndring" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_aarsakTilEndringISkattemelding.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:complexType name="DyreartKnyttetTilJaktrettighetMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="dyreartKnyttetTilJaktrettighet" type="DyreartKnyttetTilJaktrettighet"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RettighetstypeKnyttetTilSkogeiendomMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="rettighetstypeKnyttetTilSkogeiendom" type="RettighetstypeKnyttetTilSkogeiendom"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BeloepIValutaMedSkattemessigeEgenskaper">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="BeloepIValuta"/>
+      <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TrygdeEllerSkattemessigUnntakMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntak"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MetodeVedDobbeltbeskatningMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatning"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="NorskPersonidentifikator">
     <xsd:restriction base="Tekst"/>
   </xsd:simpleType>
@@ -716,16 +851,65 @@
 
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Kommunenummer" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_aktiveKommunenummer.xml">
-    <xsd:restriction base="xsd:string">
-      <xsd:pattern value="([0-9]){4}"/>
-      <xsd:length value="4"/>
-    </xsd:restriction>
+  <xsd:simpleType name="DyreartKnyttetTilJaktrettighet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_dyreartKnyttetTilJaktrettighet.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="RettighetstypeKnyttetTilSkogeiendom" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_rettighetKnyttetTilSkogeiendom.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:complexType name="BeloepIValuta">
+    <xsd:sequence>
+      <xsd:element name="beloepINok" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element name="beloepIValuta" type="BeloepMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="valutakode" type="ValutakodeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="valutakurs" type="ValutakursMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="TrygdeEllerSkattemessigUnntak" skatt:eksternKodeliste="/formuesOgInntektsskatt/2023_trygdeEllerSkattemessigUnntak.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="MetodeVedDobbeltbeskatning" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_metodeVedDobbeltbeskatning.xml">
+    <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Dato">
     <xsd:restriction base="xsd:date"/>
   </xsd:simpleType>
   <xsd:simpleType name="Overdragelsestype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_overdragelsestype.xml">
     <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:complexType name="BeloepMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="BeloepMed2Desimaler"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ValutakodeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="valutakode" type="Valutakode"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ValutakursMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="valutakurs" type="Valutakurs"/>
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Beloep">
+    <xsd:restriction base="Desimaltall"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="BeloepMed2Desimaler">
+    <xsd:restriction base="Beloep">
+      <xsd:fractionDigits value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Valutakode">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Valutakurs">
+    <xsd:restriction base="Desimaltall"/>
   </xsd:simpleType>
 </xsd:schema>
