@@ -199,6 +199,7 @@
       <xsd:element minOccurs="0" name="ytelseFraSelskapEllerSelskapetsDatterselskap" type="YtelseMellomAksjonaerDeltakerEllerNaerstaaendeOgSelskapEllerSelskapetsDatterselskap" />
       <xsd:element minOccurs="0" name="ytelseFraAksjonaerDeltakerEllerNaerstaaende" type="YtelseMellomAksjonaerDeltakerEllerNaerstaaendeOgSelskapEllerSelskapetsDatterselskap" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="loeyveForDrosjeOgGodstransport" type="LoeyveForDrosjeOgGodstransport" />
+      <xsd:element minOccurs="0" name="omsetningOgEtterbetalingISamvirkeforetak" type="OmsetningOgEtterbetalingISamvirkeforetak"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
@@ -507,6 +508,7 @@
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="fordeltSkattemessigResultat" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="utbetaltEtterbetalingMvTilMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="fordeltSkattemessigResultatEtterKorreksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
     </xsd:sequence>
   </xsd:complexType>
@@ -705,6 +707,20 @@
       <xsd:element minOccurs="0" name="loeyvenummer" type="Tekst" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kjoeretoey" type="Kjoeretoey" />
       <xsd:element minOccurs="0" name="bransje" type="Bransje" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OmsetningOgEtterbetalingISamvirkeforetak">
+    <xsd:sequence>
+      <xsd:element name="vilkaarForFradragForEtterbetalingUtdeltTilMedlemmerErOppfylt" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektForSamvirkeforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektFraOmsetningMedMedlemIEgetSamvirkeforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="omsetningMedMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="omsetningMedMedlemIAnnetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="oevrigOmsetning" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="samletOmsetning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak" skatt:erAvledet="true" type="ProsentMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="etterbetalingTilMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="etterbetalingTilMedlemIAnnetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkogOgToemmerkonto">
