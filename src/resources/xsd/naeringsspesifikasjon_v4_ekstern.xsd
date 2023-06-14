@@ -353,6 +353,7 @@
       <xsd:element minOccurs="0" name="sumSkattemessigVerdiAvFinansieltDerivatSomGjeldEllerAvsetning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sumRegnskapsmessigVerdiAvFinansieltDerivatSomEiendel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sumRegnskapsmessigVerdiAvFinansieltDerivatSomGjeldEllerAvsetning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="immateriellEiendelOgVarigAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven" type="ImmateriellEiendelOgVarigAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType abstract="true" name="AnleggsmiddelFelles">
@@ -982,6 +983,19 @@
       <xsd:element minOccurs="0" name="betingetSkattefriGevinst" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="ImmateriellEiendelOgVarigAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="type" type="ImmateriellEiendelOgVarigAnleggsmiddeltypeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="tilgang" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="avgang" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="omklassifisering" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="aaretsAvskrivning" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="nedskrivning" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="DatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940 " type="Dato" />
@@ -1334,6 +1348,11 @@
       <xsd:element name="finansieltDerivattype" type="FinansieltDerivattype" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="ImmateriellEiendelOgVarigAnleggsmiddeltypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="immateriellEiendelOgVarigAnleggsmiddeltype" type="ImmateriellEiendelOgVarigAnleggsmiddeltype" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>gir verdier for år, måned og dag. Kodes som en tekststreng etter datoformatering spesifisert i
@@ -1413,6 +1432,9 @@
   </xsd:simpleType>
   <xsd:simpleType name="FinansieltDerivattype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_finansieltDerivattype.xml">
     <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="ImmateriellEiendelOgVarigAnleggsmiddeltype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_immateriellEiendelOgVarigAnleggsmiddeltype.xml">
+    <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:simpleType name="Skjermingsgrunnlagstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_skjermingsgrunnlagstype.xml">
     <xsd:restriction base="xsd:string" />
