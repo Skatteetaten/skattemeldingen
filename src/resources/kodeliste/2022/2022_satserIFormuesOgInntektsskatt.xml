@@ -283,7 +283,7 @@
       <satsverdi>2588</satsverdi>
       <satstype>skattefrittBeloep</satstype>
       <kildereferanse>Takseringsregler §1-2-7</kildereferanse>
-      <beregning>OverskuddPaaUtgiftsgodtgjoerelser</beregning>
+      <beregning>OverskuddAvUtgiftsgodtgjoerelser</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
@@ -1882,7 +1882,7 @@
       <august>1.3</august>
       <mars>0.9</mars>
       <satstype>skjermingsrente</satstype>
-      <beregning>Privat fordringring utenfor virksomhet til selskap</beregning>
+      <beregning>Privat fordring utenfor virksomhet til selskap</beregning>
       <april>0.9</april>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <september>2</september>
@@ -2504,7 +2504,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>anleggsmiddel.grenseverdiForAnleggsmiddel</tekniskNavn>
+    <tekniskNavn>anleggsmiddelOgToemmerkonto</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Grenseverdi</tekst>
@@ -2512,11 +2512,15 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <intervallFra>-15000</intervallFra>
-      <intervallenhet>beloepINok</intervallenhet>
+      <grenseverdiTo>0</grenseverdiTo>
+      <satsIntervallFraGrenseverdiEnTilTo>0-100</satsIntervallFraGrenseverdiEnTilTo>
+      <satsIntervallFraOgMedGrenseverdiToTilTre>100-100</satsIntervallFraOgMedGrenseverdiToTilTre>
+      <grenseverdiEn>-15000</grenseverdiEn>
+      <satsIntervallTilOgMedGrenseverdiEn>0-20</satsIntervallTilOgMedGrenseverdiEn>
+      <satsIntervallFraOgMedGrenseverdiTre>20-100</satsIntervallFraOgMedGrenseverdiTre>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §14-40</kildereferanse>
       <beregning>Anleggsmidler</beregning>
-      <intervallTilOgMed>15000</intervallTilOgMed>
+      <grenseverdiTre>15000</grenseverdiTre>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
   </kode>
