@@ -97,6 +97,7 @@
       <xsd:element minOccurs="0" name="sumResultatkomponentForIFRSForetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sumEndringIEgenkapitalBankOgForsikring" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aarsresultat" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="resultatregnskapForVirksomhetOmfattetAvPetroleumsskatteloven" type="ResultatregnskapForVirksomhetOmfattetAvPetroleumsskatteloven" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Balanseregnskap">
@@ -315,6 +316,14 @@
   <xsd:complexType name="EndringIEgenkapitalInnenBankOgForsikring">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="endringsbeloep" type="Resultatregnskapsforekomst" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultatregnskapForVirksomhetOmfattetAvPetroleumsskatteloven">
+    <xsd:sequence>
+      <xsd:element name="fordeltAarsresultatFoerOmklassifisertInntektEllerKostnad" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagOmklassifisertFraVirksomhetPaaSokkelTilFinansinntektOgFinanskostnadMv" type="OmklassifisertInntektEllerKostnadForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagOmklassifisertFraFinansinntektOgFinanskostnadMvTilVirksomhetPaaSokkel" type="OmklassifisertInntektEllerKostnadForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element name="fordeltAarsresultat" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Anleggsmiddel">
@@ -958,9 +967,19 @@
   </xsd:complexType>
   <xsd:complexType name="Resultatregnskapsforekomst">
     <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+        <xsd:element minOccurs="0" name="beloepForVirksomhetOmfattetAvPetroleumsskatteloven" type="ResultatregnskapsbeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      </xsd:choice>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="type" type="ResultatOgBalanseregnskapstypeMedInnkapsling" />
-      <xsd:element name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OmklassifisertInntektEllerKostnadForVirksomhetOmfattetAvPetroleumsskatteloven">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="omklassifisertInntektEllerKostnad" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="beskrivelse" type="TekstMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven">
@@ -1003,12 +1022,12 @@
   </xsd:complexType>
   <xsd:complexType name="Balanseregnskapsforekomst">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
-      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="kundeportefoeljebeloep" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="selskapsportefoeljebeloep" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element name="type" type="ResultatOgBalanseregnskapstypeMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="ekskluderesFraSkattemeldingen" type="BoolskMedInnkapsling"/>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="kundeportefoeljebeloep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="selskapsportefoeljebeloep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element name="type" type="ResultatOgBalanseregnskapstypeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="ekskluderesFraSkattemeldingen" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnleggsmiddelkomponentForIFRSForetak">
@@ -1447,6 +1466,12 @@
     </xsd:annotation>
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
+  <xsd:complexType name="ResultatregnskapsbeloepForVirksomhetOmfattetAvPetroleumsskatteloven">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="heravBeloepFraVirksomhetPaaLand" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="ResultatOgBalanseregnskapstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="resultatOgBalanseregnskapstype" type="ResultatOgBalanseregnskapstype" />
