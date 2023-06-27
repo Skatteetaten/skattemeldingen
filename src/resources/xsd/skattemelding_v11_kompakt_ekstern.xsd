@@ -3185,7 +3185,7 @@
   <xsd:complexType name="FremfoertUtenlandskSkattPerInntektsaar">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst"/>
-      <xsd:element minOccurs="0" name="inntektsaar" type="AarstallMedInnkapsling"/>
+      <xsd:element name="inntektsaar" type="AarstallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="fremfoertUtenlandskFormuesskatt" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="fremfoertUtenlandskInntektsskatt" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
