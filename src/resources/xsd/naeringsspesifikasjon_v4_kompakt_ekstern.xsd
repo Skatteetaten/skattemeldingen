@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-05-23T08:30:09.732+0200" name="generertDato" />
+      <xsd:attribute fixed="2023-06-13T07:54:29.162+0200" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v4" name="modellnavn" />
@@ -89,6 +89,7 @@
       <xsd:element minOccurs="0" name="sumEndringIEgenkapitalBankOgForsikring" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aarsresultat" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="resultatregnskapForVirksomhetOmfattetAvPetroleumsskatteloven" type="ResultatregnskapForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element minOccurs="0" name="skjoennsfastsattInntektEllerKostnad" type="SkjoennsfastsattInntektEllerKostnad" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Balanseregnskap">
@@ -136,6 +137,8 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="midlertidigForskjell" type="MidlertidigForskjell" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="midlertidigForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="MidlertidigForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element minOccurs="0" name="alminneligOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" type="OmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" />
+      <xsd:element minOccurs="0" name="separatOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" type="OmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Virksomhet">
@@ -285,6 +288,11 @@
   <xsd:complexType name="EndringIEgenkapitalInnenBankOgForsikring">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="endringsbeloep" type="Resultatregnskapsforekomst" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SkjoennsfastsattInntektEllerKostnad">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektEllerKostnad" type="Resultatregnskapsforekomst"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ResultatregnskapForVirksomhetOmfattetAvPetroleumsskatteloven">
@@ -586,6 +594,19 @@
       <xsd:element name="permanentForskjellstype" type="PermanentForskjellstypeMedInnkapsling" />
       <xsd:element name="beloep" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
       <xsd:element minOccurs="0" name="beskrivelse" type="TekstMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="urealisertValutagevinstForrigeInntektsaar" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="urealisertValutagevinst" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="urealisertValutatapForrigeInntektsaar" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="urealisertValutatap" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoUrealisertValutagevinstForrigeInntektsaar" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="nettoUrealisertValutagevinst" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="nettoUrealisertValutatapForrigeInntektsaar" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="nettoUrealisertValutatap" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="endringIOmvurderingskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="RegnskapspliktstypeMedInnkapsling">
