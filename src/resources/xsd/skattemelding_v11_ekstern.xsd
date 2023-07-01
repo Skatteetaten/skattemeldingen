@@ -1569,6 +1569,7 @@
           <xsd:element minOccurs="0" name="grunnlagForBeregningAvJordbruksfradragFraSDF" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="leieinntektFraJordbruksdrift" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
           <xsd:element minOccurs="0" name="spesifiktForAar" type="SpesifiktForAar"/>
+          <xsd:element minOccurs="0" name="inntektUnderlagtBeskatningIUtlandet" type="InntektUnderlagtBeskatningIUtlandet"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2607,6 +2608,13 @@
       <xsd:element minOccurs="0" name="personinntektFoerSamordning" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="personinntektTilSamordningOverfoertFraDenneForekomst" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="personinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InntektUnderlagtBeskatningIUtlandet">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="heravAndelAvAlminneligInntektUnderlagtBeskatningIUtlandet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="heravAndelITilleggIAlminneligInntektUnderlagtBeskatningIUtlandet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="heravAndelAvArbeidsgodtgjoerelseUnderlagtBeskatningIUtlandet" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Uri" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e148-9fe1-11e5-a9f8-e4115b280940">

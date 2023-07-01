@@ -622,6 +622,8 @@
       <xsd:element minOccurs="0" name="utbetalingMvTilDeltaker" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="inntektUnderlagtBeskatningIUtlandet" type="InntektUnderlagtBeskatningIUtlandet"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektsskattBetaltIUtlandet" type="InntektsskattBetaltIUtlandet"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Organisasjonsnavn">
@@ -1084,6 +1086,19 @@
       <xsd:element name="varIOekonomiskeVanskeligheterPaaSoeknadstidspunktet" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="grunnlagsdokumentasjon" type="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunnMedInnkapsling" />
       <xsd:element minOccurs="0" name="grunnlagsdokumentasjonsdato" type="DatoMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InntektUnderlagtBeskatningIUtlandet">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="heravAndelAvAlminneligInntektUnderlagtBeskatningIUtlandet" type="BeloepIValuta"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InntektsskattBetaltIUtlandet">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="landkode" type="LandkodeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="anvendtSkattesats" type="ProsentMedInnkapsling"/>
+      <xsd:element name="beloep" type="BeloepIValuta"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Konsernbidrag">

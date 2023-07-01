@@ -119,11 +119,8 @@
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf" type="FordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSelskapMedDeltakerfastsetting" />
       <xsd:element maxOccurs="2" minOccurs="0" name="fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig" type="FordeltBeregnetNaeringsinntektForUpersonligSkattepliktig" />
-      <xsd:element minOccurs="0" name="sumTilleggINaeringsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="sumFradragINaeringsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="sumEndringIMidlertidigForskjell" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="skattemessigResultat" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="fordeltBeregnetNaeringsinntektForVirksomhetOmfattetAvPetroleumsskatteloven" type="FordeltBeregnetNaeringsinntektForVirksomhetOmfattetAvPetroleumsskatteloven"/>
+      <xsd:element minOccurs="0" name="fordeltBeregnetNaeringsinntektForVirksomhetOmfattetAvPetroleumsskatteloven" type="FordeltBeregnetNaeringsinntektForVirksomhetOmfattetAvPetroleumsskatteloven" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeregnetPersoninntekt">
@@ -139,6 +136,10 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
       <xsd:element minOccurs="0" name="alminneligOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" type="OmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" />
       <xsd:element minOccurs="0" name="separatOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" type="OmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" />
+      <xsd:element minOccurs="0" name="sumTilleggINaeringsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumFradragINaeringsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumEndringIMidlertidigForskjell" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="forskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="ForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Virksomhet">
@@ -524,12 +525,9 @@
   </xsd:complexType>
   <xsd:complexType name="FordeltBeregnetNaeringsinntektForVirksomhetOmfattetAvPetroleumsskatteloven">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="fordeltTilleggINaeringsinntekt" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven"/>
-      <xsd:element minOccurs="0" name="fordeltFradragINaeringsinntekt" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven"/>
-      <xsd:element minOccurs="0" name="fordeltEndringIMidlertidigForskjell" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven"/>
-      <xsd:element minOccurs="0" name="fordeltSkattemessigResultat" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven"/>
-      <xsd:element minOccurs="0" name="fordeltSkattemessigResultatEtterKorreksjon" skatt:erAvledet="true" type="FordeltSkattemessigResultatEtterKorreksjonForVirksomhetOmfattetAvPetroleumsskatteloven"/>
-      <xsd:element minOccurs="0" name="fordelingAvNettoFinanskostnaderPaaloeptPaaRentebaerendeGjeldOmfattetAvPetroleumsskatteloven" type="FordelingAvNettoFinanskostnaderPaaloeptPaaRentebaerendeGjeldOmfattetAvPetroleumsskatteloven"/>
+      <xsd:element minOccurs="0" name="fordeltSkattemessigResultat" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element minOccurs="0" name="fordeltSkattemessigResultatEtterKorreksjon" skatt:erAvledet="true" type="FordeltSkattemessigResultatEtterKorreksjonForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element minOccurs="0" name="fordelingAvNettoFinanskostnaderPaaloeptPaaRentebaerendeGjeldOmfattetAvPetroleumsskatteloven" type="FordelingAvNettoFinanskostnaderPaaloeptPaaRentebaerendeGjeldOmfattetAvPetroleumsskatteloven" />
       <xsd:element minOccurs="0" name="skattemessigNedskrevetFormuesverdiForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel" type="SkattemessigNedskrevetFormuesverdiForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel" />
     </xsd:sequence>
   </xsd:complexType>
@@ -607,6 +605,13 @@
       <xsd:element minOccurs="0" name="nettoUrealisertValutatapForrigeInntektsaar" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="nettoUrealisertValutatap" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="endringIOmvurderingskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ForskjellForVirksomhetOmfattetAvPetroleumsskatteloven">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="fordeltTilleggINaeringsinntekt" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element minOccurs="0" name="fordeltFradragINaeringsinntekt" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element minOccurs="0" name="fordeltEndringIMidlertidigForskjell" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="RegnskapspliktstypeMedInnkapsling">
@@ -1093,22 +1098,24 @@
   </xsd:complexType>
   <xsd:complexType name="FordelingAvNettoFinanskostnaderPaaloeptPaaRentebaerendeGjeldOmfattetAvPetroleumsskatteloven">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="gjennomgsnittligRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="sumSkattemessigNedskrevetFormuesverdForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="sumNettoFinanskostnader" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="rentekostnaderPaaRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="realisertValutagevinstPaaKortsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="realisertValutatapPaaKortsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="urealisertValutagevinstPaaKortsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="urealisertValutatapPaaKortsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="sumNettoFinanskostnaderForVirksomhetPaaSokkel" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="aaretsSkattemessigeAktiverteRentekostnader" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="andelAvFinanskostnaderSomErFradragsberettigetIInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="gjennomgsnittligRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumSkattemessigNedskrevetFormuesverdForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumNettoFinanskostnader" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="rentekostnaderPaaRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="realisertValutagevinstPaaKortsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="realisertValutatapPaaKortsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="urealisertValutagevinstPaaKortsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="urealisertValutatapPaaKortsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="realisertValutagevinstPaaLangsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="realisertValutatapPaaLangsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumNettoFinanskostnaderForVirksomhetPaaSokkel" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="aaretsSkattemessigeAktiverteRentekostnader" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="andelAvFinanskostnaderSomErFradragsberettigetIInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkattemessigNedskrevetFormuesverdiForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel">
   <xsd:sequence>
-      <xsd:element minOccurs="0" name="anleggsmiddelSomRoerledningProduksjonsinnretningMv" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="anleggsmiddelSomRoerledningProduksjonsinnretningMv" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="varigOgBetydeligAnleggsmiddelMv" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="anleggsmiddelKnyttetTilEgetForskningOgUtviklingsprosjekt" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="annetErvervetImmaterieltFormuesobjektEnnErvervetForretningsverdi" type="BeloepMedSkattemessigeEgenskaper"/>
