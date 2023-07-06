@@ -59,13 +59,13 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
 #### Hvordan opprette ID-porten interasjon hos DigDir
 
 - Først må en integrasjon hos DigDir (gamle DIFI) opprettes gjennom
-  deres [selvbetjeningsløsning](https://selvbetjening-samarbeid-ver2.difi.no/).
+  deres [selvbetjeningsløsning](https://samarbeid.digdir.no/).
 - Klikk på integrasjoner under Ver2, klikk så på knappen "ny Integrasjon".
 - Det er denne integrasjonen som deres applikasjon vil snakke med seinere når deres sluttbruker skal autentisere seg mot
   ID-porten.
     - Verdien i feltet "Integrasjonens identifikator" (kalt klient-ID over) er en GUID som tildeles av Digdir/Difi og
       som SBS må sende med i kallet til ID-porten.
-- Velg _"API-klient"_ under "Difi-tjeneste".
+- Velg _"API-klient"_ under "Digdir-tjeneste".
 - Velg så et scope som angir hvilken offentlig API-tjeneste registreringen gjelder for:
     - Klikk på knappen "Rediger Scopes" og velg _"skatteetaten:formueinntekt/skattemelding"_ fra lista over scopes.
     - PS: hvis dere ikke finner scopet _"skatteetaten:formueinntekt/skattemelding"_ i lista må dere
@@ -163,7 +163,7 @@ skattemeldingen kan enten være utkast eller fastsatt:
 - Utkast er en preutfylt skattemelding Skatteetaten har laget for den skattepliktige basert på innrapporterte data og
   data fra skattemeldingen tidligere år.
 - Fastsatt betyr at skattemeldingen er manuelt innlevert eller automatisk innlevert ved utløp av innleveringsfrist.
-  Dette kan også inneholde et eller flere myndighetsfastsatte felter.
+  Dette kan også inneholde et eller flere myndighetsfastsatte felter. For mer informasjon om myndighetsfastsatte felter se avsnittet under valider skattemeldingen
 
 **URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/`
 
@@ -287,7 +287,6 @@ Tjenesten vil foreta følgende:
 Skatteetaten ønsker at valideringstjenesten blir kalt i forkant av innsending av skattemeldingen. Dette for å sikre at skattemeldingen er korrekt og vil mest sannsynligvis bli godkjent ved innsending.
 Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som sendes inn i valideringstjenesten på noen måte. Skatteetaten anser at disse dataene eies av den skattepliktige og ikke av skatteetaten.
 
-
 **URL** : `POST https://<env>/api/skattemelding/v2/valider/<inntektsaar>/<identifikator>`
 
 **Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/valider/2021/01028312345`
@@ -352,6 +351,13 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - veiledningstype – kodeliste [kontrollnavnet i SMIA, mulighetsrom kommer fra dem]
     - forekomstidentifikator – identfikator til felt i skattemeldingen
     - sti – stien til elementet med veiledning
+
+### Validerings av låste felter
+![myndighetsfastsatt_kort.png](myndighetsfastsatt_kort.png)
+Skatteetaten har muligheten til å låse enkeltfelter eller hele skattemeldingen og/eller næringsspesifikasjonen. Dette vil kun forekomme på en fastsatt skattemelding, og aldri utkast.
+Informasjon om hvilke felter som er låst er ikke med i de eksterne modellene, men når dere prøver å validere en skattemelding med endringer på et felt som er låst vil dere få følgende valideringsresultat: `KanIkkeOverskriveMyndighetsfastsattVerdi` eller `KanIkkeSletteMyndighetsfastsattVerdi`
+Dette skyldes at en forekomst som har blitt låst har blitt endret eller slettet.
+
 
 ## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument <a name="validerTest"></a>
 
