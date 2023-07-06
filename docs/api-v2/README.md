@@ -108,7 +108,7 @@ gjennom API-et. Slik tilgangskontroll/autorisering skjer via Altinns autorisasjo
 Dette betyr at sluttbrukeren eller eier av sluttbrukersystemet må ha de nødvendige rollene i Altinn. Dette blir som i
 eksisterende løsninger.
 
-## Oppsummering API endepunkt
+## Oppsummering API endepunkt <a name="table-of-requests">
 
 | TYPE | API path                                                                                                                                                            | Virkshomhetssertifikat |
 |------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
@@ -137,7 +137,7 @@ eksisterende løsninger.
 | Produksjon                        | idporten.api.skatteetaten.no | OIDC                  |
 | Produksjon virkshometsstertifikat | api.skatteetaten.no          | Virksomhetssertifikat |
 
-## Ping tjeneste <a name="ping"></a>
+## Ping tjeneste <a name="ping"></a> [[back up]](#user-content-table-of-requests)
 
 API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungerer.
 
@@ -155,7 +155,7 @@ API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungere
 }
 ```
 
-## Hent skattemelding <a name="hentGjeldende"></a>
+## Hent skattemelding <a name="hentGjeldende"></a> [[back up]](#user-content-table-of-requests)
 
 API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt inntektsår. Den siste gjeldende
 skattemeldingen kan enten være utkast eller fastsatt:
@@ -201,7 +201,7 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
         - encoding – kodeliste – [utf-8]
         - content – serialisert dokumentinnhold i base64 encodet format
 
-### Utvidet veiledning <a name="hentGjeldendeUtvidet"></a>
+### Utvidet veiledning <a name="hentGjeldendeUtvidet"></a> [[back up]](#user-content-table-of-requests)
 
 Fra og med inntektsår 2022 er det mulig å etterspørre eventuelle ubesvarte utvidede veiledninger som del av dette API'et, som kan sees i response-spesifikasjonen over. 
 
@@ -246,7 +246,7 @@ Eksempel (inneholder linjeskift for lesbarhet):
     MC0yMVQwNjozMjowNi45OTMwMzlaPC9vcHByZXR0ZXREYXRvPgogIDwvc2thdHRlbWVsZGluZ09w
     cHJldHRldD4KPC9za2F0dGVtZWxkaW5nPg==<content>
 
-## Hent Skattemelding (basert på type)  <a name="hentType"></a>
+## Hent Skattemelding (basert på type)  <a name="hentType"></a> [[back up]](#user-content-table-of-requests)
 
 API som returnerer siste gjeldende skattemeldingen av gitt type for skattepliktige for gitt inntektsår. Følgende type
 skattemeldinger er støttet:
@@ -275,7 +275,7 @@ skattemeldinger er støttet:
 
 For nærmere beskrivelse av felt i XSDen eller hvordan man henter ut utvidede veiledninger, se forrige kapittel.
 
-## Valider skattemelding <a name="valider"></a>
+## Valider skattemelding <a name="valider"></a> [[back up]](#user-content-table-of-requests)
 
 Tjenesten validerer innholdet i en skattemelding og returnerer en respons med eventuelle feil, avvik og advarsler.
 Tjenesten vil foreta følgende:
@@ -359,7 +359,7 @@ Informasjon om hvilke felter som er låst er ikke med i de eksterne modellene, m
 Dette skyldes at en forekomst som har blitt låst har blitt endret eller slettet.
 
 
-## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument <a name="validerTest"></a>
+## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument <a name="validerTest"></a> [[back up]](#user-content-table-of-requests)
 
 Hvis dere har behov for å gjøre beregninger før Skatteetaten har publisert utkast for et inntektsår, kan dere kalle denne tjenesten.
 Den er helt lik som valideringstjenesten, men krever ikke `dokumentreferanseTilGjeldendeDokument`.
@@ -379,10 +379,10 @@ Denne tjenesten skal ikke brukes for validering for innsending, da vi har en del
 **Body** 
 Likt som valider ovenfor
 
-## Lagre skattemelding midlertidig for visning <a name="midlertidigVisning"></a>
+## Lagre skattemelding midlertidig for visning <a name="midlertidigVisning"></a> [[back up]](#user-content-table-of-requests)
 Hvis dere har behov for å vise skattemeldingen i visningsklienten, kan den lastet opp via dette endepunktet. Skattemeldingen vil bli lagret i 24 timer for visning via URLen som returneres i responsen.
 
-### Enkeltpersonsforetak <a name="lagret-skattemelding-for-visning-personlig"></a>
+### Enkeltpersonsforetak <a name="lagret-skattemelding-for-visning-personlig"></a> [[back up]](#user-content-table-of-requests)
 **URL** : `POST https://<env>/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
 
 **Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
@@ -403,7 +403,7 @@ Likt som valider ovenfor
 ```
 - `<id>: Unik identifikator på midlertidig lagret skattemelding`
 
-### Selskap <a name="lagret-skattemelding-for-visning-upersonlig"></a>
+### Selskap <a name="lagret-skattemelding-for-visning-upersonlig"></a> [[back up]](#user-content-table-of-requests)
 **URL** : `POST https://<env>/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>`
 
 **Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/910236490`
@@ -425,7 +425,7 @@ Likt som valider ovenfor
 ```
 - `<id>: Unik identifikator på midlertidig lagret skattemelding`
 
-## Hent vedlegg <a name="hentVedlegg"></a>
+## Hent vedlegg <a name="hentVedlegg"></a> [[back up]](#user-content-table-of-requests)
 
 Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, enten fastsatt i gjeldende/nyeste skattemelding eller fra tidligere fastsettinger.
 
@@ -452,7 +452,7 @@ Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners 
 
 Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer.xlsx)
 
-### Søk <a name="eiendomSoek"></a>
+### Søk <a name="eiendomSoek"></a> [[back up]](#user-content-table-of-requests)
 
 Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
 
@@ -540,7 +540,7 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 
 - `sergEiendomsidentifikator: eiendomsidentifkator som skal benyttes for å hente eiendom og formuesinformajon.`
 
-### Hent formuesgrunnlag <a name="hentFormuesgrunnlag"></a>
+### Hent formuesgrunnlag <a name="hentFormuesgrunnlag"></a> [[back up]](#user-content-table-of-requests)
 
 Hent formuesgrunnlag for valgt unik eiendomsidentifikator og inntektsår.
 
@@ -629,7 +629,7 @@ Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektså
 - `formuesspesifikasjonFor*: innholder eiendommens formuesspesifikasjon og gjeldende skatteyters andel av formuesverdi. Detaljer som xxxx er med hvis skatteyter er eier av eiendommen. * Kan ha følgende verdier: Bolig, Flerboligbygning, SkalIkkeFastsettes, Tomt, SelveidFritidseiendom, AnnenFastEiendomInnenforInntektsgivendeAktivitet, AnnenFastEiendomUtenforInntektsgivendeAktivitet.`
 - `ukjentEiendomINorge: hvis vi ikke støtter denne eiendomstypen.`
 
-### Beregn markedsverdi for bolig <a name="markedsverdiBolig"></a>
+### Beregn markedsverdi for bolig <a name="markedsverdiBolig"></a> [[back up]](#user-content-table-of-requests)
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
@@ -795,7 +795,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - `dokumentertMarkedsverdi: dokumentert markedsverdi når denne er innefor reglene slik at den er hensynstatt.`
 - `justertMarkedsverdi: justert markedsverdi er med når dokumentert markedsverdi er hensynstatt.`
 
-### Beregn markedsverdi for flerbolig <a name="markedsverdiFlerbolig"></a>
+### Beregn markedsverdi for flerbolig <a name="markedsverdiFlerbolig"></a> [[back up]](#user-content-table-of-requests)
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
@@ -1044,7 +1044,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
-### Beregn utleieverdi for ikke-utleid næringseiendom <a name="markedsverdiIkkeUtiledNaeringseiendom"></a>
+### Beregn utleieverdi for ikke-utleid næringseiendom <a name="markedsverdiIkkeUtiledNaeringseiendom"></a> [[back up]](#user-content-table-of-requests)
 
 BeregnetUtleieverdi er basert på næringssjablong fra SSB hvor næringstype, areal, bystatus, sentralitet og skatteleggingsperiode inngår i beregningen.
 
@@ -1162,7 +1162,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
-## Forløpig avregning <a name="avregning"></a>
+## Forløpig avregning <a name="avregning"></a> [[back up]](#user-content-table-of-requests)
 Tjenesten avregning er en tjeneste som mottar fødselsnummer og beregnet skatt og retunerer avregning. Denne tjenesten vil IKKE ta høyde for eventuelte tidligere skatteoppgjør for aktuelt inntektsår. Dvs at hvis skattyter har et skatteoppgjør og fått utbetalt tilgode, og skal gjøre en endring så vil denne tjenesten avregne som om det var første skatteoppgjør
 
 *URL** : `POST https://<env>/api/skattemelding/v2/avregning/avregn/{inntektsaar}/{identifikator}`
@@ -1211,7 +1211,7 @@ responsen er json med disse feltene. Spørsmålstegn indikerer at feltet ikke er
 - fastsattKildeskattPaaLoenn: Long?,
 - refusjonAvKildeskattPaaLoenn: Long?
 
-## Forhåndsfastsetting <a name="Forhandsfastsetting"></a>
+## Forhåndsfastsetting <a name="Forhandsfastsetting"></a> [[back up]](#user-content-table-of-requests)
 Det er mulig å be om forhåndsfastsetting for upersonlige skattemelding før ordinær fastsettingsperioden starter.
 For eksempel, så skal et selskap kunne få forhåndsfastsetting i mars i 2023. Da skal skattemeldingen for 2022 og 2023 leveres.
 
@@ -1255,7 +1255,7 @@ For næringspesifikasjonen
 </dokument>
 ```
 
-### Klargjør part for forhåndsfastsetting: <a name="klargjoer-part-for-forhaandsfastsetting"></a> 
+### Klargjør part for forhåndsfastsetting: <a name="klargjoer-part-for-forhaandsfastsetting"></a> [[back up]](#user-content-table-of-requests) 
 Dette kallet skal kjøres for å klargjøre en part for forhåndsfastsetting 
 dersom skattemeldingen ikke er klar på forhåndsfastsettingtidspunktet
 
@@ -1309,7 +1309,7 @@ Andre feiltilstander
 }
 ```
 
-# Klargjør part som mangler utkast <a name="klargjoer-part-som-mangler-utkast"></a>
+# Klargjør part som mangler utkast <a name="klargjoer-part-som-mangler-utkast"></a> [[back up]](#user-content-table-of-requests)
 Dersom dere har en organsiasjon som av eller annen årsak mangler utkast (får feilmelding http 403, skattemelding ikke tilgjenglig) for et aktivt inntektsår, så kan dere bruke dette API'et for for å klargjøre parten.
 Det API'et støttes kun for enhetstyper som skal levere skattemelding upersonlig. 
 
