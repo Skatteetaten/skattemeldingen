@@ -123,7 +123,7 @@ eksisterende løsninger.
 | GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                       | Ja                     |
 | POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                        | Ja                     |
 | POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                                | Ja                     |
-| GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#user-content-avregning)                                                                 | Nei                    |
+| POST | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#user-content-avregning)                                                                 | Nei                    |
 | POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiIkkeUtiledNaeringseiendom)                           | Ja                     |
 | POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#user-content-lagret-skattemelding-for-visning-personlig)                                  | Nei                    |
 | POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#user-content-lagret-skattemelding-for-visning-upersonlig)      | Nei                    |
