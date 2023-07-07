@@ -52,7 +52,8 @@ Figuren under skisserer hvordan innloggingsprosessen vil se ut:
 Når et sluttbrukersystem initierer en påloggingsprosess mot ID-porten må SBS sende med en klient-ID. Denne klient-id-en
 er unik for SBS-typen og vil bli tildelt ved at programvareleverandøren av SBS på forhånd har gjennomført en
 registrering (onboarding) i en selvbetjeningsportal hos Digdir/Difi. Dette er beskrevet
-her: https://docs.digdir.no/docs/idporten/oidc/. Lenken beskriver også standarden OIDC som ID-porten er basert på.
+her: https://docs.digdir.no/docs/idporten/idporten/idporten_overordnet. Lenken beskriver også standarden OIDC som 
+ID-porten er basert på.
 
 Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir slik at dere kan få tildelt en klient-ID.
 
@@ -178,9 +179,9 @@ skattemeldingen kan enten være utkast eller fastsatt:
 **Respons** :
 
 - Iht.
-  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
+  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
 - Eksempel
-  XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
+  XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](/src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
@@ -188,7 +189,7 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
     - skattemeldingdokument – complex type
       -
-      type – [valg fra xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
+      type – [valg fra xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
         - id – dokumentidentifikator til dokumentet i skatteetatens system.
         - encoding – kodeliste – [utf-8]
         - content – serialisert dokumentinnhold i base64 encodet format
@@ -269,9 +270,9 @@ skattemeldinger er støttet:
 **Respons** :
 
 - Iht.
-  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
+  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
 - Eksempel
-  XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
+  XML: skattemeldingerognaeringsopplysninger_response.xml (ikke noe eksempel)
 
 For nærmere beskrivelse av felt i XSDen eller hvordan man henter ut utvidede veiledninger, se forrige kapittel.
 
@@ -299,8 +300,8 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 
 **Body** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2.xsd)
-- Eksempel XML: [personligSkattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/2021/personligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2.xsd)
+- Eksempel XML: [personligSkattemeldingOgNaeringsspesifikasjonRequest.xml](/src/resources/eksempler/2021/personligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
 
 skattemeldingOgNaeringsspesifikasjonRequest:
 - dokumenter
@@ -319,8 +320,8 @@ skattemeldingOgNaeringsspesifikasjonRequest:
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonresponse_v2.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
-- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](../../src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonresponse_v2.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
+- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](/src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingOgNaeringsspesifikasjonResponse:
 
@@ -331,7 +332,7 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - Content – serialisert dokumentinnhold
 - avvikEtterBeregning – konvolutt for avvik funnet etter beregning
   - avvik – complex type
-    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
+    - avvikstype – [kodeliste](/src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
       - OBS! manglerSkattemelding kan henvise til følgende dokumenttyper : skattemelding, skattemeldingUpersonlig og selskapsmelding 
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
@@ -340,7 +341,7 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - sti – stien til elementet som har avvik
 - avvikVedValidering – konvolutt for avvik funnet ved validering
   - avvik – complex type
-    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
+    - avvikstype – [kodeliste](/src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
     - beregnetVerdi – verdien som ble beregnet
@@ -1425,7 +1426,7 @@ https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#
 
 ### Oppdater skjema-metadata til instansen (Kun hvis alternativ 2 benyttes ved opprettelse av instans)
 
-_Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten.
+_Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten._
 
 Neste trinn er å laste opp meta-data om skattemeldingen. Meta-data skal være en json tilsvarende eksempelet under. 
 
@@ -1456,7 +1457,7 @@ Opplasting av vedlegg utføres etter instansopprettelse og før innsending av sk
 
 Ved opplasting av vedlegg må denne prosedyren følges:
 1. Last opp vedlegg til instans
-2. Oppdater skattemelding.xml med vedleggsreferanse(er) iht. XSD: [skattemelding_v9_kompakt_ekstern.xsd](../../src/resources/xsd). 
+2. Oppdater skattemelding.xml med vedleggsreferanse(er) iht. XSD: [skattemelding_v9_kompakt_ekstern.xsd](/src/resources/xsd). 
    - Ved oppdatering av skattemelding med referanser til vedlegg trengs en vedleggsId. Denne vedleggsId-en finner man i 
     responsen til kallet for opplasting av vedlegg. 
 
@@ -1486,8 +1487,8 @@ Forklaring av attributter til vedlegg-seksjonen i skattemelding.xml
 - vedleggsfil/opprinneligFilnavn: Filnavnet som filen hadde da vedlegget ble lastet opp.
 - vedleggsfil/opprinneligFiltype: Filtypen som filen hadde da vedlegget ble lastet opp.  (jpg, pdf, osv.)
 - vedleggsfil/filensOpprinneligDatoOgTid: Tidspunkt for når vedlegget ble lastet opp
-- vedleggstype/vedleggskategori: Vedleggstype som velges ut fra en kodeliste.  [2021_vedleggskategori.xml](../../src/resources/kodeliste/2021/2021_vedleggskategori.xml)
-- informasjonselementidentifikator: Sti som bekriver hvilket felt vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom. Stien bygges opp av skattemeldingsdokumentets xml-struktur. Eksempel: "/skattemelding/bankLaanOgForsikring/konto/paaloepteRenter/beloepUtenHensynTilValgtPrioritertFradragstype/beloep/beloepIValuta/beloep" Se fullstendig eksempel: ../../src/resources/eksempler/v2/personligSkattemeldingV9EksempelFeltvedlegg.xml
+- vedleggstype/vedleggskategori: Vedleggstype som velges ut fra en kodeliste.  [2021_vedleggskategori.xml](/src/resources/kodeliste/2021/2021_vedleggskategori.xml)
+- informasjonselementidentifikator: Sti som bekriver hvilket felt vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom. Stien bygges opp av skattemeldingsdokumentets xml-struktur. Eksempel: "/skattemelding/bankLaanOgForsikring/konto/paaloepteRenter/beloepUtenHensynTilValgtPrioritertFradragstype/beloep/beloepIValuta/beloep" Se fullstendig eksempel: [personligSkattemeldingV9EksempelFeltvedlegg.xml](/src/resources/eksempler/2021/personligSkattemeldingV9EksempelFeltvedlegg.xml)
 - forekomstidentifikator: Forekomstid til feltet som vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom.
 - utvekslingsarkividentifikator: Dette er nøkkelen til dokumentet i Skatteetatens arkiv. Nøkkelen skal ikke fylles ut av SBS.
 
@@ -1506,8 +1507,8 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 
 **Body :** `data-binary '../skattemelding.xml'.`
 Innholdet i filen skattemelding.xml skal være på format:
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd)
-- Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/2021)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](/src/resources/xsd)
+- Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml](/src/resources/eksempler/2021)
 
 Merk at det er samme format som benyttes ved kall til valideringstjensten.
 
