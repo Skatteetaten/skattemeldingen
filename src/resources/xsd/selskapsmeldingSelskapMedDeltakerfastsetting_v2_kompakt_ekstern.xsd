@@ -660,7 +660,6 @@
       <xsd:element minOccurs="0" name="grunnlagForBeregningAvJordbruksfradrag" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="leieinntektFraJordbruksdriftSomInngaarIDriftsinntekt" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="forholdKnyttetTilKommandittistOgStilleDeltaker" type="ForholdKnyttetTilKommandittistOgStilleDeltaker"/>
-      <xsd:element minOccurs="0" name="spesifiktForAar" type="SpesifiktForAar"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvSkattemessigInngangverdiOgEgenkapitalkonto">
@@ -1075,13 +1074,6 @@
       <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="fremfoerbartUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="SpesifiktForAar">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAndelFraOgMed20221006" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAndelFraOgMed20221006" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="skattepliktigUtbytteMvAndelFraOgMed20221006" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkattemessigInngangsverdiOgEgenkapital">
