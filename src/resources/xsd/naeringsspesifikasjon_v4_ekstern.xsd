@@ -610,12 +610,11 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="midlertidigForskjellstype" type="MidlertidigForskjellstypeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="regnskapsmessigVerdi" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
-      <xsd:element minOccurs="0" name="skattemessigVerdi" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
-      <xsd:element minOccurs="0" name="regnskapsmessigVerdiForrigeInntektsaar" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
-      <xsd:element minOccurs="0" name="skattemessigVerdiForrigeInntektsaar" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
       <xsd:element minOccurs="0" name="beskrivelse" type="TekstMedInnkapsling" />
-
+      <xsd:element minOccurs="0" name="midlertidigForskjellKnyttetTilAlminneligInntektFraVirksomhetPaaSokkel" type="MidlertidigForskjellForVirksomhetOmfattetAvPetroleumsskattelovenPerDistrikt" />
+      <xsd:element minOccurs="0" name="midlertidigForskjellKnyttetTilAlminneligInntektFraVirksomhetPaaLand" type="MidlertidigForskjellForVirksomhetOmfattetAvPetroleumsskattelovenPerDistrikt" />
+      <xsd:element minOccurs="0" name="midlertidigForskjellKnyttetTilSaerskattegrunnlagFraVirksomhetPaaSokkel" type="MidlertidigForskjellForVirksomhetOmfattetAvPetroleumsskattelovenPerDistrikt" />
+      <xsd:element minOccurs="0" name="midlertidigForskjellKnyttetTilFinansinntektOgFinanskostnad" type="MidlertidigForskjellForVirksomhetOmfattetAvPetroleumsskattelovenPerDistrikt" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven">
@@ -1293,6 +1292,20 @@
   <xsd:complexType name="MidlertidigForskjellstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="midlertidigForskjellstype" type="MidlertidigForskjellstype" />
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="MidlertidigForskjellForVirksomhetOmfattetAvPetroleumsskattelovenPerDistrikt">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="regnskapsmessigVerdi" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="skattemessigVerdi" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="regnskapsmessigVerdiForrigeInntektsaar" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="skattemessigVerdiForrigeInntektsaar" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="forskjell" skatt:erAvledet="true" type="BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="forskjellForrigeInntektsaar" skatt:erAvledet="true" type="BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="endringIForskjell" skatt:erAvledet="true" type="BeloepSomHeltall" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OljesalgOgNormprisinntekt">
