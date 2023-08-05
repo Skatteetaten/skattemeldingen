@@ -7,6 +7,45 @@
     </spraakTekst>
   </beskrivelse>
   <kode>
+    <tekniskNavn>forskuddstrekk</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - forskuddstrekk</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>avregningstjeneste</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>innbetalingTilSofie</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - innbetalingTilSofie</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>dvh.sofieInnbetaling</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>utbetalingFraSofie</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - utbetalingFraSofie</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>dvh.sofieUtbetaling</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>aksjeIAksjonaerregisteret</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
@@ -16,6 +55,76 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>gld.aksjeoppgaven</kilde>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>aksjesparekonto</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - aksjesparekonto</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>gld.aksjesparekonto</kilde>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>finansprodukt</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - finansprodukt</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>gld.finansprodukt</kilde>
+      <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fondskonto</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - fondskonto</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>gld.fondskonto</kilde>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattefriUtbetalingFraOffentlig</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - skattefriUtbetalingFraOffentlig</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>gld.skattefriUtbetalingFraOffentlig</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>verdipapirfond</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - verdipapirfond</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>gld.verdipapirfond</kilde>
       <kilde>skattemelding</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
     </kodetillegg>
@@ -34,16 +143,30 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>aksjesparekonto</tekniskNavn>
+    <tekniskNavn>andelAvInntektFelleskostnaderFormueOgGjeldIBoligsameie</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
-        <tekst>visning - aksjesparekonto</tekst>
+        <tekst>visning - andelAvInntektFelleskostnaderFormueOgGjeldIBoligsameie</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <kilde>gld.aksjesparekonto</kilde>
       <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>andelAvInntektFelleskostnaderFormueOgGjeldIBoligselskap</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - andelAvInntektFelleskostnaderFormueOgGjeldIBoligselskap</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
     </kodetillegg>
   </kode>
@@ -83,6 +206,7 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
     </kodetillegg>
   </kode>
@@ -96,6 +220,7 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
     </kodetillegg>
   </kode>
@@ -139,10 +264,10 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>bankkonto</tekniskNavn>
+    <tekniskNavn>annetFradragKnyttetTilNaeringsvirksomhet</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
-        <tekst>visning - bankkonto</tekst>
+        <tekst>visning - annetFradragKnyttetTilNaeringsvirksomhet</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -166,10 +291,37 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>deltakersAndelAvFormueOgInntekt</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - deltakersAndelAvFormueOgInntekt</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>fagforeningskontingent</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
         <tekst>visning - fagforeningskontingent</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fastEiendomSomKaarytelse</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - fastEiendomSomKaarytelse</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -192,43 +344,15 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>finansprodukt</tekniskNavn>
+    <tekniskNavn>fastEiendomSomUtleieobjektIUtlandet</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
-        <tekst>visning - finansprodukt</tekst>
+        <tekst>visning - fastEiendomSomUtleieobjektIUtlandet</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <kilde>gld.finansprodukt</kilde>
       <kilde>skattemelding</kilde>
-      <anvendelseIBeregning>PB</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>fondskonto</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - fondskonto</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>gld.fondskonto</kilde>
-      <kilde>skattemelding</kilde>
-      <anvendelseIBeregning>PB</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>forskuddstrekk</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - forskuddstrekk</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>?</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
     </kodetillegg>
   </kode>
@@ -285,19 +409,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>innbetalingTilSofie</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - innbetalingTilSofie</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>dvh.sofieInnbetaling</kilde>
-      <anvendelseIBeregning>PB</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>kapitalisertFesteavgift</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
@@ -324,20 +435,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>kjoeretoey</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - kjoeretoey</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
-      <anvendelseIBeregning>PB</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>kontantbeloep</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
@@ -347,6 +444,7 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
     </kodetillegg>
   </kode>
@@ -529,6 +627,7 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
     </kodetillegg>
   </kode>
@@ -550,6 +649,32 @@
     <visningsnavn>
       <spraakTekst>
         <tekst>visning - saerfradragForStoreSykdomskostnader</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>samletVerdiArvEllerGaveUtenforArbeidsforhold</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - samletVerdiArvEllerGaveUtenforArbeidsforhold</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skadeforsikring</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - skadeforsikring</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -581,19 +706,6 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>skattemelding</kilde>
-      <anvendelseIBeregning>PB</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>skattefriUtbetalingFraOffentlig</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - skattefriUtbetalingFraOffentlig</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>gld.skattefriUtbetalingFraOffentlig</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
     </kodetillegg>
   </kode>
@@ -646,34 +758,75 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>utbetalingFraSofie</tekniskNavn>
+    <tekniskNavn>bankkonto</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
-        <tekst>visning - utbetalingFraSofie</tekst>
+        <tekst>visning - bankkonto</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <kilde>dvh.sofieUtbetaling</kilde>
-      <anvendelseIBeregning>PB</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>verdipapirfond</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - verdipapirfond</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>gld.verdipapirfond</kilde>
       <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>kjoeretoey</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - kjoeretoey</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>refusjonFraHelfo</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - refusjonFraHelfo</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>dvh.helfo</kilde>
+      <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>omsetningAvVarerOgTjenester</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - omsetningAvVarerOgTjenester</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>dvh.mva</kilde>
+      <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>tilskuddFraKompensasjonsordningenForNaeringslivet</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - tilskuddFraKompensasjonsordningenForNaeringslivet</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>dvh.tilskudd</kilde>
+      <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
     </kodetillegg>
   </kode>
   <kode>
@@ -681,6 +834,19 @@
     <visningsnavn>
       <spraakTekst>
         <tekst>visning - arbeidsgiveravgiftKnyttetTilAnsatt</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>gld.amelding</kilde>
+      <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>loennOgGodtgjoerelseTilAnsatt</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - loennOgGodtgjoerelseTilAnsatt</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -699,58 +865,6 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>gld.kontrolloppgaveTilskudd</kilde>
-      <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>loennOgGodtgjoerelseTilAnsatt</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - loennOgGodtgjoerelseTilAnsatt</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>gld.amelding</kilde>
-      <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>omsetningAvVarerOgTjenester</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - omsetningAvVarerOgTjenester</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>dvh.mva</kilde>
-      <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>refusjonFraHelfo</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - refusjonFraHelfo</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>dvh.helfo</kilde>
-      <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>tilskuddFraKompensasjonsordningenForNaeringslivet</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - tilskuddFraKompensasjonsordningenForNaeringslivet</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>dvh.tilskudd</kilde>
       <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
     </kodetillegg>
   </kode>
@@ -963,6 +1077,99 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>oppdragTilUtenlandskOppdragstaker</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - oppdragTilUtenlandskOppdragstaker</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>dvh.oppdragsregister</kilde>
+      <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fastEiendomSomRealisasjonsobjekt</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - fastEiendomSomRealisasjonsobjekt</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fastEiendomSomUtleieobjektFastsattForForegaaendeInntektsaar</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - fastEiendomSomUtleieobjektFastsattForForegaaendeInntektsaar</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
+      <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fastEiendomSomUtleieobjektFraFormidlingsselskap</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - fastEiendomSomUtleieobjektFraFormidlingsselskap</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>gld.utleieAvFastEiendomFraFormidlingsselskap</kilde>
+      <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fastEiendomSomUtleieobjektIUtlandetFastsattForForegaaendeInntektsaar</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - fastEiendomSomUtleieobjektIUtlandetFastsattForForegaaendeInntektsaar</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde/>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
+      <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>informasjonOmVirksomhet</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - informasjonOmVirksomhet</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skogeiendomINorgeSomFormuesobjekt</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>visning - skogeiendomINorgeSomFormuesobjekt</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
+      <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>fastEiendomSomFormuesobjekt</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
@@ -977,31 +1184,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>oppdragTilUtenlandskOppdragstaker</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - oppdragTilUtenlandskOppdragstaker</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>dvh.oppdragsregister</kilde>
-      <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>deltakersAndelAvFormueOgInntekt</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - deltakersAndelAvFormueOgInntekt</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>fritidsbaatMedSalgsverdiOverSalgsverdigrense</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
@@ -1012,126 +1194,7 @@
     <kodetillegg>
       <kilde>skattemelding</kilde>
       <kilde>skattemeldingFastsattForForegaaendeInntektsaar</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>skadeforsikring</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - skadeforsikring</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>skogeiendomINorgeSomFormuesobjekt</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - skogeiendomINorgeSomFormuesobjekt</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>andelAvInntektFelleskostnaderFormueOgGjeldIBoligsameie</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - andelAvInntektFelleskostnaderFormueOgGjeldIBoligsameie</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>andelAvInntektFelleskostnaderFormueOgGjeldIBoligselskap</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - andelAvInntektFelleskostnaderFormueOgGjeldIBoligselskap</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>annetFradragKnyttetTilNaeringsvirksomhet</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - annetFradragKnyttetTilNaeringsvirksomhet</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>fastEiendomSomKaarytelse</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - fastEiendomSomKaarytelse</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>fastEiendomSomRealisasjonsobjekt</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - fastEiendomSomRealisasjonsobjekt</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>fastEiendomSomUtleieobjektIUtlandet</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - fastEiendomSomUtleieobjektIUtlandet</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>informasjonOmVirksomhet</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - informasjonOmVirksomhet</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>samletVerdiArvEllerGaveUtenforArbeidsforhold</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>visning - samletVerdiArvEllerGaveUtenforArbeidsforhold</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
     </kodetillegg>
   </kode>
   <lokaltForvaltet>true</lokaltForvaltet>
