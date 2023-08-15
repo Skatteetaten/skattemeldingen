@@ -52,7 +52,8 @@ Figuren under skisserer hvordan innloggingsprosessen vil se ut:
 Når et sluttbrukersystem initierer en påloggingsprosess mot ID-porten må SBS sende med en klient-ID. Denne klient-id-en
 er unik for SBS-typen og vil bli tildelt ved at programvareleverandøren av SBS på forhånd har gjennomført en
 registrering (onboarding) i en selvbetjeningsportal hos Digdir/Difi. Dette er beskrevet
-her: https://docs.digdir.no/docs/idporten/oidc/. Lenken beskriver også standarden OIDC som ID-porten er basert på.
+her: https://docs.digdir.no/docs/idporten/idporten/idporten_overordnet. Lenken beskriver også standarden OIDC som 
+ID-porten er basert på.
 
 Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir slik at dere kan få tildelt en klient-ID.
 
@@ -108,27 +109,27 @@ gjennom API-et. Slik tilgangskontroll/autorisering skjer via Altinns autorisasjo
 Dette betyr at sluttbrukeren eller eier av sluttbrukersystemet må ha de nødvendige rollene i Altinn. Dette blir som i
 eksisterende løsninger.
 
-## Oppsummering API endepunkt
+## Oppsummering API endepunkt <a name="table-of-requests">
 
-| TYPE | API path                                                                                                                                               | Virkshomhetssertifikat |
-|------|--------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| GET  | [/api/skattemelding/v2/ping](#ping)                                                                                                                    | JA                     |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#hentGjeldende)                                                                              | Nei                    |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#hentGjeldendeUtvidet)               | Nei                    |
-| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#hentType)                                                                          | Nei                    |
-| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#valider)                                                                            | Nei                    |
-| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#validerTest)                                                                    | Planlagt               |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#hentVedlegg)                                                          | Nei                    |
-| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#eiendomSoek)                                                                      | Ja                     |
-| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#hentFormuesgrunnlag)                       | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiBolig)                                        | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                                | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#markedsverdiFlerbolig)                                           | Ja                     |
-| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#til-midlertidig-lagret-skattemelding-for-visning)                            | Nei                    |
-| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#til-midlertidig-lagret-skattemelding-for-visning) | Nei                    |
-| GET  | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#avregning)                                                                 | Nei                    |
-| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#klargjoer-part-for-forhaandsfastsetting)                      | Nei                    |
-| POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#klargjoer-part-som-mangler-utkast)                                            | Nei                    |
+| TYPE | API path                                                                                                                                                            | Virkshomhetssertifikat |
+|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
+| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                                    | JA                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                              | Nei                    |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)               | Nei                    |
+| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                          | Nei                    |
+| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                            | Nei                    |
+| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                                    | Planlagt               |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                          | Nei                    |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                                      | Ja                     |
+| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                       | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                        | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                                | Ja                     |
+| POST | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#user-content-avregning)                                                                 | Nei                    |
+| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiIkkeUtiledNaeringseiendom)                           | Ja                     |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#user-content-lagret-skattemelding-for-visning-personlig)                                  | Nei                    |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#user-content-lagret-skattemelding-for-visning-upersonlig)      | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-for-forhaandsfastsetting)                      | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-som-mangler-utkast)                                            | Nei                    |
 
 | Miljø                             | Adresse                      | Påloggingsmetode      |
 |-----------------------------------|------------------------------|-----------------------|
@@ -137,7 +138,7 @@ eksisterende løsninger.
 | Produksjon                        | idporten.api.skatteetaten.no | OIDC                  |
 | Produksjon virkshometsstertifikat | api.skatteetaten.no          | Virksomhetssertifikat |
 
-## Ping tjeneste <a name="ping"></a>
+## Ping tjeneste <a name="ping"></a> [[back up]](#user-content-table-of-requests)
 
 API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungerer.
 
@@ -155,7 +156,7 @@ API tilbyr en ping tjeneste som kan kalles for å teste at integrasjonen fungere
 }
 ```
 
-## Hent skattemelding <a name="hentGjeldende"></a>
+## Hent skattemelding <a name="hentGjeldende"></a> [[back up]](#user-content-table-of-requests)
 
 API som returnerer siste gjeldende skattemeldingen for skattepliktige for gitt inntektsår. Den siste gjeldende
 skattemeldingen kan enten være utkast eller fastsatt:
@@ -178,9 +179,9 @@ skattemeldingen kan enten være utkast eller fastsatt:
 **Respons** :
 
 - Iht.
-  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
+  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
 - Eksempel
-  XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/eksempler/v2/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
+  XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](/src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
@@ -188,7 +189,7 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
     - skattemeldingdokument – complex type
       -
-      type – [valg fra xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
+      type – [valg fra xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
         - id – dokumentidentifikator til dokumentet i skatteetatens system.
         - encoding – kodeliste – [utf-8]
         - content – serialisert dokumentinnhold i base64 encodet format
@@ -201,7 +202,7 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
         - encoding – kodeliste – [utf-8]
         - content – serialisert dokumentinnhold i base64 encodet format
 
-### Utvidet veiledning <a name="hentGjeldendeUtvidet"></a>
+### Utvidet veiledning <a name="hentGjeldendeUtvidet"></a> [[back up]](#user-content-table-of-requests)
 
 Fra og med inntektsår 2022 er det mulig å etterspørre eventuelle ubesvarte utvidede veiledninger som del av dette API'et, som kan sees i response-spesifikasjonen over. 
 
@@ -246,7 +247,7 @@ Eksempel (inneholder linjeskift for lesbarhet):
     MC0yMVQwNjozMjowNi45OTMwMzlaPC9vcHByZXR0ZXREYXRvPgogIDwvc2thdHRlbWVsZGluZ09w
     cHJldHRldD4KPC9za2F0dGVtZWxkaW5nPg==<content>
 
-## Hent Skattemelding (basert på type)  <a name="hentType"></a>
+## Hent Skattemelding (basert på type)  <a name="hentType"></a> [[back up]](#user-content-table-of-requests)
 
 API som returnerer siste gjeldende skattemeldingen av gitt type for skattepliktige for gitt inntektsår. Følgende type
 skattemeldinger er støttet:
@@ -269,13 +270,13 @@ skattemeldinger er støttet:
 **Respons** :
 
 - Iht.
-  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
+  XSD: [skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd)
 - Eksempel
-  XML: [skattemeldingerognaeringsopplysninger_response.xml](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/documentation/test/eksempler/skattemeldingerognaeringsopplysninger_response.xml)
+  XML: skattemeldingerognaeringsopplysninger_response.xml (ikke noe eksempel)
 
 For nærmere beskrivelse av felt i XSDen eller hvordan man henter ut utvidede veiledninger, se forrige kapittel.
 
-## Valider skattemelding <a name="valider"></a>
+## Valider skattemelding <a name="valider"></a> [[back up]](#user-content-table-of-requests)
 
 Tjenesten validerer innholdet i en skattemelding og returnerer en respons med eventuelle feil, avvik og advarsler.
 Tjenesten vil foreta følgende:
@@ -299,8 +300,8 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 
 **Body** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2.xsd)
-- Eksempel XML: [personligSkattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/2021/personligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2.xsd)
+- Eksempel XML: [personligSkattemeldingOgNaeringsspesifikasjonRequest.xml](/src/resources/eksempler/2021/personligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
 
 skattemeldingOgNaeringsspesifikasjonRequest:
 - dokumenter
@@ -319,8 +320,8 @@ skattemeldingOgNaeringsspesifikasjonRequest:
 
 **Respons** :
 
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonresponse_v2.xsd](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
-- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](../../src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonresponse_v2.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd)
+- Eksempel XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](/src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
 skattemeldingOgNaeringsspesifikasjonResponse:
 
@@ -331,7 +332,7 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - Content – serialisert dokumentinnhold
 - avvikEtterBeregning – konvolutt for avvik funnet etter beregning
   - avvik – complex type
-    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
+    - avvikstype – [kodeliste](/src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
       - OBS! manglerSkattemelding kan henvise til følgende dokumenttyper : skattemelding, skattemeldingUpersonlig og selskapsmelding 
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
@@ -340,7 +341,7 @@ skattemeldingOgNaeringsspesifikasjonResponse:
     - sti – stien til elementet som har avvik
 - avvikVedValidering – konvolutt for avvik funnet ved validering
   - avvik – complex type
-    - avvikstype – [kodeliste](../../src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
+    - avvikstype – [kodeliste](/src/resources/kodeliste/2021/2021_avvikskodeVedValidertMedFeil.xml)
     - forekomstidentifikator – identifikator av felt i skattemeldingen
     - mottattVerdi – verdien som ble sendt inn
     - beregnetVerdi – verdien som ble beregnet
@@ -359,7 +360,7 @@ Informasjon om hvilke felter som er låst er ikke med i de eksterne modellene, m
 Dette skyldes at en forekomst som har blitt låst har blitt endret eller slettet.
 
 
-## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument <a name="validerTest"></a>
+## Valider skattemeldingen uten dokumentreferanseTilGjeldendeDokument <a name="validerTest"></a> [[back up]](#user-content-table-of-requests)
 
 Hvis dere har behov for å gjøre beregninger før Skatteetaten har publisert utkast for et inntektsår, kan dere kalle denne tjenesten.
 Den er helt lik som valideringstjenesten, men krever ikke `dokumentreferanseTilGjeldendeDokument`.
@@ -379,10 +380,10 @@ Denne tjenesten skal ikke brukes for validering for innsending, da vi har en del
 **Body** 
 Likt som valider ovenfor
 
-## Lagre skattemelding midlertidig for visning <a name="midlertidigVisning"></a>
+## Lagre skattemelding midlertidig for visning <a name="midlertidigVisning"></a> [[back up]](#user-content-table-of-requests)
 Hvis dere har behov for å vise skattemeldingen i visningsklienten, kan den lastet opp via dette endepunktet. Skattemeldingen vil bli lagret i 24 timer for visning via URLen som returneres i responsen.
 
-### Enkeltpersonsforetak
+### Enkeltpersonsforetak <a name="lagret-skattemelding-for-visning-personlig"></a> [[back up]](#user-content-table-of-requests)
 **URL** : `POST https://<env>/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
 
 **Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning`
@@ -403,7 +404,7 @@ Likt som valider ovenfor
 ```
 - `<id>: Unik identifikator på midlertidig lagret skattemelding`
 
-### Selskap
+### Selskap <a name="lagret-skattemelding-for-visning-upersonlig"></a> [[back up]](#user-content-table-of-requests)
 **URL** : `POST https://<env>/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>`
 
 **Eksempel URL** : `POST https://idporten.api.skatteetaten.no/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/910236490`
@@ -425,7 +426,7 @@ Likt som valider ovenfor
 ```
 - `<id>: Unik identifikator på midlertidig lagret skattemelding`
 
-## Hent vedlegg <a name="hentVedlegg"></a>
+## Hent vedlegg <a name="hentVedlegg"></a> [[back up]](#user-content-table-of-requests)
 
 Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, enten fastsatt i gjeldende/nyeste skattemelding eller fra tidligere fastsettinger.
 
@@ -452,7 +453,7 @@ Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners 
 
 Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer.xlsx)
 
-### Søk
+### Søk <a name="eiendomSoek"></a> [[back up]](#user-content-table-of-requests)
 
 Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
 
@@ -540,7 +541,7 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 
 - `sergEiendomsidentifikator: eiendomsidentifkator som skal benyttes for å hente eiendom og formuesinformajon.`
 
-### Hent formuesgrunnlag <a name="hentFormuesgrunnlag"></a>
+### Hent formuesgrunnlag <a name="hentFormuesgrunnlag"></a> [[back up]](#user-content-table-of-requests)
 
 Hent formuesgrunnlag for valgt unik eiendomsidentifikator og inntektsår.
 
@@ -629,7 +630,7 @@ Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektså
 - `formuesspesifikasjonFor*: innholder eiendommens formuesspesifikasjon og gjeldende skatteyters andel av formuesverdi. Detaljer som xxxx er med hvis skatteyter er eier av eiendommen. * Kan ha følgende verdier: Bolig, Flerboligbygning, SkalIkkeFastsettes, Tomt, SelveidFritidseiendom, AnnenFastEiendomInnenforInntektsgivendeAktivitet, AnnenFastEiendomUtenforInntektsgivendeAktivitet.`
 - `ukjentEiendomINorge: hvis vi ikke støtter denne eiendomstypen.`
 
-### Beregn markedsverdi for bolig <a name="markedsverdiBolig"></a>
+### Beregn markedsverdi for bolig <a name="markedsverdiBolig"></a> [[back up]](#user-content-table-of-requests)
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
@@ -795,7 +796,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - `dokumentertMarkedsverdi: dokumentert markedsverdi når denne er innefor reglene slik at den er hensynstatt.`
 - `justertMarkedsverdi: justert markedsverdi er med når dokumentert markedsverdi er hensynstatt.`
 
-### Beregn markedsverdi for flerbolig <a name="markedsverdiFlerbolig"></a>
+### Beregn markedsverdi for flerbolig <a name="markedsverdiFlerbolig"></a> [[back up]](#user-content-table-of-requests)
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
@@ -1044,7 +1045,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
-### Beregn utleieverdi for ikke-utleid næringseiendom <a name="markedsverdiIkkeUtiledNaeringseiendom"></a>
+### Beregn utleieverdi for ikke-utleid næringseiendom <a name="markedsverdiIkkeUtiledNaeringseiendom"></a> [[back up]](#user-content-table-of-requests)
 
 BeregnetUtleieverdi er basert på næringssjablong fra SSB hvor næringstype, areal, bystatus, sentralitet og skatteleggingsperiode inngår i beregningen.
 
@@ -1162,7 +1163,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 - EIENDOM-051: <Ulike mangler på input>.
 - EIENDOM-999: Noe gikk galt. Forespørselen kunne ikke fullføres.
 
-## Forløpig avregning <a name="avregning"></a>
+## Forløpig avregning <a name="avregning"></a> [[back up]](#user-content-table-of-requests)
 Tjenesten avregning er en tjeneste som mottar fødselsnummer og beregnet skatt og retunerer avregning. Denne tjenesten vil IKKE ta høyde for eventuelte tidligere skatteoppgjør for aktuelt inntektsår. Dvs at hvis skattyter har et skatteoppgjør og fått utbetalt tilgode, og skal gjøre en endring så vil denne tjenesten avregne som om det var første skatteoppgjør
 
 *URL** : `POST https://<env>/api/skattemelding/v2/avregning/avregn/{inntektsaar}/{identifikator}`
@@ -1211,7 +1212,7 @@ responsen er json med disse feltene. Spørsmålstegn indikerer at feltet ikke er
 - fastsattKildeskattPaaLoenn: Long?,
 - refusjonAvKildeskattPaaLoenn: Long?
 
-## Forhåndsfastsetting <a name="Forhandsfastsetting"></a>
+## Forhåndsfastsetting <a name="Forhandsfastsetting"></a> [[back up]](#user-content-table-of-requests)
 Det er mulig å be om forhåndsfastsetting for upersonlige skattemelding før ordinær fastsettingsperioden starter.
 For eksempel, så skal et selskap kunne få forhåndsfastsetting i mars i 2023. Da skal skattemeldingen for 2022 og 2023 leveres.
 
@@ -1255,7 +1256,7 @@ For næringspesifikasjonen
 </dokument>
 ```
 
-### Klargjør part for forhåndsfastsetting: <a name="klargjoer-part-for-forhaandsfastsetting"></a> 
+### Klargjør part for forhåndsfastsetting: <a name="klargjoer-part-for-forhaandsfastsetting"></a> [[back up]](#user-content-table-of-requests) 
 Dette kallet skal kjøres for å klargjøre en part for forhåndsfastsetting 
 dersom skattemeldingen ikke er klar på forhåndsfastsettingtidspunktet
 
@@ -1309,7 +1310,7 @@ Andre feiltilstander
 }
 ```
 
-# Klargjør part som mangler utkast <a name="klargjoer-part-som-mangler-utkast"></a>
+# Klargjør part som mangler utkast <a name="klargjoer-part-som-mangler-utkast"></a> [[back up]](#user-content-table-of-requests)
 Dersom dere har en organsiasjon som av eller annen årsak mangler utkast (får feilmelding http 403, skattemelding ikke tilgjenglig) for et aktivt inntektsår, så kan dere bruke dette API'et for for å klargjøre parten.
 Det API'et støttes kun for enhetstyper som skal levere skattemelding upersonlig. 
 
@@ -1425,7 +1426,7 @@ https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/app-api/instances/#
 
 ### Oppdater skjema-metadata til instansen (Kun hvis alternativ 2 benyttes ved opprettelse av instans)
 
-_Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten.
+_Dette erstatter "Oppdater skjema-metadata (skattemeldinv_V1.xml) til instansen" fra v1-piloten._
 
 Neste trinn er å laste opp meta-data om skattemeldingen. Meta-data skal være en json tilsvarende eksempelet under. 
 
@@ -1456,7 +1457,7 @@ Opplasting av vedlegg utføres etter instansopprettelse og før innsending av sk
 
 Ved opplasting av vedlegg må denne prosedyren følges:
 1. Last opp vedlegg til instans
-2. Oppdater skattemelding.xml med vedleggsreferanse(er) iht. XSD: [skattemelding_v9_kompakt_ekstern.xsd](../../src/resources/xsd). 
+2. Oppdater skattemelding.xml med vedleggsreferanse(er) iht. XSD: [skattemelding_v9_kompakt_ekstern.xsd](/src/resources/xsd). 
    - Ved oppdatering av skattemelding med referanser til vedlegg trengs en vedleggsId. Denne vedleggsId-en finner man i 
     responsen til kallet for opplasting av vedlegg. 
 
@@ -1486,8 +1487,8 @@ Forklaring av attributter til vedlegg-seksjonen i skattemelding.xml
 - vedleggsfil/opprinneligFilnavn: Filnavnet som filen hadde da vedlegget ble lastet opp.
 - vedleggsfil/opprinneligFiltype: Filtypen som filen hadde da vedlegget ble lastet opp.  (jpg, pdf, osv.)
 - vedleggsfil/filensOpprinneligDatoOgTid: Tidspunkt for når vedlegget ble lastet opp
-- vedleggstype/vedleggskategori: Vedleggstype som velges ut fra en kodeliste.  [2021_vedleggskategori.xml](../../src/resources/kodeliste/2021/2021_vedleggskategori.xml)
-- informasjonselementidentifikator: Sti som bekriver hvilket felt vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom. Stien bygges opp av skattemeldingsdokumentets xml-struktur. Eksempel: "/skattemelding/bankLaanOgForsikring/konto/paaloepteRenter/beloepUtenHensynTilValgtPrioritertFradragstype/beloep/beloepIValuta/beloep" Se fullstendig eksempel: ../../src/resources/eksempler/v2/personligSkattemeldingV9EksempelFeltvedlegg.xml
+- vedleggstype/vedleggskategori: Vedleggstype som velges ut fra en kodeliste.  [2021_vedleggskategori.xml](/src/resources/kodeliste/2021/2021_vedleggskategori.xml)
+- informasjonselementidentifikator: Sti som bekriver hvilket felt vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom. Stien bygges opp av skattemeldingsdokumentets xml-struktur. Eksempel: "/skattemelding/bankLaanOgForsikring/konto/paaloepteRenter/beloepUtenHensynTilValgtPrioritertFradragstype/beloep/beloepIValuta/beloep" Se fullstendig eksempel: [personligSkattemeldingV9EksempelFeltvedlegg.xml](/src/resources/eksempler/2021/personligSkattemeldingV9EksempelFeltvedlegg.xml)
 - forekomstidentifikator: Forekomstid til feltet som vedlegget tilhører. Hvis vedlegget ikke skal tilhøre et felt, skal denne være tom.
 - utvekslingsarkividentifikator: Dette er nøkkelen til dokumentet i Skatteetatens arkiv. Nøkkelen skal ikke fylles ut av SBS.
 
@@ -1506,8 +1507,8 @@ Plukk ut _id_ fra responsen til "Opprett en instans i Altinn"-kallet og bruk det
 
 **Body :** `data-binary '../skattemelding.xml'.`
 Innholdet i filen skattemelding.xml skal være på format:
-- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](../../src/resources/xsd)
-- Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml](../../src/resources/eksempler/2021)
+- Iht. XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](/src/resources/xsd)
+- Eksempel XML: [skattemeldingOgNaeringsspesifikasjonRequest.xml](/src/resources/eksempler/2021)
 
 Merk at det er samme format som benyttes ved kall til valideringstjensten.
 
