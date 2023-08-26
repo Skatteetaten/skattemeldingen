@@ -210,6 +210,7 @@
       <xsd:element minOccurs="0" name="ytelseFraAksjonaerDeltakerEllerNaerstaaende" type="YtelseMellomAksjonaerDeltakerEllerNaerstaaendeOgSelskapEllerSelskapetsDatterselskap" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="loeyveForDrosjeOgGodstransport" type="LoeyveForDrosjeOgGodstransport" />
       <xsd:element minOccurs="0" name="omsetningOgEtterbetalingISamvirkeforetak" type="OmsetningOgEtterbetalingISamvirkeforetak"/>
+      <xsd:element minOccurs="0" name="uttakAvEiendelEllerForpliktelseFraNorskOmraade" type="UttakAvEiendelEllerForpliktelseFraNorskOmraade"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
@@ -829,6 +830,15 @@
       <xsd:element minOccurs="0" name="andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak" skatt:erAvledet="true" type="ProsentMedInnkapsling"/>
       <xsd:element minOccurs="0" name="etterbetalingTilMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="etterbetalingTilMedlemIAnnetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UttakAvEiendelEllerForpliktelseFraNorskOmraade">
+    <xsd:sequence>
+      <xsd:element name="uttakSkyldesOpphoerAvNokus" type="BoolskMedInnkapsling"/>
+      <xsd:element name="kreverKreditfradrag" type="BoolskMedInnkapsling"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvEiendelEllerForpliktelse" type="SpesifikasjonAvEiendelEllerForpliktelse"/>
+      <xsd:element minOccurs="0" name="samletGevinstVedUttakAvEiendelEllerForpliktelseFraNorskOmraade" type="BeloepMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="samletTapVedUttakAvEiendelEllerForpliktelseFraNorskOmraade" type="BeloepMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkogOgToemmerkonto">
@@ -1500,6 +1510,15 @@
   <xsd:simpleType name="Bransje" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_bransjetype.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
+  <xsd:complexType name="SpesifikasjonAvEiendelEllerForpliktelse">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="eiendelEllerForpliktelseHarTidligereVaertTattUtAvNorskBeskatningsomraade" type="BoolskMedInnkapsling"/>
+      <xsd:element name="eiendelstype" type="EiendelstypeVedUttakFraNorskOmraadeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="saldogruppeForFysiskAnleggsmiddel" type="SaldogruppeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="utstedendeSelskapVedRealisasjonAvTidligereUttattFinansiellEiendel" type="Selskap"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="Skogfond">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
@@ -1696,6 +1715,18 @@
     </xsd:annotation>
     <xsd:restriction base="Heltall" />
   </xsd:simpleType>
+  <xsd:complexType name="EiendelstypeVedUttakFraNorskOmraadeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="eiendelstypeVedUttakFraNorskOmraade" type="EiendelstypeVedUttakFraNorskOmraade"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Selskap">
+    <xsd:sequence>
+      <xsd:element name="navn" type="Organisasjonsnavn"/>
+      <xsd:element minOccurs="0" name="identifikator" type="Identifikator"/>
+      <xsd:element minOccurs="0" name="landkode" type="Landkode"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="KontotypeSomOmfattesAvOvergangsregelForAvsetningerKnyttetTilRisikoprodukterOgRisikoutjevningsfond" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_kontotypeSomOmfattesAvOvergangsregelForAvsetningerKnyttetTilRisikoprodukterOgRisikoutjevningsfond.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -1724,9 +1755,32 @@
       <xsd:element name="beloep" type="DesimaltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="EiendelstypeVedUttakFraNorskOmraade" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_eiendelstypeVedUttakFraNorskOmraade.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Organisasjonsnavn">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Identifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Landkode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e112-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:annotation>
+      <xsd:documentation>koder for land etter ISO 3166-1 Alpha-2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="([A-Z]){2}"/>
+      <xsd:length value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:complexType name="LeveringsvilkaartypeVedOljesalgMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="leveringsvilkaartype" type="LeveringsvilkaartypeVedOljesalg"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrganisasjonsnavnMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="organisasjonsnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnavn"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="LeveringsvilkaartypeVedOljesalg" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_leveringsvilkaartypeVedOljesalg.xml">
