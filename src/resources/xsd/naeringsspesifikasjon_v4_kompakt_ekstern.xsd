@@ -380,8 +380,7 @@
       <xsd:element minOccurs="0" name="gevinstOverfoertTilGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="tapOverfoertTilGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="gjelderVirksomhetPaaSokkel" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="gjelderVannkraftverk" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="naaverdiAvFremtidigeUtskiftningskostnaderForVannkraftverk" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="spesifikasjonAvOrdinaertAnleggsmiddelIKraftverk" type="SpesifikasjonAvOrdinaertAnleggsmiddelIKraftverk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="IkkeAvskrivbartAnleggsmiddel">
@@ -1048,6 +1047,17 @@
       <xsd:element name="dato" type="Dato" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvOrdinaertAnleggsmiddelIKraftverk">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="gjelderVannkraftverk" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="kraftverketsLoepenummer" type="HeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="gjenstaaendeLevetid" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsFriinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="naaverdiAvFremtidigeUtskiftningskostnaderForVannkraftverk" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="konsumprisindeksjustertInvesteringskostnad" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="investeringskostnadErDirekteUtgiftsfoertIGrunnrenteinntekt" type="BoolskMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="SaldogruppeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="saldogruppe" type="Saldogruppe" />
@@ -1087,6 +1097,7 @@
       <xsd:element name="anskaffelsesEllerPaakostningsidentifikator" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="anskaffelsesEllerPaakostningsdato" type="DatoMedInnkapsling" />
       <xsd:element minOccurs="0" name="avskrivningstid" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="gjenstaaendeLevetid" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="historiskKostpris" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="gjenanskaffelsesverdiFoer1Januar1997" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1096,6 +1107,7 @@
       <xsd:element minOccurs="0" name="konsumprisindeksjustertInvesteringskostnad" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="naaverdiAvFremtidigeUtskiftningskostnader" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aaretsFriinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="investeringskostnadErDirekteUtgiftsfoertIGrunnrenteinntekt" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GevinstOgTapskontoPerSaerskiltAnleggsmiddelIKraftverk">
