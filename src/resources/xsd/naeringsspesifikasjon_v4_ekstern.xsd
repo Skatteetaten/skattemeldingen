@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-09-21T10:49:27.848+0200" name="generertDato" />
+      <xsd:attribute fixed="2023-09-27T13:45:35.022+0200" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v4" name="modellnavn" />
@@ -1454,7 +1454,7 @@
   <xsd:simpleType name="Virksomhetstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_virksomhetstype.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="RegeltypeForAarsregnskap" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_regeltypeForAarsregnskap">
+  <xsd:simpleType name="RegeltypeForAarsregnskap" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_regeltypeForAarsregnskap.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="Navn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940">
@@ -1883,8 +1883,8 @@
         </xsd:annotation>
       </xsd:element>
       <xsd:element minOccurs="0" name="oevrigAarsproduksjon" type="SalgsinntektFraKraftLevert" />
-      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="driftsstoetteTilProduksjonAvNyVannkraft" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="inntektFraUtstedtElsertifikat" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="opprinnelsesgaranti" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1898,8 +1898,8 @@
       <xsd:element minOccurs="0" name="konsesjonsavgift" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="eiendomsskatt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="investeringskostnadKnyttetTilKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper">
         <xsd:annotation>
           <xsd:documentation>jf. skatteloven § 18-3 tredje ledd a nr. 5</xsd:documentation>
