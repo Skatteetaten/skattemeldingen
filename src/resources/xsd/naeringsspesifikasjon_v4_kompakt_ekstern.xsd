@@ -1110,6 +1110,7 @@
       <xsd:element minOccurs="0" name="naaverdiAvFremtidigeUtskiftningskostnader" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aaretsFriinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="investeringskostnadErDirekteUtgiftsfoertIGrunnrenteinntekt" type="BoolskMedInnkapsling" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kommune" type="Kommune" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GevinstOgTapskontoPerSaerskiltAnleggsmiddelIKraftverk">
@@ -1584,6 +1585,12 @@
   <xsd:simpleType name="Biltype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_biltype.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
+  <xsd:complexType name="Kommune">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="kommunenummer" type="KommunenummerMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="AnleggsmiddeltypeForSaerskiltAnleggsmiddelIKraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_anleggsmiddeltypeForSaerskiltAnleggsmiddelIKraftverk.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -1693,8 +1700,8 @@
       <xsd:element minOccurs="0" name="kraftTattUtIhtKonsesjon" type="SalgsinntektFraKraftLevert" />
       <xsd:element minOccurs="0" name="kraftForbruktIEgenProduksjonsvirksomhet" type="SalgsinntektFraKraftLevert" />
       <xsd:element minOccurs="0" name="oevrigAarsproduksjon" type="SalgsinntektFraKraftLevert" />
-      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="driftsstoetteTilProduksjonAvNyVannkraft" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="inntektFraUtstedtElsertifikat" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="opprinnelsesgaranti" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1708,8 +1715,8 @@
       <xsd:element minOccurs="0" name="konsesjonsavgift" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="eiendomsskatt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="investeringskostnadKnyttetTilKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
