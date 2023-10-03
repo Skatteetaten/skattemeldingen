@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-09-14T15:43:02.233+0200" name="generertDato" />
+      <xsd:attribute fixed="2023-09-20T12:20:08.207+0200" name="generertDato" />
       <xsd:attribute fixed="v3" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v3" name="modellnavn" />
@@ -198,7 +198,7 @@
   <xsd:complexType name="Kraftverk">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="samletEiendomsskattegrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletNaturressursskatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletGrunnlagForNaturressursskatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" name="spesifikasjonPerKraftverk" type="SpesifikasjonPerKraftverk" />
       <xsd:element minOccurs="0" name="samordnetGrunnrenteinntekt" type="SamordnetGrunnrenteinntekt" />
       <xsd:element minOccurs="0" name="ubenyttetSkattefradragForNaturressursskattTidligereAar" type="UbenyttetSkattefradragForNaturressursskattTidligereAar" />
@@ -771,12 +771,13 @@
       <xsd:element name="loepenummer" type="HeltallMedInnkapsling" />
       <xsd:element name="kraftverketsNavn" type="TekstMedInnkapsling" />
       <xsd:element name="samletPaastempletMerkeytelseIKva" type="AntallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="grunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fordelingsnoekkel" type="DesimaltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fordeltPositivGrunnrenteinntektEtterSamordning" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="restAvFremfoerbarNegativGrunnrenteinntektFraFoer2007" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="eiendomsskattegrunnlag" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="positivGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="negativGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fordelingsnoekkel" skatt:erAvledet="true" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fordeltPositivGrunnrenteinntektEtterSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="restAvFremfoerbarNegativGrunnrenteinntektFraFoer2007" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskatt" type="GrunnlagForNaturressursskatt" />
+      <xsd:element minOccurs="0" name="eiendomsskattegrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SamordnetGrunnrenteinntekt">
