@@ -2,7 +2,7 @@
   <tekniskNavn>2024_satserIFastsettingAvFormuesOgInntektsskatt</tekniskNavn>
   <beskrivelse>
     <spraakTekst>
-      <tekst>Kodeliste over satser som benyttes i fastsetting av skattegrunnlag for formues- og inntektsskatt</tekst>
+      <tekst>Kodeliste over satser som benyttes i fastsetting av skattegrunnlag for formues- og inntektsskatt.</tekst>
       <spraak>no</spraak>
     </spraakTekst>
   </beskrivelse>
@@ -2754,6 +2754,231 @@
       <satstype>trygdeavgiftssats</satstype>
       <kildereferanse>Lov om skatt til Svalbard (Svalbardskatteloven) § 3-1 og Svalbardmeldingen kapittel 3.</kildereferanse>
       <beregning>Skatt på Svalbard</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>anleggsmiddelOgToemmerkonto</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Grenseverdi</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <grenseverdiTo>0</grenseverdiTo>
+      <satsIntervallFraGrenseverdiEnTilTo>0-100</satsIntervallFraGrenseverdiEnTilTo>
+      <satsIntervallFraOgMedGrenseverdiToTilTre>100-100</satsIntervallFraOgMedGrenseverdiToTilTre>
+      <satsIntervallTilOgMedGrenseverdiEn>0-20</satsIntervallTilOgMedGrenseverdiEn>
+      <grenseverdiEn>-15000</grenseverdiEn>
+      <satsIntervallFraOgMedGrenseverdiTre>20-100</satsIntervallFraOgMedGrenseverdiTre>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §14-40</kildereferanse>
+      <beregning>Anleggsmidler</beregning>
+      <grenseverdiTre>15000</grenseverdiTre>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>petroleum.satsForFriinntektPaaOvergangsreglene</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for beregning av friinntekt innen petroleum</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>4.06</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skattlegging av undersjøiske petroleumsforekomster mv. (petroleumsskatteloven) § 3b</kildereferanse>
+      <beregning>Friinntekt innen petroleum</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>petroleum.satsForFriinntekt</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for beregning av friinntekt innen petroleum</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>12,4</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skattlegging av undersjøiske petroleumsforekomster mv. (petroleumsskatteloven) § 11</kildereferanse>
+      <beregning>Friinntekt innen petroleum</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>petroleum.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Andel av underskudd til fremføring på land som er fremførart mot sokkel</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>50</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Petroleumsskatteloven § 3 c, 2. ledd</kildereferanse>
+      <beregning>Andel av underskudd på land som kan føres mot sokkel</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>vannkraft.kapitaliseringsrente</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for kapitaliseringsrente for beregning av nåverdi av fremtidige utskiftningskonstnader</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>4.5</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>FSFIN § 18-8-4</kildereferanse>
+      <beregning>Nåverdi av fremtidige utskiftningskonstnader</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>vannkraft.normrenteForFriinntekt</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Normrente for beregning av friinntekt for vannkraftverk</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>1.7</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-3, 3. ledd, bokstav b og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
+      <beregning>Friinntekt innen vannkraft</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>vannkraft.normrenteForFremfoerbarNegativGrunnrenteinntektFraFoer2007</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Normrente for beregning av rente på fremførbar negativ grunnrenteinntekt fra før 2007</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>1.9</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-3, 4. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
+      <beregning>Renter på fremførbar negativ grunnrenteinntekt fra før 2007</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>vannkraft.satsForMinimumsverdiEiendomsskattegrunnlag</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for minimumsverdi som benyttes i eiendomsskattegrunnlaget for vannkraftverk</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>faktor</satsenhet>
+      <satsverdi>0.95</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Eiendomsskatteloven § 8 B-1, 4. ledd</kildereferanse>
+      <beregning>Eiendomsskattegrunnlag for vannkraft</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>vannkraft.satsForMaksimumsverdiEiendomsskattegrunnlag</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for maksimumsverdi som benyttes i eiendomsskattegrunnlaget for vannkraftverk</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>faktor</satsenhet>
+      <satsverdi>2.74</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Eiendomsskatteloven § 8 B-1, 4. ledd</kildereferanse>
+      <beregning>Eiendomsskattegrunnlag for vannkraft</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rederi.tonnasjeskattNivaaEn</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>sats for beregning av tonnasjeskatt for nettotonnasje 0-1000</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>0,90</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-1</kildereferanse>
+      <beregning>Tonnasjeskatt</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rederi.tonnasjeskattNivaaTo</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>sats for beregning av tonnasjeskatt for nettotonnasje 1001-10000</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>18</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-2</kildereferanse>
+      <beregning>Tonnasjeskatt</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rederi.tonnasjeskattNivaaTre</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>sats for beregning av tonnasjeskatt for nettotonnasje 10001-25000</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>12</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-3</kildereferanse>
+      <beregning>Tonnasjeskatt</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rederi.tonnasjeskattNivaaFire</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>sats for beregning av tonnasjeskatt for nettotonnasje over 25000</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>6</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-4</kildereferanse>
+      <beregning>Tonnasjeskatt</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
   </kode>
