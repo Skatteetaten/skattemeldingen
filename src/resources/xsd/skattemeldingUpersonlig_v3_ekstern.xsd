@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-09-21T11:38:26.741+0200" name="generertDato" />
+      <xsd:attribute fixed="2023-09-27T12:57:11.459+0200" name="generertDato" />
       <xsd:attribute fixed="v3" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v3" name="modellnavn" />
@@ -768,16 +768,17 @@
   <xsd:complexType name="SpesifikasjonPerKraftverk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="loepenummer" type="HeltallMedInnkapsling" />
-      <xsd:element name="kraftverketsNavn" type="TekstMedInnkapsling" />
-      <xsd:element name="samletPaastempletMerkeytelseIKva" type="AntallMedInnkapsling" />
+      <xsd:element name="loepenummer" type="HeltallMedInnkapsling" skatt:erAvledet="true" />
+      <xsd:element name="kraftverketsNavn" type="TekstMedInnkapsling" skatt:erAvledet="true" />
+      <xsd:element name="samletPaastempletMerkeytelseIKva" type="AntallMedInnkapsling" skatt:erAvledet="true" />
       <xsd:element minOccurs="0" name="positivGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="negativGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fordelingsnoekkel" skatt:erAvledet="true" type="DesimaltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fordeltPositivGrunnrenteinntektEtterSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="restAvFremfoerbarNegativGrunnrenteinntektFraFoer2007" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskatt" type="GrunnlagForNaturressursskatt" />
       <xsd:element minOccurs="0" name="eiendomsskattegrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskattPerKommune" skatt:erAvledet="true" type="GrunnlagForNaturressursskattPerKommune" />
+      <xsd:element minOccurs="0" name="grunnlagForNaturressursskatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SamordnetGrunnrenteinntekt">
@@ -1408,7 +1409,7 @@
       <xsd:element name="beloep" type="BeloepIValuta" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="GrunnlagForNaturressursskatt">
+  <xsd:complexType name="GrunnlagForNaturressursskattPerKommune">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="kommunenummer" type="KommunenummerMedInnkapsling" />
