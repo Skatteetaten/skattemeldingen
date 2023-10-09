@@ -68,18 +68,26 @@ def opprett_ny_instans(header: dict, fnr: str, appnavn: str = "skd/formueinntekt
     r.raise_for_status()
     return r.json()
 
-def opprett_ny_instans_med_inntektsaar(header: dict, inntektsaar: str, testmiljoe: str, fnr: str = None, orgnr=None,
+def opprett_ny_instans_med_inntektsaar(header: dict,
+                                       inntektsaar: str,
+                                       testmiljoe: str = None,
+                                       fnr: str = None,
+                                       orgnr=None,
                                        appnavn: str = "skd/formueinntekt-skattemelding-v2") -> dict:
     payload = oppret_instans_payload(fnr, orgnr, appnavn, inntektsaar, testmiljoe)
 
     url = f"{ALTINN_URL}/{appnavn}/instances/"
     r = requests.post(url, headers=header, json=payload, verify=False)
+
     r.raise_for_status()
     return r.json()
 
 
-def opprett_ny_instans_med_inntektsaar_og_revisorsBekreftelse(header: dict, inntektsaar: str, testmiljoe: str = None,
-                                                              fnr: str = None, orgnr=None,
+def opprett_ny_instans_med_inntektsaar_og_revisorsBekreftelse(header: dict,
+                                                              inntektsaar: str,
+                                                              testmiljoe: str = None,
+                                                              fnr: str = None,
+                                                              orgnr=None,
                                                               appnavn: str = "skd/formueinntekt-skattemelding-v2") -> dict:
     payload = oppret_instans_payload(fnr, orgnr, appnavn, inntektsaar, testmiljoe, skalBekreftesAvRevisor=True)
     url = f"{ALTINN_URL}/{appnavn}/instances/"
@@ -88,7 +96,9 @@ def opprett_ny_instans_med_inntektsaar_og_revisorsBekreftelse(header: dict, innt
     return r.json()
 
 
-def last_opp_metadata(instans_data: dict, token: dict, xml: str = None,
+def last_opp_metadata(instans_data: dict,
+                      token: dict,
+                      xml: str = None,
                       appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
 
     id = instans_data['id']
@@ -101,7 +111,9 @@ def last_opp_metadata(instans_data: dict, token: dict, xml: str = None,
     return r
 
 
-def last_opp_metadata_json(instans_data: dict, token: dict, inntektsaar: int = 2021,
+def last_opp_metadata_json(instans_data: dict,
+                           token: dict,
+                           inntektsaar: int = 2021,
                            appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
     id = instans_data['id']
     data_id = instans_data['data'][0]['id']
@@ -114,7 +126,9 @@ def last_opp_metadata_json(instans_data: dict, token: dict, inntektsaar: int = 2
     return r
 
 
-def last_opp_skattedata(instans_data: dict, token: dict, xml: str,
+def last_opp_skattedata(instans_data: dict,
+                        token: dict,
+                        xml: str,
                         data_type: str = "skattemelding",
                         appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
     url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}/data?dataType={data_type}"
@@ -125,7 +139,10 @@ def last_opp_skattedata(instans_data: dict, token: dict, xml: str,
     return r
 
 
-def last_opp_vedlegg(instans_data: dict, token: dict, vedlegg_fil, content_type: str,
+def last_opp_vedlegg(instans_data: dict,
+                     token: dict,
+                     vedlegg_fil: str,
+                     content_type: str,
                      data_type="skattemelding-vedlegg",
                      appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
     url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}/data?dataType={data_type}"
@@ -141,7 +158,9 @@ def last_opp_vedlegg(instans_data: dict, token: dict, vedlegg_fil, content_type:
     return r
 
 
-def endre_prosess_status(instans_data: dict, token: dict, neste_status: str,
+def endre_prosess_status(instans_data: dict,
+                         token: dict,
+                         neste_status: str,
                          appnavn: str = "skd/formueinntekt-skattemelding-v2") -> str:
     if neste_status not in ["start", "next", "completeProcess"]:
         raise NotImplementedError
@@ -152,7 +171,9 @@ def endre_prosess_status(instans_data: dict, token: dict, neste_status: str,
     return r.text
 
 
-def hent_instans(instans_data: dict, token: dict, appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
+def hent_instans(instans_data: dict,
+                 token: dict,
+                 appnavn: str = "skd/formueinntekt-skattemelding-v2") -> requests:
     url = f"{ALTINN_URL}/{appnavn}/instances/{instans_data['id']}"
     r = requests.get(url, headers=token, verify=False)
     r.raise_for_status()
