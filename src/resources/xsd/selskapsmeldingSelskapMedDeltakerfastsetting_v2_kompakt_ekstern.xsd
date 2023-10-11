@@ -1419,7 +1419,7 @@
       <xsd:element minOccurs="0" name="reduksjon" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="skattepliktigUtbytteFoerSkjermingsfradrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="skattepliktigUtbytte" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="ubenyttetSkjermingsfradragTilFremfoering" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="ubenyttetSkjermingsfradragTilFremfoering" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ForholdKnyttetTilKommandittistOgStilleDeltaker">
