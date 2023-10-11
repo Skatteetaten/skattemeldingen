@@ -2,7 +2,7 @@
 <xsd:schema xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingognaeringsspesifikasjon:forespoersel:response:v2" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="no:skatteetaten:fastsetting:formueinntekt:skattemeldingognaeringsspesifikasjon:forespoersel:response:v2">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-10-13T12:08:11.679+0200" name="generertDato" />
+      <xsd:attribute fixed="2023-09-26T11:46:27.419+0200" name="generertDato" />
       <xsd:attribute fixed="v2" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="v2" name="modellnavn" />
@@ -18,6 +18,7 @@
   <xsd:complexType name="SkattemeldingOgNaeringsspesifikasjonforespoerselResponse">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="dokumenter" type="Dokumenter" />
+      <xsd:element minOccurs="0" name="laasteFelt" type="LaasteFelt" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Dokumenter">
@@ -27,12 +28,26 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="utvidetVeiledningdokument" type="Dokument" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="LaasteFelt">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="laastFeltSkattemelding" type="LaastFelt" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="laastFeltNaeringsspesifikasjon" type="LaastFelt" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="Dokument">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="encoding" type="Encodingtype" />
       <xsd:element name="content" type="Base64Binaer" />
       <xsd:element minOccurs="0" name="navneromVedForhaandsfastsetting" type="Tekst" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LaastFelt">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="forekomstidentifikator" type="Tekst" />
+      <xsd:element minOccurs="0" name="verdi" type="Tekst" />
+      <xsd:element minOccurs="0" name="sti" type="Tekst" />
+      <xsd:element minOccurs="0" name="oevrigInformasjon" type="Tekst" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Skattemeldingdokument">
