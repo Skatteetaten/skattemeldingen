@@ -1023,6 +1023,7 @@
       <xsd:element minOccurs="0" name="markedsverdiVedKonserninterntErvervAvAndel" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="skattemessigVerdiVedKonserninterntErvervAvAndel" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="grunnlagForAaretsInntektsfoering" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="satsForInntektsfoering" type="ProsentMedInnkapsling"/>
       <xsd:element minOccurs="0" name="inntektsfoeringAvGevinstkonto" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="harErvervetAndelISdfEllerAksjeINokusFraBeslektetSelskapUtenforRederiskatteordning" type="BoolskMedInnkapsling" />
@@ -1699,7 +1700,7 @@
       <xsd:element minOccurs="0" name="skipstype" type="SkipstypeKnyttetTilRederiskatteordning" />
       <xsd:element minOccurs="0" name="beskrivelseAvSkipstype" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="skipsstatus" type="SkipsstatusKnyttetTilRederiskatteordning" />
-      <xsd:element minOccurs="0" name="nettotonnasje" type="AntallMedInnkapsling" />
+      <xsd:element name="nettotonnasje" type="AntallMedInnkapsling" />
       <xsd:element name="antallDager" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="miljoereduksjon" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tonnasjeskatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
