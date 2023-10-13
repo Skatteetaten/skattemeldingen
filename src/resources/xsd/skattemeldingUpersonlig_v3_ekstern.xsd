@@ -957,7 +957,7 @@
   </xsd:complexType>
   <xsd:complexType name="InntektstilleggForHoeyEgenkapital">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="samletEiendelVedInngangenTilInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletEiendelVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletEiendelVedUtgangenAvInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fradragForBokfoertVerdiAvAndelAksjeISdfBokfoertEtterKostmetodenOgAksjeIRederibeskattetAksjeselskapVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fradragForBokfoertVerdiAvAndelAksjeISdfBokfoertEtterKostmetodenOgAksjeIRederibeskattetAksjeselskapVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
@@ -980,12 +980,12 @@
   </xsd:complexType>
   <xsd:complexType name="ValutatapValutagevinstOgRentefradrag">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="andelFinansaktivaFraUnderliggendeSelskapVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelFinansaktivaFraUnderliggendeSelskapVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelFinansaktivaFraUnderliggendeSelskapVedInngangenTilInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelFinansaktivaFraUnderliggendeSelskapVedUtgangenAvInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andreFinansaktivaFraEgetSelskapVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andreFinansaktivaFraEgetSelskapVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletFinansaktivaISelskapetVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletFinansaktivaISelskapetVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletFinansaktivaISelskapetVedInngangenTilInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletFinansaktivaISelskapetVedUtgangenAvInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gjennomsnittligFinansaktiva" skatt:erAvledet="true" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="faktiskRentekostnad" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fradragsberettigetRentekostnad" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
