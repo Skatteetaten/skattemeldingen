@@ -962,10 +962,27 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettLangtransport</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Overskudd diett langtransportsjåfør - overskuddsberegning / egenfastsetting (DIETT_LANGTR og DIETT_LANGTR_UTL)</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok/dag</satsenhet>
+      <satsverdi>300</satsverdi>
+      <satstype>dagsats</satstype>
+      <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
+      <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettLangtransportUtland</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Overskudd diett langtransportsjåfør i utlandet - overskuddsberegning / egenfastsetting (DIETT_LANGTR_UTL)</tekst>
+        <tekst>Overskudd diett langtransportsjåfør - overskuddsberegning / egenfastsetting (DIETT_LANGTR og DIETT_LANGTR_UTL)</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
@@ -2798,6 +2815,23 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>petroleum.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Andel av underskudd til fremføring på land som er fremførart mot sokkel</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>50</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Petroleumsskatteloven § 3 c, 2. ledd</kildereferanse>
+      <beregning>Andel av underskudd på land som kan føres mot sokkel</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>vannkraft.kapitaliseringsrente</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -2857,7 +2891,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>prosent</satsenhet>
+      <satsenhet>faktor</satsenhet>
       <satsverdi>0.95</satsverdi>
       <satstype>sats</satstype>
       <kildereferanse>Eiendomsskatteloven § 8 B-1, 4. ledd</kildereferanse>
@@ -2874,12 +2908,80 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>prosent</satsenhet>
+      <satsenhet>faktor</satsenhet>
       <satsverdi>2.74</satsverdi>
       <satstype>sats</satstype>
       <kildereferanse>Eiendomsskatteloven § 8 B-1, 4. ledd</kildereferanse>
       <beregning>Eiendomsskattegrunnlag for vannkraft</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rederi.tonnasjeskattNivaaEn</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>sats for beregning av tonnasjeskatt for nettotonnasje 0-1000</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>0,90</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-1</kildereferanse>
+      <beregning>Tonnasjeskatt</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rederi.tonnasjeskattNivaaTo</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>sats for beregning av tonnasjeskatt for nettotonnasje 1001-10000</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>18</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-2</kildereferanse>
+      <beregning>Tonnasjeskatt</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rederi.tonnasjeskattNivaaTre</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>sats for beregning av tonnasjeskatt for nettotonnasje 10001-25000</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>12</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-3</kildereferanse>
+      <beregning>Tonnasjeskatt</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rederi.tonnasjeskattNivaaFire</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>sats for beregning av tonnasjeskatt for nettotonnasje over 25000</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>6</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-4</kildereferanse>
+      <beregning>Tonnasjeskatt</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
   </kode>
   <lokaltForvaltet>true</lokaltForvaltet>

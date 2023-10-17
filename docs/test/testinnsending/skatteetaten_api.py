@@ -6,7 +6,10 @@ import base64
 import webbrowser
 import random
 import time
+import datetime
 import json
+import os
+import re
 
 from urllib.parse import urlparse, parse_qs, quote
 from base64 import urlsafe_b64encode, urlsafe_b64decode
@@ -18,13 +21,20 @@ import xmltodict
 import requests
 from jose import jwt
 
-CLIENT_ID = '8d7adad7-b497-40d0-8897-9a9d86c95306'
-AUTH_DOMAIN = 'oidc-ver2.difi.no/idporten-oidc-provider'
+CLIENT_ID = 'cfe28bad-c77c-40e2-9c54-a1c658f4478b'
+AUTH_DOMAIN = 'test.idporten.no'
 ALGORITHMS = ["RS256"]
+VERIFY_SSL = True
 
+if not VERIFY_SSL:
+    requests.packages.urllib3.disable_warnings()
 
-def valider(payload, inntektsår=2022, s: requests.Session() = None, tin: str = "", idporten_header: dict = dict):
-    url_valider = f'https://idporten-api-sbstest.sits.no/api/skattemelding/v2/valider/{inntektsår}/{tin}'
+def valider(payload, inntektsår=2022,
+            s: requests.Session() = None,
+            tin: str = "",
+            idporten_header: dict = dict,
+            base_url: str = "idporten-api-sbstest.sits.no"):
+    url_valider = f'https://{base_url}/api/skattemelding/v2/valider/{inntektsår}/{tin}'
     header = dict(idporten_header)
     header["Content-Type"] = "application/xml"
     return s.post(url_valider, headers=header, data=payload)
@@ -40,8 +50,7 @@ def print_request_as_curl(r):
     print(command.format(method=method, headers=headers, data=data, uri=uri))
 
 
-# En enkel webserver som venter på callback fra browseren, og lagrer
-# unna callback-urlen.
+# En enkel webserver som venter på callback fra browseren, og lagrer unna callback-urlen.
 class BrowserRedirectHandler(BaseHTTPRequestHandler):
     timeout = 1000
     result = None
@@ -110,45 +119,50 @@ def skattemelding_visning(instans_data: dict,
     return url_visning
 
 
-def main_relay(**kwargs) -> dict:
-    # disabled - idporten fails to register 127.0.0.1 and dynamic port numbers for now
-    # # Bind to port 0, let the OS find an available port
-    # server = HTTPServer(('127.0.0.1', 0), BrowserRedirectHandler)
+def get_access_token(**kwargs) -> dict:
+    if "verbose" in kwargs:
+        verbose = kwargs["verbose"]
+    else:
+        verbose = False
 
     # Get the jwks from idporten (for token verification later)
-    u = requests.get('https://{}/.well-known/openid-configuration'.format(AUTH_DOMAIN)).json()["jwks_uri"]
-    jwks = requests.get(u).json()
+    url_auth = requests.get('https://{}/.well-known/openid-configuration'.format(AUTH_DOMAIN), verify=VERIFY_SSL).json()["jwks_uri"].replace("\\", "")
+    jwks = requests.get(url_auth, verify=VERIFY_SSL).json()
 
     server = HTTPServer(('127.0.0.1', 12345), BrowserRedirectHandler)
     port = server.server_address[1]
     assert 0 < port < 65536
 
-    client_id = CLIENT_ID
+    # /authorize endpoint
+    # https://docs.digdir.no/docs/idporten/oidc/oidc_protocol_authorize.html
+    # State and PKCE is requiered
+    code_verifier = base64.urlsafe_b64encode(os.urandom(64)).decode('utf-8')
+    code_verifier = re.sub('[^a-zA-Z0-9]+', '', code_verifier)
 
-    # Public clients need state parameter and PKCE challenge
-    # https://difi.github.io/felleslosninger/oidc_auth_spa.html
-    # https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-00
+    code_challenge = sha256(code_verifier.encode('utf-8')).digest()
+    code_challenge = base64.urlsafe_b64encode(code_challenge).decode('utf-8')
+    code_challenge = code_challenge.replace('=', '')
 
     state = urlsafe_b64encode(random_bytes(16)).decode().rstrip("=")
-    pkce_secret = urlsafe_b64encode(random_bytes(32)).decode().rstrip("=").encode()
-    pkce_challenge = urlsafe_b64encode(sha256(pkce_secret).digest()).decode()
     nonce = "{}".format(int(time.time() * 1e6))
 
-    u = 'https://{}/authorize'.format(AUTH_DOMAIN) + \
-        quote(('?scope=skatteetaten:formueinntekt/skattemelding openid'
-               '&acr_values=Level3'
-               '&client_id={}'
-               '&redirect_uri=http://localhost:{}/token'
-               '&response_type=code'
-               '&state={}'
-               '&nonce={}'
-               '&code_challenge={}'
-               '&code_challenge_method=S256'
-               '&ui_locales=nb'.format(client_id, port, state, nonce, pkce_challenge)), safe='?&=_')
-    print(u)
+    quory_params = '?response_type=code' \
+                   +f'&client_id={CLIENT_ID}' \
+                   +f'&redirect_uri=http://localhost:{port}/token' \
+                   +'&scope=skatteetaten:formueinntekt/skattemelding openid' \
+                   +f'&state={state}' \
+                   +f'&nonce={nonce}' \
+                   +'&acr_values=idporten-loa-high' \
+                   +'&ui_locales=nb'\
+                   +f'&code_challenge={code_challenge}' \
+                   +'&code_challenge_method=S256'
+
+    url_auth = 'https://login.{}/authorize'.format(AUTH_DOMAIN) + quote((quory_params), safe='?&=_')
+    if verbose:
+        print(url_auth)
 
     # Open web browser to get ID-porten authorization token
-    webbrowser.open(u, new=0, autoraise=True)
+    webbrowser.open(url_auth, new=0, autoraise=True)
 
     # Wait for callback from ID-porten
     while not hasattr(BrowserRedirectHandler.result, 'path'):
@@ -157,62 +171,71 @@ def main_relay(**kwargs) -> dict:
     # Free the port, no more callbacks expected
     server.server_close()
 
-    print("Authorization token received")
-    # result.path is now something like
-    # "/token?code=_Acl-x8H83rjhjhdefeefeef_xlbi_6TqauJV1Aiu_Q&state=oxw06LrtiyyWb7uj7umRSQ%3D%3D"
-    # We must verify that state is identical to what we sent - https://tools.ietf.org/html/rfc7636
-    qs = parse_qs(urlparse(BrowserRedirectHandler.result.path).query)
-    print(qs)
-    assert len(qs['state']) == 1 and qs['state'][0] == state
+    auth_token_json = parse_qs(urlparse(BrowserRedirectHandler.result.path).query)
+    if verbose:
+        print("Authorization token received")
+        print(auth_token_json)
+
+    assert len(auth_token_json['state']) == 1 and auth_token_json['state'][0] == state
 
     # Use the authorization code to get access and id token from /token
-    payload = {'grant_type': 'authorization_code',
-               'code_verifier': pkce_secret,
-               'code': qs['code'][0],
+    # https://docs.digdir.no/docs/idporten/oidc/oidc_protocol_token.html
+    payload = {
+               'client_id': CLIENT_ID,
+               'grant_type': 'authorization_code',
+               'code': auth_token_json['code'][0],
                'redirect_uri': 'http://localhost:{}/token'.format(port),
-               'client_id': client_id}
-    headers = {'Accept': 'application/json'}
-    r = requests.post('https://{}/token'.format(AUTH_DOMAIN), headers=headers, data=payload)
+               'code_verifier': code_verifier,
+    }
+    headers = {'Accept': 'application/json', "Content-type": "application/x-www-form-urlencoded"}
 
-    if not r:
-        print(r.headers, r.text)
-        r.raise_for_status()
-    js = r.json()
-    assert js['token_type'] == 'Bearer'
-    print("JS : ")
-    print(js)
+    response_token = requests.post('https://{}/token'.format(AUTH_DOMAIN), headers=headers, data=payload, verify=VERIFY_SSL)
+
+    if not response_token:
+        print(response_token, response_token.headers)
+        print(response_token.text)
+        response_token.raise_for_status()
+
+    token_json = response_token.json()
+    assert token_json['token_type'] == 'Bearer'
 
     # Validate tokens according to https://tools.ietf.org/html/rfc7519#section-7.2
     # A list of 3rd party libraries for various languages on https://jwt.io/
     # python possibilites: pyjwt, python-jose, jwcrypto, authlib
     # We use python-jose here:
     jwt.decode(
-        js['id_token'],
+        token_json['id_token'],
         jwks,
         algorithms=ALGORITHMS,
-        issuer="https://" + AUTH_DOMAIN + "/",
-        audience=client_id,
-        access_token=js['access_token']
+        issuer="https://" + AUTH_DOMAIN,
+        audience=CLIENT_ID,
+        access_token=token_json['access_token']
     )
-    id_encoded = js['id_token'].split(".")[1]
+    id_encoded = token_json['id_token'].split(".")[1]
     id_token = json.loads(urlsafe_b64decode(id_encoded + "==").decode())
     assert id_token['nonce'] == nonce
 
     # Also validate the access token separately, this is what we have to pass
     # on to our APIs
     jwt.decode(
-        js['access_token'],
+        token_json['access_token'],
         jwks,
         algorithms=ALGORITHMS,
-        issuer="https://" + AUTH_DOMAIN + "/"
+        issuer="https://" + AUTH_DOMAIN
     )
-    at_encoded = js['access_token'].split(".", 3)[1]
+    at_encoded = token_json['access_token'].split(".", 3)[1]
     access_token = json.loads(urlsafe_b64decode(at_encoded + "==").decode())
-    assert access_token['client_id'] == client_id
-    assert access_token['token_type'] == "Bearer"
+    assert access_token['client_id'] == CLIENT_ID
 
-    print("The token is good, expires in {} seconds".format(access_token['exp'] - int(time.time())))
-    print("\nBearer {}".format(js['access_token']))
+    exp_time = datetime.datetime.fromtimestamp(access_token['exp']).strftime("%H:%M:%S")
+    exp_secs = access_token['exp'] - int(time.time())
+    print(f"The token is good, expires at {exp_time} ({exp_secs} seconds from now)")
+    if verbose:
+        print("\nBearer {}".format(token_json['access_token']))
 
-    header = {'Authorization': 'Bearer ' + js['access_token']}
+    header = {'Authorization': 'Bearer ' + token_json['access_token']}
     return header
+
+
+if __name__ == "__main__":
+    get_access_token() #Test fnr: 14888999060
