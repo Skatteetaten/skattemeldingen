@@ -870,7 +870,7 @@
   <xsd:complexType name="UnderskuddTilFremfoeringINokus">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="fremfoertUnderskuddFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fremfoerbartUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
@@ -885,16 +885,16 @@
   </xsd:complexType>
   <xsd:complexType name="AjourholdAvInngangsverdiOgSkjermingsgrunnlagINokus">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="kostprisOgAnskaffelseskostnader" type="BeloepSomHeltallMedEierandel" />
-      <xsd:element minOccurs="0" name="kostprisPaaRealiserteAndeler" type="BeloepSomHeltallMedEierandel" />
-      <xsd:element minOccurs="0" name="ervervAvNyeAndelerIInntektsaaret" type="BeloepSomHeltallMedEierandel" />
+      <xsd:element minOccurs="0" name="kostprisOgAnskaffelseskostnader" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="kostprisPaaRealiserteAndeler" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="ervervAvNyeAndelerIInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tilfoertKapitalUtenOekningAvEierandel" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="ikkeSkattepliktigTilbakebetaltKapital" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletKostpris" skatt:erAvledet="true" type="BeloepSomHeltallMedEierandel" />
-      <xsd:element minOccurs="0" name="akkumulertRiskForUpersonligDeltaker" type="BeloepSomHeltallMedEierandel" />
+      <xsd:element minOccurs="0" name="samletKostpris" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="akkumulertRiskForUpersonligDeltaker" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="aaretsRiskForUpersonligDeltaker" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletRiskForUpersonligDeltaker" skatt:erAvledet="true" type="BeloepSomHeltallMedEierandel" />
-      <xsd:element minOccurs="0" name="ubenyttetSkjermingsfradragTilFremfoering" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletRiskForUpersonligDeltaker" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="ubenyttetSkjermingsfradragTilFremfoering" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkattefradragForKildeskattPaaRenteRoyaltyMv">
@@ -1463,12 +1463,6 @@
   <xsd:complexType name="OverdragelsestypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="overdragelsestype" type="Overdragelsestype" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="BeloepSomHeltallMedEierandel">
-    <xsd:sequence>
-      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="eierandel" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Formuesobjekttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_formuesobjekttypeUpersonligSkattepliktig.xml">
