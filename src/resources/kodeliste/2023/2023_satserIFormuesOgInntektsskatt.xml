@@ -2985,6 +2985,22 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>normrente.rederi</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Normrente for beregning av inntektstillegg for høy egenkapital i rederiskatteordningen</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-15, 7. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-15-1</kildereferanse>
+      <beregning>Inntektstillegg for høy egenkapital</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>havbruk.skattesatsGrunnrenteinntekt</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -3002,19 +3018,34 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>normrente.rederi</tekniskNavn>
+    <tekniskNavn>havbruk.satsForVerdsettelseAvOmsetningsverdiForAkvakulturtillatelse</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Normrente for beregning av inntektstillegg for høy egenkapital i rederiskatteordningen</tekst>
+        <tekst>Sats for verdsetting av omsetningsverdi knyttet til akvakulturtillatelser i havbruksvirksomhet</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>3.2</satsverdi>
+      <satsverdi>25</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-15, 7. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-15-1</kildereferanse>
-      <beregning>Inntektstillegg for høy egenkapital</beregning>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 4-17, 3. ledd</kildereferanse>
+      <beregning>Verdsetting av omsetningsverdi for akvakulturtillatelser</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>havbruk.maksimaltBunnfradrag</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maksimalbeløp for bunnfradrag i havbruksvirksomhet</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>70000000</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 19-8, jf  Stortingets skattevedtak § 3-4 A annet punktum</kildereferanse>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
   </kode>

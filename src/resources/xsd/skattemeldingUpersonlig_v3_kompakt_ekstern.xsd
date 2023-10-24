@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-10-12T08:52:48.131+0200" name="generertDato" />
+      <xsd:attribute fixed="2023-10-19T08:05:43.970+0200" name="generertDato" />
       <xsd:attribute fixed="v3" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v3" name="modellnavn" />
@@ -104,6 +104,7 @@
       <xsd:element minOccurs="0" name="samletGjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="nettoformue" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="forholdKnyttetTilFormuesbeskatning" type="ForholdKnyttetTilFormuesbeskatning" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="akvakulturtillatelseSomFormuesobjekt" type="AkvakulturtillatelseSomFormuesobjekt" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DokumentOpprettet">
@@ -480,6 +481,17 @@
       <xsd:element minOccurs="0" name="skattefriFormueIUtlandet" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="bokfoertVerdiAvSkattefriFormueIUtlandet" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="formueFritattForFormuesskattSomFoelgeAvBasisbevilgningFraStaten" type="BeloepSomHeltallMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AkvakulturtillatelseSomFormuesobjekt">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="akvakulturtillatelsesnummer" type="HeltallMedInnkapsling" />
+      <xsd:element name="omsetningsverdi" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element name="verdiFoerEventuellVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="formuesverdi" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="verdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="andelAvSamletGjeldKnyttetTilAkvakulturtillatelse" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Tekst">
@@ -1740,7 +1752,7 @@
       <xsd:element minOccurs="0" name="avgittGrunnrenteinntekt" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="maksimaltTillattBiomasse" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvMaksimalTillattBiomasse" type="ProsentMedInnkapsling" />
-      <xsd:element minOccurs="0" name="bunnfradrag" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="bunnfradrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="egenProduksjonsavgift" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="mottattProduksjonsavgift" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="avgittProduksjonsavgift" type="BeloepSomHeltallMedInnkapsling" />

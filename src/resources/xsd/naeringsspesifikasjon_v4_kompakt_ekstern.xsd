@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-10-04T14:04:03.394+0200" name="generertDato" />
+      <xsd:attribute fixed="2023-10-18T14:41:02.084+0200" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v4" name="modellnavn" />
@@ -372,7 +372,7 @@
       <xsd:element minOccurs="0" name="tapOverfoertTilGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="gjelderVirksomhetPaaSokkel" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="spesifikasjonAvOrdinaertAnleggsmiddelIKraftverk" type="SpesifikasjonAvOrdinaertAnleggsmiddelIKraftverk" />
-      <xsd:element minOccurs="0" name="gjelderHavbruksvirksomhet" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet" type="SpesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="IkkeAvskrivbartAnleggsmiddel">
@@ -1072,6 +1072,13 @@
       <xsd:element minOccurs="0" name="investeringskostnadErDirekteUtgiftsfoertIGrunnrenteinntekt" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="gjelderHavbruksvirksomhet" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="investeringskostnadErDirekteUtgiftsfoertIGrunnrenteinntekt" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erAnskaffetFraNaerstaaende" type="BoolskMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="SaldogruppeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="saldogruppe" type="Saldogruppe" />
@@ -1615,8 +1622,8 @@
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvInntektOgFradragFraDeltakersAndelISelskapMedDeltakerfastsetting">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="alminneligInntekt" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="underskudd" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="andelAvPositivGrunnrenteinntekt" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteinntekt" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="RealisasjonEllerOpphoerAvGrunnrentepliktigHavbruksvirksomhet">
@@ -1852,7 +1859,7 @@
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvLevendeFisk">
     <xsd:sequence>
-      <xsd:element name="id" type="TekstMedInnkapsling" />
+      <xsd:element name="id" type="Tekst" />
       <xsd:element name="salgsinntektstype" type="SalgsinntektstypeVedSalgsinntektFraLevendeFiskMedInnkapsling" />
       <xsd:element minOccurs="0" name="salgsinntektFraLevendeFisk" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="beskrivelse" type="TekstMedInnkapsling" />
