@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-10-19T08:05:43.970+0200" name="generertDato" />
+      <xsd:attribute fixed="2023-10-26T15:10:20.125+0200" name="generertDato" />
       <xsd:attribute fixed="v3" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v3" name="modellnavn" />
@@ -471,7 +471,6 @@
   <xsd:complexType name="Gjeld">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="annenGjeld" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="gjeldKnyttetTilAkvakulturtillatelse" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ForholdKnyttetTilFormuesbeskatning">
@@ -1241,6 +1240,11 @@
       <xsd:element name="formuesobjekttype" type="Formuesobjekttype" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="HeltallMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="heltall" type="Heltall" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Uri">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
@@ -1615,11 +1619,6 @@
       <xsd:element minOccurs="0" name="negativEffektPaaEgenkapital" type="BeloepIValuta" />
       <xsd:element minOccurs="0" name="positivEffektPaaBalansesum" type="BeloepIValuta" />
       <xsd:element minOccurs="0" name="negativEffektPaaBalansesum" type="BeloepIValuta" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="HeltallMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="heltall" type="Heltall" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="PeriodePerDatoMedInnkapsling">
