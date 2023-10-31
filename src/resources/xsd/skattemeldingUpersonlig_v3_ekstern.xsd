@@ -677,18 +677,18 @@
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="totalRentekostnad" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="garantiprovisjonForGjeld" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="totalRenteinntekt" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletGevinstVedRealisasjonAvOverEllerUnderkursobligasjon" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletTapVedRealisasjonAvOverEllerUnderkursobligasjon" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletGevinstVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletTapVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="totalRentekostnad" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="garantiprovisjonForGjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="totalRenteinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletGevinstVedRealisasjonAvOverEllerUnderkursobligasjon" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletTapVedRealisasjonAvOverEllerUnderkursobligasjon" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletGevinstVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletTapVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="nettoRentekostnad" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="filialensRentekostnadOgGarantiprovisjonTilAnnenNaerstaaendePart" type="FilialensPaaloepteRenterOgGarantiprovisjonTilNaerstaaendePartMv" />
-      <xsd:element minOccurs="0" name="filialensRentekostnadOgGarantiprovisjonTilSelskapMvISammeIKonsern" type="FilialensPaaloepteRenterOgGarantiprovisjonTilNaerstaaendePartMv" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gevinstVedRealisasjonAvSammensattMengdeGjeldsbrevEllerFordringSomIkkeSkalDekomponeres" type="GevinstVedRealisasjonAvSammensattMengdeGjeldsbrevEllerFordringSomIkkeSkalDekomponeres" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="tapVedRealisasjonAvSammensattMengdeGjeldsbrevEllerFordringSomIkkeSkalDekomponeres" type="TapVedRealisasjonAvSammensattMengdeGjeldsbrevEllerFordringSomIkkeSkalDekomponeres" />
+      <xsd:element minOccurs="0" name="filialensRentekostnadOgGarantiprovisjonTilAnnenNaerstaaendePart" type="FilialensRentekostnadOgGarantiprovisjonTilNaerstaaendePartMv" />
+      <xsd:element minOccurs="0" name="filialensRentekostnadOgGarantiprovisjonTilSelskapMvISammeIKonsern" type="FilialensRentekostnadOgGarantiprovisjonTilNaerstaaendePartMv" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gevinstVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres" type="GevinstVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="tapVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres" type="TapVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="gevinstVedRealisasjonAvOverEllerUnderkursobligasjon" type="GevinstVedRealisasjonAvOverEllerUnderkursobligasjon" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="tapVedRealisasjonAvOverEllerUnderkursobligasjon" type="TapVedRealisasjonAvOverEllerUnderkursobligasjon" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="rentekostnadTilGarantiprovisjon" type="RentekostnadTilGarantiprovisjon" />
@@ -1501,9 +1501,8 @@
   <xsd:simpleType name="Forhaandsfastsettingsformattype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/forhaandsfastsettingsformattype.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:complexType name="FilialensPaaloepteRenterOgGarantiprovisjonTilNaerstaaendePartMv">
+  <xsd:complexType name="FilialensRentekostnadOgGarantiprovisjonTilNaerstaaendePartMv">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="samletGjeldVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletGjeldVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletGjeldTilNaerstaaendeVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
@@ -1512,7 +1511,7 @@
       <xsd:element minOccurs="0" name="andelAvRentekostnad" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="GevinstVedRealisasjonAvSammensattMengdeGjeldsbrevEllerFordringSomIkkeSkalDekomponeres">
+  <xsd:complexType name="GevinstVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="naerstaaendePart" type="Selskap" />
@@ -1520,7 +1519,7 @@
       <xsd:element minOccurs="0" name="renteinntektMottattFraAnnenNaerstaaendePart" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="TapVedRealisasjonAvSammensattMengdeGjeldsbrevEllerFordringSomIkkeSkalDekomponeres">
+  <xsd:complexType name="TapVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeres">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="naerstaaendePart" type="Selskap" />
