@@ -212,7 +212,7 @@
   <xsd:complexType name="Kraftverk">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="samletEiendomsskattegrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletGrunnlagForNaturressursskatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletGrunnlagForNaturressursskatt" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" name="spesifikasjonPerKraftverk" type="SpesifikasjonPerKraftverk" />
       <xsd:element minOccurs="0" name="samordnetGrunnrenteinntekt" type="SamordnetGrunnrenteinntekt" />
       <xsd:element minOccurs="0" name="ubenyttetSkattefradragForNaturressursskattTidligereAar" type="UbenyttetSkattefradragForNaturressursskattTidligereAar" />
@@ -929,7 +929,7 @@
       <xsd:element minOccurs="0" name="restAvFremfoerbarNegativGrunnrenteinntektFraFoer2007" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="eiendomsskattegrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskattPerKommune" skatt:erAvledet="true" type="GrunnlagForNaturressursskattPerKommune" />
-      <xsd:element minOccurs="0" name="grunnlagForNaturressursskatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="grunnlagForNaturressursskatt" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SamordnetGrunnrenteinntekt">
