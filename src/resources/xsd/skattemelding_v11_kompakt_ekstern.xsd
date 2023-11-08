@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-09-28T13:17:17.237+0200" name="generertDato" />
+      <xsd:attribute fixed="2023-11-01T14:43:09.961+0100" name="generertDato" />
       <xsd:attribute fixed="11.0" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v11" name="modellnavn" />
@@ -20,7 +20,6 @@
       <xsd:element name="partsreferanse" type="Tekst" />
       <xsd:element name="inntektsaar" type="Aarstall" />
       <xsd:element minOccurs="0" name="gjelderKunGrensegjenger" type="Boolsk" />
-      <xsd:element minOccurs="0" name="tidsperiode" type="Periode" />
       <xsd:element minOccurs="0" name="bankLaanOgForsikring" type="BankLaanOgForsikring" />
       <xsd:element minOccurs="0" name="boligOgEiendeler" type="BoligOgEiendeler" />
       <xsd:element minOccurs="0" name="arbeidTrygdOgPensjon" type="ArbeidTrygdOgPensjon" />
@@ -60,12 +59,6 @@
   <xsd:simpleType name="Boolsk">
     <xsd:restriction base="xsd:boolean" />
   </xsd:simpleType>
-  <xsd:complexType name="Periode">
-    <xsd:sequence>
-      <xsd:element name="start" type="DatoKlokkeslett" />
-      <xsd:element minOccurs="0" name="slutt" type="DatoKlokkeslett" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="BankLaanOgForsikring">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="forsikring" type="Forsikring" />
@@ -1624,7 +1617,7 @@
       <xsd:element minOccurs="0" name="erSamarbeidsprosjektMellomFlereVirksomheter" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="beskrivelseAvSamarbeidMellomFlereVirksomheter" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="annenOffentligStoette" type="AnnenOffentligStoette" />
-      <xsd:element minOccurs="0" name="prosjektSkalBekreftesAvRevisor" type="Boolsk" />
+      <xsd:element name="prosjektSkalBekreftesAvRevisor" type="Boolsk" />
       <xsd:element minOccurs="0" name="samletKostnadSomIkkeInngaarIGrunnlagForSkattefradrag" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samledeKostnaderIHeleProsjektperioden" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="maksimalGodkjentOffentligStoetteSomAndelAvTotalkostnad" skatt:erAvledet="true" type="ProsentMedInnkapsling" />
@@ -2967,6 +2960,7 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="id" type="Tekst" />
       <xsd:element name="beloep" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="negativtInnberettetBeloep" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="antall" type="DesimaltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="overskuddAvUtgiftsgodtgjoerelse" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
       <xsd:element name="behandlingsart" type="BehandlingsartMedInnkapsling" />
@@ -3038,7 +3032,7 @@
       <xsd:element name="startdatoForPendlerbolig" type="DatoMedInnkapsling" />
       <xsd:element minOccurs="0" name="sluttdatoForPendlerbolig" type="DatoMedInnkapsling" />
       <xsd:element minOccurs="0" name="borHerVedUtgangenAvInntektsaaret" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="antallOvernattingsdoegn" type="AntallMedInnkapsling" />
+      <xsd:element name="antallOvernattingsdoegn" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="dokumenterteKostnaderTilLosji" type="BeloepIValutaMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="kostnaderTilLeieAvCampingplass" type="BeloepIValutaMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="valgtBeregningsmetodeVedMerkostnadForKost" type="BeregningsmetodeForMerkostnadForKost" />
