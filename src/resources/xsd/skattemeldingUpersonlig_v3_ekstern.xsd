@@ -209,7 +209,8 @@
   <xsd:complexType name="Havbruksvirksomhet">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="beregnetGrunnrenteskatt" type="BeregnetGrunnrenteskatt" />
-      <xsd:element minOccurs="0" name="grunnrenteskattepliktigHavbruksvirksomhetErRealisertEllerOpphoert" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="overdragelseAvHavbruksvirksomhet" type="OverdragelseAvHavbruksvirksomhet" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="utleieSamdriftMv" type="UtleieSamdriftMv" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BegrensningAvRentefradragIKonsernOgMellomNaerstaaende">
@@ -977,6 +978,22 @@
       <xsd:element minOccurs="0" name="justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet" type="JusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="OverdragelseAvHavbruksvirksomhet">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="overdragelsestype" type="OverdragelsestypeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="datoForOverdragelse" type="DatoMedInnkapsling" />
+      <xsd:element minOccurs="0" name="motpartensIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="motpartensNavn" type="OrganisasjonsnavnMedInnkapsling" />
+      <xsd:element minOccurs="0" name="overdragelsenErGjennomfoertMedKontinuitet" type="BoolskMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UtleieSamdriftMv">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="samarbeidsform" type="SamarbeidsformIHavbruksvirksomhetMedInnkapsling" />
+      <xsd:element minOccurs="0" name="motpartensIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Organisasjonsnavn">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
@@ -1536,6 +1553,20 @@
       <xsd:element minOccurs="0" name="avgittProduksjonsavgift" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="OverdragelsestypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="overdragelsestype" type="Overdragelsestype" />
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SamarbeidsformIHavbruksvirksomhetMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="samarbeidsform" type="SamarbeidsformIHavbruksvirksomhet" />
+
+
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="AnnetSelskapIKonsern">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
@@ -2032,6 +2063,12 @@
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="BeskatningsordningForSkipsaksjeselskapSkipsalmennaksjeselskapMv" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_beskatningsordningForSkipsaksjeselskapSkipsalmennaksjeselskapMv.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Overdragelsestype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_overdragelsestype.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="SamarbeidsformIHavbruksvirksomhet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_samarbeidsformIHavbruksvirksomhet.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:complexType name="FilialensRentekostnadOgGarantiprovisjonTilNaerstaaendePartMv">

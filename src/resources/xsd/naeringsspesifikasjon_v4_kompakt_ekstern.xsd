@@ -259,7 +259,7 @@
       <xsd:documentation>nummer for kommune</xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
-      <xsd:element name="kommunenummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f3-9fe1-11e5-a9f8-e4115b280940 " type="Kommunenummer" />
+      <xsd:element name="kommunenummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f3-9fe1-11e5-a9f8-e4115b280940" type="Kommunenummer" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepMedSkattemessigeEgenskaper">
@@ -1769,6 +1769,7 @@
       <xsd:element minOccurs="0" name="annenGrunnrentepliktigInntekt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvSlaktetFisk" type="SpesifikasjonAvSlaktetFisk" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvLevendeFisk" type="SpesifikasjonAvLevendeFisk" />
+      <xsd:element minOccurs="0" name="beskrivelseAvAnnenGrunnrentepliktigInntekt" type="TekstMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvFradragIBruttoGrunnrenteinntektIHavbruksvirksomhet">
@@ -1789,12 +1790,13 @@
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="tapVedUttakAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="annetGrunnrentepliktigFradrag" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="beskrivelseAvAnnetGrunnrentepliktigFradrag" type="TekstMedInnkapsling" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvVederlagForKjoepAvLevendeFisk" type="SpesifikasjonAvVederlagForKjoepAvLevendeFisk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeregnetSelskapsskatt">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="tilbakefoeringAvGevinstPaaInvesteringSomBenyttesIHavbruksvirksomhetSomErDirekteUtgiftsfoert" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="tilbakefoeringAvTapPaaInvesteringSomBenyttesIHavbruksvirksomhetSomErDirekteUtgiftsfoert" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aaretsAvskrivningPaaAnleggsmiddelSomBenyttesIHavbruksvirksomhetSomErDirekteUtgiftsfoert" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aaretsAvskrivningPaaAnleggsmiddelKnyttetTilVannkraftverkSomErDirekteUtgiftsfoert" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="grunnlagForBeregningAvSelskapsskatt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
@@ -2077,9 +2079,17 @@
   <xsd:complexType name="SpesifikasjonAvLevendeFisk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="salgsinntektstype" type="SalgsinntektstypeVedSalgsinntektFraLevendeFiskMedInnkapsling" />
       <xsd:element minOccurs="0" name="salgsinntektFraLevendeFisk" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="beskrivelse" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="motpartensIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="motpartensNavn" type="OrganisasjonsnavnMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvVederlagForKjoepAvLevendeFisk">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="vederlag" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="motpartensIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="motpartensNavn" type="OrganisasjonsnavnMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="KontotypeSomOmfattesAvOvergangsregelForAvsetningerKnyttetTilRisikoprodukterOgRisikoutjevningsfond" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_kontotypeSomOmfattesAvOvergangsregelForAvsetningerKnyttetTilRisikoprodukterOgRisikoutjevningsfond.xml">
@@ -2150,9 +2160,14 @@
       <xsd:element name="fiskeartKnyttetTilHavbruksvirksomhet" type="FiskeartKnyttetTilHavbruksvirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="SalgsinntektstypeVedSalgsinntektFraLevendeFiskMedInnkapsling">
+  <xsd:complexType name="OrganisasjonsnummerMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="salgsinntektstype" type="SalgsinntektstypeVedSalgsinntektFraLevendeFisk" />
+      <xsd:element name="organisasjonsnummer" type="Organisasjonsnummer" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrganisasjonsnavnMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="organisasjonsnavn" type="Organisasjonsnavn" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="LeveringsvilkaartypeVedOljesalgMedInnkapsling">
@@ -2165,20 +2180,7 @@
       <xsd:element name="kontraktstypeForKraftLevertAvVannkraftverk" type="KontraktstypeForKraftLevertAvVannkraftverk" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="OrganisasjonsnavnMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="organisasjonsnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnavn" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="OrganisasjonsnummerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnummer" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="FiskeartKnyttetTilHavbruksvirksomhet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_fiskeartKnyttetTilHavbruksvirksomhet.xml">
-    <xsd:restriction base="xsd:string" />
-  </xsd:simpleType>
-  <xsd:simpleType name="SalgsinntektstypeVedSalgsinntektFraLevendeFisk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_salgsinntektstypeVedSalgsinntektFraLevendeFisk.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="LeveringsvilkaartypeVedOljesalg" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_leveringsvilkaartypeVedOljesalg.xml">
