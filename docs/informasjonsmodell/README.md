@@ -9,28 +9,24 @@ description: "Informasjonsmodeller og kodeverk"
 Skattemeldingen og næringsopplysninger skal leveres som XML-filer. Innhold og format på XML-filene er spesifisert
 gjennom XML Schema Definition, XSD.
 
-For inntektsåret 2021 er det 3 XSD-er som er aktuelle:
+Følgende informasjonsmodeller skal brukes for fastsetting: 
 
 - skattemelding for formues- og inntektsskatt for personlige skattepliktige
 - skattemelding for formues- og inntektsskatt for upersonlige skattepliktige
+- selskapsmeldingen for selskap med deltaker fastsetting (SDF)
 - næringsspesifikasjon
 
 I tillegg kan det bli aktuelt å legge ved en metadatafil med teknisk innhold.
 
-For inntektsårene etter 2021 vil det også komme andre varianter av skattemeldinger for å støtte ulike selskapsformer
-slik at totalsamlingen relevante skattemeldinger blir:
 
 ![Skattemeldingsvarianter.PNG](Skattemeldingsvarianter.PNG)
 
-I utgangspunktet er planen at XSD for næringsspesifikasjon etterhvert skal inneholde alle de forholdene som er aktuelle
-å innrapportere fra næringsdrivende og selskap. Det kan imidlertid bli aktuelt at det legges til noen tilleggs-XSD-er
-for helt spesielle forhold.
 
 # Årsrevisjon
 
 XSD-spesifikasjonene vil gjennomgå en årlig revisjon slik at det normalt kommer en ny versjon av disse per inntektsår.
-Skatteetaten har valgt å ikke ha inntektsåret i filnavnet, men derimot ha et løpende versjonsnummer som er basert på "
-semantisk versjonering".
+Skatteetaten har valgt å ikke ha inntektsåret i filnavnet, men derimot ha et løpende versjonsnummer som er basert på 
+"semantisk versjonering".
 
 ## Semantic Versioning:
 
@@ -42,15 +38,17 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 
 Innenfor et inntektsår kan det forutsettes av det kun kommer MINOR- og PATCH-versjoner.
 
-# XSD Skattemelding for formues- og inntektsskatt for personlige skattepliktige for 2021
+## Kompakt XSD
+Alle XSD-ene kommer i en "kompakt utgave" (se filnavnet). De kompakte utgavene inneholder ikke referanser til begrepskatalogen.
+Siden de ikke inneholder referansen til begrepskatalogen, så vil det være enklere å følge med på funksjonelle endringer fra en versjon til neste ved hjelp av GIT-funksjonalitet.
 
-Versjon 9.0.0 av denne XSD'en
-heter [skattemelding_v9_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemelding_v9_ekstern.xsd)
-og [skattemelding_v9_kompakt_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/skattemelding_v9_kompakt_ekstern.xsd)
 
-# XSD Næringsspesifikasjon for 2021
+# Ekstra beskrivelse for inntektsåret 2021
+Inntektsåret 2021 var et pilotår, og en del feltnavn har endret seg for inntektsåret 2022. 
 
-Versjon 2.0.0 av denne XSD'en
+## XSD Næringsspesifikasjon for 2021
+
+Versjon 2.0.0 av denne XSD-en
 heter [naeringsspesifikasjon_v2_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/naeringsspesifikasjon_v2_ekstern.xsd)
 og [naeringsspesifikasjon_v2_kompakt_ekstern.xsd](https://github.com/Skatteetaten/skattemeldingen/blob/master/src/resources/xsd/naeringsspesifikasjon_v2_kompakt_ekstern.xsd)
 
@@ -63,9 +61,9 @@ Lønnskostnad, AnnenDriftskostnad, Finansinntekt, Finanskostnad, EkstraordinærP
 Anleggsmidler, Omløpsmidler, Langsiktiggjeld, Kortsiktiggjeld og Egenkaptial).
 Alle kodelistene er samlet i en fysisk fil hvor den enkelte kodeliste kalles "underkodeliste".
 
-# XSD Skattemelding for formues- og inntektsskatt for upersonlige skattepliktige for 2021
+## XSD Skattemelding for formues- og inntektsskatt for upersonlige skattepliktige for 2021
 
-En tekstlig beskrivelse av overgangen mellom informasjonselementer i XSD'en og postnummer/OR-id i eksisterende
+En tekstlig beskrivelse av overgangen mellom informasjonselementer i XSD-en og postnummer/OR-id i eksisterende
 RF-skjemaer finnes
 her: [veiledning_fraRFSkjemaTilNæringsspesifikasjon_2021](https://github.com/Skatteetaten/skattemeldingen/blob/master/docs/informasjonsmodell/veiledning_fraRFSkjemaTilN%C3%A6ringsspesifikasjon_2021.xlsx)
 
@@ -73,19 +71,20 @@ her: [veiledning_fraRFSkjemaTilNæringsspesifikasjon_2021](https://github.com/Sk
 
 Valideringstjenesten vil returnere en respons som beskriver avvik og feil. Et eksempel på en slik respons er vist i
 kapittelet om Valideringstjenesten, og XSD for denne tjenesten er beskrevet i seksjonen
-for [API](https://skatteetaten.github.io/skattemeldingen/documentation/api).
+for [API](../api-v2/README.md).
 
 # XSD Tilbakemelding
 
-Etter innsending av skattemelding/næringsopplysninger vil skatteetaten kvittere med en tilbakemeldingsfil i Innboksen i
+
+
+Etter innsending av skattemelding/næringsopplysninger vil skatteetaten kvittere med en [tilbakemeldingsfil](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2.xsd) i Innboksen i
 Altinn som inneholder status og eventuelle avvik.
 
 # Kodelister
 
-En oversikt over kodelistene som er definert så langt finnes
-i [Oversikten over kodelister](https://github.com/Skatteetaten/skattemeldingen/tree/master/src/resources/kodeliste)
+En oversikt over kodelistene som er definert så langt finnes i [katalogen kodeliste](../../src/resources/kodeliste)
 
-# Oversikt over inntektsår og xsd versjoner
+# Oversikt over inntektsår og XSD-versjoner
 
 OBS! Det er egne regler for hvilken versjon en skal bruke når en gjør forhåndsfastsetting! Tabellen nedenfor gjelder kun
 normal fastsetting
@@ -97,19 +96,20 @@ normal fastsetting
 | 2022       | [skattemelding_v10_ekstern.xsd](../../src/resources/xsd/skattemelding_v10_ekstern.xsd) | [skattemeldingUpersonlig_v2_ekstern.xsd](../../src/resources/xsd/skattemeldingUpersonlig_v2_ekstern.xsd) | [selskapsmeldingSelskapMedDeltakerfastsetting_v1_ekstern.xsd](../../src/resources/xsd/selskapsmeldingSelskapMedDeltakerfastsetting_v1_ekstern.xsd) | [naeringsspesifikasjon_v3_ekstern.xsd](../../src/resources/xsd/naeringsspesifikasjon_v3_ekstern.xsd) |  
 | 2023       | [skattemelding_v11_ekstern.xsd](../../src/resources/xsd/skattemelding_v11_ekstern.xsd) | [skattemeldingUpersonlig_v3_ekstern.xsd](../../src/resources/xsd/skattemeldingUpersonlig_v3_ekstern.xsd) | [selskapsmeldingSelskapMedDeltakerfastsetting_v2_ekstern.xsd](../../src/resources/xsd/selskapsmeldingSelskapMedDeltakerfastsetting_v2_ekstern.xsd) | [naeringsspesifikasjon_v4_ekstern.xsd](../../src/resources/xsd/naeringsspesifikasjon_v4_ekstern.xsd) |  
 
-Modeller som kan komme i retur etter beregning. Hvilke modeller som kommer i retur avhenger av om det er personlig eller
-upersonlig skattemelding som har blitt beregnet
 
-| Inntektsår | Bergnet skatt personlig                                                | Beregnet skatt upersonlig                                                                                    | Skatteberegningsgrunnlag                                                                   |
-|:-----------|:-----------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------|
-| 2020       | [beregnet_skatt_v2.xsd](../../src/resources/xsd/beregnet_skatt_v2.xsd) | NA                                                                                                           | [skatteberegningsgrunnlag_v6.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v6.xsd) |
-| 2021       | [beregnet_skatt_v3.xsd](../../src/resources/xsd/beregnet_skatt_v3.xsd) | [beregnetskatt_upersonligskattyter_v2.xsd](../../src/resources/xsd/beregnetskatt_upersonligskattyter_v2.xsd) | [skatteberegningsgrunnlag_v7.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v7.xsd) |
-| 2022       | [beregnet_skatt_v4.xsd](../../src/resources/xsd/beregnet_skatt_v4.xsd) | [beregnetskatt_upersonligskattyter_v4.xsd](../../src/resources/xsd/beregnetskatt_upersonligskattyter_v4.xsd) | [skatteberegningsgrunnlag_v7.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v7.xsd) |
-| 2023       | [beregnet_skatt_v5.xsd](../../src/resources/xsd/beregnet_skatt_v5.xsd) | [beregnetskatt_upersonligskattyter_v4.xsd](../../src/resources/xsd/beregnetskatt_upersonligskattyter_v4.xsd) | [skatteberegningsgrunnlag_v8.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v8.xsd) |
+Modeller som kan komme i retur etter beregning. Hvilke modeller som kommer i retur avhenger av om det er personlig eller
+upersonlig skattemelding som har blitt beregnet.
+
+| Inntektsår | Beregnet skatt personlig                                               | Beregnet skatt upersonlig                                                                                    | Skatteberegningsgrunnlag                                                                   | Summert skattegrunnlag for visning upersonlig                                                                                                    |
+|------------|:-----------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2020       | [beregnet_skatt_v2.xsd](../../src/resources/xsd/beregnet_skatt_v2.xsd) | NA                                                                                                           | [skatteberegningsgrunnlag_v6.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v6.xsd) | NA                                                                                                                                               |
+| 2021       | [beregnet_skatt_v3.xsd](../../src/resources/xsd/beregnet_skatt_v3.xsd) | [beregnetskatt_upersonligskattyter_v2.xsd](../../src/resources/xsd/beregnetskatt_upersonligskattyter_v2.xsd) | [skatteberegningsgrunnlag_v7.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v7.xsd) | [summertSkattegrunnlagForVisning_upersonligskattyter_v1.xsd](../../src/resources/xsd/summertSkattegrunnlagForVisning_upersonligskattyter_v1.xsd) |
+| 2022       | [beregnet_skatt_v4.xsd](../../src/resources/xsd/beregnet_skatt_v4.xsd) | [beregnetskatt_upersonligskattyter_v4.xsd](../../src/resources/xsd/beregnetskatt_upersonligskattyter_v4.xsd) | [skatteberegningsgrunnlag_v7.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v7.xsd) | [summertSkattegrunnlagForVisning_upersonligskattyter_v2.xsd](../../src/resources/xsd/summertSkattegrunnlagForVisning_upersonligskattyter_v2.xsd) | 
+| 2023       | [beregnet_skatt_v5.xsd](../../src/resources/xsd/beregnet_skatt_v5.xsd) | [beregnetskatt_upersonligskattyter_v4.xsd](../../src/resources/xsd/beregnetskatt_upersonligskattyter_v4.xsd) | [skatteberegningsgrunnlag_v8.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v8.xsd) | [summertSkattegrunnlagForVisning_upersonligskattyter_v2.xsd](../../src/resources/xsd/summertSkattegrunnlagForVisning_upersonligskattyter_v2.xsd) |
 
 # Poster, felter og temaer i ny skattemelding for næringsdrivende
 
 Beskrivelse av poster og felter i ny
 skattemelding [ligger på skatteetaten.no](https://www.skatteetaten.no/bedrift-og-organisasjon/skatt/skattemelding-naringsdrivende/ny-skattemelding/poster-felter-og-temaer/)
 Det er også laget
-en [oversikt over hvilke teamer i næringsspesifikasjonen som er aktuell for hver type skattemelding](temaINaeringsspesifikasjonen.md) 
+en [oversikt over hvilke temaer i næringsspesifikasjonen som er aktuell for hver type skattemelding](temaINaeringsspesifikasjonen.md) 

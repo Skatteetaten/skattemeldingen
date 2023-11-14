@@ -55,7 +55,7 @@
                   <artifactId>skattemelding-mapping-resources</artifactId>
                   <version>${skattemelding.mapping.version}</version>
                   <outputDirectory>src/resources/xsd</outputDirectory>
-                  <includes>**/*ekstern.xsd</includes>
+                  <includes>**/*ekstern.xsd,skattemelding-upersonlig/summertSkattegrunnlagForVisning_upersonligskattyter_*.xsd</includes>
                   <fileMappers>
                       <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
                   </fileMappers>
