@@ -1,0 +1,53 @@
+[ {
+  "kontrollnavn" : "AFP_GRAD_UNDER_100",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(KontrollSaksbehandler, ValideringSkattepliktig) {\n        skattemelding utslagFor hvis(\n            (\n                pensjonsinntektFraKollektivPensjonsordning hvorMinstEnForekomst (\n                    pensjonstype erLik \"avtalefestetPensjon\" og (perMaaned hvorMinstEnForekomst (pensjonsgrad erMindreEnn 100))\n                    ) og (\n                    summertSkattegrunnlagForVisning hvorMinstEnForekomst (\n                        samletLoennsinntektMedTrygdeavgiftspliktOgMedTrekkplikt_SKVIS hvor (\n                            summenAv(beloep_SKVIS) erLik 0\n                            )\n                        )\n                    )\n                )\n        ) {\n            betjeningsstrategiSettesTil(\n                myndighetsfastsettingMedVarselOgVedtak,\n                merknadStandard,\n                1,\n                rettighetskontroll\n            )\n        }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadStandard"
+}, {
+  "kontrollnavn" : "ARBEIDSREISE_ANTALL_KM_HØY",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor\n            hvis(arbeidsreise hvor (lengdeAvArbeidsreiseTurRetur erStørreEnnEllerLik 300)) {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1\n                )\n            }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadStandard"
+}, {
+  "kontrollnavn" : "ARBEIDSREISE_ANTALL_KM_LAV",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor hvis(arbeidsreise hvor (lengdeAvArbeidsreiseTurRetur erMindreEnn 5)) {\n            betjeningsstrategiSettesTil(\n                ikke,\n                merknadStandard,\n                1\n            )\n        }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadStandard"
+}, {
+  "kontrollnavn" : "ARBEIDSREISE_KOST_BELØP_HØY",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor (\n            hvis(\n                gruppe(\n                    merkostnaderArbeidsoppholdHotellMedFrokost,\n                    merkostnaderArbeidsoppholdHotellUtenFrokost,\n                    merkostnaderArbeidsoppholdHybelUtenKokemuligheter\n                ) hvor (faktiskeUtgifterForKost erStørreEnn 10_000)\n            ) {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1\n                )\n            }\n            )\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadStandard"
+}, {
+  "kontrollnavn" : "ARBEIDSREISE_LOSJI_BELØP_HØY",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor hvis(\n            merkostnaderArbeidsoppholdLosji hvor (faktiskeUtgifterForLosji erStørreEnn 10_000)\n        ) {\n            betjeningsstrategiSettesTil(\n                ikke,\n                merknadStandard,\n                1\n            )\n        }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadStandard"
+}, {
+  "kontrollnavn" : "BESØKSREISER_ANTALL_FOR_HØYT",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor hvis(\n            besoeksreiseTilHjemmet hvor (antallBesoeksreiserTilHjemmet erStørreEnn 52)\n        ) {\n            betjeningsstrategiSettesTil(\n                ikke,\n                merknadStandard,\n                1\n            )\n        }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadStandard"
+}, {
+  "kontrollnavn" : "EIENDOM_MANGLER_AREAL_ELLER_BYGGEÅR",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor hvis(\n            (\n                gruppe(\n                    formuesgrunnlagSelveidBolig,\n                    formuesgrunnlagBoenhetIBoligselskap\n                ) hvor (\n                    (boligensAreal erLik 0) eller (byggeaar erLik 0)\n                    )\n                )\n        ) {\n            betjeningsstrategiSettesTil(\n                ikke,\n                merknadMangel,\n                1,\n                skjulerSkatteberegning\n            )\n        }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadMangel"
+}, {
+  "kontrollnavn" : "EIENDOM_MANGLER_FORMUESVERDI",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor hvis(\n            (\n                gruppe(\n                    formuesgrunnlagTomt,\n                    formuesgrunnlagSelveidFritidseiendom,\n                    formuesgrunnlagAnnenFastEiendomInnenforInntektsgivendeAktivitet,\n                    formuesgrunnlagAnnenFastEiendomUtenforInntektsgivendeAktivitet\n                ) hvor (formuesverdiSomTall erLik 0)\n                )\n        ) {\n            betjeningsstrategiSettesTil(\n                ikke,\n                merknadMangel,\n                1,\n                skjulerSkatteberegning\n            )\n        }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadMangel"
+}, {
+  "kontrollnavn" : "KJØRETØY_MANGLER_VERDI_SOM_NY",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor hvis(\n            (kjoeretoey hvor (antattVerdiSomNyttKjoeretoey erLik 0))\n        ) {\n            betjeningsstrategiSettesTil(\n                ikke,\n                merknadMangel,\n                1,\n                skjulerSkatteberegning\n            )\n        }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadMangel"
+}, {
+  "kontrollnavn" : "PRIMÆRBOLIG_MAKS_EN",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor\n            hvis(\n                (\n                    gruppe(\n                        formuesgrunnlagSelveidBolig,\n                        formuesgrunnlagBoenhetIBoligselskap\n                    ) hvorMerEnnEnForekomst (boligbruk erLik \"primaerbolig\")\n                    )\n            ) {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1\n                )\n            }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadStandard"
+}, {
+  "kontrollnavn" : "REISEDAGER_ANTALL_FOR_HØYT",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor hvis(arbeidsreise hvor (antallDagerMedArbeidsreise erStørreEnn 300)) {\n            betjeningsstrategiSettesTil(\n                ikke,\n                merknadStandard,\n                1\n            )\n        }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadStandard"
+}, {
+  "kontrollnavn" : "REISEFRADRAG_UTEN_LØNN",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor\n            hvis(\n                (\n                    arbeidsreise hvorMinstEnForekomst (antallDagerMedArbeidsreise erStørreEnn 0)\n                        eller (besoeksreiseTilHjemmet hvorMinstEnForekomst (antallBesoeksreiserTilHjemmet erStørreEnn 0))\n                    )\n                    og (arbeidsgiver harIngenForekomsterDer (samledeYtelserFraArbeidsgiverPerBehandlingsart er oppgitt))\n            ) {\n                betjeningsstrategiSettesTil(\n                    ikke,\n                    merknadStandard,\n                    1\n                )\n            }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadStandard"
+}, {
+  "kontrollnavn" : "SEKUNDÆRBOLIG_UTLEIE",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        skattemelding utslagFor hvis(\n            (\n                gruppe(\n                    formuesgrunnlagSelveidBolig,\n                    formuesgrunnlagBoenhetIBoligselskap\n                ) hvorMinstEnForekomst (boligbruk erLik \"sekundaerbolig\")\n                    og (\n                        gruppe(\n                            sjablongbehandletUtleie,\n                            regnskapsbehandletUtleie,\n                            sjablongOgRegnskapsbehandletUtleie\n                        ) ikkeEr oppgitt\n                        )\n                )\n        ) {\n            betjeningsstrategiSettesTil(\n                ikke,\n                merknadTips,\n                1\n            )\n        }\n    }",
+  "betjeningsstrategiSkattepliktig" : "merknadTips"
+} ]

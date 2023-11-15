@@ -8,6 +8,7 @@
   <properties>
     <skattemelding.mapping.version>2.9.0</skattemelding.mapping.version>
     <skattemeldingtekst-mapping.version>1.16.3</skattemeldingtekst-mapping.version>
+    <skattemelding-kontroll.version>3.6.1</skattemelding-kontroll.version>
   </properties>
 
   <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
@@ -24,6 +25,11 @@
         <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
         <artifactId>skattemeldingtekst-mapping</artifactId>
         <version>${skattemeldingtekst-mapping.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
+        <artifactId>skattemelding-kontroll</artifactId>
+        <version>${skattemelding-kontroll.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -83,6 +89,17 @@
                   <version>${skattemeldingtekst-mapping.version}</version>
                   <outputDirectory>docs</outputDirectory>
                   <includes>tekster/*/*.json</includes>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
+                  <artifactId>skattemelding-kontroll</artifactId>
+                  <version>${skattemelding-kontroll.version}</version>
+                  <includes>eksterne/*.json</includes>
+                  <fileMappers>
+                    <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
+                  </fileMappers>
+                  <outputDirectory>docs/kontroller</outputDirectory>
                 </artifactItem>
               </artifactItems>
             </configuration>
