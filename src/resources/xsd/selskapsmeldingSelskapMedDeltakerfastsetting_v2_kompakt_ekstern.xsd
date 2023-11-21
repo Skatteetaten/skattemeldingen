@@ -238,11 +238,8 @@
   <xsd:simpleType name="Organisasjonsnavn">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
-  <xsd:simpleType name="Landkode">
-    <xsd:restriction base="Tekst">
-      <xsd:pattern value="([A-Z]){2}" />
-      <xsd:length value="2" />
-    </xsd:restriction>
+  <xsd:simpleType name="Landkode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_aktiveLandkoder.xml">
+    <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:complexType name="BoolskMedInnkapsling">
     <xsd:sequence>
@@ -2173,8 +2170,8 @@
       <xsd:fractionDigits value="2" />
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="Valutakode">
-    <xsd:restriction base="Tekst" />
+  <xsd:simpleType name="Valutakode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_aktiveValutakoder.xml">
+    <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="Valutakurs">
     <xsd:restriction base="Desimaltall" />

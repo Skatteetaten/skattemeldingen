@@ -1706,11 +1706,8 @@
     </xsd:annotation>
     <xsd:restriction base="Desimaltall" />
   </xsd:simpleType>
-  <xsd:simpleType name="Valutakode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a2-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:annotation>
-      <xsd:documentation>koder for offisielle valutaer etter ISO 4217</xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="Tekst" />
+  <xsd:simpleType name="Valutakode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_aktiveValutakoder.xml">
+    <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:complexType name="NavnMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
@@ -2139,14 +2136,8 @@
   <xsd:simpleType name="Identifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
-  <xsd:simpleType name="Landkode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e112-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:annotation>
-      <xsd:documentation>koder for land etter ISO 3166-1 Alpha-2</xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="Tekst">
-      <xsd:pattern value="([A-Z]){2}" />
-      <xsd:length value="2" />
-    </xsd:restriction>
+  <xsd:simpleType name="Landkode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_aktiveLandkoder.xml">
+    <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:complexType name="SalgsinntektFraKraftLevert">
     <xsd:sequence>
