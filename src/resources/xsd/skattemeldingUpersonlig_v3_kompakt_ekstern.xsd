@@ -651,6 +651,7 @@
       <xsd:element name="prosjektperiode" type="PeriodePerDatoMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="vedtak" type="Vedtak" />
       <xsd:element minOccurs="0" name="prosjektstatus" type="Prosjektstatus" />
+      <xsd:element minOccurs="0" name="godkjentSkattefunnperiode" type="PeriodePerAarMedInnkapsling" />
       <xsd:element name="prosjektkategori" type="FoUprosjektkategoriMedInnkapsling" />
       <xsd:element minOccurs="0" name="soeknadGodkjentDato" type="DatoMedInnkapsling" />
       <xsd:element minOccurs="0" name="samledeKostnaderTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
@@ -1421,6 +1422,12 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="dato" type="DatoMedInnkapsling" />
       <xsd:element name="status" type="FoUvedtakstatustypeMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PeriodePerAarMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="start" type="AarstallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="slutt" type="AarstallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FoUprosjektkategoriMedInnkapsling">
