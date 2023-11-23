@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-11-14T16:16:14.608+0100" name="generertDato" />
+      <xsd:attribute fixed="2023-11-17T10:33:44.297+0100" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v4" name="modellnavn" />
@@ -208,6 +208,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="loeyveForDrosjeOgGodstransport" type="LoeyveForDrosjeOgGodstransport" />
       <xsd:element minOccurs="0" name="omsetningOgEtterbetalingISamvirkeforetak" type="OmsetningOgEtterbetalingISamvirkeforetak" />
       <xsd:element minOccurs="0" name="uttakAvEiendelEllerForpliktelseFraNorskOmraade" type="UttakAvEiendelEllerForpliktelseFraNorskOmraade" />
+      <xsd:element minOccurs="0" name="spesifikasjonAvLoennsOgPensjonskostnad" type="SpesifikasjonAvLoennsOgPensjonskostnad" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
@@ -868,6 +869,14 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvEiendelEllerForpliktelse" type="SpesifikasjonAvEiendelEllerForpliktelse" />
       <xsd:element minOccurs="0" name="samletGevinstVedUttakAvEiendelEllerForpliktelseFraNorskOmraade" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="samletTapVedUttakAvEiendelEllerForpliktelseFraNorskOmraade" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvLoennsOgPensjonskostnad">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="loennsOgPensjonskostnad" type="LoennsOgPensjonskostnad" />
+      <xsd:element minOccurs="0" name="samletOpplysningspliktigYtelse" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samletArbeidsgiveravgiftspliktigYtelse" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element name="skalBekreftesAvRevisor" type="Boolsk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkogOgToemmerkonto">
@@ -1644,6 +1653,20 @@
       <xsd:element name="eiendelstype" type="EiendelstypeVedUttakFraNorskOmraadeMedInnkapsling" />
       <xsd:element minOccurs="0" name="saldogruppeForFysiskAnleggsmiddel" type="SaldogruppeMedInnkapsling" />
       <xsd:element minOccurs="0" name="utstedendeSelskapVedRealisasjonAvTidligereUttattFinansiellEiendel" type="Selskap" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LoennsOgPensjonskostnad">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="kontonummer" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="kontonavn" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="loennsopplysningspliktigYtelse" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tilleggForKostnadsfoertLoennMvTidligereAar" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="fradragForPaaloeptIkkeForfaltLoennMvSomIkkeErRapportert" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="arbeidsgiveravgiftspliktigYtelse" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samletBeloepSomErKreditertKontoForNaturalytelser" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="aaretsInnbetalingAvArbeidsgiveravgiftspliktigTilskuddOgPremieTilPensjonsordning" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samletOpplysningspliktigYtelse" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Skogfond">
