@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v5">
+<xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v5">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2023-01-06T14:18:56.861+0100" name="generertDato"/>
+            <xsd:attribute fixed="2023-11-22T07:40:54.103+0100" name="generertDato"/>
             <xsd:attribute fixed="v5" name="versjon"/>
             <xsd:attribute fixed="Inntektsår 2023" name="beskrivelse"/>
             <xsd:attribute fixed="v5 (2023)" name="modellnavn"/>
@@ -14,62 +14,61 @@
             <xsd:attribute fixed="false" name="norskeTegn"/>
         </xsd:documentation>
     </xsd:annotation>
-	<xsd:import namespace="urn:ske:informasjonsrammeverk:typekatalog" schemaLocation="typekatalog/typekatalog_v2.xsd"/>
     <xsd:element name="beregnetSkatt" type="BeregnetSkatt"/>
     <xsd:complexType name="BeregnetSkatt">
         <xsd:sequence>
             <xsd:element minOccurs="0" name="informasjonTilSkattelister" type="InformasjonTilSkattelister"/>
             <xsd:element minOccurs="0" name="valideringsresultat" type="Valideringsresultat"/>
-            <xsd:element minOccurs="0" name="skatteregnskapskommune" type="typekatalog:Kommunenummer"/>
+            <xsd:element minOccurs="0" name="skatteregnskapskommune" type="Kommunenummer"/>
             <xsd:element minOccurs="0" name="skatteklasse" type="Skatteklasse"/>
-            <xsd:element minOccurs="0" name="beregnetSkattFoerSkattefradrag" skatt:erAvledet="true" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="sumSkattefradrag" skatt:erAvledet="true" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="beregnetSkatt" skatt:erAvledet="true" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetSkattFoerSkattefradrag" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="sumSkattefradrag" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetSkatt" skatt:erAvledet="true" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="skattOgAvgift" type="SkattOgAvgift"/>
             <xsd:element minOccurs="0" name="skattefradrag" type="Skattefradrag"/>
             <xsd:element minOccurs="0" name="oevrigeResultaterAvBeregning" type="OevrigeResultaterAvBeregning"/>
             <xsd:element minOccurs="0" name="skattetillegg" type="Skattetillegg"/>
             <xsd:element minOccurs="0" name="anvendtTolvdelVedArbeidsoppholdINorge" type="Tolvdel"/>
             <xsd:element minOccurs="0" name="anvendtTolvdelForTrinnskatt" type="Tolvdel"/>
-            <xsd:element minOccurs="0" name="anvendtStandardfradrag" type="typekatalog:Boolsk"/>
+            <xsd:element minOccurs="0" name="anvendtStandardfradrag" type="Boolsk"/>
             <xsd:element minOccurs="0" name="anvendtTolvdelVedArbeidsoppholdIUtlandet" type="Tolvdel"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="InformasjonTilSkattelister">
         <xsd:sequence>
-            <xsd:element name="nettoinntekt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element name="nettoformue" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element name="beregnetSkatt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element maxOccurs="unbounded" name="kommune" type="typekatalog:Kommunenummer"/>
+            <xsd:element name="nettoinntekt" type="BeloepSomHeltall"/>
+            <xsd:element name="nettoformue" type="BeloepSomHeltall"/>
+            <xsd:element name="beregnetSkatt" type="BeloepSomHeltall"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="kommune" type="Kommunenummer"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Skattefradrag">
         <xsd:sequence>
             <xsd:element minOccurs="0" name="skattefradragVedBSU" type="Skatt"/>
-            <xsd:element minOccurs="0" name="finnmarksfradragITrinnskatt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="finnmarksfradragIInntektsskattTilKommune" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="finnmarksfradragIInntektsskattTilFylkeskommune" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="finnmarksfradragIFellesskatt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="sumFinnmarksfradrag" skatt:erAvledet="true" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattefradragForPensjonsinntekt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattebegrensningVedLavAlminneligInntekt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattebegrensningVedLitenSkatteevne" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattefradragForUfoereVedOvergangsregel" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattenedsettelseVedAlternativFordeling" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattefradragForFormuesskattBetaltIUtlandet" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattefradragForInntektsskattBetaltIUtlandet" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="finnmarksfradragITrinnskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="finnmarksfradragIInntektsskattTilKommune" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="finnmarksfradragIInntektsskattTilFylkeskommune" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="finnmarksfradragIFellesskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="sumFinnmarksfradrag" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForPensjonsinntekt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattebegrensningVedLavAlminneligInntekt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattebegrensningVedLitenSkatteevne" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForUfoereVedOvergangsregel" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattenedsettelseVedAlternativFordeling" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForFormuesskattBetaltIUtlandet" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForInntektsskattBetaltIUtlandet" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="skattefradragForKostnaderTilFoU" type="Skatt"/>
-            <xsd:element minOccurs="0" name="skattefradragForOmberegnetGevinstPaaOpsjoner" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="korrigertSkattForEtterbetaltPensjonOgTrygdeytelse" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForOmberegnetGevinstPaaOpsjoner" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="korrigertSkattForEtterbetaltPensjonOgTrygdeytelse" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Skattetillegg">
         <xsd:sequence>
             <xsd:element minOccurs="0" name="skattAvEngangutbetalingFraIPATilBo" type="Skatt"/>
-            <xsd:element minOccurs="0" name="skattAvEngangserstatningTilBarn" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattetilleggVedBSU" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="tilleggIBeregnetSkattKnyttetTilSkattefunn" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattAvEngangserstatningTilBarn" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="skattetilleggVedBSU" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="tilleggIBeregnetSkattKnyttetTilSkattefunn" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="SkattOgAvgift">
@@ -92,13 +91,13 @@
             <xsd:element minOccurs="0" name="trygdeavgiftAvUfoeretrygd" type="Skatt"/>
             <xsd:element minOccurs="0" name="trygdeavgiftSomFrivilligMedlemIPensjonsdel" type="Skatt"/>
             <xsd:element minOccurs="0" name="trygdeavgiftSomFrivilligMedlemIHelsedel" type="Skatt"/>
-            <xsd:element minOccurs="0" name="pensjonsinntektFritattForSkattEtterSkatteavtale" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="pensjonsinntektFritattForSkattEtterSkatteavtale" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="sumTrygdeavgift" skatt:erAvledet="true" type="Skatt"/>
             <xsd:element minOccurs="0" name="skattPaaAlminneligInntekt" type="Skatt"/>
             <xsd:element minOccurs="0" name="skattPaaNaeringsoverskudd" type="Skatt"/>
             <xsd:element minOccurs="0" name="skattPaaInntektOver12G" type="Skatt"/>
-            <xsd:element minOccurs="0" name="fastsattSkattEtterLoennstrekkordningen" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="betaltSkattOgAvgiftEtterLoennstrekkordningen" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fastsattSkattEtterLoennstrekkordningen" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="betaltSkattOgAvgiftEtterLoennstrekkordningen" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="betaltSkattOgAvgiftEtterOrdningForKildeskattPaaLoenn" type="Skatt"/>
             <xsd:element minOccurs="0" name="trygdeavgiftForSykestoenadsdelForArbeidstakereUtsendtFraUSAOgCanada" type="Skatt"/>
             <xsd:element minOccurs="0" name="trygdeavgiftAvLoennsinntektOmfattetAvLoennstrekkordningPaaSvalbard" type="Skatt"/>
@@ -106,91 +105,92 @@
     </xsd:complexType>
     <xsd:complexType name="OevrigeResultaterAvBeregning">
         <xsd:sequence>
-            <xsd:element minOccurs="0" name="underskuddTilFramfoeringSenereAar" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="alminneligInntektFoerSaerfradrag" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="anvendtSaerfradrag" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="pensjonsgivendeInntekt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="nettoTapVedUtflytting" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="nettoGevinstVedUtflytting" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="underskuddTilFramfoeringSenereAar" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="alminneligInntektFoerSaerfradrag" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="anvendtSaerfradrag" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="pensjonsgivendeInntekt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="nettoTapVedUtflytting" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="nettoGevinstVedUtflytting" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUEget" type="Skatt"/>
-            <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUOverfoertTilEktefelle" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUOverfoertFraEktefelle" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="samletGrunnlagForInntektsskattTilKommuneOgFylkeskommuneStatsskattOgFellesskatt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="negativAlminneligInntektOverfoertTilEktefelle" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="negativAlminneligInntektOverfoertFraEktefelle" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="negativFormueOverfoertFraEktefelle" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="saerfradragOverfoertTilEktefelle" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="saerfradragOverfoertFraEktefelle" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="underskuddIOrdinaerAlminneligInntektPaaSvalbardTilFremfoeringSenereAar" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="underskuddIEnkeltpersonforetakPaaSvalbardTilFremfoeringSenereAar" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUOverfoertTilEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUOverfoertFraEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="samletGrunnlagForInntektsskattTilKommuneOgFylkeskommuneStatsskattOgFellesskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="negativAlminneligInntektOverfoertTilEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="negativAlminneligInntektOverfoertFraEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="negativFormueOverfoertFraEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="saerfradragOverfoertTilEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="saerfradragOverfoertFraEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="underskuddIOrdinaerAlminneligInntektPaaSvalbardTilFremfoeringSenereAar" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="underskuddIEnkeltpersonforetakPaaSvalbardTilFremfoeringSenereAar" type="BeloepSomHeltall"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="alminneligInntektFoerFordelingsfradrag" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-            <xsd:element minOccurs="0" name="fordelingsfradrag" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fordelingsfradrag" type="BeloepSomHeltall"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="saerfradrag" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="oevrigFormue" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
-            <xsd:element minOccurs="0" name="korrigertGrunnlagForTrinnskatt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="fradragSomKanFordelesFritt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="inntekterSomKanFordelesFritt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="samletGjeld" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="korrigertGrunnlagForTrinnskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fradragSomKanFordelesFritt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="inntekterSomKanFordelesFritt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="samletGjeld" type="BeloepSomHeltall"/>
             <xsd:element maxOccurs="5" minOccurs="0" name="fremfoerbartSkattefradragForSkattBetaltIUtlandet" type="FremfoerbartSkattefradragForSkattBetaltIUtlandet"/>
             <xsd:element minOccurs="0" name="kildeskattPaaAksjeutbytteTilUtenlandskAksjonaer" type="Skatt"/>
             <xsd:element minOccurs="0" name="resultaterAvBeregningEtterMetodeVedDobbeltbeskatning" type="ResultaterAvBeregningEtterMetodeVedDobbeltbeskatning"/>
-            <xsd:element minOccurs="0" name="endretSkattToAarEtterInntektsaaretOverfoertFraEktefelle" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="endretSkattToAarEtterInntektsaaretOverfoertTilEktefelle" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="endretSkattToAarEtterInntektsaaretOverfoertFraEktefelle" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="endretSkattToAarEtterInntektsaaretOverfoertTilEktefelle" type="BeloepSomHeltall"/>
             <xsd:element maxOccurs="5" minOccurs="0" name="fremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv" type="FremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv"/>
             <xsd:element minOccurs="0" name="formuesverdiForPrimaerbolig" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesverdiForSelveidFritidseiendomEllerAndelIFritidsboligselskap" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjeld" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
+            <xsd:element minOccurs="0" name="beregnetKildeskattPaaLoenn" skatt:erAvledet="true" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="BeloepSomHeltallMedSkattemessigeEgenskaper">
         <xsd:sequence>
-            <xsd:element name="beloep" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element name="beloep" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="saerskiltSkatteplikt" type="SaerskiltSkattepliktstype"/>
-            <xsd:element minOccurs="0" name="kommunenummer" type="typekatalog:Kommunenummer"/>
+            <xsd:element minOccurs="0" name="kommunenummer" type="Kommunenummer"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="FremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv">
         <xsd:sequence>
-            <xsd:element name="inntektsaar" type="typekatalog:Inntektsaar"/>
-            <xsd:element name="fremfoerbartSkattefradrag" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element name="inntektsaar" type="Inntektsaar"/>
+            <xsd:element name="fremfoerbartSkattefradrag" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="FremfoerbartSkattefradragForSkattBetaltIUtlandet">
         <xsd:sequence>
-            <xsd:element name="inntektsaar" type="typekatalog:Inntektsaar"/>
-            <xsd:element minOccurs="0" name="fremfoerbartSkattefradragForFormuesskattBetaltIUtlandet" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="fremfoerbartSkattefradragForInntektsskattBetaltIUtlandet" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element name="inntektsaar" type="Inntektsaar"/>
+            <xsd:element minOccurs="0" name="fremfoerbartSkattefradragForFormuesskattBetaltIUtlandet" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fremfoerbartSkattefradragForInntektsskattBetaltIUtlandet" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="KommunefordeltSkatt">
         <xsd:sequence>
-            <xsd:element minOccurs="0" name="kommune" type="typekatalog:Tekst"/>
-            <xsd:element minOccurs="0" name="grunnlag" type="typekatalog:Heltall"/>
-            <xsd:element minOccurs="0" name="beloep" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="kommune" type="Tekst"/>
+            <xsd:element minOccurs="0" name="grunnlag" type="Heltall"/>
+            <xsd:element minOccurs="0" name="beloep" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="ResultaterAvBeregningEtterMetodeVedDobbeltbeskatning">
         <xsd:sequence>
-            <xsd:element minOccurs="0" name="globalAlminneligInntektEtterDenAlternativeFordelingsmetoden" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="beregnetSkattenedsettelseITrinnskatt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="beregnetSkattenedsettelseISkattTilKommuneOgFylkeskommune" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="beregnetSkattenedsettelseIFellesskatt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="globalAlminneligInntektEtterKreditmetoden" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragITrinnskatt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragIInntektsskattTilKommuneOgFylkeskommune" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragIFellesskatt" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragIFormuesskatt" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="globalAlminneligInntektEtterDenAlternativeFordelingsmetoden" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetSkattenedsettelseITrinnskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetSkattenedsettelseISkattTilKommuneOgFylkeskommune" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetSkattenedsettelseIFellesskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="globalAlminneligInntektEtterKreditmetoden" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragITrinnskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragIInntektsskattTilKommuneOgFylkeskommune" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragIFellesskatt" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="beregnetMaksimaltKreditfradragIFormuesskatt" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Skatt">
         <xsd:sequence>
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="kommunefordeltSkatt" type="KommunefordeltSkatt"/>
-            <xsd:element minOccurs="0" name="grunnlag" type="typekatalog:Heltall"/>
-            <xsd:element name="beloep" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="grunnlag" type="Heltall"/>
+            <xsd:element name="beloep" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:simpleType name="Tolvdel">
-        <xsd:restriction base="typekatalog:Heltall"/>
+        <xsd:restriction base="Heltall"/>
     </xsd:simpleType>
     <xsd:simpleType name="Skatteklasse">
         <xsd:restriction base="xsd:string"/>
@@ -200,12 +200,38 @@
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="avvik" type="Avvik"/>
         </xsd:sequence>
     </xsd:complexType>
+    <xsd:simpleType name="Tekst">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4000"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Kommunenummer">
+        <xsd:restriction base="Tekst">
+            <xsd:pattern value="([0-9]){4}"/>
+            <xsd:length value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Heltall">
+        <xsd:restriction base="xsd:long"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="BeloepSomHeltall">
+        <xsd:restriction base="Heltall"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Boolsk">
+        <xsd:restriction base="xsd:boolean"/>
+    </xsd:simpleType>
     <xsd:simpleType name="SaerskiltSkattepliktstype" skatt:eksternKodeliste="https://git.aurora.skead.no/projects/KOLI/repos/kodeliste/browse/formuesOgInntektsskatt/2023_saerskiltSkatteplikt.xml">
         <xsd:restriction base="xsd:string"/>
     </xsd:simpleType>
+    <xsd:simpleType name="Inntektsaar">
+        <xsd:restriction base="Heltall">
+            <xsd:minInclusive value="1000"/>
+            <xsd:totalDigits value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
     <xsd:complexType name="Avvik">
         <xsd:sequence>
-            <xsd:element name="avvikskode" type="typekatalog:Tekst"/>
+            <xsd:element name="avvikskode" type="Tekst"/>
         </xsd:sequence>
     </xsd:complexType>
 </xsd:schema>
