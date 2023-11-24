@@ -1,60 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v1" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v1">
-    <xsd:annotation>
-        <xsd:documentation>
-            <xsd:attribute fixed="2023-11-22T07:41:08.602+0100" name="generertDato"/>
-            <xsd:attribute fixed="v1" name="versjon"/>
-            <xsd:attribute fixed="" name="beskrivelse"/>
-            <xsd:attribute fixed="v1 (2021)" name="modellnavn"/>
-            <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v1" name="navnerom"/>
-            <xsd:attribute fixed="false" name="begrepsreferanse"/>
-            <xsd:attribute fixed="false" name="dokumentasjon"/>
-            <xsd:attribute fixed="false" name="nillable"/>
-            <xsd:attribute fixed="false" name="modellelement"/>
-            <xsd:attribute fixed="false" name="norskeTegn"/>
-        </xsd:documentation>
-    </xsd:annotation>
-    <xsd:element name="summertSkattegrunnlagForVisningUpersonlig" type="SummertSkattegrunnlagForVisningUpersonlig"/>
-    <xsd:complexType name="SummertSkattegrunnlagForVisningUpersonlig">
-        <xsd:sequence>
-            <xsd:element name="partsnummer" type="Partsnummer"/>
-            <xsd:element name="inntektsaar" type="Inntektsaar"/>
-            <xsd:element minOccurs="0" name="oevrigeOpplysningerTilVisningStatistikkOgRapportering" type="OevrigeOpplysningerTilVisningStatistikkOgRapportering"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="OevrigeOpplysningerTilVisningStatistikkOgRapportering">
-        <xsd:sequence>
-            <xsd:element minOccurs="0" name="samletInntekt" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="samletUnderskudd" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="samletVerdiBakAksjeneISelskapet" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="kostnaderTilInnkjoeptFoU" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="kostnaderTilFoU" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="kostnaderTilUloennetArbeidIFoU" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="aaretsFinansunderskuddFraRederivirksomhet" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="fremfoerbartFinansunderskuddFraRederivirksomhet" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="tilleggForEtterbetalingerISamvirkeforetak" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="inntektFoerAnvendelseAvFremfoerbartUnderskudd" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntekt" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="inntektFraVirksomhetPaaSokkelFoerAnvendelseAvFremfoerbartUnderskudd" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektFraVirksomhetPaaSokkel" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="fremfoerbarFriinntekt" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="saerskattegrunnlagFoerAnvendelseAvFremfoerbartUnderskudd" type="BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="fremfoerbartUnderskuddISaerskattegrunnlag" type="BeloepSomHeltall"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:simpleType name="Heltall">
-        <xsd:restriction base="xsd:long"/>
-    </xsd:simpleType>
-    <xsd:simpleType name="Partsnummer">
-        <xsd:restriction base="Heltall"/>
-    </xsd:simpleType>
-    <xsd:simpleType name="Inntektsaar">
-        <xsd:restriction base="Heltall">
-            <xsd:minInclusive value="1000"/>
-            <xsd:totalDigits value="4"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-    <xsd:simpleType name="BeloepSomHeltall">
-        <xsd:restriction base="Heltall"/>
-    </xsd:simpleType>
+<xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v1" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v1">
+  <xsd:annotation>
+    <xsd:documentation>
+      <xsd:attribute fixed="2022-08-30T09:48:37.579+0200" name="generertDato" />
+      <xsd:attribute fixed="v1" name="versjon" />
+      <xsd:attribute fixed="" name="beskrivelse" />
+      <xsd:attribute fixed="v1" name="modellnavn" />
+      <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v1" name="navnerom" />
+      <xsd:attribute fixed="false" name="begrepsreferanse" />
+      <xsd:attribute fixed="false" name="dokumentasjon" />
+      <xsd:attribute fixed="false" name="nillable" />
+      <xsd:attribute fixed="false" name="modellelement" />
+      <xsd:attribute fixed="false" name="norskeTegn" />
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:import namespace="urn:ske:informasjonsrammeverk:typekatalog" schemaLocation="typekatalog/typekatalog_v2.xsd" />
+  <xsd:element name="summertSkattegrunnlagForVisningUpersonlig" type="SummertSkattegrunnlagForVisningUpersonlig" />
+  <xsd:complexType name="SummertSkattegrunnlagForVisningUpersonlig">
+    <xsd:sequence>
+      <xsd:element name="partsnummer" type="typekatalog:Partsnummer" />
+      <xsd:element name="inntektsaar" type="typekatalog:Inntektsaar" />
+      <xsd:element minOccurs="0" name="oevrigeOpplysningerTilVisningStatistikkOgRapportering" type="OevrigeOpplysningerTilVisningStatistikkOgRapportering" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OevrigeOpplysningerTilVisningStatistikkOgRapportering">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="samletInntekt" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="samletUnderskudd" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="samletVerdiBakAksjeneISelskapet" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="kostnaderTilInnkjoeptFoU" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="kostnaderTilFoU" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="kostnaderTilUloennetArbeidIFoU" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="aaretsFinansunderskuddFraRederivirksomhet" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="fremfoerbartFinansunderskuddFraRederivirksomhet" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="tilleggForEtterbetalingerISamvirkeforetak" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="inntektFoerAnvendelseAvFremfoerbartUnderskudd" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntekt" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="inntektFraVirksomhetPaaSokkelFoerAnvendelseAvFremfoerbartUnderskudd" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektFraVirksomhetPaaSokkel" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="fremfoerbarFriinntekt" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="saerskattegrunnlagFoerAnvendelseAvFremfoerbartUnderskudd" type="typekatalog:BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddISaerskattegrunnlag" type="typekatalog:BeloepSomHeltall" />
+    </xsd:sequence>
+  </xsd:complexType>
 </xsd:schema>
