@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-11-17T10:33:44.362+0100" name="generertDato" />
+      <xsd:attribute fixed="2023-11-24T13:08:32.925+0100" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v4" name="modellnavn" />
@@ -1102,10 +1102,10 @@
       <xsd:element name="gjelderVannkraftverk" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="erAnleggsmiddelUnderUtfoerelse" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="kraftverketsLoepenummer" type="HeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="gjenstaaendeLevetid" skatt:erAvledet="true" type="AntallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="aaretsFriinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="naaverdiAvFremtidigeUtskiftningskostnaderForVannkraftverk" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="konsumprisindeksjustertInvesteringskostnad" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="gjenstaaendeLevetid" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsFriinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="naaverdiAvFremtidigeUtskiftningskostnaderForVannkraftverk" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="konsumprisindeksjustertInvesteringskostnad" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="investeringskostnadErDirekteUtgiftsfoertIGrunnrenteinntekt" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
@@ -1160,16 +1160,16 @@
       <xsd:element name="anskaffelsesEllerPaakostningsidentifikator" type="TekstMedInnkapsling" />
       <xsd:element name="anskaffelsesEllerPaakostningsdato" type="DatoMedInnkapsling" />
       <xsd:element name="avskrivningstid" type="AntallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="gjenstaaendeLevetid" skatt:erAvledet="true" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="gjenstaaendeLevetid" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="historiskKostpris" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="gjenanskaffelsesverdiFoer1Januar1997" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="gjenstaaendeSkattemessigVerdiPaaRealisasjonstidspunktet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="aaretsAvskrivning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="aaretsAvskrivning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="konsumprisindeksjustertInvesteringskostnad" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="naaverdiAvFremtidigeUtskiftningskostnader" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="aaretsFriinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="konsumprisindeksjustertInvesteringskostnad" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="naaverdiAvFremtidigeUtskiftningskostnader" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="aaretsFriinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="investeringskostnadErDirekteUtgiftsfoertIGrunnrenteinntekt" type="BoolskMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kommune" type="Kommune" />
     </xsd:sequence>
@@ -1858,7 +1858,7 @@
       <xsd:element minOccurs="0" name="kostnadTilPumpingAvKraft" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="konsesjonsavgift" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="eiendomsskatt" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="investeringskostnadKnyttetTilKraftproduksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1881,7 +1881,7 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="kommunenummer" type="KommunenummerMedInnkapsling" />
-      <xsd:element minOccurs="0" name="grunnlagForNaturressursskatt" type="KiloWattimeMedInnkapsling" />
+      <xsd:element name="grunnlagForNaturressursskatt" type="KiloWattimeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret">
@@ -1984,7 +1984,7 @@
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="KiloWattime">
-    <xsd:restriction base="Desimaltall" />
+    <xsd:restriction base="Heltall" />
   </xsd:simpleType>
   <xsd:complexType name="FiskeartKnyttetTilHavbruksvirksomhetMedInnkapsling">
     <xsd:sequence>
