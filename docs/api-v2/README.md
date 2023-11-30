@@ -1478,7 +1478,7 @@ Merk at dataType skal settes til **skattemelding-vedlegg**.
 **Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: application/pdf' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel_vedlegg.pdf'`
 
 **Merk** 
-- Aksepterte content-types er: application/pdf, image/jpeg og image/png
+- Aksepterte content-types er: application/pdf, image/jpeg, image/png og application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 - Content-disposition skal være: **attachment; filename=\<filnavn>**
 
 <br />
