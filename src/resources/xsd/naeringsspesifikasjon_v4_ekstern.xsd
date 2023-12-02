@@ -323,10 +323,10 @@
   </xsd:complexType>
   <xsd:complexType name="ResultatregnskapForVirksomhetOmfattetAvPetroleumsskatteloven">
     <xsd:sequence>
-      <xsd:element name="fordeltAarsresultatFoerOmklassifisertInntektEllerKostnad" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element minOccurs="0" name="fordeltAarsresultatFoerOmklassifisertInntektEllerKostnad" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagOmklassifisertFraVirksomhetPaaSokkelTilFinansinntektOgFinanskostnadMv" type="OmklassifisertInntektEllerKostnadForVirksomhetOmfattetAvPetroleumsskatteloven" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagOmklassifisertFraFinansinntektOgFinanskostnadMvTilVirksomhetPaaSokkel" type="OmklassifisertInntektEllerKostnadForVirksomhetOmfattetAvPetroleumsskatteloven" />
-      <xsd:element name="fordeltAarsresultat" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element minOccurs="0" name="fordeltAarsresultat" skatt:erAvledet="true" type="BeloepForVirksomhetOmfattetAvPetroleumsskatteloven" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkjoennsfastsattInntektEllerKostnad">
@@ -2045,6 +2045,7 @@
       <xsd:element minOccurs="0" name="inntektFraUtstedtElsertifikat" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="opprinnelsesgaranti" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kraftLevertIhtKontrakt" type="KraftLevertIhtKontrakt" />
+      <xsd:element minOccurs="0" name="inntektVedAvslutningEllerEndringAvFastpriskontrakt" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvFradragIBruttoGrunnrenteinntekt">
@@ -2061,6 +2062,7 @@
           <xsd:documentation>jf. skatteloven § 18-3 tredje ledd a nr. 5</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
+      <xsd:element minOccurs="0" name="kostnadVedAvslutningEllerEndringAvFastpriskontrakt" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="KiloWattimeMedInnkapsling">

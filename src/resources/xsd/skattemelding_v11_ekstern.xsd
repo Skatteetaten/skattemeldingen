@@ -142,6 +142,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fradragForInvesteringIOppstartsselskap" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8c0c8910-0fae-11eb-8086-0050568351d2" type="FradragForInvesteringIOppstartsselskap" />
       <xsd:element minOccurs="0" name="forvaltningskostnader" type="Forvaltningskostnader" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellEiendel" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/be8d9cd0-0fae-11eb-8086-0050568351d2" type="VirtuellEiendel" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="tapVedSvindel" type="TapVedSvindel" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GaveOgArv">
@@ -1009,6 +1010,26 @@
           <xsd:element minOccurs="0" name="inntektVedUtvinning" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="kostnadVedUtvinning" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
           <xsd:element minOccurs="0" name="forvaltningskostnadForVirtuellEiendel" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TapVedSvindel">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst" />
+          <xsd:element name="investeringGjortIGodTro" type="BoolskMedInnkapsling" />
+          <xsd:element name="harMulighetForTilbakefoeringAvSvindletBeloep" type="BoolskMedInnkapsling" />
+          <xsd:element name="erGjortForsoekPaaAaFaaTilbakeSvindletBeloep" type="BoolskMedInnkapsling"/>
+          <xsd:element name="svindelErPolitianmeldt" type="BoolskMedInnkapsling" />
+          <xsd:element name="typeInvesteringSomErTaptVedSvindel" type="InvesteringstypeVedSvindelMedInnkapsling" />
+          <xsd:element minOccurs="0" name="beskrivelseAvAnnenInvesteringTaptVedSvindel" type="TekstMedInnkapsling" />
+          <xsd:element minOccurs="0" name="svindlertype" type="SvindlertypeMedInnkapsling" />
+          <xsd:element minOccurs="0" name="navnPaaSvindler" type="NavnMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="typeOverfoeringBruktISvindel" type="OverfoeringstypeVedSvindelMedInnkapsling" />
+          <xsd:element minOccurs="0" name="opprinneligInvesteringsbeloep" type="BeloepIValuta" />
+          <xsd:element minOccurs="0" name="fradragsberettigetBeloepTaptVedSvindel" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2385,9 +2406,19 @@
       <xsd:element minOccurs="0" name="boersnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/f3e75b4c-7238-6941-8ded-f34908ff1e30" type="TekstMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaeringMedInnkapsling" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e22d-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:complexType name="InvesteringstypeVedSvindelMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="godkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e22d-9fe1-11e5-a9f8-e4115b280940" type="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" />
+      <xsd:element name="investeringstypeVedSvindel" type="InvesteringstypeVedSvindel" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SvindlertypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="svindlertype" type="Svindlertype" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OverfoeringstypeVedSvindelMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="overfoeringstypeVedSvindel" type="OverfoeringstypeVedSvindel" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepIValuta" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
@@ -2396,6 +2427,11 @@
       <xsd:element name="beloepIValuta" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940" type="BeloepMedInnkapsling" />
       <xsd:element minOccurs="0" name="valutakode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a2-9fe1-11e5-a9f8-e4115b280940" type="ValutakodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="valutakurs" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd65-2964-11e6-b2bc-96405985e0fa" type="ValutakursMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaeringMedInnkapsling" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e22d-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="godkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e22d-9fe1-11e5-a9f8-e4115b280940" type="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepSomHeltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e147-9fe1-11e5-a9f8-e4115b280940">
@@ -3142,7 +3178,13 @@
   <xsd:simpleType name="AnnetFinansprodukttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_finansprodukt.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e22d-9fe1-11e5-a9f8-e4115b280940" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering.xml">
+  <xsd:simpleType name="InvesteringstypeVedSvindel" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_investeringstypeVedSvindel.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Svindlertype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_svindlertype.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="OverfoeringstypeVedSvindel" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_overfoeringstypeVedSvindel.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:complexType name="BeloepMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
@@ -3160,6 +3202,9 @@
       <xsd:element name="valutakurs" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd65-2964-11e6-b2bc-96405985e0fa" type="Valutakurs" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e22d-9fe1-11e5-a9f8-e4115b280940" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
   <xsd:simpleType name="Dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="xsd:date" />
   </xsd:simpleType>

@@ -142,6 +142,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fradragForInvesteringIOppstartsselskap" type="FradragForInvesteringIOppstartsselskap" />
       <xsd:element minOccurs="0" name="forvaltningskostnader" type="Forvaltningskostnader" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellEiendel" type="VirtuellEiendel" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="tapVedSvindel" type="TapVedSvindel"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GaveOgArv">
@@ -1009,6 +1010,26 @@
           <xsd:element minOccurs="0" name="inntektVedUtvinning" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="kostnadVedUtvinning" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
           <xsd:element minOccurs="0" name="forvaltningskostnadForVirtuellEiendel" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TapVedSvindel">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst" />
+          <xsd:element name="investeringGjortIGodTro" type="BoolskMedInnkapsling" />
+          <xsd:element name="harMulighetForTilbakefoeringAvSvindletBeloep" type="BoolskMedInnkapsling" />
+          <xsd:element name="erGjortForsoekPaaAaFaaTilbakeSvindletBeloep" type="BoolskMedInnkapsling"/>
+          <xsd:element name="svindelErPolitianmeldt" type="BoolskMedInnkapsling" />
+          <xsd:element name="typeInvesteringSomErTaptVedSvindel" type="InvesteringstypeVedSvindelMedInnkapsling" />
+          <xsd:element minOccurs="0" name="beskrivelseAvAnnenInvesteringTaptVedSvindel" type="TekstMedInnkapsling" />
+          <xsd:element minOccurs="0" name="svindlertype" type="SvindlertypeMedInnkapsling" />
+          <xsd:element minOccurs="0" name="navnPaaSvindler" type="NavnMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="typeOverfoeringBruktISvindel" type="OverfoeringstypeVedSvindelMedInnkapsling" />
+          <xsd:element minOccurs="0" name="opprinneligInvesteringsbeloep" type="BeloepIValuta" />
+          <xsd:element minOccurs="0" name="fradragsberettigetBeloepTaptVedSvindel" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2385,9 +2406,19 @@
       <xsd:element minOccurs="0" name="boersnavn" type="TekstMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaeringMedInnkapsling">
+  <xsd:complexType name="InvesteringstypeVedSvindelMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="godkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" type="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" />
+      <xsd:element name="investeringstypeVedSvindel" type="InvesteringstypeVedSvindel" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SvindlertypeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="svindlertype" type="Svindlertype" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OverfoeringstypeVedSvindelMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="overfoeringstypeVedSvindel" type="OverfoeringstypeVedSvindel" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepIValuta">
@@ -2396,6 +2427,11 @@
       <xsd:element name="beloepIValuta" type="BeloepMedInnkapsling" />
       <xsd:element minOccurs="0" name="valutakode" type="ValutakodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="valutakurs" type="ValutakursMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaeringMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="godkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" type="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepSomHeltallMedInnkapsling">
@@ -3142,7 +3178,13 @@
   <xsd:simpleType name="AnnetFinansprodukttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_finansprodukt.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering.xml">
+  <xsd:simpleType name="InvesteringstypeVedSvindel" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_investeringstypeVedSvindel.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Svindlertype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_svindlertype.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="OverfoeringstypeVedSvindel" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_overfoeringstypeVedSvindel.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:complexType name="BeloepMedInnkapsling">
@@ -3160,6 +3202,9 @@
       <xsd:element name="valutakurs" type="Valutakurs" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_GodkjentInstituttForTilskuddTilVitenskapeligForskningOgYrkesopplaering.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
   <xsd:simpleType name="Dato">
     <xsd:restriction base="xsd:date" />
   </xsd:simpleType>
