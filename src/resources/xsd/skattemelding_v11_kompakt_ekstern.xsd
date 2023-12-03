@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-11-08T08:31:22.234+0100" name="generertDato" />
+      <xsd:attribute fixed="2023-11-29T09:33:59.503+0100" name="generertDato" />
       <xsd:attribute fixed="11.0" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v11" name="modellnavn" />
@@ -195,6 +195,7 @@
       <xsd:element minOccurs="0" name="fradragForTidligereAarsFramfoerbareUnderskuddVedDriftAvVaaningshus" type="FradragForTidligereAarsFramfoerbareUnderskuddVedDriftAvVaaningshus" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesspesifikasjonForSkipFiskeOgFangstfartoey" type="FormuesspesifikasjonForSkipFiskeOgFangstfartoeyMv" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="annetFradragKnyttetTilNaeringsvirksomhet" type="AnnetFradragKnyttetTilNaeringsvirksomhet" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="eiendomsskattegrunnlagPerKraftverk" type="EiendomsskattegrunnlagPerKraftverk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DokumentOpprettet">
@@ -1472,6 +1473,15 @@
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EiendomsskattegrunnlagPerKraftverk">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="loepenummer" skatt:erAvledet="true" type="HeltallMedInnkapsling" />
+      <xsd:element name="kraftverketsNavn" skatt:erAvledet="true" type="TekstMedInnkapsling" />
+      <xsd:element name="samletPaastempletMerkeytelseIKva" skatt:erAvledet="true" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="eiendomsskattegrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Brukeridentifikatortype" skatt:eksternKodeliste="inline">
     <xsd:restriction base="xsd:string">
