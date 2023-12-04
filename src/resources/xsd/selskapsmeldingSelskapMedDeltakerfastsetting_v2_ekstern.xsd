@@ -1373,6 +1373,8 @@
       <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling" />
       <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling" />
       <xsd:element minOccurs="0" name="erOverstyrt" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beloepSomInngaarIGrunnlagForBarnetsSaerskilteFastsatteSkattFraEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erstatningsbeloepFraEngangserstatningForBarn" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Adresseopplysninger" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/ce6d3293-98ef-11ea-8a84-005056828ed3">
@@ -1949,6 +1951,8 @@
       <xsd:element name="beloep" type="BeloepIValuta" />
       <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling" />
       <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beloepSomInngaarIGrunnlagForBarnetsSaerskilteFastsatteSkattFraEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erstatningsbeloepFraEngangserstatningForBarn" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="TrygdeEllerSkattemessigUnntakMedInnkapsling">

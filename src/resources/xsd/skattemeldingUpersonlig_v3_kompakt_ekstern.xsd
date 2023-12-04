@@ -1390,6 +1390,8 @@
       <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling" />
       <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling" />
       <xsd:element minOccurs="0" name="erOverstyrt" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beloepSomInngaarIGrunnlagForBarnetsSaerskilteFastsatteSkattFraEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erstatningsbeloepFraEngangserstatningForBarn" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Adresseopplysninger">
@@ -1948,6 +1950,8 @@
       <xsd:element name="beloep" type="BeloepIValuta" />
       <xsd:element minOccurs="0" name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntakMedInnkapsling" />
       <xsd:element minOccurs="0" name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatningMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beloepSomInngaarIGrunnlagForBarnetsSaerskilteFastsatteSkattFraEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erstatningsbeloepFraEngangserstatningForBarn" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Formuesobjekttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_formuesobjekttypeUpersonligSkattepliktig.xml">
