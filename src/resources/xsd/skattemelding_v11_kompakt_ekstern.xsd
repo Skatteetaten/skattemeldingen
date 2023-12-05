@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-11-29T09:33:59.503+0100" name="generertDato" />
+      <xsd:attribute fixed="2023-12-04T15:27:30.541+0100" name="generertDato" />
       <xsd:attribute fixed="11.0" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v11" name="modellnavn" />
@@ -142,7 +142,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fradragForInvesteringIOppstartsselskap" type="FradragForInvesteringIOppstartsselskap" />
       <xsd:element minOccurs="0" name="forvaltningskostnader" type="Forvaltningskostnader" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellEiendel" type="VirtuellEiendel" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="tapVedSvindel" type="TapVedSvindel"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="tapVedSvindel" type="TapVedSvindel" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GaveOgArv">
@@ -265,9 +265,6 @@
       <xsd:element name="aarsakTilEndring" type="AarsakTilEndring" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="DatoKlokkeslett">
-    <xsd:restriction base="xsd:dateTime" />
-  </xsd:simpleType>
   <xsd:complexType name="Forsikring">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="livsforsikring" type="Livsforsikring" />
@@ -1016,12 +1013,12 @@
           <xsd:element name="id" type="Tekst" />
           <xsd:element name="investeringGjortIGodTro" type="BoolskMedInnkapsling" />
           <xsd:element name="harMulighetForTilbakefoeringAvSvindletBeloep" type="BoolskMedInnkapsling" />
-          <xsd:element name="erGjortForsoekPaaAaFaaTilbakeSvindletBeloep" type="BoolskMedInnkapsling"/>
+          <xsd:element name="erGjortForsoekPaaAaFaaTilbakeSvindletBeloep" type="BoolskMedInnkapsling" />
           <xsd:element name="svindelErPolitianmeldt" type="BoolskMedInnkapsling" />
           <xsd:element name="typeInvesteringSomErTaptVedSvindel" type="InvesteringstypeVedSvindelMedInnkapsling" />
           <xsd:element minOccurs="0" name="beskrivelseAvAnnenInvesteringTaptVedSvindel" type="TekstMedInnkapsling" />
           <xsd:element minOccurs="0" name="svindlertype" type="SvindlertypeMedInnkapsling" />
-          <xsd:element minOccurs="0" name="navnPaaSvindler" type="NavnMedInnkapsling"/>
+          <xsd:element minOccurs="0" name="navnPaaSvindler" type="NavnMedInnkapsling" />
           <xsd:element minOccurs="0" name="typeOverfoeringBruktISvindel" type="OverfoeringstypeVedSvindelMedInnkapsling" />
           <xsd:element minOccurs="0" name="opprinneligInvesteringsbeloep" type="BeloepIValuta" />
           <xsd:element minOccurs="0" name="fradragsberettigetBeloepTaptVedSvindel" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
@@ -1497,6 +1494,9 @@
       <xsd:enumeration value="systemidentifikator" />
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="DatoKlokkeslett">
+    <xsd:restriction base="xsd:dateTime" />
+  </xsd:simpleType>
   <xsd:complexType name="GrunnlagForBeregningAvKreditfradrag">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="nettoformueIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
@@ -1920,7 +1920,6 @@
           <xsd:element name="id" type="Tekst" />
           <xsd:element minOccurs="0" name="utleietype" type="UtleietypeMedInnkapsling" />
           <xsd:element minOccurs="0" name="kostnaderVedUtleie" type="KostnaderVedUtleie" />
-          <xsd:element minOccurs="0" name="saldoavskrivningAvInnbo" type="SaldoavskrivningAvInnbo" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="leietaker" type="Leietaker" />
           <xsd:element minOccurs="0" name="benytterEiendommenSelvSomFritidseiendom" type="BoolskMedInnkapsling" />
           <xsd:element name="internEiendomsidentifikator" type="Tekst" />
@@ -1930,6 +1929,8 @@
           <xsd:element minOccurs="0" name="nettoLeieinntektForAndel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
           <xsd:element minOccurs="0" name="underskuddForAndel" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="utleieformidler" type="Utleieformidler" />
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="avskrivningAvAnleggsmiddel" type="AvskrivningAvAnleggsmiddel" />
+          <xsd:element minOccurs="0" name="samletAvskrivning" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1942,7 +1943,6 @@
           <xsd:element minOccurs="0" name="utleietype" type="UtleietypeMedInnkapsling" />
           <xsd:element minOccurs="0" name="benytterEiendommenSelvSomFritidseiendom" type="BoolskMedInnkapsling" />
           <xsd:element minOccurs="0" name="kostnaderVedUtleie" type="KostnaderVedUtleie" />
-          <xsd:element minOccurs="0" name="saldoavskrivningAvInnbo" type="SaldoavskrivningAvInnbo" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="leietaker" type="Leietaker" />
           <xsd:element minOccurs="0" name="bruttoLeieinntektVedSjablongbehandletUtleie" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="bruttoLeieinntektVedRegnskapsbehandletUtleie" type="BeloepIValutaMedSkattemessigeEgenskaper" />
@@ -1951,6 +1951,8 @@
           <xsd:element minOccurs="0" name="nettoLeieinntektForAndel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
           <xsd:element minOccurs="0" name="underskuddForAndel" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="utleieformidler" type="Utleieformidler" />
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="avskrivningAvAnleggsmiddel" type="AvskrivningAvAnleggsmiddel" />
+          <xsd:element minOccurs="0" name="samletAvskrivning" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2638,6 +2640,11 @@
       <xsd:element name="fradragstype" type="FradragstypeINaeringsvirksomhetMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="HeltallMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="heltall" type="Heltall" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="KravOmKreditfradragForUtenlandskSkatt">
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
@@ -2682,11 +2689,6 @@
   <xsd:simpleType name="Uri">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
-  <xsd:complexType name="HeltallMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="heltall" type="Heltall" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="PeriodePerDatoMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="start" type="DatoMedInnkapsling" />
@@ -2929,11 +2931,6 @@
       <xsd:element minOccurs="0" name="forsikringspremie" type="BeloepIValutaMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="SaldoavskrivningAvInnbo">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="avskrivningAvInnbo" type="BeloepIValutaMedSkattemessigeEgenskaper" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="Leietaker">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
@@ -2945,6 +2942,21 @@
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="formidlerensNavn" type="OrganisasjonsnavnMedInnkapsling" />
       <xsd:element minOccurs="0" name="formidlerensOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AvskrivningAvAnleggsmiddel">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="erVilkaarForSjablongavskrivningAvInnboOppfylt" type="BoolskMedInnkapsling" />
+      <xsd:element name="saldogruppe" type="SaldogruppeKnyttetTilAvskrivningILeieforholdMedInnkapsling" />
+      <xsd:element minOccurs="0" name="anskaffelseskost" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="paakostning" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="vederlagVedSalg" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="grunnlagForAvskrivningOgInntektsfoering" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="avskrivningssats" type="ProsentMedInnkapsling" />
+      <xsd:element minOccurs="0" name="avskrivning" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Adresseopplysninger">
@@ -3449,6 +3461,11 @@
       <xsd:enumeration value="regnskapsbehandletUtleieIUtlandet" />
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:complexType name="SaldogruppeKnyttetTilAvskrivningILeieforholdMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="saldogruppe" type="SaldogruppeKnyttetTilAvskrivningILeieforhold" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="Poststed">
     <xsd:sequence>
       <xsd:element name="poststedsnavn" type="TekstMedInnkapsling" />
@@ -3591,6 +3608,9 @@
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="KonsekvensAvFordelingsmetode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_konsekvensAvFordelingsmetodeVedDobbeltbeskatningForFastEiendom.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="SaldogruppeKnyttetTilAvskrivningILeieforhold" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_saldogruppeKnyttetTilAvskrivningILeieforhold.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:complexType name="PostnummerMedInnkapsling">
