@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-12-04T19:25:41.190+0100" name="generertDato" />
+      <xsd:attribute fixed="2023-12-05T08:56:39.612+0100" name="generertDato" />
       <xsd:attribute fixed="v3" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v3" name="modellnavn" />
@@ -540,11 +540,10 @@
   <xsd:complexType name="Eierskap">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="erBlittDelAvKonsern" type="Boolsk" />
-      <xsd:element minOccurs="0" name="konsernspissVedUtgangAvForrigeInntektsaar" type="Foretak" />
-      <xsd:element minOccurs="0" name="konsernspissVedUtgangAvInntektsaaret" type="Foretak" />
+      <xsd:element minOccurs="0" name="ultimatMorforetakVedUtgangAvForrigeInntektsaar" type="Foretak" />
+      <xsd:element minOccurs="0" name="ultimatMorforetakVedUtgangAvInntektsaaret" type="Foretak" />
       <xsd:element minOccurs="0" name="norskKonsernspiss" type="Foretak" />
       <xsd:element minOccurs="0" name="utenlandskDirekteEllerIndirekteEier" type="Foretak" />
-      <xsd:element minOccurs="0" name="ultimatMorforetak" type="Foretak" />
       <xsd:element minOccurs="0" name="hovedkontorforetak" type="Foretak" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="filialIUtlandet" type="FilialIUtlandet" />
       <xsd:element minOccurs="0" name="omfatterFilialregnskapAllInntektKostnadEiendelOgGjeldForHovedkontorOgFilial" type="BoolskMedInnkapsling" />
