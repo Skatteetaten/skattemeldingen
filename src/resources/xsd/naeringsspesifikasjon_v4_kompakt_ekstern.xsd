@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-12-04T15:27:19.636+0100" name="generertDato" />
+      <xsd:attribute fixed="2023-12-05T08:41:50.501+0100" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v4" name="modellnavn" />
@@ -1570,7 +1570,7 @@
       <xsd:element name="eiendelEllerForpliktelseHarTidligereVaertTattUtAvNorskBeskatningsomraade" type="BoolskMedInnkapsling" />
       <xsd:element name="eiendelstype" type="EiendelstypeVedUttakFraNorskOmraadeMedInnkapsling" />
       <xsd:element minOccurs="0" name="saldogruppeForFysiskAnleggsmiddel" type="SaldogruppeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="utstedendeSelskapVedRealisasjonAvTidligereUttattFinansiellEiendel" type="Selskap" />
+      <xsd:element minOccurs="0" name="utstedendeSelskapVedRealisasjonAvTidligereUttattFinansiellEiendel" type="Foretak" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="LoennsOgPensjonskostnad">
@@ -1922,11 +1922,11 @@
       <xsd:element name="eiendelstypeVedUttakFraNorskOmraade" type="EiendelstypeVedUttakFraNorskOmraade" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="Selskap">
+  <xsd:complexType name="Foretak">
     <xsd:sequence>
-      <xsd:element name="navn" type="Organisasjonsnavn" />
-      <xsd:element minOccurs="0" name="identifikator" type="Identifikator" />
-      <xsd:element minOccurs="0" name="landkode" type="Landkode" />
+      <xsd:element name="navn" type="OrganisasjonsnavnMedInnkapsling" />
+      <xsd:element minOccurs="0" name="identifikator" type="IdentifikatorMedInnkapsling" />
+      <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="PrisomraadeForKraftLevertAvVannkraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_prisomraadeForKraftLevertAvVannkraftverk.xml">
@@ -2061,6 +2061,11 @@
   <xsd:complexType name="OrganisasjonsnavnMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="organisasjonsnavn" type="Organisasjonsnavn" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IdentifikatorMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="identifikator" type="Identifikator" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SalgsinntektFraKraftLevert">
