@@ -2247,6 +2247,7 @@
           <xsd:element minOccurs="0" name="kostnaderTilLeieAvCampingplass" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="dokumenterteSmaautgifter" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="beregnetKostnadForKostOgLosjiForOppholdUnderYrkesOgTjenestereise" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="spesifiktForAar" type="SpesifiktForAar" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2264,6 +2265,7 @@
           <xsd:element minOccurs="0" name="dokumenterteKostnaderTilKostUtoverMottattKostgodtgjoerelse" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="dokumenterteKostnaderTilLosji" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="beregnetKostnadForKostOgLosjiForOppholdUnderKjoereoppdrag" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="spesifiktForAar" type="SpesifiktForAar" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -3112,6 +3114,7 @@
       <xsd:element minOccurs="0" name="harTilgangTilKokemulighetOgFaarGratisMatPaaArbeidsstedet" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="antallBesoeksreiserLengerEnn6TimerUtenOvernatting" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="foreloepigBeregnetKostnadForKostOgLosji" skatt:erAvledet="true" type="BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="spesifiktForAar" type="SpesifiktForAar" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Fradragsrettstype" skatt:eksternKodeliste="inline">
@@ -3133,6 +3136,11 @@
         <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
       </xsd:choice>
       <xsd:element name="landkode" type="LandkodeMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifiktForAar">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="antallOvernattingsdoegnFomSept23" type="AntallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Minstefradragstype" skatt:eksternKodeliste="inline">
