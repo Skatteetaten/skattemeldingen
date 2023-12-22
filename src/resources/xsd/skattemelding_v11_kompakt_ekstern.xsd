@@ -178,6 +178,7 @@
       <xsd:element minOccurs="0" name="utflyttingsskatt" type="Utflyttingsskatt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skattefriTilfeldigInntektFraSpillLotteriMv" type="SkattefriTilfeldigInntektFraSpillLotteriMv" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skattepliktigTilfeldigInntektFraSpillLotteriMv" type="SkattepliktigTilfeldigInntektFraSpillLotteriMv" />
+      <xsd:element minOccurs="0" name="maksimalSkattEtterSkatteavtale" type="MaksimalSkattEtterSkatteavtale" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Naering">
@@ -396,6 +397,7 @@
           <xsd:element name="beloep" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element name="andelAvFribeloep" type="ProsentMedInnkapsling" />
           <xsd:element minOccurs="0" name="formuesverdiForInnboLoesoereOgFritidsbaatUnderSalgsverdigrense" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
+          <xsd:element name="andelAvFormuesverdiForInnboLoesoereOgFritidsbaatUnderSalgsverdigrense" type="ProsentMedInnkapsling" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1293,6 +1295,12 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+  <xsd:complexType name="MaksimalSkattEtterSkatteavtale">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="maksimalSkattPaaRenteinntektOmfattetAvSkatteavtaleVedSkatteavtalebostedIAnnenStat" skatt:erAvledet="true" type="BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="maksimalSkattPaaUtbytteOmfattetAvSkatteavtaleVedSkatteavtalebostedIAnnenStat" skatt:erAvledet="true" type="BeloepSomHeltall" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="NaeringsinntektMv">
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
@@ -2030,7 +2038,8 @@
           <xsd:element minOccurs="0" name="formuesspesifikasjonForSkogeiendomINorge" type="FormuesspesifikasjonForSkogeiendomINorge" />
           <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall" />
-          <xsd:element minOccurs="0" name="sergMatrikkelnummer" type="SergMatrikkelnummer" />
+          <xsd:element minOccurs="0" name="matrikkelnummer" type="Matrikkelnummer" />
+          <xsd:element minOccurs="0" name="eierandel" type="ProsentMedInnkapsling" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -3030,19 +3039,21 @@
       <xsd:element minOccurs="0" name="andelUngskog" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="anvendtPrissone" skatt:erAvledet="true" type="Tekst" />
       <xsd:element minOccurs="0" name="kostnadssjablong" skatt:erAvledet="true" type="Tekst" />
-      <xsd:element minOccurs="0" name="avkastningsverdiPerEiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="avkastningsverdiPerKubikkmeterTilvekst" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element maxOccurs="4" minOccurs="0" name="tilvekst" type="Tilvekstspesifikasjon" />
       <xsd:element minOccurs="0" name="sumTilvekst" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="korrigertKostnadssjablong" type="Tekst" />
       <xsd:element minOccurs="0" name="anvendtKostnadssjablong" skatt:erAvledet="true" type="Tekst" />
+      <xsd:element minOccurs="0" name="formuesverdiForSkogeiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="SergMatrikkelnummer">
+  <xsd:complexType name="Matrikkelnummer">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="gaardsnummer" type="GaardsnummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="bruksnummer" type="BruksnummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="festenummer" type="FestenummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="seksjonsnummer" type="SeksjonsnummerMedInnkapsling" />
+      <xsd:element name="kommunenummer" type="KommunenummerMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DyreartKnyttetTilJaktrettighetMedInnkapsling">
@@ -3532,6 +3543,14 @@
       <xsd:element minOccurs="0" name="adressenavn" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="adressenummer" type="Adressenummer" />
       <xsd:element minOccurs="0" name="bruksenhetsnummer" type="BruksenhetsnummerMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SergMatrikkelnummer">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="gaardsnummer" type="GaardsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="bruksnummer" type="BruksnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="festenummer" type="FestenummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="seksjonsnummer" type="SeksjonsnummerMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="EiendomsidentifikatorForBoenhetIBoligselskap">
