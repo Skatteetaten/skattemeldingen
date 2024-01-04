@@ -482,7 +482,7 @@
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="akvakulturtillatelsesnummer" type="HeltallMedInnkapsling" />
       <xsd:element name="omsetningsverdi" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element name="verdiFoerEventuellVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="verdiFoerEventuellVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="formuesverdi" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="verdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="andelAvSamletGjeldKnyttetTilAkvakulturtillatelse" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
