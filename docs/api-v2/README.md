@@ -189,7 +189,7 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
     - skattemeldingdokument – complex type
       -
-      type – [valg fra xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
+      type – [valg fra xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L62:L69)
         - id – dokumentidentifikator til dokumentet i skatteetatens system.
         - encoding – kodeliste – [utf-8]
         - content – serialisert dokumentinnhold i base64 encodet format
