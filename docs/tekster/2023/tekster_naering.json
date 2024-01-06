@@ -2739,7 +2739,7 @@
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.beregnetSelskapsskatt.aaretsAvskrivningPaaAnleggsmiddelSomBenyttesIHavbruksvirksomhetSomErDirekteUtgiftsfoert",
     "tekst_nn": "Årets avskriving på driftsmiddel som er direkte utgiftsførte",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Årets avskrivning på driftsmidler som er direkte utgiftsført",
+    "tekst_nb": "Årets avskrivning på driftsmidler som er direkte fradragsført",
     "tekst_en": "This years’ depreciation of fixed assets that have been recognised directly as an expense"
   },
   {
@@ -2757,6 +2757,10 @@
     "tekst_en": "This year’s calculated company tax"
   },
   {
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.beregnetSelskapsskatt.fradragForAaretsTapIAlminneligInntektVedRealisasjonAvAnleggsmiddelSomErDirekteFradragsfoertIGrunnrenteinntekt",
+    "tekst_nb": "Årets tap på driftsmidler som er direkte fradragsført"
+  },
+  {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.beregnetSelskapsskatt.grunnlagForBeregningAvSelskapsskatt",
     "tekst_nn": "Grunnlag for berekning av selskapsskatt",
     "tekst_se": "Ikke oversatt",
@@ -2767,8 +2771,12 @@
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.beregnetSelskapsskatt.tilbakefoeringAvGevinstPaaInvesteringSomBenyttesIHavbruksvirksomhetSomErDirekteUtgiftsfoert",
     "tekst_nn": "Tilbakeføring av gevinst på investering som er direkte utgiftsført",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Tilbakeføring av gevinst på investering som er direkte utgiftsført",
+    "tekst_nb": "Tilbakeføring på gevinst på driftsmidler som er direkte fradragsført",
     "tekst_en": "Reversal of gain on investment that has been recognised directly as an expense"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.beregnetSelskapsskatt.tilleggForAaretsGevinstIAlminneligInntektVedRealisasjonAvAnleggsmiddelSomErDirekteFradragsfoertIGrunnrenteinntekt",
+    "tekst_nb": "Årets gevinst på driftsmidler som er direkte fradragsført"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.grunnrenteinntektFoerSamordning",
@@ -2802,7 +2810,7 @@
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.realisasjonEllerOpphoerAvGrunnrentepliktigHavbruksvirksomhet.skattepliktigVerdiAvAnleggsmiddelSomBenyttesIDenGrunnrentepliktigeHavbruksvirksomheten",
     "tekst_nn": "Skattepliktig verdi av driftsmiddel",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Skattepliktig verdi av driftsmidler",
+    "tekst_nb": "Skattemessig verdi av driftsmidler",
     "tekst_en": "Taxable value of fixed assets"
   },
   {
@@ -2816,7 +2824,7 @@
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.samletBruttoFradragIGrunnrenteinntekt",
     "tekst_nn": "Samla brutto grunnrentefrådrag",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Samlet brutto grunnrentefradrag",
+    "tekst_nb": "Samlet fradrag i grunnrenteinntekt",
     "tekst_en": "Total gross resource rent deduction"
   },
   {
@@ -2842,7 +2850,7 @@
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvFradragIBruttoGrunnrenteinntekt.beskrivelseAvAnnetGrunnrentepliktigFradrag.tekst",
-    "tekst_nb": "Beskrivelse av annet grunnrentepliktig fradrag"
+    "tekst_nb": "Beskrivelse av annet fradrag"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvFradragIBruttoGrunnrenteinntekt.driftskostnad",
@@ -2869,7 +2877,7 @@
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvFradragIBruttoGrunnrenteinntekt.investeringskostnadKnyttetTilHavbruksvirksomhet",
     "tekst_nn": "Investeringskostnad",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Investeringskostnad",
+    "tekst_nb": "Investeringskostnad (direkte fradrag)",
     "tekst_en": "Investment cost"
   },
   {
@@ -2905,7 +2913,7 @@
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvFradragIBruttoGrunnrenteinntekt.spesifikasjonAvVederlagForKjoepAvLevendeFisk.vederlag",
     "tekst_nn": "Vederlag",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Vederlag",
+    "tekst_nb": "Vederlag for kjøp av levende fisk pr. motpart",
     "tekst_en": "Remuneration"
   },
   {
@@ -2938,20 +2946,20 @@
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvInntektIBruttoGrunnrenteinntekt.beskrivelseAvAnnenGrunnrentepliktigInntekt.tekst",
-    "tekst_nb": "Inntekt i grunnrenteinntekt"
+    "tekst_nb": "Beskrivelse av annen inntekt"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvInntektIBruttoGrunnrenteinntekt.gevinstVedRealisasjonAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet",
     "tekst_nn": "Gevinst ved realisasjon av driftsmiddel",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Gevinst ved realisasjon av driftsmiddel",
+    "tekst_nb": "Gevinst ved realisasjon av driftsmidler",
     "tekst_en": "Gain on divestment of fixed assets"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvInntektIBruttoGrunnrenteinntekt.gevinstVedUttakAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet",
     "tekst_nn": "Gevinst ved uttak av driftsmiddel",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Gevinst ved uttak av driftsmiddel",
+    "tekst_nb": "Gevinst ved uttak av driftsmidler",
     "tekst_en": "Gain on withdrawal of fixed asset"
   },
   {
@@ -2980,7 +2988,7 @@
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvInntektIBruttoGrunnrenteinntekt.spesifikasjonAvLevendeFisk.salgsinntektFraLevendeFisk",
     "tekst_nn": "Salsinntekt frå levande fisk",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Salgsinntekt fra levende fisk",
+    "tekst_nb": "Salgsinntekt fra levende fisk pr. motpart",
     "tekst_en": "Sales income from live fish"
   },
   {
@@ -2994,8 +3002,12 @@
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvInntektIBruttoGrunnrenteinntekt.spesifikasjonAvSlaktetFisk.slaktevolum.antall",
     "tekst_nn": "Slaktevolum",
     "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Slaktevolum",
+    "tekst_nb": "Slaktevolum i kilogram",
     "tekst_en": "Slaughter volume"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvInntektIBruttoGrunnrenteinntekt.spesifikasjonAvSlaktetFisk.tilvirkningsgrad.tilvirkningsgrad",
+    "tekst_nb": "Tilvirkningsgrad"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet.spesifikasjonAvInntektOgFradragFraDeltakersAndelISelskapMedDeltakerfastsetting.andelAvNegativGrunnrenteinntekt",

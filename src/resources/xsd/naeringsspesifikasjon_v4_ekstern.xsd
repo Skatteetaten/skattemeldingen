@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-12-12T12:44:36.676+0100" name="generertDato" />
+      <xsd:attribute fixed="2023-12-15T13:24:14.283+0100" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v4" name="modellnavn" />
@@ -2270,6 +2270,7 @@
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="fiskeart" type="FiskeartKnyttetTilHavbruksvirksomhetMedInnkapsling" />
       <xsd:element name="slaktevolum" type="AntallMedInnkapsling" />
+      <xsd:element name="tilvirkningsgrad" type="TilvirkningsgradAvSlaktetFiskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvLevendeFisk">
@@ -2359,6 +2360,11 @@
       <xsd:element name="fiskeartKnyttetTilHavbruksvirksomhet" type="FiskeartKnyttetTilHavbruksvirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="TilvirkningsgradAvSlaktetFiskMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="tilvirkningsgrad" type="TilvirkningsgradAvSlaktetFisk" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="OrganisasjonsnummerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnummer" />
@@ -2433,6 +2439,9 @@
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="FiskeartKnyttetTilHavbruksvirksomhet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_fiskeartKnyttetTilHavbruksvirksomhet.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="TilvirkningsgradAvSlaktetFisk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/tilvirkningsgrad.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="LeveringsvilkaartypeVedOljesalg" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_leveringsvilkaartypeVedOljesalg.xml">
