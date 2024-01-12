@@ -78,7 +78,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="virtuellValuta" type="VirtuellValuta" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fondskonto" type="Fondskonto" />
       <xsd:element minOccurs="0" name="forholdKunRelevanteForBeskatningPaaSvalbard" type="ForholdKunRelevanteForBeskatningPaaSvalbard" />
-      <xsd:element minOccurs="0" name="rettighetKnyttetTilSkogeiendom" type="RettighetKnyttetTilSkogeiendom" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="rettighetKnyttetTilSkogeiendom" type="RettighetKnyttetTilSkogeiendom" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kapitalisertFesteavgift" type="KapitalisertFesteavgift" />
     </xsd:sequence>
   </xsd:complexType>
@@ -432,6 +432,7 @@
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
+          <xsd:element name="id" type="Tekst"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="jaktrettighet" type="VerdiPaaJaktrettighetPerDyreart" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="leieinntektFraUtleidRettighet" type="LeieinntektFraUtleidRettighet" />
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForJaktOgFiskerettighet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
