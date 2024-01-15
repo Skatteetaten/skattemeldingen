@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-12-15T13:24:14.358+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-01-09T08:28:50.419+0100" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v4" name="modellnavn" />
@@ -538,8 +538,8 @@
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonVedBeregningAvRentefradragsramme">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="tilleggForSkattemessigAvskrivning" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="direkteInntektsfoertVederlagForAvskrevetAnleggsmiddel" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tilleggForSkattemessigAvskrivning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="direkteInntektsfoertVederlagForAvskrevetAnleggsmiddel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnleggsmiddelIKraftverkUnderUtfoerelse">
@@ -1355,7 +1355,7 @@
       <xsd:element minOccurs="0" name="urealisertValutatapPaaKortsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="realisertValutagevinstPaaLangsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="realisertValutatapPaaLangsiktigRentebaerendeGjeld" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="sumNettoFinanskostnaderForVirksomhetPaaSokkel" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumNettoFinanskostnaderForVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aaretsSkattemessigeAktiverteRentekostnader" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="andelAvFinanskostnaderSomErFradragsberettigetIInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>

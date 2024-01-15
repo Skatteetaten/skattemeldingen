@@ -1627,6 +1627,7 @@
           <xsd:element minOccurs="0" name="deltakersAndelIKraftverk" type="DeltakersAndelIKraftverk" />
           <xsd:element minOccurs="0" name="deltakersAndelIHavbruksvirksomhet" type="DeltakersAndelIHavbruksvirksomhet" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelAvSkattetrekkForKildeskattPaaRenteRoyaltyMv" type="DeltakersAndelAvSkattetrekkForKildeskattPaaRenteRoyaltyMv" />
+          <xsd:element minOccurs="0" name="deltakersAndelAvSkattefradragForKostnaderTilForskningOgUtvikling" type="DeltakersAndelAvSkattefradragForKostnaderTilForskningOgUtvikling" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2741,6 +2742,12 @@
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="inntektstype" type="InntektstypeVedKildeskattPaaRenteRoyaltyMvMedInnkapsling" />
       <xsd:element minOccurs="0" name="skattetrekksbeloep" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DeltakersAndelAvSkattefradragForKostnaderTilForskningOgUtvikling">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="samletSkattefradrag" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samletTilleggIBeregnetSkatt" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Uri">
