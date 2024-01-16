@@ -898,6 +898,8 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvEiendelEllerForpliktelse" type="SpesifikasjonAvEiendelEllerForpliktelse" />
       <xsd:element minOccurs="0" name="samletGevinstVedUttakAvEiendelEllerForpliktelseFraNorskOmraade" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="samletTapVedUttakAvEiendelEllerForpliktelseFraNorskOmraade" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="kreverBetalingsutsettelse" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="harTidligereUttattEiendelMvMedUtsattInnbetalingEllerFradragsfoering" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvLoennsOgPensjonskostnad">
@@ -1083,6 +1085,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="BeloepMed2Desimaler">
     <xsd:restriction base="Beloep">
+      <xsd:totalDigits value="30" />
       <xsd:fractionDigits value="2" />
     </xsd:restriction>
   </xsd:simpleType>
@@ -1549,7 +1552,7 @@
       <xsd:element minOccurs="0" name="korreksjonNaarSalgBokfoertIForegaaendeInntektsaarErJustertTilNormpriskursIInntektsaaretsRegnskap" type="KorreksjonAvOljesalgOgNormprisinntekt" />
       <xsd:element minOccurs="0" name="mottattKvalitetskompensasjonInCashForFeltLoeftetITeesside" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fraktkostnaderMvIkkeHenfoerbareTilDetEnkelteLoeft" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="samletKvantumIFat" skatt:erAvledet="true" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletKvantumIFat" skatt:erAvledet="true" type="DesimaltallMed4DesimalerMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletBokfoertSalgPerFelt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="heravSamletBokfoertSalgEksklusivMottattKvalitetskompensasjonInCash" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="heravMottattKvalitetskompensasjonInCash" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1730,7 +1733,7 @@
       <xsd:element name="eiendelEllerForpliktelseHarTidligereVaertTattUtAvNorskBeskatningsomraade" type="BoolskMedInnkapsling" />
       <xsd:element name="eiendelstype" type="EiendelstypeVedUttakFraNorskOmraadeMedInnkapsling" />
       <xsd:element minOccurs="0" name="saldogruppeForFysiskAnleggsmiddel" type="SaldogruppeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="utstedendeSelskapVedRealisasjonAvTidligereUttattFinansiellEiendel" type="Foretak" />
+      <xsd:element minOccurs="0" name="utstedendeSelskapVedRealisasjonAvTidligereUttattEiendel" type="Foretak" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="LoennsOgPensjonskostnad">
@@ -1805,7 +1808,9 @@
     <xsd:annotation>
       <xsd:documentation>tall som er satt sammen av en heltallsdel og en fraksjondel [wikipedia]</xsd:documentation>
     </xsd:annotation>
-    <xsd:restriction base="Desimaltall" />
+    <xsd:restriction base="Desimaltall">
+      <xsd:fractionDigits value="10" />
+    </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="Valutakode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_aktiveValutakoder.xml">
     <xsd:restriction base="xsd:string" />
@@ -2064,7 +2069,9 @@
         '%'. Prosent er altså en hundredel av en gitt mengde. Eksempelvis vil en prosent av 1000 være 10.
       </xsd:documentation>
     </xsd:annotation>
-    <xsd:restriction base="Desimaltall" />
+    <xsd:restriction base="Desimaltall">
+      <xsd:fractionDigits value="10" />
+    </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="Antall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e145-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
@@ -2116,12 +2123,12 @@
       <xsd:element name="erLoeftetNormprisregulert" type="BoolskMedInnkapsling" />
       <xsd:element name="leveringsdato" type="DatoMedInnkapsling" />
       <xsd:element name="cargonummer" type="TekstMedInnkapsling" />
-      <xsd:element name="kvantumIFat" type="DesimaltallMedInnkapsling" />
+      <xsd:element name="kvantumIFat" type="DesimaltallMed4DesimalerMedInnkapsling" />
       <xsd:element name="kredittid" type="AntallMedInnkapsling" />
       <xsd:element name="leveringsvilkaar" type="LeveringsvilkaarVedOljesalg" />
-      <xsd:element minOccurs="0" name="prisPerFat" type="DesimaltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="normpriskurs" type="DesimaltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="normpris" type="BeloepSomDesimaltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="prisPerFat" type="DesimaltallMed4DesimalerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="normpriskurs" type="DesimaltallMed4DesimalerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="normpris" type="DesimaltallMed4DesimalerMedInnkapsling" />
       <xsd:element name="bokfoertSalg" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="omregnetSalg" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="normprisinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
@@ -2141,12 +2148,12 @@
       <xsd:element minOccurs="0" name="korreksjonIValutafradrag" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="DesimaltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:complexType name="DesimaltallMed4DesimalerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>tall som er satt sammen av en heltallsdel og en fraksjondel [wikipedia]</xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
-      <xsd:element name="desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940 " type="Desimaltall" />
+      <xsd:element name="desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940 " type="DesimaltallMed4Desimaler" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Verditype" skatt:eksternKodeliste="inline">
@@ -2315,11 +2322,15 @@
       <xsd:element minOccurs="0" name="beskrivelse" type="TekstMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="BeloepSomDesimaltallMedSkattemessigeEgenskaper">
-    <xsd:sequence>
-      <xsd:element name="beloep" type="DesimaltallMedInnkapsling" />
-    </xsd:sequence>
-  </xsd:complexType>
+  <xsd:simpleType name="DesimaltallMed4Desimaler" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:annotation>
+      <xsd:documentation>tall som er satt sammen av en heltallsdel og en fraksjondel [wikipedia]</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Desimaltall">
+      <xsd:totalDigits value="30" />
+      <xsd:fractionDigits value="4" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="EiendelstypeVedUttakFraNorskOmraade" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_eiendelstypeVedUttakFraNorskOmraade.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>

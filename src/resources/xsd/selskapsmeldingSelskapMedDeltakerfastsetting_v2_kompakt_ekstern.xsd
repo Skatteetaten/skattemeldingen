@@ -2,7 +2,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:selskapsmelding:selskapmeddeltakerfastsetting:ekstern:v2" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:selskapsmelding:selskapmeddeltakerfastsetting:ekstern:v2">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-01-09T08:41:33.496+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-01-15T13:58:03.036+0100" name="generertDato"/>
       <xsd:attribute fixed="v2" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Selskapsmelding for selskap med deltakerfastsetting v2" name="modellnavn" />
@@ -65,8 +65,8 @@
   </xsd:simpleType>
   <xsd:complexType name="InntektOgUnderskudd">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="samletInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
-      <xsd:element minOccurs="0" name="samletUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="samletInntekt" skatt:erAvledet="true" type="StortBeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="samletUnderskudd" skatt:erAvledet="true" type="StortBeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="nettoSkattefriInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="skattefriInntekt" type="SkattefriInntekt" />
       <xsd:element minOccurs="0" name="ikkefradragsberettigetKostnad" type="IkkefradragsberettigetKostnad" />
@@ -83,13 +83,13 @@
   <xsd:complexType name="FormueOgGjeld">
     <xsd:sequence>
       <xsd:choice>
-        <xsd:element minOccurs="0" name="nettoformue" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
-        <xsd:element minOccurs="0" name="nettogjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+        <xsd:element minOccurs="0" name="nettoformue" skatt:erAvledet="true" type="StortBeloepSomHeltallMedOverstyring" />
+        <xsd:element minOccurs="0" name="nettogjeld" skatt:erAvledet="true" type="StortBeloepSomHeltallMedOverstyring" />
       </xsd:choice>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesobjekt" type="Formuesobjekt" />
       <xsd:element minOccurs="0" name="gjeld" type="Gjeld" />
-      <xsd:element minOccurs="0" name="samletVerdiFoerEventuellVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
-      <xsd:element minOccurs="0" name="samletGjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="samletVerdiFoerEventuellVerdsettingsrabatt" skatt:erAvledet="true" type="StortBeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="samletGjeld" skatt:erAvledet="true" type="StortBeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="formueForSelskapMedDeltakerINokus" type="FormueForSelskapMedDeltakerINokus" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="akvakulturtillatelseSomFormuesobjekt" type="AkvakulturtillatelseSomFormuesobjekt" />
     </xsd:sequence>
@@ -199,12 +199,10 @@
   </xsd:complexType>
   <xsd:complexType name="KontrollertTransaksjonDisposisjonOgMellomvaerende">
     <xsd:sequence>
-      <xsd:element name="foretaksinformasjon" type="Foretaksinformasjon" />
-      <xsd:element name="harUnntakFraPliktenTilAaLevereKontrollertTransaksjonDisposisjonOgMellomvaerende" type="BoolskMedInnkapsling" />
-      <xsd:element name="harUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="aarsakTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon" type="AarsakstypeTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjonMedInnkapsling" />
+      <xsd:element minOccurs="0" name="foretaksinformasjon" type="Foretaksinformasjon" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="funksjonOgRisiko" type="FunksjonOgRisiko" />
       <xsd:element minOccurs="0" name="transaksjonDisposisjonOgMellomvaerende" type="TransaksjonDisposisjonOgMellomvaerende" />
+      <xsd:element minOccurs="0" name="unntakForOppgaveOgDokumentasjonsplikt" type="UnntakForOppgaveOgDokumentasjonsplikt" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Deltaker">
@@ -260,6 +258,12 @@
       <xsd:element name="beloepSomHeltall" type="BeloepSomHeltall" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="StortBeloepSomHeltallMedOverstyring">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="StortBeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erOverstyrt" type="BoolskMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="BeloepSomHeltallMedOverstyring">
     <xsd:sequence>
       <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling" />
@@ -301,8 +305,8 @@
   <xsd:complexType name="InntektOgInntektsfradrag">
     <xsd:sequence>
       <xsd:choice>
-        <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-        <xsd:element minOccurs="0" name="naeringsinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+        <xsd:element minOccurs="0" name="underskudd" skatt:erAvledet="true" type="StortBeloepSomHeltallMedInnkapsling" />
+        <xsd:element minOccurs="0" name="naeringsinntekt" skatt:erAvledet="true" type="StortBeloepSomHeltallMedInnkapsling" />
       </xsd:choice>
     </xsd:sequence>
   </xsd:complexType>
@@ -362,7 +366,7 @@
       <xsd:element minOccurs="0" name="finansproduktidentifikatortype" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="erOmfattetAvFritaksmetoden" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="antallAksjer" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="antallAksjer" type="DesimaltallMed10DesimalerMedInnkapsling" />
       <xsd:element minOccurs="0" name="utbytte" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAksje" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvAksje" type="BeloepSomHeltallMedInnkapsling" />
@@ -378,7 +382,7 @@
       <xsd:element minOccurs="0" name="finansproduktidentifikatortype" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="erOmfattetAvFritaksmetoden" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="antallAndreFinansprodukter" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="antallAndreFinansprodukter" type="DesimaltallMed10DesimalerMedInnkapsling" />
       <xsd:element minOccurs="0" name="renteinntekt" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="kapitalinntektFraAnnetFinansprodukt" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAnnetFinansprodukt" type="BeloepSomHeltallMedInnkapsling" />
@@ -394,7 +398,7 @@
       <xsd:element minOccurs="0" name="finansproduktidentifikator" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="finansproduktidentifikatortype" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="antallObligasjonOgSertifikat" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="antallObligasjonOgSertifikat" type="DesimaltallMed10DesimalerMedInnkapsling" />
       <xsd:element minOccurs="0" name="renteinntektAvObligasjonOgSertifikat" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvObligasjonOgSertifikat" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvObligasjonOgSertifikat" type="BeloepSomHeltallMedInnkapsling" />
@@ -408,7 +412,7 @@
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="erOmfattetAvFritaksmetoden" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="isinnummer" type="IsinnummerMedInnkapsling" />
-      <xsd:element minOccurs="0" name="antallAndeler" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="antallAndeler" type="DesimaltallMed10DesimalerMedInnkapsling" />
       <xsd:element minOccurs="0" name="utbytte" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="renteinntekt" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAndelIAksjedel" type="BeloepSomHeltallMedInnkapsling" />
@@ -423,7 +427,7 @@
       <xsd:element minOccurs="0" name="virtuellValutanavn" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="kontonummer" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="antall" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="antall" type="DesimaltallMed10DesimalerMedInnkapsling" />
       <xsd:element minOccurs="0" name="gjelderFlereVirtuelleValutaer" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="kapitalinntektFraVirtuellValuta" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvVirtuellValuta" type="BeloepSomHeltallMedInnkapsling" />
@@ -691,7 +695,7 @@
       <xsd:element name="samletPaastempletMerkeytelseIKva" skatt:erAvledet="true" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="positivGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="negativGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fordelingsnoekkel" skatt:erAvledet="true" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fordelingsnoekkel" skatt:erAvledet="true" type="FordelingsnoekkelMedInnkapsling" />
       <xsd:element minOccurs="0" name="fordeltPositivGrunnrenteinntektEtterSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="restAvFremfoerbarNegativGrunnrenteinntektFraFoer2007" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="eiendomsskattegrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
@@ -774,12 +778,16 @@
       <xsd:element minOccurs="0" name="faktiskRentekostnad" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fradragsberettigetRentekostnad" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="kortsiktigValutagevinst" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="kortsiktigValutatap" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattepliktigKortsiktigValutagevinst" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="andelAksjeIRederibeskattetSelskap" type="AndelAksjeIRederibeskattetSelskap" />
+      <xsd:element minOccurs="0" name="kortsiktigValutatap" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fradragsberettigetKortsiktigValutatap" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="realisertLangsiktigValutagevinstEtablertFoer2005" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="realisertLangsiktigValutatapEtablertFoer2005" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="realisertLangsiktigValutagevinstEtablertFom2005" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattepliktigRealisertLangsiktigValutagevinstEtablertFom2005" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="realisertLangsiktigValutatapEtablertFom2005" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fradragsberettigetRealisertLangsiktigValutatapEtablertFom2005" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="positivOmvurderingskontoVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="negativOmvurderingskontoVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="positivOmvurderingskontoVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
@@ -796,8 +804,8 @@
       <xsd:element minOccurs="0" name="andelTonnasjeskattFraSdfEllerNokus" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletTonnasjeskatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="tonnasjeskattPerSkip" type="TonnasjeskattPerSkip" />
-      <xsd:element minOccurs="0" name="nettotonnasjeEideSkip" type="AntallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="heravAndelEoestonnasje" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="nettotonnasjeEideSkip" skatt:erAvledet="true" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="heravAndelEoestonnasje" skatt:erAvledet="true" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelEoesregistrertTonnasjeForAksjeselskap" skatt:erAvledet="true" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="prosentandelEidAvRederibeskattetDeltaker" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelNettotonnasjeForRederibeskattetDeltaker" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
@@ -928,8 +936,8 @@
       <xsd:element minOccurs="0" name="antallRegistrertePatenter" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="aarsakTilEvtNegativtDriftsresultatDeSisteToAvTreAarene" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="foersteAarMedBudsjettertPositivtDriftsresultatHvisNegativtDriftsresultatIAar" type="AarstallMedInnkapsling" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="tilleggsinformasjon" type="TilleggsinformasjonOmKontrollertTransaksjonDisposisjonOgMellomvaerende" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kildeskattPaaRenteRoyaltyMv" type="KildeskattPaaRenteRoyaltyMv" />
+      <xsd:element minOccurs="0" name="tilleggsinformasjon" type="TilleggsinformasjonOmKontrollertTransaksjonDisposisjonOgMellomvaerende" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kildeskattPaaKonserninternTransaksjonIUtlandet" type="KildeskattPaaKonserninternTransaksjonIUtlandet" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="samarbeidendeForetakSomBrukerImmateriellEiendelUtvikletEllerEidAvForetaket" type="SamarbeidendeForetakSomBrukerImmateriellEiendelUtvikletEllerEidAvForetaket" />
     </xsd:sequence>
   </xsd:complexType>
@@ -959,6 +967,13 @@
       <xsd:element minOccurs="0" name="samletGarantiansvar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletGarantigrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="transaksjonsmotpart" type="Transaksjonsmotpart" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UnntakForOppgaveOgDokumentasjonsplikt">
+    <xsd:sequence>
+      <xsd:element name="harUnntakFraPliktenTilAaLevereKontrollertTransaksjonDisposisjonOgMellomvaerende" type="BoolskMedInnkapsling" />
+      <xsd:element name="harUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aarsakTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon" type="AarsakstypeTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjonMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="NorskPersonidentifikatorMedInnkapsling">
@@ -1177,14 +1192,26 @@
     <xsd:restriction base="xsd:decimal" />
   </xsd:simpleType>
   <xsd:simpleType name="Prosent">
-    <xsd:restriction base="Desimaltall" />
+    <xsd:restriction base="Desimaltall">
+      <xsd:fractionDigits value="10" />
+    </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="InntektstypeVedKildeskattPaaRenteRoyaltyMv" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_inntektstypeVedKildeskattPaaRenteRoyaltyMv.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
+  <xsd:complexType name="StortBeloepSomHeltallMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="beloepSomHeltall" type="StortBeloepSomHeltall" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="FormuesobjekttypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="formuesobjekttype" type="Formuesobjekttype" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HeltallMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="heltall" type="Heltall" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OrganisasjonsnavnMedInnkapsling">
@@ -1212,9 +1239,9 @@
       <xsd:element name="antall" type="Antall" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="DesimaltallMedInnkapsling">
+  <xsd:complexType name="DesimaltallMed10DesimalerMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="desimaltall" type="Desimaltall" />
+      <xsd:element name="desimaltall" type="DesimaltallMed10Desimaler" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnnetFinansprodukttypeMedInnkapsling">
@@ -1667,9 +1694,9 @@
   <xsd:simpleType name="KiloWattime">
     <xsd:restriction base="Heltall" />
   </xsd:simpleType>
-  <xsd:complexType name="HeltallMedInnkapsling">
+  <xsd:complexType name="FordelingsnoekkelMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="heltall" type="Heltall" />
+      <xsd:element name="desimaltall" type="Reduksjonsfaktor" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForNaturressursskattPerKommune">
@@ -1823,15 +1850,24 @@
   </xsd:complexType>
   <xsd:complexType name="TilleggsinformasjonOmKontrollertTransaksjonDisposisjonOgMellomvaerende">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst" />
-      <xsd:element name="opplysning" type="OpplysningOmKontrollertTransaksjonDisposisjonOgMellomvaerendeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="beskrivelse" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="harDetSkjeddVesentligEndringIFunksjonRisikoEllerEiendelIInntektsaaret" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="inngaarRoyaltybelastningIAnnenTransaksjonsart" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erDetUtfoertTjenesteEllerOverfoertEiendelRettighetForpliktelseEllerRisikoTilNaerstaaendeForetakUtenEllerTilSymbolskVederlagIInntektsaaret" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="foreliggerDetOppdatertBenchmarksanalyseForVesentligTransaksjonsartHvorTNMMEllerCUPMetodenErAnvendt" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erForetaketGarantistForAvtalerInngaattAvAnnetSelskapISammeKonsern" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="harForetaketGjortEndringIInternprisingenSiste5AarSomFoelgeAvEndringsvedtakFraSkatteetaten" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erForetaketEierAvKonsernkontoordning" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="foreliggerDetDueDiligenceRapportEllerPurchasePriceAgreementIForbindelseMedEndringAvMorselskap" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="harForetaketILoepetAvDeSiste5AarEgenrettetSkattemeldingenMedBakgrunnIForholdSomHeltEllerDelvisSkyldesInternprising" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="benytterForetaketEksternRaadgiverVedUtfyllingEllerDokumentasjonAvInternprising" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="harForetaketBenyttetHeleEllerDelerAvInternprisingsveiledningenPaaSkatteetatenNo" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="harForetaketBenyttetSkatteveilederenForInternprisingPaaSkatteetatenNo" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="KildeskattPaaRenteRoyaltyMv">
+  <xsd:complexType name="KildeskattPaaKonserninternTransaksjonIUtlandet">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element minOccurs="0" name="inntektstype" type="InntektstypeVedKildeskattPaaRenteRoyaltyMvMedInnkapsling" />
+      <xsd:element minOccurs="0" name="transaksjonstype" type="TekstMedInnkapsling" />
       <xsd:element name="land" type="LandkodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="beloep" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
@@ -1992,6 +2028,11 @@
       <xsd:element minOccurs="0" name="eiendomsskattegrunnlag" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="StortBeloepSomHeltall">
+    <xsd:restriction base="xsd:integer">
+      <xsd:totalDigits value="30" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="Formuesobjekttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_formuesobjekttypeUpersonligSkattepliktig.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -2012,6 +2053,12 @@
   </xsd:simpleType>
   <xsd:simpleType name="Antall">
     <xsd:restriction base="Heltall" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DesimaltallMed10Desimaler">
+    <xsd:restriction base="Desimaltall">
+      <xsd:totalDigits value="30" />
+      <xsd:fractionDigits value="10" />
+    </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="AnnetFinansprodukttype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_finansprodukt.xml">
     <xsd:restriction base="xsd:string" />
@@ -2149,7 +2196,7 @@
       <xsd:element minOccurs="0" name="avvikVedAnvendtDokumentertMarkedsverdi" skatt:erAvledet="true" type="Prosent" />
       <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForNaeringseiendom" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" type="AarstallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="justertMarkedsverdiForNaeringseiendom" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="justertMarkedsverdiForNaeringseiendom" type="DesimaltallMed4DesimalerMedInnkapsling" />
       <xsd:element minOccurs="0" name="datoForDokumentertMarkedsverdiForNaeringseiendom" type="DatoMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
@@ -2325,6 +2372,12 @@
       <xsd:element minOccurs="0" name="negativEffektPaaBalansesum" type="BeloepIValuta" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="Reduksjonsfaktor">
+    <xsd:restriction base="Desimaltall">
+      <xsd:totalDigits value="30" />
+      <xsd:fractionDigits value="9" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="SkipstypeKnyttetTilRederiskatteordning" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_skipstypeKnyttetTilRederiskatteordning.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -2377,11 +2430,6 @@
   <xsd:simpleType name="GenerelleSvarord" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/generelleSvarord.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:complexType name="OpplysningOmKontrollertTransaksjonDisposisjonOgMellomvaerendeMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="opplysningOmKontrollertTransaksjonDisposisjonOgMellomvaerende" type="OpplysningOmKontrollertTransaksjonDisposisjonOgMellomvaerende" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="Funksjonstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_funksjonstype.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -2454,6 +2502,11 @@
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" type="AarstallMedInnkapsling" />
       <xsd:element minOccurs="0" name="justertMarkedsverdiForBolig" type="JustertMarkedsverdiForBolig" />
       <xsd:element minOccurs="0" name="datoForDokumentertMarkedsverdiForBolig" type="DatoMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DesimaltallMed4DesimalerMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="desimaltall" type="DesimaltallMed4Desimaler" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Naeringseiendomstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_naeringseiendomstype.xml">
@@ -2534,9 +2587,6 @@
   <xsd:simpleType name="GrunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_grunnlagsdokumentasjonstypeForVurderingAvOekonomiskeVanskeligheterSkattefunn.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="OpplysningOmKontrollertTransaksjonDisposisjonOgMellomvaerende" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_opplysningOmKontrollertTransaksjonDisposisjonOgMellomvaerende.xml">
-    <xsd:restriction base="xsd:string" />
-  </xsd:simpleType>
   <xsd:complexType name="TransaksjonstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="transaksjonstype" type="Transaksjonstype" />
@@ -2558,6 +2608,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="BeloepMed2Desimaler">
     <xsd:restriction base="Beloep">
+      <xsd:totalDigits value="30" />
       <xsd:fractionDigits value="2" />
     </xsd:restriction>
   </xsd:simpleType>
@@ -2565,7 +2616,9 @@
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="Valutakurs">
-    <xsd:restriction base="Desimaltall" />
+    <xsd:restriction base="Desimaltall">
+      <xsd:fractionDigits value="10" />
+    </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="Boligtypekode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_boligtype.xml">
     <xsd:restriction base="xsd:string">
@@ -2577,10 +2630,16 @@
   <xsd:complexType name="JustertMarkedsverdiForBolig">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="boligverdi" type="HeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForBolig" skatt:erAvledet="true" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForBolig" skatt:erAvledet="true" type="ReduksjonsfaktorMedInnkapsling" />
       <xsd:element minOccurs="0" name="justertMarkedsverdi" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="DesimaltallMed4Desimaler">
+    <xsd:restriction base="Desimaltall">
+      <xsd:totalDigits value="30" />
+      <xsd:fractionDigits value="4" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="Postnummer">
     <xsd:restriction base="Tekst">
       <xsd:pattern value="([0-9]){4}" />
@@ -2640,6 +2699,11 @@
   <xsd:simpleType name="Mellomvaerendetype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_mellomvaerendetype.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
+  <xsd:complexType name="ReduksjonsfaktorMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="desimaltall" type="Reduksjonsfaktor" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Internprisingsmetode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_internprisingsmetode.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
