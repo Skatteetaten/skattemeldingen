@@ -3708,10 +3708,6 @@
     "tekst_en": "Tax-free gains upon the realisation of shares, and ownership interests, etc."
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.aarsakTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon.aarsakstype",
-    "tekst_nb": "Årsak til unntak fra plikten til å utarbeide og levere internprisingsdokumentasjon"
-  },
-  {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.aarForDriftsmarginTilKonsernspiss.aarstall",
     "tekst_nb": "År for driftsmargin til konsernspiss"
   },
@@ -3740,16 +3736,16 @@
     "tekst_nb": "Første år med budsjettert positivt driftsresultat hvis negativt driftsresultat i år"
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.kildeskattPaaRenteRoyaltyMv.beloep.beloepSomHeltall",
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.kildeskattPaaKonserninternTransaksjonIUtlandet.beloep.beloepSomHeltall",
     "tekst_nb": "Beløp"
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.kildeskattPaaRenteRoyaltyMv.inntektstype.inntektstype",
-    "tekst_nb": "Inntektstype"
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.kildeskattPaaKonserninternTransaksjonIUtlandet.land.landkode",
+    "tekst_nb": "Land"
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.kildeskattPaaRenteRoyaltyMv.land.landkode",
-    "tekst_nb": "Land"
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.kildeskattPaaKonserninternTransaksjonIUtlandet.transaksjonstype.tekst",
+    "tekst_nb": "Transaksjonstype"
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.konsolidertDriftsmarginTilKonsernspiss.prosent",
@@ -3772,12 +3768,52 @@
     "tekst_nb": "Organisasjonsnavn"
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.beskrivelse.tekst",
-    "tekst_nb": "Beskrivelse"
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.benytterForetaketEksternRaadgiverVedUtfyllingEllerDokumentasjonAvInternprising.boolsk",
+    "tekst_nb": "Benytter foretaket ekstern rådgiver ved utfylling eller dokumentasjon av internprising?"
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.opplysning.opplysningOmKontrollertTransaksjonDisposisjonOgMellomvaerende",
-    "tekst_nb": "Opplysning"
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.erDetUtfoertTjenesteEllerOverfoertEiendelRettighetForpliktelseEllerRisikoTilNaerstaaendeForetakUtenEllerTilSymbolskVederlagIInntektsaaret.boolsk",
+    "tekst_nb": "Har foretaket utført tjenester, overført eiendeler, rettigheter, forpliktelser eller risikoer til nærstående foretak uten vederlag, eller mot symbolsk vederlag, i løpet av inntektsåret?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.erForetaketEierAvKonsernkontoordning.boolsk",
+    "tekst_nb": "Er foretaket eier av konsernkontoordning (cash pool)?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.erForetaketGarantistForAvtalerInngaattAvAnnetSelskapISammeKonsern.boolsk",
+    "tekst_nb": "Er foretaket garantist for avtaler inngått av andre selskaper i samme konsern?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.foreliggerDetDueDiligenceRapportEllerPurchasePriceAgreementIForbindelseMedEndringAvMorselskap.boolsk",
+    "tekst_nb": "Foreligger det Due Dilligence-rapport eller Purchase price agreement (PPA) i forbindelse med endring av morselskap?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.foreliggerDetOppdatertBenchmarksanalyseForVesentligTransaksjonsartHvorTNMMEllerCUPMetodenErAnvendt.boolsk",
+    "tekst_nb": "Foreligger det oppdaterte benchmarksanalyser for vesentlige transaksjonsarter hvor TNMM- eller CUP-metoden er anvendt?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.harDetSkjeddVesentligEndringIFunksjonRisikoEllerEiendelIInntektsaaret.boolsk",
+    "tekst_nb": "Har det skjedd vesentlige endringer i funksjoner, risikoer eller eiendeler i inntektsåret?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.harForetaketBenyttetHeleEllerDelerAvInternprisingsveiledningenPaaSkatteetatenNo.boolsk",
+    "tekst_nb": "Har foretaket benyttet hele eller deler av internprisingsveiledningen på skatteetaten.no?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.harForetaketBenyttetSkatteveilederenForInternprisingPaaSkatteetatenNo.boolsk",
+    "tekst_nb": "Har foretaket benyttet skatteveilederen for internprising på skatteetaten.no?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.harForetaketGjortEndringIInternprisingenSiste5AarSomFoelgeAvEndringsvedtakFraSkatteetaten.boolsk",
+    "tekst_nb": "Har foretaket gjort endringer i internprisingen siste 5 år som følge av endringsvedtak fra Skatteetaten?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.harForetaketILoepetAvDeSiste5AarEgenrettetSkattemeldingenMedBakgrunnIForholdSomHeltEllerDelvisSkyldesInternprising.boolsk",
+    "tekst_nb": "Har foretaket i løpet av de siste 5 år egenrettet skattemeldingen med bakgrunn i forhold som helt eller delvis skyldes internprising?"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.inngaarRoyaltybelastningIAnnenTransaksjonsart.tekst",
+    "tekst_nb": "I eventuelt hvilke andre transaksjonsarter inngår royaltybelastninger?"
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.funksjonOgRisiko.beskrivelse.tekst",
@@ -3790,14 +3826,6 @@
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.funksjonOgRisiko.risikotype.risikotype",
     "tekst_nb": "Risikotype"
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.harUnntakFraPliktenTilAaLevereKontrollertTransaksjonDisposisjonOgMellomvaerende.boolsk",
-    "tekst_nb": "Har unntak fra plikten til å levere kontrollert transaksjon disposisjon og mellomværende"
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.harUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon.boolsk",
-    "tekst_nb": "Har unntak fra plikten til å utarbeide og levere internprisingsdokumentasjon"
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.samletEkstraordinaerTransaksjonKnyttetTilKjoepEllerOvertagelse.beloepSomHeltall",
@@ -3918,6 +3946,18 @@
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.transaksjonsmotpart.transaksjonOgDisposisjon.transaksjonstype.transaksjonstype",
     "tekst_nb": "Transaksjonstype"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.unntakForOppgaveOgDokumentasjonsplikt.aarsakTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon.aarsakstype",
+    "tekst_nb": "Årsak til unntak fra plikten til å utarbeide og levere internprisingsdokumentasjon"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.unntakForOppgaveOgDokumentasjonsplikt.harUnntakFraPliktenTilAaLevereKontrollertTransaksjonDisposisjonOgMellomvaerende.boolsk",
+    "tekst_nb": "Har unntak fra plikten til å levere kontrollert transaksjon disposisjon og mellomværende"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.unntakForOppgaveOgDokumentasjonsplikt.harUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon.boolsk",
+    "tekst_nb": "Har unntak fra plikten til å utarbeide og levere internprisingsdokumentasjon"
   },
   {
     "skattemeldingSti": "kraftverk.samordnetGrunnrenteinntekt.avgittSamordnetGrunnrenteinntektTilSelskapISammeKonsern.beloep.beloepSomHeltall",
@@ -4530,6 +4570,14 @@
     "tekst_en": "Actual interest cost"
   },
   {
+    "skattemeldingSti": "rederiskatteordning.valutatapValutagevinstOgRentefradrag.fradragsberettigetKortsiktigValutatap.beloepSomHeltall",
+    "tekst_nb": "Fradragsberettiget kortsiktig valutatap\t"
+  },
+  {
+    "skattemeldingSti": "rederiskatteordning.valutatapValutagevinstOgRentefradrag.fradragsberettigetRealisertLangsiktigValutatapEtablertFom2005.beloepSomHeltall",
+    "tekst_nb": "Fradragsberettiget realisert langsiktig valutatap etablert fra og med 2005"
+  },
+  {
     "skattemeldingSti": "rederiskatteordning.valutatapValutagevinstOgRentefradrag.fradragsberettigetRentekostnad.beloepSomHeltall",
     "tekst_nn": "Rentekostnad som gir frådragsrett",
     "tekst_nb": "Fradragsberettiget rentekostnad",
@@ -4628,6 +4676,14 @@
     "tekst_nn": "Samla skattepliktig valutagevinst",
     "tekst_nb": "Samlet skattepliktig valutagevinst",
     "tekst_en": "Total taxable foreign exchange gain"
+  },
+  {
+    "skattemeldingSti": "rederiskatteordning.valutatapValutagevinstOgRentefradrag.skattepliktigKortsiktigValutagevinst.beloepSomHeltall",
+    "tekst_nb": "Skattepliktig kortsiktig valutagevinst"
+  },
+  {
+    "skattemeldingSti": "rederiskatteordning.valutatapValutagevinstOgRentefradrag.skattepliktigRealisertLangsiktigValutagevinstEtablertFom2005.beloepSomHeltall",
+    "tekst_nb": "Skattepliktig realisert langsiktig valutagevinst etablert fra og med 2005"
   },
   {
     "skattemeldingSti": "skattetrekkForKildeskattPaaRenteRoyaltyMv.grunnlagsbeloepForSkattetrekk.beloepSomHeltall",
@@ -4792,7 +4848,7 @@
     "tekst_en": "Dividend"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvForholdRelevanteForBeskatningAvDeltakere.annetFinansprodukt.antallAndreFinansprodukter.antall",
+    "skattemeldingSti": "spesifikasjonAvForholdRelevanteForBeskatningAvDeltakere.annetFinansprodukt.antallAndreFinansprodukter.desimaltall",
     "tekst_nn": "Antal andre finansprodukt",
     "tekst_nb": "Antall andre finansprodukter",
     "tekst_en": "Number of other financial products"
@@ -4942,7 +4998,7 @@
     "tekst_en": "Capitalised ground rent"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvForholdRelevanteForBeskatningAvDeltakere.obligasjonOgSertifikat.antallObligasjonOgSertifikat.antall",
+    "skattemeldingSti": "spesifikasjonAvForholdRelevanteForBeskatningAvDeltakere.obligasjonOgSertifikat.antallObligasjonOgSertifikat.desimaltall",
     "tekst_nn": "Antal obligasjonar og sertifikat",
     "tekst_nb": "Antall obligasjoner og sertifikat",
     "tekst_en": "Number of bonds and certificates"

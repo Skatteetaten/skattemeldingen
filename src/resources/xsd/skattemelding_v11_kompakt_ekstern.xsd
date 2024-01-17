@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-01-10T13:10:12.113+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-01-10T14:30:45.351+0100" name="generertDato" />
       <xsd:attribute fixed="11.0" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v11" name="modellnavn" />
@@ -3506,12 +3506,13 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="utleieverdiFraSerg" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForNaeringseiendom" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForNaeringseiendomTidligereInntektsaar" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="bruttoUtleieinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aarligUtleieinntektIAaretFoerInntektsaar" type="BeloepIValutaMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aarligUtleieinntektToAarFoerInntektsaar" type="BeloepIValutaMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sisteRapporterteUtleieinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="avvikVedAnvendtDokumentertMarkedsverdi" skatt:erAvledet="true" type="Prosent" />
-      <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForNaeringseiendom" type="ProsentMedInnkapsling" />
+      <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForNaeringseiendom" type="ReduksjonsfaktorMedInnkapsling" />
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" type="AarstallMedInnkapsling" />
       <xsd:element minOccurs="0" name="justertMarkedsverdiForNaeringseiendom" type="DesimaltallMed4DesimalerMedInnkapsling" />
       <xsd:element minOccurs="0" name="datoForDokumentertMarkedsverdiForNaeringseiendom" type="DatoMedInnkapsling" />
@@ -3734,9 +3735,15 @@
         <xsd:element minOccurs="0" name="dokumentertMarkedsverdi" type="BeloepIValutaMedSkattemessigeEgenskaper" />
         <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBoligIRandsoneEtterKommunereformen" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       </xsd:choice>
+      <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBoligTidligereInntektsaar" type="BeloepSomHeltall"/>
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" type="AarstallMedInnkapsling" />
       <xsd:element minOccurs="0" name="justertMarkedsverdiForBolig" type="JustertMarkedsverdiForBolig" />
       <xsd:element minOccurs="0" name="datoForDokumentertMarkedsverdiForBolig" type="DatoMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReduksjonsfaktorMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="desimaltall" type="Reduksjonsfaktor" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Naeringseiendomstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_naeringseiendomstype.xml">
@@ -3825,10 +3832,16 @@
   <xsd:complexType name="JustertMarkedsverdiForBolig">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="boligverdi" type="HeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForBolig" skatt:erAvledet="true" type="ReduksjonsfaktorMedInnkapsling" />
+      <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdiForBolig" type="ReduksjonsfaktorMedInnkapsling" />
       <xsd:element minOccurs="0" name="justertMarkedsverdi" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="Reduksjonsfaktor">
+    <xsd:restriction base="Desimaltall">
+      <xsd:totalDigits value="30" />
+      <xsd:fractionDigits value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="Postnummer">
     <xsd:restriction base="Tekst">
       <xsd:pattern value="([0-9]){4}" />
@@ -3842,16 +3855,5 @@
   </xsd:simpleType>
   <xsd:simpleType name="Bonitetstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2023_bonitetstype.xml">
     <xsd:restriction base="xsd:string" />
-  </xsd:simpleType>
-  <xsd:complexType name="ReduksjonsfaktorMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="desimaltall" type="Reduksjonsfaktor" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:simpleType name="Reduksjonsfaktor">
-    <xsd:restriction base="Desimaltall">
-      <xsd:totalDigits value="30" />
-      <xsd:fractionDigits value="9" />
-    </xsd:restriction>
   </xsd:simpleType>
 </xsd:schema>
