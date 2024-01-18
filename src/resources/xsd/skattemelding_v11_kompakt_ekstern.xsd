@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-01-10T14:30:45.351+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-01-17T07:58:25.788+0100" name="generertDato" />
       <xsd:attribute fixed="11.0" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v11" name="modellnavn" />
@@ -231,6 +231,7 @@
       <xsd:element minOccurs="0" name="samletSkattefradrag" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="samletTilleggIBeregnetSkatt" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="gjelderBeskatningPaaSvalbard" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="gjelderBeskatningEtterPetroleumsskatteloven" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Forhaandsfastsetting">
@@ -3735,7 +3736,7 @@
         <xsd:element minOccurs="0" name="dokumentertMarkedsverdi" type="BeloepIValutaMedSkattemessigeEgenskaper" />
         <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBoligIRandsoneEtterKommunereformen" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       </xsd:choice>
-      <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBoligTidligereInntektsaar" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBoligTidligereInntektsaar" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" type="AarstallMedInnkapsling" />
       <xsd:element minOccurs="0" name="justertMarkedsverdiForBolig" type="JustertMarkedsverdiForBolig" />
       <xsd:element minOccurs="0" name="datoForDokumentertMarkedsverdiForBolig" type="DatoMedInnkapsling" />

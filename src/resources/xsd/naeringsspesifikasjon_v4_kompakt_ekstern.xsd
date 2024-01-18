@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-01-12T14:09:35.931+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-01-17T08:00:13.987+0100" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v4" name="modellnavn" />
@@ -832,8 +832,8 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvEiendelEllerForpliktelse" type="SpesifikasjonAvEiendelEllerForpliktelse" />
       <xsd:element minOccurs="0" name="samletGevinstVedUttakAvEiendelEllerForpliktelseFraNorskOmraade" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="samletTapVedUttakAvEiendelEllerForpliktelseFraNorskOmraade" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="kreverBetalingsutsettelse" type="BoolskMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="harTidligereUttattEiendelMvMedUtsattInnbetalingEllerFradragsfoering" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="kreverBetalingsutsettelse" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="harTidligereUttattEiendelMvMedUtsattInnbetalingEllerFradragsfoering" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvLoennsOgPensjonskostnad">
@@ -1570,8 +1570,7 @@
       <xsd:element name="eiendelEllerForpliktelseHarTidligereVaertTattUtAvNorskBeskatningsomraade" type="BoolskMedInnkapsling" />
       <xsd:element name="eiendelstype" type="EiendelstypeVedUttakFraNorskOmraadeMedInnkapsling" />
       <xsd:element minOccurs="0" name="saldogruppeForFysiskAnleggsmiddel" type="SaldogruppeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="utstedendeSelskapVedRealisasjonAvTidligereUttattFinansiellEiendel" type="Foretak" />
-      <xsd:element minOccurs="0" name="utstedendeSelskapVedRealisasjonAvTidligereUttattEiendel" type="Foretak"/>
+      <xsd:element minOccurs="0" name="utstedendeSelskapVedRealisasjonAvTidligereUttattEiendel" type="Foretak" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="LoennsOgPensjonskostnad">
