@@ -113,10 +113,10 @@ eksisterende løsninger.
 
 | TYPE | API path                                                                                                                                                            | Virkshomhetssertifikat |
 |------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                                    | JA                     |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                              | Nei                    |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)               | Nei                    |
-| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                          | Nei                    |
+| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                                    | Ja                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                              | Ja                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)               | Ja                     |
+| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                          | Ja                     |
 | POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                            | Nei                    |
 | POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                                    | Planlagt               |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                          | Nei                    |
