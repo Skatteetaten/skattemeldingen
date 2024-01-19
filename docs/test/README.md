@@ -24,7 +24,7 @@ Konkret må sluttbrukersystemet gjøre følgende:
    - Kalle Altinn for å laste opp skattemelding og næringsspesifikasjon på den instansierte App'en fra forrige punkt.
    - Kalle Altinn for å laste ned kvittering/tilbakemelding fra Skatteetaten.
 
-Skatteetaten har tilgjengeliggjort en testapplikasjoner som viser hvordan trinnene beskrevet over kan utføres.
+Skatteetaten har tilgjengeliggjort en testapplikasjon som viser hvordan trinnene beskrevet over kan utføres.
 Den er skrevet i [jupyter notebook formatet](https://jupyter.org/):
 
 1. [Jupyter notebook demo for henting, validering og innsending](testinnsending/person-enk-med-vedlegg-2021.ipynb). Last ned katalogen testinnsending og kjør skriptet demo.ipynb (skriptet vil utføre alle trinn som inngår i prosessen: hente/velidere skattemelding og innsending av skattemelding til Altinn)  
@@ -46,7 +46,7 @@ Et kundeforhold hos DigDir gir tilgang til deres selvbetjeningsløsning som igje
 **Nyttige lenker:**
 
 - Klienten bruker test-miljøet i DigDir, "verifikasjon 2": https://samarbeid.difi.no/node/232
-- OIDC-integrasjonen er beskrevet her: https://docs.digdir.no/docs/idporten/oidc/
+- OIDC-integrasjonen er beskrevet her: https://docs.digdir.no/docs/idporten/oidc/oidc_guide_idporten
 - Hvordan lage en klient i selvregistreringen: https://minside-samarbeid.difi.no/organization-home/services/service-admin#/
 - Tenor testdatasøk: https://www.skatteetaten.no/skjema/testdata
 
@@ -61,8 +61,8 @@ Klienten må foreta følgende REST kall mot ID-porten:
 
 Vi benytter følgende testmiljø hos ID-porten:
 
-- /authorize endpoint: https://oidc-ver2.difi.no/idporten-oidc-provider/authorize
-- /token endpoint: https://oidc-ver2.difi.no/idporten-oidc-provider/token
+- /authorize endpoint: https://login.test.idporten.no/authorize
+- /token endpoint: https://test.idporten.no/token
 
 For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen [hent.py](testinnsending/skatteetaten_api.py)
 

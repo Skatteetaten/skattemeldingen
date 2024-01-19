@@ -58,9 +58,9 @@ Dersom skattemeldingen eller næringsspesifiasjonen skal bekreftes av revisor s�
 
 Bekreftelsesstegene kan fullføres:
 
-- Ved å gå til altinn inboks, åpne instansen og gå til visningsklienten for å signere (begge steg- rollestyrt). 
+- Ved å gå til Altinn innboks, åpne instansen og gå til visningsklienten for å signere (begge steg- rollestyrt). 
   - PS! Lenken i Altinn går til produksjons, er dere i tt02 så må dere manuelt gå til "https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId={instans-id}"
-- Det er mulig å laste opp revisor vedlegget og sette instansen over i neste steg via deres eget fagsystem. 
+- Det er mulig å laste opp revisorvedlegget og sette instansen over i neste steg via deres eget fagsystem. 
 
 1. Første steg, den skattepliktige signerer, utførs med en ‘next’ som er tilgangsstyrt
 2. Andre steg, revisor signerer, utføres ved å laste opp et signeringsdokument og deretter ‘next’, tilgangsstyrt
@@ -77,7 +77,7 @@ Signeringsdokumentet har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
 - Bekreftelse: peke på informasjonselementidentifikator (entitet) som signeres og evt forekomstidentifikator
 - Vedlegg: peke på samme informasjonselementidentifikator (entitet) og evt. forekomstidentifikator som bekreftelsen man ønsker å dokumentere med vedlegg. Skal brukes kun hvis revisors signatur (
   erBekreftetGodkjent) er false og man laster opp dokumentasjon om hvorfor
-- Bekreftelsedokumentet kan også lages ved å bruke skatteetatens klient for revisors bekreftelse. Har status som illustrert nedenfor, så kan en gå til innboksen til selskapet som har opprettet instansen, gå til instansen og følge lenken som fører til tjenesten som revisor kan bruke for å signere og laste opp bekreftelsedokument 
+- Bekreftelsedokumentet kan også lages ved å bruke skatteetatens klient for revisors bekreftelse. Hvis instansen har status som illustrert nedenfor, så kan en gå til innboksen til selskapet som har opprettet instansen, gå til instansen og følge lenken som fører til tjenesten som revisor kan bruke for å signere og laste opp bekreftelsedokument 
 ```json
   {
   "currentTask": {
