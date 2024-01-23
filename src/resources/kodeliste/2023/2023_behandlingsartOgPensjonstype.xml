@@ -883,28 +883,28 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>DIETT_HYBEL</tekniskNavn>
+    <tekniskNavn>DIETT_HYBEL_MED_KOK_MM</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Overskudd diett hybel/brakke/privat - overskuddsberegning / egenfastsetting</tekst>
+        <tekst>Overskudd diett hybel med kokemulighet/privat - overskuddsberegning / egenfastsetting</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Diett hybel/brakke/privat</tekst>
+        <tekst>Diett hybel med kokemulighet / privat overnatting</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Diett hybel/brakke/privat</tekst>
+        <tekst>Diett hybel med kokemoglegheit / privat overatting</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Profit from subsistence, bedsit/portacabin/private</tekst>
+        <tekst>Subsistence bedsit with cooking facilities/private accommodation</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Biebmoruhta láigolanjas/bráhkás/priváhta</tekst>
+        <tekst>Biebmoruhta láigolanjas mas lea vuoššanvejolašvuođat / priváhta idjadeapmi</tekst>
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -921,8 +921,102 @@
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <inngaarIPrivatforbruksberegning>nei</inngaarIPrivatforbruksberegning>
       <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
-      <sats>95</sats>
-      <beskrivelseIAMelding>reiseKostMedOvernattingPaaHybelBrakkePrivat</beskrivelseIAMelding>
+      <sats>98</sats>
+      <beskrivelseIAMelding>reiseKostMedOvernattingPaaHybelMedKokEllerPrivat</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>utgiftsgodtgjoerelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>DIETT_HYBEL_UTEN_KOK_MM</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Overskudd diett hybel uten kokemulighet/pensjonat/brakke januar-august - overskuddsberegning / egenfastsetting</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Diett hybel uten kokemulighet / pensjonat / brakke fra januar til og med august</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Diett hybel utan kokemoglegheit / pensjonat / brakke frå januar til og med august</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Subsistence bedsit without cooking facilities / guest house / portacabin, from January up to and including August</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Biebmoruhta láigolanjas mas ii leat vuoššanvejolašvuohta / pensionáhta / bráhkka, ođđajagimánus borgemánu lohppii</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningsfelt>antall</visningsfelt>
+      <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <kategori>Lønn</kategori>
+      <presentasjonsrekkefoelge>35</presentasjonsrekkefoelge>
+      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <inngaarIPrivatforbruksberegning>nei</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+      <sats>177</sats>
+      <beskrivelseIAMelding>reiseKostMedOvernattingPaaHybelUtenKokEllerPensjonatEllerBrakke</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>utgiftsgodtgjoerelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>DIETT_HYBEL_U_KOK_FOM_SEPT_23</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Overskudd diett hybel uten kokemulighet/pensjonat/brakke september-desember - overskuddsberegning / egenfastsetting</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Diett hybel uten kokemulighet / pensjonat / brakke fra september til og med desember</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Diett hybel utan kokemoglegheit / pensjonat / brakke frå september til og med desember</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Subsistence in a bedsit without cooking facilities / guest house / portacabin, from September up to and including December</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Biebmoruhta láigolanjas mas ii leat vuoššanvejolašvuohta / pensionáhta / bráhkka, čakčamánus juovlamánu lohppii</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningsfelt>antall</visningsfelt>
+      <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <kategori>Lønn</kategori>
+      <presentasjonsrekkefoelge>35</presentasjonsrekkefoelge>
+      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <inngaarIPrivatforbruksberegning>nei</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
+      <sats>250</sats>
+      <beskrivelseIAMelding>reiseKostMedOvernattingPaaHybelUtenKokEllerPensjonatEllerBrakke</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
@@ -935,25 +1029,25 @@
     <tekniskNavn>DIETT_LANGTR</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Overskudd diett langtransportsjåfør - overskuddsberegning / egenfastsetting</tekst>
+        <tekst>Overskudd diett langtransportsjåfør januar-august - overskuddsberegning / egenfastsetting</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Diett langtransportsjåfør</tekst>
+        <tekst>Diett langtransportsjåfør fra januar til og med august</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Diett langtransportsjåfør</tekst>
+        <tekst>Diett langtransportsjåfør frå januar til og med august</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Profit from subsistence, long-distance lorry drivers</tekst>
+        <tekst>Subsistence long-distance driver from January up to and including August</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Biebmoruhta guorbmebiilla vuoddjis</tekst>
+        <tekst>Biebmoruhta guhkilmasvuoddjái ođđajagimánus borgemánu lohppii</tekst>
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -969,6 +1063,7 @@
       <inngaarIPrivatforbruksberegning>nei</inngaarIPrivatforbruksberegning>
       <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
       <sats>300</sats>
+      <beskrivelseIAMelding>reiseKostMedOvernattingTilLangtransportsjaafoerForKjoeringInnenlands</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
@@ -979,34 +1074,32 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>DIETT_LANGTR_UTL</tekniskNavn>
+    <tekniskNavn>DIETT_LANGTR_FOM_SEPT_23</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Overskudd diett langtransportsjåfør i utlandet - overskuddsberegning / egenfastsetting</tekst>
+        <tekst>Overskudd diett langtransportsjåfør september-desember - overskuddsberegning / egenfastsetting</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Diett langtransportsjåfør i utlandet</tekst>
+        <tekst>Diett langtransportsjåfør fra september til og med desember</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Diett langtransportsjåfør i utlandet</tekst>
+        <tekst>Diett langtransportsjåfør frå september til og med desember</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Profit from subsistence, long-distance lorry drivers abroad</tekst>
+        <tekst>Subsistence long-distance driver from September up to and including December</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Biebmoruhta guorbmebiilla vuoddjis olgoriikkas</tekst>
+        <tekst>Biebmoruhta guhkkelmasvuoddjái čákčamánus juovlamánu lohpii</tekst>
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <oppgavekodeISL>35514</oppgavekodeISL>
-      <oppgavekodeISL>35517</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
@@ -1017,63 +1110,15 @@
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <inngaarIPrivatforbruksberegning>nei</inngaarIPrivatforbruksberegning>
       <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
-      <sats>300</sats>
-      <beskrivelseIAMelding>reiseKostMedOvernattingTilLangtransportsjaafoerForKjoeringIUtlandet</beskrivelseIAMelding>
+      <sats>350</sats>
+      <beskrivelseIAMelding>reiseKostMedOvernattingTilLangtransportsjaafoerForKjoeringInnenlands</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>DIETT_PENSJONAT</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Overskudd diett pensjonat - overskuddsberegning / egenfastsetting</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>Diett pensjonat</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Diett pensjonat</tekst>
-        <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Profit from subsistence, guesthouse</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Biebmoruhta penšonáhtas</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <oppgavekodeISL>35514</oppgavekodeISL>
-      <oppgavekodeISL>35517</oppgavekodeISL>
-      <visningsfelt>beloep</visningsfelt>
-      <visningsfelt>antall</visningsfelt>
-      <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
-      <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <kategori>Lønn</kategori>
-      <presentasjonsrekkefoelge>33</presentasjonsrekkefoelge>
-      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-      <inngaarIPrivatforbruksberegning>nei</inngaarIPrivatforbruksberegning>
-      <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
-      <sats>172</sats>
-      <beskrivelseIAMelding>reiseKostMedOvernattingPaaPensjonat</beskrivelseIAMelding>
-      <minstefradrag>minstefradragIInntekt</minstefradrag>
-      <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
-      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
-      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-      <fordel>utgiftsgodtgjoerelse</fordel>
+      <kommentar>SH-14176</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -2441,47 +2486,6 @@
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <fordel>kontantytelse</fordel>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>KOMP_PERS_INNT</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Kompensasjonsytelse</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>Kompensasjon fra NAV for tapt inntekt</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Kompensasjon frå NAV for tapt inntekt</tekst>
-        <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Compensation paid by NAV for loss of income</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Buhtadus NAVas go lea massán sisaboađus</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
-      <visningsfelt>beloep</visningsfelt>
-      <visningskategori>Lønn</visningskategori>
-      <visningskategori>Næring</visningskategori>
-      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
-      <kategori>Lønn</kategori>
-      <presentasjonsrekkefoelge>149</presentasjonsrekkefoelge>
-      <minstefradrag>minstefradragIInntekt</minstefradrag>
-      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
-      <fordel>kontantytelse</fordel>
-      <belopsgrenseTaOppSkattepliktIFart>1000</belopsgrenseTaOppSkattepliktIFart>
-      <kommentar>Både lønnskort og næringstema (SH-8484)</kommentar>
     </kodetillegg>
   </kode>
   <kode>

@@ -5,7 +5,7 @@
             <xsd:attribute fixed="2023-11-22T07:41:13.058+0100" name="generertDato"/>
             <xsd:attribute fixed="v2" name="versjon"/>
             <xsd:attribute fixed="" name="beskrivelse"/>
-            <xsd:attribute fixed="v2 (2022)" name="modellnavn"/>
+      <xsd:attribute fixed="v2 (2022-2023)" name="modellnavn"/>
             <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v2" name="navnerom"/>
             <xsd:attribute fixed="false" name="begrepsreferanse"/>
             <xsd:attribute fixed="false" name="dokumentasjon"/>
@@ -38,6 +38,7 @@
             <xsd:element minOccurs="0" name="inntektFraVirksomhetPaaSokkelFoerAnvendelseAvFremfoerbartUnderskudd" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektFraVirksomhetPaaSokkel" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="fremfoerbarBeregnetNegativSelskapsskatt" type="BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="likvidasjonsvederlagVedForhaandsfastsetting" type="typekatalog:BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:simpleType name="Heltall">

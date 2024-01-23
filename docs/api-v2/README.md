@@ -113,10 +113,10 @@ eksisterende løsninger.
 
 | TYPE | API path                                                                                                                                                            | Virkshomhetssertifikat |
 |------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                                    | JA                     |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                              | Nei                    |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)               | Nei                    |
-| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                          | Nei                    |
+| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                                    | Ja                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                              | Ja                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)               | Ja                     |
+| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                          | Ja                     |
 | POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                            | Nei                    |
 | POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                                    | Planlagt               |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                          | Nei                    |
@@ -189,7 +189,7 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
 
     - skattemeldingdokument – complex type
       -
-      type – [valg fra xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L47:L50)
+      type – [valg fra xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonforespoerselresponse_v2_kompakt.xsd#L62:L69)
         - id – dokumentidentifikator til dokumentet i skatteetatens system.
         - encoding – kodeliste – [utf-8]
         - content – serialisert dokumentinnhold i base64 encodet format
@@ -1341,7 +1341,7 @@ For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjenn
 6. trigger neste steg slik at instansen havner i status _Tilbakemelding_ (betyr "skattemeldingen innsendt").
 7. hente kvittering/tilbakemelding. Merk at det kan gå litt tid før kvittering er tilgjengelig (Skatteetaten må laste ned, behandle innsendingen og laste opp kvitteringen)
 
-Les mer om Altinn API-ene på [altinn sine sider](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/). Altinn har utviklet POSTMAN skript som viser hvordan deres APIer kan bli kalt. Postman skriptene [finnes her](https://github.com/Altinn/altinn-studio/blob/master/src/test/Postman/collections/App.postman_collection.json)
+Les mer om Altinn API-ene på [altinn sine sider](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/).
 
 Tjenestene listet under kalles for å sende inn skattemelding til Altinn.
 
@@ -1478,7 +1478,7 @@ Merk at dataType skal settes til **skattemelding-vedlegg**.
 **Produksjonsmiljø:** `curl --location --request POST 'https://skd.apps.altinn.no/skd/formueinntekt-skattemelding-v2/instances/50028539/82652921-88e4-47d9-9551-b9da483e86c2/data?dataType=skattemelding-vedlegg' \ --header 'Content-Disposition: attachment; filename=Eksempel_Vedlegg.pdf' \ --header 'Content-Type: application/pdf' \ --header 'Authorization: Bearer <Altinn token>' \ --data-binary '@/home/k83452/Documents/Altinn3/Testfiler/Eksempel_vedlegg.pdf'`
 
 **Merk** 
-- Aksepterte content-types er: application/pdf, image/jpeg og image/png
+- Aksepterte content-types er: application/pdf, image/jpeg, image/png og application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 - Content-disposition skal være: **attachment; filename=\<filnavn>**
 
 <br />
