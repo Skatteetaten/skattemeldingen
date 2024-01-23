@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v5">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2023-11-22T07:40:54.103+0100" name="generertDato"/>
+            <xsd:attribute fixed="2024-01-23T07:39:35.914+0100" name="generertDato"/>
             <xsd:attribute fixed="v5" name="versjon"/>
             <xsd:attribute fixed="Inntektsår 2023" name="beskrivelse"/>
             <xsd:attribute fixed="v5 (2023)" name="modellnavn"/>
@@ -39,7 +39,7 @@
             <xsd:element name="nettoinntekt" type="BeloepSomHeltall"/>
             <xsd:element name="nettoformue" type="BeloepSomHeltall"/>
             <xsd:element name="beregnetSkatt" type="BeloepSomHeltall"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="kommune" type="Kommunenummer"/>
+            <xsd:element maxOccurs="unbounded" name="kommune" type="Kommunenummer"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Skattefradrag">
@@ -61,6 +61,7 @@
             <xsd:element minOccurs="0" name="skattefradragForOmberegnetGevinstPaaOpsjoner" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="korrigertSkattForEtterbetaltPensjonOgTrygdeytelse" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="skattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="begrensningAvSkattVedSkatteavtalebostedIAnnenStat" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Skattetillegg">
@@ -69,6 +70,7 @@
             <xsd:element minOccurs="0" name="skattAvEngangserstatningTilBarn" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="skattetilleggVedBSU" type="BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="tilleggIBeregnetSkattKnyttetTilSkattefunn" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="positivGrunnrenteskattFraHavbruksvirksomhet" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="SkattOgAvgift">
@@ -140,6 +142,7 @@
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesverdiForSelveidFritidseiendomEllerAndelIFritidsboligselskap" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjeld" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
             <xsd:element minOccurs="0" name="beregnetKildeskattPaaLoenn" skatt:erAvledet="true" type="BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fremfoerbarNegativGrunnrenteinntektIHavbruksvirksomhet" type="BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="BeloepSomHeltallMedSkattemessigeEgenskaper">
