@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skatteberegningsgrunnlag:v8" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skatteberegningsgrunnlag:v8">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2023-11-22T07:40:58.520+0100" name="generertDato"/>
+            <xsd:attribute fixed="2024-01-23T07:39:41.488+0100" name="generertDato"/>
             <xsd:attribute fixed="v8" name="versjon"/>
             <xsd:attribute fixed="Inntektsår 2023" name="beskrivelse"/>
             <xsd:attribute fixed="v8 (2023)" name="modellnavn"/>
@@ -69,6 +69,7 @@
             <xsd:element name="fastsettingsdato" type="Dato"/>
             <xsd:element minOccurs="0" name="tekstkode" type="Tekst"/>
             <xsd:element minOccurs="0" name="gjelderSkjoennsfastsetting" type="Boolsk"/>
+            <xsd:element minOccurs="0" name="gjelderForhaandsfastsetting" type="Boolsk"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:simpleType name="NorskPersonidentifikator">
@@ -145,6 +146,8 @@
             <xsd:enumeration value="skattefriMedTrygdeavgiftspliktForPensjonsdel"/>
             <xsd:enumeration value="skattefriUtenTrygdeavgiftsplikt"/>
             <xsd:enumeration value="skattefriMedTrygdeavgiftspliktForSykestoenadsdelForArbeidstakereUtsendtFraUSAOgCanada"/>
+            <xsd:enumeration value="renteinntektOmfattetAvSkatteavtaleVedSkatteavtalebostedIAnnenStat"/>
+            <xsd:enumeration value="utbytteOmfattetAvSkatteavtaleVedSkatteavtalebostedIAnnenStat"/>
         </xsd:restriction>
     </xsd:simpleType>
     <xsd:simpleType name="Heltall">
