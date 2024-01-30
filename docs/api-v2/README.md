@@ -451,7 +451,7 @@ Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommeners 
 
 ### Testdata
 
-Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer.xlsx)
+Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer_v2.xlsx)
 
 ### Søk <a name="eiendomSoek"></a> [[back up]](#user-content-table-of-requests)
 
