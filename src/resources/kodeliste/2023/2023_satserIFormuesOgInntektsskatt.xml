@@ -367,7 +367,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>10000</satsverdi>
       <satstype>skattefrittBeloep</satstype>
-      <kildereferanse>Sktl. § 5-50</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 5-50</kildereferanse>
       <beregning>SkattepliktigTilfeldigInntektFraSpillLotteriMv</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -777,7 +777,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>75</satsverdi>
+      <satsverdi>80</satsverdi>
       <satstype>verdsettingsfaktor</satstype>
       <kildereferanse>Takseringsregler §2-1-1</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
@@ -833,6 +833,7 @@
       <kildereferanse>Takseringsregler §1-3-30</kildereferanse>
       <beregning>KostnaderKnyttetTilArbeidOgAnnenInntekt</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <kommentar>Utgåt fom 2023  -</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -963,7 +964,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>1.7</satsverdi>
+      <satsverdi>3,2</satsverdi>
       <satstype>skjermingsrente</satstype>
       <kildereferanse>Fastsettes av Skattedirektoratet i januar året etter inntektsåret Lov om skatt av formue og inntekt (skatteloven) § 10-42. 5. ledd og https://www.skatteetaten.no/satser/skjermingsrente-for-aksjer-og-enkeltpersonforetak/</kildereferanse>
       <beregningskontekst>selskapsmelding</beregningskontekst>
@@ -996,11 +997,12 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>95</satsverdi>
+      <satsverdi>98</satsverdi>
       <satstype>dagsats</satstype>
       <kildereferanse>Takseringsregler §1-3-2</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <kommentar>For 2023 er denne erstattet av overskuddAvUtgiftsgodtgjoerelse.diettHybelMedKok</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1066,7 +1068,7 @@
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>300</satsverdi>
       <satstype>dagsats</satstype>
-      <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
+      <kildereferanse>Takseringsregler §1-3-6</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1083,7 +1085,7 @@
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>350</satsverdi>
       <satstype>dagsats</satstype>
-      <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
+      <kildereferanse>Takseringsregler §1-3-6</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1100,7 +1102,7 @@
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>300</satsverdi>
       <satstype>dagsats</satstype>
-      <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
+      <kildereferanse>Takseringsregler §1-3-6</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1117,9 +1119,27 @@
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>350</satsverdi>
       <satstype>dagsats</satstype>
-      <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
+      <kildereferanse>Takseringsregler §1-3-6</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettPensjonat</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Overskudd diett pensjonat - overskuddsberegning / egenfastsetting (DIETT_PENSJONAT)</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok/dag</satsenhet>
+      <satsverdi>177</satsverdi>
+      <satstype>dagsats</satstype>
+      <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
+      <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <kommentar>Utgår fom 2023 -</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1151,9 +1171,10 @@
       <satsenhet>beloepINok/km</satsenhet>
       <satsverdi>3,50</satsverdi>
       <satstype>kilometersats</satstype>
-      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2022,  § 4 (Takseringsregler §1.2.6 (Opphevet i 2020))</kildereferanse>
+      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2023,  § 4</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <kommentar>Takseringsregler §1.2.6 (Opphevet i 2020)</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1166,15 +1187,15 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>98</satsverdi>
+      <satsverdi>106</satsverdi>
       <satstype>dagsats</satstype>
-      <kildereferanse>Takseringsregler §2-3-1</kildereferanse>
+      <kildereferanse>Takseringsregler §1-3-5</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.kostgodtgjoerelseVedArbeidsoppholdUtover28doegn</tekniskNavn>
+    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.kostgodtgjoerelseVedArbeidsoppholdUtover28Doegn</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Trekkfri kostgodtgjørelse ved arbeidsopphold utover 28 døgn - overskuddsberegning / egenfastsetting (TFRI_KOST_O_28DG)</tekst>
@@ -1191,7 +1212,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.kostgodtgjoerelseVedArbeidsoppholdIUtlandetUtover28doegn</tekniskNavn>
+    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.kostgodtgjoerelseVedArbeidsoppholdIUtlandetUtover28Doegn</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Trekkfri kostgodtgjørelse ved arbeidsopphold i utlandet utover 28 døgn - overskuddsberegning / egenfastsetting (TFRI_KOST_O_28DG_UT)</tekst>
@@ -1219,9 +1240,10 @@
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>400</satsverdi>
       <satstype>dagsats</satstype>
-      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2022,  § 3 (Takseringsregler §1-2-4 (Opphevet 2020))</kildereferanse>
+      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2023,  § 3</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <kommentar>Takseringsregler §1-2-4 (Opphevet 2020)</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1236,7 +1258,7 @@
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>435</satsverdi>
       <satstype>dagsats</satstype>
-      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2022,  § 2</kildereferanse>
+      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2023,  § 2</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
@@ -1268,7 +1290,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>103</satsverdi>
+      <satsverdi>106</satsverdi>
       <satstype>dagsats</satstype>
       <kildereferanse>Takseringsregler §1-3-5</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
@@ -1306,7 +1328,7 @@
       <intervallFra>01.01.2023</intervallFra>
       <satstype>dagsats</satstype>
       <intervallenhet>dato</intervallenhet>
-      <kildereferanse>Takseringsregler §1-3-2</kildereferanse>
+      <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
       <intervallTilOgMed>31.08.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
@@ -1326,7 +1348,7 @@
       <intervallFra>01.09.2023</intervallFra>
       <satstype>dagsats</satstype>
       <intervallenhet>dato</intervallenhet>
-      <kildereferanse>Takseringsregler §1-3-2</kildereferanse>
+      <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
       <intervallTilOgMed>31.12.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
@@ -1435,9 +1457,10 @@
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>98</satsverdi>
       <satstype>dagsats</satstype>
-      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2022,  § 1 (Takseringsregler §1-2-1 - (Opphevet i 2020)</kildereferanse>
+      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2023,  § 1</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <kommentar>Takseringsregler §1-2-1 - (Opphevet i 2020)</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1820,7 +1843,7 @@
     <tekniskNavn>reiseMellomHjemOgFastArbeidssted.egenandelKostnadTilBomFergeMv</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Nedre grense utgifter bom, ferge og tunnel</tekst>
+        <tekst>Nedre grense utgifter bom og ferge</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
@@ -2074,7 +2097,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
-      <satsverdi>111477</satsverdi>
+      <satsverdi>118620</satsverdi>
       <satstype>grunnbeløp</satstype>
       <kildereferanse>https://www.nav.no/grunnbelopet</kildereferanse>
       <beregning>Svalbard</beregning>
@@ -2091,7 +2114,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
-      <satsverdi>1337724</satsverdi>
+      <satsverdi>1423440</satsverdi>
       <kildereferanse>https://www.nav.no/grunnbelopet</kildereferanse>
       <beregning>Svalbard</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
@@ -2106,23 +2129,23 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <november>2.4</november>
+      <november>3.5</november>
       <satsenhet>prosent</satsenhet>
-      <januar>0.4</januar>
-      <august>1.3</august>
-      <mars>0.9</mars>
+      <januar>2.4</januar>
+      <august>3.2</august>
+      <mars>2.7</mars>
       <satstype>skjermingsrente</satstype>
       <beregning>Privat fordring utenfor virksomhet til selskap</beregning>
-      <april>0.9</april>
+      <april>2.7</april>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <september>2</september>
-      <mai>0.9</mai>
-      <juni>0.9</juni>
-      <februar>0.4</februar>
-      <oktober>2</oktober>
-      <juli>1.3</juli>
+      <september>3.5</september>
+      <mai>2.7</mai>
+      <juni>2.7</juni>
+      <februar>2.4</februar>
+      <oktober>3.5</oktober>
+      <juli>3.2</juli>
       <kildereferanse>https://www.skatteetaten.no/satser/skjermingsrente-for-ekstra-skatt-pa-lan/</kildereferanse>
-      <desember>2.4</desember>
+      <desember>3.5</desember>
     </kodetillegg>
   </kode>
   <kode>
@@ -2377,9 +2400,9 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
-      <satsverdi>329600</satsverdi>
+      <satsverdi>338800</satsverdi>
       <satstype>grenseverdi</satstype>
-      <kildereferanse>FSSD § 5-13-1</kildereferanse>
+      <kildereferanse>SKDs forskrift til utfylling og gjennomføring mv. av skatteloven FSSD § 5-13-1</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2396,7 +2419,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>30</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2413,7 +2436,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>20</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2546,7 +2569,7 @@
       <intervallFra>0</intervallFra>
       <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
+      <kildereferanse>Utgår fom 2023 - opphevet Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2566,7 +2589,7 @@
       <intervallFra>3</intervallFra>
       <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
+      <kildereferanse>Utgår fom 2023 - opphevet Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2586,7 +2609,7 @@
       <intervallFra>0</intervallFra>
       <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
+      <kildereferanse>Utgår fom 2023 - opphevet Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2606,7 +2629,7 @@
       <intervallFra>3</intervallFra>
       <satstype>sats</satstype>
       <intervallenhet>aar</intervallenhet>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
+      <kildereferanse>Utgår fom 2023 - opphevet Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2699,7 +2722,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>17</satsverdi>
       <satstype>avskrvningssats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §6-12</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2716,7 +2739,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §6-12</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2753,7 +2776,7 @@
       <satsIntervallTilOgMedGrenseverdiEn>0-20</satsIntervallTilOgMedGrenseverdiEn>
       <grenseverdiEn>-15000</grenseverdiEn>
       <satsIntervallFraOgMedGrenseverdiTre>20-100</satsIntervallFraOgMedGrenseverdiTre>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §14-40</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §14-81</kildereferanse>
       <beregning>Anleggsmidler</beregning>
       <grenseverdiTre>15000</grenseverdiTre>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
@@ -2769,9 +2792,9 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>2,1</satsverdi>
+      <satsverdi>4,2</satsverdi>
       <satstype>skjermingsrente</satstype>
-      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 10‑12‑1</kildereferanse>
+      <kildereferanse>Kunngjøres i januar året etter inntektsåret. Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 10‑12‑1.</kildereferanse>
       <beregning>Personinntekt</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -2836,7 +2859,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>10200</satsverdi>
+      <satsverdi>10600</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2853,7 +2876,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>8000</satsverdi>
+      <satsverdi>8300</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2870,7 +2893,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>3400</satsverdi>
+      <satsverdi>3500</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2887,7 +2910,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>1900</satsverdi>
+      <satsverdi>2000</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2904,7 +2927,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>3500</satsverdi>
+      <satsverdi>3600</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2972,7 +2995,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>8</satsverdi>
+      <satsverdi>7.9</satsverdi>
       <satstype>trygdeavgiftssats</satstype>
       <kildereferanse>Lov om skatt til Svalbard (Svalbardskatteloven) § 3-1 og Svalbardmeldingen kapittel 3.</kildereferanse>
       <beregning>Skatt på Svalbard</beregning>
@@ -3076,7 +3099,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>1.7</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-3, 3. ledd, bokstav b og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
+      <kildereferanse>Kunngjøres i januar året etter inntektsåret. Lov om skatt av formue og inntekt (skatteloven) § 18-3, 3. ledd, bokstav b og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
       <beregning>Friinntekt innen vannkraft</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -3091,9 +3114,9 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>1.9</satsverdi>
+      <satsverdi>3.3</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-3, 4. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
+      <kildereferanse>Kunngjøres i januar året etter inntektsåret. Lov om skatt av formue og inntekt (skatteloven) § 18-3, 4. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
       <beregning>Renter på fremførbar negativ grunnrenteinntekt fra før 2007</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -3144,7 +3167,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>0,90</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-1</kildereferanse>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 5-1. Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-1</kildereferanse>
       <beregning>Tonnasjeskatt</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
@@ -3161,7 +3184,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>18</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-2</kildereferanse>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 5-1. Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-1</kildereferanse>
       <beregning>Tonnasjeskatt</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
@@ -3178,7 +3201,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>12</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-3</kildereferanse>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 5-1. Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-1</kildereferanse>
       <beregning>Tonnasjeskatt</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
@@ -3195,7 +3218,7 @@
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>6</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-4</kildereferanse>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 5-1. Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-1</kildereferanse>
       <beregning>Tonnasjeskatt</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
@@ -3212,7 +3235,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>3.2</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-15, 7. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-15-1</kildereferanse>
+      <kildereferanse>Beregnes i januar i året etter inntektsåret. Lov om skatt av formue og inntekt (skatteloven) § 8-15, 7. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-15-1</kildereferanse>
       <beregning>Inntektstillegg for høy egenkapital</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
@@ -3361,7 +3384,8 @@
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven): sktl § 10-44</kildereferanse>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven): sktl § 5-22</kildereferanse>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven): sktl § 10-31</kildereferanse>
-      <kildereferanse>Lov om s</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven): sktl § 10-21</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven): sktl § 10-11</kildereferanse>
       <beregningskontekst>forskudd</beregningskontekst>
       <beregningskontekst>skatteberegning</beregningskontekst>
       <beregningskontekst>svalbard</beregningskontekst>
@@ -4387,7 +4411,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>folketrygdensGrunnbelopGjennomsittForAar</tekniskNavn>
+    <tekniskNavn>folketrygdensGrunnbeloepGjennomsnittForAar</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Folketrygdens grunnbeløp(1G) gjennomsnitt for året</tekst>
@@ -4707,7 +4731,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>ubenyttetNegativGrunnrenteInntektFoer_2007Prosent</tekniskNavn>
+    <tekniskNavn>ubenyttetNegativGrunnrenteInntektFoer2007Prosent</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Sats på rest fremførbar negativ grunnrenteinntekt fra før 1.1.2007</tekst>
@@ -4810,6 +4834,506 @@
       <satsverdi>25</satsverdi>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-41</kildereferanse>
       <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>trekkprosentSkjematiskSattPensjon</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Trekkprosent skjematisk satt pensjon</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>2</satsverdi>
+      <beregningskontekst>forskudd</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>grenseForInnkrevingAvRestskatt</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Grense for innkreving av restskatt</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloep</satsenhet>
+      <satsverdi>100</satsverdi>
+      <beregningskontekst>forskudd</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rentesatsNegativGrunnrenteinntektHavbrukTilFremfoering</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Rentesats negativ grunnrenteinntekt for havbruk til framføring</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>2.8</satsverdi>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+      <beregningskontekst>upersonlig</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>statsskattProsent</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Alminnelig inntekt, sats for skatt til staten</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>22</satsverdi>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 4-1</kildereferanse>
+      <avledet>fellesskattNormalProsent + inntektsskattFylkeProsent + inntektsskattKommuneProsent</avledet>
+      <beregningskontekst>forskudd</beregningskontekst>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>alminneligInntektsskattLandet</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Alminnelig inntektsskatt landet</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>22</satsverdi>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 4-1</kildereferanse>
+      <avledet>fellesskattNormalProsent + inntektsskattFylkeProsent + inntektsskattKommuneProsent</avledet>
+      <beregningskontekst>forskudd</beregningskontekst>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>alminneligInntektsskattFinnmark</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Alminnelig inntektsskatt Finnmark</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>22</satsverdi>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 4-1</kildereferanse>
+      <avledet>fellesskattFinnmarkProsent + inntektsskattFylkeProsent + inntektsskattKommuneProsent</avledet>
+      <beregningskontekst>forskudd</beregningskontekst>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>formuesskattSvalbardProsent</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Nettoformue Svalbard, sats 1</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>1</satsverdi>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 4-1</kildereferanse>
+      <avledet>formuesskattKommuneStandardSatsProsent + formuesskattStatProsent</avledet>
+      <beregningskontekst>svalbard</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>formuesskattSvalbardProsentHoeySats</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Nettoformue Svalbard, trinn 2</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>1.1</satsverdi>
+      <avledet>formuesskattKommuneStandardSatsProsent + formuesskattStatProsentHoeySats</avledet>
+      <beregningskontekst>svalbard</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>inntektsgrenseEnsligFinnmark</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Skattebegrensning – lav alminnelig inntekt eller liten skatteevne, beløpsgrense for enslig, i Troms og Finnmark fylke (tiltakssonen)</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>168000</satsverdi>
+      <avledet>inntektsgrenseEnslig + personfradragFinnmarkKl1</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>inntektsgrenseEktefelleFinnmark</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Skattebegrensning – lav alminnelig inntekt eller liten skatteevne, beløpsgrense pr. ektefelle, i Troms og Finnmark fylke (tiltakssonen)</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>156100</satsverdi>
+      <avledet>inntektsgrenseEktefelle + personfradragFinnmarkKl1</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>nettoprosentKommuneFylke</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Alminnelig inntekt, sats for inntektsskatt kommune og fylkeskommune</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>13.6</satsverdi>
+      <avledet>inntektsskattKommuneProsent + inntektsskattFylkeProsent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>formuesskattFribeloepEktepar</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Formuesskatt fribeløp skatteklasse, ektepar</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>3400000</satsverdi>
+      <avledet>formuesskattFribeloepEnslig * 2</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>grensebeloepEktepar</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Skattebegrensning – liten skatteevne, grensebeløp ved korrigering av inntekten for formue for ektefeller</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>200000</satsverdi>
+      <avledet>grensebeloepEktefelle * 2</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>inntektsgrenseEktepar</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Skattebegrensning – liten skatteevne, beløpsgrense for ektefeller</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>271100</satsverdi>
+      <avledet>inntektsgrenseEktefelle * 2</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>minimumsBelopMinstefradragForskudd</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Fradrag i alminnelig inntekt, minstefradrag i pensjonsinntekt, nedre grense ved forskuddsutskrivningen</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>0</satsverdi>
+      <avledet>minimumsBelopMinstefradrag * faktorForskuddsatser</avledet>
+      <beregningskontekst>forskudd</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>maksimumBelopMinstefradragStyrehonorarForskudd</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Fradrag i alminnelig inntekt, minstefradrag i pensjonsinntekt, øvre grense for styrehonorar ved forskuddsutskrivningen</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>3520</satsverdi>
+      <avledet>maksimumsBelopMinstefradragStyrehonorar * faktorForskuddsatser</avledet>
+      <beregningskontekst>forskudd</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>maksimumBelopMinstefradragLonnForskudd</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Fradrag i alminnelig inntekt, minstefradrag i lønnsinntekt mv., maksimalt fradrag ved forskuddsutskrivningen</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>91916</satsverdi>
+      <avledet>maksimumsBeloepMinstefradragLonn * faktorForskuddsatser</avledet>
+      <beregningskontekst>forskudd</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>maksimumBelopMinstefradragPensjonForskudd</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Fradrag i alminnelig inntekt, minstefradrag i pensjonsinntekt, maksimalt fradrag ved forskuddsutskrivningen</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>75900</satsverdi>
+      <avledet>maksimumsBelopMinstefradragPensjon * faktorForskuddsatser</avledet>
+      <beregningskontekst>forskudd</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>lonnsfradragForskudd</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Fradrag i alminnelig inntekt, minstefradrag i lønnsinntekt mv., nedre grense ved forskuddsutskrivningen</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>0</satsverdi>
+      <avledet>lonnsfradrag * faktorForskuddsatser</avledet>
+      <beregningskontekst>forskudd</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>inntektsgrenseEkteparFinnmark</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Skattebegrensning – liten skatteevne, beløpsgrense for ektefeller, i Troms og Finnmark fylke (tiltakssonen)</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>291650</satsverdi>
+      <avledet>inntektsgrenseEktepar + personfradragFinnmarkKl1</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>trygdeavgiftBarePensjonsdelProsent</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Trygdeavgift, sats som medlem i pensjonsdel</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>2.8</satsverdi>
+      <avledet>trygdeavgiftMellomProsent - trygdeavgiftLavProsent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>trekkprosentKildeskattPaaLoennTrygdefritak</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Trekkprosent kildeskatt på lønn trygdefritak</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>17.1</satsverdi>
+      <avledet>trekkprosentKildeskattPaaLoenn - trygdeavgiftMellomProsent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>trekkprosentKildeskattPaaLoennLavSatsTrygdesats</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Trekkprosent kildeskatt på lønn lav sats trygdeavgift</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>22.2</satsverdi>
+      <avledet>trekkprosentKildeskattPaaLoennTrygdefritak + trygdeavgiftLavProsent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>prosentsatsMinstefradragLoennForskudd</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Fradrag i alminnelig inntekt, minstefradrag i lønnsinntekt mv., sats ved forskuddsutskrivningen</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>40.48</satsverdi>
+      <avledet>prosentsatsMinstefradragLonn * faktorForskuddsatser</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>prosentsatsMinstefradragPensjonForskudd</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Fradrag i alminnelig inntekt, minstefradrag i pensjonsinntekt, sats ved forskuddsutskrivningen</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>35.2</satsverdi>
+      <avledet>prosentsatsMinstefradragPensjon * faktorForskuddsatser</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>marginalprosentTrinnskattTrinn2UtenTrygdeavgift</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Marginalprosent trinnskatt trinn2 uten trygdeavgift</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>22</satsverdi>
+      <avledet>rund av alminneligInntektsskattLandet + trinnskattTrinn2Prosent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>marginalprosentTrinnskattTrinn2</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Marginalprosent trinn2 trinnskatt</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>34</satsverdi>
+      <avledet>rund av alminneligInntektsskattLandet + trygdeavgiftMellomProsent + trinnskattTrinn2Prosent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>marginalprosentPetroleumTrygdefritak</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Marginalprosent petroleum trygdefritak</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>40</satsverdi>
+      <avledet>rund av alminneligInntektsskattLandet + trinnskattTrinn5Prosent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>marginalprosentPetroleumIkkeTrygdefritak</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Marginalprosent petroleum ikke trygdefritak</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>47</satsverdi>
+      <avledet>rund av alminneligInntektsskattLandet + trygdeavgiftMellomProsent + trinnskattTrinn5Prosent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>lavesteMarginalprosentLoennsmottakerLandet</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Laveste marginalprosent lønnsmottaker landet</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>32</satsverdi>
+      <avledet>rund av alminneligInntektsskattLandet + trygdeavgiftMellomProsent + trinnskattTrinn1Prosent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>lavesteMarginalprosentLoennsmottakerFinnmark</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Laveste marginalprosent lønssmottaker Finnmark</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>28</satsverdi>
+      <avledet>rund av alminneligInntektsskattFinnmark + trygdeavgiftMellomProsent + trinnskattTrinn1Prosent</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>lavesteMarginalprosentLoennUtenTrygdeavgiftLandet</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Laveste marginalprosent lønn uten trygdeavgift landet</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>22</satsverdi>
+      <avledet>rund av alminneligInntektsskattLandet</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>lavesteMarginalprosentLoennUtenTrygdeavgiftFinnmark</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Laveste marginalprosent lønn uten trygdeavgift Finnmark</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosentAvledet</satsenhet>
+      <satsverdi>19</satsverdi>
+      <avledet>rund av alminneligInntektsskattFinnmark</avledet>
+      <beregningskontekst>skatteberegning</beregningskontekst>
     </kodetillegg>
   </kode>
   <lokaltForvaltet>true</lokaltForvaltet>

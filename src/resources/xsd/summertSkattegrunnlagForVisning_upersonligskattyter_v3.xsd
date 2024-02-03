@@ -2,12 +2,12 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v3" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-11-24T13:25:29.404+0100" name="generertDato"/>
+      <xsd:attribute fixed="2024-01-25T12:36:41.136+0100" name="generertDato"/>
       <xsd:attribute fixed="v3" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
-      <xsd:attribute fixed="v3 (2023)" name="modellnavn"/>
+      <xsd:attribute fixed="v3 (2024)" name="modellnavn"/>
       <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v3" name="navnerom"/>
-      <xsd:attribute fixed="true" name="begrepsreferanse"/>
+      <xsd:attribute fixed="false" name="begrepsreferanse"/>
       <xsd:attribute fixed="false" name="dokumentasjon"/>
       <xsd:attribute fixed="false" name="nillable"/>
       <xsd:attribute fixed="false" name="modellelement"/>
@@ -40,6 +40,7 @@
       <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektFraVirksomhetPaaSokkel" type="typekatalog:BeloepSomHeltall"/>
       <xsd:element minOccurs="0" name="fremfoerbarBeregnetNegativSelskapsskatt" type="typekatalog:BeloepSomHeltall"/>
       <xsd:element minOccurs="0" name="likvidasjonsvederlagVedForhaandsfastsetting" type="typekatalog:BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektForVirksomhetPaaLandOmfattetAvPetroleumskatteloven" type="typekatalog:BeloepSomHeltall"/>
     </xsd:sequence>
   </xsd:complexType>
 </xsd:schema>

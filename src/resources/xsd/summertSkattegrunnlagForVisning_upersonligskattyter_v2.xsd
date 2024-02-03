@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v2" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:summertskattegrunnlagforvisning:v2">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-11-25T09:57:08.400+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-01-25T12:36:37.652+0100" name="generertDato"/>
       <xsd:attribute fixed="v2" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="v2 (2022-2023)" name="modellnavn"/>
@@ -40,6 +40,7 @@
       <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektFraVirksomhetPaaSokkel" type="typekatalog:BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="fremfoerbarBeregnetNegativSelskapsskatt" type="typekatalog:BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="likvidasjonsvederlagVedForhaandsfastsetting" type="typekatalog:BeloepSomHeltall"/>
+      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntektForVirksomhetPaaLandOmfattetAvPetroleumskatteloven" type="typekatalog:BeloepSomHeltall"/>
     </xsd:sequence>
   </xsd:complexType>
 </xsd:schema>
