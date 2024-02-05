@@ -75,8 +75,8 @@ Signeringsdokumentet har sin egen xsd `revisorsbekreftelse_v1_ekstern.xsd`.
 ![informasjonsmodell.png](revisors_bekreftelse.png)
 
 - Bekreftelse: peke på informasjonselementidentifikator (entitet) som signeres og evt forekomstidentifikator
-- Vedlegg: peke på samme informasjonselementidentifikator (entitet) og evt. forekomstidentifikator som bekreftelsen man ønsker å dokumentere med vedlegg. Skal brukes kun hvis revisors signatur (
-  erBekreftetGodkjent) er false og man laster opp dokumentasjon om hvorfor
+- Vedlegg: Nytt i 2024 er at vedlegg ikke trenger å være knyttet til en informasjonselementidentifikator og evt. forekomstidentifikator. Det er fortsatt lovlig å knytte vedlegg til en entitet slik som før: 
+  - Peke på samme informasjonselementidentifikator (entitet) og evt. forekomstidentifikator som bekreftelsen man ønsker å dokumentere med vedlegg.
 - Bekreftelsedokumentet kan også lages ved å bruke skatteetatens klient for revisors bekreftelse. Hvis instansen har status som illustrert nedenfor, så kan en gå til innboksen til selskapet som har opprettet instansen, gå til instansen og følge lenken som fører til tjenesten som revisor kan bruke for å signere og laste opp bekreftelsedokument 
 ```json
   {
