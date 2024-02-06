@@ -814,8 +814,8 @@
   <xsd:complexType name="OmsetningOgEtterbetalingISamvirkeforetak">
     <xsd:sequence>
       <xsd:element name="vilkaarForFradragForEtterbetalingUtdeltTilMedlemmerErOppfylt" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektForSamvirkeforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektFraOmsetningMedMedlemIEgetSamvirkeforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektForSamvirkeforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektFraOmsetningMedMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="omsetningMedMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="omsetningMedMedlemIAnnetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="oevrigOmsetning" type="BeloepMedSkattemessigeEgenskaper" />

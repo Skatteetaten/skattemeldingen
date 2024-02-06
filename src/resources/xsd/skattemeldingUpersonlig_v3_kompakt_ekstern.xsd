@@ -64,7 +64,6 @@
       <xsd:element minOccurs="0" name="samletUnderskudd" skatt:erAvledet="true" type="StortBeloepSomHeltallMedOverstyring" />
       <xsd:element name="konsernbidragSkalBekreftesAvRevisor" type="Boolsk" />
       <xsd:element minOccurs="0" name="tilbakefoertUnderskuddFraForhaandsfastsettingSenereAar" type="TilbakefoertUnderskuddFraForhaandsfastsettingSenereAar" />
-      <xsd:element minOccurs="0" name="fradragsrammeForEtterbetalingISamvirkeforetakTilFremfoering" type="FradragsrammeForEtterbetalingISamvirkeforetakTilFremfoering" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvForholdRelevanteForBeskatning">
@@ -258,7 +257,7 @@
       <xsd:element minOccurs="0" name="naeringsinntekt" skatt:erAvledet="true" type="StortBeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletMottattKonsernbidrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="mottattKonsernbidrag" type="MottattKonsernbidrag" />
-      <xsd:element minOccurs="0" name="tilleggForIkkeFradragsberettigetEtterbetalingTilMedlemIEgetSamvirkeforetak" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="tilleggForIkkeFradragsberettigetEtterbetalingTilMedlemIEgetSamvirkeforetak" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Inntektsfradrag">
@@ -282,14 +281,6 @@
   <xsd:complexType name="TilbakefoertUnderskuddFraForhaandsfastsettingSenereAar">
     <xsd:sequence>
       <xsd:element name="tilbakefoertUnderskudd" type="BeloepSomHeltallMedInnkapsling" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="FradragsrammeForEtterbetalingISamvirkeforetakTilFremfoering">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektFraOmsetningMedMedlemIEgetSamvirkeforetak" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="utbetaltEtterbetalingTilMedlemIEgetSamvirkeforetak" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fremfoertFradragsrammeForEtterbetalingFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fremfoerbarFradragsrammeForEtterbetaling" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AksjeIAksjonaerregisteret">
