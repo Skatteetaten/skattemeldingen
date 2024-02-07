@@ -135,6 +135,23 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>utleieinntekt.satsSjablongavskrivningAvInnbo</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>15</satsverdi>
+      <satstype>sjablongsats</satstype>
+      <kildereferanse>Skatt når du leier ut bolig og eiendom - Skatteetaten</kildereferanse>
+      <beregning>UtleieAvFastEiendom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>boligsparingForUngdom.maksimaltSparebeloep</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -720,7 +737,24 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>faktor</satsenhet>
-      <satsverdi>0.078</satsverdi>
+      <satsverdi>0.085</satsverdi>
+      <satstype>kalkulasjonsfaktor</satstype>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 4-10-5, kunngjøres i januar i året etter inntektsåret https://www.skatteetaten.no/satser/kalkulasjonsfaktor---formuesverdsettelse-av-naringseiendom/</kildereferanse>
+      <beregning>FastEiendomSomFormuesobjekt</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>verdsettingAvNaeringseiendom.forhoeyetKalkulasjonsfaktor</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>forhoeyetKalkulasjonsfaktorForNaeringseiendom</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>faktor</satsenhet>
+      <satsverdi>0.095</satsverdi>
       <satstype>kalkulasjonsfaktor</satstype>
       <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 4-10-5, kunngjøres i januar i året etter inntektsåret https://www.skatteetaten.no/satser/kalkulasjonsfaktor---formuesverdsettelse-av-naringseiendom/</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
@@ -974,7 +1008,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>1.7</satsverdi>
+      <satsverdi>3.2</satsverdi>
       <satstype>skjermingsrente</satstype>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 10-42. 5. ledd og https://www.skatteetaten.no/satser/skjermingsrente-for-aksjer-og-enkeltpersonforetak/</kildereferanse>
       <beregningskontekst>selskapsmelding</beregningskontekst>
@@ -1034,25 +1068,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettHybelUtenKokPensjonatBrakkeFomSept23</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Overskudd diett hybel uten kok/pensjonat/brakke - overskuddsberegning / egenfastsetting (DIETT_HYBEL_U_KOK_FOM_SEPT_23)</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>250</satsverdi>
-      <satstype>dagsats</satstype>
-      <kildereferanse>Takseringsregler §1-3-2</kildereferanse>
-      <kildereferanse>skattebetalingsforskriften paragraf 5 6 12.</kildereferanse>
-      <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <kommentar>Utgår for 2024</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettHybelMedKok</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -1088,24 +1103,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettLangtrFomSept23</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Overskudd diett langtransportsjåfør - overskuddsberegning / egenfastsetting (DIETT_LANGTR_FOM_SEPT_23)</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>350</satsverdi>
-      <satstype>dagsats</satstype>
-      <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
-      <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <kommentar>Utgår for 2024</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettLangtransportUtland</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -1120,24 +1117,6 @@
       <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettLangtrUtlandFomSept23</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Overskudd diett langtransportsjåfør - overskuddsberegning / egenfastsetting (DIETT_LANGTR_UTL_FOM_SEPT_23)</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>350</satsverdi>
-      <satstype>dagsats</satstype>
-      <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
-      <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <kommentar>Utgår for 2024</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1338,7 +1317,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>250</satsverdi>
+      <satsverdi>400</satsverdi>
       <intervallFra>01.01.2023</intervallFra>
       <satstype>dagsats</satstype>
       <intervallenhet>dato</intervallenhet>
@@ -1346,27 +1325,6 @@
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
       <intervallTilOgMed>31.08.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostEgenBrakkeCampingvognFomSept23</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Kost - egen brakke/campingvogn fom sept 2023</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>250</satsverdi>
-      <intervallFra>01.09.2023</intervallFra>
-      <satstype>dagsats</satstype>
-      <intervallenhet>dato</intervallenhet>
-      <kildereferanse>Takseringsregler §1-3-2</kildereferanse>
-      <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <intervallTilOgMed>31.12.2023</intervallTilOgMed>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <kommentar>Utgår for 2024</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1419,27 +1377,6 @@
       <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostBoligUtenKokemulighetFomSept23</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Kost - bolig/hybel uten kokemuligheter eller pensjonat/brakke fom sept 2023</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>250</satsverdi>
-      <intervallFra>01.09.2023</intervallFra>
-      <satstype>dagsats</satstype>
-      <intervallenhet>dato</intervallenhet>
-      <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
-      <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <intervallTilOgMed>31.12.2023</intervallTilOgMed>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <kommentar>Utgår for 2024</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1526,27 +1463,6 @@
       <kildereferanse>Takseringsregler §1-3-6</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostLangtransportsjaafoerFomSept23</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Langtransportkost fom sept 2023</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>350</satsverdi>
-      <intervallFra>01.09.2023</intervallFra>
-      <satstype>dagsats</satstype>
-      <intervallenhet>dato</intervallenhet>
-      <kildereferanse>Takseringsregler §1-3-6</kildereferanse>
-      <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <intervallTilOgMed>31.12.2023</intervallTilOgMed>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <kommentar>Utgår for 2024</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -2836,7 +2752,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>2,1</satsverdi>
+      <satsverdi>4,2</satsverdi>
       <satstype>skjermingsrente</satstype>
       <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 10‑12‑1</kildereferanse>
       <beregning>Personinntekt</beregning>
@@ -3162,7 +3078,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>1.7</satsverdi>
+      <satsverdi>3</satsverdi>
       <satstype>sats</satstype>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-3, 3. ledd, bokstav b og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
       <beregning>Friinntekt innen vannkraft</beregning>
@@ -3179,9 +3095,10 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>1.9</satsverdi>
+      <satsverdi>4.5</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-3, 4. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-3, 4. ledd</kildereferanse>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
       <beregning>Renter på fremførbar negativ grunnrenteinntekt fra før 2007</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -3285,6 +3202,72 @@
       <satstype>sats</satstype>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-16 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-16-4</kildereferanse>
       <beregning>Tonnasjeskatt</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>normrente.rederi</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Normrente for beregning av inntektstillegg for høy egenkapital i rederiskatteordningen</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>Prosent</satsenhet>
+      <satsverdi>4.1</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Beregnes i januar i året etter inntektsåret. Lov om skatt av formue og inntekt (skatteloven) § 8-15, 7. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-15-1 https://www.skatteetaten.no/satser/normrente-ved-beskatning-av-hoy-egenkapital-i-rederiskatteordningen/?year=2023#rateShowYear</kildereferanse>
+      <beregning>Inntektstillegg for høy egenkapital</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>havbruk.skattesatsGrunnrenteinntekt</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for beregning av grunnrenteskatt for havbruksvirksomhet</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>32.1</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 19-4, 2. ledd og Stortingets skattevedtak § 3-4 A</kildereferanse>
+      <beregning>Grunnrenteskatt havbruk</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>havbruk.satsForVerdsettelseAvOmsetningsverdiForAkvakulturtillatelse</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for verdsetting av omsetningsverdi knyttet til akvakulturtillatelser i havbruksvirksomhet</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>25</satsverdi>
+      <satstype>sats</satstype>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 4-17, 3. ledd</kildereferanse>
+      <beregning>Verdsetting av omsetningsverdi for akvakulturtillatelser</beregning>
+      <beregningskontekst>skattemelding</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>havbruk.maksimaltBunnfradrag</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Maksimalbeløp for bunnfradrag i havbruksvirksomhet</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>70000000</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 19-8, jf  Stortingets skattevedtak § 3-4 A annet punktum</kildereferanse>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
   </kode>
@@ -4603,8 +4586,9 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>1.3</satsverdi>
+      <satsverdi>3.4</satsverdi>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven): sktl § 18-2</kildereferanse>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-2</kildereferanse>
       <beregningskontekst>skatteberegning</beregningskontekst>
       <beregningskontekst>upersonlig</beregningskontekst>
     </kodetillegg>
@@ -4979,7 +4963,7 @@
     <tekniskNavn>formuesskattFribeloepEktepar</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Formuesskatt fribeløp skatteklasse, ektepar</tekst>
+        <tekst>Nettoformue, grunnlag for formuesskatt kommune og stat, innslagspunkt trinn 1 for ektefeller</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
@@ -5136,6 +5120,7 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>17.2</satsverdi>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 3-9</kildereferanse>
       <avledet>trekkprosentKildeskattPaaLoenn - trygdeavgiftMellomProsent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
     </kodetillegg>
@@ -5335,5 +5320,133 @@
       <beregningskontekst>skatteberegning</beregningskontekst>
     </kodetillegg>
   </kode>
+  <underkodeliste>
+    <tekniskNavn>2024_satserIFastsettingAvFormuesOgInntektsskattUtgaaende</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Utgående</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kode>
+      <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettHybelUtenKokPensjonatBrakkeFomSept23</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Overskudd diett hybel uten kok/pensjonat/brakke - overskuddsberegning / egenfastsetting (DIETT_HYBEL_U_KOK_FOM_SEPT_23)</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/dag</satsenhet>
+        <satsverdi>400</satsverdi>
+        <satstype>dagsats</satstype>
+        <kildereferanse>Takseringsregler §1-3-2</kildereferanse>
+        <kildereferanse>skattebetalingsforskriften paragraf 5 6 12.</kildereferanse>
+        <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+        <kommentar>Utgår for 2024</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettLangtrFomSept23</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Overskudd diett langtransportsjåfør - overskuddsberegning / egenfastsetting (DIETT_LANGTR_FOM_SEPT_23)</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/dag</satsenhet>
+        <satsverdi>400</satsverdi>
+        <satstype>dagsats</satstype>
+        <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
+        <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+        <kommentar>Utgår for 2024</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettLangtrUtlandFomSept23</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Overskudd diett langtransportsjåfør - overskuddsberegning / egenfastsetting (DIETT_LANGTR_UTL_FOM_SEPT_23)</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/dag</satsenhet>
+        <satsverdi>400</satsverdi>
+        <satstype>dagsats</satstype>
+        <kildereferanse>Takseringsregler §1-2-5</kildereferanse>
+        <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+        <kommentar>Utgår for 2024</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostEgenBrakkeCampingvognFomSept23</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Kost - egen brakke/campingvogn fom sept 2023</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/dag</satsenhet>
+        <satsverdi>400</satsverdi>
+        <intervallFra>01.09.2023</intervallFra>
+        <satstype>dagsats</satstype>
+        <intervallenhet>dato</intervallenhet>
+        <kildereferanse>Takseringsregler §1-3-2</kildereferanse>
+        <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
+        <intervallTilOgMed>31.12.2023</intervallTilOgMed>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+        <kommentar>Utgår for 2024</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostBoligUtenKokemulighetFomSept23</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Kost - bolig/hybel uten kokemuligheter eller pensjonat/brakke fom sept 2023</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/dag</satsenhet>
+        <satsverdi>400</satsverdi>
+        <intervallFra>01.09.2023</intervallFra>
+        <satstype>dagsats</satstype>
+        <intervallenhet>dato</intervallenhet>
+        <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
+        <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
+        <intervallTilOgMed>31.12.2023</intervallTilOgMed>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+        <kommentar>Utgår for 2024</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostLangtransportsjaafoerFomSept23</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Langtransportkost fom sept 2023</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/dag</satsenhet>
+        <satsverdi>400</satsverdi>
+        <intervallFra>01.09.2023</intervallFra>
+        <satstype>dagsats</satstype>
+        <intervallenhet>dato</intervallenhet>
+        <kildereferanse>Takseringsregler §1-3-6</kildereferanse>
+        <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
+        <intervallTilOgMed>31.12.2023</intervallTilOgMed>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+        <kommentar>Utgår for 2024</kommentar>
+      </kodetillegg>
+    </kode>
+    <lokaltForvaltet>true</lokaltForvaltet>
+  </underkodeliste>
   <lokaltForvaltet>true</lokaltForvaltet>
 </kodeliste>

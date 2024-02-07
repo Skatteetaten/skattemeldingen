@@ -135,6 +135,23 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>utleieinntekt.satsSjablongavskrivningAvInnbo</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>15</satsverdi>
+      <satstype>sjablongsats</satstype>
+      <kildereferanse>Skatt når du leier ut bolig og eiendom - Skatteetaten</kildereferanse>
+      <beregning>UtleieAvFastEiendom</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>boligsparingForUngdom.maksimaltSparebeloep</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -726,7 +743,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>faktor</satsenhet>
-      <satsverdi>0.078</satsverdi>
+      <satsverdi>0.085</satsverdi>
       <satstype>kalkulasjonsfaktor</satstype>
       <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 4-10-5, kunngjøres i januar i året etter inntektsåret https://www.skatteetaten.no/satser/kalkulasjonsfaktor---formuesverdsettelse-av-naringseiendom/</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
@@ -2794,7 +2811,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>4,2</satsverdi>
       <satstype>skjermingsrente</satstype>
-      <kildereferanse>Kunngjøres i januar året etter inntektsåret. Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 10‑12‑1.</kildereferanse>
+      <kildereferanse>Kunngjøres i januar året etter inntektsåret. Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 10‑12‑1. https://www.skatteetaten.no/satser/skjermingsrente-for-aksjer-og-enkeltpersonforetak</kildereferanse>
       <beregning>Personinntekt</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -3097,9 +3114,9 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>1.7</satsverdi>
+      <satsverdi>3</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Kunngjøres i januar året etter inntektsåret. Lov om skatt av formue og inntekt (skatteloven) § 18-3, 3. ledd, bokstav b og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
+      <kildereferanse>Kunngjøres i januar året etter inntektsåret. Lov om skatt av formue og inntekt (skatteloven) § 18-3, 3. ledd, bokstav b og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3 https://www.regjeringen.no/no/dokumenter/vedtak-om-fastsettelse-av-renter-for-beskatning-av-kraftforetak-for-inntektsaret-2023</kildereferanse>
       <beregning>Friinntekt innen vannkraft</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
@@ -3114,7 +3131,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>3.3</satsverdi>
+      <satsverdi>4.5</satsverdi>
       <satstype>sats</satstype>
       <kildereferanse>Kunngjøres i januar året etter inntektsåret. Lov om skatt av formue og inntekt (skatteloven) § 18-3, 4. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
       <beregning>Renter på fremførbar negativ grunnrenteinntekt fra før 2007</beregning>
@@ -3233,9 +3250,9 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>3.2</satsverdi>
+      <satsverdi>4.1</satsverdi>
       <satstype>sats</satstype>
-      <kildereferanse>Beregnes i januar i året etter inntektsåret. Lov om skatt av formue og inntekt (skatteloven) § 8-15, 7. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-15-1</kildereferanse>
+      <kildereferanse>Beregnes i januar i året etter inntektsåret. Lov om skatt av formue og inntekt (skatteloven) § 8-15, 7. ledd og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 8-15-1 https://www.skatteetaten.no/satser/normrente-ved-beskatning-av-hoy-egenkapital-i-rederiskatteordningen/?year=2023#rateShowYear</kildereferanse>
       <beregning>Inntektstillegg for høy egenkapital</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
@@ -4618,8 +4635,9 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>1.3</satsverdi>
+      <satsverdi>3.4</satsverdi>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven): sktl § 18-2</kildereferanse>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-2</kildereferanse>
       <beregningskontekst>skatteberegning</beregningskontekst>
       <beregningskontekst>upersonlig</beregningskontekst>
     </kodetillegg>
@@ -4874,7 +4892,8 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>2.8</satsverdi>
+      <satsverdi>4.5</satsverdi>
+      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
       <beregningskontekst>skatteberegning</beregningskontekst>
       <beregningskontekst>upersonlig</beregningskontekst>
     </kodetillegg>
@@ -5010,7 +5029,7 @@
     <tekniskNavn>formuesskattFribeloepEktepar</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Formuesskatt fribeløp skatteklasse, ektepar</tekst>
+        <tekst>Nettoformue, grunnlag for formuesskatt kommune og stat, innslagspunkt trinn 1 for ektefeller</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
@@ -5167,6 +5186,7 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>17.1</satsverdi>
+      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak) § 3-9</kildereferanse>
       <avledet>trekkprosentKildeskattPaaLoenn - trygdeavgiftMellomProsent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
     </kodetillegg>

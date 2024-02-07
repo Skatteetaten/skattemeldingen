@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v11">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-01-17T07:58:25.788+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-02-01T08:02:15.361+0100" name="generertDato" />
       <xsd:attribute fixed="11.0" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v11" name="modellnavn" />
@@ -3337,8 +3337,8 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="realisasjonsaar" type="AarstallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjon" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjon" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjon" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjon" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnsvarsformForSelskapMedDeltakerfastsettingMedInnkapsling">
