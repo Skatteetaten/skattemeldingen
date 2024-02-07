@@ -111,25 +111,26 @@ eksisterende løsninger.
 
 ## Oppsummering API endepunkt <a name="table-of-requests">
 
-| TYPE | API path                                                                                                                                                            | Virkshomhetssertifikat |
-|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                                    | Ja                     |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                              | Ja                     |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)               | Ja                     |
-| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                          | Ja                     |
-| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                            | Nei                    |
-| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                                    | Planlagt               |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                          | Nei                    |
-| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                                      | Ja                     |
-| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                       | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                        | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                                | Ja                     |
-| POST | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#user-content-avregning)                                                                 | Nei                    |
-| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiIkkeUtiledNaeringseiendom)                           | Ja                     |
-| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#user-content-lagret-skattemelding-for-visning-personlig)                                  | Nei                    |
-| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#user-content-lagret-skattemelding-for-visning-upersonlig)      | Nei                    |
-| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-for-forhaandsfastsetting)                      | Nei                    |
-| POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-som-mangler-utkast)                                            | Nei                    |
+| TYPE | API path                                                                                                                                                       | Virkshomhetssertifikat |
+|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
+| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                               | Ja                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                         | Ja                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)          | Ja                     |
+| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                     | Ja                     |
+| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                       | Nei                    |
+| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                               | Planlagt               |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                     | Nei                    |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf](#user-content-hentGjeldendeFastsettingPdf)                                 | Nei                    |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                                 | Ja                     |
+| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                  | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                   | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                           | Ja                     |
+| POST | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#user-content-avregning)                                                            | Nei                    |
+| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiIkkeUtiledNaeringseiendom)                      | Ja                     |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#user-content-lagret-skattemelding-for-visning-personlig)                             | Nei                    |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#user-content-lagret-skattemelding-for-visning-upersonlig) | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-for-forhaandsfastsetting)                 | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-som-mangler-utkast)                                       | Nei                    |
 
 | Miljø                             | Adresse                      | Påloggingsmetode      |
 |-----------------------------------|------------------------------|-----------------------|
@@ -444,6 +445,24 @@ Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, en
 **Respons** :
 
 - nedlastbar fil
+
+## Hent gjeldende fastsetting som PDF <a name="hentGjeldendeFastsettingPdf"></a> [[back up]](#user-content-table-of-requests)
+
+Api som returnerer gjeldende fastsetting i PDF-format.
+
+**URL** : `GET https://<env>/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf`
+
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse`
+- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY`
+- `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige`
+
+**Respons** :
+
+- En PDF på formatet `application/pdf`.
 
 ## Eiendom API
 
