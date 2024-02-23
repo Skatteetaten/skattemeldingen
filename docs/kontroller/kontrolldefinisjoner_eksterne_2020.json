@@ -135,7 +135,7 @@
   "betjeningsstrategiSkattepliktig" : "merknadStandard"
 }, {
   "kontrollnavn" : "ANDRE_KOSTNADER_DOKTORGRADMIDDAG_FOR_HØY",
-  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        // Kontrollen gir utslag og merknad dersom Doktorgrad - middag overstiger kr 26 520\n        skattemelding\n            .forForekomsterAv(sti(minstefradragOgKostnaderKnyttetTilArbeidOgAnnenInntekt, kostnad))\n            .filtrer { kostnadstypeSomTekst erLik \"middagKnyttetTilDoktorgrad\" }\n            .utslagFor {\n                hvis(summenAv(beloepSomGruppe.beloepSomTall) erStørreEnn 26_520) {\n                    betjeningsstrategiSettesTil(ikke, merknadStandard, 1)\n                }\n            }\n    }",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringSkattepliktig) {\n        // Kontrollen gir utslag og merknad dersom Doktorgrad - middag overstiger kr 26 520\n        skattemelding\n            .forForekomsterAv(sti(minstefradragOgKostnaderKnyttetTilArbeidOgAnnenInntekt, kostnad))\n            .filtrer { kostnadstype erLik \"middagKnyttetTilDoktorgrad\" }\n            .utslagFor {\n                hvis(summenAv(beloepSomGruppe.beloepSomTall) erStørreEnn 26_520) {\n                    betjeningsstrategiSettesTil(ikke, merknadStandard, 1)\n                }\n            }\n    }",
   "hjelpetekstSME" : {
     "en_GB" : "The amount you entered for PhD dinner seems high. Are you sure this is correct?",
     "nb_NO" : "Beløpet for doktorgradsmiddag virker høyt. Er du sikker på at dette er riktig?",
