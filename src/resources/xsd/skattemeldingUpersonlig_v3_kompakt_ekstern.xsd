@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-01-17T07:58:29.758+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-02-16T13:46:25.942+0100" name="generertDato" />
       <xsd:attribute fixed="v3" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v3" name="modellnavn" />
@@ -243,11 +243,13 @@
   </xsd:complexType>
   <xsd:complexType name="UnderskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="aaretsAnvendelseAvAaretsUnderskudd" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvAaretsUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="aaretsFremfoerbareUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="fremfoertUnderskuddFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="mottattKonsernbidragTilReduksjonIForegaaendeAarsFremfoerbareUnderskudd" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIInntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
     </xsd:sequence>
@@ -752,16 +754,16 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="aaretsUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fremfoertUnderskuddFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIAlminneligInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="KorrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkelEllerAlminneligInntektFraVirksomhetPaaLand" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkelEllerAlminneligInntektFraVirksomhetPaaLand" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig">
@@ -796,11 +798,11 @@
   <xsd:complexType name="AndelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="aaretsUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="aaretsFremfoerbareUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fremfoertUnderskuddFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="mottattKonsernbidragTilReduksjonIForegaaendeAarsFremfoerbareUnderskudd" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fremfoerbartUnderskuddIAlminneligInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
     </xsd:sequence>
