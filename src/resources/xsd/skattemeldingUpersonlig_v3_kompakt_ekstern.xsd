@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-02-16T13:46:25.942+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-02-23T08:53:05.733+0100" name="generertDato" />
       <xsd:attribute fixed="v3" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v3" name="modellnavn" />
@@ -473,7 +473,7 @@
   <xsd:complexType name="AkvakulturtillatelseSomFormuesobjekt">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="akvakulturtillatelsesnummer" type="HeltallMedInnkapsling" />
+      <xsd:element name="akvakulturtillatelsesnummer" type="TekstMedInnkapsling" />
       <xsd:element name="omsetningsverdi" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="verdiFoerEventuellVerdsettingsrabatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="formuesverdi" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
