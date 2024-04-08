@@ -2,7 +2,7 @@
 <xsd:schema xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingognaeringsspesifikasjon:request:v2" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="no:skatteetaten:fastsetting:formueinntekt:skattemeldingognaeringsspesifikasjon:request:v2">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2022-09-30T13:04:29.397+0200" name="generertDato"/>
+      <xsd:attribute fixed="2024-03-18T11:40:11.976+0100" name="generertDato"/>
       <xsd:attribute fixed="v2" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="v2" name="modellnavn"/>
@@ -55,6 +55,7 @@
       <xsd:enumeration value="skattemeldingUpersonlig"/>
       <xsd:enumeration value="naeringsspesifikasjon"/>
       <xsd:enumeration value="selskapsmeldingSdf"/>
+      <xsd:enumeration value="naeringsspesifikasjonReferanse"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="Encodingtype">
