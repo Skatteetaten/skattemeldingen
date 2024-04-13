@@ -1,1 +1,9 @@
-[ ]
+[ {
+  "kontrollnavn" : "FORHÅNDSFASTSATT_UTEN_KLARGJØRING_I_SAKSMAPPE_P",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(ValideringFoerBeregning) {  \n    \n        // kontrollen gir utslag dersom personligttyter har ulik verdi i innsendingsformat for forhåndsfastsatt i utkast og fastsatt\n        // kontrollen stopper skattyter fra å sende inn med feil format, eller uten å klargjøre for forhåndsfastsetting i Saksmappe før innlevering\n        skattemelding\n             .utslagFor {\n                val erForhaandsfastsettingUlikIUtkastFastssetting = hvorMinstEnForekomst{grunnlag(forhaandsfastsetting.innsendingsformat) erUlik fastsatt(forhaandsfastsetting.innsendingsformat)}\n    \n                hvis(erForhaandsfastsettingUlikIUtkastFastssetting) {\n                    betjeningsstrategiSettesTil(\n                        ikke, faktiskFeil)\n                }\n            }\n    }",
+  "betjeningsstrategiSkattepliktig" : "faktiskFeil"
+}, {
+  "kontrollnavn" : "FORHÅNDSFASTSATT_UTEN_KLARGJØRING_I_SAKSMAPPE_UP",
+  "kontrollformel" : "sakstype(Upersonlig)\n    .kontekst(ValideringFoerBeregning) {  \n    \n        // kontrollen gir utslag dersom UP skattyter har ulik verdi i innsendingsformat for forhåndsfastsatt i utkast og fastsatt\n        // kontrollen stopper skattyter fra å sende inn med feil format, eller uten å klargjøre for forhåndsfastsetting i Saksmappe før innlevering\n        skattemeldingUpersonlig\n             .utslagFor {\n                val erForhaandsfastsettingUlikIUtkastFastssetting = hvorMinstEnForekomst{grunnlag(forhaandsfastsetting.innsendingsformat) erUlik fastsatt(forhaandsfastsetting.innsendingsformat)}\n    \n                hvis(erForhaandsfastsettingUlikIUtkastFastssetting) {\n                    betjeningsstrategiSettesTil(\n                        ikke, faktiskFeil)\n                }\n            }\n    }",
+  "betjeningsstrategiSkattepliktig" : "faktiskFeil"
+} ]
