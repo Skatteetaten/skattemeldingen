@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><kodeliste xmlns="urn:no:skatteetaten:kodelistebibliotek:domain:v1">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<kodeliste xmlns="urn:no:skatteetaten:informasjonsforvaltning:kodeliste:v2">
+  <identifikator>c7fcc317-a765-4276-97df-5dd45c825007</identifikator>
   <tekniskNavn>2024_summertSkattegrunnlagForVisning</tekniskNavn>
+  <status>aktiv</status>
+  <versjonsnummer>1</versjonsnummer>
+  <sistEndret>2024-04-16T09:28:12.603+02:00</sistEndret>
+  <sistEndretAv>m74453</sistEndretAv>
+  <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
       <tekst>Liste over gyldige elementer i summert skattegrunnlag for visning, som skal brukes ifm skattetrekksmelding, søknad om endring av skattekort, utkast til skattemelding, søknad om forhåndsfastsetting, skatteoppgjør og distribusjon til tredjeparter.</tekst>
@@ -2905,6 +2912,7 @@
     </visningsnavn>
     <begrepsreferanse>https://data.skatteetaten.no/begrep/ca9f4b93-7211-674e-bbd1-a18e935ea91c</begrepsreferanse>
     <kodetillegg>
+      <regelISkatteoppgjoer>fortegn</regelISkatteoppgjoer>
       <kategori>-</kategori>
     </kodetillegg>
   </kode>
@@ -7566,7 +7574,7 @@
         <spraak>se_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst> Supplementary benefits for disabled refugees</tekst>
+        <tekst>Supplementary benefits for disabled refugees</tekst>
         <spraak>en_US</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -9173,7 +9181,13 @@
     </kodetillegg>
   </kode>
   <underkodeliste>
+    <identifikator>7714cbfc-60cf-489b-bc2b-b0cfec5e4d15</identifikator>
     <tekniskNavn>2024_gjeldOgGjeldsrentereduksjonForFastEiendomIUtlandet</tekniskNavn>
+    <status>aktiv</status>
+    <versjonsnummer>1</versjonsnummer>
+    <sistEndret>2024-04-16T07:28:12.603Z</sistEndret>
+    <sistEndretAv>m74453</sistEndretAv>
+    <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
       <spraakTekst>
         <tekst>Liste over elementer i summert skattegrunnlag for visning som kun skal brukes ved visualisering av gjeldsreduksjon og gjeldsrentereduksjon ved skatteavtaler i utlandet</tekst>
@@ -9192,10 +9206,15 @@
         <tekniskNavn2017>formuesverdiForFastEiendomIUtlandetSomGirGjeldsrentereduksjon</tekniskNavn2017>
       </kodetillegg>
     </kode>
-    <lokaltForvaltet>true</lokaltForvaltet>
   </underkodeliste>
   <underkodeliste>
+    <identifikator>e0146f08-68b5-4941-a8bf-dff2f3376dbe</identifikator>
     <tekniskNavn>2024_verdsettingsrabattSomGirGjeldsreduksjon</tekniskNavn>
+    <status>aktiv</status>
+    <versjonsnummer>1</versjonsnummer>
+    <sistEndret>2024-04-16T07:28:12.603Z</sistEndret>
+    <sistEndretAv>m74453</sistEndretAv>
+    <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
       <spraakTekst>
         <tekst>Liste over elementer i summert skattegrunnlag for visning som kun skal brukes ved visualisering av verdsettingsrabatt som gir gjeldsreduksjon imf. Skatteoppgjør</tekst>
@@ -9443,7 +9462,5 @@
     <kode>
       <tekniskNavn>verdsettingsrabattForUtleidFlerboligbygning</tekniskNavn>
     </kode>
-    <lokaltForvaltet>true</lokaltForvaltet>
   </underkodeliste>
-  <lokaltForvaltet>true</lokaltForvaltet>
 </kodeliste>

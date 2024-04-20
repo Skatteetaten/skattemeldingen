@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><kodeliste xmlns="urn:no:skatteetaten:kodelistebibliotek:domain:v1">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<kodeliste xmlns="urn:no:skatteetaten:informasjonsforvaltning:kodeliste:v2">
+  <identifikator>493712f3-9aa5-4192-82e2-d7cfc97b5cbb</identifikator>
   <tekniskNavn>2023_summertSkattegrunnlagForVisning</tekniskNavn>
+  <status>aktiv</status>
+  <versjonsnummer>1</versjonsnummer>
+  <sistEndret>2024-04-16T09:28:12.608+02:00</sistEndret>
+  <sistEndretAv>m74453</sistEndretAv>
+  <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
       <tekst>Liste over gyldige elementer i summert skattegrunnlag for visning, som skal brukes ifm skattetrekksmelding, søknad om endring av skattekort, utkast til skattemelding, søknad om forhåndsfastsetting, skatteoppgjør og distribusjon til tredjeparter.</tekst>
@@ -2905,6 +2912,7 @@
     </visningsnavn>
     <begrepsreferanse>https://data.skatteetaten.no/begrep/ca9f4b93-7211-674e-bbd1-a18e935ea91c</begrepsreferanse>
     <kodetillegg>
+      <regelISkatteoppgjoer>fortegn</regelISkatteoppgjoer>
       <kategori>-</kategori>
     </kodetillegg>
   </kode>
@@ -4506,7 +4514,7 @@
     <tekniskNavn>oppjustertTilleggTilTapVedRealisasjonAvOgUttakFraAksjedelIFondskonto</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Oppjustering av tap ved uttak fra fondskonto – aksjedel </tekst>
+        <tekst>Oppjustering av tap ved uttak fra fondskonto – aksjedel</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
@@ -7531,7 +7539,7 @@
         <spraak>se_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst> Supplementary benefits for disabled refugees</tekst>
+        <tekst>Supplementary benefits for disabled refugees</tekst>
         <spraak>en_US</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -9138,7 +9146,13 @@
     </kodetillegg>
   </kode>
   <underkodeliste>
+    <identifikator>0dd6f81e-2fb9-4b29-8e02-8e1f0574b194</identifikator>
     <tekniskNavn>2023_gjeldOgGjeldsrentereduksjonForFastEiendomIUtlandet</tekniskNavn>
+    <status>aktiv</status>
+    <versjonsnummer>1</versjonsnummer>
+    <sistEndret>2024-04-16T07:28:12.608Z</sistEndret>
+    <sistEndretAv>m74453</sistEndretAv>
+    <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
       <spraakTekst>
         <tekst>Liste over elementer i summert skattegrunnlag for visning som kun skal brukes ved visualisering av gjeldsreduksjon og gjeldsrentereduksjon ved skatteavtaler i utlandet</tekst>
@@ -9157,10 +9171,15 @@
         <tekniskNavn2017>formuesverdiForFastEiendomIUtlandetSomGirGjeldsrentereduksjon</tekniskNavn2017>
       </kodetillegg>
     </kode>
-    <lokaltForvaltet>true</lokaltForvaltet>
   </underkodeliste>
   <underkodeliste>
+    <identifikator>014e39ab-b186-44e9-b42e-b45ee3d1c7c8</identifikator>
     <tekniskNavn>2023_verdsettingsrabattSomGirGjeldsreduksjon</tekniskNavn>
+    <status>aktiv</status>
+    <versjonsnummer>1</versjonsnummer>
+    <sistEndret>2024-04-16T07:28:12.608Z</sistEndret>
+    <sistEndretAv>m74453</sistEndretAv>
+    <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
       <spraakTekst>
         <tekst>Liste over elementer i summert skattegrunnlag for visning som kun skal brukes ved visualisering av verdsettingsrabatt som gir gjeldsreduksjon imf. Skatteoppgjør</tekst>
@@ -9408,10 +9427,15 @@
     <kode>
       <tekniskNavn>verdsettingsrabattForUtleidFlerboligbygning</tekniskNavn>
     </kode>
-    <lokaltForvaltet>true</lokaltForvaltet>
   </underkodeliste>
   <underkodeliste>
+    <identifikator>32eb2232-cbe7-4881-ae6a-0570d16c5755</identifikator>
     <tekniskNavn>2023_summertSkattegrunnlagForVisningUtgaaende</tekniskNavn>
+    <status>aktiv</status>
+    <versjonsnummer>1</versjonsnummer>
+    <sistEndret>2024-04-16T07:28:12.608Z</sistEndret>
+    <sistEndretAv>m74453</sistEndretAv>
+    <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
       <spraakTekst>
         <tekst>Liste over elementer i summert skattegrunnlag for visning som ikke skal videreføres</tekst>
@@ -9547,7 +9571,5 @@
         <kategori>inntekt</kategori>
       </kodetillegg>
     </kode>
-    <lokaltForvaltet>true</lokaltForvaltet>
   </underkodeliste>
-  <lokaltForvaltet>true</lokaltForvaltet>
 </kodeliste>
