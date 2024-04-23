@@ -150,3 +150,7 @@ Rspons content-typen være av type application/xml
 
 ### Respons jobbstatus!=FERDIG
 Hvis jobben eksisterer og jobben ikke er ferdig, vil vi retunere en http 204
+
+
+# Vedlegg i næringsspesifikasjonen er ikke støttet
+Asynk api'et støter ikke eksterne vedlegg i næringsspesifikasjonen. Ønsker en å legge til vedlegg for dokumentasjon, så må dette referes i skattemeldingen
