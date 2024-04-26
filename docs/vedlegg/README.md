@@ -26,9 +26,12 @@ I disse tilfellene vil en kontroll slå ut og gi "faktisk feil" og hindre innsen
 Det er derfor viktig å ha med informasjonselementet allerede på valideringstidspunktet, selv om en ikke har lastet opp vedlegget enda, om en ønsker å få validert skattemeldingen OK
 
 
-## Last opp før innsending
+## Opplastning før innsending
 Binærfilen som lastes opp som vedlegg gjøres via Altinn3 sitt API, se "api-v2/README Last opp vedlegg (ved behov)" for detaljert beskrivelse
 
+**Begrensninger:**
+- Opptil 70 vedlegg
+- Opptil 100MB per vedlegg
 
 ## Send inn
 Send inn skattemeldingen på normal måte. 
