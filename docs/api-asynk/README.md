@@ -139,7 +139,7 @@ URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/
 Når jobben har status ferdig, så kan resultatet hentes, da vil en få alle de beregnede modellene og valideringsrultatene. 
 
 
-URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntetksår>/<identifikator>/<jobbId>/resultat`
+URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntetkaar>/<identifikator>/<jobbId>/resultat`
 
 
 ### Respons jobbstatus=FERDIG
