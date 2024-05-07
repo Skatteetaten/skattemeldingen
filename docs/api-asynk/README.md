@@ -7,11 +7,11 @@ Alle som har en næringsspesifikasjon som er større en 10MB skal bruke API'ene 
 ## Beskrivelse av bruksmønster
 1. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/last-opp.vedlegg`
    Først lastes næringsspesifikasjonen opp base64 encoded, retur objektet inneholder en referanse
-2. `/api/skattemelding/v2/jobb/<identifikator>/start`
+2. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/start`
    Når en skal gjøre en validering, så må en egen valideringsjobb startes. I skattemeldingOgNaeringsspesifikasjonRequest så brukes referansen ved å  legge ved et dokument av typen naeringsspesifikasjonReferanse. Her retuneres en jobId
-3. `/api/skattemelding/v2/jobb/status`
+3. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/status`
    Henter status på valideringsjobben mens den kjører. 
-4. `/api/skattemelding/v2/jobb/<identifikator>/<jobbId>/resultat`
+4. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/resultat`
    Når valideringen er ferdig så vil en kunne hente ned hele valideringsresultatet. 
 5. Send inn via Altinn. Når valideringen er validert ok, så brukes samme naeringsspesifikasjonReferanse når en sender inn skattemeldingen via Altinn. 
 
@@ -61,12 +61,12 @@ cHJldHRldD4KPC9za2F0dGVtZWxkaW5nPg==
 Dette api'et er veldig likt det synkrone validerings api'et, men her er responsen en jobId, og en bytter ut dokumentet naeringsspesifikasjon med naeringsspesifikasjonReferanse
 
 
-URL: `POST https://<env>/api/skattemelding/v2/jobb/<identifikator>/start`
+URL: `POST https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/start`
 
 
 ### Eksempel kall i testmiljøet
 
-curl -XPOST `https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/<identifikator>/start` -d\
+curl -XPOST `https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/start` -d\
 
 ```xml
 <skattemeldingOgNaeringsspesifikasjonRequest xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingognaeringsspesifikasjon:request:v2">
@@ -108,7 +108,7 @@ curl -XPOST `https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/<ide
 
 ## 3. Hent status
 Enkelte jobber kan ta tid, vår estimat for den største næringsspeifikasjonen for inntektsår 2023, kan ta over en time. Det er mulig å spørre på status på en jobb, uten at det påvirker beregningstiden
-URL: `GET https://<env>/api/skattemelding/v2/jobb/<identifikator>/status`
+URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/status`
 
 **Response body:**
 
@@ -139,7 +139,7 @@ URL: `GET https://<env>/api/skattemelding/v2/jobb/<identifikator>/status`
 Når jobben har status ferdig, så kan resultatet hentes, da vil en få alle de beregnede modellene og valideringsrultatene. 
 
 
-URL: `GET https://<env>/api/skattemelding/v2/jobb/<identifikator>/resultat`
+URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntetksår>/<identifikator>/<jobbId>/resultat`
 
 
 ### Respons jobbstatus=FERDIG
