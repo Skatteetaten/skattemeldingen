@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v3" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v3">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2023-09-04T08:34:09.227+0200" name="generertDato"/>
+      <xsd:attribute fixed="2024-04-30T12:49:11.840+0200" name="generertDato"/>
       <xsd:attribute fixed="v3" name="versjon"/>
       <xsd:attribute fixed="" name="beskrivelse"/>
       <xsd:attribute fixed="Næringsspesifikasjon v3" name="modellnavn"/>
@@ -810,11 +810,8 @@
     </xsd:annotation>
     <xsd:restriction base="Desimaltall"/>
   </xsd:simpleType>
-  <xsd:simpleType name="Valutakode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a2-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:annotation>
-      <xsd:documentation>koder for offisielle valutaer etter ISO 4217</xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="Tekst"/>
+  <xsd:simpleType name="Valutakode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2022_aktiveValutakoder.xml">
+    <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
   <xsd:complexType name="Salgsinntekt">
     <xsd:sequence>
