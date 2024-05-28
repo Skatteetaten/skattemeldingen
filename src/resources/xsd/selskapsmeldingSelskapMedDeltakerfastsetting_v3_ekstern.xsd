@@ -768,6 +768,7 @@
       <xsd:element minOccurs="0" name="samletKorrigertGjeldVedUtgangenAvInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gjennomsnittligSamletKorrigertGjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="inntektstillegg" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="annenKorrigeringAvSamletEiendelVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ValutatapValutagevinstOgRentefradrag">
@@ -800,6 +801,7 @@
       <xsd:element minOccurs="0" name="samletFradragsberettigetValutatap" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletEiendelVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletEiendelVedUtgangenAvInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="korrigeringAvSamletEiendelVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Tonnasjeskatt">
