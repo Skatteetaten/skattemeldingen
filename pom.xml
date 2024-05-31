@@ -73,7 +73,7 @@
                   <version>${skattemelding.mapping.version}</version>
                   <outputDirectory>src/resources/kodeliste</outputDirectory>
                   <includes>kodelister/*.xml</includes>
-                  <excludes>kodelister/2018_*.xml,kodelister/2019_*.xml,kodelister/2022_summertSkattegrunnlagForVisning.xml</excludes>
+                  <excludes>kodelister/2018_*.xml,kodelister/2019_*.xml,kodelister/*_summertSkattegrunnlagForVisning.xml</excludes>
                   <fileMappers>
                     <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
                     <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
