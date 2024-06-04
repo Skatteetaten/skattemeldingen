@@ -4,8 +4,8 @@
   <tekniskNavn>2023_satserIFormuesOgInntektsskatt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2024-04-16T09:28:12.609+02:00</sistEndret>
-  <sistEndretAv>m74453</sistEndretAv>
+  <sistEndret>2024-05-13T15:53:49.001+02:00</sistEndret>
+  <sistEndretAv>b19lav</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
@@ -241,13 +241,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>10</satsverdi>
-      <intervallFra>0</intervallFra>
       <satstype>verdsettingsfaktor</satstype>
-      <intervallenhet>beløp</intervallenhet>
       <kildereferanse>Takseringsregler §1-1-6</kildereferanse>
       <beregning>InnboLoesoereOgFritidsbaat</beregning>
-      <intervallTilOgMed>1000000</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>0</intervallFra>
+      <intervallenhet>beløp</intervallenhet>
+      <intervallTilOgMed>1000000</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -261,13 +261,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>20</satsverdi>
-      <intervallFra>1000000</intervallFra>
       <satstype>verdsettingsfaktor</satstype>
-      <intervallenhet>beløp</intervallenhet>
       <kildereferanse>Takseringsregler §1-1-6</kildereferanse>
       <beregning>InnboLoesoereOgFritidsbaat</beregning>
-      <intervallTilOgMed>1400000</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>1000000</intervallFra>
+      <intervallenhet>beløp</intervallenhet>
+      <intervallTilOgMed>1400000</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -281,13 +281,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>40</satsverdi>
-      <intervallFra>1400000</intervallFra>
       <satstype>verdsettingsfaktor</satstype>
-      <intervallenhet>beløp</intervallenhet>
       <kildereferanse>Takseringsregler §1-1-6</kildereferanse>
       <beregning>InnboLoesoereOgFritidsbaat</beregning>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>1400000</intervallFra>
+      <intervallenhet>beløp</intervallenhet>
+      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -335,13 +335,13 @@
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>25000</satsverdi>
-      <intervallFra>1</intervallFra>
       <satstype>maksFradrag</satstype>
-      <intervallenhet>antallBarn</intervallenhet>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. §6-2</kildereferanse>
       <beregning>PassOgStellAvBarn</beregning>
-      <intervallTilOgMed>1</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>1</intervallFra>
+      <intervallenhet>antallBarn</intervallenhet>
+      <intervallTilOgMed>1</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -355,12 +355,12 @@
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>15000</satsverdi>
-      <intervallFra>2</intervallFra>
       <satstype>maksFradrag</satstype>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. §6-2</kildereferanse>
       <beregning>PassOgStellAvBarn</beregning>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>2</intervallFra>
+      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -475,13 +475,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>25</satsverdi>
-      <intervallFra>85</intervallFra>
       <satstype>korreksjonsfaktor</satstype>
-      <intervallenhet>prosent</intervallenhet>
       <kildereferanse>Takseringsregler § 4-8</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
-      <intervallTilOgMed>100</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>85</intervallFra>
+      <intervallenhet>prosent</intervallenhet>
+      <intervallTilOgMed>100</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -495,13 +495,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>15</satsverdi>
-      <intervallFra>70</intervallFra>
       <satstype>korreksjonsfaktor</satstype>
-      <intervallenhet>prosent</intervallenhet>
       <kildereferanse>Takseringsregler § 4-8</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
-      <intervallTilOgMed>85</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>70</intervallFra>
+      <intervallenhet>prosent</intervallenhet>
+      <intervallTilOgMed>85</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -515,13 +515,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>0</satsverdi>
-      <intervallFra>0</intervallFra>
       <satstype>korreksjonsfaktor</satstype>
-      <intervallenhet>prosent</intervallenhet>
       <kildereferanse>Takseringsregler § 4-8</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
-      <intervallTilOgMed>70</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>0</intervallFra>
+      <intervallenhet>prosent</intervallenhet>
+      <intervallTilOgMed>70</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -711,13 +711,13 @@
     <kodetillegg>
       <satsenhet>beloepINok/måned</satsenhet>
       <satsverdi>4373</satsverdi>
-      <intervallFra>01.01.2023</intervallFra>
       <satstype>særfradrag</satstype>
-      <intervallenhet>dato</intervallenhet>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. § 6-6  Avvikles med virkning fra 01.03.2023</kildereferanse>
       <beregning>SaerfradragForEnsligForsoerger</beregning>
-      <intervallTilOgMed>29.02.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>01.01.2023</intervallFra>
+      <intervallenhet>dato</intervallenhet>
+      <intervallTilOgMed>29.02.2023</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -731,13 +731,13 @@
     <kodetillegg>
       <satsenhet>beloepINok/måned</satsenhet>
       <satsverdi>2187</satsverdi>
-      <intervallFra>01.01.2023</intervallFra>
       <satstype>særfradrag</satstype>
-      <intervallenhet>dato</intervallenhet>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. § 6-6  Avvikles med virkning fra 01.03.2023</kildereferanse>
       <beregning>SaerfradragForEnsligForsoerger</beregning>
-      <intervallTilOgMed>29.02.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>01.01.2023</intervallFra>
+      <intervallenhet>dato</intervallenhet>
+      <intervallTilOgMed>29.02.2023</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -1349,13 +1349,13 @@
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>177</satsverdi>
-      <intervallFra>01.01.2023</intervallFra>
       <satstype>dagsats</satstype>
-      <intervallenhet>dato</intervallenhet>
       <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <intervallTilOgMed>31.08.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>01.01.2023</intervallFra>
+      <intervallenhet>dato</intervallenhet>
+      <intervallTilOgMed>31.08.2023</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -1369,13 +1369,13 @@
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>250</satsverdi>
-      <intervallFra>01.09.2023</intervallFra>
       <satstype>dagsats</satstype>
-      <intervallenhet>dato</intervallenhet>
       <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <intervallTilOgMed>31.12.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>01.09.2023</intervallFra>
+      <intervallenhet>dato</intervallenhet>
+      <intervallTilOgMed>31.12.2023</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -1406,13 +1406,13 @@
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>177</satsverdi>
-      <intervallFra>01.01.2023</intervallFra>
       <satstype>dagsats</satstype>
-      <intervallenhet>dato</intervallenhet>
       <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <intervallTilOgMed>31.08.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>01.01.2023</intervallFra>
+      <intervallenhet>dato</intervallenhet>
+      <intervallTilOgMed>31.08.2023</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -1426,13 +1426,13 @@
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>250</satsverdi>
-      <intervallFra>01.09.2023</intervallFra>
       <satstype>dagsats</satstype>
-      <intervallenhet>dato</intervallenhet>
       <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <intervallTilOgMed>31.12.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>01.09.2023</intervallFra>
+      <intervallenhet>dato</intervallenhet>
+      <intervallTilOgMed>31.12.2023</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -1498,13 +1498,13 @@
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>300</satsverdi>
-      <intervallFra>01.01.2023</intervallFra>
       <satstype>dagsats</satstype>
-      <intervallenhet>dato</intervallenhet>
       <kildereferanse>Takseringsregler §1-3-6</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <intervallTilOgMed>31.08.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>01.01.2023</intervallFra>
+      <intervallenhet>dato</intervallenhet>
+      <intervallTilOgMed>31.08.2023</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -1518,13 +1518,13 @@
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
       <satsverdi>350</satsverdi>
-      <intervallFra>01.09.2023</intervallFra>
       <satstype>dagsats</satstype>
-      <intervallenhet>dato</intervallenhet>
       <kildereferanse>Takseringsregler §1-3-6</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <intervallTilOgMed>31.12.2023</intervallTilOgMed>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <intervallFra>01.09.2023</intervallFra>
+      <intervallenhet>dato</intervallenhet>
+      <intervallTilOgMed>31.12.2023</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2058,6 +2058,7 @@
     </beskrivelse>
     <kodetillegg>
       <satstype>verdsettingssats</satstype>
+      <kildereferanse>Takseringsregler § 1-1-3</kildereferanse>
       <beregning>Kjoeretoey</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <inntektsaar>75</inntektsaar>
@@ -2070,7 +2071,6 @@
       <inntektsaar-6>20</inntektsaar-6>
       <inntektsaar--1>75</inntektsaar--1>
       <inntektsaar-15>15</inntektsaar-15>
-      <kildereferanse>Takseringsregler § 1-1-3</kildereferanse>
       <inntektsaar-5>30</inntektsaar-5>
       <inntektsaar-14>15</inntektsaar-14>
       <inntektsaar-8>15</inntektsaar-8>
@@ -2091,6 +2091,7 @@
     </beskrivelse>
     <kodetillegg>
       <satstype>verdsettingssats</satstype>
+      <kildereferanse>Takseringsregler § 2-1-4 a.</kildereferanse>
       <beregning>Skip, fiske- og fangstfartøy</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <inntektsaar>85</inntektsaar>
@@ -2101,7 +2102,6 @@
       <inntektsaar-3>52</inntektsaar-3>
       <inntektsaar-12>12</inntektsaar-12>
       <inntektsaar-6>31</inntektsaar-6>
-      <kildereferanse>Takseringsregler § 2-1-4 a.</kildereferanse>
       <inntektsaar-5>37</inntektsaar-5>
       <inntektsaar-14>10</inntektsaar-14>
       <inntektsaar-8>22</inntektsaar-8>
@@ -2153,22 +2153,22 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <november>3.5</november>
       <satsenhet>prosent</satsenhet>
+      <satstype>skjermingsrente</satstype>
+      <kildereferanse>https://www.skatteetaten.no/satser/skjermingsrente-for-ekstra-skatt-pa-lan/</kildereferanse>
+      <beregning>Privat fordring utenfor virksomhet til selskap</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <november>3.5</november>
       <januar>2.4</januar>
       <august>3.2</august>
       <mars>2.7</mars>
-      <satstype>skjermingsrente</satstype>
-      <beregning>Privat fordring utenfor virksomhet til selskap</beregning>
       <april>2.7</april>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <september>3.5</september>
       <mai>2.7</mai>
       <juni>2.7</juni>
       <februar>2.4</februar>
       <oktober>3.5</oktober>
       <juli>3.2</juli>
-      <kildereferanse>https://www.skatteetaten.no/satser/skjermingsrente-for-ekstra-skatt-pa-lan/</kildereferanse>
       <desember>3.5</desember>
     </kodetillegg>
   </kode>
@@ -2476,13 +2476,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>100</satsverdi>
-      <intervallFra>0</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>0</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2496,13 +2496,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
-      <intervallFra>3</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>3</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2516,13 +2516,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
-      <intervallFra>0</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>0</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2536,13 +2536,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>56.25</satsverdi>
-      <intervallFra>3</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>3</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2590,13 +2590,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
-      <intervallFra>0</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Utgår fom 2023 - opphevet Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>0</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2610,13 +2610,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>60</satsverdi>
-      <intervallFra>3</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Utgår fom 2023 - opphevet Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>3</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2630,13 +2630,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
-      <intervallFra>0</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Utgår fom 2023 - opphevet Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>0</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2650,13 +2650,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>56.25</satsverdi>
-      <intervallFra>3</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Utgår fom 2023 - opphevet Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>3</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2670,13 +2670,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>100</satsverdi>
-      <intervallFra>0</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>3</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>0</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2690,13 +2690,13 @@
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
       <satsverdi>75</satsverdi>
-      <intervallFra>3</intervallFra>
       <satstype>sats</satstype>
-      <intervallenhet>aar</intervallenhet>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13 og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <intervallFra>3</intervallFra>
+      <intervallenhet>aar</intervallenhet>
+      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2726,12 +2726,12 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloep/km</satsenhet>
-      <satsIntervallTilOgMedGrenseverdiEn>3.4</satsIntervallTilOgMedGrenseverdiEn>
-      <grenseverdiEn>4000</grenseverdiEn>
-      <satsIntervallFraGrenseverdiEn>1.5</satsIntervallFraGrenseverdiEn>
       <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2023,  § 5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <satsIntervallTilOgMedGrenseverdiEn>3.4</satsIntervallTilOgMedGrenseverdiEn>
+      <grenseverdiEn>4000</grenseverdiEn>
+      <satsIntervallFraGrenseverdiEn>1.5</satsIntervallFraGrenseverdiEn>
     </kodetillegg>
   </kode>
   <kode>
@@ -2794,16 +2794,16 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §14-81</kildereferanse>
+      <beregning>Anleggsmidler</beregning>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <satsIntervallTilOgMedGrenseverdiEn>0-20</satsIntervallTilOgMedGrenseverdiEn>
+      <grenseverdiEn>-15000</grenseverdiEn>
       <grenseverdiTo>0</grenseverdiTo>
       <satsIntervallFraGrenseverdiEnTilTo>0-100</satsIntervallFraGrenseverdiEnTilTo>
       <satsIntervallFraOgMedGrenseverdiToTilTre>100-100</satsIntervallFraOgMedGrenseverdiToTilTre>
-      <satsIntervallTilOgMedGrenseverdiEn>0-20</satsIntervallTilOgMedGrenseverdiEn>
-      <grenseverdiEn>-15000</grenseverdiEn>
       <satsIntervallFraOgMedGrenseverdiTre>20-100</satsIntervallFraOgMedGrenseverdiTre>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §14-81</kildereferanse>
-      <beregning>Anleggsmidler</beregning>
       <grenseverdiTre>15000</grenseverdiTre>
-      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
@@ -4923,9 +4923,9 @@
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>22</satsverdi>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 4-1</kildereferanse>
-      <avledet>fellesskattNormalProsent + inntektsskattFylkeProsent + inntektsskattKommuneProsent</avledet>
       <beregningskontekst>forskudd</beregningskontekst>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>fellesskattNormalProsent + inntektsskattFylkeProsent + inntektsskattKommuneProsent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -4940,9 +4940,9 @@
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>22</satsverdi>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 4-1</kildereferanse>
-      <avledet>fellesskattNormalProsent + inntektsskattFylkeProsent + inntektsskattKommuneProsent</avledet>
       <beregningskontekst>forskudd</beregningskontekst>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>fellesskattNormalProsent + inntektsskattFylkeProsent + inntektsskattKommuneProsent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -4957,9 +4957,9 @@
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>22</satsverdi>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 4-1</kildereferanse>
-      <avledet>fellesskattFinnmarkProsent + inntektsskattFylkeProsent + inntektsskattKommuneProsent</avledet>
       <beregningskontekst>forskudd</beregningskontekst>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>fellesskattFinnmarkProsent + inntektsskattFylkeProsent + inntektsskattKommuneProsent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -4974,8 +4974,8 @@
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>1</satsverdi>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 4-1</kildereferanse>
-      <avledet>formuesskattKommuneStandardSatsProsent + formuesskattStatProsent</avledet>
       <beregningskontekst>svalbard</beregningskontekst>
+      <avledet>formuesskattKommuneStandardSatsProsent + formuesskattStatProsent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -4989,8 +4989,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>1.1</satsverdi>
-      <avledet>formuesskattKommuneStandardSatsProsent + formuesskattStatProsentHoeySats</avledet>
       <beregningskontekst>svalbard</beregningskontekst>
+      <avledet>formuesskattKommuneStandardSatsProsent + formuesskattStatProsentHoeySats</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5004,8 +5004,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>168000</satsverdi>
-      <avledet>inntektsgrenseEnslig + personfradragFinnmarkKl1</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>inntektsgrenseEnslig + personfradragFinnmarkKl1</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5019,8 +5019,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>156100</satsverdi>
-      <avledet>inntektsgrenseEktefelle + personfradragFinnmarkKl1</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>inntektsgrenseEktefelle + personfradragFinnmarkKl1</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5034,8 +5034,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>13.6</satsverdi>
-      <avledet>inntektsskattKommuneProsent + inntektsskattFylkeProsent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>inntektsskattKommuneProsent + inntektsskattFylkeProsent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5049,8 +5049,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>3400000</satsverdi>
-      <avledet>formuesskattFribeloepEnslig * 2</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>formuesskattFribeloepEnslig * 2</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5064,8 +5064,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>200000</satsverdi>
-      <avledet>grensebeloepEktefelle * 2</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>grensebeloepEktefelle * 2</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5079,8 +5079,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>271100</satsverdi>
-      <avledet>inntektsgrenseEktefelle * 2</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>inntektsgrenseEktefelle * 2</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5094,8 +5094,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>0</satsverdi>
-      <avledet>minimumsBelopMinstefradrag * faktorForskuddsatser</avledet>
       <beregningskontekst>forskudd</beregningskontekst>
+      <avledet>minimumsBelopMinstefradrag * faktorForskuddsatser</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5109,8 +5109,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>3520</satsverdi>
-      <avledet>maksimumsBelopMinstefradragStyrehonorar * faktorForskuddsatser</avledet>
       <beregningskontekst>forskudd</beregningskontekst>
+      <avledet>maksimumsBelopMinstefradragStyrehonorar * faktorForskuddsatser</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5124,8 +5124,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>91916</satsverdi>
-      <avledet>maksimumsBeloepMinstefradragLonn * faktorForskuddsatser</avledet>
       <beregningskontekst>forskudd</beregningskontekst>
+      <avledet>maksimumsBeloepMinstefradragLonn * faktorForskuddsatser</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5139,8 +5139,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>75900</satsverdi>
-      <avledet>maksimumsBelopMinstefradragPensjon * faktorForskuddsatser</avledet>
       <beregningskontekst>forskudd</beregningskontekst>
+      <avledet>maksimumsBelopMinstefradragPensjon * faktorForskuddsatser</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5154,8 +5154,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>0</satsverdi>
-      <avledet>lonnsfradrag * faktorForskuddsatser</avledet>
       <beregningskontekst>forskudd</beregningskontekst>
+      <avledet>lonnsfradrag * faktorForskuddsatser</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5169,8 +5169,8 @@
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
       <satsverdi>291650</satsverdi>
-      <avledet>inntektsgrenseEktepar + personfradragFinnmarkKl1</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>inntektsgrenseEktepar + personfradragFinnmarkKl1</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5184,8 +5184,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>2.8</satsverdi>
-      <avledet>trygdeavgiftMellomProsent - trygdeavgiftLavProsent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>trygdeavgiftMellomProsent - trygdeavgiftLavProsent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5200,9 +5200,9 @@
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>17.1</satsverdi>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak) § 3-9</kildereferanse>
-      <avledet>trekkprosentKildeskattPaaLoenn - trygdeavgiftMellomProsent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
       <beregningskontekst>trekkontroll</beregningskontekst>
+      <avledet>trekkprosentKildeskattPaaLoenn - trygdeavgiftMellomProsent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5216,9 +5216,9 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>22.2</satsverdi>
-      <avledet>trekkprosentKildeskattPaaLoennTrygdefritak + trygdeavgiftLavProsent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
       <beregningskontekst>trekkontroll</beregningskontekst>
+      <avledet>trekkprosentKildeskattPaaLoennTrygdefritak + trygdeavgiftLavProsent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5232,8 +5232,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>40.48</satsverdi>
-      <avledet>prosentsatsMinstefradragLonn * faktorForskuddsatser</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>prosentsatsMinstefradragLonn * faktorForskuddsatser</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5247,8 +5247,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>35.2</satsverdi>
-      <avledet>prosentsatsMinstefradragPensjon * faktorForskuddsatser</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>prosentsatsMinstefradragPensjon * faktorForskuddsatser</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5262,8 +5262,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>22</satsverdi>
-      <avledet>rund av alminneligInntektsskattLandet + trinnskattTrinn2Prosent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>rund av alminneligInntektsskattLandet + trinnskattTrinn2Prosent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5277,8 +5277,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>34</satsverdi>
-      <avledet>rund av alminneligInntektsskattLandet + trygdeavgiftMellomProsent + trinnskattTrinn2Prosent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>rund av alminneligInntektsskattLandet + trygdeavgiftMellomProsent + trinnskattTrinn2Prosent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5292,8 +5292,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>40</satsverdi>
-      <avledet>rund av alminneligInntektsskattLandet + trinnskattTrinn5Prosent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>rund av alminneligInntektsskattLandet + trinnskattTrinn5Prosent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5307,8 +5307,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>47</satsverdi>
-      <avledet>rund av alminneligInntektsskattLandet + trygdeavgiftMellomProsent + trinnskattTrinn5Prosent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>rund av alminneligInntektsskattLandet + trygdeavgiftMellomProsent + trinnskattTrinn5Prosent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5322,8 +5322,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>32</satsverdi>
-      <avledet>rund av alminneligInntektsskattLandet + trygdeavgiftMellomProsent + trinnskattTrinn1Prosent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>rund av alminneligInntektsskattLandet + trygdeavgiftMellomProsent + trinnskattTrinn1Prosent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5337,8 +5337,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>28</satsverdi>
-      <avledet>rund av alminneligInntektsskattFinnmark + trygdeavgiftMellomProsent + trinnskattTrinn1Prosent</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>rund av alminneligInntektsskattFinnmark + trygdeavgiftMellomProsent + trinnskattTrinn1Prosent</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5352,8 +5352,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>22</satsverdi>
-      <avledet>rund av alminneligInntektsskattLandet</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>rund av alminneligInntektsskattLandet</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5367,8 +5367,8 @@
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
       <satsverdi>19</satsverdi>
-      <avledet>rund av alminneligInntektsskattFinnmark</avledet>
       <beregningskontekst>skatteberegning</beregningskontekst>
+      <avledet>rund av alminneligInntektsskattFinnmark</avledet>
     </kodetillegg>
   </kode>
 </kodeliste>
