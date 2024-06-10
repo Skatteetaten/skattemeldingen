@@ -1321,12 +1321,12 @@ Partstype ikke støttet (per nå støttes kun upersonlig skattemelding)
 }
 ```
 
-Orgnr er ikke meldt oppløst. 
+Orgnr er ikke meldt oppløst, slettet, konkurs eller under tvangsoppløsning. 
 Denne sjekken er skrudd av i testmiljøet for å forenkle testingen av forhåndsfastsettingen. 
 ```json
 {
-  "status": "PART_ER_IKKE_MELDT_OPPLOEST",
-  "melding": "forhåndsfastsetting er kun støttet for parter som er meldt oppløst, inntektsaar=2023, partType=upersonlig"
+  "status": "PART_HAR_UGYLDIG_STATUS_I_ER",
+  "melding": "part har ugyldig status i Enhetsregisteret, inntektsaar=2023, partType=upersonlig"
 }
 ```
 
