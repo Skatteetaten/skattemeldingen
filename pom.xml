@@ -8,7 +8,8 @@
   <properties>
     <skattemelding.mapping.version>2.153.1</skattemelding.mapping.version>
     <skattemeldingtekst-mapping.version>1.25.23</skattemeldingtekst-mapping.version>
-    <skattemelding-kontroll.version>3.78.0</skattemelding-kontroll.version>
+    <skattemelding-kontroll.version>3.79.0</skattemelding-kontroll.version>
+    <beregning-tjeneste-xsd.version>3.26.10</beregning-tjeneste-xsd.version>
   </properties>
 
   <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
@@ -31,6 +32,12 @@
         <artifactId>skattemelding-kontroll</artifactId>
         <version>${skattemelding-kontroll.version}</version>
       </dependency>
+      <dependency>
+        <groupId>ske.fastsetting.skatt</groupId>
+        <artifactId>beregning-tjeneste-xsd</artifactId>
+        <version>${beregning-tjeneste-xsd.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -61,9 +68,21 @@
                   <artifactId>skattemelding-mapping-resources</artifactId>
                   <version>${skattemelding.mapping.version}</version>
                   <outputDirectory>src/resources/xsd</outputDirectory>
-                  <includes>**/*ekstern.xsd,skattemelding-upersonlig/summertSkattegrunnlagForVisning_upersonligskattyter_*.xsd</includes>
+                  <includes>**/*ekstern.xsd,skattemelding-upersonlig/summertSkattegrunnlagForVisning_upersonligskattyter_*.xsd,skattemelding-upersonlig/beregnetskatt_upersonligskattyter_*.xsd</includes>
                   <fileMappers>
                       <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
+                  </fileMappers>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>ske.fastsetting.skatt</groupId>
+                  <artifactId>beregning-tjeneste-xsd</artifactId>
+                  <version>${beregning-tjeneste-xsd.version}</version>
+                  <outputDirectory>src/resources/xsd</outputDirectory>
+                  <includes>**/beregnetskatt_upersonligskattyter_*.xsd,**/beregnet_skatt_*.xsd</includes>
+                  <excludes>**/beregnet_skatt_v1.xsd,**/beregnetskatt_upersonligskattyter_v1.xsd</excludes>
+                  <fileMappers>
+                    <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
                   </fileMappers>
                 </artifactItem>
 
