@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v12" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v12">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-05-22T08:37:27.809+0200" name="generertDato" />
+      <xsd:attribute fixed="2024-06-10T14:17:27.548+0200" name="generertDato" />
       <xsd:attribute fixed="12.0" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v12" name="modellnavn" />
@@ -113,7 +113,6 @@
   <xsd:complexType name="FamilieOgHelse" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d718-4c6c-11e8-bb3e-005056821322">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="passOgStellAvBarn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d75b-4c6c-11e8-bb3e-005056821322" type="PassOgStellAvBarn" />
-      <xsd:element minOccurs="0" name="saerfradragForEnsligForsoerger" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408f0-d96a-11e6-8d9b-005056821322" type="SaerfradragForEnsligForsoerger" />
       <xsd:element minOccurs="0" name="saerfradragForLettereNedsattErvervsevne" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408f5-d96a-11e6-8d9b-005056821322" type="SaerfradragForLettereNedsattErvervsevne" />
       <xsd:element minOccurs="0" name="saerfradragForStoreSykdomskostnader" skatt:begrepsreferanse="http://begrepskatalog/begrep/b57408f7-d96a-11e6-8d9b-005056821322" type="SaerfradragForStoreSykdomskostnader" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="saerfradragOverfoertFraBarn" type="SaerfradragOverfoertFraBarn" />
@@ -752,22 +751,6 @@
       <xsd:element minOccurs="0" name="foreldrefradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/367f2c94-a9e1-11e8-8514-005056821322" type="Foreldrefradrag" />
       <xsd:element minOccurs="0" name="skattefriStoenadTilBarnetilsyn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf24800d-dfe5-11e7-9101-005056821322" type="SkattefriStoenadTilBarnetilsyn" />
     </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="SaerfradragForEnsligForsoerger" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408f0-d96a-11e6-8d9b-005056821322">
-    <xsd:complexContent>
-      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
-        <xsd:sequence>
-          <xsd:element minOccurs="0" name="antallMaanederMedHelUtvidetBarnetrygd" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d77b-4c6c-11e8-bb3e-005056821322" skatt:erAvledet="true" type="AntallMedInnkapsling" />
-          <xsd:element minOccurs="0" name="andelAvSaerfradragForEnsligForsoergerFraHelUtvidetBarnetrygd" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-          <xsd:element minOccurs="0" name="antallMaanederMedDeltUtvidetBarnetrygd" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d77b-4c6c-11e8-bb3e-005056821322" skatt:erAvledet="true" type="AntallMedInnkapsling" />
-          <xsd:element minOccurs="0" name="andelAvSaerfradragForEnsligForsoergerFraDeltUtvidetBarnetrygd" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-          <xsd:element name="saerfradrag" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv" />
-          <xsd:element maxOccurs="unbounded" name="utvidetBarnetrygd" type="UtvidetBarnetrygd" />
-          <xsd:element minOccurs="0" name="opplysningerInnrapportertFraNAVErFeil" type="BoolskMedInnkapsling" />
-          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-        </xsd:sequence>
-      </xsd:extension>
-    </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="SaerfradragForLettereNedsattErvervsevne" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/b57408f5-d96a-11e6-8d9b-005056821322">
     <xsd:complexContent>
@@ -1569,7 +1552,6 @@
       <xsd:element minOccurs="0" name="foreldrefradragTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fradragForIndividuellSparingTilPensjonTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andreFradragTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="saerfradragForEnsligForsoergerTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gjeldsrenterTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="saerfradragForLettereNedsattErvervsevneTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="saerfradragForStoreSykdomskostnaderTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
@@ -2370,15 +2352,6 @@
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="UtvidetBarnetrygd">
-    <xsd:sequence>
-      <xsd:element name="id" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940" type="Tekst" />
-      <xsd:element name="ytelsesgrad" type="YtelsesgradMedInnkapsling" />
-      <xsd:element name="antallMaaneder" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d77b-4c6c-11e8-bb3e-005056821322" type="AntallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fraOgMedMaaned" type="Tekst" />
-      <xsd:element minOccurs="0" name="tilOgMedMaaned" type="Tekst" />
-    </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Sykdomskostnad">
     <xsd:sequence>
