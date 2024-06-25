@@ -112,3 +112,53 @@ upersonlig skattemelding som har blitt beregnet.
 Beskrivelse av poster og felter i ny
 skattemelding [ligger på skatteetaten.no](https://www.skatteetaten.no/bedrift-og-organisasjon/skatt/skattemelding-naringsdrivende/selskap/)
 Det er også laget en [oversikt over hvilke temaer i næringsspesifikasjonen](temaINaeringsspesifikasjonen.md) som er aktuell for hver type skattemelding (inntektsår 2022) 
+
+# Konvolutt
+
+Opplasting av skattedata til Altinn gjøres i en såkalt konvolutt som inneholder aktuelle dokumenter, dokumentreferanse,
+inntektsår og innsendingsinformasjon. 
+
+- Dokumentype: Spesifiserer dokumenttype som sendes med.
+- Dokumentreferanse: Dokumentreferanse til gjeldende dokument
+- Inntektsaar: Aktuelt inntektsår skattemelding gjelder for 
+- Innsendingsinformasjon
+  - Innsensingstype: komplett eller ikkeKomplett
+  - OpprettetAv: navn på sluttbrukersystem
+  - Innsendingsformaal: Innsendingens formål, eksempelvis egenfastsetting, klage eller endringsanmodning. 
+
+[skattemeldingognaeringsspesifikasjonrequest_v2](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2_kompakt.xsd) – xsd for å validere og laste opp i Altinn
+
+Eksempel:
+```xml
+<skattemeldingOgNaeringsspesifikasjonRequest xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingognaeringsspesifikasjon:request:v2">
+    <dokumenter>
+        <dokument>
+            <type>skattemeldingPersonlig</type>
+            <encoding>utf-8</encoding>
+            <content>{sme_base64}</content>
+        </dokument>
+        <dokument>
+            <type>naeringsspesifikasjon</type>
+            <encoding>utf-8</encoding>
+            <content>{naeringsspeifikasjon_base64}</content>
+        </dokument>
+    </dokumenter>
+    <dokumentreferanseTilGjeldendeDokument>
+        <dokumenttype>skattemeldingPersonlig</dokumenttype>
+        <dokumentidentifikator>{dok_ref}</dokumentidentifikator>
+    </dokumentreferanseTilGjeldendeDokument>
+    <inntektsaar>2023</inntektsaar>
+    <innsendingsinformasjon>
+        <innsendingstype>komplett</innsendingstype>
+        <opprettetAv>sluttbrukersystem</opprettetAv>
+        <innsendingsformaal>egenfastsetting</innsendingsformaal>
+    </innsendingsinformasjon>
+</skattemeldingOgNaeringsspesifikasjonRequest>
+```
+
+## Innsendingsformaal
+Fra og med inntektsår 2024 utvides konvolutten med et felt kalt innsendingsformål. Dette feltet er kun påkrevd for 
+inntektsår 2024 og fremover, men kan benyttes for tidligere inntektsår hvis ønskelig. 
+
+Aktuelle formål/verdier som kan benyttes i dette feltet er per juni 2024 egenfastsetting, klage og endringsanmodning.
+Oppdatert liste over aksepterte verdier ligger i [skattemeldingognaeringsspesifikasjonrequest_v2](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2_kompakt.xsd)

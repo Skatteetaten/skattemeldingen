@@ -307,7 +307,7 @@ Uansett versjon vil skatteetaten ikke lagre eller følge opp informasjonen som s
 skattemeldingOgNaeringsspesifikasjonRequest:
 - dokumenter
   - dokument
-    - type - [skattemeldingPersonlig | skattemeldingUpersonlig | naeringsspesifikasjon]
+    - type - [skattemeldingPersonlig | skattemeldingUpersonlig | naeringsspesifikasjon | selskapsmeldingSdf | naeringsspesifikasjonReferanse]
     - encoding - kodeliste – [utf-8]
     - content - base64 encodet xml dokument 
 - dokumentreferanseTilGjeldendeDokument
@@ -317,6 +317,7 @@ skattemeldingOgNaeringsspesifikasjonRequest:
 - innsendingsinformasjon 
   - innsendingstype - [ikkeKomplett | komplett]
   - opprettetAv - system navn brukt for å gjøre innsendingen
+  - innsendingsformaal - [egenfastsetting | klage | endringsanmodning]
   
 
 **Respons** :
@@ -653,7 +654,7 @@ Merk at hvilken informasjon responsen vil inneholde avhenger av valgt inntektså
 
 Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår inngår i beregningen.
 
-Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert markedsverdi vil ikke hensyntas.
+Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumentert markedsverdi vil ikke hensyntas.
 
 Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
 
@@ -821,7 +822,7 @@ Beregningen er basert på sjablong fra SSB hvor boligeegenskaper, inntektsår in
 
 Det beregnes markedsverdi for hver useksjonert boenhet.
 
-Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert markedsverdi vil ikke hensyntas.
+Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumentert markedsverdi vil ikke hensyntas.
 
 Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
 
@@ -1068,7 +1069,7 @@ Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn 
 
 BeregnetUtleieverdi er basert på næringssjablong fra SSB hvor næringstype, areal, bystatus, sentralitet og skatteleggingsperiode inngår i beregningen.
 
-Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumntert markedsverdi vil ikke hensyntas.
+Det er også mulig å oppgi dokumentert markedsverdi. Gyldig verdi skal være under klagegrense. Ugyldig dokumentert markedsverdi vil ikke hensyntas.
 
 Sender man inn hele responsen fra hent formuesgrunnlag vil responsen på beregn innholde alt som ble sendt inn pluss de beregnede feltene.
 

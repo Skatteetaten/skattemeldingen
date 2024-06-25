@@ -33,6 +33,7 @@
             <xsd:element name="innsendingstype" type="Innsendingstype"/>
             <xsd:element name="opprettetAv" type="Tekst"/>
             <xsd:element minOccurs="0" name="tin" type="Tekst"/>
+            <xsd:element minOccurs="0" name="innsendingsformaal" type="Innsendingsformaal"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Dokument">
@@ -61,6 +62,13 @@
     <xsd:simpleType name="Encodingtype">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="utf-8"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Innsendingsformaal">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="egenfastsetting"/>
+            <xsd:enumeration value="klage"/>
+            <xsd:enumeration value="endringsanmodning"/>
         </xsd:restriction>
     </xsd:simpleType>
     <xsd:simpleType name="Innsendingstype">
