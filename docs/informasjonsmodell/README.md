@@ -126,7 +126,7 @@ inntektsår og innsendingsinformasjon.
   - OpprettetAv: navn på sluttbrukersystem
   - Innsendingsformaal: Innsendingens formål, eksempelvis egenfastsetting, klage eller endringsanmodning. 
 
-[skattemeldingognaeringsspesifikasjonrequest_v2](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2_kompakt.xsd) – xsd for å validere og laste opp i Altinn
+[skattemeldingognaeringsspesifikasjonrequest_v2](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd) – xsd for å validere og laste opp i Altinn
 
 Eksempel:
 ```xml
@@ -161,4 +161,4 @@ Fra og med inntektsår 2024 utvides konvolutten med et felt kalt innsendingsform
 inntektsår 2024 og fremover, men kan benyttes for tidligere inntektsår hvis ønskelig. 
 
 Aktuelle formål/verdier som kan benyttes i dette feltet er per juni 2024 egenfastsetting, klage og endringsanmodning.
-Oppdatert liste over aksepterte verdier ligger i [skattemeldingognaeringsspesifikasjonrequest_v2](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonresponse_v2_kompakt.xsd)
+Oppdatert liste over aksepterte verdier ligger i [skattemeldingognaeringsspesifikasjonrequest_v2](../../src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd)
