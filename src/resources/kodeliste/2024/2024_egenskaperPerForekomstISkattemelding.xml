@@ -4,7 +4,7 @@
   <tekniskNavn>2024_egenskaperPerForekomstISkattemelding</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2024-04-16T09:33:37.655+02:00</sistEndret>
+  <sistEndret>2024-06-12T12:25:43.000+02:00</sistEndret>
   <sistEndretAv>m74453</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -37,11 +37,8 @@
   <kode>
     <tekniskNavn>/skattemelding/andreForhold/annenInntekt</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;13 år</regelForOverfoertFraBarn>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -56,34 +53,37 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>annenInntekt</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;13 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/andreForhold/annenKapitalinntekt</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>annenKapitalinntekt</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <harLandkode>ja</harLandkode>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/andreForhold/fremfoertUnderskuddFraTidligereAar</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>fremfoertUnderskuddFraTidligereAar</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
@@ -99,9 +99,9 @@
     <tekniskNavn>/skattemelding/andreForhold/negativAlminneligInntektOverfoertFraBarn</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>negativAlminneligInntektOverfoertFraBarn</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
@@ -118,18 +118,18 @@
     <tekniskNavn>/skattemelding/andreForhold/skattebegrensningVedLavAlminneligInntekt</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>skattebegrensningParagraf171</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/andreForhold/skattebegrensningVedLitenSkatteevne</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>skattebegrensningParagraf174</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
@@ -214,20 +214,20 @@
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/annenArbeidsinntekt</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>annenArbeidsinntekt</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/annenArbeidsinntektFraOmsetningAvRaafisk</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <preutfylles>ja</preutfylles>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>annenArbeidsinntektFraOmsetningAvRaafisk</forekomstIGeneriskModell>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
@@ -241,55 +241,49 @@
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/arbeidsoppholdUtenforHjemmet/oppholdUnderKjoereoppdrag</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>oppholdUnderKjoereoppdrag</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/arbeidsoppholdUtenforHjemmet/oppholdUnderYrkesOgTjenestereise</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>oppholdUnderYrkesOgTjenestereise</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/arbeidsoppholdUtenforHjemmet/pendleropphold</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>pendleropphold</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/engangserstatningTilDoedsbo</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>engangserstatningTilDoedsbo</forekomstIGeneriskModell>
+      <preutfylles>ja</preutfylles>
       <nyEntitetForGjeldendeAar>nytt</nyEntitetForGjeldendeAar>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/fagforeningskontingent</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>lonnsrapportFraArbeidsgiverErFeil</aarsakTilEndring>
@@ -298,47 +292,49 @@
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>fagforeningskontingent</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/fradragForIndividuellSparingTilPensjon</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
+      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
+      <forekomstIGeneriskModell>fradragForIndividuellSparingTilPensjon</forekomstIGeneriskModell>
       <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
       <preutfylles>ja</preutfylles>
-      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
-      <forekomstIGeneriskModell>fradragForIndividuellSparingTilPensjon</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/grunnlagForSkattefradragForPensjonsinntekt</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>pensjonsinntekter</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/grunnlagForSkattleggingVedLoennstrekkPaaSvalbard</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>grunnlagForSkattleggingVedLoennstrekkPaaSvalbard</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
       <nyEntitetForGjeldendeAar>nytt</nyEntitetForGjeldendeAar>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/individuellPensjonsordning[/pensjonsordningstype/pensjonsordningstype = 'individuellPensjonsavtale']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -346,16 +342,16 @@
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>individuellPensjonsavtale</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/individuellPensjonsordning[/pensjonsordningstype/pensjonsordningstype = 'skattefavorisertIndividuellSparingTilPensjon']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -363,23 +359,17 @@
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>skattefavorisertIndividuellSparingTilPensjon</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/loennOgTilsvarendeYtelser/arbeidsgiver</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;13 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>kildeskattPaaLoenn</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -395,14 +385,22 @@
       <aarsakTilEndring>mottattLoennFraUtenlandskregistrertSkipPaaNorskSokkel</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>arbeidsgiver</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;13 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>kildeskattPaaLoenn</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/loennOgTilsvarendeYtelser/avkortetFordelVedElektroniskKommunikasjon</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
@@ -418,17 +416,19 @@
       <aarsakTilEndring>mottattLoennFraUtenlandskregistrertSkipPaaNorskSokkel</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>avkortetFordelVedElektroniskKommunikasjon</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/loennOgTilsvarendeYtelser/overskuddAvUtgiftsgodtgjoerelseVedSmusstillegg</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>overskuddAvUtgiftsgodtgjoerelseVedSmusstillegg</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
@@ -442,54 +442,50 @@
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/minstefradragOgKostnader</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
+      <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
+      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
+      <forekomstIGeneriskModell>minstefradragOgKostnaderKnyttetTilArbeidOgAnnenInntekt</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
       <preutfylles>beregnes</preutfylles>
-      <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
-      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
-      <forekomstIGeneriskModell>minstefradragOgKostnaderKnyttetTilArbeidOgAnnenInntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/oevrigeMinstefradrag[/minstefradragstype/minstefradragstype = 'minstefradragIBarnepensjon']</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>minstefradragIBarnepensjon</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/oevrigeMinstefradrag[/minstefradragstype/minstefradragstype = 'minstefradragIEktefelletillegg']</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>minstefradragIEktefelletillegg</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/omberegningsresultatForEtterbetaltePensjonerOgTrygdeytelser</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>omberegningsresultatForEtterbetaltePensjonerOgTrygdeytelser</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktPaaPensjon</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>lonnsrapportFraArbeidsgiverErFeil</aarsakTilEndring>
@@ -503,20 +499,17 @@
       <aarsakTilEndring>kildeskattPensjonKreverBeskattetSomBosatt</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>pensjonsinntekt</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktPaaPensjon</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonspremie</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>lonnsrapportFraArbeidsgiverErFeil</aarsakTilEndring>
@@ -526,47 +519,54 @@
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>allPensjonsinnbetalingTilPensjonsordningIArbeidsforholdPerSkattleggingsperiode</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/reiserIArbeidsforhold</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>reiserIArbeidsforhold</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/saerskiltFradragForSjoefolk</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>saerskiltFradragForSjoefolk</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/saerskiltInntektsfradragIBarnsInntekt</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>saerskiltInntektsfradragIBarnsInntekt</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/standardfradrag</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>standardfradrag</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
@@ -584,34 +584,29 @@
     <tekniskNavn>/skattemelding/bankLaanOgForsikring/annenKapitalkostnad</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>annenKapitalkostnad</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/bankLaanOgForsikring/boligsparingForUngdom</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>ja</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>boligsparingForUngdom</forekomstIGeneriskModell>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/bankLaanOgForsikring/forsikring/fondskonto</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -621,6 +616,11 @@
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>fondskonto</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
@@ -640,13 +640,8 @@
   <kode>
     <tekniskNavn>/skattemelding/bankLaanOgForsikring/forsikring/livsforsikring</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -656,16 +651,17 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>livsforsikring</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/bankLaanOgForsikring/forsikring/skadeforsikring</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -673,17 +669,16 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>skadeforsikring</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/bankLaanOgForsikring/forsikring/skattepliktigKundeutbytteUtenforVirksomhetPerUtbetaler</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktSomUtenrikstjenestemann</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -691,23 +686,21 @@
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
       <aarsakTilEndring>skattemessigEmigrasjon</aarsakTilEndring>
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
+      <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>skattepliktigKundeutbytteUtenforVirksomhetPerUtbetaler</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktSomUtenrikstjenestemann</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/bankLaanOgForsikring/konto</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -718,20 +711,28 @@
       <aarsakTilEndring>inngaarINaeringsspesifikasjon</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>konto</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/bankLaanOgForsikring/privateGjeldsforholdOgFordringer/privatFordringUtenforVirksomhetTilSelskapMv</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
+      <harKommunenummer>ja</harKommunenummer>
+      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
+      <forekomstIGeneriskModell>privatFordringUtenforVirksomhetTilSelskapMv</forekomstIGeneriskModell>
+      <harLandkode>ja</harLandkode>
       <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktSomSjoemann</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
-      <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
-      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
-      <forekomstIGeneriskModell>privatFordringUtenforVirksomhetTilSelskapMv</forekomstIGeneriskModell>
       <nyEntitetForGjeldendeAar>nytt</nyEntitetForGjeldendeAar>
     </kodetillegg>
   </kode>
@@ -739,13 +740,13 @@
     <tekniskNavn>/skattemelding/bankLaanOgForsikring/skyldigRestskatt</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
+      <harKommunenummer>ja</harKommunenummer>
+      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
+      <forekomstIGeneriskModell>skyldigRestskatt</forekomstIGeneriskModell>
       <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
       <preutfylles>ja</preutfylles>
-      <harKommunenummer>ja</harKommunenummer>
-      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
-      <forekomstIGeneriskModell>skyldigRestskatt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -765,15 +766,8 @@
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/andelAvInntektFelleskostnaderFormueOgGjeldIBoligsameie</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -781,20 +775,20 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>andelAvInntektFelleskostnaderFormueOgGjeldIBoligsameie</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/andelAvInntektFelleskostnaderFormueOgGjeldIBoligselskap</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -802,41 +796,44 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>andelAvInntektFelleskostnaderFormueOgGjeldIBoligselskap</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktPåLønnFraDenNorskeStatOpptjentIUtlandet</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/annenFormue</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>annenFormue</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendom</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <preutfylles>ja</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>fastEiendom</forekomstIGeneriskModell>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'annenFastEiendomInnenforInntektsgivendeAktivitet']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -844,17 +841,17 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagAnnenFastEiendomInnenforInntektsgivendeAktivitet</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'annenFastEiendomUtenforInntektsgivendeAktivitet']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -862,15 +859,16 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagAnnenFastEiendomUtenforInntektsgivendeAktivitet</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'boenhetIBoligselskap']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -879,17 +877,16 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagBoenhetIBoligselskap</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'borett']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -897,17 +894,17 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagBorett</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'egenFritaksbehandletBolig']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -915,17 +912,17 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagEgenFritaksbehandletBolig</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'egenFritaksbehandletFritidseiendom']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -933,15 +930,16 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagEgenFritaksbehandletFritidseiendom</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'flerboligbygning']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -949,17 +947,16 @@
       <aarsakTilEndring>ikkeEier</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagFlerboligbygning</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'gaardsbruk']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -967,15 +964,16 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagGaardsbruk</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'ikkeUtleidNaeringseiendomINorge']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -983,6 +981,9 @@
       <aarsakTilEndring>ikkeEier</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagIkkeUtleidNaeringseiendomINorge</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
@@ -1002,12 +1003,8 @@
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'regnskapsbehandletBolig']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1015,16 +1012,16 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagRegnskapsbehandletBolig</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'regnskapsbehandletFritidseiendom']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1032,15 +1029,16 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagRegnskapsbehandletFritidseiendom</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'selveidBolig']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -1049,15 +1047,15 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagSelveidBolig</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'selveidFritidseiendom']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -1066,15 +1064,15 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagSelveidFritidseiendom</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'skalIkkeFastsettes']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -1082,6 +1080,9 @@
       <aarsakTilEndring>ikkeEier</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagForSkalIkkeFastsettes</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
@@ -1101,12 +1102,8 @@
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomFormuesobjekt[/eiendomstype/eiendomstype = 'tomt']</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>nei-korrtype på eiendom</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1114,6 +1111,10 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesgrunnlagTomt</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
@@ -1161,89 +1162,89 @@
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomUtleieobjekt[/utleietype/utleietype = 'regnskapsbehandletUtleie']</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>regnskapsbehandletUtleie</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomUtleieobjekt[/utleietype/utleietype = 'sjablongbehandletUtleie']</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>sjablongbehandletUtleie</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomUtleieobjekt[/utleietype/utleietype = 'sjablongOgRegnskapsbehandletUtleie']</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>sjablongOgRegnskapsbehandletUtleie</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomUtleieobjektIUtlandet[/utleietype/utleietype = 'regnskapsbehandletUtleieIUtlandet']</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>regnskapsbehandletUtleieIUtlandet</forekomstIGeneriskModell>
+      <harLandkode>ja</harLandkode>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/fastEiendomSomUtleieobjektIUtlandet[/utleietype/utleietype = 'sjablongbehandletUtleieIUtlandet']</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>sjablongbehandletUtleieIUtlandet</forekomstIGeneriskModell>
+      <harLandkode>ja</harLandkode>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/nettoLeieinntektEllerUnderskuddFraFastEiendomSomUtleieobjektOverfoertFraEktefelle</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>nettoLeieinntektEllerUnderskuddFraFastEiendomSomUtleieobjektOverfoertFraEktefelle</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fasteEiendommer/realisasjonAvFastEiendom</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <aarsakTilEndring>ikkeEier</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>realisasjonAvFastEiendom</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
@@ -1270,13 +1271,8 @@
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/fritidsbaatMedSalgsverdiOverSalgsverdigrense</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1285,6 +1281,11 @@
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>fritidsbaatMedSalgsverdiOverSalgsverdigrense</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
@@ -1299,13 +1300,8 @@
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/kjoeretoey</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1317,40 +1313,41 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>kjoeretoey</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/kontantbeloep</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>kontantbeloep</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/verdiForAnnetPrivatInnboOgLoesoere</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>annetPrivatInnboOgLoesoere</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/familieOgHelse/passOgStellAvBarn/foreldrefradrag</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1361,12 +1358,15 @@
       <aarsakTilEndring>deltOmsorg</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>passOgStellAvBarn</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/familieOgHelse/passOgStellAvBarn/kostnaderForMerkjoeringForAaBringeOgHenteBarn</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -1375,14 +1375,13 @@
       <aarsakTilEndring>deltOmsorg</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>kostnaderForMerkjoeringForAaBringeOgHenteBarn</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/familieOgHelse/passOgStellAvBarn/oppholdskostnaderVedPassOgStellAvBarn</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <preutfylles>ja</preutfylles>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1390,67 +1389,64 @@
       <aarsakTilEndring>deltOmsorg</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>oppholdskostnaderVedPassOgStellAvBarn</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/familieOgHelse/passOgStellAvBarn/skattefriStoenadTilBarnetilsyn</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <preutfylles>ja</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>skattefriStoenadTilBarnetilsyn</forekomstIGeneriskModell>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/familieOgHelse/saerfradragForEnsligForsoerger</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>saerfradragForEnsligForsoerger</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/familieOgHelse/saerfradragForLettereNedsattErvervsevne</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
+      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
+      <forekomstIGeneriskModell>saerfradragForLettereNedsattErvervsevne</forekomstIGeneriskModell>
       <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
       <preutfylles>beregnes</preutfylles>
-      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
-      <forekomstIGeneriskModell>saerfradragForLettereNedsattErvervsevne</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/familieOgHelse/saerfradragForStoreSykdomskostnader</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
+      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
+      <forekomstIGeneriskModell>saerfradragForStoreSykdomskostnader</forekomstIGeneriskModell>
       <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
       <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
       <preutfylles>beregnes</preutfylles>
-      <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
-      <forekomstIGeneriskModell>saerfradragForStoreSykdomskostnader</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/familieOgHelse/saerfradragOverfoertFraBarn</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <preutfylles>beregnes</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>saerfradragOverfoertFraBarn</forekomstIGeneriskModell>
+      <preutfylles>beregnes</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/finans/aksjeIAksjonaerregisteret</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
@@ -1462,19 +1458,18 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>aksjeIAksjonaerregisteret</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/finans/aksjeIkkeIAksjonaerregisteret</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1485,19 +1480,19 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>aksjeIkkeIAksjonaerregisteret</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/finans/aksjesparekonto</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1508,20 +1503,19 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>aksjesparekonto</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/finans/annetFinansprodukt</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1531,19 +1525,26 @@
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>annetFinansprodukt</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/finans/forvaltningskostnader</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>forvaltningskostnader</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
@@ -1557,26 +1558,21 @@
   <kode>
     <tekniskNavn>/skattemelding/finans/investeringIOppstartsselskap</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>investeringIOppstartsselskap</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/finans/obligasjonOgSertifikat</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1587,19 +1583,18 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>obligasjonOgSertifikat</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/finans/verdipapirfond</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1610,19 +1605,19 @@
       <aarsakTilEndring>engangserstatningTilBarn</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>verdipapirfond</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/finans/virtuellEiendel</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
@@ -1632,16 +1627,22 @@
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>virtuellEiendel</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <saerskiltSkatteplikt>skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>deltakersAndelAvFormueOgInntekt</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <nyEntitetForGjeldendeAar>nytt</nyEntitetForGjeldendeAar>
     </kodetillegg>
   </kode>
@@ -1665,13 +1666,8 @@
   <kode>
     <tekniskNavn>/skattemelding/gaveOgArv/gaveTilFrivilligOrganisasjon</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
-      <harLandkode>ja</harLandkode>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -1679,6 +1675,11 @@
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>gaveTilFrivilligOrganisasjon</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <harLandkode>ja</harLandkode>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
@@ -1692,14 +1693,14 @@
   <kode>
     <tekniskNavn>/skattemelding/gaveOgArv/tilskuddTilVitenskapeligForskning</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>feilManglendeInnrapportering</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>tilskuddTilVitenskapeligForskning</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <saerskiltSkatteplikt>skattepliktEtterPetroleumsskatteloven</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
@@ -1763,38 +1764,36 @@
     <tekniskNavn>/skattemelding/metodeForAaUnngaaDobbeltbeskatning/kravOmKreditfradrag/fremfoertUtenlandskSkatt</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <preutfylles>ja</preutfylles>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>kravOmKreditFradragFremfoertUtenlandskSkatt</forekomstIGeneriskModell>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/metodeForAaUnngaaDobbeltbeskatning/kravOmKreditfradrag/kravOmKreditfradragForUtenlandskSkattPrLand</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <harLandkode>ja</harLandkode>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>kravOmKreditfradragForUtenlandskSkatt</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <harLandkode>ja</harLandkode>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/forenkledeNaeringsopplysninger</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>Avventer, skal slettes</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>forenkledeNaeringsopplysninger</forekomstIGeneriskModell>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/formuesspesifikasjonForSkipFiskeOgFangstfartoey</tekniskNavn>
     <kodetillegg>
-      <harAarsakTilEndring>ja</harAarsakTilEndring>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -1804,6 +1803,8 @@
       <aarsakTilEndring>inngaarINaeringsspesifikasjon</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>formuesspesifikasjonForSkipFiskeOgFangstfartoeyMv</forekomstIGeneriskModell>
+      <harAarsakTilEndring>ja</harAarsakTilEndring>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
       <nyEntitetForGjeldendeAar>nytt</nyEntitetForGjeldendeAar>
     </kodetillegg>
   </kode>
@@ -1811,9 +1812,6 @@
     <tekniskNavn>/skattemelding/naering/grunnlagForBeregningAvNaeringsinntektOgSaerskiltFradragForFiskereOgFangstfolkKnyttetTilLottaker</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -1825,23 +1823,25 @@
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>grunnlagKnyttetTilLottaker</forekomstIGeneriskModell>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/jordbruksfradrag</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>jordbruksfradrag</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/naeringsinntektMv</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -1853,13 +1853,13 @@
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>naeringsinntektMv</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/naeringsinntektMvFordeltFraEktefelle</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -1871,14 +1871,13 @@
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>naeringsinntektMvFordeltFraEktefelle</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/oppgavegiver</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -1890,15 +1889,14 @@
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>oppgavegiver</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/oppgavegiverBarnepassIBarnepasserensHjem</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
-      <preutfylles>ja</preutfylles>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>begrensetSkattepliktig</aarsakTilEndring>
       <aarsakTilEndring>bosattEtterSkatteavtaleIAnnetLand</aarsakTilEndring>
@@ -1910,58 +1908,61 @@
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>oppgavegiverBarnepassIBarnepasserensHjem</forekomstIGeneriskModell>
+      <regelForOverfoertFraBarn>&lt;17 år</regelForOverfoertFraBarn>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
+      <preutfylles>ja</preutfylles>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/saerskiltFradragForFiskereOgFangstfolk</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>saerskiltFradragForFiskereOgFangstfolk</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/saerskiltFradragForReindrift</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>saerskiltFradragForReindrift</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/saerskiltFradragForSkiferproduksjon</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>saerskiltFradragForSkiferproduksjon</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/samletGjeldOgFormuesobjekterINaering</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja- kan ikke legges til</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>samletGjeldOgFormuesobjekterINaering</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>/skattemelding/naering/samletGjeldOgFormuesobjekterINaeringFordeltFraEktefelle</tekniskNavn>
     <kodetillegg>
       <korttypeISkattemeldingen>ja</korttypeISkattemeldingen>
-      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
       <harKommunenummer>ja</harKommunenummer>
       <aarsakTilEndring>lagtTilOpplysninger</aarsakTilEndring>
       <aarsakTilEndring>overfortTilFraEktefelle</aarsakTilEndring>
       <statusGjeldendeSkattemelding>OK</statusGjeldendeSkattemelding>
       <forekomstIGeneriskModell>samletGjeldOgFormuesobjekterINaeringFordeltFraEktefelle</forekomstIGeneriskModell>
+      <saerskiltSkatteplikt>skattepliktAvNaeringsdriftEiendomMv</saerskiltSkatteplikt>
     </kodetillegg>
   </kode>
   <kode>
