@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:ske:informasjonsrammeverk:typekatalog"
+            xmlns:skatt="http://www.skatteetaten.no/xsd"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            attributeFormDefault="unqualified" elementFormDefault="qualified"
+            targetNamespace="urn:ske:informasjonsrammeverk:typekatalog">
+  <xsd:annotation>
+    <xsd:documentation>
+      <xsd:attribute fixed="2017-01-26T13:10:36.754+0100" name="generertDato"/>
+      <xsd:attribute fixed="2" name="versjon"/>
+      <xsd:attribute fixed="&#10;Inneholder gjenbrukbare modellelementer samlet fra potensielt alle interesseområder. I hovedsak datatyper, enkelt og kodelister. Til bruk i løsningsmodeller. &#10;&#10;Typene er implentasjonsuavhengige og må oversettes tiol de typene på den plattformen løsningen skal realiseres. &#10;&#10;GMS beskriver mappingregler til XML Schema, andre mappinger må beskrives ved behov. " name="beskrivelse"/>
+      <xsd:attribute fixed="Typekatalog" name="modellnavn"/>
+      <xsd:attribute fixed="urn:ske:informasjonsrammeverk:typekatalog" name="navnerom"/>
+      <xsd:attribute fixed="true" name="begrepsreferanse"/>
+      <xsd:attribute fixed="true" name="dokumentasjon"/>
+      <xsd:attribute fixed="false" name="nillable"/>
+      <xsd:attribute fixed="false" name="modellelement"/>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/boolsk">
+    <xsd:annotation>
+      <xsd:documentation>angir verdien sann eller usann</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:boolean"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Dato" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/dato">
+    <xsd:annotation>
+      <xsd:documentation>gir verdier for år, måned og dag. Kodes som en tekststreng etter datoformatering spesifisert i  ISO 8601 (ISO 8601:2004 Data elements and interchange formats -- Information interchange -- Representation of dates and times).
+        Eksempel : 1998-12-21 eller 19981221. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:date"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="DatoKlokkeslett" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/datoklokkeslett">
+    <xsd:annotation>
+      <xsd:documentation>en kombinasjon av typene Dato og Klokkeslett. Kodes som en tekststreng etter datoformatering spesifisert i ISO 8601 (ISO 8601:2004 Data elements and interchange formats -- Information interchange -- Representation of dates and times). </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:dateTime"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Desimaltall" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/desimaltall">
+    <xsd:annotation>
+      <xsd:documentation>tall som er satt sammen av en heltallsdel og en fraksjondel [wikipedia] </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:decimal"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Heltall" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/heltall">
+    <xsd:annotation>
+      <xsd:documentation>hele tall, dvs. hele tall i mengden {..., -2, -1, 0, 1, 2, ...}</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:long"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Klokkeslett" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/klokkeslett">
+    <xsd:annotation>
+      <xsd:documentation>angis med time, minutt og sekund. Kodes som en tekststreng etter datoformatering spesifisert i  ISO 8601 (ISO 8601:2004 Data elements and interchange formats -- Information interchange -- Representation of dates and times). Tidssoner i henhold til UTC er opsjonelt. Eksempel; 18:30:59 or 18:30:59+01:00. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:time"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="ReeltTall">
+    <xsd:annotation>
+      <xsd:documentation>mengden av de tall som tilsvarer alle punkter på en uendelig lang tallinje.
+
+        Merknad: I utgangspunktet det samme som desimaltall </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:decimal"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Tekst" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/tekst">
+    <xsd:annotation>
+      <xsd:documentation>vilkårlig lang sekvens av tegn inkludert aksenter og spesielle tegn fra standardiserte tegnsett
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4000"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Dnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/dnummer">
+    <xsd:annotation>
+      <xsd:documentation>"dummy nummer" som tildels av folkeregisteret for ikke norske personer</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="[0-9]+"/>
+      <xsd:length value="11"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Foedselsnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/fødselsnummer">
+    <xsd:annotation>
+      <xsd:documentation>ellevesifret identifikasjonsnummer for personer bosatt i Norge, der de seks første sifrene angir fødselsdato og de fem siste personnummer.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="[0-9]+"/>
+      <xsd:length value="11"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Personnavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begreper/personnavn">
+    <xsd:annotation>
+      <xsd:documentation>navn på person</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="fornavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begreper/fornavn" type="Navn">
+        <xsd:annotation>
+          <xsd:documentation>fornavn på person</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="mellomnavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begreper/mellomnavn" type="Navn">
+        <xsd:annotation>
+          <xsd:documentation>mellomnavn på person
+
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="etternavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begreper/etternavn" type="Navn">
+        <xsd:annotation>
+          <xsd:documentation>etternavn på person</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Organisasjonsnavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/organisasjonsnavn">
+    <xsd:annotation>
+      <xsd:documentation>navn på organisasjon </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:maxLength value="175"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Organisasjonsnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/organisasjonsnummer">
+    <xsd:annotation>
+      <xsd:documentation>9 sifret nummer gitt de som er registrert i Enhetsregisteret. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="[0-9]+"/>
+      <xsd:length value="9"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Adressenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adressenummer">
+    <xsd:annotation>
+      <xsd:documentation> et nummer og en eventuell bokstav som entydig identifiserer eiendommer, anlegg, bygninger eller innganger til bygninger innenfor en adresserbar gate, veg, sti, plass eller område</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="husnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/husnummer" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>nummer som entydig identifiserer eiendommer, anlegg, bygninger eller innganger til bygninger innenfor en adresserbar gate, veg, sti, plass eller område</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="husbokstav" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/husbokstav" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>bokstav som sammen med husnummer entydig identifiserer eiendommer, anlegg, bygninger eller innganger til bygninger innenfor en adresserbar gate, veg, sti, plass eller område</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Epostadresse" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/epostadresse">
+    <xsd:annotation>
+      <xsd:documentation>navngitt elektronisk adresse for mottak av e-post </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:maxLength value="254"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="InternasjonalAdresse" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/internasjonaladresse">
+    <xsd:annotation>
+      <xsd:documentation>adresse til postmottaker i utlandet</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="coAdressenavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/coadressenavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>addresse som er indirekte</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="adressenavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adressenavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på gate
+
+            Merknad til definisjon: Dette er en oversettelse fra streetname og kan ha nummer og bokstav</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="adressenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adressenummer" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>et nummer og en eventuell bokstav som entydig identifiserer eiendommer, anlegg, bygninger eller innganger til bygninger innenfor en adresserbar gate, veg, sti, plass eller område</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="bygning" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/bygning" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn og/eller nummer på bygning
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="etasjenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/etasjenummer" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>identifikator for etasje</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="boenhet" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/boenhet" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>nummer på en del av et hus eller annen inndeling</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="postboks" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/postboks" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>kode for en postboks eller postnummer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="postkode" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/postkode" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>kode for en postboks eller postnummer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="byEllerStedsnavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/byellerstedsnavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på by</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="distriktsnavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/distriktsnavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på et distrikt</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="6" minOccurs="0" name="administrativEnhet" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/administrativEnhet" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på regional inndeling av land med særlig allmenninteresse</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="adressebrukskategori" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adressebrukskategori" type="Adressebrukskategori">
+        <xsd:annotation>
+          <xsd:documentation>kategorisering av måter å bruke en adresse både mht. hva slags adresse beskrevet adresse er og hva man ønsker å utføre ved bruk av adressen.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="landkode" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/landkode" type="Landkode">
+        <xsd:annotation>
+          <xsd:documentation>geografisk koding av stater, deres oversjøiske områder samt for underinndeling av land</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Matrikkelnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/matrikkelnummer">
+    <xsd:annotation>
+      <xsd:documentation>offisiell benevnelse for hver enkel matrikkelenhet</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="kommunenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/kommunenummer" type="Kommunenummer">
+        <xsd:annotation>
+          <xsd:documentation>nummer for kommune</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="gaardsnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/gårdsnummer" type="Heltall">
+        <xsd:annotation>
+          <xsd:documentation>nummer for gård</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="bruksnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/bruksnummer" type="Heltall">
+        <xsd:annotation>
+          <xsd:documentation>fortløpende nummerering innenfor gårdsnummeret</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="festenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/festenummer" type="Heltall">
+        <xsd:annotation>
+          <xsd:documentation>tas i bruk når et bruksnummer skal deles opp i flere grunneiendommer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="seksjonsnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/seksjonsnummer" type="Heltall">
+        <xsd:annotation>
+          <xsd:documentation>nummer på en seksjon</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Postboksadresse" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/postboksadresse">
+    <xsd:annotation>
+      <xsd:documentation>adresse for å nå noen eller noe levert til en postboks</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="postboksnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/postboksnummer" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>nummer på en postboks</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="poststed" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/poststed" type="Poststed">
+        <xsd:annotation>
+          <xsd:documentation>geografisk inndeling av postmottakere
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Postnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/postnummer">
+    <xsd:annotation>
+      <xsd:documentation>nummer på et poststed</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="([0-9]){4}"/>
+      <xsd:length value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Poststed" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/poststed">
+    <xsd:annotation>
+      <xsd:documentation>geografisk inndeling av postmottakere</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="poststedsnavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/poststedsnavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på et poststed</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="postnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/postnummer" type="Postnummer">
+        <xsd:annotation>
+          <xsd:documentation>nummer på et poststed</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Telefonnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/telefonnummer">
+    <xsd:annotation>
+      <xsd:documentation>tallkode som telenettet bruker for å få fram teletrafikk til riktig adressat </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="UtenlandskGateadresse" skatt:begrepsreferanse="http://www.skatteetaten.no/begreper/Utenlandskgateadresse">
+    <xsd:annotation>
+      <xsd:documentation>adresse til postmottaker i utlandet</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="coAdressenavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/coadressenavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>adresse som er indirekte</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="suitenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/suitenummer" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>nummer på en del av et hus eller annen inndeling</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="gatenavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/gatenavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på gate
+
+            Merknad til definisjon: Dette er en oversettelse fra streetname og kan ha nummer og bokstav</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="etasjenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/etasjenummer" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>identifikator for etasje</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="postkode" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/postkode" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>kode for en postboks eller postnummer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="bynavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/bynavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på by</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="administrativEnhet" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/administrativenhet" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på regional inndeling av land med særlig allmenninteresse</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="distriktsnavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/distriktsnavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på et distrikt</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="landkode" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/landkode" type="Landkode">
+        <xsd:annotation>
+          <xsd:documentation>geografisk koding av stater, deres oversjøiske områder samt for underinndeling av land</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UtenlandskPostboksadresse" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/utenlandskpostboksadresse">
+    <xsd:annotation>
+      <xsd:documentation>adresse til en postboks i utlandet</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="postboksnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/postboksnummer" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>nummer på en postboks</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="postkode" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/postkode" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>kode for en postboks eller postnummer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="bynavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/bynavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på by</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="administrativEnhet" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/administrativEnhet" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på regional inndeling av land med særlig allmenninteresse</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="distriktsnavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/distriktsnavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>navn på et distrikt</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="landkode" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/landkode" type="Landkode">
+        <xsd:annotation>
+          <xsd:documentation>geografisk koding av stater, deres oversjøiske områder samt for underinndeling av land</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Vegadresse" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/vegadresse">
+    <xsd:annotation>
+      <xsd:documentation>adresse i form av gatenavn, husnummer og eventuell husbokstav</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="adressenavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adressenavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation> navn på gate, veg, sti, plass eller område, brukt som del av den offisielle adressen; </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="adressenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adressenummer" type="Adressenummer">
+        <xsd:annotation>
+          <xsd:documentation>et nummer og en eventuell bokstav som entydig identifiserer eiendommer, anlegg, bygninger eller innganger til bygninger innenfor en adresserbar gate, veg, sti, plass eller område</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="bruksenhetsnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/bruksenhetsnummer" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>en bokstav og fire siffer som entydig identifiserer den enkelte bruksenheten innenfor en adresserbar bygning eller bygningsdel
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="poststed" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/poststed" type="Poststed">
+        <xsd:annotation>
+          <xsd:documentation>geografisk inndeling av postmottakere</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="gatenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/gatenummer" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>nummer som entydig identifiserer adresserbare gater, veger, stier, plasser og områder som er ført i matrikkelen</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="adressetilleggsnavn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adressetilleggsnavn" type="Tekst">
+        <xsd:annotation>
+          <xsd:documentation>nedarvet bruksnavn eller navn på en institusjon eller bygning, brukt som del av den offisielle adressen</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="kommunenummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/kommunenummer" type="Kommunenummer">
+        <xsd:annotation>
+          <xsd:documentation>nummer for kommune</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Adressebrukskategori" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adressebrukskategori">
+    <xsd:annotation>
+      <xsd:documentation>kategorisering av måter å bruke en adresse både mht. hva slags adresse beskrevet adresse er og hva man ønsker å utføre ved bruk av adressen.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/offisiellforretning" value="offisiellForretning">
+        <xsd:annotation>
+          <xsd:documentation>brukskategori av adresse som angir hvor et foretak er offisielt registrert.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/offisiellpost" value="offisiellPost">
+        <xsd:annotation>
+          <xsd:documentation>brukskategori av adresse som angir hvilken offisiell postadresse et foretak har registrert.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/virksomhet" value="virksomhet">
+        <xsd:annotation>
+          <xsd:documentation>brukskategori av adresse som angir hvilken adresse en virksomhet bedrives på.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/bosted" value="bosted">
+        <xsd:annotation>
+          <xsd:documentation>brukskategori av adresse som angir på hvilken adresse en eller flere personer bor.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/post" value="post">
+        <xsd:annotation>
+          <xsd:documentation>brukskategori av adresse som angir hvilken adresse man kan sende post eller annen fysisk overlevert korrespondanse.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adresse/leveranse" value="leveranse">
+        <xsd:annotation>
+          <xsd:documentation>brukskategori av adresse som angir hvor en kan levere en fysiske leveranse.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration skatt:begrepsreferanse="http:///www.skatteetaten.no/begrep/ukjent" value="ukjent">
+        <xsd:annotation>
+          <xsd:documentation>ukjent brukskategori for en adresse</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Andel" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/andel">
+    <xsd:annotation>
+      <xsd:documentation>del av noe, part
+
+        Eksempel:
+        Hun eier en andel på en femtedel.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="teller" skatt:begrepsreferanse="http://www.skatteetaten.no/teller" type="Heltall"/>
+      <xsd:element name="nevner" skatt:begrepsreferanse="http://www.skatteetaten.no/nevner" type="Heltall"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Antall" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/antall">
+    <xsd:annotation>
+      <xsd:documentation>mengde som utgjør eller kan uttrykkes i et visst tall </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Heltall"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Beloep" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/beløp">
+    <xsd:annotation>
+      <xsd:documentation>en sum av penger brukt i en kontekst. Dette kan være en transaksjon, saldo o.l. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Desimaltall"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="BeloepSomHeltall" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/beløpsomheltall">
+    <xsd:annotation>
+      <xsd:documentation>en sum av penger i hele kroner brukt i en kontekst. Dette kan være en transaksjon, saldo o.l. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Heltall"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Foedselsdato">
+    <xsd:restriction base="xsd:date"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Identifikator" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/identifikator">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Inntektsaar" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/inntektsår">
+    <xsd:annotation>
+      <xsd:documentation>er årstallet som oppgave eller likning gjelder for </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Heltall">
+      <xsd:minInclusive value="1000"/>
+      <xsd:totalDigits value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="InternasjonalIdentifikator">
+    <xsd:sequence>
+      <xsd:element name="identifikator" type="InternasjonalIdentifikatorverdi"/>
+      <xsd:element name="identifikatortype" type="InternasjonalIdentifikatortype"/>
+      <xsd:element name="utstedtAvLand" type="Landkode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="InternasjonalIdentifikatorverdi">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="100"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Isinnummer">
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="[A-Z]{2}[0-9A-Z]{9}[0-9]{1}"/>
+      <xsd:length value="12"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Kildesystem" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/kildesystem">
+    <xsd:annotation>
+      <xsd:documentation>navn på system som er kilde eller opphav</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:maxLength value="100"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Kommunenummer" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e0f3-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:annotation>
+      <xsd:documentation>nummer for kommune</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="([0-9]){4}"/>
+      <xsd:length value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Kontaktinformasjon" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/kontaktinformasjon">
+    <xsd:annotation>
+      <xsd:documentation>Navn, telefonnummer, sms-nummer og epost-adresse som kan brukes for uformell kontakt med en part</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="navn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/navn" type="Navn"/>
+      <xsd:element minOccurs="0" name="telefonnummer" type="Telefonnummer"/>
+      <xsd:element minOccurs="0" name="epostadresse" type="Epostadresse"/>
+      <xsd:element minOccurs="0" name="mobiltelefonummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/mobiltelefonnummer" type="Telefonnummer"/>
+      <xsd:element minOccurs="0" name="smsNummer" type="Telefonnummer"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Kontonummer">
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Landkode">
+    <xsd:annotation>
+      <xsd:documentation>koder for land etter ISO 3166-1 Alpha-2 </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="([A-Z]){2}"/>
+      <xsd:length value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="MultiSpraakTekst" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/multispråktekst">
+    <xsd:annotation>
+      <xsd:documentation>tekster som representerer samme mening på flere språk
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="spraakTekst" type="SpraakTekst"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Navn" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/navn">
+    <xsd:annotation>
+      <xsd:documentation>et ord som noen el. noe kalles ved, og som henfører det nevnte til en bestemt klasse el. art (eks plantenavn, stoffnavn) el. skiller ut et bestemt individ, eksemplar e l fra en større gruppe (eks personnavn, stedsnavn). (Bokmålsordboka) </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="200"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Partsnummer" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/partsnummer">
+    <xsd:annotation>
+      <xsd:documentation>identifiserende nummer for å representere en part</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Heltall"/>
+  </xsd:simpleType>
+  <xsd:complexType name="Periode" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/periode">
+    <xsd:annotation>
+      <xsd:documentation>tiden mellom to tidspunkter
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="start" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/start" type="DatoKlokkeslett">
+        <xsd:annotation>
+          <xsd:documentation>Første tidspunkt i perioden. Tidspunktet er med i perioden.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="slutt" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/slutt" type="DatoKlokkeslett">
+        <xsd:annotation>
+          <xsd:documentation>Sluttidspunktet for perioden. Er ikke med i selve perioden. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Prosent" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/prosent">
+    <xsd:annotation>
+      <xsd:documentation> Prosent betyr hundredel eller per hundre, og representeres ofte av et tall etterfulgt av tegnet '%'. Prosent er altså en hundredel av en  gitt mengde. Eksempelvis vil en prosent av 1000 være 10. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Desimaltall"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Spraakkode">
+    <xsd:annotation>
+      <xsd:documentation>koder for entydig angivelse av spesifike språk etter ISO 639-1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:complexType name="SpraakTekst" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/språktekst">
+    <xsd:annotation>
+      <xsd:documentation>tekst på spesifisert språk
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="tekst" type="Tekst"/>
+      <xsd:element name="spraak" type="Spraakkode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Uri" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/uri">
+    <xsd:annotation>
+      <xsd:documentation>En URI (Uniform Resource Identifier) er en kompakt streng av tegn som identifiserer en abstrakt eller fysisk ressurs. En URI kan videre klassifiseres som en lokator eller et navn, eller begge deler.[Wikipedia] </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Valutakode" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/valutakode">
+    <xsd:annotation>
+      <xsd:documentation>koder for offisielle valutaer etter ISO 4217</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="Tekst"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="AarOgMaaned" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/årogmåned">
+    <xsd:annotation>
+      <xsd:documentation>årstall og måned angitt i nummer</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:gYearMonth"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="Aarstall" skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/årstall">
+    <xsd:annotation>
+      <xsd:documentation>årstall er et tall som angir årets nummer i tidsregningen i den gregorianske kalender</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:gYear"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="InternasjonalIdentifikatortype">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="GIIN"/>
+      <xsd:enumeration value="TIN"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

@@ -56,9 +56,14 @@ cHJldHRldD4KPC9za2F0dGVtZWxkaW5nPg==
 }
 ```
 
-### 1.1 Bruk av Gzip
-Per nå har Skatteetaten en begresning på 25Mb per http requeset. For å få plass til større filer så anbefaler vi å gzipe den base64 encoded payloaden. 
-Hvis en velger å gzip payloaden så må en legge på .gz til filnavet. Se eksempel nedenfor. 
+### 1.1 Bruk av komprimert payload
+Per nå har Skatteetaten en begrensning på 25Mb per http requeset. For å få plass til større filer så anbefaler vi å komprimere den base64 encoded payloaden. Skatteetaten støtter to forskjellige komprimeringsteknologier, Gzip og Brotli.  
+
+Slutten av filnavnet angir hvilken komprimeringsteknolgi som er brukt. 
+For å bruke gzip i payloaden så må en legge til .gz i filnavnet. 
+For å bruke brotli i payloaden så må en legge til .br i filnavnet
+
+Se eksempelet nedenfor for bruk av gzip. 
 
 ### Eksempel kall i testmiljøet med gzipet payload:
 curl -XPOST https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/2023/{{identifikator}}/last-opp.vedlegg
