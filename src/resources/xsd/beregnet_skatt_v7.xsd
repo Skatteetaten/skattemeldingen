@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v7" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v7">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2024-09-06T14:30:57.316+0200" name="generertDato"/>
+            <xsd:attribute fixed="2024-09-12T11:41:24.538+0200" name="generertDato"/>
             <xsd:attribute fixed="7.1" name="versjon"/>
             <xsd:attribute fixed="Beregnet skatt - formues og inntektsskatt for personlige skattepliktige&#10;Inntektsår 2025" name="beskrivelse"/>
             <xsd:attribute fixed="v7 (2025)" name="modellnavn"/>
@@ -200,7 +200,7 @@
             <xsd:element minOccurs="0" name="korreksjonKommuneskattPaaGrunnAvNegativEierinntekt" type="Skatt"/>
             <xsd:element minOccurs="0" name="korreksjonFylkesskattPaaGrunnAvNegativEierinntekt" type="Skatt"/>
             <xsd:element minOccurs="0" name="korreksjonFellesskattFraKommunePaaGrunnAvNegativAnnenAlminneligInntekt" type="Skatt"/>
-            <xsd:element minOccurs="0" name="korreksjonFellesskattFraFylkePaaGrunnAvNegativAnnenAlminneligInntekt" type="Skatt"/>
+            <xsd:element minOccurs="0" name="korreksjonFellesskattFraFylkeskommunePaaGrunnAvNegativAnnenAlminneligInntekt" type="Skatt"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:simpleType name="Skatteklasse">
