@@ -4,8 +4,8 @@
   <tekniskNavn>2024_satserIFastsettingAvFormuesOgInntektsskatt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2024-04-29T16:31:10.001+02:00</sistEndret>
-  <sistEndretAv>m79764</sistEndretAv>
+  <sistEndret>2024-08-27T10:33:28.000+02:00</sistEndret>
+  <sistEndretAv>c01lag</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
@@ -603,7 +603,6 @@
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
       <satsverdi>185</satsverdi>
-      <satstype>gjennomsnitt</satstype>
       <kildereferanse>Takseringsregler §4-6</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
@@ -2068,9 +2067,9 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
-      <satsverdi>118620</satsverdi>
+      <satsverdi>124028</satsverdi>
       <satstype>grunnbeløp</satstype>
-      <kildereferanse>https://www.nav.no/grunnbelopet</kildereferanse>
+      <kildereferanse>Forskrift om grunnbeløp, reguleringsfaktorer, satser for minste pensjonsnivå og satser for garantipensjon i folketrygden fra 1. mai 2024 og virkningstidspunkt for regulering av kravet til minsteinntekt for rett til ytelser etter folketrygdloven kapitlene 4, 8, 9 og 14 § 1</kildereferanse>
       <beregning>Svalbard</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
@@ -2084,11 +2083,11 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>beloepINok</satsenhet>
-      <satsverdi>1423440</satsverdi>
-      <kildereferanse>https://www.nav.no/grunnbelopet</kildereferanse>
+      <satsenhet>beloepAvledet</satsenhet>
+      <satsverdi>1488336</satsverdi>
       <beregning>Svalbard</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
+      <avledet>grunnbeloepIFolketrygden.1G * 12</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -4368,7 +4367,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
-      <satsverdi>116239</satsverdi>
+      <satsverdi>122225</satsverdi>
       <beregningskontekst>npgi</beregningskontekst>
       <beregningskontekst>svalbard</beregningskontekst>
     </kodetillegg>
@@ -5293,8 +5292,8 @@
     <tekniskNavn>2024_satserIFastsettingAvFormuesOgInntektsskattUtgaaende</tekniskNavn>
     <status>aktiv</status>
     <versjonsnummer>1</versjonsnummer>
-    <sistEndret>2024-04-29T16:31:10.000+02:00</sistEndret>
-    <sistEndretAv>m79764</sistEndretAv>
+    <sistEndret>2024-08-27T10:33:28.000+02:00</sistEndret>
+    <sistEndretAv>c01lag</sistEndretAv>
     <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
       <spraakTekst>
@@ -5480,6 +5479,23 @@
         <satsverdi>0</satsverdi>
         <beregningskontekst>forskudd</beregningskontekst>
         <avledet>minimumsBelopMinstefradrag * faktorForskuddsatser</avledet>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>naeringsoverskuddSvalbardInnslagspunktHoeySats</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Næringsoverskudd Svalbard, innslagspunkt høy sats</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepAvledet</satsenhet>
+        <satsverdi>1488336</satsverdi>
+        <kildereferanse>Lov om skatt til Svalbard (Svalbardskatteloven) § 3-1</kildereferanse>
+        <kildereferanse>Lov om skatt til Svalbard (Svalbardskatteloven) § 3-2</kildereferanse>
+        <beregningskontekst>svalbard</beregningskontekst>
+        <avledet>grunnbeloepIFolketrygden.1G * 12</avledet>
       </kodetillegg>
     </kode>
   </underkodeliste>
