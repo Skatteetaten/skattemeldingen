@@ -79,7 +79,7 @@
                   <artifactId>beregning-tjeneste-xsd</artifactId>
                   <version>${beregning-tjeneste-xsd.version}</version>
                   <outputDirectory>src/resources/xsd</outputDirectory>
-                  <includes>**/beregnetskatt_upersonligskattyter_*.xsd,**/beregnet_skatt_*.xsd</includes>
+                  <includes>**/beregnetskatt_upersonlig*.xsd,**/beregnet_skatt_*.xsd</includes>
                   <excludes>**/beregnet_skatt_v1.xsd,**/beregnetskatt_upersonligskattyter_v1.xsd</excludes>
                   <fileMappers>
                     <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
