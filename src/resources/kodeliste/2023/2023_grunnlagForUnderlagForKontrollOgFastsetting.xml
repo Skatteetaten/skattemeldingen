@@ -4,8 +4,8 @@
   <tekniskNavn>2023_grunnlagIUnderlagForSkjoennsfastsetting</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2024-09-30T12:39:56.000+02:00</sistEndret>
-  <sistEndretAv>x00obo</sistEndretAv>
+  <sistEndret>2024-10-10T13:05:37.000+02:00</sistEndret>
+  <sistEndretAv>b19lav</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
@@ -385,6 +385,7 @@
       <kilde>gld.saldoRente</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>I-Informasjon</anvendelseIBeregningUpersonlig>
+      <anvendelseIBeregningUpersonlig>alltidForNaeringsinntekt</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
   <kode>
@@ -409,6 +410,20 @@
       <kilde>skatteinfo.deltakersEierforholdISdf</kilde>
       <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>alltidForNaeringsinntekt</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>egenkapitalFraBalanseregnskap</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Egenkapital fra balanseregnskap</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
+      <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
   <kode>
@@ -2110,7 +2125,7 @@
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
       <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
       <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
-      <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
+      <anvendelseIBeregningUpersonlig>I-Informasjon</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
   <kode>
