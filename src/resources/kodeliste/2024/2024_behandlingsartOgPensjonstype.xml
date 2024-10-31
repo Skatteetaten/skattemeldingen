@@ -4,7 +4,7 @@
   <tekniskNavn>2024_behandlingsartOgPensjonstype</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2024-06-11T15:51:30.000+02:00</sistEndret>
+  <sistEndret>2024-10-17T10:13:34.000+02:00</sistEndret>
   <sistEndretAv>x00obo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -375,7 +375,6 @@
     <kodetillegg>
       <oppgavekodeISL>35521</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
-      <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
       <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
       <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
@@ -391,6 +390,45 @@
       <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <belopsgrenseTaOppSkattepliktIFart>1000</belopsgrenseTaOppSkattepliktIFart>
       <kommentar>2019_pensjonstype</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>BARNEP_ANDRE_FOM_2024</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Barnepensjon ikke folketrygden fra og med 2024</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Barnepensjon fra andre enn folketrygden  fra og med 2024</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Barnepensjon frå andre enn folketrygda</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Children’s pensions not from the National Insurance scheme</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Mánnápenšuvdna earáin go álbmotoajus</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Pensjon</visningskategori>
+      <kategori>PensjonEllerTrygd</kategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>pensjonGenerell</presentasjonsrekkefoelge>
+      <beskrivelseIAMelding>barnepensjonFraAndreEnnFolketrygdenFra2024</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <belopsgrenseTaOppSkattepliktIFart>1000</belopsgrenseTaOppSkattepliktIFart>
     </kodetillegg>
   </kode>
   <kode>
@@ -422,7 +460,6 @@
     <kodetillegg>
       <oppgavekodeISL>35520</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
-      <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
       <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
       <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
@@ -436,6 +473,45 @@
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
       <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
+      <belopsgrenseTaOppSkattepliktIFart>1000</belopsgrenseTaOppSkattepliktIFart>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>BARNEP_FOLKETR_FOM_2024</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Barnepensjon fra folketrygden fra og med 2024</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Barnepensjon fra folketrygden fra og med 2024</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Barnepensjon frå folketrygda</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Children’s pensions from the National Insurance scheme</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Mánnápenšuvdna álbmotoajus</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Pensjon</visningskategori>
+      <kategori>PensjonEllerTrygd</kategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>pensjonGenerell</presentasjonsrekkefoelge>
+      <beskrivelseIAMelding>barnepensjonFra2024</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
       <belopsgrenseTaOppSkattepliktIFart>1000</belopsgrenseTaOppSkattepliktIFart>
     </kodetillegg>
   </kode>
@@ -2293,7 +2369,6 @@
       <oppgavekodeISL>35522</oppgavekodeISL>
       <oppgavekodeISL>35529</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
-      <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
       <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
       <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
@@ -2308,6 +2383,43 @@
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
       <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>IPA_IPS_BARNEP_FOM_2024</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Barnepensjon fra og med 2024</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Barnepensjoner fra IPA/IPS  fra og med 2024</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Barnepensjonar frå IPA/IPS</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Children's pension from IPA/IPS</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Mánnápenšuvdna IPAs/IPSis</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Pensjon</visningskategori>
+      <kategori>PensjonEllerTrygd</kategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>pensjonGenerell</presentasjonsrekkefoelge>
+      <beskrivelseIAMelding>ipaEllerIpsBarnepensjonFra2024</beskrivelseIAMelding>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
     </kodetillegg>
   </kode>
   <kode>
