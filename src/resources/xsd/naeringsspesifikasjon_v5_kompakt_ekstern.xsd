@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-04-08T08:23:02.509+0200" name="generertDato" />
+      <xsd:attribute fixed="2024-10-11T13:35:13.167+0200" name="generertDato" />
       <xsd:attribute fixed="v5" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v5" name="modellnavn" />
@@ -1549,7 +1549,7 @@
       <xsd:element name="kjennemerke" type="Tekst" />
       <xsd:element minOccurs="0" name="drosjevirksomhetErKnyttetTilEnSentral" type="Boolsk" />
       <xsd:element minOccurs="0" name="taksametertype" type="Taksametertype" />
-      <xsd:element minOccurs="0" name="antallLiterDrivstoff" type="Antall" />
+      <xsd:element name="antallLiterDrivstoff" type="Antall" />
       <xsd:element minOccurs="0" name="kjoereinntektKontant" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="inntektFraPersontransportMedKortEllerEtterskuddsvis12ProsentMVA" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="inntektFraVaretransportMedKredittkortEllerEtterskuddsvis25ProsentMVA" type="BeloepSomHeltall" />
