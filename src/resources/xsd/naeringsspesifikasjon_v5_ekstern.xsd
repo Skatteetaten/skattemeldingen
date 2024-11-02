@@ -497,7 +497,7 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="gevinstOgTapskontoIdentifikator" type="TekstMedInnkapsling" />
-      <xsd:element name="kommunenummer" type="KommunenummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sumGevinstVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sumTapVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaper" />
@@ -505,7 +505,7 @@
       <xsd:element minOccurs="0" name="inngaaendeVerdiFraErvervetGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="verdiAvRealisertGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="grunnlagForAaretsInntektsOgFradragsfoering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="satsForInntektsfoeringOgInntektsfradrag" type="ProsentMedInnkapsling" />
+      <xsd:element name="satsForInntektsfoeringOgInntektsfradrag" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="inntektFraGevinstOgTapskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="inntektsfradragFraGevinstOgTapskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
