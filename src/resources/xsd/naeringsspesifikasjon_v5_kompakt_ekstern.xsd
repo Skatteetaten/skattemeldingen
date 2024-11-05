@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-10-11T13:35:13.167+0200" name="generertDato" />
+      <xsd:attribute fixed="2024-10-02T22:35:15.642+0200" name="generertDato" />
       <xsd:attribute fixed="v5" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v5" name="modellnavn" />
@@ -855,7 +855,6 @@
       <xsd:element minOccurs="0" name="verdiPaaAndelAvRealisertToemmerkonto" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="grunnlagForInntektOgFradragPaaToemmerkontoIInntektsaaret" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogfond" type="Skogfond" />
-      <xsd:element minOccurs="0" name="ekstraordinaerFordelingAvToemmeravvirkningEtterNaturkatastrofe" type="EkstraordinaerFordelingAvToemmeravvirkningEtterNaturkatastrofe" />
       <xsd:element minOccurs="0" name="inntektOgKostnad" type="InntektOgKostnad" />
       <xsd:element minOccurs="0" name="satsForInntektsfoeringOgInntektsfradrag" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="inntektFraToemmerkonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1598,13 +1597,6 @@
       <xsd:element minOccurs="0" name="tilbakefoeringAvTidligereBeregnetSkattefordelPaaSkogfondkonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="skattefordelAvSkogfond" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="skattepliktigInntektAvSkogfond" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="EkstraordinaerFordelingAvToemmeravvirkningEtterNaturkatastrofe">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="inngaaendeVerdiAvToemmeravvirkning" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="inntektsfoertBeloepAvToemmeravvirkning" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="utgaaendeVerdiAvToemmeravvirkning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="InntektOgKostnad">
