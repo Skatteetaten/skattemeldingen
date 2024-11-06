@@ -1131,10 +1131,8 @@
   </xsd:complexType>
   <xsd:complexType name="TilleggsinformasjonVedKravOmSkattenedsettelseEtterEttaarsregelen">
     <xsd:sequence>
-      <xsd:element name="startdatoForArbeidsoppholdIUtland" type="DatoMedInnkapsling" />
-      <xsd:element name="sluttdatoForArbeidsoppholdIUtland" type="DatoMedInnkapsling" />
-      <xsd:element minOccurs="0" name="antallOppholdsdagerINorge" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="oppfyllerIkkeVilkaarForSkattenedsettelseEtterEttaarsregelen" type="BoolskMedInnkapsling" />
+      <xsd:element maxOccurs="2" name="arbeidsforholdIUtlandet" type="ArbeidsforholdIUtlandet"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="TilleggsinformasjonVedKravOmSkattenedsettelseEtterDenAlternativeFordelingsmetoden">
@@ -2334,6 +2332,14 @@
   <xsd:complexType name="DatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940 " type="Dato" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArbeidsforholdIUtlandet">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="startdato" type="DatoMedInnkapsling"/>
+      <xsd:element name="sluttdato" type="DatoMedInnkapsling"/>
+      <xsd:element name="antallOppholdsdagerINorge" type="AntallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GenerelleSvarordMedInnkapsling">
