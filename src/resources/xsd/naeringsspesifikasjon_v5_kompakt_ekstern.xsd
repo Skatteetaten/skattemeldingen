@@ -189,9 +189,11 @@
       <xsd:element minOccurs="0" name="ytelseFraSelskapEllerSelskapetsDatterselskap" type="YtelseMellomAksjonaerDeltakerEllerNaerstaaendeOgSelskapEllerSelskapetsDatterselskap" />
       <xsd:element minOccurs="0" name="ytelseFraAksjonaerDeltakerEllerNaerstaaende" type="YtelseMellomAksjonaerDeltakerEllerNaerstaaendeOgSelskapEllerSelskapetsDatterselskap" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="loeyveForDrosjeOgGodstransport" type="LoeyveForDrosjeOgGodstransport" />
-      <xsd:element minOccurs="0" name="omsetningOgEtterbetalingISamvirkeforetak" type="OmsetningOgEtterbetalingISamvirkeforetak" />
       <xsd:element minOccurs="0" name="uttakAvEiendelEllerForpliktelseFraNorskOmraade" type="UttakAvEiendelEllerForpliktelseFraNorskOmraade" />
       <xsd:element minOccurs="0" name="spesifikasjonAvLoennsOgPensjonskostnad" type="SpesifikasjonAvLoennsOgPensjonskostnad" />
+      <xsd:element minOccurs="0" name="fradragsrammeForEtterbetalingISamvirkeforetakTilFremfoering" type="FradragsrammeForEtterbetalingISamvirkeforetakTilFremfoering" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kjoepFraMedlemmerISamvirkeforetakOgOevrige" type="KjoepFraOgSalgTilMedlemmerISamvirkeforetakOgOevrige" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="salgTilMedlemmerISamvirkeforetakOgOevrige" type="KjoepFraOgSalgTilMedlemmerISamvirkeforetakOgOevrige" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Boolsk">
@@ -811,20 +813,6 @@
       <xsd:element minOccurs="0" name="bransje" type="Bransje" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="OmsetningOgEtterbetalingISamvirkeforetak">
-    <xsd:sequence>
-      <xsd:element name="vilkaarForFradragForEtterbetalingUtdeltTilMedlemmerErOppfylt" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektForSamvirkeforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
-      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektFraOmsetningMedMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="omsetningMedMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="omsetningMedMedlemIAnnetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="oevrigOmsetning" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="samletOmsetning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak" skatt:erAvledet="true" type="ProsentMedInnkapsling" />
-      <xsd:element minOccurs="0" name="etterbetalingTilMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="etterbetalingTilMedlemIAnnetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="UttakAvEiendelEllerForpliktelseFraNorskOmraade">
     <xsd:sequence>
       <xsd:element name="uttakSkyldesOpphoerAvNokus" type="BoolskMedInnkapsling" />
@@ -842,6 +830,29 @@
       <xsd:element minOccurs="0" name="samletOpplysningspliktigYtelse" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="samletArbeidsgiveravgiftspliktigYtelse" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element name="skalBekreftesAvRevisor" type="Boolsk" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FradragsrammeForEtterbetalingISamvirkeforetakTilFremfoering">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="skattepliktigNaeringsinntektFraOmsetningMedMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element name="vilkaarForFradragForEtterbetalingUtdeltTilMedlemmerErOppfylt" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="besluttetUtbetaltEtterbetalingTilMedlem" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="besluttetAvsattOverskuddTilMedlemskapitalkontiIInntektsaaret" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="fremfoerbarFradragsrammeFraTidligereAar" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="fremfoerbarFradragsrammeIInntektsaaret" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoerbarFradragsramme" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samvirkeforetakstype" type="Samvirkeforetakstype" />
+      <xsd:element minOccurs="0" name="fremfoerbarFradragsramme" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KjoepFraOgSalgTilMedlemmerISamvirkeforetakOgOevrige">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="omsetningMedMedlemIEgetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="omsetningMedMedlemIAnnetSamvirkeforetak" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="oevrigOmsetning" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samletOmsetning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak" skatt:erAvledet="true" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkogOgToemmerkonto">
@@ -943,7 +954,7 @@
       <xsd:element minOccurs="0" name="beregnetSelskapsskatt" type="BeregnetSelskapsskatt" />
       <xsd:element minOccurs="0" name="beregnetNegativSelskapsskattTilFremfoering" type="BeregnetNegativSelskapsskattTilFremfoering" />
       <xsd:element minOccurs="0" name="spesifikasjonAvInntektOgFradragFraDeltakersAndelISelskapMedDeltakerfastsetting" type="SpesifikasjonAvInntektOgFradragFraDeltakersAndelISelskapMedDeltakerfastsetting" />
-      <xsd:element minOccurs="0" name="realisasjonEllerOpphoerAvGrunnrentepliktigHavbruksvirksomhet" type="RealisasjonEllerOpphoerAvGrunnrentepliktigHavbruksvirksomhet" />
+      <xsd:element minOccurs="0" name="realisasjonAvGrunnrentepliktigHavbruksvirksomhet" type="RealisasjonAvGrunnrentepliktigHavbruksvirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepMedInnkapsling">
@@ -1586,6 +1597,9 @@
       <xsd:element minOccurs="0" name="samletOpplysningspliktigYtelse" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="Samvirkeforetakstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_samvirkeforetakstype.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
   <xsd:complexType name="Skogfond">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
@@ -1691,20 +1705,24 @@
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvInntektIBruttoGrunnrenteinntektIHavbruksvirksomhet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="salgsinntektFraSlaktetFisk" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="salgsinntektFraLevendeFisk" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="salgsinntektFraSlaktetFiskFastsattAvSelskapet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="salgsinntektFraSlaktetFiskFastsattMedSkatteavregningsprisFraPrisraad" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="salgsinntektFraLevendeFisk" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="gevinstVedUttakAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="inntektFraAvtaleOmFinansiellSikringFastsattAvSelskapet" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="inntektFraAvtaleOmFinansiellSikringFastsattMedSkatteavregningsprisFraPrisraad" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="annenGrunnrentepliktigInntekt" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvSlaktetFisk" type="SpesifikasjonAvSlaktetFisk" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvSlaktetFiskFastsattAvSelskapet" type="SpesifikasjonAvSlaktetFiskFastsattAvSelskapet" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvSlaktetFiskFastsattMedSkatteavregningsprisFraPrisraad" type="SpesifikasjonAvSlaktetFiskFastsattMedSkatteavregningsprisFraPrisraad" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvLevendeFisk" type="SpesifikasjonAvLevendeFisk" />
       <xsd:element minOccurs="0" name="beskrivelseAvAnnenGrunnrentepliktigInntekt" type="TekstMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvFradragIBruttoGrunnrenteinntektIHavbruksvirksomhet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="driftskostnad" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="vederlagForKjoepAvLevendeFisk" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samletDriftskostnad" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="vederlagForKjoepAvLevendeFisk" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fradragForEiendomsskatt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fradragForForskningsavgift" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="andelAvVederlagPaaKjoepAvLisenserMv" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1714,9 +1732,12 @@
       <xsd:element minOccurs="0" name="investeringskostnadKnyttetTilHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="tapVedUttakAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tapFraAvtaleOmFinansiellSikringFastsattAvSelskapet" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tapFraAvtaleOmFinansiellSikringFastsattMedSkatteavregningsprisFraPrisraad" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="annetGrunnrentepliktigFradrag" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="beskrivelseAvAnnetGrunnrentepliktigFradrag" type="TekstMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvVederlagForKjoepAvLevendeFisk" type="SpesifikasjonAvVederlagForKjoepAvLevendeFisk" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="driftskostnadKnyttetTilHavbruksvirksomhet" type="DriftskostnadKnyttetTilHavbruksvirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeregnetSelskapsskatt">
@@ -1744,13 +1765,13 @@
       <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteinntekt" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="RealisasjonEllerOpphoerAvGrunnrentepliktigHavbruksvirksomhet">
+  <xsd:complexType name="RealisasjonAvGrunnrentepliktigHavbruksvirksomhet">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="bruttoVederlag" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="andelAvVederlagKnyttetTilAkvakulturtillatelse" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="skattepliktigVerdiAvAnleggsmiddelSomBenyttesIDenGrunnrentepliktigeHavbruksvirksomheten" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="gevinstVedRealisasjonEllerOpphoerAvHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="tapVedRealisasjonEllerOpphoerAvHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tapVedRealisasjonAvHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ResultatregnskapsbeloepForVirksomhetOmfattetAvPetroleumsskatteloven">
@@ -1940,6 +1961,28 @@
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
+
+  <xsd:complexType name="TrygdeEllerSkattemessigUnntakMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntak" />
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MetodeVedDobbeltbeskatningMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatning" />
+
+
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BeloepSomHeltallMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="beloepSomHeltall" type="BeloepSomHeltall" />
+
+
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="PrisomraadeForKraftLevertAvVannkraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_prisomraadeForKraftLevertAvVannkraftverk.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -2012,18 +2055,26 @@
       <xsd:element minOccurs="0" name="indeksregulertFradragForGrunnrenteskatt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="SpesifikasjonAvSlaktetFisk">
+  <xsd:complexType name="SpesifikasjonAvSlaktetFiskFastsattAvSelskapet">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="fiskeart" type="FiskeartKnyttetTilHavbruksvirksomhetMedInnkapsling" />
       <xsd:element name="slaktevolum" type="AntallMedInnkapsling" />
-      <xsd:element name="tilvirkningsgrad" type="TilvirkningsgradAvSlaktetFiskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="salgsinntekt" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvSlaktetFiskFastsattMedSkatteavregningsprisFraPrisraad">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="fiskeart" type="FiskeartKnyttetTilHavbruksvirksomhetMedInnkapsling" />
+      <xsd:element name="slaktevolum" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="salgsinntekt" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvLevendeFisk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element minOccurs="0" name="salgsinntektFraLevendeFisk" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="salgsinntekt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="motpartensIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="motpartensNavn" type="OrganisasjonsnavnMedInnkapsling" />
     </xsd:sequence>
@@ -2034,6 +2085,13 @@
       <xsd:element minOccurs="0" name="vederlag" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="motpartensIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="motpartensNavn" type="OrganisasjonsnavnMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DriftskostnadKnyttetTilHavbruksvirksomhet">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="kostnadstype" type="DriftskostnadstypeKnyttetTilHavbruksvirksomhetMedInnkapsling" />
+      <xsd:element name="kostnad" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Landkode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_aktiveLandkoder.xml">
@@ -2081,6 +2139,13 @@
       <xsd:element name="identifikator" type="Identifikator" />
     </xsd:sequence>
   </xsd:complexType>
+
+  <xsd:simpleType name="TrygdeEllerSkattemessigUnntak" skatt:eksternKodeliste="/formuesOgInntektsskatt/2024_trygdeEllerSkattemessigUnntak.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="MetodeVedDobbeltbeskatning" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_metodeVedDobbeltbeskatning.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
   <xsd:complexType name="SalgsinntektFraKraftLevert">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="produksjon" type="KiloWattimeMedInnkapsling" />
@@ -2113,14 +2178,14 @@
       <xsd:element name="fiskeartKnyttetTilHavbruksvirksomhet" type="FiskeartKnyttetTilHavbruksvirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="TilvirkningsgradAvSlaktetFiskMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="tilvirkningsgrad" type="TilvirkningsgradAvSlaktetFisk" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="OrganisasjonsnummerMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="organisasjonsnummer" type="Organisasjonsnummer" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DriftskostnadstypeKnyttetTilHavbruksvirksomhetMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="driftskostnadstype" type="DriftskostnadstypeKnyttetTilHavbruksvirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Adressebrukskategori">
@@ -2158,7 +2223,7 @@
   <xsd:simpleType name="FiskeartKnyttetTilHavbruksvirksomhet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_fiskeartKnyttetTilHavbruksvirksomhet.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="TilvirkningsgradAvSlaktetFisk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/tilvirkningsgrad.xml">
+  <xsd:simpleType name="DriftskostnadstypeKnyttetTilHavbruksvirksomhet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_driftskostnadstypeKnyttetTilHavbruksvirksomhet.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="LeveringsvilkaartypeVedOljesalg" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_leveringsvilkaartypeVedOljesalg.xml">
