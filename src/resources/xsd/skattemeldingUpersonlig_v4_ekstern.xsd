@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-09-03T16:11:02.071+0200" name="generertDato" />
+      <xsd:attribute fixed="2024-11-07T07:37:27.234+0100" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v4" name="modellnavn" />
@@ -40,6 +40,7 @@
       <xsd:element minOccurs="0" name="havbruksvirksomhet" type="Havbruksvirksomhet" />
       <xsd:element minOccurs="0" name="begrensningAvRentefradragIKonsernOgMellomNaerstaaende" type="BegrensningAvRentefradragIKonsernOgMellomNaerstaaende" />
       <xsd:element minOccurs="0" name="kontrollertTransaksjonDisposisjonOgMellomvaerende" type="KontrollertTransaksjonDisposisjonOgMellomvaerende" />
+      <xsd:element minOccurs="0" name="vindkraftverk" type="Vindkraftverk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
@@ -228,6 +229,11 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="funksjonOgRisiko" type="FunksjonOgRisiko" />
       <xsd:element minOccurs="0" name="transaksjonDisposisjonOgMellomvaerende" type="TransaksjonDisposisjonOgMellomvaerende" />
       <xsd:element minOccurs="0" name="unntakForOppgaveOgDokumentasjonsplikt" type="UnntakForOppgaveOgDokumentasjonsplikt" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Vindkraftverk">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="spesifikasjonPerVindkraftverk" type="SpesifikasjonPerVindkraftverk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="UnderskuddTilFremfoering">
@@ -1044,6 +1050,22 @@
       <xsd:element minOccurs="0" name="aarsakTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon" type="AarsakstypeTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjonMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonPerVindkraftverk">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="loepenummer" skatt:erAvledet="true" type="HeltallMedInnkapsling" />
+      <xsd:element name="kraftverketsNavn" skatt:erAvledet="true" type="TekstMedInnkapsling" />
+      <xsd:element name="installertEffektIMwIHenholdTilKonsesjon" skatt:erAvledet="true" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="positivGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="negativGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beregnetGrunnrenteskattFoerProduksjonsavgift" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="positivGrunnrenteskatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="negativGrunnrenteskattVedDriftssettelse" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="negativGrunnrenteskattVedOpphoer" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="spesifikasjonAvProduksjonsavgiftIVindkraftverk" type="SpesifikasjonAvProduksjonsavgiftIVindkraftverk" />
+      <xsd:element minOccurs="0" name="spesifikasjonAvNegativGrunnrenteinntektIVindkraftverk" type="SpesifikasjonAvNegativGrunnrenteinntektIVindkraftverk" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="BeloepSomHeltallMedOverstyring">
     <xsd:sequence>
       <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling" />
@@ -1790,6 +1812,26 @@
       <xsd:element name="stemmerettsbegrensningForeligger" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="aarsakTilStemmerettsbegrensning" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="ervervstidspunkt" type="DatoMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DesimaltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940 " type="Desimaltall" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvProduksjonsavgiftIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="fremfoertProduksjonsavgiftFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsProduksjonsavgift" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvProduksjonsavgift" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fremfoerbarProduksjonsavgift" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvNegativGrunnrenteinntektIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="fremfoertNegativGrunnrenteinntektFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvNegativGrunnrenteinntektFraTidligereAar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fremfoerbarNegativGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Organisasjonsnavn">

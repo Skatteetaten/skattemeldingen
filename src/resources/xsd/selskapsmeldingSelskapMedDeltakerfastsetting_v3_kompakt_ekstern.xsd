@@ -133,6 +133,7 @@
       <xsd:element minOccurs="0" name="nokusErBoersnotert" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="underlagsmaterialeForUsdfEllerNokusKanFremlegges" type="Boolsk" />
       <xsd:element minOccurs="0" name="rettsligForm" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="selskapsandelEidAvUtenlandskDeltaker" type="ProsentMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FasteEiendommer">
@@ -225,6 +226,7 @@
       <xsd:element minOccurs="0" name="deltakersAndelAvFormueIProsent" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="erKomplementarEllerHovedperson" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="erOmfattetAvRederiskatteordning" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erOmfattetAvFinansskatt" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="deltakersAndelAvInntektOmfattetAvRederiskatteordningen" type="DeltakersAndelAvInntektOmfattetAvRederiskatteordningen" />
       <xsd:element minOccurs="0" name="direkteEidEllerKontrollertAksjeEllerAndelINokus" type="DirekteEidEllerKontrollertAksjeEllerAndelINokus" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="indirekteEidEllerKontrollertAksjeEllerAndelINokus" type="IndirekteEidEllerKontrollertAksjeEllerAndelINokus" />
@@ -982,7 +984,7 @@
       <xsd:element minOccurs="0" name="inngaaendeVerdi" type="SkattemessigInngangsverdiOgEgenkapital" />
       <xsd:element minOccurs="0" name="kostprisVedErvervAvAndel" type="SkattemessigInngangsverdiOgEgenkapital" />
       <xsd:element minOccurs="0" name="realisasjonAvAndel" type="SkattemessigInngangsverdiOgEgenkapital" />
-      <xsd:element minOccurs="0" name="innskudd" type="SkattemessigInngangsverdiOgEgenkapital" />
+      <xsd:element minOccurs="0" name="innskudd" type="SkattemessigInngangsverdiOgEgenkapital"/>
       <xsd:element minOccurs="0" name="tilbakebetalingAvInnbetaltKapital" type="SkattemessigInngangsverdiOgEgenkapital" />
       <xsd:element minOccurs="0" name="aaretsUtdeling" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="uegentligInnskudd" type="SkattemessigInngangsverdiOgEgenkapital" />

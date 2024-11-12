@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-10-02T22:35:15.642+0200" name="generertDato" />
+      <xsd:attribute fixed="2024-11-07T10:26:47.096+0100" name="generertDato" />
       <xsd:attribute fixed="v5" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v5" name="modellnavn" />
@@ -37,6 +37,7 @@
       <xsd:element minOccurs="0" name="funksjonellValuta" type="FunksjonellValuta" />
       <xsd:element minOccurs="0" name="kraftverk" type="Kraftverk" />
       <xsd:element minOccurs="0" name="havbruksvirksomhet" type="Havbruksvirksomhet" />
+      <xsd:element minOccurs="0" name="vindkraftverk" type="Vindkraftverk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SamletGjeldOgFormuesobjekter">
@@ -230,6 +231,12 @@
   <xsd:complexType name="Havbruksvirksomhet">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="spesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet" type="SpesifikasjonAvGrunnrenteinntektIHavbruksvirksomhet" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Vindkraftverk">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvKontraktIVindkraftverk" type="SpesifikasjonAvKontraktIVindkraftverk" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvEnhetIVindkraftverk" type="SpesifikasjonAvEnhetIVindkraftverk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepMedSkattemessigeEgenskaperOgOverstyring">
@@ -932,7 +939,7 @@
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="navn" type="NavnMedInnkapsling" />
       <xsd:element name="loepenummer" type="HeltallMedInnkapsling" />
-      <xsd:element name="prisomraade" type="PrisomraadeForKraftLevertAvVannkraftverkMedInnkapsling" />
+      <xsd:element name="prisomraade" type="PrisomraadeForKraftLevertAvKraftverkMedInnkapsling" />
       <xsd:element name="aarForDriftssettelse" type="AarstallMedInnkapsling" />
       <xsd:element name="samletPaastempletMerkeytelseIKva" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="spesifikasjonAvGrunnrenteinntekt" type="SpesifikasjonAvGrunnrenteinntekt" />
@@ -955,6 +962,35 @@
       <xsd:element minOccurs="0" name="beregnetNegativSelskapsskattTilFremfoering" type="BeregnetNegativSelskapsskattTilFremfoering" />
       <xsd:element minOccurs="0" name="spesifikasjonAvInntektOgFradragFraDeltakersAndelISelskapMedDeltakerfastsetting" type="SpesifikasjonAvInntektOgFradragFraDeltakersAndelISelskapMedDeltakerfastsetting" />
       <xsd:element minOccurs="0" name="realisasjonAvGrunnrentepliktigHavbruksvirksomhet" type="RealisasjonAvGrunnrentepliktigHavbruksvirksomhet" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvKontraktIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="kontraktsidentifikator" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="kontraktstype" type="KontraktstypeForKraftLevertAvKraftverkMedInnkapsling" />
+      <xsd:element minOccurs="0" name="datoForKontraktsinngaaelse" type="DatoMedInnkapsling" />
+      <xsd:element minOccurs="0" name="datoForKontraktsslutt" type="DatoMedInnkapsling" />
+      <xsd:element minOccurs="0" name="motpartensOrganisasjonsnavn" type="OrganisasjonsnavnMedInnkapsling" />
+      <xsd:element minOccurs="0" name="motpartensOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="totalAarsproduksjon" type="AntallMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvEnhetIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="spesifikasjonAvGrunnrenteinntektIVindkraftverk" type="SpesifikasjonAvGrunnrenteinntektIVindkraftverk" />
+      <xsd:element name="kraftverketsNavn" type="NavnMedInnkapsling" />
+      <xsd:element name="loepenummer" type="HeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="prisomraade" type="PrisomraadeForKraftLevertAvKraftverkMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aarForDriftssettelse" type="AarstallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="installertEffektIMwIHenholdTilKonsesjon" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="antallTurbiner" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="eierandel" type="ProsentMedInnkapsling" />
+      <xsd:element minOccurs="0" name="datoForOverdragelseVedErvervIInntektsaaret" type="DatoMedInnkapsling" />
+      <xsd:element minOccurs="0" name="datoForOverdragelseVedRealisasjonIInntektsaaret" type="DatoMedInnkapsling" />
+      <xsd:element minOccurs="0" name="datoForInnvilgelseAvKonsesjon" type="DatoMedInnkapsling" />
+      <xsd:element minOccurs="0" name="totalAarsproduksjon" type="AntallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepMedInnkapsling">
@@ -1654,9 +1690,9 @@
       <xsd:element name="navn" type="Navn" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="PrisomraadeForKraftLevertAvVannkraftverkMedInnkapsling">
+  <xsd:complexType name="PrisomraadeForKraftLevertAvKraftverkMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="prisomraadeForKraftLevertAvVannkraftverk" type="PrisomraadeForKraftLevertAvVannkraftverk" />
+      <xsd:element name="prisomraadeForKraftLevertAvKraftverk" type="PrisomraadeForKraftLevertAvKraftverk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvGrunnrenteinntekt">
@@ -1772,6 +1808,35 @@
       <xsd:element minOccurs="0" name="skattepliktigVerdiAvAnleggsmiddelSomBenyttesIDenGrunnrentepliktigeHavbruksvirksomheten" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KontraktstypeForKraftLevertAvKraftverkMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="kontraktstypeForKraftLevertAvKraftverk" type="KontraktstypeForKraftLevertAvKraftverk" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrganisasjonsnavnMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="organisasjonsnavn" type="Organisasjonsnavn" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvGrunnrenteinntektIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk" type="BeregnetNegativSelskapsskattTilFremfoeringIVindkraftverk" />
+      <xsd:element minOccurs="0" name="grunnlagForBeregningAvSelskapsskatt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samletInntektIBruttoGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samletFradragIBruttoGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="grunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk" type="SpesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk" type="SpesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVindkraftverk" type="SpesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVindkraftverk" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DesimaltallMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="desimaltall" type="Desimaltall" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ResultatregnskapsbeloepForVirksomhetOmfattetAvPetroleumsskatteloven">
@@ -1983,7 +2048,7 @@
 
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="PrisomraadeForKraftLevertAvVannkraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_prisomraadeForKraftLevertAvVannkraftverk.xml">
+  <xsd:simpleType name="PrisomraadeForKraftLevertAvKraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_prisomraadeForKraftLevertAvKraftverk.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:complexType name="SpesifikasjonAvInntektIBruttoGrunnrenteinntekt">
@@ -2094,6 +2159,40 @@
       <xsd:element name="kostnad" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="KontraktstypeForKraftLevertAvKraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_kontraktstypeForKraftLevertAvKraftverk.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Organisasjonsnavn">
+    <xsd:restriction base="Tekst" />
+  </xsd:simpleType>
+  <xsd:complexType name="BeregnetNegativSelskapsskattTilFremfoeringIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="fremfoertBeregnetNegativSelskapsskattFraTidligereAar" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="fremfoerbarBeregnetNegativSelskapsskatt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="type" type="InntektOgFradragIGrunnrenteMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="type" type="InntektOgFradragIGrunnrenteMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="type" type="GrunnlagIBeregningAvSelskapsskattMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Landkode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_aktiveLandkoder.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -2129,11 +2228,6 @@
   <xsd:simpleType name="EiendelstypeVedUttakFraNorskOmraade" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_eiendelstypeVedUttakFraNorskOmraade.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:complexType name="OrganisasjonsnavnMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="organisasjonsnavn" type="Organisasjonsnavn" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="IdentifikatorMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="identifikator" type="Identifikator" />
@@ -2157,7 +2251,7 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="kontraktsidentifikator" type="TekstMedInnkapsling" />
-      <xsd:element name="kontraktstype" type="KontraktstypeForKraftLevertAvVannkraftverkMedInnkapsling" />
+      <xsd:element name="kontraktstype" type="KontraktstypeForKraftLevertAvKraftverkMedInnkapsling" />
       <xsd:element minOccurs="0" name="datoForKontraktsinngaaelse" type="DatoMedInnkapsling" />
       <xsd:element minOccurs="0" name="datoForKontraktsslutt" type="DatoMedInnkapsling" />
       <xsd:element minOccurs="0" name="motpartensOrganisasjonsnavn" type="OrganisasjonsnavnMedInnkapsling" />
@@ -2188,6 +2282,16 @@
       <xsd:element name="driftskostnadstype" type="DriftskostnadstypeKnyttetTilHavbruksvirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="InntektOgFradragIGrunnrenteMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="inntektOgFradragIGrunnrente" type="InntektOgFradragIGrunnrente" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GrunnlagIBeregningAvSelskapsskattMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="grunnlagIBeregningAvSelskapsskatt" type="GrunnlagIBeregningAvSelskapsskatt" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Adressebrukskategori">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="offisiellForretning" />
@@ -2204,17 +2308,9 @@
       <xsd:element name="leveringsvilkaartype" type="LeveringsvilkaartypeVedOljesalg" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Organisasjonsnavn">
-    <xsd:restriction base="Tekst" />
-  </xsd:simpleType>
   <xsd:simpleType name="Identifikator">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
-  <xsd:complexType name="KontraktstypeForKraftLevertAvVannkraftverkMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="kontraktstypeForKraftLevertAvVannkraftverk" type="KontraktstypeForKraftLevertAvVannkraftverk" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="BeloepMed10DesimalerMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="beloep" type="BeloepMed10Desimaler" />
@@ -2226,10 +2322,13 @@
   <xsd:simpleType name="DriftskostnadstypeKnyttetTilHavbruksvirksomhet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_driftskostnadstypeKnyttetTilHavbruksvirksomhet.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="LeveringsvilkaartypeVedOljesalg" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_leveringsvilkaartypeVedOljesalg.xml">
+  <xsd:simpleType name="InntektOgFradragIGrunnrente" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_inntektOgFradragIGrunnrente.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="KontraktstypeForKraftLevertAvVannkraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_kontraktstypeForKraftLevertAvVannkraftverk.xml">
+  <xsd:simpleType name="GrunnlagIBeregningAvSelskapsskatt" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_grunnlagIBeregningAvSelskapsskatt.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="LeveringsvilkaartypeVedOljesalg" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_leveringsvilkaartypeVedOljesalg.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="BeloepMed10Desimaler">
