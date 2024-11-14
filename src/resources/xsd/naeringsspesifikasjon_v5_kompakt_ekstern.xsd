@@ -612,6 +612,7 @@
       <xsd:element minOccurs="0" name="kapitalinntektTilKorrigeringAvPersoninntekt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="kapitalkostnadTilKorrigeringAvPersoninntekt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="reduksjonsbeloepForLeidEiendomMotInnskudd" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="salgAvMelkekvote" type="BeloepMedSkattemessigeEgenskaper"/>
       <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAlminneligGaardsbrukEllerSkogbrukTilKorrigeringAvPersoninntekt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="inntektsfoertBeloepFraGevinstOgTapskontoSomIkkeInngaarIPersoninntekt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fradragsfoertBeloepFraGevinstOgTapskontoSomIkkeInngaarIPersoninntekt" type="BeloepMedSkattemessigeEgenskaper" />
@@ -2026,26 +2027,19 @@
       <xsd:element minOccurs="0" name="landkode" type="LandkodeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-
   <xsd:complexType name="TrygdeEllerSkattemessigUnntakMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="trygdeEllerSkattemessigUnntak" type="TrygdeEllerSkattemessigUnntak" />
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="MetodeVedDobbeltbeskatningMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="metodeVedDobbeltbeskatning" type="MetodeVedDobbeltbeskatning" />
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepSomHeltallMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="beloepSomHeltall" type="BeloepSomHeltall" />
-
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="PrisomraadeForKraftLevertAvKraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_prisomraadeForKraftLevertAvKraftverk.xml">
@@ -2233,7 +2227,6 @@
       <xsd:element name="identifikator" type="Identifikator" />
     </xsd:sequence>
   </xsd:complexType>
-
   <xsd:simpleType name="TrygdeEllerSkattemessigUnntak" skatt:eksternKodeliste="/formuesOgInntektsskatt/2024_trygdeEllerSkattemessigUnntak.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
