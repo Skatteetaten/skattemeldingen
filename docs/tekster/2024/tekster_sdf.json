@@ -1881,6 +1881,10 @@
     "tekst_en": "The partner is a NOKUS"
   },
   {
+    "skattemeldingSti": "eierforhold.deltaker.erOmfattetAvFinansskatt.boolsk",
+    "tekst_nb": "erOmfattetAvFinansskatt"
+  },
+  {
     "skattemeldingSti": "eierforhold.deltaker.erOmfattetAvRederiskatteordning.boolsk",
     "tekst_nn": "Er omfatta av reiarlagsskatteordning",
     "tekst_nb": "Er omfattet av rederiskatteordning",
@@ -2289,7 +2293,7 @@
     "tekst_en": "Change in the company’s taxed capital"
   },
   {
-    "skattemeldingSti": "eierforhold.deltaker.regulertInngangsverdiPerAksjeINokusForUpersonligDeltaker.regulertInngangsverdiPerAksje.beloepSomHeltall",
+    "skattemeldingSti": "eierforhold.deltaker.regulertInngangsverdiPerAksjeINokusForUpersonligDeltaker.regulertInngangsverdiPerAksje.beloepMed2Desimaler",
     "tekst_nn": "Regulert inngangsverdi per aksje",
     "tekst_nb": "Regulert inngangsverdi per aksje",
     "tekst_en": "Adjusted opening value per share"
@@ -2302,15 +2306,6 @@
     "hjelpetekst_nn": "NOKUS: Selskapsskatt betalt av NOKUSet, avgrensa til deltakaren sin andel tilsvarande \"Inntektsandel\". Eventuell kjeldeskatt på utbytte utdelt til deltakarane, og skatt betalt av deltakarne knytt til selskapet sitt overskott, skal ikkje inngå her. Andelen betalt skatt skal redusere \"Regulert inngangsverdi\" på aksjane.",
     "hjelpetekst_nb": "NOKUS: Selskapsskatt betalt av NOKUSet, begrenset til deltakers andel tilsvarende \"Inntektsandel\". Eventuell kildeskatt på utbytte utdelt til deltakerne, samt skatt betalt av deltakerne knyttet til selskapets overskudd, skal ikke inngå her. Andel betalt skatt skal redusere \"Regulert inngangsverdi\" på aksjene.",
     "hjelpetekst_en": "NOKUS: Company tax paid by the NOKUS, limited to the partner’s share corresponding to the \"Income share\". Any withholding tax on dividends distributed to the partners, as well as tax paid by the partners on the company's profits, are not to be included here. The share of paid tax will reduce the \"Adjusted opening value\" for the shares."
-  },
-  {
-    "skattemeldingSti": "eierforhold.deltaker.riskForUpersonligDeltaker.aaretsRisk.beloepSomHeltall",
-    "tekst_nn": "Årets RISK for upersonleg deltakar",
-    "tekst_nb": "Årets RISK for upersonlig deltaker",
-    "tekst_en": "This year’s RISK for non-personal partners",
-    "hjelpetekst_nn": "Beløpet blir henta frå feltet \"Endring i den skattlagde kapitalen til selskapet\".",
-    "hjelpetekst_nb": "Beløpet hentes fra feltet «Endring av selskapets skattlagte kapital.",
-    "hjelpetekst_en": "The amount is retrieved from the field \"Change in the company’s taxed capital\"."
   },
   {
     "skattemeldingSti": "eierforhold.deltaker.riskForUpersonligDeltaker.akkumulertRisk.beloepSomHeltall",
@@ -2659,37 +2654,55 @@
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.andelAvFormuesverdi.prosent",
+    "tekst_nn": "Del av formuesverdien (i prosent)",
     "tekst_nb": "Andel av formuesverdien (i prosent)",
-    "hjelpetekst_nb": "Ikke aktuell for selskaper."
+    "tekst_en": "Share of the taxable value (in percent)",
+    "hjelpetekst_nn": "Ikkje aktuell for selskap.",
+    "hjelpetekst_nb": "Ikke aktuell for selskaper.",
+    "hjelpetekst_en": "Not relevant for companies."
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.eiendomstype.eiendomstype",
-    "tekst_nb": "Eiendomstype"
+    "tekst_nn": "Eigedomstype",
+    "tekst_nb": "Eiendomstype",
+    "tekst_en": "Property type"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.eierandel.prosent",
-    "tekst_nb": "Eierandel (i prosent)"
+    "tekst_nn": "Eigardel (i prosent)",
+    "tekst_nb": "Eierandel (i prosent)",
+    "tekst_en": "Ownership share (percent)"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForAnnenFastEiendom.grunnlagForFormuesverdi.markedsverdi.beloepSomHeltall",
-    "tekst_nb": "Markedsverdi (total)"
+    "tekst_nn": "Marknadsverdi (total)",
+    "tekst_nb": "Markedsverdi (total)",
+    "tekst_en": "Market value (total)"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForAnnenFastEiendom.grunnlagForFormuesverdi.verdiAvPaakostningMv.beloepSomHeltall",
-    "tekst_nb": "Påkostninger"
+    "tekst_nn": "Påkostingar",
+    "tekst_nb": "Påkostninger",
+    "tekst_en": "Upgrades"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.beregnetMarkedsverdi.beloepSomHeltall",
-    "tekst_nb": "Beregnet markedsverdi"
+    "tekst_nn": "Berekna marknadsverdi",
+    "tekst_nb": "Beregnet markedsverdi",
+    "tekst_en": "Calculated market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.boligbruk.boligbruk",
+    "tekst_nn": "Primær/Sekundær",
     "tekst_nb": "Primær/Sekundær",
-    "hjelpetekst_nb": "Primærbolig er ikke aktuell for selskaper. En boligeiendom vil alltid være sekundærbolig for selskapet."
+    "tekst_en": "Primary/Secondary",
+    "hjelpetekst_nn": "Primærbustad er ikkje aktuelt for selskap. Ein bustadeigedom vil alltid vere ein sekundærbustad for selskapet.",
+    "hjelpetekst_nb": "Primærbolig er ikke aktuell for selskaper. En boligeiendom vil alltid være sekundærbolig for selskapet.",
+    "hjelpetekst_en": "Primary dwelling is not relevant for companies. A residential property will always be classed as a secondary dwelling for the company."
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.boligegenskaper.boligensAreal.heltall",
-    "tekst_nn": "P-rom/buareal (i heile m²)",
+    "tekst_nn": "P-rom/Buareal (i heile m²)",
     "tekst_nb": "P-rom/Boareal (i hele m²)",
     "tekst_en": "Primary rooms/Living area (in whole m²)"
   },
@@ -2697,7 +2710,7 @@
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.boligegenskaper.boligtype.boligtype",
     "tekst_nn": "Bustadtype",
     "tekst_nb": "Boligtype",
-    "tekst_en": "Type of housing"
+    "tekst_en": "Housing type"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.boligegenskaper.byggeaar.aarstall",
@@ -2707,25 +2720,33 @@
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.grunnlagForBeregnetMarkedsverdi.boligverdi.beloepSomHeltall",
-    "tekst_nb": "Boligverdi"
+    "tekst_nn": "Bustadverdi",
+    "tekst_nb": "Boligverdi",
+    "tekst_en": "Property value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.aarForMottattMarkedsverdi.aarstall",
-    "tekst_nb": "År for mottatt markedsverdi"
+    "tekst_nn": "År for mottatt marknadsverdi",
+    "tekst_nb": "År for mottatt markedsverdi",
+    "tekst_en": "Year in which market value was received"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.datoForDokumentertMarkedsverdi.dato",
-    "tekst_nb": "Dato for dokumentert markedsverdi"
+    "tekst_nn": "Dato for dokumentert marknadsverdi",
+    "tekst_nb": "Dato for dokumentert markedsverdi",
+    "tekst_en": "Date of documented market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.dokumentertMarkedsverdi.beloepSomHeltall",
-    "tekst_nb": "Dokumentert markedsverdi"
+    "tekst_nn": "Dokumentert marknadsverdi",
+    "tekst_nb": "Dokumentert markedsverdi",
+    "tekst_en": "Documented market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.dokumentertMarkedsverdiForBoligIRandsoneEtterKommunereformen.beloepSomHeltall",
     "tekst_nn": "Prisjustert marknadsverdi frå 2019 (mottatt i brev frå Skatteetaten)",
     "tekst_nb": "Prisjustert markedsverdi fra 2019 (mottatt i brev fra Skatteetaten)",
-    "tekst_en": "Price adjusted market value from 2019 (received in a letter from the Tax Administration)"
+    "tekst_en": "Price-adjusted market value from 2019 (received in a letter from the Tax Administration)"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.dokumentertMarkedsverdiTidligereInntektsaar",
@@ -2741,43 +2762,63 @@
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForBolig.markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig.boolsk",
-    "tekst_nb": "Jeg vil beregne formuesverdien ut fra en ny, dokumentert markedsverdi eller prisjustert markedsverdi fra 2019 (mottatt i brev fra Skatteetaten)."
+    "tekst_nn": "Eg vil rekne ut formuesverdien ut frå ein ny, dokumentert marknadsverdi eller prisjustert marknadsverdi frå 2019 (mottatt i brev frå Skatteetaten)",
+    "tekst_nb": "Jeg vil beregne formuesverdien ut fra en ny, dokumentert markedsverdi eller prisjustert markedsverdi fra 2019 (mottatt i brev fra Skatteetaten).",
+    "tekst_en": "I want to calculate the taxable value of the property based on a new, documented market value or price adjusted market value from 2019 (received in a letter from the Tax Administration)"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.beregnetMarkedsverdi.beloepSomHeltall",
-    "tekst_nb": "Beregnet markedsverdi"
+    "tekst_nn": "Berekna marknadsverdi",
+    "tekst_nb": "Beregnet markedsverdi",
+    "tekst_en": "Calculated market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.grunnlagForBeregnetMarkedsverdi.boligverdi.beloepSomHeltall",
-    "tekst_nb": "Boligverdi"
+    "tekst_nn": "Bustadverdi",
+    "tekst_nb": "Boligverdi",
+    "tekst_en": "Property value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.aarForMottattMarkedsverdi.aarstall",
-    "tekst_nb": "År for mottatt markedsverdi"
+    "tekst_nn": "År for mottatt marknadsverdi",
+    "tekst_nb": "År for mottatt markedsverdi",
+    "tekst_en": "Year in which market value received"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.datoForDokumentertMarkedsverdi.dato",
-    "tekst_nb": "Dato for dokumentert markedsverdi"
+    "tekst_nn": "Dato for dokumentert marknadsverdi",
+    "tekst_nb": "Dato for dokumentert markedsverdi",
+    "tekst_en": "Date of documented market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.dokumentertMarkedsverdi.beloepSomHeltall",
-    "tekst_nb": "Dokumentert markedsverdi"
+    "tekst_nn": "Dokumentert marknadsverdi",
+    "tekst_nb": "Dokumentert markedsverdi",
+    "tekst_en": "Documented market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.dokumentertMarkedsverdiForBoligIRandsoneEtterKommunereformen.beloepSomHeltall",
-    "tekst_nb": "Prisjustert markedsverdi fra 2019 (mottatt i brev fra Skatteetaten)"
+    "tekst_nn": "Prisjustert marknadsverdi frå 2019 (mottatt i brev frå Skatteetaten)",
+    "tekst_nb": "Prisjustert markedsverdi fra 2019 (mottatt i brev fra Skatteetaten)",
+    "tekst_en": "Price adjusted market value from 2019 (received in a letter from the Tax Administration)"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.dokumentertMarkedsverdiTidligereInntektsaar",
-    "tekst_nb": "Dokumentert markedsverdi tidligere år"
+    "tekst_nn": "Dokumentert marknadsverdi tidlegare år",
+    "tekst_nb": "Dokumentert markedsverdi tidligere år",
+    "tekst_en": "Documented market value in previous years"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.grunnlagForBeregnetMarkedsverdi.dokumentertMarkedsverdiForBolig.reduksjonsfaktorForJustertMarkedsverdi.desimaltall",
-    "tekst_nb": "Reduksjonsfaktor"
+    "tekst_nn": "Reduksjonsfaktor",
+    "tekst_nb": "Reduksjonsfaktor",
+    "tekst_en": "Reduction factor"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.markedsverdiErGrunnlagForBeregningAvFormuesverdiForFlerboligbygning.boolsk",
-    "tekst_nb": "Jeg vil beregne formuesverdien ut fra en ny, dokumentert markedsverdi eller prisjustert markedsverdi fra 2019 (mottatt i brev fra Skatteetaten)."
+    "tekst_nn": "Eg vil rekne ut formuesverdien ut frå ein ny, dokumentert marknadsverdi eller prisjustert marknadsverdi frå 2019 (mottatt i brev frå Skatteetaten)",
+    "tekst_nb": "Jeg vil beregne formuesverdien ut fra en ny, dokumentert markedsverdi eller prisjustert markedsverdi fra 2019 (mottatt i brev fra Skatteetaten).",
+    "tekst_en": "I want to calculate the taxable value of the property based on a new, documented market value or price adjusted market value from 2019 (received in a letter from the Tax Administration)"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForFlerboligbygning.useksjonertBoenhet.boligbruk.boligbruk",
@@ -2838,44 +2879,64 @@
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge.areal.heltall",
-    "tekst_nb": "Areal"
+    "tekst_nn": "Areal",
+    "tekst_nb": "Areal",
+    "tekst_en": "Area"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge.beregnetUtleieverdiForNaeringseiendom.beloepSomHeltall",
+    "tekst_nn": "Berekna utleigeverdi",
     "tekst_nb": "Beregnet utleieverdi",
-    "hjelpetekst_nb": "<p>Her ser du beregnet utleieverdi eller dokumentert markedsverdi for eiendommen. Utleieverdien beregnes automatisk, basert på eiendommens areal, en kvadratmeterleie fastsatt på grunnlag av beregninger fra Statistisk sentralbyrå, og Skattedirektoratets kalkulasjonsfaktor.</p><p>Den automatiske beregningen av utleieverdien tar ikke hensyn til ikke-børsnoterte selskap som eier næringseiendom utenfor Oslo, Bergen, Trondheim eller Stavanger og som skal ha forhøyet kalkulasjonsfaktor. Selskapet må derfor justere i sum formue slik at formue bak aksjene blir riktig.</p><p>Ikke-børsnoterte selskap som eier næringseiendom utenfor Oslo, Bergen, Trondheim eller Stavanger og som bruker dokumentert markedsverdi eller forenklet beregning ved å justere utleieverdi med reduksjonsfaktor (nedsettelsesløp), skal ikke bruke forhøyet kalkulasjonsfaktor. Selskapet skal ikke justere sum formue. Du kan lese mer om kalkulasjonsfaktor på skatteetaten.no.</p><p>Er du uenig i beregnet utleieverdi, kan du legge inn dokumentert markedsverdi i et eget felt.</p>"
+    "tekst_en": "Calculated rental value",
+    "hjelpetekst_nn": "<p>Her ser du den berekna utleigeverdien eller den dokumenterte marknadsverdien for eigedommen. Utleigeverdien blir berekna automatisk, basert på arealet på eigedommen, ei kvadratmeterleige fastsett på grunnlag av berekningar frå Statistisk sentralbyrå og Skattedirektoratet sin kalkulasjonsfaktor.</p><p>Den automatiske berekninga av utleigeverdien tar ikkje omsyn til ikkje-børsnoterte selskap som eig næringseigedom utanfor Oslo, Bergen, Trondheim eller Stavanger og som skal ha forhøgd kalkulasjonsfaktor. Selskapet må derfor justere i sum formue slik at formuen bak aksjane blir rett.</p><p>Ikkje-børsnoterte selskap som eig næringseigedom utanfor Oslo, Bergen, Trondheim eller Stavanger og som bruker dokumentert marknadsverdi eller forenkla berekning ved å justere utleigeverdi med reduksjonsfaktor (nedsetjingsbeløp), skal ikkje bruke forhøgd kalkulasjonsfaktor. Selskapet skal ikkje justere sum formue. Du kan lese meir om kalkulasjonsfaktor på skatteetaten.no.</p><p>Er du ueinig i den berekna utleigeverdien, kan du leggje inn den dokumenterte marknadsverdien i eit eige felt.</p>",
+    "hjelpetekst_nb": "<p>Her ser du beregnet utleieverdi eller dokumentert markedsverdi for eiendommen. Utleieverdien beregnes automatisk, basert på eiendommens areal, en kvadratmeterleie fastsatt på grunnlag av beregninger fra Statistisk sentralbyrå, og Skattedirektoratets kalkulasjonsfaktor.</p><p>Den automatiske beregningen av utleieverdien tar ikke hensyn til ikke-børsnoterte selskap som eier næringseiendom utenfor Oslo, Bergen, Trondheim eller Stavanger og som skal ha forhøyet kalkulasjonsfaktor. Selskapet må derfor justere i sum formue slik at formue bak aksjene blir riktig.</p><p>Ikke-børsnoterte selskap som eier næringseiendom utenfor Oslo, Bergen, Trondheim eller Stavanger og som bruker dokumentert markedsverdi eller forenklet beregning ved å justere utleieverdi med reduksjonsfaktor (nedsettelsesløp), skal ikke bruke forhøyet kalkulasjonsfaktor. Selskapet skal ikke justere sum formue. Du kan lese mer om kalkulasjonsfaktor på skatteetaten.no.</p><p>Er du uenig i beregnet utleieverdi, kan du legge inn dokumentert markedsverdi i et eget felt.</p>",
+    "hjelpetekst_en": "<p>Here you will find the calculated rental value or documented market value for the property. The rental value is calculated automatically based on the property’s area, with the rent per square metre set on the basis of calculations from Statistics Norway and the Directorate of Taxes’ calculation factor.</p><p>If you disagree on the calculated rental value, you can enter the documented market value in a separate field.</p><p>The automatic calculation of the rental value does not take into account non-listed companies that own commercial property outside of Oslo, Bergen, Trondheim, or Stavanger and that will have an increased calculation factor. The company must therefore adjust the total capital value so that the shares’ capital value is correct.</p><p>Non-listed companies that own commercial property outside of Oslo, Bergen, Trondheim, or Stavanger and that use documented market value or simplified calculation by adjusting the rental value with a reduction factor, must not use an increased calculation factor. The company must not adjust the total wealth. You can read more about the calculation factor at skatteetaten.no.</p><p>If you disagree with the calculated rental value, you can enter the documented market value in a separate field.</p>"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.aarForMottattMarkedsverdi.aarstall",
-    "tekst_nb": "År for mottatt dokumentert markedsverdi"
+    "tekst_nn": "År for mottatt dokumentert marknadsverdi",
+    "tekst_nb": "År for mottatt dokumentert markedsverdi",
+    "tekst_en": "Year the documented market value was received"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.avvikVedAnvendtDokumentertMarkedsverdi",
-    "tekst_nb": "Prosentavvik"
+    "tekst_nn": "Prosentavvik",
+    "tekst_nb": "Prosentavvik",
+    "tekst_en": "Percentage discrepancies"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.datoForDokumentertMarkedsverdi.dato",
-    "tekst_nb": "Dato for dokumentert markedsverdi"
+    "tekst_nn": "Dato for dokumentert marknadsverdi",
+    "tekst_nb": "Dato for dokumentert markedsverdi",
+    "tekst_en": "Date of documented market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.dokumentertMarkedsverdi.beloepSomHeltall",
-    "tekst_nb": "Dokumentert markedsverdi"
+    "tekst_nn": "Dokumentert markedsverdi",
+    "tekst_nb": "Dokumentert markedsverdi",
+    "tekst_en": "Documented market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.justertMarkedsverdi.beloepSomHeltall",
-    "tekst_nb": "Justert dokumentert markedsverdi"
+    "tekst_nn": "Justert dokumentert marknadsverdi",
+    "tekst_nb": "Justert dokumentert markedsverdi",
+    "tekst_en": "Adjusted documented market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.reduksjonsfaktorForJustertMarkedsverdi.desimaltall",
-    "tekst_nb": "Reduksjonsfaktor (hvor stor del dokumentert markedsverdi er av beregnet utleieverdi)"
+    "tekst_nn": "Reduksjonsfaktor (kor stor del av dokumentert marknadsverdi er av berekna utleigeverdi)",
+    "tekst_nb": "Reduksjonsfaktor (hvor stor del dokumentert markedsverdi er av beregnet utleieverdi)",
+    "tekst_en": "Reduction factor (the documented market value share of the rental value amount) "
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForIkkeUtleidNaeringseiendomINorge.naeringseiendomstype.naeringseiendomstype",
-    "tekst_nb": "Type næringseiendom"
+    "tekst_nn": "Type næringseigedom",
+    "tekst_nb": "Type næringseiendom",
+    "tekst_en": "Type of commercial property"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForSkalIkkeFastsettes.aarsakTilIkkeFastsetting",
-    "tekst_nn": "Årsak til ikkje-fastsetjing",
+    "tekst_nn": "Årsak til ikkje-fastsetting",
     "tekst_nb": "Årsak til ikke fastsetting",
     "tekst_en": "Reason for non-determination"
   },
@@ -2941,12 +3002,18 @@
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.areal.heltall",
-    "tekst_nb": "Eiendommens areal"
+    "tekst_nn": "Eigedomsareal",
+    "tekst_nb": "Eiendommens areal",
+    "tekst_en": "The area of the property"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.beregnetUtleieverdiForNaeringseiendom.beloepSomHeltall",
+    "tekst_nn": "Berekna utleigeverdi",
     "tekst_nb": "Beregnet utleieverdi",
-    "hjelpetekst_nb": "<p>Her ser du beregnet utleieverdi eller dokumentert markedsverdi for eiendommen. Vi beregner utleieverdien basert på</p><ul>\n<li>opplysningene du oppgir om utleieforholdet</li><li>opplysninger vi eventuelt har fra tidligere år</li><li>Skattedirektoratets kalkulasjonsfaktor</li></ul><p>Den automatiske beregningen av utleieverdien tar ikke hensyn til ikke-børsnoterte selskap som eier næringseiendom utenfor Oslo, Bergen, Trondheim eller Stavanger og som skal ha forhøyet kalkulasjonsfaktor. Selskapet må derfor justere i sum formue slik at formue bak aksjene blir riktig.</p><p>Ikke-børsnoterte selskap som eier næringseiendom utenfor Oslo, Bergen, Trondheim eller Stavanger og som bruker dokumentert markedsverdi eller forenklet beregning ved å justere utleieverdi med reduksjonsfaktor (nedsettelsesløp), skal ikke bruke forhøyet kalkulasjonsfaktor. Selskapet skal ikke justere sum formue. Du kan lese mer om kalkulasjonsfaktor på skatteetaten.no.</p>"
+    "tekst_en": "Calculated rental value",
+    "hjelpetekst_nn": "<p>Her ser du den berekna utleigeverdien eller den dokumenterte marknadsverdien for eigedommen. Vi bereknar utleigeverdien basert på</p><ul><li>opplysningane du oppgir om utleigeforholdet</li><li>opplysningar vi eventuelt har frå tidlegare år</li><li>Skattedirektoratet sin kalkulasjonsfaktor</li></ul><p>Den automatiske berekninga av utleigeverdien tar ikkje omsyn til ikkje-børsnoterte selskap som eig næringseigedom utanfor Oslo, Bergen, Trondheim eller Stavanger og som skal ha forhøgd kalkulasjonsfaktor. Selskapet må derfor justere i sum formue slik at formuen bak aksjane blir rett.</p><p>Ikkje-børsnoterte selskap som eig næringseigedom utanfor Oslo, Bergen, Trondheim eller Stavanger og som bruker dokumentert marknadsverdi eller forenkla berekning ved å justere utleigeverdi med reduksjonsfaktor (nedsetjingsbeløp), skal ikkje bruke forhøgd kalkulasjonsfaktor. Selskapet skal ikkje justere sum formue. Du kan lese meir om kalkulasjonsfaktor på skatteetaten.no.</p>",
+    "hjelpetekst_nb": "<p>Her ser du beregnet utleieverdi eller dokumentert markedsverdi for eiendommen. Vi beregner utleieverdien basert på</p><ul>\n<li>opplysningene du oppgir om utleieforholdet</li><li>opplysninger vi eventuelt har fra tidligere år</li><li>Skattedirektoratets kalkulasjonsfaktor</li></ul><p>Den automatiske beregningen av utleieverdien tar ikke hensyn til ikke-børsnoterte selskap som eier næringseiendom utenfor Oslo, Bergen, Trondheim eller Stavanger og som skal ha forhøyet kalkulasjonsfaktor. Selskapet må derfor justere i sum formue slik at formue bak aksjene blir riktig.</p><p>Ikke-børsnoterte selskap som eier næringseiendom utenfor Oslo, Bergen, Trondheim eller Stavanger og som bruker dokumentert markedsverdi eller forenklet beregning ved å justere utleieverdi med reduksjonsfaktor (nedsettelsesløp), skal ikke bruke forhøyet kalkulasjonsfaktor. Selskapet skal ikke justere sum formue. Du kan lese mer om kalkulasjonsfaktor på skatteetaten.no.</p>",
+    "hjelpetekst_en": "<p>Here you will find the calculated rental value or documented market value for the property. We calculate the rental value based on<ul><li>the information you enter regarding the rental agreement</li><li>any information we may have from previous years</li><li>the Directorate of Taxes’ calculation factor</li></ul></p><p>The automatic calculation of the rental value does not take into account non-listed companies that own commercial property outside of Oslo, Bergen, Trondheim, or Stavanger and that will have an increased calculation factor. The company must therefore adjust the total capital value so that the shares’ capital value is correct.</p><p>Non-listed companies that own commercial property outside of Oslo, Bergen, Trondheim or Stavanger and that use documented market value or simplified calculation by adjusting the rental value with a reduction factor, must not use an increased calculation factor. The company must not adjust the total wealth. You can read more about the calculation factor at skatteetaten.no.</p>"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.grunnlagForBeregnetUtleieverdiForNaeringseiendom.aarligUtleieinntektIAaretFoerInntektsaar.beloepSomHeltall",
@@ -2968,28 +3035,42 @@
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.aarForMottattMarkedsverdi.aarstall",
-    "tekst_nb": "År for mottatt dokumentert markedsverdi"
+    "tekst_nn": "År for mottatt dokumentert marknadsverdi",
+    "tekst_nb": "År for mottatt dokumentert markedsverdi",
+    "tekst_en": "Year the documented market value was received"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.avvikVedAnvendtDokumentertMarkedsverdi",
-    "tekst_nb": "Prosentavvik"
+    "tekst_nn": "Prosentavvik",
+    "tekst_nb": "Prosentavvik",
+    "tekst_en": "Percentage discrepancies"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.datoForDokumentertMarkedsverdi.dato",
-    "tekst_nb": "Dato for dokumentert markedsverdi"
+    "tekst_nn": "Dato for dokumentert marknadsverdi",
+    "tekst_nb": "Dato for dokumentert markedsverdi",
+    "tekst_en": "Date of documented market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.dokumentertMarkedsverdi.beloepSomHeltall",
+    "tekst_nn": "Dokumentert marknadsverdi",
     "tekst_nb": "Dokumentert markedsverdi",
-    "hjelpetekst_nb": "<p>Her kan du legge du inn markedsverdien for eiendommen, hvis du ønsker.</p><p>Markedsverdien kan ha betydning for beregningen av formuesverdien for eiendommen din. Formuesverdien settes automatisk til det som blir lavest av enten<ul><li>80 prosent av beregnet utleieverdi, eller</li><li>80 prosent av dokumentert markedsverdi.</li></ul></p><p>Du bør dokumentere markedsverdien med enten en takst eller verdivurdering fra en kvalifisert aktør som har besiktiget eiendommen innvendig og utvendig, eller en salgskontrakt eller annen dokumentasjon som viser oppnådd salgssum for denne eller en tilsvarende eiendom i samme område.<ul><li>Dokumentasjonen (takst, verdivurdering med mer) bør ikke være eldre enn det inntektsåret nedsettelsen kreves for. Det betyr at dokumentasjonen for nedsettelse for inntektsåret 2024 må være utarbeidet tidligst 1. januar 2024.</li><li>Dokumentasjonen må være utarbeidet på tidspunktet hvor kravet fremsettes. Det vil si at dokumentasjonen må foreligge på tidspunktet for innsendelse av skattemelding dersom kravet fremmes i skattemeldingen.</li></ul></p>"
+    "tekst_en": "Documented market value",
+    "hjelpetekst_nn": "<p>Her kan du leggje inn marknadsverdien for eigedommen om du ønskjer.</p><p>Marknadsverdien kan ha noko å seie for berekninga av formuesverdien for eigedommen din. Formuesverdien blir sett automatisk til det som blir lågast av anten<ul><li>80 prosent av den berekna utleigeverdien, eller </li><li>80 prosent av den dokumenterte marknadsverdien.</li></ul></p><p>Du bør dokumentere marknadsverdien med anten ein takst eller ei verdivurdering frå ein kvalifisert aktør som har synfare eigedommen innvendig og utvendig, eller ein salskontrakt eller annan dokumentasjon som viser oppnådd salssum for denne eller ein tilsvarande eigedom i same område.<ul><li>Dokumentasjonen (takst, verdivurdering med meir) bør ikkje vere eldre enn det inntektsåret du krev nedsetjinga for. Det vil seie at dokumentasjonen for nedsetjing for inntektsåret 2024 må vere utarbeidd tidlegast 1. januar 2024. </li><li>Dokumentasjonen må vere utarbeidd når kravet blir sett fram. Det vil seie at dersom kravet blir sett fram i skattemeldinga, må dokumentasjonen vere klar når du leverer skattemeldinga.</li></ul></p>",
+    "hjelpetekst_nb": "<p>Her kan du legge du inn markedsverdien for eiendommen, hvis du ønsker.</p><p>Markedsverdien kan ha betydning for beregningen av formuesverdien for eiendommen din. Formuesverdien settes automatisk til det som blir lavest av enten<ul><li>80 prosent av beregnet utleieverdi, eller</li><li>80 prosent av dokumentert markedsverdi.</li></ul></p><p>Du bør dokumentere markedsverdien med enten en takst eller verdivurdering fra en kvalifisert aktør som har besiktiget eiendommen innvendig og utvendig, eller en salgskontrakt eller annen dokumentasjon som viser oppnådd salgssum for denne eller en tilsvarende eiendom i samme område.<ul><li>Dokumentasjonen (takst, verdivurdering med mer) bør ikke være eldre enn det inntektsåret nedsettelsen kreves for. Det betyr at dokumentasjonen for nedsettelse for inntektsåret 2024 må være utarbeidet tidligst 1. januar 2024.</li><li>Dokumentasjonen må være utarbeidet på tidspunktet hvor kravet fremsettes. Det vil si at dokumentasjonen må foreligge på tidspunktet for innsendelse av skattemelding dersom kravet fremmes i skattemeldingen.</li></ul></p>",
+    "hjelpetekst_en": "<p>Here you can enter the market value for the property if you want.</p><p>The market value may affect the calculation of the taxable value of your property. The taxable value is automatically set to the lowest amount of either <ul><li>80 percent of the calculated rental value or</li><li>80 percent of the documented market value.</li></ul></p><p> You should document the market value either with a valuation or appraisal from a qualified surveyor who has inspected the property both inside and outside, or with a sales contract or other documentation showing the obtained sales price for this or an equivalent property in the same area.<ul><li>The documentation (valuation, appraisal, etc.) cannot be older than the income year you claim a reduction for. This means that the documentation for reduction for the income year 2024 must be prepared no earlier than 1 January 2024. </li><li>The documentation must have been prepared when the claim is put forward. The documentation must therefore already exist when you submit your tax return if the claim is made in the tax return.</li></ul></p>"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.justertMarkedsverdi.beloepSomHeltall",
-    "tekst_nb": "Justert dokumentert markedsverdi"
+    "tekst_nn": "Justert dokumentert marknadsverdi",
+    "tekst_nb": "Justert dokumentert markedsverdi",
+    "tekst_en": "Adjusted documented market value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.grunnlagForBeregnetUtleieverdiForNaeringseiendom.dokumentertMarkedsverdi.reduksjonsfaktorForJustertMarkedsverdi.desimaltall",
-    "tekst_nb": "Reduksjonsfaktor (hvor stor del dokumentert markedsverdi er av beregnet utleieverdi)"
+    "tekst_nn": "Reduksjonsfaktor (kor stor del av dokumentert marknadsverdi er av berekna utleigeverdi)",
+    "tekst_nb": "Reduksjonsfaktor (hvor stor del dokumentert markedsverdi er av beregnet utleieverdi)",
+    "tekst_en": "Reduction factor (the documented market value share of the rental value amount)"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.grunnlagForBeregnetUtleieverdiForNaeringseiendom.sisteRapporterteUtleieinntekt.beloepSomHeltall",
@@ -2999,7 +3080,9 @@
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.naeringseiendomstype.naeringseiendomstype",
-    "tekst_nb": "Type næringseiendom"
+    "tekst_nn": "Type næringseigedom",
+    "tekst_nb": "Type næringseiendom",
+    "tekst_en": "Type of commercial property"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesspesifikasjonForUtleidNaeringseiendom.oevrigTilVisningAvUtleidNaeringseiendom.aarligUtleieinntekt",
@@ -3027,15 +3110,21 @@
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesverdiForFormuesandel",
-    "tekst_nb": "Andel formuesverdi"
+    "tekst_nn": "Del av formuesverdien",
+    "tekst_nb": "Andel formuesverdi",
+    "tekst_en": "Share of taxable value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.formuesverdiPerEiendom.beloepSomHeltall",
-    "tekst_nb": "Formuesverdi"
+    "tekst_nn": "Formuesverdi",
+    "tekst_nb": "Formuesverdi",
+    "tekst_en": "Taxable value"
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.verdiFoerVerdsettingsrabattForFormuesandel",
-    "tekst_nb": "Verdi før verdsettingsrabatt for formuesandel"
+    "tekst_nn": "Verdi før verdsetjingsrabatt for formuesandel",
+    "tekst_nb": "Verdi før verdsettingsrabatt for formuesandel",
+    "tekst_en": "Value before valuation discount for share of wealth"
   },
   {
     "skattemeldingSti": "formueOgGjeld.akvakulturtillatelseSomFormuesobjekt.akvakulturtillatelsesnummer.tekst",
@@ -3902,7 +3991,7 @@
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.tilleggsinformasjon.benytterForetaketEksternRaadgiverVedUtfyllingEllerDokumentasjonAvInternprising.boolsk",
     "tekst_nn": "Ikkje i bruk for 2024. Bruker føretaket ekstern rådgivar til å fylle ut temaet \"Kontrollerte transaksjonar/disposisjonar og mellomvære\", eller til å utarbeide internprisingsdokumentasjon?",
     "tekst_nb": "Skal ikke fylles ut for 2024. Benytter foretaket ekstern rådgiver ved utfylling av temaet \"Kontrollerte transaksjoner/disposisjoner og mellomværender\", eller ved utarbeidelse av internprisingsdokumentasjon?",
-    "tekst_en": "Not to be filled in for 2024. Does the enterprise use an external adviser for completing the topic card \"Controlled transactions/dispositions and liabilities\", or when making transfer pricing documentation?",
+    "tekst_en": "Not to be filled in for 2024. Does the enterprise use an external adviser for completing the topic card \"Controlled transactions/dealings and liabilities\", or when making transfer pricing documentation?",
     "hjelpetekst_nn": "Ikkje i bruk for 2024.",
     "hjelpetekst_nb": "Skal ikke fylles ut for 2024.",
     "hjelpetekst_en": "Not to be filled in for 2024."
@@ -4265,7 +4354,7 @@
     "tekst_en": "Transaction and disposition amounts",
     "hjelpetekst_nn": "<p>Legg inn transaksjons- og disposisjonsbeløp per transaksjonstype.</p><p>For fast driftsstad må de identifisere om de har disposisjonar og leggje desse inn som om dei var transaksjonar mellom den faste driftsstaden og andre delar av føretaket. Legg inn disposisjonsbeløp per transaksjonstype. De bruker då felta for transaksjonar.</p><p>Ein disposisjon vil vere ei overføring av varer eller tenester, eller ei anna hending mellom ein fast driftsstad og andre delar av føretaket, som etter artikkel 7 i OECDs mønsteravtale med kommentarar og gjeldande skatteavtale, gir grunnlag for å tilordne ei armlengds forteneste til den faste driftsstaden knytt til disposisjonen (eller den andre delen av føretaket).</p>",
     "hjelpetekst_nb": "<p>Legg inn transaksjons- og disposisjonsbeløp per transaksjonstype.</p><p>For fast driftssted må dere identifisere om dere har disposisjoner og legge disse inn som om de var transaksjoner mellom det faste driftsstedet og andre deler av foretaket. Legg inn disposisjonsbeløp per transaksjonstype. Dere bruker da feltene for transaksjoner.</p><p>En disposisjon vil være en overføring av varer eller tjenester eller annen hendelse mellom et fast driftssted og andre deler av foretaket, som etter artikkel 7 i OECDs mønsteravtale med kommentarer og gjeldende skatteavtale, gir grunnlag for å tilordne en armlengdes fortjeneste til det faste driftsstedet tilknyttet disposisjonen (eller den andre delen av foretaket).</p>",
-    "hjelpetekst_en": "<p>Enter the transaction and disposition amount for each transaction type.</p><p>For permanent establishments, you must identify whether you have dispositions and enter them as if they were transactions between the permanent establishment and other parts of the enterprise. Enter the disposition amount for each transaction type. You then use the fields for transactions.</p><p>A disposition is a transfer of goods or services or another event between a permanent establishment and other parts of the enterprise, which according to Article 7 of the OECD Model Tax Convention with comments and the applicable tax treaty, will provide a basis for allocating arm's length profit to the permanent establishment linked to the disposition (or the other part of the enterprise).</p> "
+    "hjelpetekst_en": "<p>Enter the transaction and dealing amount for each transaction type.</p><p>For permanent establishments, you must identify whether you have dealings and enter them as if they were transactions between the permanent establishment and other parts of the enterprise. Enter the dealing amount for each transaction type. You then use the fields for transactions.</p><p>A dealing is a transfer of goods or services or another event between a permanent establishment and other parts of the enterprise, which according to Article 7 of the OECD Model Tax Convention with comments and the applicable tax treaty, will provide a basis for allocating arm's length profit to the permanent establishment linked to the dealing (or the other part of the enterprise).</p> "
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.transaksjonsmotpart.transaksjonOgDisposisjon.beskrivelse.tekst",
@@ -4728,6 +4817,14 @@
     "tekst_nn": "Overdragande selskapsnamn",
     "tekst_nb": "Overdragende selskapsnavn",
     "tekst_en": "Name of acquired company"
+  },
+  {
+    "skattemeldingSti": "opplysningOmSelskapMedDeltakerfastsetting.rettsligForm.rettsligForm",
+    "tekst_nb": "Rettslig form"
+  },
+  {
+    "skattemeldingSti": "opplysningOmSelskapMedDeltakerfastsetting.selskapsandelEidAvUtenlandskDeltaker.prosent",
+    "tekst_nb": "Andel av selskapet som er eid av utenlandsk deltaker"
   },
   {
     "skattemeldingSti": "opplysningOmSelskapMedDeltakerfastsetting.underlagsmaterialeForUsdfEllerNokusKanFremlegges",
