@@ -64,7 +64,8 @@
       <xsd:element minOccurs="0" name="forsikring" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1bc-9fe1-11e5-a9f8-e4115b280940" type="Forsikring" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skyldigRestskatt" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf248012-dfe5-11e7-9101-005056821322" type="SkyldigRestskatt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="konto" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e326-9fe1-11e5-a9f8-e4115b280940" type="Konto" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="annenKapitalkostnad" type="AnnenKapitalkostnad" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inkassoselskapOgBetalingsformidler" type="InkassoselskapOgBetalingsformidler" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="refinansieringAvLaan" type="RefinansieringAvLaan" />
       <xsd:element minOccurs="0" name="boligsparingForUngdom" type="BoligsparingForUngdom" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="underholdsbidragSkyldigOgTilGode" type="UnderholdsbidragSkyldigOgTilGode" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="privatFordringUtenforVirksomhetTilSelskapMv" type="PrivatFordringUtenforVirksomhetTilSelskapMv" />
@@ -313,13 +314,27 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="AnnenKapitalkostnad">
+  <xsd:complexType name="InkassoselskapOgBetalingsformidler">
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element name="id" type="Tekst" />
-          <xsd:element minOccurs="0" name="paaloepteRenterFraInkassoselskap" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
-          <xsd:element minOccurs="0" name="utgiftVedRefinansieringAvLaan" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
+          <xsd:element name="inkassoselskapetsEllerBetalingsformidlersNavn" type="OrganisasjonsnavnMedInnkapsling" />
+          <xsd:element minOccurs="0" name="paaloepteRenter" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
+          <xsd:element minOccurs="0" name="gjeld" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RefinansieringAvLaan">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst" />
+          <xsd:element minOccurs="0" name="tinglysningsgebyr" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
+          <xsd:element minOccurs="0" name="takseringskostnad" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
+          <xsd:element minOccurs="0" name="annenRefinansieringskostnad" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
+          <xsd:element minOccurs="0" name="beskrivelseAvAnnenRefinansieringskostnad" type="Tekst" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
