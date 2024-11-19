@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-11-07T07:37:27.334+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-11-13T15:48:17.212+0100" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v4" name="modellnavn" />
@@ -883,7 +883,7 @@
   <xsd:complexType name="Tonnasjeskatt">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="samletTonnasjeskattIEgetSelskap" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelTonnasjeskattFraSdfEllerNokus" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelTonnasjeskattFraSdfEllerNokus" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletTonnasjeskatt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="tonnasjeskattPerSkip" type="TonnasjeskattPerSkip" />
       <xsd:element minOccurs="0" name="nettotonnasjeEideSkip" skatt:erAvledet="true" type="AntallMedInnkapsling" />
@@ -916,14 +916,14 @@
       <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvFinansiellValutakontraktInngaattFom2010" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="inntektsfoeringAvSkattefrittUtbytte" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="inntektKnyttetTilSolidaransvarForArbeidstakere" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvSkattemessigFinansoverskuddFraSdfOgNokus" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvSkattemessigFinansoverskuddFraSdfOgNokus" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="garantiprovisjonsinntekt" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="skattepliktigUtbytte" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="annenFinanskostnad" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tapPaaRenteswapavtale" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fradragsberettigetTapVedRealisasjonAvAksjeMv" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fradragsberettigetTapVedRealisasjonAvFinansiellValutakontraktInngaattFom2010" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvFradragsberettigetFinansunderskuddFraSdf" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvFradragsberettigetFinansunderskuddFraSdf" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="garantiprovisjonskostnad" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="finanskapitalandelVedUtgangenAvInntektsaaret" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletFinansinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
@@ -1497,11 +1497,16 @@
       </xsd:choice>
       <xsd:element minOccurs="0" name="andelAvTonnasjeskatt" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvFinansinntekt" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelFinansaktivaAvTotalkapital" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvFinansUnderskudd" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelFinansaktivaAvTotalkapital" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvTotalkapitalVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvTotalkapitalVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvGjeldVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvGjeldVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsFremfoerteDifferanseMellomVirkeligVerdiOgSkattemessigVerdiVedUttreden" type="StortBeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvDifferanseMellomVirkeligVerdiOgSkattemessigVerdiVedUttredenBenyttetIInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvDifferanseMellomVirkeligVerdiOgSkattemessigVerdiVedUttredenTilFremfoering" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element name="metodeForBokfoeringIDeltakersRegnskap" type="MetodeForBokfoeringIDeltakersRegnskapMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="KiloWattime">
@@ -2130,6 +2135,11 @@
       <xsd:element name="inntektstype" type="InntektstypeVedKildeskattPaaRenteRoyaltyMv" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="MetodeForBokfoeringIDeltakersRegnskapMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="metodeForBokfoeringIDeltakersRegnskap" type="MetodeForBokfoeringIDeltakersRegnskap" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Reduksjonsfaktor">
     <xsd:restriction base="Desimaltall">
       <xsd:totalDigits value="30" />
@@ -2435,6 +2445,9 @@
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="InntektstypeVedKildeskattPaaRenteRoyaltyMv" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_inntektstypeVedKildeskattPaaRenteRoyaltyMv.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="MetodeForBokfoeringIDeltakersRegnskap" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_metodeForBokfoeringIDeltakersRegnskap.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="UnntaksregeltypeKnyttetTilRentebegrensningForSelskapMvIKonsern" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_unntaksregeltypeKnyttetTilRentebegrensningForSelskapMvIKonsern.xml">
