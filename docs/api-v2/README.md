@@ -1388,6 +1388,16 @@ Denne tjenesten returnerer ikke informasjon om ny frist ble innvilget.
 }
 ```
 
+**Eks på Http 200 response**
+```json
+{
+  "melding":"Søknad om utsatt frist mottatt",
+  "gjeldendeInntektsaar":2024,
+  "innsender":"<identifikator>",
+  "antall":2
+}
+```
+
 **Http response koder**
 - Http 200  Innsending OK.
 - Http 403  Ikke tilgang. Dette blir også sendt i den perioden av året hvor tjenesten er stengt.
