@@ -1075,7 +1075,7 @@
       <xsd:element minOccurs="0" name="aaretsFremfoerteDifferanseMellomVirkeligVerdiOgSkattemessigVerdiVedUttreden" type="StortBeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvDifferanseMellomVirkeligVerdiOgSkattemessigVerdiVedUttredenBenyttetIInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvDifferanseMellomVirkeligVerdiOgSkattemessigVerdiVedUttredenTilFremfoering" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element name="metodeForBokfoeringIDeltakersRegnskap" type="MetodeForBokfoeringIDeltakersRegnskapMedInnkapsling" />
+      <xsd:element minOccurs="0" name="metodeForBokfoeringIDeltakersRegnskap" type="MetodeForBokfoeringIDeltakersRegnskapMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DirekteEidEllerKontrollertAksjeEllerAndelINokus">

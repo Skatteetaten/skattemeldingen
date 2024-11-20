@@ -57,6 +57,12 @@
       <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesobjekterOmfattetAvVerdsettingsrabattTilordnetInnehaver" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="Regnskapsperiode">
+    <xsd:sequence>
+      <xsd:element name="start" type="DatoMedInnkapsling"/>
+      <xsd:element name="slutt" type="DatoMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Tekst">
     <xsd:restriction base="xsd:string">
       <xsd:maxLength value="4000" />
@@ -149,7 +155,7 @@
   <xsd:complexType name="Virksomhet">
     <xsd:sequence>
       <xsd:element name="regnskapspliktstype" type="RegnskapspliktstypeMedInnkapsling" />
-      <xsd:element name="regnskapsperiode" type="Periode" />
+      <xsd:element name="regnskapsperiode" type="Regnskapsperiode" />
       <xsd:element name="virksomhetstype" type="VirksomhetstypeMedInnkapsling" />
       <xsd:element minOccurs="0" name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskapMedInnkapsling" />
       <xsd:element minOccurs="0" name="kontaktperson" type="Kontaktinformasjon" />
@@ -709,12 +715,6 @@
   <xsd:complexType name="RegnskapspliktstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="regnskapspliktstype" type="Regnskapspliktstype" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="Periode">
-    <xsd:sequence>
-      <xsd:element name="start" type="DatoKlokkeslett" />
-      <xsd:element minOccurs="0" name="slutt" type="DatoKlokkeslett" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="VirksomhetstypeMedInnkapsling">
