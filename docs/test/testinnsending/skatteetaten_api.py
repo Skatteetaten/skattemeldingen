@@ -112,9 +112,10 @@ def base64_decode_response(r: requests):
 
 
 def skattemelding_visning(instans_data: dict,
-                          appnavn: str = "skd/formueinntekt-skattemelding-v2") -> None:
+                          appnavn: str = "skd/formueinntekt-skattemelding-v2",
+                          url_testmiljoe = "https://skatt-sbstest.sits.no") -> None:
     instans_id = instans_data['id']
-    url_visning = f"https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId={appnavn}&instansId={instans_id}"
+    url_visning = f"{url_testmiljoe}/web/skattemelding-visning/altinn?appId={appnavn}&instansId={instans_id}"
     webbrowser.open(url_visning, new=0, autoraise=True)
     return url_visning
 
