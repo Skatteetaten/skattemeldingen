@@ -114,6 +114,8 @@
       <xsd:element minOccurs="0" name="kostnadIFilialregnskap" type="KostnadIFilialregnskap" />
       <xsd:element minOccurs="0" name="skjoennsfastsattInntektEllerKostnad" type="SkjoennsfastsattInntektEllerKostnad" />
       <xsd:element minOccurs="0" name="aarsresultat" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="heravAndelResultatTekniskRegnskapILivsforsikringOgPensjonskasseforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="heravAndelResultatIkkeTekniskRegnskapILivsforsikringOgPensjonskasseforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Balanseregnskap">
@@ -303,6 +305,8 @@
       <xsd:element minOccurs="0" name="salgsinntekt" type="Salgsinntekt" />
       <xsd:element minOccurs="0" name="annenDriftsinntekt" type="AnnenDriftsinntekt" />
       <xsd:element minOccurs="0" name="bankOgForsikringsinntekt" type="BankOgForsikringsinntekt" />
+      <xsd:element minOccurs="0" name="heravAndelInntektTekniskRegnskapILivsforsikringOgPensjonskasseforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="heravAndelInntektIkkeTekniskRegnskapILivsforsikringOgPensjonskasseforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Driftskostnad">
@@ -312,6 +316,8 @@
       <xsd:element minOccurs="0" name="loennskostnad" type="Loennskostnad" />
       <xsd:element minOccurs="0" name="annenDriftskostnad" type="AnnenDriftskostnad" />
       <xsd:element minOccurs="0" name="bankOgForsikringskostnad" type="BankOgForsikringskostnad" />
+      <xsd:element minOccurs="0" name="heravAndelKostnadTekniskRegnskapILivsforsikringOgPensjonskasseforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="heravAndelKostnadIkkeTekniskRegnskapILivsforsikringOgPensjonskasseforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Finansinntekt">
