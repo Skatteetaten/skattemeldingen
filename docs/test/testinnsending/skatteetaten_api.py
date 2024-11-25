@@ -44,7 +44,7 @@ def print_request_as_curl(r):
     command = "curl -X {method} -H {headers} {data} '{uri}'"
     method = r.request.method
     uri = r.request.url
-    data = "-d '{r.request.body}'" if r.request.body else ""
+    data = f"-d '{r.request.body}'" if r.request.body else ""
     headers = ['"{0}: {1}"'.format(k, v) for k, v in r.request.headers.items()]
     headers = " -H ".join(headers)
     print(command.format(method=method, headers=headers, data=data, uri=uri))
