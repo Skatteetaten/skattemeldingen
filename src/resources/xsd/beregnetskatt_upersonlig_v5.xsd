@@ -2,9 +2,9 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v5">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2023-12-11T14:23:50.435+0100" name="generertDato"/>
+            <xsd:attribute fixed="2024-11-18T11:08:01.350+0100" name="generertDato"/>
             <xsd:attribute fixed="v5" name="versjon"/>
-            <xsd:attribute fixed="" name="beskrivelse"/>
+            <xsd:attribute fixed="Beregnet skatt upersonlige skattepliktige" name="beskrivelse"/>
             <xsd:attribute fixed="v5 (2024)" name="modellnavn"/>
             <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v5" name="navnerom"/>
             <xsd:attribute fixed="false" name="begrepsreferanse"/>
@@ -24,6 +24,22 @@
             <xsd:element minOccurs="0" name="beregnetSkatt" skatt:erAvledet="true" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="informasjonTilSkattelister" type="InformasjonTilSkattelister"/>
             <xsd:element minOccurs="0" name="skattetillegg" type="Skattetillegg"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="FremfoerbarNegativGrunnrenteinntektILandbasertVindkraftanlegg">
+        <xsd:sequence>
+            <xsd:element name="loepenummer" type="typekatalog:Tekst"/>
+            <xsd:element minOccurs="0" name="fremfoerbarNegativGrunnrenteinntekt" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="renteAvFremfoerbarNegativGrunnrenteinntekt" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fremfoerbarNegativGrunnrenteinntektInklRente" type="typekatalog:BeloepSomHeltall"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="FremfoerbarProduksjonsavgiftILandbasertVindkraftanlegg">
+        <xsd:sequence>
+            <xsd:element name="loepenummer" type="typekatalog:Tekst"/>
+            <xsd:element minOccurs="0" name="fremfoerbarProduksjonsavgift" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="renteAvFremfoerbarProduksjonsavgift" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="fremfoerbarProduksjonsavgiftInklRente" type="typekatalog:BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="InformasjonTilSkattelister">
@@ -47,6 +63,7 @@
             <xsd:element minOccurs="0" name="inntektsskattTilStatFraVirksomhetPaaSokkel" type="SkattMedGrunnlag"/>
             <xsd:element minOccurs="0" name="saerskatt" type="SkattMedGrunnlag"/>
             <xsd:element minOccurs="0" name="positivGrunnrenteskattIHavbruksvirksomhet" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="positivGrunnrenteskattILandbasertVindkraft" type="typekatalog:BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Skattefradrag">
@@ -65,6 +82,7 @@
             <xsd:element minOccurs="0" name="skatteverdiAvUbenyttetFriinntektFom2002Tom2019" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="skatteverdiAvAaretsUnderskuddISaerskattegrunnlagetTilUtbetaling" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="negativGrunnrenteskattVedRealisasjonEllerOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="negativGrunnrenteskattVedOpphoerLandbasertVindkraft" type="typekatalog:BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Skattetillegg">
@@ -85,6 +103,8 @@
             <xsd:element minOccurs="0" name="negativGrunnrenteinntektIHavbruksvirksomhetTilFremfoering" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="renterAvNegativGrunnrenteinntektIHavbruksvirksomhetTilFremfoering" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="negativGrunnrenteinntektIHavbruksvirksomhetInklRenterTilFremfoering" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="fremfoerbarNegativGrunnrenteinntektILandbasertVindkraftanlegg" type="FremfoerbarNegativGrunnrenteinntektILandbasertVindkraftanlegg"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="fremfoerbarProduksjonsavgiftILandbasertVindkraftanlegg" type="FremfoerbarProduksjonsavgiftILandbasertVindkraftanlegg"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="FremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv">
