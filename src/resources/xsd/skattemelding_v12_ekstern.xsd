@@ -1906,6 +1906,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fastEiendomSomKaarytelse" type="FastEiendomSomKaarytelse" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fastEiendomSomUtleieobjekt" type="FastEiendomSomUtleieobjekt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fastEiendomSomRealisasjonsobjekt" type="FastEiendomSomRealisasjonsobjekt" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fastEiendomSomStroemprodusent" type="FastEiendomSomStroemprodusent" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="NettoLeieinntektEllerUnderskuddFraFastEiendomSomUtleieobjektOverfoertFraEktefelle">
@@ -2849,6 +2850,27 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+  <xsd:complexType name="FastEiendomSomStroemprodusent">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst" />
+          <xsd:element minOccurs="0" name="stroemselskapetsNavn" type="OrganisasjonsnavnMedInnkapsling" />
+          <xsd:element minOccurs="0" name="stroemselskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling" />
+          <xsd:element minOccurs="0" name="maalepunktidentifikator" type="Tekst" />
+          <xsd:element minOccurs="0" name="eiendomstypeForStroemprodusent" type="EiendomstypeForStroemprodusentMedInnkapsling" />
+          <xsd:element name="prosentandelAvInntektForSalgAvStroem" type="ProsentMedInnkapsling"/>
+          <xsd:element name="samletVederlagForSalgAvStroem" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="skattepliktigInntektForSalgAvStroem" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EiendomstypeForStroemprodusentMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="eiendomstype" type="EiendomstypeForStroemprodusent" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="DyreartKnyttetTilJaktrettighetMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="dyreartKnyttetTilJaktrettighet" type="DyreartKnyttetTilJaktrettighet" />
@@ -3566,6 +3588,9 @@
       <xsd:element name="saldogruppe" type="SaldogruppeKnyttetTilAvskrivningILeieforhold" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="EiendomstypeForStroemprodusent" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_eiendomstypeForStroemprodusent.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
   <xsd:simpleType name="DesimaltallMed4Desimaler" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="Desimaltall">
       <xsd:totalDigits value="30" />
