@@ -1355,6 +1355,9 @@ Det API'et støttes kun for enhetstyper som skal levere skattemelding upersonlig
 Tjeneste for å søke om utsatt frist for levering av skattemeldingen. Tjenesten retunerer kun svar om at søknad er mottatt. 
 Denne tjenesten returnerer ikke informasjon om ny frist ble innvilget.
 
+**Swagger dokumentasjon for API**
+- https://app.swaggerhub.com/apis/skatteetaten/utsattfrist-mottak_api/0.0.1
+
 **URL** `POST https://<env>/api/skattemelding/v2/utsattfristsoeknad/<identifikator>`
 
 **Forespørsel** :
