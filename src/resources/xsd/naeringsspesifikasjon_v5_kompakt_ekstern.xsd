@@ -996,6 +996,8 @@
       <xsd:element minOccurs="0" name="aarForDriftssettelse" type="AarstallMedInnkapsling" />
       <xsd:element minOccurs="0" name="installertEffektIMwIHenholdTilKonsesjon" type="DesimaltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="antallTurbiner" type="AntallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="vindkraftanleggOpphoertIInntektsaaret" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="vindkraftanleggErUnderOppfoering" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="eierandel" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="datoForOverdragelseVedErvervIInntektsaaret" type="DatoMedInnkapsling" />
       <xsd:element minOccurs="0" name="datoForOverdragelseVedRealisasjonIInntektsaaret" type="DatoMedInnkapsling" />
@@ -2233,22 +2235,22 @@
   <xsd:complexType name="SpesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element minOccurs="0" name="type" type="InntektOgFradragIGrunnrenteMedInnkapsling" />
-      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element name="type" type="InntektOgFradragIGrunnrenteMedInnkapsling" />
+      <xsd:element name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element minOccurs="0" name="type" type="InntektOgFradragIGrunnrenteMedInnkapsling" />
-      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element name="type" type="InntektOgFradragIGrunnrenteMedInnkapsling" />
+      <xsd:element name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVindkraftverk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element minOccurs="0" name="type" type="GrunnlagIBeregningAvSelskapsskattMedInnkapsling" />
-      <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element name="type" type="GrunnlagIBeregningAvSelskapsskattMedInnkapsling" />
+      <xsd:element name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Landkode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_aktiveLandkoder.xml">
