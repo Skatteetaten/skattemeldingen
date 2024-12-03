@@ -111,27 +111,28 @@ eksisterende løsninger.
 
 ## Oppsummering API endepunkt <a name="table-of-requests">
 
-| TYPE | API path                                                                                                                                                     | Virkshomhetssertifikat |
-|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                             | Ja                     |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                       | Ja                     |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)        | Ja                     |
-| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                   | Ja                     |
-| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                     | Nei                    |
-| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                             | Planlagt               |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                   | Nei                    |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf](#user-content-hentGjeldendeFastsettingPdf)                               | Nei                    |
-| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                               | Ja                     |
-| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                 | Ja                     |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                         | Ja                     |
-| POST | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#user-content-avregning)                                                          | Nei                    |
-| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiIkkeUtiledNaeringseiendom)                    | Ja                     |
-| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#user-content-lagret-skattemelding-for-visning-personlig)                           | Nei                    |
+| TYPE | API path                                                                                                                                                       | Virkshomhetssertifikat |
+|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
+| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                               | Ja                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                         | Ja                     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)          | Ja                     |
+| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                     | Ja                     |
+| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                       | Nei                    |
+| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                               | Planlagt               |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                     | Nei                    |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf](#user-content-hentGjeldendeFastsettingPdf)                                 | Nei                    |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                                 | Ja                     |
+| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                  | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                   | Ja                     |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                           | Ja                     |
+| POST | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#user-content-avregning)                                                            | Nei                    |
+| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiIkkeUtiledNaeringseiendom)                      | Ja                     |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#user-content-lagret-skattemelding-for-visning-personlig)                             | Nei                    |
 | POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#user-content-lagret-skattemelding-for-visning-upersonlig) | Nei                    |
-| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-for-forhaandsfastsetting)               | Nei                    |
-| POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-som-mangler-utkast)                                     | Nei                    |
-| POST | [/api/skattemelding/v2/utsattfristsoeknad/\<identifikator\>](#utsattfrist-skattemeldingen)                                                          | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-for-forhaandsfastsetting)                 | Nei                    |
+| POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-som-mangler-utkast)                                       | Nei                    |
+| POST | [/api/skattemelding/v2/utsattfristsoeknad/bulk/\<identifikator\>](#utsattfrist-bulk-skattemeldingen)                                                           | Nei                    |
+| POST | [/api/skattemelding/v2/utsattfristsoeknad/\<identifikator\>](#utsattfrist-skattemeldingen)                                                                     
 
 | Miljø                             | Adresse                      | Påloggingsmetode      |
 |-----------------------------------|------------------------------|-----------------------|
@@ -1350,15 +1351,62 @@ Det API'et støttes kun for enhetstyper som skal levere skattemelding upersonlig
 
 
 
-
-# Søknad om utsatt frist for skattemeldingen <a name="utsattfrist-skattemeldingen"></a> [[back up]](#user-content-table-of-requests)
-Tjeneste for å søke om utsatt frist for levering av skattemeldingen. Tjenesten retunerer kun svar om at søknad er mottatt. 
-Denne tjenesten returnerer ikke informasjon om ny frist ble innvilget. Du kan søke om utsettelse på vegne av inntil 10 prosent av klientmassen.
+# Søknad om utsatt frist for skattemeldingen for en skattepliktig <a name="utsattfrist-skattemeldingen"></a> [[back up]](#user-content-table-of-requests)
+Tjeneste for å søke om utsatt frist for en skattepliktige for levering av skattemeldingen. Tjenesten retunerer ny frist som er innvilget.
+Du kan søke om utsettelse på vegne av inntil 10 prosent av klientmassen.
 
 **Swagger dokumentasjon for API**
 - https://app.swaggerhub.com/apis/skatteetaten/utsattfrist-mottak_api/0.0.1
 
 **URL** `POST https://<env>/api/skattemelding/v2/utsattfristsoeknad/<identifikator>`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse.`
+- `<identifikator>: Identifikator til skattepliktig. Et fødselsnummer/dnummer eller et organisasjonsnummer må være satt.`
+
+**Eks på request body**
+
+```json
+{
+  "referanse": "Unik referanse fra innsender systemet",
+  "klient": 
+    {
+      "identifikator": {
+        "foedselsnummer": "12345678901"
+      },
+      "naering": false,
+      "navn": "Per Nordmann",
+      "epost": "per@nordmann.no"
+    }
+}
+```
+
+**Eks på Http 200 response**
+```json
+{
+  "gjeldendeInntektsaar":2024,
+  "innsender":"<identifikator>",
+  "klient":"<identifikator>",
+  "frist": "2024-01-01"
+}
+```
+
+**Http response koder**
+- Http 200  Innsending OK.
+- Http 403  Ikke tilgang. Dette blir også sendt i den perioden av året hvor tjenesten er stengt.
+- Http 4xx  En 400 feiltype ved innsendingsfeil
+- Http 5xx  En 500 feiltype ved intern feil
+
+
+# Bulk søknad om utsatt frist for skattemeldingen <a name="utsattfrist-bulk-skattemeldingen"></a> [[back up]](#user-content-table-of-requests)
+Tjeneste for å søke om utsatt frist for flere skattepliktige for levering av skattemeldingen. Tjenesten retunerer kun svar om at søknadene er mottatt. 
+Denne tjenesten returnerer ikke informasjon om ny frist ble innvilget. Du kan søke om utsettelse på vegne av inntil 10 prosent av klientmassen.
+
+**Swagger dokumentasjon for API**
+- https://app.swaggerhub.com/apis/skatteetaten/utsattfrist-mottak_api/0.0.1
+
+**URL** `POST https://<env>/api/skattemelding/v2/utsattfristsoeknad/bulk/<identifikator>`
 
 **Forespørsel** :
 
@@ -1406,7 +1454,6 @@ Denne tjenesten returnerer ikke informasjon om ny frist ble innvilget. Du kan s�
 - Http 403  Ikke tilgang. Dette blir også sendt i den perioden av året hvor tjenesten er stengt.
 - Http 4xx  En 400 feiltype ved innsendingsfeil
 - Http 5xx  En 500 feiltype ved intern feil
-
 
 # Altinn3-API
 
