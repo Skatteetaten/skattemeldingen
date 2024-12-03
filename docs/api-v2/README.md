@@ -132,7 +132,7 @@ eksisterende løsninger.
 | POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-for-forhaandsfastsetting)                 | Nei                    |
 | POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-som-mangler-utkast)                                       | Nei                    |
 | POST | [/api/skattemelding/v2/utsattfristsoeknad/bulk/\<identifikator\>](#utsattfrist-bulk-skattemeldingen)                                                           | Nei                    |
-| POST | [/api/skattemelding/v2/utsattfristsoeknad/\<identifikator\>](#utsattfrist-skattemeldingen)                                                                     
+| POST | [/api/skattemelding/v2/utsattfristsoeknad/\<identifikator\>](#utsattfrist-skattemeldingen)                                                                     | Nei                    |
 
 | Miljø                             | Adresse                      | Påloggingsmetode      |
 |-----------------------------------|------------------------------|-----------------------|
