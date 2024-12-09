@@ -1381,14 +1381,25 @@ Du kan søke om utsettelse på vegne av inntil 10 prosent av klientmassen.
     }
 }
 ```
-
-**Eks på Http 200 response**
+**Eks på Http 200 response med ny frist**
 ```json
 {
   "gjeldendeInntektsaar":2024,
   "innsender":"<identifikator>",
   "klient":"<identifikator>",
-  "frist": "2024-01-01"
+  "frist": "2024-01-01",
+  "beskrivelse": null
+}
+```
+
+**Eks på Http 200 response med ingen endring**
+```json
+{
+  "gjeldendeInntektsaar":2024,
+  "innsender":"<identifikator>",
+  "klient":"<identifikator>",
+  "frist": null,
+  "beskrivelse": "Ingen endring ble gjort for innsendt skattepliktig."
 }
 ```
 
