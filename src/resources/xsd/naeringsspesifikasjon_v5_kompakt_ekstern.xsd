@@ -211,6 +211,7 @@
   <xsd:complexType name="Skogbruk">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogOgToemmerkonto" type="SkogOgToemmerkonto" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogfondForSelskap" type="Skogfond"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Vedlegg">
@@ -1773,7 +1774,8 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="samletAarsproduksjon" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletMedgaattPumpekraft" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletGrunnlagForNaturressursskatt" skatt:erAvledet="true" type="DesimaltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="korrigeringAvGrunnlagForNaturressursskatt" type="KiloWattimeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="samletGrunnlagForNaturressursskatt" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskattPerInntektsaar" type="GrunnlagForNaturressursskattPerInntektsaar" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskattPerKommune" type="GrunnlagForNaturressursskattPerKommune" />
     </xsd:sequence>
@@ -2134,13 +2136,6 @@
   <xsd:complexType name="KiloWattimeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="kiloWattime" type="KiloWattime" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="DesimaltallMedOverstyring">
-    <xsd:sequence>
-      <xsd:element name="desimaltall" type="DesimaltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="desimaltallFoerOverstyring" type="Desimaltall" />
-      <xsd:element minOccurs="0" name="erOverstyrt" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForNaturressursskattPerInntektsaar">

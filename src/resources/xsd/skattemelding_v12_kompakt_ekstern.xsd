@@ -2831,7 +2831,7 @@
           <xsd:element minOccurs="0" name="konsekvensAvFordelingsmetodeVedDobbeltbeskatningEtterSkatteavtale" type="KonsekvensAvFordelingsmetodeVedDobbeltbeskatningEtterSkatteavtale" />
           <xsd:element minOccurs="0" name="andelAvFormuesverdi" type="ProsentMedInnkapsling" />
           <xsd:element minOccurs="0" name="formuesverdiPerEiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattPerEiendom" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattPerEiendom" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall" />
           <xsd:element minOccurs="0" name="andelAvFormuesverdiOmfattetAvSkattefrihetForEngangserstatningTilBarn" type="BeloepSomHeltallMedInnkapsling" />
