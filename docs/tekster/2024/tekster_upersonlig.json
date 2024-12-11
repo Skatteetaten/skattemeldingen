@@ -72,6 +72,18 @@
     "hjelpetekst_en": "State the organisation number for each of the companies in the Norwegian part of the group at the end of the income year, unless another enterprise has provided this information."
   },
   {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.beregningsgrunnlagForRentefradragsramme.andelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap.beloepSomHeltall",
+    "tekst_nb": "Herav andel av mottatt konsernbidrag som er avgitt til andre selskap"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.beregningsgrunnlagForRentefradragsramme.avgittKonsernbidragPerMotpart.beloep.beloepSomHeltall",
+    "tekst_nb": "Beløp"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.beregningsgrunnlagForRentefradragsramme.avgittKonsernbidragPerMotpart.motpartensIdentifikator.organisasjonsnummer",
+    "tekst_nb": "Motpartens identifikator"
+  },
+  {
     "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.beregningsgrunnlagForRentefradragsramme.direkteInntektsfoertVederlagForAvskrevetAnleggsmiddel.beloepSomHeltall",
     "tekst_nn": "Direkte inntektsført vederlag",
     "tekst_nb": "Direkte inntektsført vederlag",
@@ -96,6 +108,14 @@
     "tekst_en": "Calculation basis for interest deduction limitation"
   },
   {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.beregningsgrunnlagForRentefradragsramme.mottattKonsernbidragPerMotpart.beloep.beloepSomHeltall",
+    "tekst_nb": "Beløp"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.beregningsgrunnlagForRentefradragsramme.mottattKonsernbidragPerMotpart.motpartensIdentifikator.organisasjonsnummer",
+    "tekst_nb": "Motpartens identifikator"
+  },
+  {
     "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.beregningsgrunnlagForRentefradragsramme.periodisertLeiekostnad.beloepSomHeltall",
     "tekst_nn": "Periodisert leigekostnad",
     "tekst_nb": "Periodisert leiekostnad",
@@ -103,6 +123,10 @@
     "hjelpetekst_nn": "<p>Legg inn kostnadsfordeling som inngår i sum lineære avskrivingar. Eit døme på dette er periodisert leigekostnad ved påkosting av leigde bygg. </p><p>Bakgrunnen for de må oppgi beløpet er at kostnadsfordelinga ikkje blir rekna som skattemessig avskriving, og skal derfor ikkje auke berekningsgrunnlaget for rentefrådragsramma.</p>",
     "hjelpetekst_nb": "<p>Legg inn kostnadsfordeling som inngår i sum lineære avskrivninger. Eksempel på dette er periodisert leiekostnad ved påkostning på leide bygg. </p><p>Bakgrunnen for at beløpet skal oppgis, er at kostnadsfordelingen ikke anses som skattemessig avskrivning og derfor ikke skal øke beregningsgrunnlaget for rentefradragsrammen.</p>",
     "hjelpetekst_en": "<p>Enter the cost distribution that is included in the total straight-line depreciations. An example of this is the accrued rental cost related to the upgrade of a rented building. </p><p>The basis for providing the amount, is that the cost distribution is not considered depreciation for tax purposes, and it should therefore not increase the calculation basis for the interest deduction limitation.</p>"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.beregningsgrunnlagForRentefradragsramme.samletMottattKonsernbidrag.beloepSomHeltall",
+    "tekst_nb": "Samlet mottatt konsernbidrag"
   },
   {
     "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.beregningsgrunnlagForRentefradragsramme.tilleggForSkattemessigAvskrivning.beloepSomHeltall",
@@ -697,6 +721,74 @@
     "hjelpetekst_nn": "<p>Oppgi namnet på det øvste føretaket i konsernet (globalt) som året før inntektsåret<ul><li>har utarbeidd konsernrekneskap der selskapet er konsolidert inn, eller </li><li>kunne ha utarbeidd ein konsernrekneskap etter IFRS der selskapet kan konsoliderast inn</li></ul></p>",
     "hjelpetekst_nb": "<p>Oppgi navn på øverste foretak i konsernet (globalt) som året før inntektsåret<ul><li>har utarbeidet konsernregnskap der selskapet er konsolidert inn, eller </li><li>kunne ha utarbeidet et konsernregnskap etter IFRS der selskapet kan konsolideres inn</li></ul></p>",
     "hjelpetekst_en": "<p>State the name of the top enterprise in the group (globally) that, in the year before the income year,<ul><li>prepared the consolidated financial statement into which the company has been consolidated, or </li><li>could have prepared a consolidated financial statement according to IFRS into which the company can be consolidated</li></ul></p>"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.annetForetakSomRapportererPaaVegneAvKonsern.identifikator.identifikator",
+    "tekst_nb": "Identifikator til foretak som rapporterer på vegne av selskapet"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.annetForetakSomRapportererPaaVegneAvKonsern.landkode.landkode",
+    "tekst_nb": "Landkoden til foretak som rapporterer på vegne av selskapet"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.annetForetakSomRapportererPaaVegneAvKonsern.navn.organisasjonsnavn",
+    "tekst_nb": "Navn på foretak som rapporterer på vegne av selskapet"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.harSelskapetMottattKonsernbidragMedSkatteeffektDirekteEllerIndirekteFraSelskapSomErUnntattRentebegrensningsgregelEllerBenytterUnntaksregel.boolsk",
+    "tekst_nb": "Har selskapet mottatt konsernbidrag med skatteeffekt direkte eller indirekte fra selskap som er unntatt rentebegrensning eller benytter unntaksregel?"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.selskapErInkludertIAnnenInnrapportering.boolsk",
+    "tekst_nb": "Har et annet foretak rapportert på vegne av selskapet?"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.aarsakTilAtAvgivendeSelskapErUnntattRentebegrensning.aarsakstype",
+    "tekst_nb": "Årsak til at avgivende selskap er unntatt rentebegrensning"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.konsernbidragPerTransaksjon.avgivendeSelskap.identifikator.identifikator",
+    "tekst_nb": "Identifikator til avgivende selskap"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.konsernbidragPerTransaksjon.avgivendeSelskap.landkode.landkode",
+    "tekst_nb": "Landkoden til avgivende selskap"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.konsernbidragPerTransaksjon.avgivendeSelskap.navn.organisasjonsnavn",
+    "tekst_nb": "Navn på avgivende selskap"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.konsernbidragPerTransaksjon.mottakendeSelskap.identifikator.identifikator",
+    "tekst_nb": "Identifikator til mottakende selskap"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.konsernbidragPerTransaksjon.mottakendeSelskap.landkode.landkode",
+    "tekst_nb": "Landkoden til mottakende selskap"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.konsernbidragPerTransaksjon.mottakendeSelskap.navn.organisasjonsnavn",
+    "tekst_nb": "Navn på mottakende selskap"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.konsernbidragPerTransaksjon.transaksjonsbeloep.beloepSomHeltall",
+    "tekst_nb": "Beløp"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.konsernbidragskjedeidentifikator.tekst",
+    "tekst_nb": "Konsernbidragskjedeidentifikator"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.opprinneligAvgivendeSelskap.identifikator.identifikator",
+    "tekst_nb": "Identifikator til opprinnelig avgivende selskap"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.opprinneligAvgivendeSelskap.landkode.landkode",
+    "tekst_nb": "Landkoden til opprinnelig avgivende selskap"
+  },
+  {
+    "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.opplysningerOmKonsernbidragMedSkatteeffektSomErUnntattRentebegrensning.spesifikasjonAvKonsernbidragskjede.opprinneligAvgivendeSelskap.navn.organisasjonsnavn",
+    "tekst_nb": "Navn på opprinnelig avgivende selskap"
   },
   {
     "skattemeldingSti": "begrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentebegrensning.rentefradragTilFremfoeringIInntektsaaret.fremfoerbartRentefradragIInntekt.beloepSomHeltall",
@@ -2193,133 +2285,88 @@
     "hjelpetekst_en": "<p>Your share of the company's positive net wealth.</p><p>NOKUS: If you are a partner in a NOKUS, you enter the taxable value of the shares in the NOKUS. State the gross values before deducting the valuation discount. For listed NOKUS companies, use the exchange rate on 1 January in the year after the income year. For non-listed NOKUS companies, the taxable value must be the presumed sales value as at 1 January in the year after the income year. For non-listed shares, personal partners may use the calculated taxable value for the NOKUS as at 31 December in the year before the income year. Partnerships must use the share of the taxable value in the NOKUS as at 31 December in the income year.</p>"
   },
   {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.andelAvBunnfradrag.andelAvMaksimaltTillattBiomasse.prosent",
+    "tekst_nb": "Selskapets andel av maksimal tillatt biomasse før bunnfradrag ",
+    "hjelpetekst_nb": "Selskapet oppgir sin andel av samlet maksimal tillatt biomasse for alle selskapene som inngår i fordelingen av bunnfradraget. Andelen skal samsvare med det enkelte selskaps maksimalt tillatte biomasse."
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.andelAvBunnfradrag.bunnfradrag.beloepSomHeltall",
+    "tekst_nb": "Selskapets andel av bunnfradrag",
+    "hjelpetekst_nb": "<p>Positiv grunnrenteinntekt reduseres med et bunnfradrag. Reduksjonen skjer etter eventuell samordning av grunnrenteinntekt i konsern. For inntektsåret 2024 er bunnfradraget fastsatt til 70 millioner kroner. Ved beregning av grunnrenteinntekten skal bunnfradraget nedjusteres med skattesatsen for alminnelig inntekt, og utgjør for inntektsåret 2024 54,6 millioner kroner. Bunnfradraget kan kun trekkes fra i positiv grunnrenteinntekt.</p><p>Bunnfradraget kan bare komme til fradrag én gang på konsernnivå. Se utvidet konserndefinisjon i skatteloven § 19-3. Bunnfradraget fordeles forholdsmessig, ut fra maksimalt tillatt biomasse per selskap. Ubenyttet bunnfradrag kan ikke fremføres til senere inntektsår. Ubenyttet bunnfradrag i ett selskap kan heller ikke overføres eller samordnes med et annet selskap i konsernet.</p>"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.andelAvBunnfradrag.maksimaltTillattBiomasse.antall",
+    "tekst_nb": "Selskapets maksimale tillatte biomasse"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.andelAvBunnfradrag.selskapSomDelerBunnfradrag.organisasjonsnummer.organisasjonsnummer",
+    "tekst_nb": "Selskapets organisasjonsnummer"
+  },
+  {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.beregnetGrunnrenteskattFoerProduksjonsavgift.beloepSomHeltall",
-    "tekst_nn": "Berekna grunnrenteskatt før produksjonsavgift",
-    "tekst_nb": "Beregnet grunnrenteskatt før produksjonsavgift",
-    "tekst_en": "Calculated resource rent tax before production fee"
+    "tekst_nb": "Beregnet grunnrenteskatt før produksjonsavgift"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.endeligSamordnetNegativGrunnrenteinntekt.beloepSomHeltall",
-    "tekst_nn": "Samordna negativ grunnrenteinntekt",
-    "tekst_nb": "Samordnet negativ grunnrenteinntekt",
-    "tekst_en": "Coordinated negative resource rent income",
-    "hjelpetekst_nn": "Selskapet kan framføre negativ grunnrenteinntekt etter samordning til frådrag i grunnrenteinntekta for seinare år. Negativ grunnrenteinntekt skal framførast med rente fastsett i forskrift. De kan krevje negativ grunnrenteinntekt utbetalt i samband med opphøyr av grunnrenteskattepliktig verksemd.",
-    "hjelpetekst_nb": "Selskapet kan framføre negativ grunnrenteinntekt etter samordning til fradrag i senere års grunnrenteinntekt. Negativ grunnrenteinntekt fremføres med rente fastsatt i forskrift. Negativ grunnrenteinntekt kan kreves utbetalt i forbindelse med opphør av grunnrenteskattepliktig virksomhet.",
-    "hjelpetekst_en": "The company can carry forward negative resource rent income after coordination to be deducted in later years’ resource rent income. Negative resource rent income is carried forward with interest as determined in the regulation. The company can claim to have negative resource rent income paid out in connection with discontinuation of activities subject to resource rent tax."
+    "tekst_nb": "Samordnet negativ grunnrenteinntekt"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.endeligSamordnetPositivGrunnrenteinntekt.beloepSomHeltall",
-    "tekst_nn": "Samordna positiv grunnrenteinntekt",
-    "tekst_nb": "Samordnet positiv grunnrenteinntekt",
-    "tekst_en": "Coordinated positive resource rent income"
+    "tekst_nb": "Samordnet positiv grunnrenteinntekt"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag.beloepSomHeltall",
-    "tekst_nn": "Samordna positiv grunnrenteinntekt før botnfrådrag",
-    "tekst_nb": "Samordnet positiv grunnrenteinntekt før bunnfradrag",
-    "tekst_en": "Coordinated positive resource rent income before base deduction"
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.forholdSomPaavirkerGrunnrenteskattKnyttetTilSelskapISammeKonsern.andelAvMaksimalTillattBiomasse.prosent",
-    "tekst_nn": "Selskapet sin andel av maksimal tillaten biomasse før botnfrådrag",
-    "tekst_nb": "Selskapets andel av maksimal tillatt biomasse før bunnfradrag ",
-    "tekst_en": "The company’s share of maximum allowed biomass before base deduction",
-    "hjelpetekst_nn": "Selskapet oppgir sin andel av samla maksimal tillaten biomasse for alle selskapa som inngår i fordelinga av botnfrådraget. Andelen skal samsvare med det enkelte selskapet si maksimalt tillatne biomasse.",
-    "hjelpetekst_nb": "Selskapet oppgir sin andel av samlet maksimal tillatt biomasse for alle selskapene som inngår i fordelingen av bunnfradraget. Andelen skal samsvare med det enkelte selskaps maksimalt tillatte biomasse.",
-    "hjelpetekst_en": "The company states its share of the total maximum allowed biomass for all companies that are included in the allocation of the base deduction. The share must correspond to the company’s own maximum allowed biomass. "
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.forholdSomPaavirkerGrunnrenteskattKnyttetTilSelskapISammeKonsern.avgittGrunnrenteinntekt.beloepSomHeltall",
-    "tekst_nn": "Grunnrenteinntekt gitt til anna selskap",
-    "tekst_nb": "Avgitt grunnrenteinntekt til annet selskap",
-    "tekst_en": "Granted resource rent income to another company",
-    "hjelpetekst_nn": "Dersom selskapet har gitt grunnrenteinntekt til eit anna selskap i konsernet, oppgir de beløpet her. Oppgi også informasjon om selskapet som har mottatt grunnrenteinntekta.",
-    "hjelpetekst_nb": "Dersom selskapet har avgitt grunnrenteinntekt til et annet selskap i konsernet, oppgis beløpet her. Oppgi også informasjon om selskapet som har mottatt grunnrenteinntekten.",
-    "hjelpetekst_en": "If the company has granted resource rent income to another company in the group, the amount is entered here. You must also provide information about the company that has received the resource rent income."
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.forholdSomPaavirkerGrunnrenteskattKnyttetTilSelskapISammeKonsern.avgittProduksjonsavgift.beloepSomHeltall",
-    "tekst_nn": "Produksjonsavgift gitt til anna selskap",
-    "tekst_nb": "Avgitt produksjonsavgift til annet selskap",
-    "tekst_en": "Granted production fee to another company",
-    "hjelpetekst_nn": "Dersom selskapet har gitt produksjonsavgift til eit anna konsernselskap, oppgir de beløpet her. Oppgi også informasjon om selskapet som har mottatt produksjonsavgifta.",
-    "hjelpetekst_nb": "Dersom selskapet har avgitt produksjonsavgift til et annet konsernselskap oppgis beløpet her. Oppgi også informasjon om selskapet som har mottatt produksjonsavgiften.",
-    "hjelpetekst_en": "If the company has granted a production fee to another company in the group, the amount is entered here. You must also provide information about the company that has received the production fee."
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.forholdSomPaavirkerGrunnrenteskattKnyttetTilSelskapISammeKonsern.bunnfradrag.beloepSomHeltall",
-    "tekst_nn": "Selskapet sin andel av botnfrådrag",
-    "tekst_nb": "Selskapets andel av bunnfradrag",
-    "tekst_en": "The company’s share of base deduction",
-    "hjelpetekst_nn": "<p>Positiv grunnrenteinntekt blir redusert med eit botnfrådrag. Reduksjonen skjer etter eventuell samordning av grunnrenteinntekt i konsernet. For inntektsåret 2024 er botnfrådraget fastsett til 70 millionar kroner. Ved berekning av grunnrenteinntekta skal botnfrådraget nedjusterast med skattesatsen for alminneleg inntekt, og utgjer for inntektsåret 2024 54,6 millionar kroner. Botnfrådraget kan berre trekkjast frå i positiv grunnrenteinntekt.</p><p>Botnfrådraget kan berre komme til frådrag éin gong på konsernnivå. Sjå utvida konserndefinisjon i skattelova § 19-3. Botnfrådraget skal fordelast forholdsmessig, ut frå maksimalt tillaten biomasse per selskap. Ubrukt botnfrådrag kan ikkje framførast til seinare inntektsår. Ubrukt botnfrådrag i eitt selskap kan heller ikkje overførast eller samordnast med eit anna selskap i konsernet.</p>",
-    "hjelpetekst_nb": "<p>Positiv grunnrenteinntekt reduseres med et bunnfradrag. Reduksjonen skjer etter eventuell samordning av grunnrenteinntekt i konsern. For inntektsåret 2024 er bunnfradraget fastsatt til 70 millioner kroner. Ved beregning av grunnrenteinntekten skal bunnfradraget nedjusteres med skattesatsen for alminnelig inntekt, og utgjør for inntektsåret 2024 54,6 millioner kroner. Bunnfradraget kan kun trekkes fra i positiv grunnrenteinntekt.</p><p>Bunnfradraget kan bare komme til fradrag én gang på konsernnivå. Se utvidet konserndefinisjon i skatteloven § 19-3. Bunnfradraget fordeles forholdsmessig, ut fra maksimalt tillatt biomasse per selskap. Ubenyttet bunnfradrag kan ikke fremføres til senere inntektsår. Ubenyttet bunnfradrag i ett selskap kan heller ikke overføres eller samordnes med et annet selskap i konsernet.</p>",
-    "hjelpetekst_en": "<p>Positive resource rent income is reduced with a base deduction. The reduction happens after any coordination of resource rent income in groups. For the income year 2024, the base deduction is assessed to NOK 70 million. When calculating resource rent income, the base deduction must be adjusted downwards with the tax rate for general income, which amounts to NOK 54.6 million for the income year 2024. The base deduction can only be deducted from positive resource rent income.</p><p>The base deduction can only be deducted once on group level. See an extended definition of groups in section 19-3 of the Taxation Act. The base deduction is allocated proportionally based on the maximum allowed biomass per company. An unused base deduction cannot be carried forward to later years. Nor can an unused base deduction in one company be transferred to or coordinated with another company in the group.</p>"
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.forholdSomPaavirkerGrunnrenteskattKnyttetTilSelskapISammeKonsern.egenProduksjonsavgift.beloepSomHeltall",
-    "tekst_nn": "Eiga produksjonsavgift",
-    "tekst_nb": "Egen produksjonsavgift",
-    "tekst_en": "Own production fee",
-    "hjelpetekst_nn": "<p>Selskapet kan krevje fråtrekk i grunnrenteskatt for produksjonsavgift på produksjon av fisk fastsett etter særavgiftslova. Grunnrenteskatten kan ikkje bli negativ som følgje av produksjonsavgifta. Produksjonsavgift som ikkje er frådragsført, kan de ikkje krevje fråtrekt i eit framtidig inntektsår. For grunnrenteskattepliktige kan produksjonsavgifta ikkje trekkjast frå i alminneleg inntekt. </p><p>Ubrukt produksjonsavgift kan overførast mellom selskap i konsern. Overføringsretten gjeld aksjeselskap og likestilte selskap og samanslutningar som er omfatta av reglane i skattelova kapittel 19. Vilkåra i skattelova § 10-4 for å yte og motta konsernbidrag må vere oppfylte. Ubrukt produksjonsavgift til fråtrekk i fastsett grunnrenteinntekt i eit selskap i eit konsern kan berre komme til fråtrekk i fastsett grunnrenteskatt i eit anna selskap i konsernet.</p>",
-    "hjelpetekst_nb": "<p>Selskapet kan kreve fratrekk i grunnrenteskatt for produksjonsavgift på produksjon av fisk fastsatt etter særavgiftsloven. Grunnrenteskatten kan ikke bli negativ som følge av produksjonsavgiften. Produksjonsavgift som ikke er fradragsført, kan ikke kreves fratrukket i et fremtidig inntektsår. For grunnrenteskattepliktige kan produksjonsavgiften ikke trekkes fra i alminnelig inntekt. </p><p>Ubenyttet produksjonsavgift kan overføres mellom selskap i konsern. Overføringsretten gjelder aksjeselskap samt likestilt selskap og sammenslutning som er omfattet av reglene i skatteloven kapittel 19. Vilkårene i skatteloven § 10-4 for å yte og motta konsernbidrag må være oppfylt. Ubenyttet produksjonsavgift til fratrekk i fastsatt grunnrenteinntekt i et selskap i et konsern kan bare komme til fratrekk i fastsatt grunnrenteskatt i et annet selskap i konsernet.</p> ",
-    "hjelpetekst_en": "<p>The company can claim deductions in the resource rent tax for production fees on the production of fish, assessed according to the Excise Tax Act. The resource rent tax cannot be negative as the result of deducting a production fee. A production fee that has not been deducted cannot be deducted in a future income year. For taxpayers liable for resource rent tax, the production fee cannot be deducted from the ordinary income. </p><p>An unused production fee can be transferred between companies in a group. The transfer right applies to private limited companies and equivalent companies and organisations that are comprised by the rules in chapter 19 of the Taxation Act. The conditions set out in section 10-4 of the Taxation Act to grant and receive group contributions must be fulfilled. An unused production fee in a company in a group is only deductible in the assessed resource rent tax of another company in the group.</p>"
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.forholdSomPaavirkerGrunnrenteskattKnyttetTilSelskapISammeKonsern.maksimaltTillattBiomasse.antall",
-    "tekst_nn": "Selskapet si maksimale tillatne biomasse",
-    "tekst_nb": "Selskapets maksimale tillatte biomasse",
-    "tekst_en": "The company’s maximum allowed biomass"
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.forholdSomPaavirkerGrunnrenteskattKnyttetTilSelskapISammeKonsern.mottattGrunnrenteinntekt.beloepSomHeltall",
-    "tekst_nn": "Mottatt grunnrenteinntekt frå anna selskap",
-    "tekst_nb": "Mottatt grunnrenteinntekt fra annet selskap",
-    "tekst_en": "Received resource rent income from another company",
-    "hjelpetekst_nn": "Dersom selskapet har mottatt grunnrenteinntekt frå eit anna selskap i konsernet, oppgir de beløpet her. Oppgi også informasjon om selskapet som har gitt grunnrenteinntekta.",
-    "hjelpetekst_nb": "Dersom selskapet har mottatt grunnrenteinntekt fra et annet selskap i konsernet, oppgis beløpet her. Oppgi også informasjon om selskapet som har avgitt grunnrenteinntekten.",
-    "hjelpetekst_en": "If the company has received resource rent income from another company in the group, the amount is entered here. You must also provide information about the company that has granted the resource rent income."
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.forholdSomPaavirkerGrunnrenteskattKnyttetTilSelskapISammeKonsern.mottattProduksjonsavgift.beloepSomHeltall",
-    "tekst_nn": "Mottatt produksjonsavgift frå anna selskap",
-    "tekst_nb": "Mottatt produksjonsavgift fra annet selskap",
-    "tekst_en": "Received production fee from another company",
-    "hjelpetekst_nn": "Dersom selskapet krev frådrag for produksjonsavgift i eit anna selskap i konsernet, oppgir de beløpet her. Oppgi også informasjon om selskapet som har gitt produksjonsavgifta.",
-    "hjelpetekst_nb": "Dersom selskapet krever fradrag for produksjonsavgift i et annet selskap i konsernet oppgis beløpet her. Oppgi også informasjon om selskapet som har avgitt produksjonsavgiften.",
-    "hjelpetekst_en": "If the company claims a deduction for a production fee in another company in the group, the amount is entered here. You must also provide information about the company that has transferred the production fee."
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.forholdSomPaavirkerGrunnrenteskattKnyttetTilSelskapISammeKonsern.organisasjonsnummer.organisasjonsnummer",
-    "tekst_nn": "Organisasjonsnummeret til selskapet ",
-    "tekst_nb": "Selskapets organisasjonsnummer",
-    "tekst_en": "The company’s organisation number"
+    "tekst_nb": "Samordnet positiv grunnrenteinntekt før bunnfradrag"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.negativGrunnrenteinntektFoerSamordning.beloepSomHeltall",
-    "tekst_nn": "Negativ grunnrenteinntekt før samordning",
-    "tekst_nb": "Negativ grunnrenteinntekt før samordning",
-    "tekst_en": "Negative resource rent income before coordination"
+    "tekst_nb": "Negativ grunnrenteinntekt før samordning"
   },
   {
-    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.negativGrunnrenteskattVedRealisasjonEllerOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet.beloepSomHeltall",
-    "tekst_nn": "Negativ grunnrenteskatt ved opphøyr",
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.negativGrunnrenteskattVedOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet.beloepSomHeltall",
     "tekst_nb": "Negativ grunnrenteskatt ved opphør",
-    "tekst_en": "Negative resource rent tax upon discontinuation",
-    "hjelpetekst_nn": "De kan krevje skatteverdien av negativ grunnrenteinntekt utbetalt ved opphøyr. De kan ikkje krevje utbetaling i andre tilfelle der det oppstår negativ grunnrenteinntekt. Det er ikkje eit vilkår for utbetaling at negativ grunnrenteinntekt er avrekna mot positiv grunnrenteinntekt frå andre konsernselskap.",
-    "hjelpetekst_nb": "Skatteverdien av negativ grunnrenteinntekt ved opphør kan kreves utbetalt. Utbetaling kan ikke kreves i andre tilfeller hvor det oppstår negativ grunnrenteinntekt. Det er ikke noe vilkår for utbetaling at negativ grunnrenteinntekt er avregnet mot positiv grunnrenteinntekt fra andre konsernselskaper.",
-    "hjelpetekst_en": "The tax value of negative resource rent income upon discontinuation can be claimed as payment. Payments cannot be claimed in other circumstances where negative resource rent income arises. It is not a condition for payment that negative resource rent income is offset against positive resource rent income from other group companies."
+    "hjelpetekst_nb": "Skatteverdien av negativ grunnrenteinntekt ved opphør kan kreves utbetalt. Utbetaling kan ikke kreves i andre tilfeller hvor det oppstår negativ grunnrenteinntekt. Det er ikke noe vilkår for utbetaling at negativ grunnrenteinntekt er avregnet mot positiv grunnrenteinntekt fra andre konsernselskaper."
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.positivGrunnrenteinntektFoerSamordning.beloepSomHeltall",
-    "tekst_nn": "Positiv grunnrenteinntekt før samordning",
-    "tekst_nb": "Positiv grunnrenteinntekt før samordning",
-    "tekst_en": "Positive resource rent income before coordination"
+    "tekst_nb": "Positiv grunnrenteinntekt før samordning"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.positivGrunnrenteskatt.beloepSomHeltall",
-    "tekst_nn": "Grunnrenteskatt",
-    "tekst_nb": "Grunnrenteskatt",
-    "tekst_en": "Resource rent tax"
+    "tekst_nb": "Grunnrenteskatt"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.produksjonsavgiftTilFradragIGrunnrenteskatt.egenProduksjonsavgift.beloepSomHeltall",
+    "tekst_nb": "Egen produksjonsavgift",
+    "hjelpetekst_nb": "<p>Selskapet kan kreve fratrekk i grunnrenteskatt for produksjonsavgift på produksjon av fisk fastsatt etter særavgiftsloven. Grunnrenteskatten kan ikke bli negativ som følge av produksjonsavgiften. Produksjonsavgift som ikke er fradragsført, kan ikke kreves fratrukket i et fremtidig inntektsår. For grunnrenteskattepliktige kan produksjonsavgiften ikke trekkes fra i alminnelig inntekt. </p><p>Ubenyttet produksjonsavgift kan overføres mellom selskap i konsern. Overføringsretten gjelder aksjeselskap samt likestilt selskap og sammenslutning som er omfattet av reglene i skatteloven kapittel 19. Vilkårene i skatteloven § 10-4 for å yte og motta konsernbidrag må være oppfylt. Ubenyttet produksjonsavgift til fratrekk i fastsatt grunnrenteinntekt i et selskap i et konsern kan bare komme til fratrekk i fastsatt grunnrenteskatt i et annet selskap i konsernet.</p> "
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.produksjonsavgiftTilFradragIGrunnrenteskatt.selskapSomDelerProduksjonsavgift.avgittProduksjonsavgift.beloepSomHeltall",
+    "tekst_nb": "Avgitt produksjonsavgift til annet selskap",
+    "hjelpetekst_nb": "Dersom selskapet har avgitt produksjonsavgift til et annet konsernselskap oppgis beløpet her. Oppgi også informasjon om selskapet som har mottatt produksjonsavgiften."
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.produksjonsavgiftTilFradragIGrunnrenteskatt.selskapSomDelerProduksjonsavgift.mottattProduksjonsavgift.beloepSomHeltall",
+    "tekst_nb": "Mottatt produksjonsavgift fra annet selskap",
+    "hjelpetekst_nb": "Dersom selskapet krever fradrag for produksjonsavgift i et annet selskap i konsernet oppgis beløpet her. Oppgi også informasjon om selskapet som har avgitt produksjonsavgiften."
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.produksjonsavgiftTilFradragIGrunnrenteskatt.selskapSomDelerProduksjonsavgift.organisasjonsnummer.organisasjonsnummer",
+    "tekst_nb": "Selskapets organisasjonsnummer"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.samordningAvGrunnrenteinntekt.avgittGrunnrenteinntekt.beloepSomHeltall",
+    "tekst_nb": "Avgitt grunnrenteinntekt til annet selskap",
+    "hjelpetekst_nb": "Dersom selskapet har avgitt grunnrenteinntekt til et annet selskap i konsernet, oppgis beløpet her. Oppgi også informasjon om selskapet som har mottatt grunnrenteinntekten."
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.samordningAvGrunnrenteinntekt.mottattGrunnrenteinntekt.beloepSomHeltall",
+    "tekst_nb": "Mottatt grunnrenteinntekt fra annet selskap",
+    "hjelpetekst_nb": "Dersom selskapet har mottatt grunnrenteinntekt fra et annet selskap i konsernet, oppgis beløpet her. Oppgi også informasjon om selskapet som har avgitt grunnrenteinntekten."
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.samordningAvGrunnrenteinntekt.organisasjonsnummer.organisasjonsnummer",
+    "tekst_nb": "Selskapets organisasjonsnummer"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar.beloepSomHeltall",
@@ -2329,87 +2376,66 @@
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.datoForOverdragelse.dato",
-    "tekst_nn": "Dato for overdraging",
-    "tekst_nb": "Dato for overdragelse",
-    "tekst_en": "Date of change of ownership"
+    "tekst_nb": "Dato for overdragelse"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.motpartensIdentifikator.organisasjonsnummer",
-    "tekst_nn": "Motparten sin identifikator",
     "tekst_nb": "Motpartens identifikator",
-    "tekst_en": "Identifier of counterparty",
-    "hjelpetekst_nn": "Motparten sin identifikator er organisasjonsnummeret.",
-    "hjelpetekst_nb": "Motpartens identifikator er organisasjonsnummeret.",
-    "hjelpetekst_en": "The identifier of the counterparty is the organisation number."
+    "hjelpetekst_nb": "Motpartens identifikator er organisasjonsnummeret."
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.motpartensNavn.organisasjonsnavn",
-    "tekst_nn": "Motparten sitt namn",
-    "tekst_nb": "Motpartens navn",
-    "tekst_en": "Name of counterparty"
+    "tekst_nb": "Motpartens navn"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.overdragelsenErGjennomfoertMedKontinuitet.boolsk",
-    "tekst_nn": "Overdraginga er gjennomført med kontinuitet",
-    "tekst_nb": "Overdragelsen er gjennomført med kontinuitet",
-    "tekst_en": "The transfer is effected in accordance with principles of continuity"
+    "tekst_nb": "Overdragelsen er gjennomført med kontinuitet"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.overdragelsestype.overdragelsestype",
-    "tekst_nn": "Overdragingstype",
-    "tekst_nb": "Overdragelsestype",
-    "tekst_en": "Transfer type"
+    "tekst_nb": "Overdragelsestype"
   },
   {
-    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvProduksjonsenhet.lokalitet.tekst",
-    "tekst_nn": "Lokalitet",
-    "tekst_nb": "Lokalitet",
-    "tekst_en": "Locality",
-    "hjelpetekst_nn": "Her oppgir de lokalitetsnummer.",
-    "hjelpetekst_nb": "Her oppgis lokalitetsnummer.",
-    "hjelpetekst_en": "Here you enter the locality number."
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.alleProduksjonsenheterPaaLokasjonErOmfattetAvGrunnrenteskattepliktigAktivitet.boolsk",
+    "tekst_nb": "Er alle produksjonsenheene på lokasjonen omfattet av grunnrenteskattepliktig aktivitet?"
   },
   {
-    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvProduksjonsenhet.motpartensIdentifikator.organisasjonsnummer",
-    "tekst_nn": "Motparten sin identifikator",
-    "tekst_nb": "Motpartens identifikator",
-    "tekst_en": "Identifier of counterparty",
-    "hjelpetekst_nn": "Motparten sin identifikator er organisasjonsnummeret.",
-    "hjelpetekst_nb": "Motpartens identifikator er organisasjonsnummeret.",
-    "hjelpetekst_en": "The identifier of the counterparty is the organisation number."
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.grunnrenteskattepliktigProduksjonsenhet.periode.slutt.dato",
+    "tekst_nb": "Sluttdato"
   },
   {
-    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvProduksjonsenhet.periode.slutt.dato",
-    "tekst_nn": "Sluttdato for samarbeidsform",
-    "tekst_nb": "Sluttdato for samarbeidsform",
-    "tekst_en": "End date for type of collaboration"
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.grunnrenteskattepliktigProduksjonsenhet.periode.start.dato",
+    "tekst_nb": "Startdato"
   },
   {
-    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvProduksjonsenhet.periode.start.dato",
-    "tekst_nn": "Startdato for samarbeidsform",
-    "tekst_nb": "Startdato for samarbeidsform",
-    "tekst_en": "Start date for type of collaboration"
-  },
-  {
-    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvProduksjonsenhet.produksjonsenhet.tekst",
-    "tekst_nn": "Produksjonseining",
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.grunnrenteskattepliktigProduksjonsenhet.produksjonsenhetsidentifikator.tekst",
     "tekst_nb": "Produksjonsenhet",
-    "tekst_en": "Production unit",
-    "hjelpetekst_nn": "Her oppgir de identifikatoren til produksjonseininga (nummer).",
-    "hjelpetekst_nb": "Her oppgis produksjonsenhetens identifikator (nummer).",
-    "hjelpetekst_en": "Here you enter the production unit’s identifier (number)."
+    "hjelpetekst_nb": "Her oppgis produksjonsenhetens identifikator (nummer)."
   },
   {
-    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvProduksjonsenhet.samarbeidsform.samarbeidsform",
-    "tekst_nn": "Samarbeidsform",
-    "tekst_nb": "Samarbeidsform",
-    "tekst_en": "Form of collaboration"
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.lokalitetsnummer.tekst",
+    "tekst_nb": "Lokalitet",
+    "hjelpetekst_nb": "Her oppgis lokalitetsnummer."
   },
   {
-    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvProduksjonsenhet.samdriftsbroek.prosent",
-    "tekst_nn": "Samdriftsbrøk",
-    "tekst_nb": "Samdriftsbrøk",
-    "tekst_en": "Joint operations fraction"
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.driftsform.samarbeidsform",
+    "tekst_nb": "Driftsform"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.motpartensIdentifikator.organisasjonsnummer",
+    "tekst_nb": "Motpartens identifikator"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.periode.slutt.dato",
+    "tekst_nb": "Sluttdato for samarbeidsform"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.periode.start.dato",
+    "tekst_nb": "Startdato for samarbeidsform"
+  },
+  {
+    "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.samdriftsbroek.prosent",
+    "tekst_nb": "Samdriftsbrøk"
   },
   {
     "skattemeldingSti": "inntektOgUnderskudd.inntekt.mottattKonsernbidrag.mottattKonsernbidragPerAvgiver.avgiversKonserntilknytning.aarsakTilStemmerettsbegrensning.tekst",
@@ -5581,7 +5607,6 @@
     "tekst_nb": "Antall dager i ordningen i inntektsåret",
     "tekst_en": "Number of days in the scheme in the income year",
     "hjelpetekst_nn": "For nystifta selskap, og selskap som er sletta i inntektsåret. Feltet skal brukast ved berekninga av inntektstillegget for høg eigenkapital. For nystifta selskap skal tillegget reduserast forholdsmessig etter talet på dagar selskapet har eksistert i året. Det same gjeld for selskap som er sletta.",
-    "hjelpetekst_nb": "For nystiftede selskap, og selskap som er slettet i inntektsåret. Feltet benyttes ved beregning av inntektstillegg for høy egenkapital. Tillegget reduseres for nystiftede selskap forholdsmessig etter antall dager selskapet har eksistert i året. Det samme gjelder slettet selskap.",
     "hjelpetekst_en": "For newly established companies and companies that are deleted in the income year. The field is used to calculate additional income for high equity. The addition is proportionally reduced for newly established companies according to the number of days the company has existed in the year. The same applies to deleted companies."
   },
   {

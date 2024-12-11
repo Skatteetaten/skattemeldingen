@@ -1326,8 +1326,8 @@
       <xsd:element minOccurs="0" name="grunnrenteomraade" type="GrunnrenteomraadeMedInnkapsling" />
       <xsd:element minOccurs="0" name="behandlingsregelHavbruksvirksomhet" type="BehandlingsregelIHavbruksvirksomhetMedInnkapsling" />
       <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="sumGevinstVedRealisasjonOgUttak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
-      <xsd:element minOccurs="0" name="sumTapVedRealisasjonOgUttak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="sumGevinstVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="sumTapVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element name="inngaaendeVerdiFraErvervetGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element name="verdiAvRealisertGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element name="grunnlagForInntektsfoeringOgFradragsfoering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1801,8 +1801,8 @@
       <xsd:element minOccurs="0" name="salgsinntektFraSlaktetFiskFastsattAvSelskapet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="salgsinntektFraSlaktetFiskFastsattMedSkatteavregningsprisFraPrisraad" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="salgsinntektFraLevendeFisk" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="gevinstVedUttakAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="gevinstVedUttakAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="inntektFraAvtaleOmFinansiellSikringFastsattAvSelskapet" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="inntektFraAvtaleOmFinansiellSikringFastsattMedSkatteavregningsprisFraPrisraad" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="annenGrunnrentepliktigInntekt" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1819,12 +1819,10 @@
       <xsd:element minOccurs="0" name="fradragForEiendomsskatt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fradragForForskningsavgift" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="andelAvVederlagPaaKjoepAvLisenserMv" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattemessigAvskrivningAvAnleggsmiddelFraHistoriskInvesteringVedInntreden" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattemessigAvskrivningAvAnleggsmiddelErvervetFraNaerstaaende" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="investeringskostnadKnyttetTilHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="tapVedRealisasjonAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="tapVedUttakAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="investeringskostnadKnyttetTilHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tapVedRealisasjonAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" skatt:erAvledet="true"  type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tapVedUttakAvAnleggsmiddelSomBenyttesIHavbruksvirksomhet" skatt:erAvledet="true"  type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="tapFraAvtaleOmFinansiellSikringFastsattAvSelskapet" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="tapFraAvtaleOmFinansiellSikringFastsattMedSkatteavregningsprisFraPrisraad" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="annetGrunnrentepliktigFradrag" type="BeloepMedSkattemessigeEgenskaper" />
