@@ -36,6 +36,7 @@
       <xsd:element minOccurs="0" name="havbruksvirksomhet" type="Havbruksvirksomhet" />
       <xsd:element minOccurs="0" name="spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling" type="SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling" />
       <xsd:element minOccurs="0" name="kontrollertTransaksjonDisposisjonOgMellomvaerende" type="KontrollertTransaksjonDisposisjonOgMellomvaerende" />
+      <xsd:element minOccurs="0" name="vindkraftverk" type="Vindkraftverk"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Eierforhold">
@@ -178,6 +179,11 @@
       <xsd:element minOccurs="0" name="finansinntektOgFinansunderskudd" type="FinansinntektOgFinansunderskudd" />
       <xsd:element minOccurs="0" name="utleiePaaBareboatvilkaar" type="UtleiePaaBareboatvilkaar" />
       <xsd:element minOccurs="0" name="spesifikasjonAvSkattleggingEtterSaerskiltBeskatningsordning" type="SpesifikasjonAvSkattleggingEtterSaerskiltBeskatningsordning" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Vindkraftverk">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="spesifikasjonPerVindkraftverk" type="SpesifikasjonPerVindkraftverk"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling">
@@ -823,6 +829,20 @@
       <xsd:element minOccurs="0" name="antallDagerIOrdningenIInntektsaaret" type="AntallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonPerVindkraftverk">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="loepenummer" skatt:erAvledet="true" type="HeltallMedInnkapsling"/>
+      <xsd:element name="kraftverketsNavn" skatt:erAvledet="true" type="TekstMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="navnPaaKonsesjonshaverForProduksjonsavgift" type="NavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="identifikatorForKonsesjonshaverForProduksjonsavgift" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element name="installertEffektIMwIHenholdTilKonsesjon" skatt:erAvledet="true" type="DesimaltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="positivGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="negativGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="negativGrunnrenteskattVedDriftssettelse" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="negativGrunnrenteskattVedOpphoer" type="BeloepSomHeltallMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="ForskningOgUtviklingsprosjekt">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
@@ -897,6 +917,11 @@
       <xsd:element name="harUnntakFraPliktenTilAaLevereKontrollertTransaksjonDisposisjonOgMellomvaerende" type="BoolskMedInnkapsling" />
       <xsd:element name="harUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="aarsakTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjon" type="AarsakstypeTilUnntakFraPliktenTilAaUtarbeideOgLevereInternprisingsdokumentasjonMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DesimaltallMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="desimaltall" type="Desimaltall"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OverdragelseAvHavbruksvirksomhet">
