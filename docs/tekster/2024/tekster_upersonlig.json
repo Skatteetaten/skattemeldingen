@@ -2731,12 +2731,6 @@
     "tekst_en": "Received group contribution for reduction of this year’s loss to carry forward from shelf"
   },
   {
-    "skattemeldingSti": "inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven.mottattKonsernbidragTilReduksjonIForegaaendeAarsFremfoerbareUnderskudd.beloepSomHeltall",
-    "tekst_nn": "Mottatt konsernbidrag til reduksjon i framførbare underskott frå sokkel frå føregåande år",
-    "tekst_nb": "Mottatt konsernbidrag til reduksjon i foregående års fremførbare underskudd fra sokkel",
-    "tekst_en": "Received group contribution for reduction of previous year’s loss to carry forward from shelf"
-  },
-  {
     "skattemeldingSti": "inntektOgUnderskuddForVirksomhetPaaSokkel.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel.aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar",
     "tekst_nn": "Årets bruk av framført underskott frå tidlegare år",
     "tekst_nb": "Årets anvendelse av fremført underskudd fra tidligere år",
@@ -2777,12 +2771,6 @@
     "tekst_nn": "Mottatt konsernbidrag til reduksjon i årets framførbare underskott",
     "tekst_nb": "Mottatt konsernbidrag til reduksjon i årets fremførbare underskudd",
     "tekst_en": "Received group contribution for reduction of this year’s loss to carry forward"
-  },
-  {
-    "skattemeldingSti": "inntektOgUnderskuddForVirksomhetPaaSokkel.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel.mottattKonsernbidragTilReduksjonIForegaaendeAarsFremfoerbareUnderskudd.beloepSomHeltall",
-    "tekst_nn": "Mottatt konsernbidrag til reduksjon i framførbare underskott frå føregåande år",
-    "tekst_nb": "Mottatt konsernbidrag til reduksjon i foregående års fremførbare underskudd",
-    "tekst_en": "Received group contribution for reduction of previous year’s loss to carry forward"
   },
   {
     "skattemeldingSti": "inntektOgUnderskuddForVirksomhetPaaSokkel.beregnetNegativSelskapsskattTilFremfoering.aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskattFraTidligereAar.beloepSomHeltall",
@@ -4233,6 +4221,330 @@
     "hjelpetekst_en": "The field adds up foreign income before the allocation of group contributions for both Norwegian and foreign income."
   },
   {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.bruttoformueIUtlandet",
+    "tekst_nn": "Bruttoformue i utlandet ",
+    "tekst_nb": "Bruttoformue i utlandet",
+    "tekst_en": "Gross wealth abroad",
+    "hjelpetekst_nn": "<p>Oppgi bruttoformuen som er skattlagd i utlandet og som de har ført i skattemeldinga. Før opp<ul><li>type formue</li><li>beløp for formue i utlandet</li></ul></p><p>Aksjeselskap og tilsvarande selskapstypar betaler i utgangspunktet ikkje formuesskatt til Noreg. </p>",
+    "hjelpetekst_nb": "<p>Oppgi bruttoformue som er skattlagt i utlandet og som dere har ført i skattemeldingen. Før opp:<ul><li>type formue</li><li>beløp for formue i utlandet</li></ul></p><p>Aksjeselskap og tilsvarende selskapstyper betaler i utgangspunktet ikke formuesskatt til Norge. </p>",
+    "hjelpetekst_en": "<p>State gross wealth taxed abroad that you have entered in the tax return. Enter<ul><li>type of wealth</li><li>amount of wealth abroad</li></ul></p><p>Private limited companies and similar company types do not generally pay net wealth tax in Norway. </p>"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.fordelingAvKostnad.andelAvKostnadTilordnetUtlandet.prosent",
+    "tekst_nn": "Andel av kostnad tilordna utlandet ",
+    "tekst_nb": "Andel av kostnad tilordnet utlandet",
+    "tekst_en": "Share of expense allocated abroad"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.fordelingAvKostnad.beloep.beloepSomHeltall",
+    "tekst_nn": "Totalt beløp",
+    "tekst_nb": "Totalt beløp",
+    "tekst_en": "Total amount"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.fordelingAvKostnad.beloepTilordnetUtlandet.beloepSomHeltall",
+    "tekst_nn": "Beløp tilordna utlandet ",
+    "tekst_nb": "Beløp tilordnet utlandet",
+    "tekst_en": "Amount allocated abroad"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.fordelingAvKostnad.kostnadsfordelingsmetode.kostnadsfordelingstype",
+    "tekst_nn": "Metode for kostnadsfordeling ",
+    "tekst_nb": "Metode for kostnadsfordeling",
+    "tekst_en": "Method for expense allocation"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.fordelingAvKostnad.type.resultatOgBalanseregnskapstype",
+    "tekst_nn": "Type kostnad ",
+    "tekst_nb": "Type kostnad",
+    "tekst_en": "Type of expense"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.formuesobjektUnderlagtBeskatningIUtlandet.beloep.beloepSomHeltall",
+    "tekst_nn": "Beløp",
+    "tekst_nb": "Beløp",
+    "tekst_en": "Amount"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.formuesobjektUnderlagtBeskatningIUtlandet.type.resultatOgBalanseregnskapstype",
+    "tekst_nn": "Type formue ",
+    "tekst_nb": "Type formue",
+    "tekst_en": "Type of wealth"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.formuesskattBetaltIUtlandet.anvendtSkattesats.prosent",
+    "tekst_nn": "Brukt skattesats",
+    "tekst_nb": "Anvendt skattesats",
+    "tekst_en": "Tax rate utilised"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.formuesskattBetaltIUtlandet.beloep",
+    "tekst_nn": "Beløp",
+    "tekst_nb": "Beløp",
+    "tekst_en": "Amount"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.formuesskattBetaltIUtlandet.landkode.landkode",
+    "tekst_nn": "Land",
+    "tekst_nb": "Land",
+    "tekst_en": "Country"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.formuesskattBetaltIUtlandet.type.inntektsEllerFormuestypeVedSkattBetaltIUtlandet",
+    "tekst_nn": "Type formue ",
+    "tekst_nb": "Type formue",
+    "tekst_en": "Type of wealth"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.fremfoertUtenlandskSkattPerInntektsaar.fremfoertUtenlandskFormuesskatt.beloepSomHeltall",
+    "tekst_nn": "Framført utanlandsk formuesskatt ",
+    "tekst_nb": "Fremført utenlandsk formuesskatt",
+    "tekst_en": "Carried-forward foreign wealth tax",
+    "hjelpetekst_nn": "Oppgi beløp for framført utanlandsk formuesskatt.",
+    "hjelpetekst_nb": "Oppgi beløp for fremført utenlandsk formuesskatt.",
+    "hjelpetekst_en": "State the amount of carried-forward foreign wealth tax."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.fremfoertUtenlandskSkattPerInntektsaar.fremfoertUtenlandskInntektsskatt.beloepSomHeltall",
+    "tekst_nn": "Framført utanlandsk inntektsskatt ",
+    "tekst_nb": "Fremført utenlandsk inntektsskatt",
+    "tekst_en": "Carried-forward foreign income tax",
+    "hjelpetekst_nn": "Oppgi beløp for framført utanlandsk inntektsskatt.",
+    "hjelpetekst_nb": "Oppgi beløp for fremført utenlandsk inntektsskatt.",
+    "hjelpetekst_en": "State the amount of carried-forward foreign income tax."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.fremfoertUtenlandskSkattPerInntektsaar.inntektsaar.aarstall",
+    "tekst_nn": "Inntektsår",
+    "tekst_nb": "Inntektsår",
+    "tekst_en": "Income year",
+    "hjelpetekst_nn": "Vel inntektsår for framført kreditfrådrag.",
+    "hjelpetekst_nb": "Velg inntektsår for fremført kreditfradrag.",
+    "hjelpetekst_en": "Select the income year for the carried-forward credit deduction."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.inntektsskattBetaltIUtlandet.anvendtSkattesats.prosent",
+    "tekst_nn": "Brukt skattesats",
+    "tekst_nb": "Anvendt skattesats",
+    "tekst_en": "Tax rate utilised"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.inntektsskattBetaltIUtlandet.beloep",
+    "tekst_nn": "Beløp",
+    "tekst_nb": "Beløp",
+    "tekst_en": "Amount"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.inntektsskattBetaltIUtlandet.landkode.landkode",
+    "tekst_nn": "Land",
+    "tekst_nb": "Land",
+    "tekst_en": "Country"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.inntektsskattBetaltIUtlandet.type.inntektsEllerFormuestypeVedSkattBetaltIUtlandet",
+    "tekst_nn": "Type inntekt ",
+    "tekst_nb": "Type inntekt",
+    "tekst_en": "Type of income"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigeringIInntekt.avgittKonsernbidragIUtenlandsinntekt",
+    "tekst_nn": "Gitt konsernbidrag i utanlandsk inntekt ",
+    "tekst_nb": "Avgitt konsernbidrag i utenlandsk inntekt",
+    "tekst_en": "Ceded group contributions from foreign income",
+    "hjelpetekst_nn": "Berekna felt. Gitt konsernbidrag blir henta frå skattemeldinga. Beløpet kan overstyrast.",
+    "hjelpetekst_nb": "Beregnet felt. Avgitt konsernbidrag hentes fra skattemeldingen. Beløpet kan overstyres.",
+    "hjelpetekst_en": "Calculated field. Ceded group contributions retrieved from the tax return. The amount can be overwritten."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigeringIInntekt.fremfoerbartUnderskuddIInntektTilordnetUtlandet.beloepSomHeltall",
+    "tekst_nn": "Framførbart underskott i inntekt tilordna utlandet ",
+    "tekst_nb": "Fremførbart underskudd i inntekt tilordnet utlandet",
+    "tekst_en": "Loss carried forward from income allocated abroad",
+    "hjelpetekst_nn": "Her fører de andelen av det framførbare underskottet i skattemeldinga som høyrer til utlandet. Framførbart underskott i næring høyrer til i utlandet viss underskottet oppstod der.",
+    "hjelpetekst_nb": "Her fører dere andelen av fremførbart underskudd i skattemeldingen som hører til utlandet. Fremførbart underskudd i næring hører til i utlandet hvis underskuddet oppsto der.",
+    "hjelpetekst_en": "Here you enter the share of losses carried forward in the tax return that belong abroad. Losses carried forward in business belong abroad if the losses originated there."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigeringIInntekt.inntektUnderlagtKildeskattIUtlandet.beloepSomHeltall",
+    "tekst_nn": "Inntekt underlagd kjeldeskatt i utlandet ",
+    "tekst_nb": "Inntekt underlagt kildeskatt i utlandet",
+    "tekst_en": "Income subject to withholding tax abroad",
+    "hjelpetekst_nn": "Her fører de aksjeutbytte, renteinntekter og royaltyar som selskapet har betalt kjeldeskatt av i utlandet, og som de ikkje har tatt med i feltet \"Sum driftsinntekter\". De skal ikkje bruke dette feltet for aksjeutbytte som er skattefritt i Noreg etter fritaksmetoden. De skal heller ikkje ha med utanlandsinntekt der de krev inntektsfrådrag for utanlandsk skatt.",
+    "hjelpetekst_nb": "Her fører dere aksjeutbytte, renteinntekter og royalties som selskapet har betalt kildeskatt av i utlandet, og som dere ikke har tatt med i feltet \"Sum driftsinntekter\". Dere skal ikke bruke dette feltet for aksjeutbytte som er skattefritt i Norge etter fritaksmetoden. Dere skal heller ikke ha med utenlandsinntekt der dere krever inntektsfradrag for utenlandsk skatt.",
+    "hjelpetekst_en": "Here you enter dividend on shares, interest income and royalties on which the company has paid withholding tax abroad, and that you have not included in the field \"Total operating revenue\". You must not use this field for dividend on shares that are exempt from tax in Norway under the tax exemption method. Nor must you include foreign income where you claim an income deduction for foreign tax."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigeringIInntekt.mottattKonsernbidragTilordnetUtlandet",
+    "tekst_nn": "Mottatt konsernbidrag tilordna utlandet",
+    "tekst_nb": "Mottatt konsernbidrag tilordnet utlandet",
+    "tekst_en": "Received group contribution allocated abroad",
+    "hjelpetekst_nn": "Mottatt konsernbidrag som er ført i skattemeldinga skal tilordnast Noreg eller utlandet, på same måte som konsernbidraget skal tilordnast Noreg eller utlandet i givarselskapet.",
+    "hjelpetekst_nb": "Mottatt konsernbidrag som er ført i skattemeldingen skal tilordnes Norge eller utlandet, på samme måte som konsernbidraget tilordnes Norge eller utlandet i giverselskapet.",
+    "hjelpetekst_en": "Received group contribution entered in the tax return must be allocated to Norway or abroad, in the same way as the group contributions are allocated to Norway or abroad in the donor company."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigeringIInntekt.utbytteFraUtenlandskDatterselskap.beloepSomHeltall",
+    "tekst_nn": "Utbytte frå utanlandsk dotterselskap ",
+    "tekst_nb": "Utbytte fra utenlandsk datterselskap",
+    "tekst_en": "Dividend from foreign subsidiary company",
+    "hjelpetekst_nn": "De skal oppgi overskott eller utbytte frå utanlandsk dotterselskap når selskapet krev kreditfrådrag i kortet for \"Kreditfrådrag i utanlandsk skatt av overskott eller utbytte frå utanlandsk dotterselskap\".",
+    "hjelpetekst_nb": "Dere skal oppgi overskudd eller utbytte fra utenlandsk datterselskap, når selskapet krever kreditfradrag i kortet for \"Kreditfradrag i utenlandsk skatt av overskudd eller utbytte fra utenlandsk datterselskap\". ",
+    "hjelpetekst_en": "You must enter profits or dividends from a foreign subsidiary company when the company claims a credit deduction in the card for \"Credit deduction in foreign tax on the profit or dividend from a foreign subsidiary company\"."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigertNettoinntekt",
+    "tekst_nn": "Korrigert nettoinntekt ",
+    "tekst_nb": "Korrigert nettoinntekt",
+    "tekst_en": "Corrected net income",
+    "hjelpetekst_nn": "Feltet summerer korrigeringar i nettoinntekt.",
+    "hjelpetekst_nb": "Feltet summerer korrigeringer i nettoinntekt.",
+    "hjelpetekst_en": "The field adds up corrections in net income."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.nettoformueIUtlandet",
+    "tekst_nn": "Nettoformue i utlandet ",
+    "tekst_nb": "Nettoformue i utlandet",
+    "tekst_en": "Net wealth abroad",
+    "hjelpetekst_nn": "Beløpet kjem fram som ein sumpost av brutto formue og fråtrekt gjeld.",
+    "hjelpetekst_nb": "Beløpet kommer frem som en sumpost av brutto formue og fratrukket gjeld.",
+    "hjelpetekst_en": "The amount appears as a sum of gross wealth and deducted debt."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader",
+    "tekst_nn": "Nettoinntekt underlagd skattlegging i utlandet før frådrag for indirekte kostnader ",
+    "tekst_nb": "Nettoinntekt underlagt beskatning i utlandet før fradrag for indirekte kostnader",
+    "tekst_en": "Net income subject to tax abroad before deduction for indirect expenses",
+    "hjelpetekst_nn": "Feltet summerer nettoinntekt før indirekte kostnader.",
+    "hjelpetekst_nb": "Feltet summerer nettoinntekt før indirekte kostnader.",
+    "hjelpetekst_en": "The field adds up net income before indirect expenses."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.norskAndelAvInntektFoerAvgittKonsernbidrag",
+    "tekst_nn": "Norsk andel av inntekt før gitt konsernbidrag",
+    "tekst_nb": "Norsk andel av inntekt før avgitt konsernbidrag",
+    "tekst_en": "Norwegian share of income before ceded group contributions",
+    "hjelpetekst_nn": "Feltet summerer norsk inntekt før gitt konsernbidrag.",
+    "hjelpetekst_nb": "Feltet summerer norsk inntekt før avgitt konsernbidrag.",
+    "hjelpetekst_en": "The field adds up Norwegian income before ceded group contributions."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.naeringsinntekt",
+    "tekst_nn": "Næringsinntekt i utlandet ",
+    "tekst_nb": "Næringsinntekt i utlandet",
+    "tekst_en": "Business income abroad",
+    "hjelpetekst_nn": "Overskottet blir summert her. Feltet kan overstyrast.",
+    "hjelpetekst_nb": "Overskudd summeres her. Feltet kan overstyres.",
+    "hjelpetekst_en": "Profit is entered here. The field can be overwritten."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.samletDriftsinntekt.beloepSomHeltall",
+    "tekst_nn": "Sum driftsinntekter",
+    "tekst_nb": "Sum driftsinntekter",
+    "tekst_en": "Total operating revenue",
+    "hjelpetekst_nn": "<p>Oppgi kor stor andel av driftsinntekta som er opptent i utlandet. Vurder kvar enkelt inntektspost for seg for å avgjere om det dreier seg om verksemdsinntekt med kjelde i Noreg eller i utlandet. <br>Verksemdsinntekt med kjelde i utlandet omfattar ikkje berre inntekter knytte til ein fast driftsstad, men også til dømes royaltyar og anna inntekt som det er trekt kjeldeskatt av i utlandet. </p><p>De må korrigere for skilnader som påverkar forholdet mellom den rekneskapsmessige og den skattemessige inntekta.</p>",
+    "hjelpetekst_nb": "<p>Oppgi hvor stor andel av driftsinntekten som er opptjent i utlandet. Vurder hver enkelt inntektspost separat for å avgjøre om dette er virksomhetsinntekt med kilde i Norge, eller utlandet. <br>Virksomhetsinntekt med kilde i utlandet omfatter ikke bare inntekter knyttet til fast driftssted, men også for eksempel royalties og annen inntekt som det er trukket kildeskatt av i utlandet.</p><p>Dere må korrigere for forskjeller som påvirker forholdet mellom regnskapsmessig og skattemessig inntekt.</p> ",
+    "hjelpetekst_en": "<p>State the share of operating revenue earned abroad. Consider each individual income item separately to determine whether this is business income originating from Norway or abroad. <br>Business income originating from abroad includes not only income related to a permanent establishment, but also, for example, royalties and other income on which withholding tax has been deducted abroad.</p><p>You must correct differences affecting the relationship between accounting and tax income.</p>"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.samletDriftskostnad.beloepSomHeltall",
+    "tekst_nn": "Sum driftskostnader",
+    "tekst_nb": "Sum driftskostnader",
+    "tekst_en": "Total operating costs",
+    "hjelpetekst_nn": "Oppgi andelen av direkte driftskostnader frå utanlandsk næringsverksemd. Vurder kvar enkelt kostnadspost for seg for å avgjere om det dreier seg om verksemdsinntekt med kjelde i Noreg eller i utlandet.",
+    "hjelpetekst_nb": "Oppgi andel av direkte driftskostnader fra utenlandsk næringsvirksomhet. Vurder hver enkelt kostnadspost separat for å avgjøre om dette er virksomhetsinntekt med kilde i Norge eller utlandet.",
+    "hjelpetekst_en": "State the share of direct operating costs from the foreign business activity. Consider each cost item separately to determine whether this is business income originating from Norway or abroad."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.samletFinansinntekt.beloepSomHeltall",
+    "tekst_nn": "Sum finansinntekter",
+    "tekst_nb": "Sum finansinntekter",
+    "tekst_en": "Total financial income",
+    "hjelpetekst_nn": "Oppgi finansinntekter frå utanlandsk næringsverksemd.",
+    "hjelpetekst_nb": "Oppgi finansinntekter fra utenlandsk næringsvirksomhet.",
+    "hjelpetekst_en": "State financial income from a foreign business activity."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.samletFinanskostnad.beloepSomHeltall",
+    "tekst_nn": "Sum finanskostnader",
+    "tekst_nb": "Sum finanskostnader",
+    "tekst_en": "Total financial costs",
+    "hjelpetekst_nn": "Oppgi finanskostnader frå utanlandsk næringsverksemd. Merk at de i utgangspunktet ikkje skal oppgi rentekostnader her, men i feltet \"Indirekte kostnader tilordna utlandet\".",
+    "hjelpetekst_nb": "Oppgi finanskostnader fra utenlandsk næringsvirksomhet. Vær oppmerksom på at dere i utgangspunktet ikke skal oppgi rentekostnader her, men i feltet \"Indirekte kostnader tilordnet utlandet\".",
+    "hjelpetekst_en": "State financial expenses from a foreign business activity. Please note that you should not enter interest expenses here, but in the field \"Indirect expenses allocated abroad\"."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.underskudd",
+    "tekst_nn": "Underskott i utlandet ",
+    "tekst_nb": "Underskudd i utlandet",
+    "tekst_en": "Loss abroad",
+    "hjelpetekst_nn": "Underskottet blir summert her. Feltet kan overstyrast.",
+    "hjelpetekst_nb": "Underskudd summeres her. Feltet kan overstyres.",
+    "hjelpetekst_en": "Losses are entered here. The field can be overwritten."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.samletFormuesskattBetaltIUtlandet",
+    "tekst_nn": "Samla formuesskatt betalt i utlandet ",
+    "tekst_nb": "Samlet formuesskatt betalt i utlandet",
+    "tekst_en": "Overall wealth tax paid abroad",
+    "hjelpetekst_nn": "<p>Oppgi formuesskatten som er betalt i utlandet. De skal opplyse om følgjande: <ul><li>kva land skatten er fastsett i og betalt til</li><li>type formue</li><li>brukt skattesats</li><li>betalt skattebeløp</li></ul></p>",
+    "hjelpetekst_nb": "<p>Oppgi formuesskatt som er betalt i utlandet. Dere skal gi opplysninger om følgende: <ul><li>hvilket land skatten er fastsatt og betalt til</li><li>type formue</li><li>anvendt skattesats</li><li>betalt skattebeløp</li></ul></p>",
+    "hjelpetekst_en": "<p>State the wealth tax paid abroad. You must provide information about the following: <ul><li>which country the tax is assessed and paid to</li><li>type of wealth</li><li>applied tax rate</li><li>amount of tax paid</li></ul></p>"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.samletFradragIFormueIUtlandet",
+    "tekst_nn": "Frådrag i formue i utlandet ",
+    "tekst_nb": "Fradrag i formue i utlandet",
+    "tekst_en": "Deduction in wealth abroad",
+    "hjelpetekst_nn": "I denne posten skal de fordele gjeld de har ført i skattemeldinga forholdsmessig mellom utanlandsformuen og den norske formuen.",
+    "hjelpetekst_nb": "I denne posten fordeles gjeld dere har ført i skattemeldingen forholdsmessig mellom utenlandsformuen og den norske formuen.",
+    "hjelpetekst_en": "In this item, debt entered in the tax return is distributed proportionately between foreign wealth and Norwegian wealth."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.samletInntektsskattBetaltIUtlandet",
+    "tekst_nn": "Samla inntektsskatt betalt i utlandet ",
+    "tekst_nb": "Samlet inntektsskatt betalt i utlandet",
+    "tekst_en": "Overall income tax paid abroad",
+    "hjelpetekst_nn": "Her spesifiserer de inntektsskatten som er betalt i utlandet. De skal berre føre opp skatt på årets utanlandske inntekter. De skal gi opplysningar om i kva land skatten er fastsett og betalt, og kva slags type inntekt det er snakk om. Det kan til dømes vere inntekt frå ein utanlandsk filial, renteinntekt, royaltyar eller aksjeutbytte frå eit utanlandsk selskap. De må også oppgi kva skatteart det gjeld, skattesatsen som er trekt, storleiken på skatten i utanlandsk valuta, kva valutakurs som er brukt og storleiken på skattebeløpet i norske kroner.",
+    "hjelpetekst_nb": "Her spesifiserer dere inntektsskatt som er betalt i utlandet. Dere skal kun føre opp skatt på årets utenlandske inntekter. Dere skal gi opplysninger om i hvilket land skatten er fastsatt og betalt, og hva slags type inntekt det er snakk om. Eksempler kan være inntekt fra utenlandsk filial, renteinntekt, royalties, aksjeutbytte fra utenlandsk selskap. Videre må dere oppgi hvilken skatteart det gjelder, skattesatsen som er trukket, skattens størrelse i utenlandsk valuta, hvilken valutakurs som er benyttet og skattebeløpets størrelse i norske kroner.",
+    "hjelpetekst_en": "Here you specify income tax paid abroad. You must only enter tax on foreign income for the year. You must provide information about the country in which the tax has been assessed and paid, and the type of income in question. Examples can be income from foreign branches, interest income, royalties, dividends on shares from foreign companies. Furthermore, you must state the type of tax, the tax rate deducted, the amount of the tax in foreign currency, the currency rate used and the amount of the tax in Norwegian kroner."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.samletKostnadTilordnetUtlandetEtterIndirekteEllerAnnenFordelingsmetode",
+    "tekst_nn": "Kostnader tilordna utlandet",
+    "tekst_nb": "Kostnader tilordnet utlandet",
+    "tekst_en": "Costs allocated abroad",
+    "hjelpetekst_nn": "Feltet summerer kostnader tilordna utlandet.",
+    "hjelpetekst_nb": "Feltet summerer kostnader tilordnet utlandet.",
+    "hjelpetekst_en": "The field adds up costs allocated abroad."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.samletKostnadTilordnetUtlandetEtterIndirekteFordelingsmetode",
+    "tekst_nn": "Indirekte kostnader tilordna utlandet",
+    "tekst_nb": "Indirekte kostnader tilordnet utlandet",
+    "tekst_en": "Indirect costs allocated abroad",
+    "hjelpetekst_nn": "<p>De skal berre fordele kostnadene som gir frådragsrett i Noreg.</p><p>Kostnader som er unntatte frå skattlegging i Noreg etter skatteavtale, gir ikkje frådragsrett i Noreg. Dette kan vere<ul><li>kostnader til fast eigedom</li><li>kostnader knytte til verksemd i utlandet</li></ul></p><p>Selskap med verksemd i ein EØS-stat kan føre gjeldsrenter etter kvar inntekta kjem frå, eller kvar kostnaden er pådratt, viss selskapet grunngir at 90 prosent eller meir av gjeldsrentene er knytte til selskapet si verksemd i Noreg. Viss 90 prosent eller meir av gjeldsrentene er knytte til selskapet si verksemd utanfor Noreg, skal de føre gjeldsrentene etter den direkte metoden. I så fall gjer de dette i feltet \"Sum finanskostnader\", eller under \"Annan fordelingsmetode\". </p><p>Indirekte fordelingsmetode: Rentekostnader og andre indirekte kostnader skal normalt fordelast etter nettoinntektsprinsippet. De oppgir type kostnader og beløp. <br>Indirekte fordelingsmetode betyr at de fordeler kostnadene etter forholdet mellom nettoinntekta i Noreg og nettoinntekta i utlandet.</p><p>Annan fordelingsmetode: Bruk annan fordelingsmetode viss denne gir eit meir korrekt bilete av kostnadsfordelinga mellom Noreg og utlandet.</p><p>Då må de dokumentere at ei fordeling etter ein annan fordelingsnøkkel gir eit rimeleg resultat, i samsvar med alminneleg aksepterte forretningsmessige og bedriftsøkonomiske prinsipp. Denne fordelinga må de bruke konsekvent.</p><p>Døme: De må fordele avskrivingar på driftsmiddel som er brukte både i Noreg og i utlandet etter kvar selskapet har opptent inntekta som er knytt til driftsmiddelet. De må deretter korrigere for skilnader som påverkar forholdet mellom den rekneskapsmessige og den skattemessige inntekta. </p>",
+    "hjelpetekst_nb": "<p>Dere skal kun fordele kostnadene som er fradragsberettiget i Norge.</p><p>Kostnader som er unntatt beskatning i Norge etter skatteavtale, er ikke fradragsberettiget i Norge. Dette kan være<ul><li>kostnader til fast eiendom</li><li>kostnader tilknyttet virksomhet i utlandet</li></ul></p><p>Selskaper med virksomhet i en EØS-stat kan føre gjeldsrenter etter hvor inntekten kommer fra, eller hvor kostnaden er pådratt, hvis selskapet begrunner at 90 prosent eller mer av gjeldsrentene er tilknyttet selskapets virksomhet i Norge. Hvis 90 prosent eller mer av gjeldsrentene er tilknyttet selskapets virksomhet utenfor Norge, skal dere føre gjeldsrentene etter den direkte metode. I så fall gjør dere dette i feltet \"sum finanskostnader”, eller under “annen fordelingsmetode\".</p><p>Indirekte fordelingsmetode: Rentekostnader og andre indirekte kostnader skal normalt fordeles etter nettoinntektsprinsippet. Dere oppgir type kostnader og beløp. <br>Indirekte fordelingsmetode betyr at dere fordeler kostnadene etter forholdet mellom nettoinntekten i Norge og nettoinntekten i utlandet.</p><p>Annen fordelingsmetode: Bruk annen fordelingsmetode hvis denne gir et mer korrekt bilde av kostnadsfordelingen mellom Norge og utlandet.</p><p>Da må dere dokumentere at fordeling etter en annen fordelingsnøkkel gir et rimelig resultat, i samsvar med alminnelig aksepterte forretningsmessige og bedriftsøkonomiske prinsipper. Denne fordelingen må dere bruke konsekvent.</p><p>Eksempel: Dere må fordele avskrivninger på driftsmidler som er brukt både i Norge og utlandet etter hvor selskapet har tjent inntekten som er knyttet til driftsmiddelet. Dere må deretter korrigere for forskjeller som påvirker forholdet mellom regnskapsmessig og skattemessig inntekt. </p>",
+    "hjelpetekst_en": "<p>You must only divide costs that are deductible in Norway.</p><p>Costs exempt from taxation in Norway under a tax treaty are not tax deductible in Norway. These can be<ul><li> costs relating to real property</li><li> costs relating to business abroad</li></ul></p><p>Companies with business activities in an EEA country can enter debt interest according to where the income comes from or where the cost is incurred if the company justifies that 90 percent or more of the debt interest is related to the company’s business activity in Norway. If 90 percent or more of the debt interest is related to the company’s business activity outside Norway, you must enter debt interest according to the direct method. In that case, you do this in the field \"total financial costs” or under “other distribution method\".</p><p>Indirect distribution method: Interest costs and other indirect costs must normally be distributed according to the net income principle. You state the type of cost and the amount. <br>Indirect exemption method means that you distribute the costs according to the relationship between the net income in Norway and the net income abroad. </p><p>Other distribution method: Use a different distribution method if this provides a more correct picture of the cost distribution between Norway and abroad. </p><p>In such cases, you must document that distribution according to a different allocation key gives a more reasonable result, in accordance with generally accepted business principles. You must use this distribution consistently. </p><p>Example: You must distribute depreciations of fixed assets used both in Norway and abroad according to where the company has earned the income related to the fixed assets. Afterwards, you must correct the differences that affect the relationship between accounting and tax income. </p>"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.samletUtenlandsinntekt",
+    "tekst_nn": "Samla utanlandsk inntekt ",
+    "tekst_nb": "Samlet utenlandsk inntekt",
+    "tekst_en": "Overall foreign income",
+    "hjelpetekst_nn": "Feltet summerer netto utanlandsk inntekt. Den utanlandske inntekta blir brukt i utrekninga av maksimalt kreditfrådrag i inntektsåret. ",
+    "hjelpetekst_nb": "Feltet summerer netto utenlandsk inntekt. Den utenlandske inntekten brukes i beregning av maksimalt kreditfradrag i inntektsåret.",
+    "hjelpetekst_en": "The field adds up net foreign income. The foreign income is used to calculate the maximum credit deduction in the income year."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.utlandsinntektFoerAvgittKonsernbidrag",
+    "tekst_nn": "Utanlandsinntekt før gitt konsernbidrag",
+    "tekst_nb": "Utenlandsinntekt før avgitt konsernbidrag",
+    "tekst_en": "Foreign income before ceded group contributions",
+    "hjelpetekst_nn": "Feltet summerer utanlandsinntekt før fordelinga av konsernbidrag på både norsk og utanlandsk inntekt.",
+    "hjelpetekst_nb": "Feltet summerer utenlandsinntekt før fordeling av konsernbidrag på både Norsk og utenlandsk inntekt.",
+    "hjelpetekst_en": "The field adds up foreign income before the allocation of group contributions for both Norwegian and foreign income."
+  },
+  {
     "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskatteland.bruttoformueIUtlandet",
     "tekst_nn": "Bruttoformue i utlandet ",
     "tekst_nb": "Bruttoformue i utlandet",
@@ -4557,6 +4869,330 @@
     "hjelpetekst_en": "The field adds up foreign income before the distribution of group contributions of norwegian and foreign income."
   },
   {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.bruttoformueIUtlandet",
+    "tekst_nn": "Bruttoformue i utlandet ",
+    "tekst_nb": "Bruttoformue i utlandet",
+    "tekst_en": "Gross wealth abroad",
+    "hjelpetekst_nn": "<p>Oppgi bruttoformue som er skattlagd i utlandet og som de har ført i skattemeldinga. Før opp følgjande: <ul><li>type formue</li><li>beløp for formue i utlandet</li></ul></p><p>Aksjeselskap og tilsvarande selskapstypar betaler i utgangspunktet ikkje formuesskatt til Noreg. </p>",
+    "hjelpetekst_nb": "<p>Oppgi bruttoformue som er skattlagt i utlandet og som dere har ført i skattemeldingen. Før opp følgende: <ul><li>type formue</li><li>beløp for formue i utlandet</li></ul></p><p>Aksjeselskap og tilsvarende selskapstyper betaler i utgangspunktet ikke formuesskatt til Norge. </p>",
+    "hjelpetekst_en": "<p>State gross wealth taxed abroad that you have entered in the tax return. Enter the following:<ul><li>type of wealth</li><li>amount of wealth abroad</li></ul></p><p>Private limited companies and similar company types do not generally pay net wealth tax in Norway. </p>"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.fordelingAvKostnad.andelAvKostnadTilordnetUtlandet.prosent",
+    "tekst_nn": "Andel av kostnad tilordna utlandet ",
+    "tekst_nb": "Andel av kostnad tilordnet utlandet",
+    "tekst_en": "Share of expense allocated abroad"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.fordelingAvKostnad.beloep.beloepSomHeltall",
+    "tekst_nn": "Totalt beløp ",
+    "tekst_nb": "Totalt beløp",
+    "tekst_en": "Total amount"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.fordelingAvKostnad.beloepTilordnetUtlandet.beloepSomHeltall",
+    "tekst_nn": "Beløp tilordna utlandet ",
+    "tekst_nb": "Beløp tilordnet utlandet",
+    "tekst_en": "Amount allocated abroad"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.fordelingAvKostnad.kostnadsfordelingsmetode.kostnadsfordelingstype",
+    "tekst_nn": "Metode for kostnadsfordeling ",
+    "tekst_nb": "Metode for kostnadsfordeling",
+    "tekst_en": "Method for expense allocation"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.fordelingAvKostnad.type.resultatOgBalanseregnskapstype",
+    "tekst_nn": "Type kostnad ",
+    "tekst_nb": "Type kostnad",
+    "tekst_en": "Type of expense"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.formuesobjektUnderlagtBeskatningIUtlandet.beloep.beloepSomHeltall",
+    "tekst_nn": "Beløp",
+    "tekst_nb": "Beløp",
+    "tekst_en": "Amount"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.formuesobjektUnderlagtBeskatningIUtlandet.type.resultatOgBalanseregnskapstype",
+    "tekst_nn": "Type formue ",
+    "tekst_nb": "Type formue",
+    "tekst_en": "Type of wealth"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.formuesskattBetaltIUtlandet.anvendtSkattesats.prosent",
+    "tekst_nn": "Brukt skattesats",
+    "tekst_nb": "Anvendt skattesats",
+    "tekst_en": "Tax rate utilised"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.formuesskattBetaltIUtlandet.beloep",
+    "tekst_nn": "Beløp",
+    "tekst_nb": "Beløp",
+    "tekst_en": "Amount"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.formuesskattBetaltIUtlandet.landkode.landkode",
+    "tekst_nn": "Land",
+    "tekst_nb": "Land",
+    "tekst_en": "Country"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.formuesskattBetaltIUtlandet.type.inntektsEllerFormuestypeVedSkattBetaltIUtlandet",
+    "tekst_nn": "Type formue ",
+    "tekst_nb": "Type formue",
+    "tekst_en": "Type of wealth"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.fremfoertUtenlandskSkattPerInntektsaar.fremfoertUtenlandskFormuesskatt.beloepSomHeltall",
+    "tekst_nn": "Framført utanlandsk formuesskatt ",
+    "tekst_nb": "Fremført utenlandsk formuesskatt",
+    "tekst_en": "Carried-forward foreign wealth tax",
+    "hjelpetekst_nn": "Oppgi beløp for framført utanlandsk formuesskatt.",
+    "hjelpetekst_nb": "Oppgi beløp for fremført utenlandsk formuesskatt.",
+    "hjelpetekst_en": "State the amount of carried-forward foreign wealth tax."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.fremfoertUtenlandskSkattPerInntektsaar.fremfoertUtenlandskInntektsskatt.beloepSomHeltall",
+    "tekst_nn": "Framført utanlandsk inntektsskatt ",
+    "tekst_nb": "Fremført utenlandsk inntektsskatt",
+    "tekst_en": "Carried-forward foreign income tax",
+    "hjelpetekst_nn": "Oppgi beløp for framført utanlandsk inntektsskatt.",
+    "hjelpetekst_nb": "Oppgi beløp for fremført utenlandsk inntektsskatt.",
+    "hjelpetekst_en": "State the amount of carried-forward foreign income tax."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.fremfoertUtenlandskSkattPerInntektsaar.inntektsaar.aarstall",
+    "tekst_nn": "Inntektsår",
+    "tekst_nb": "Inntektsår",
+    "tekst_en": "Income year",
+    "hjelpetekst_nn": "Vel inntektsår for framført kreditfrådrag.",
+    "hjelpetekst_nb": "Velg inntektsår for fremført kreditfradrag.",
+    "hjelpetekst_en": "Select the income year for the carried-forward credit deduction."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.inntektsskattBetaltIUtlandet.anvendtSkattesats.prosent",
+    "tekst_nn": "Brukt skattesats",
+    "tekst_nb": "Anvendt skattesats",
+    "tekst_en": "Tax rate utilised"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.inntektsskattBetaltIUtlandet.beloep",
+    "tekst_nn": "Beløp",
+    "tekst_nb": "Beløp",
+    "tekst_en": "Amount"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.inntektsskattBetaltIUtlandet.landkode.landkode",
+    "tekst_nn": "Land",
+    "tekst_nb": "Land",
+    "tekst_en": "Country"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.inntektsskattBetaltIUtlandet.type.inntektsEllerFormuestypeVedSkattBetaltIUtlandet",
+    "tekst_nn": "Type inntekt ",
+    "tekst_nb": "Type inntekt",
+    "tekst_en": "Type of income"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigeringIInntekt.avgittKonsernbidragIUtenlandsinntekt",
+    "tekst_nn": "Gitt konsernbidrag i utanlandsk inntekt ",
+    "tekst_nb": "Avgitt konsernbidrag i utenlandsk inntekt",
+    "tekst_en": "Ceded group contributions in foreign income",
+    "hjelpetekst_nn": "Berekna felt. Gitt konsernbidrag blir henta frå skattemeldinga. Beløpet kan overstyrast.",
+    "hjelpetekst_nb": "Beregnet felt. Avgitt konsernbidrag hentes fra skattemeldingen. Beløpet kan overstyres.",
+    "hjelpetekst_en": "Calculated field. Ceded group contributions are retrieved from the tax return. The amount can be overwritten."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigeringIInntekt.fremfoerbartUnderskuddIInntektTilordnetUtlandet.beloepSomHeltall",
+    "tekst_nn": "Framførbart underskott i inntekt tilordna utlandet ",
+    "tekst_nb": "Fremførbart underskudd i inntekt tilordnet utlandet",
+    "tekst_en": "Loss carried forward in income allocated abroad",
+    "hjelpetekst_nn": "Her fører de den andelen av det framførbare underskottet i skattemeldinga som kan knytast til utlandet. Framførbart underskott i næring skal knytast til utlandet viss underskottet i si tid rettmessig oppstod der.",
+    "hjelpetekst_nb": "Her fører dere den andel av fremførbart underskudd i skattemeldingen som kan knyttes til utlandet. Fremførbart underskudd i næring skal knyttes til utlandet hvis underskuddet i sin tid rettmessig oppsto der.",
+    "hjelpetekst_en": "Here you enter the share of loss carried forward in the tax return that belongs abroad. Loss carried forward in business belongs abroad if the loss rightfully originated there."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigeringIInntekt.inntektUnderlagtKildeskattIUtlandet.beloepSomHeltall",
+    "tekst_nn": "Inntekt underlagd kjeldeskatt i utlandet ",
+    "tekst_nb": "Inntekt underlagt kildeskatt i utlandet",
+    "tekst_en": "Income subject to withholding tax abroad",
+    "hjelpetekst_nn": "Her fører de aksjeutbytte, renteinntekter og royaltyar som det er betalt kjeldeskatt av i utlandet, og som ikkje er tatte med i feltet \"Sum driftsinntekter\". De skal ikkje bruke dette feltet for aksjeutbytte som er skattefritt i Noreg etter fritaksmetoden. De skal heller ikkje ta med utanlandsinntekt der de krev inntektsfrådrag for utanlandsk skatt.",
+    "hjelpetekst_nb": "Her fører dere aksjeutbytte, renteinntekter og royalties som det er betalt kildeskatt av i utlandet, og som ikke er tatt med i feltet «Sum driftsinntekter». Dere skal ikke bruke dette feltet for aksjeutbytte som er skattefritt i Norge etter fritaksmetoden. Dere skal heller ikke ta med utenlandsinntekt der dere krever inntektsfradrag for utenlandsk skatt.",
+    "hjelpetekst_en": "Here you enter dividend on shares, interest income and royalties on which withholding tax is paid abroad, and that is not included in the field «Total operating revenue». You must not use this field for dividend on shares that are tax-free in Norway under the tax exemption method. Nor must you include foreign income where you claim an income deduction for foreign tax."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigeringIInntekt.mottattKonsernbidragTilordnetUtlandet",
+    "tekst_nn": "Mottatt konsernbidrag tilordna utlandet",
+    "tekst_nb": "Mottatt konsernbidrag tilordnet utlandet",
+    "tekst_en": "Received group contribution allocated abroad",
+    "hjelpetekst_nn": "Det mottatte konsernbidraget de har ført i skattemeldinga skal tilordnast Noreg eller utlandet, på same måten som konsernbidraget skal tilordnast Noreg eller utlandet i givarselskapet.",
+    "hjelpetekst_nb": "Mottatt konsernbidrag dere har ført i skattemeldingen skal tilordnes Norge eller utlandet, på samme måte som konsernbidraget tilordnes Norge eller utlandet i giverselskapet.",
+    "hjelpetekst_en": "Received group contributions you have entered in the tax return must be allocated to Norway or abroad, in the same way that group contributions are allocated to Norway or abroad in the donor company."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigeringIInntekt.utbytteFraUtenlandskDatterselskap.beloepSomHeltall",
+    "tekst_nn": "Utbytte frå utanlandsk dotterselskap ",
+    "tekst_nb": "Utbytte fra utenlandsk datterselskap",
+    "tekst_en": "Dividend from foreign subsidiary company",
+    "hjelpetekst_nn": "Overskott eller utbytte frå utanlandsk dotterselskap når selskapet krev kreditfrådrag i kortet \"Kreditfrådrag i utanlandsk skatt av overskott eller utbytte frå utanlandsk dotterselskap\".",
+    "hjelpetekst_nb": "Overskudd eller utbytte fra utenlandsk datterselskap når selskapet krever kreditfradrag i kortet for \"Kreditfradrag i utenlandsk skatt av overskudd eller utbytte fra utenlandsk datterselskap\".",
+    "hjelpetekst_en": "Profits or dividends from foreign subsidiary companies when the company claims credit deduction in the card for “Credit deduction in foreign tax on the profit or dividend from a foreign subsidiary company\"."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigertNettoinntekt",
+    "tekst_nn": "Korrigert nettoinntekt ",
+    "tekst_nb": "Korrigert nettoinntekt",
+    "tekst_en": "Corrected net income",
+    "hjelpetekst_nn": "Feltet summerer korrigeringar i nettoinntekt.",
+    "hjelpetekst_nb": "Feltet summerer korrigeringer i nettoinntekt.",
+    "hjelpetekst_en": "The field adds up corrections in net income."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.nettoformueIUtlandet",
+    "tekst_nn": "Nettoformue i utlandet ",
+    "tekst_nb": "Nettoformue i utlandet",
+    "tekst_en": "Net wealth abroad",
+    "hjelpetekst_nn": "Beløpet kjem fram som ein sumpost av brutto formue og fråtrekt gjeld.",
+    "hjelpetekst_nb": "Beløpet kommer frem som en sumpost av brutto formue og fratrukket gjeld.",
+    "hjelpetekst_en": "The amount appears as a sum of gross wealth and deducted debt."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader",
+    "tekst_nn": "Nettoinntekt underlagd skattlegging i utlandet før frådrag for indirekte kostnader ",
+    "tekst_nb": "Nettoinntekt underlagt beskatning i utlandet før fradrag for indirekte kostnader",
+    "tekst_en": "Net income subject to tax abroad before deduction for indirect expenses",
+    "hjelpetekst_nn": "Feltet summerer nettoinntekt før indirekte kostnader.",
+    "hjelpetekst_nb": "Feltet summerer nettoinntekt før indirekte kostnader.",
+    "hjelpetekst_en": "The field adds up net income before indirect expenses."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.norskAndelAvInntektFoerAvgittKonsernbidrag",
+    "tekst_nn": "Norsk andel av inntekt før gitt konsernbidrag",
+    "tekst_nb": "Norsk andel av inntekt før avgitt konsernbidrag",
+    "tekst_en": "Norwegian share of income before ceded group contributions",
+    "hjelpetekst_nn": "Feltet summerer norsk inntekt før gitt konsernbidrag.",
+    "hjelpetekst_nb": "Feltet summerer norsk inntekt før avgitt konsernbidrag.",
+    "hjelpetekst_en": "The field adds up Norwegian income before ceded group contributions."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.naeringsinntekt",
+    "tekst_nn": "Næringsinntekt i utlandet ",
+    "tekst_nb": "Næringsinntekt i utlandet",
+    "tekst_en": "Business income abroad",
+    "hjelpetekst_nn": "Overskottet blir summert her. Feltet kan overstyrast.",
+    "hjelpetekst_nb": "Overskudd summeres her. Feltet kan overstyres.",
+    "hjelpetekst_en": "Profit is added together here. The field can be overwritten."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.samletDriftsinntekt.beloepSomHeltall",
+    "tekst_nn": "Sum driftsinntekter",
+    "tekst_nb": "Sum driftsinntekter",
+    "tekst_en": "Total operating revenue",
+    "hjelpetekst_nn": "Oppgi kor stor del av driftsinntektene som er opptente i utlandet. Kvar enkelt inntektspost må vurderast for seg for å avgjere om det dreier seg om verksemdsinntekt med kjelde i Noreg eller i utlandet.<br>Verksemdsinntekt med kjelde i utlandet omfattar ikkje berre inntekt knytt til fast driftsstad, men også til dømes royaltyar og anna inntekt som det er trekt kjeldeskatt av i utlandet. <br>De må korrigere for skilnader som påverkar forholdet mellom den rekneskapsmessige og den skattemessige inntekta.",
+    "hjelpetekst_nb": "Oppgi hvor stor del av driftsinntektene som er opptjent i utlandet. Hver enkelt inntektspost må vurderes separat for å avgjøre om dette er virksomhetsinntekt med kilde i Norge eller utlandet.<br>Virksomhetsinntekt med kilde i utlandet omfatter ikke bare inntekt knyttet til fast driftssted, men også for eksempel royalties og annen inntekt som det er trukket kildeskatt av i utlandet. <br>Dere må korrigere for forskjeller som påvirker forholdet mellom regnskapsmessig og skattemessig inntekt. ",
+    "hjelpetekst_en": "State the share of operating revenue earned abroad. Consider each individual income item separately to determine whether this is business income originating from Norway or abroad. <br>Business income originating from abroad includes not only income related to a permanent establishment, but also, for example, royalties and other income on which withholding tax has been deducted abroad. You must correct differences affecting the relationship between accounting and tax income."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.samletDriftskostnad.beloepSomHeltall",
+    "tekst_nn": "Sum driftskostnader",
+    "tekst_nb": "Sum driftskostnader",
+    "tekst_en": "Total operating costs",
+    "hjelpetekst_nn": "Oppgi andelen av direkte driftskostnader frå utanlandsk næringsverksemd. De må vurdere kvar enkelt kostnadspost for seg for å avgjere om han høyrer til ei verksemdsinntekt med kjelde i Noreg eller i utlandet.",
+    "hjelpetekst_nb": "Oppgi andel av direkte driftskostnader fra utenlandsk næringsvirksomhet. Dere må vurdere hver enkelt kostnadspost separat for å avgjøre om den tilhører virksomhetsinntekt med kilde i Norge eller utlandet.",
+    "hjelpetekst_en": "State the share of direct operating costs from the foreign business activity. You must consider each individual cost item separately to determine whether it is related to business income originating from Norway or abroad."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.samletFinansinntekt.beloepSomHeltall",
+    "tekst_nn": "Sum finansinntekter",
+    "tekst_nb": "Sum finansinntekter",
+    "tekst_en": "Total financial income",
+    "hjelpetekst_nn": "Oppgi finansinntekter frå utanlandsk næringsverksemd.",
+    "hjelpetekst_nb": "Oppgi finansinntekter fra utenlandsk næringsvirksomhet.",
+    "hjelpetekst_en": "State financial income from a foreign business activity."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.samletFinanskostnad.beloepSomHeltall",
+    "tekst_nn": "Sum finanskostnader",
+    "tekst_nb": "Sum finanskostnader",
+    "tekst_en": "Total financial costs",
+    "hjelpetekst_nn": "Oppgi finanskostnader frå utanlandsk næringsverksemd. Merk at rentekostnader i utgangspunktet ikkje skal fordelast her, men i feltet \"Indirekte kostnader tilordna utlandet\".",
+    "hjelpetekst_nb": "Oppgi finanskostnader fra utenlandsk næringsvirksomhet. Vær oppmerksom på at rentekostnader i utgangspunktet ikke skal fordeles her, men i feltet \"indirekte kostnader tilordnet utlandet\".",
+    "hjelpetekst_en": "State financial costs from a foreign business activity. Please note that interest expenses must not be allocated here, but in the field \"indirect expenses allocated abroad\"."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.resultatFraNaeringsvirksomhetIUtlandet.underskudd",
+    "tekst_nn": "Underskott i utlandet ",
+    "tekst_nb": "Underskudd i utlandet",
+    "tekst_en": "Loss abroad",
+    "hjelpetekst_nn": "Underskottet blir summert her. Feltet kan overstyrast.",
+    "hjelpetekst_nb": "Underskudd summeres her. Feltet kan overstyres.",
+    "hjelpetekst_en": "Deficits are added together here. The field can be overwritten."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.samletFormuesskattBetaltIUtlandet",
+    "tekst_nn": "Samla formuesskatt betalt i utlandet ",
+    "tekst_nb": "Samlet formuesskatt betalt i utlandet",
+    "tekst_en": "Overall wealth tax paid abroad",
+    "hjelpetekst_nn": "<p>Oppgi formuesskatt som er betalt i utlandet. De skal oppgi følgjande: <ul><li>Kva land skatten er fastsett i og betalt til </li><li>type formue</li><li>brukt skattesats</li><li>betalt skattebeløp</li></ul></p>",
+    "hjelpetekst_nb": "<p>Oppgi formuesskatt som er betalt i utlandet. Dere skal oppgi følgende: <ul><li>Hvilket land skatten er fastsatt og betalt til </li><li>type formue</li><li>anvendt skattesats</li><li>betalt skattebeløp</li></ul></p>",
+    "hjelpetekst_en": "<p>State the wealth tax paid abroad. You must state the following: <ul><li>which country the tax is assessed and paid to </li><li>type of wealth</li><li>applied tax rate</li><li>amount of tax paid</li></ul></p>"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.samletFradragIFormueIUtlandet",
+    "tekst_nn": "Frådrag i formue i utlandet ",
+    "tekst_nb": "Fradrag i formue i utlandet",
+    "tekst_en": "Deduction in wealth abroad",
+    "hjelpetekst_nn": "I denne posten fordeler de gjeld som de har ført i skattemeldinga, forholdsmessig mellom utanlandsformuen og den norske formuen.",
+    "hjelpetekst_nb": "I denne posten fordeler dere gjeld som dere har ført i skattemeldingen, forholdsmessig mellom utenlandsformuen og den norske formuen.",
+    "hjelpetekst_en": "You allocate the debt you entered in the tax return under this item, proportionately between foreign wealth and Norwegian wealth."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.samletInntektsskattBetaltIUtlandet",
+    "tekst_nn": "Samla inntektsskatt betalt i utlandet ",
+    "tekst_nb": "Samlet inntektsskatt betalt i utlandet",
+    "tekst_en": "Overall income tax paid abroad",
+    "hjelpetekst_nn": "Her spesifiserer de den betalte inntektsskatten i utlandet. De skal berre føre opp skatt på årets utanlandske inntekter. De skal gi opplysningar om i kva land skatten er fastsett og betalt, og kva slags type inntekt det dreier seg om. Det kan til dømes vere inntekt frå ein utanlandsk filial, renteinntekter, royaltyar eller aksjeutbytte frå eit utanlandsk selskap. De må også oppgi kva skatteart det gjeld, skattesatsen som er trekt, storleiken på skatten i utanlandsk valuta, kva valutakurs som er brukt og storleiken på skattebeløpet i norske kroner.",
+    "hjelpetekst_nb": "Her spesifiseres betalt inntektsskatt i utlandet. Dere skal kun føre opp skatt på årets utenlandske inntekter. Dere skal gi opplysninger om i hvilket land skatten er fastsatt og betalt, og hva slags type inntekt det er snakk om. Eksempler kan være inntekt fra utenlandsk filial, renteinntekter, royalties, aksjeutbytte fra utenlandsk selskap. Videre må dere angi hvilken skatteart det gjelder, skattesatsen som er trukket, skattens størrelse i utenlandsk valuta, hvilken valutakurs som er benyttet og skattebeløpets størrelse i norske kroner.",
+    "hjelpetekst_en": "Here you specify income tax paid abroad. You must only enter tax on foreign income for the year. You must provide information about the country in which the tax has been assessed and paid, and the type of income in question. Examples can be income from a foreign branch, interest income, royalties, dividend on shares from foreign companies. Furthermore, you must state the type of tax, the tax rate deducted, the amount of the tax in foreign currency, the currency rate used and the amount of the tax in Norwegian kroner."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.samletKostnadTilordnetUtlandetEtterIndirekteEllerAnnenFordelingsmetode",
+    "tekst_nn": "Kostnader tilordna utlandet",
+    "tekst_nb": "Kostnader tilordnet utlandet",
+    "tekst_en": "Costs allocated abroad",
+    "hjelpetekst_nn": "Feltet summerer kostnader tilordna utlandet.",
+    "hjelpetekst_nb": "Feltet summerer kostnader tilordnet utlandet.",
+    "hjelpetekst_en": "The field adds up costs allocated abroad."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.samletKostnadTilordnetUtlandetEtterIndirekteFordelingsmetode",
+    "tekst_nn": "Indirekte kostnader tilordna utlandet",
+    "tekst_nb": "Indirekte kostnader tilordnet utlandet",
+    "tekst_en": "Indirect costs allocated abroad",
+    "hjelpetekst_nn": "<p>Det er berre kostnadene som gir frådragsrett i Noreg som skal fordelast. Kostnader som er unntatte frå skattlegging i Noreg etter skatteavtale, gir ikkje rett til frådrag i Noreg. Dette kan vere <ul><li>kostnader til fast eigedom</li><li>kostnader ved verksemd i utlandet</li></ul> </p> <p>Selskap med verksemd i ein EØS-stat kan føre gjeldsrenter etter kvar inntekta er opptent, eller kostnaden er pådratt, viss selskapet grunngir at 90 prosent eller meir av gjeldsrentene er knytte til selskapet si verksemd i Noreg. Viss 90 prosent eller meir av gjeldsrentene er knytte til selskapet si verksemd utanfor Noreg, skal gjeldsrentene førast etter den direkte metoden. I så fall skal dette gjerast i feltet \"Sum finanskostnader\", eller under \"Annan fordelingsmetode\".</p><p>Indirekte fordelingsmetode: Rentekostnader og andre indirekte kostnader skal normalt fordelast etter nettoinntektsprinsippet. Oppgi type kostnader og beløp. Den indirekte fordelingsmetoden fordeler kostnadene etter forholdet mellom nettoinntekta i Noreg og i utlandet. </p><p>Annan fordelingsmetode: Bruk annan fordelingsmetode viss denne gir eit meir korrekt bilete av kostnadsfordelinga mellom Noreg og utlandet. Då må de dokumentere at ei fordeling etter ein annan fordelingsnøkkel gir eit rimeleg resultat, i samsvar med alminneleg aksepterte forretningsmessige og bedriftsøkonomiske prinsipp. Denne fordelinga må de bruke konsekvent. </p><p>Døme: Avskrivingar på driftsmiddel som er brukte både i Noreg og i utlandet må de fordele etter kvar inntekta knytt til driftsmiddelet er opptent. De må også korrigere for skilnader som påverkar forholdet mellom den rekneskapsmessige og den skattemessige inntekta. </p>",
+    "hjelpetekst_nb": "<p>Det er bare kostnadene som er fradragsberettigede i Norge som skal fordeles. Kostnader som er unntatt beskatning i Norge etter skatteavtale, er ikke fradragsberettigede i Norge. Dette kan være <ul><li>kostnader til fast eiendom</li><li>kostnader ved virksomhet i utlandet</li></ul> </p> <p>Selskap med virksomhet i en EØS-stat kan føre gjeldsrenter etter hvor inntekten er opptjent, eller kostnaden er pådratt, hvis selskapet begrunner at 90 prosent eller mer av gjeldsrentene er knyttet til selskapets virksomhet i Norge. Hvis 90 prosent eller mer av gjeldsrentene er tilknyttet selskapets virksomhet utenfor Norge, skal gjeldsrentene føres etter den direkte metode. I så fall gjøres dette i feltet \"sum finanskostnader\", eller under \"annen fordelingsmetode\".</p><p>Indirekte fordelingsmetode: Rentekostnader og andre indirekte kostnader skal normalt fordeles etter nettoinntektsprinsippet. Oppgi type kostnader og beløp. Indirekte fordelingsmetode fordeler kostnadene etter forholdet mellom nettoinntekten i Norge og utlandet. </p><p>Annen fordelingsmetode: Bruk annen fordelingsmetode hvis denne gir et mer korrekt bilde av kostnadsfordelingen mellom Norge og utlandet. Da må dere dokumentere at fordeling etter en annen fordelingsnøkkel gir et rimelig resultat, i samsvar med alminnelig aksepterte forretningsmessige og bedriftsøkonomiske prinsipper. Denne fordelingen må dere bruke konsekvent. </p><p>For eksempel: Avskrivninger på driftsmidler som er brukt både i Norge og utlandet må dere fordele etter hvor inntekten knyttet til driftsmiddelet er opptjent. Dere må videre korrigere for forskjeller som påvirker forholdet mellom regnskapsmessig og skattemessig inntekt. </p>",
+    "hjelpetekst_en": "<p>Only costs that are deductible in Norway can be allocated. Costs exempt from taxation in Norway under a tax treaty are not tax deductible in Norway. These can be<ul><li>costs relating to real property</li><li>costs relating to business abroad</li></ul></p><p>Companies with business activities in an EEA country can enter debt interest according to where the income is earned or where the cost is incurred, if the company justifies that 90 percent or more of the debt interest is related to the company’s business activity in Norway. If 90 percent or more of the debt interest is related to the company’s business activities outside Norway, debt interest must be entered according to the direct method. In that case, you do this in the field \"total financial costs\" or under \"other distribution method\".</p><p>Indirect distribution method: Interest costs and other indirect costs must normally be distributed according to the net income principle. State type of cost and amount. Indirect exemption method distributes the costs according to the relationship between the net income in Norway and abroad.</p><p>Other distribution method: Use a different distribution method if this provides a more correct picture of the cost distribution between Norway and abroad. You must document that distribution according to a different allocation key gives a more reasonable result, in accordance with generally accepted business principles. You must use this distribution consistently.</p><p>For example: You must distribute depreciations of fixed assets used both in Norway and abroad according to where the income related to the fixed asset is earned. Afterwards, you must correct the differences that affect the relationship between accounting and tax income.</p>"
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.samletUtenlandsinntekt",
+    "tekst_nn": "Samla utanlandsk inntekt ",
+    "tekst_nb": "Samlet utenlandsk inntekt",
+    "tekst_en": "Overall foreign income",
+    "hjelpetekst_nn": "Feltet summerer netto utanlandsk inntekt. Den utanlandske inntekta blir brukt til berekning av maksimalt kreditfrådrag i inntektsåret.",
+    "hjelpetekst_nb": "Feltet summerer netto utenlandsk inntekt. Den utenlandske inntekten brukes til beregning av maksimalt kreditfradrag i inntektsåret. ",
+    "hjelpetekst_en": "The field adds up net foreign income. The foreign income is used to calculate the maximum credit deduction in the income year."
+  },
+  {
+    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.utlandsinntektFoerAvgittKonsernbidrag",
+    "tekst_nn": "Utanlandsinntekt før gitt konsernbidrag",
+    "tekst_nb": "Utenlandsinntekt før avgitt konsernbidrag",
+    "tekst_en": "Foreign income before ceded group contributions",
+    "hjelpetekst_nn": "Feltet summerer utanlandsinntekt før fordeling av konsernbidrag på norsk og inntekt frå utlandet.",
+    "hjelpetekst_nb": "Feltet summerer utenlandsinntekt før fordeling av konsernbidrag på norsk og utenlandsk inntekt.",
+    "hjelpetekst_en": "The field adds up foreign income before the distribution of group contributions of norwegian and foreign income."
+  },
+  {
     "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.fradragINorskSkattVedSkattleggingAvUtbytteMvFraUtenlandskDatterselskap.anvendtFradragsberettigetAndelAvUnderliggendeSelskapsskattIInntektsaaret.beloepSomHeltall",
     "tekst_nn": "Årets bruk av underliggjande selskapsskatt",
     "tekst_nb": "Årets anvendelse av underliggende selskapsskatt",
@@ -4591,12 +5227,6 @@
     "hjelpetekst_nn": "Oppgi det samla framførte ubrukte kreditfrådraget frå tidlegare inntektsår. Det er ikkje mogleg å framføre ubrukte kreditfrådrag frå tidlegare inntektsår enn 1995.",
     "hjelpetekst_nb": "Oppgi samlet fremført ubenyttet kreditfradrag fra tidligere inntektsår. Det er ikke mulig å fremføre ubenyttet kreditfradrag fra tidligere inntektsår enn 1995.",
     "hjelpetekst_en": "State the total carried-forward unused credit deduction from previous income years. It is not possible to carry forward unused credit deduction from income years earlier than 1995."
-  },
-  {
-    "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.gjelderBeskatningEtterPetroleumsskatteloven.boolsk",
-    "tekst_nn": "Gjeld skattlegging etter petroleumsskattelova ",
-    "tekst_nb": "Gjelder beskatning etter petroleumsskatteloven",
-    "tekst_en": "Applies to taxation according to the Petroleum Taxation Act"
   },
   {
     "skattemeldingSti": "metodeForAaUnngaaDobbeltbeskatning.gjelderBeskatningPaaSvalbard.boolsk",
@@ -7057,12 +7687,6 @@
     "hjelpetekst_en": "<p>Here you select if the enterprise was in financial difficulty pursuant to the General Block Exemption Regulation (EU) no. 651/2014 article 2, point 18, at the time the application was approved by the Research Council of Norway.</p><p>The assessment must be made both at group-level and company-level. The term 'group' must be used in the same way as in EEA law.</p><p>The enterprise is generally considered to be in financial difficulty if:<ul><li>More than half the share capital and paid-up premiums in the enterprise have been lost due to accumulated loss, (except for an SME that has existed for less than three years).</li><li>The enterprise is a general partnership where more than half of the recognised capital has been lost due to accumulated loss (except for an SME that has existed for less than three years).</li><li>Public debt negotiations or bankruptcy proceedings have been initiated for the enterprise, or the enterprise meets the conditions for bankruptcy in the Bankruptcy Act.</li><li>The enterprise has received crisis aid and has not yet repaid the loan or redeemed the guarantee, or has received financial aid for restructuring and has not yet completed the planned restructuring.</li><li>The enterprise is not an SME, and in the two previous accounting years:</li><li>The ratio of recognised debt to recognised equity has been larger than 7.5 and</li><li>the EBITDA interest coverage rate has been lower than 1.0.</li></ul></p><p>Please note that the above mentioned points are an abbreviated version of the conditions.</p>"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling.gjelderBeskatningEtterPetroleumsskatteloven.boolsk",
-    "tekst_nn": "Gjeld skattlegging etter petroleumsskattelova ",
-    "tekst_nb": "Gjelder beskatning etter petroleumsskatteloven",
-    "tekst_en": "Applies to taxation according to the Petroleum Taxation Act"
-  },
-  {
     "skattemeldingSti": "spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling.gjelderBeskatningPaaSvalbard.boolsk",
     "tekst_nn": "Gjeld skattlegging på Svalbard",
     "tekst_nb": "Gjelder beskatning på Svalbard",
@@ -7085,6 +7709,14 @@
     "tekst_nn": "Samla total kostnad ",
     "tekst_nb": "Samlet total kostnad",
     "tekst_en": "Overall total expenses"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling.skattefradragForKostnadKnyttetTilVirksomhetPaaLand.beloepSomHeltall",
+    "tekst_nb": "Skattefradrag for kostnader knyttet til virksomhet på land"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvSkattefradragForKostnaderTilForskningOgUtvikling.skattefradragForKostnadKnyttetTilVirksomhetPaaSokkel.beloepSomHeltall",
+    "tekst_nb": "Skattefradrag for kostnader knyttet til virksomhet på sokkel"
   },
   {
     "skattemeldingSti": "verdsettingAvAksje.likvidasjonsvederlagVedForhaandsfastsetting.beloepSomHeltall",
