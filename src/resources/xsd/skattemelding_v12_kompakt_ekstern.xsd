@@ -2213,10 +2213,12 @@
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
+          <xsd:choice>
+            <xsd:element minOccurs="0" name="faktiskKostnadForMerkjoeringForAaBringeOgHenteBarn" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+            <xsd:element minOccurs="0" name="satsbaserteKostnaderForMerkjoeringForAaBringeOgHenteBarn" type="SatsbaserteKostnaderForMerkjoeringForAaBringeOgHenteBarn" />
+          </xsd:choice>
           <xsd:element name="id" type="Tekst" />
           <xsd:element minOccurs="0" name="stedForBarnepass" type="GenerellAdresse" />
-          <xsd:element minOccurs="0" name="faktiskKostnadForMerkjoeringForAaBringeOgHenteBarn" type="BeloepIValutaMedSkattemessigeEgenskaper" />
-          <xsd:element minOccurs="0" name="satsbaserteKostnaderForMerkjoeringForAaBringeOgHenteBarn" type="SatsbaserteKostnaderForMerkjoeringForAaBringeOgHenteBarn" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>

@@ -3836,14 +3836,6 @@
     "hjelpetekst_en": "Enter the total number of registered patents held by the enterprise at the end of the accounting year. This includes patents that are registered to the enterprise in Norway and abroad."
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.eierEllerKontrollererForetaketDirekteIndirekteMinst50ProsentAvSelskapEllerInnretning.boolsk",
-    "tekst_nb": "Eier eller kontrollerer foretaket direkte eller indirekte minst 50 % av selskap eller innretning?"
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.eiesEllerKontrolleresForetaketDirekteIndirekteMinst50ProsentAvPersonSelskapEllerInnretning.boolsk",
-    "tekst_nb": "Eies eller kontrolleres foretaket direkte eller indirekte minst 50 % av person, selskap eller innretning?"
-  },
-  {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.erDetMottattTjenesteEiendelRettighetForpliktelseEllerRisikoFraNaerstaaendeForetakUtenEllerTilSymbolskVederlagIInntektsaaret.boolsk",
     "tekst_nb": "Har foretaket i løpet av inntektsåret mottatt tjenester, eiendeler, rettigheter, forpliktelser eller risikoer fra nærstående selskap eller innretning uten vederlag, eller mot symbolsk vederlag?"
   },
@@ -3880,11 +3872,27 @@
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.kostnadTilEgenutvikletImmaterieltAnleggsmiddelSisteInntektsaar.beloepSomHeltall",
     "tekst_nn": "Kostnadsførte utgifter til eigeutvikla immaterielle anleggsmiddel",
-    "tekst_nb": "Kostnadsførte utgifter til egenutviklede immaterielle anleggsmidler",
+    "tekst_nb": "Kostnader til immaterielle eiendeler",
     "tekst_en": "Costs related to development of intangible non-current assets owned by the company",
     "hjelpetekst_nn": "Legg inn kostnadsførte utgifter til eigenutvikla immaterielle anleggsmiddel i rekneskapsåret. Her skal de føre utgifter som er direkte kostnadsførte (ikkje aktiverte), og som gjeld kostnader til utvikling av immaterielle anleggsmiddel som selskapet har utvikla sjølv, eller som selskapet har betalt ein oppdragsforskar for å utvikle. De skal føre opp kostnader her sjølv om anleggsmiddelet i løpet av inntektsåret ikkje er brukt i kontrollerte transaksjonar. Ein immateriell eigedel er noko som ikkje er ein fysisk eller finansiell eigedel, som det er mogleg å eige eller kontrollere for kommersiell bruk, og som uavhengige partar ville ha betalt for bruken av under samanliknbare forhold.",
     "hjelpetekst_nb": "Legg inn kostnadsførte utgifter til egenutviklede immaterielle anleggsmidler i regnskapsåret. Her skal dere føre utgifter som er direkte kostnadsført (ikke aktiverte) og som gjelder kostnader til utvikling av immaterielle anleggsmidler hvor selskapet selv har foretatt utviklingen, eller har betalt oppdragsforsker for å utvikle anleggsmiddelet. Dere skal føre opp kostnader her selv om anleggsmiddelet i løpet inntektsåret ikke er benyttet i kontrollerte transaksjoner. Med immateriell eiendel menes noe som ikke er en fysisk eller finansiell eiendel, som det er mulig å eie eller kontrollere for kommersiell bruk og hvor uavhengige parter ville betalt for bruk av de under sammenlignbare forhold.",
     "hjelpetekst_en": "Enter the costs related to development of non- current intangible property (IP). You should enter costs accrued in the accounting year, for self-developed IP. You should only enter direct costs (not capitalised). The costs of self-developed IP includes both costs where the company has carried out development, and where the company covers costs by commissioning a contract researcher. You should enter costs even if the IP has not been used in controlled transactions during the accounting year. IP is an asset that can be owned or controlled for commercial use and independent parties would have payed for the use under comparable conditions."
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.mellomvaerende.beloep.beloepSomHeltall",
+    "tekst_nb": "Mellomværendebeløp",
+    "hjelpetekst_nb": "Legg inn mellomværendebeløp per mellomværendetype."
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.mellomvaerende.landkode.landkode",
+    "tekst_nn": "Land",
+    "tekst_nb": "Land",
+    "tekst_en": "Country"
+  },
+  {
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.mellomvaerende.mellomvaerendetype.mellomvaerendetype",
+    "tekst_nb": "Mellomværendetype",
+    "hjelpetekst_nb": "Velg mellomværende type fra kodeliste."
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.oppgaveOgDokumentasjonsplikt.erDokumentasjonspliktig",
@@ -3892,78 +3900,26 @@
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.oppgaveOgDokumentasjonsplikt.harKontrollertTransaksjonDisposisjonOgMellomvaerendeOverBeloepsgrense",
-    "tekst_nb": "Har selskapet eller innretningen kontrollerte transaksjoner/disposisjoner og mellomværende over beløpsgrensene?"
+    "tekst_nb": "Er selskapet eller innretningen oppgavepliktig?"
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.mellomvaerende.beloep.beloepSomHeltall",
-    "tekst_nb": "Mellomværendebeløp",
-    "hjelpetekst_nb": "Legg inn mellomværendebeløp per mellomværendetype."
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.mellomvaerende.landkode.landkode",
-    "tekst_nn": "Land",
-    "tekst_nb": "Land",
-    "tekst_en": "Country"
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.mellomvaerende.mellomvaerendetype.mellomvaerendetype",
-    "tekst_nb": "Mellomværendetype",
-    "hjelpetekst_nb": "Velg mellomværende type fra kodeliste."
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.samletFinansiellInntekt.beloepSomHeltall",
-    "tekst_nn": "Sum konserninterne finansinntekter",
-    "tekst_nb": "Sum konserninterne finansinntekter",
-    "tekst_en": "Total amount of financial income",
-    "hjelpetekst_nn": "Denne blir automatisk berekna frå tal de har oppgitt i andre felt. ",
-    "hjelpetekst_nb": "Denne blir automatisk beregnet fra tall dere har oppgitt i andre felter.",
-    "hjelpetekst_en": "This field is system generated from amounts given in other fields."
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.samletFinansiellKostnad.beloepSomHeltall",
-    "tekst_nn": "Sum konserninterne finanskostnader",
-    "tekst_nb": "Sum konserninterne finanskostnader",
-    "tekst_en": "Total amount of financial expenses",
-    "hjelpetekst_nn": "Denne blir automatisk berekna frå tal de har oppgitt i andre felt. ",
-    "hjelpetekst_nb": "Denne blir automatisk beregnet fra tall dere har oppgitt i andre felter.",
-    "hjelpetekst_en": "This field is system generated from amounts given in other fields."
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.samletOperasjonellInntekt.beloepSomHeltall",
-    "tekst_nn": "Sum konserninterne driftsinntekter",
-    "tekst_nb": "Sum konserninterne driftsinntekter",
-    "tekst_en": "Total amount of operating income",
-    "hjelpetekst_nn": "Denne blir automatisk berekna frå tal de har oppgitt i andre felt. ",
-    "hjelpetekst_nb": "Denne blir automatisk beregnet fra tall dere har oppgitt i andre felter.",
-    "hjelpetekst_en": "This field is system generated from amounts given in other fields."
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.samletOperasjonellKostnad.beloepSomHeltall",
-    "tekst_nn": "Sum konserninterne driftskostnader",
-    "tekst_nb": "Sum konserninterne driftskostnader",
-    "tekst_en": "Total amount of operating expenses",
-    "hjelpetekst_nn": "Denne blir automatisk berekna frå tal de har oppgitt i andre felt. ",
-    "hjelpetekst_nb": "Denne blir automatisk beregnet fra tall dere har oppgitt i andre felter.",
-    "hjelpetekst_en": "This field is system generated from amounts given in other fields."
-  },
-  {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.beloep.beloepSomHeltall",
-    "tekst_nb": "Transaksjons- og disposisjonsbeløp",
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.beloep.beloepSomHeltall",
+    "tekst_nb": "Transaksjon-/disposisjonsbeløp",
     "hjelpetekst_nb": "<p>Legg inn transaksjons- og disposisjonsbeløp per transaksjonstype.</p><p>For fast driftssted må dere identifisere om dere har disposisjoner og legge disse inn som om de var transaksjoner mellom det faste driftsstedet og andre deler av foretaket. Legg inn disposisjonsbeløp per transaksjonstype. Dere bruker da feltene for transaksjoner.</p><p>En disposisjon vil være en overføring av varer eller tjenester eller annen hendelse mellom et fast driftssted og andre deler av foretaket, som etter artikkel 7 i OECDs mønsteravtale med kommentarer og gjeldende skatteavtale, gir grunnlag for å tilordne en armlengdes fortjeneste til det faste driftsstedet tilknyttet disposisjonen (eller den andre delen av foretaket).</p>"
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.beskrivelse.tekst",
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.beskrivelse.tekst",
     "tekst_nb": "Beskriv andre inntekter",
     "hjelpetekst_nb": "Legg inn beskrivelse av andre inntekter og andre kostnader."
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.landkode.landkode",
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.landkode.landkode",
     "tekst_nn": "Land",
     "tekst_nb": "Land",
     "tekst_en": "Country"
   },
   {
-    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.transaksjonstype.transaksjonstype",
+    "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.transaksjonstype.transaksjonstype",
     "tekst_nb": "Transaksjons-/disposisjonstype"
   },
   {

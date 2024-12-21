@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v5">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-12-09T12:02:13.461+0100" name="generertDato" />
+      <xsd:attribute fixed="2024-12-19T14:18:03.698+0100" name="generertDato" />
       <xsd:attribute fixed="v5" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v5" name="modellnavn" />
@@ -71,7 +71,7 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Tekst" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Tekst" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>vilkårlig lang sekvens av tegn inkludert aksenter og spesielle tegn fra standardiserte
         tegnsett
@@ -81,7 +81,7 @@
       <xsd:maxLength value="4000" />
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="Aarstall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Aarstall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>årstall er et tall som angir årets nummer i tidsregningen i den gregorianske kalender
       </xsd:documentation>
@@ -235,7 +235,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="salgTilMedlemmerISamvirkeforetakOgOevrige" type="KjoepFraOgSalgTilMedlemmerISamvirkeforetakOgOevrige" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>angir verdien sann eller usann</xsd:documentation>
     </xsd:annotation>
@@ -244,7 +244,7 @@
   <xsd:complexType name="Skogbruk">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogOgToemmerkonto" type="SkogOgToemmerkonto" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogfondForSelskap" type="Skogfond"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="skogfondForSelskap" type="Skogfond" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Vedlegg" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/d0db1980-1a4b-11e9-a7bb-0050568351d2">
@@ -298,6 +298,11 @@
   <xsd:complexType name="BeloepMedSkattemessigeEgenskaper">
     <xsd:sequence>
       <xsd:element name="beloep" type="BeloepMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940 " type="Dato" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Driftsinntekt">
@@ -772,18 +777,18 @@
       <xsd:element name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskap" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="Kontaktinformasjon" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52ad9-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:complexType name="Kontaktinformasjon" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52ad9-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>Navn, telefonnummer, sms-nummer og epost-adresse som kan brukes for uformell kontakt med en
         part
       </xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
-      <xsd:element name="navn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940" type="Navn" />
-      <xsd:element minOccurs="0" name="telefonnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e128-9fe1-11e5-a9f8-e4115b280940" type="Telefonnummer" />
-      <xsd:element minOccurs="0" name="epostadresse" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e108-9fe1-11e5-a9f8-e4115b280940" type="Epostadresse" />
-      <xsd:element minOccurs="0" name="mobiltelefonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e116-9fe1-11e5-a9f8-e4115b280940" type="Telefonnummer" />
-      <xsd:element minOccurs="0" name="smsNummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e126-9fe1-11e5-a9f8-e4115b280940" type="Telefonnummer" />
+      <xsd:element name="navn" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940" type="Navn" />
+      <xsd:element minOccurs="0" name="telefonnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e128-9fe1-11e5-a9f8-e4115b280940" type="Telefonnummer" />
+      <xsd:element minOccurs="0" name="epostadresse" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e108-9fe1-11e5-a9f8-e4115b280940" type="Epostadresse" />
+      <xsd:element minOccurs="0" name="mobiltelefonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e116-9fe1-11e5-a9f8-e4115b280940" type="Telefonnummer" />
+      <xsd:element minOccurs="0" name="smsNummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e126-9fe1-11e5-a9f8-e4115b280940" type="Telefonnummer" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvSkattemessigVerdiPaaFordring">
@@ -837,7 +842,7 @@
       </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="DatoKlokkeslett" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aee-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="DatoKlokkeslett" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aee-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>en kombinasjon av typene Dato og Klokkeslett. Kodes som en tekststreng etter datoformatering
         spesifisert i ISO 8601 (ISO 8601:2004 Data elements and interchange formats -- Information interchange --
@@ -953,6 +958,19 @@
       <xsd:element minOccurs="0" name="inntektFraToemmerkonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="inntektsfradragFraToemmerkonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="utgaaendeVerdiPaaToemmerkonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Skogfond">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="utbetaltFraSkogfondkontoTilFormaalMedSkattefordel" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="utbetaltFraSkogfondkontoTilFormaalUtenSkattefordel" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="innbetaltOffentligTilskuddTilSkogfondkonto" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="innbetaltOffentligTilskuddTilSkogfondkontoTilInvesteringForetattTidligereAar" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tilbakefoeringAvTidligereBeregnetSkattefordelPaaSkogfondkonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="skattefordelAvSkogfond" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="skattepliktigInntektAvSkogfond" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="TekstMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
@@ -1129,13 +1147,13 @@
       <xsd:element name="boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940 " type="Boolsk" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>tall som er satt sammen av en heltallsdel og en fraksjondel [wikipedia]</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:decimal" />
   </xsd:simpleType>
-  <xsd:simpleType name="Beloep" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Beloep" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>en sum av penger brukt i en kontekst. Dette kan være en transaksjon, saldo o.l.
       </xsd:documentation>
@@ -1153,6 +1171,16 @@
       <xsd:pattern value="([0-9]){4}" />
       <xsd:length value="4" />
     </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Dato" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:annotation>
+      <xsd:documentation>gir verdier for år, måned og dag. Kodes som en tekststreng etter datoformatering spesifisert i
+        ISO 8601 (ISO 8601:2004 Data elements and interchange formats -- Information interchange -- Representation of
+        dates and times).
+        Eksempel : 1998-12-21 eller 19981221.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:date" />
   </xsd:simpleType>
   <xsd:complexType name="Salgsinntekt">
     <xsd:sequence>
@@ -1344,11 +1372,6 @@
       <xsd:element minOccurs="0" name="nedskrivning" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="endringIUtsattSkattEllerSkattefordel" type="BeloepMedSkattemessigeEgenskaper" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="DatoMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940 " type="Dato" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk">
@@ -1686,7 +1709,7 @@
   <xsd:simpleType name="RegeltypeForAarsregnskap" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_regeltypeForAarsregnskap.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="Navn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Navn" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e243-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>et ord som noen el. noe kalles ved, og som henfører det nevnte til en bestemt klasse el. art
         (eks plantenavn, stoffnavn) el. skiller ut et bestemt individ, eksemplar e l fra en større gruppe (eks
@@ -1698,7 +1721,7 @@
       <xsd:maxLength value="200" />
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="Telefonnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e128-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Telefonnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e128-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>tallkode som telenettet bruker for å få fram teletrafikk til riktig adressat
       </xsd:documentation>
@@ -1707,7 +1730,7 @@
       <xsd:maxLength value="20" />
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="Epostadresse" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e108-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Epostadresse" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e108-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>navngitt elektronisk adresse for mottak av e-post</xsd:documentation>
     </xsd:annotation>
@@ -1753,7 +1776,7 @@
   <xsd:simpleType name="Organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
-  <xsd:simpleType name="Foedselsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/5138da10-be20-11e6-8004-005056825ca0">
+  <xsd:simpleType name="Foedselsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/5138da10-be20-11e6-8004-005056825ca0">
     <xsd:annotation>
       <xsd:documentation>ellevesifret identifikasjonsnummer for personer bosatt i Norge, der de seks første sifrene
         angir fødselsdato og de fem siste personnummer.
@@ -1764,13 +1787,13 @@
       <xsd:length value="11" />
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="Heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>hele tall, dvs. hele tall i mengden {..., -2, -1, 0, 1, 2, ...}</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:long" />
   </xsd:simpleType>
-  <xsd:simpleType name="BeloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="BeloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>en sum av penger i hele kroner brukt i en kontekst. Dette kan være en transaksjon, saldo o.l.
       </xsd:documentation>
@@ -1863,19 +1886,6 @@
       <xsd:element name="type" type="SamvirkeforetakstypeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="Skogfond">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst" />
-      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
-      <xsd:element minOccurs="0" name="utbetaltFraSkogfondkontoTilFormaalMedSkattefordel" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="utbetaltFraSkogfondkontoTilFormaalUtenSkattefordel" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="innbetaltOffentligTilskuddTilSkogfondkonto" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="innbetaltOffentligTilskuddTilSkogfondkontoTilInvesteringForetattTidligereAar" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="tilbakefoeringAvTidligereBeregnetSkattefordelPaaSkogfondkonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattefordelAvSkogfond" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattepliktigInntektAvSkogfond" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="InntektOgKostnad">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="salgsinntektOgUttakFraSkurtoemmerMassevirkeRotsalgMv" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1901,7 +1911,7 @@
   <xsd:simpleType name="Vedleggskategori" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_vedleggskategori.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="Uri" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e148-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Uri" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e148-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>En URI (Uniform Resource Identifier) er en kompakt streng av tegn som identifiserer en abstrakt
         eller fysisk ressurs. En URI kan videre klassifiseres som en lokator eller et navn, eller begge
@@ -1954,7 +1964,7 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="samletAarsproduksjon" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletMedgaattPumpekraft" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="korrigeringAvGrunnlagForNaturressursskatt" type="KiloWattimeMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="korrigeringAvGrunnlagForNaturressursskatt" type="KiloWattimeMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletGrunnlagForNaturressursskatt" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskattPerInntektsaar" type="GrunnlagForNaturressursskattPerInntektsaar" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskattPerKommune" type="GrunnlagForNaturressursskattPerKommune" />
@@ -2053,21 +2063,6 @@
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvHavbruksvirksomhet" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="KontraktstypeForKraftLevertAvKraftverkMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="kontraktstypeForKraftLevertAvKraftverk" type="KontraktstypeForKraftLevertAvKraftverk" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="OrganisasjonsnavnMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="organisasjonsnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnavn" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="OrganisasjonsnummerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnummer" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvGrunnrenteinntektIVindkraftverk">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk" type="BeregnetNegativSelskapsskattTilFremfoeringIVindkraftverk" />
@@ -2134,15 +2129,10 @@
       <xsd:documentation>adresse til postmottaker i utlandet</xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="coAdressenavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e104-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling">
-        <xsd:annotation>
-          <xsd:documentation>addresse som er indirekte</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
       <xsd:element minOccurs="0" name="adressenavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f9-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling">
         <xsd:annotation>
-          <xsd:documentation>navn på gate Merknad til definisjon: Dette er en oversettelse fra streetname og kan ha
-            nummer og bokstav
+          <xsd:documentation>navn på gate
+            Merknad til definisjon: Dette er en oversettelse fra streetname og kan ha nummer og bokstav
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
@@ -2153,26 +2143,6 @@
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element minOccurs="0" name="bygning" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/9c33fd03-2964-11e6-b2bc-96405985e0fa" type="TekstMedInnkapsling">
-        <xsd:annotation>
-          <xsd:documentation>navn og/eller nummer på bygning</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element minOccurs="0" name="etasjenummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e109-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling">
-        <xsd:annotation>
-          <xsd:documentation>identifikator for etasje</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element minOccurs="0" name="boenhet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e304-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling">
-        <xsd:annotation>
-          <xsd:documentation>nummer på en del av et hus eller annen inndeling</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element minOccurs="0" name="postboks" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e308-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling">
-        <xsd:annotation>
-          <xsd:documentation>kode for en postboks eller postnummer</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
       <xsd:element minOccurs="0" name="postkode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e11f-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling">
         <xsd:annotation>
           <xsd:documentation>kode for en postboks eller postnummer</xsd:documentation>
@@ -2181,23 +2151,6 @@
       <xsd:element minOccurs="0" name="byEllerStedsnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e305-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling">
         <xsd:annotation>
           <xsd:documentation>navn på by</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element minOccurs="0" name="distriktsnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e109-9fe1-11e5-a9f8-e4115b280940 " type="TekstMedInnkapsling">
-        <xsd:annotation>
-          <xsd:documentation>navn på et distrikt</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element maxOccurs="6" minOccurs="0" name="administrativEnhet" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f4-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling">
-        <xsd:annotation>
-          <xsd:documentation>navn på regional inndeling av land med særlig allmenninteresse</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element minOccurs="0" name="adressebrukskategori" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f7-9fe1-11e5-a9f8-e4115b280940" type="AdressebrukskategoriMedInnkapsling">
-        <xsd:annotation>
-          <xsd:documentation>kategorisering av måter å bruke en adresse både mht. hva slags adresse beskrevet adresse er
-            og hva man ønsker å utføre ved bruk av adressen.
-          </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element minOccurs="0" name="landkode" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e112-9fe1-11e5-a9f8-e4115b280940" type="LandkodeMedInnkapsling">
@@ -2223,15 +2176,6 @@
       <xsd:element name="immateriellEiendelOgVarigAnleggsmiddeltype" type="ImmateriellEiendelOgVarigAnleggsmiddeltype" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Dato" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:annotation>
-      <xsd:documentation>gir verdier for år, måned og dag. Kodes som en tekststreng etter datoformatering spesifisert i
-        ISO 8601 (ISO 8601:2004 Data elements and interchange formats -- Information interchange -- Representation of
-        dates and times). Eksempel : 1998-12-21 eller 19981221.
-      </xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:date" />
-  </xsd:simpleType>
   <xsd:complexType name="BenyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregelMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel" type="BenyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel" />
@@ -2250,7 +2194,7 @@
       <xsd:fractionDigits value="10" />
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="Antall" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e145-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Antall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e145-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>mengde som utgjør eller kan uttrykkes i et visst tall</xsd:documentation>
     </xsd:annotation>
@@ -2519,12 +2463,6 @@
       <xsd:element name="kostnad" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="KontraktstypeForKraftLevertAvKraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_kontraktstypeForKraftLevertAvKraftverk.xml">
-    <xsd:restriction base="xsd:string" />
-  </xsd:simpleType>
-  <xsd:simpleType name="Organisasjonsnavn">
-    <xsd:restriction base="Tekst" />
-  </xsd:simpleType>
   <xsd:complexType name="BeregnetNegativSelskapsskattTilFremfoeringIVindkraftverk">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="fremfoertBeregnetNegativSelskapsskattFraTidligereAar" type="BeloepMedSkattemessigeEgenskaper" />
@@ -2553,6 +2491,16 @@
       <xsd:element name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="KontraktstypeForKraftLevertAvKraftverkMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="kontraktstypeForKraftLevertAvKraftverk" type="KontraktstypeForKraftLevertAvKraftverk" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrganisasjonsnavnMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="organisasjonsnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnavn" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="ReferansepristypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="referansepristype" type="Referansepristype" />
@@ -2560,7 +2508,7 @@
   </xsd:complexType>
   <xsd:complexType name="Kontraktspart">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="id" type="Tekst" />
       <xsd:element name="loepenummer" type="TekstMedInnkapsling" />
       <xsd:element name="andelAvKontrakt" type="ProsentMedInnkapsling" />
     </xsd:sequence>
@@ -2568,11 +2516,6 @@
   <xsd:simpleType name="Landkode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_aktiveLandkoder.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:complexType name="AdressebrukskategoriMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f7-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="adressebrukskategori" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f7-9fe1-11e5-a9f8-e4115b280940" type="Adressebrukskategori" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="KontotypeSomOmfattesAvOvergangsregelForAvsetningerKnyttetTilRisikoprodukterOgRisikoutjevningsfond" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_kontotypeSomOmfattesAvOvergangsregelForAvsetningerKnyttetTilRisikoprodukterOgRisikoutjevningsfond.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -2652,6 +2595,11 @@
       <xsd:element name="fiskeartKnyttetTilHavbruksvirksomhet" type="FiskeartKnyttetTilHavbruksvirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="OrganisasjonsnummerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnummer" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="DriftskostnadstypeKnyttetTilHavbruksvirksomhetMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="driftskostnadstype" type="DriftskostnadstypeKnyttetTilHavbruksvirksomhet" />
@@ -2667,67 +2615,21 @@
       <xsd:element name="grunnlagIBeregningAvSelskapsskatt" type="GrunnlagIBeregningAvSelskapsskatt" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Referansepristype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_referansepristype.xml">
+  <xsd:simpleType name="KontraktstypeForKraftLevertAvKraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_kontraktstypeForKraftLevertAvKraftverk.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="Adressebrukskategori" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e0f7-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:annotation>
-      <xsd:documentation>kategorisering av måter å bruke en adresse både mht. hva slags adresse beskrevet adresse er og
-        hva man ønsker å utføre ved bruk av adressen.
-      </xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/offisiellforretning" value="offisiellForretning">
-        <xsd:annotation>
-          <xsd:documentation>brukskategori av adresse som angir hvor et foretak er offisielt registrert.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/offisiellpost" value="offisiellPost">
-        <xsd:annotation>
-          <xsd:documentation>brukskategori av adresse som angir hvilken offisiell postadresse et foretak har
-            registrert.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1aa-9fe1-11e5-a9f8-e4115b280940" value="virksomhet">
-        <xsd:annotation>
-          <xsd:documentation>brukskategori av adresse som angir hvilken adresse en virksomhet bedrives på.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e100-9fe1-11e5-a9f8-e4115b280940" value="bosted">
-        <xsd:annotation>
-          <xsd:documentation>brukskategori av adresse som angir på hvilken adresse en eller flere personer bor.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e11b-9fe1-11e5-a9f8-e4115b280940" value="post">
-        <xsd:annotation>
-          <xsd:documentation>brukskategori av adresse som angir hvilken adresse man kan sende post eller annen fysisk
-            overlevert korrespondanse.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration skatt:begrepsreferanse="http://www.skatteetaten.no/begrep/adresse/leveranse" value="leveranse">
-        <xsd:annotation>
-          <xsd:documentation>brukskategori av adresse som angir hvor en kan levere en fysiske leveranse.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b52ba4-9fe1-11e5-a9f8-e4115b280940" value="ukjent">
-        <xsd:annotation>
-          <xsd:documentation>ukjent brukskategori for en adresse</xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-    </xsd:restriction>
+  <xsd:simpleType name="Organisasjonsnavn">
+    <xsd:restriction base="Tekst" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Referansepristype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_referansepristype.xml">
+    <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:complexType name="LeveringsvilkaartypeVedOljesalgMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="leveringsvilkaartype" type="LeveringsvilkaartypeVedOljesalg" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Identifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940">
+  <xsd:simpleType name="Identifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
   <xsd:complexType name="BeloepMed10DesimalerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">

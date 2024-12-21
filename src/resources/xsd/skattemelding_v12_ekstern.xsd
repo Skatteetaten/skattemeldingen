@@ -2213,10 +2213,12 @@
     <xsd:complexContent>
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
+          <xsd:choice>
+            <xsd:element minOccurs="0" name="faktiskKostnadForMerkjoeringForAaBringeOgHenteBarn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d715-4c6c-11e8-bb3e-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+            <xsd:element minOccurs="0" name="satsbaserteKostnaderForMerkjoeringForAaBringeOgHenteBarn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d768-4c6c-11e8-bb3e-005056821322" type="SatsbaserteKostnaderForMerkjoeringForAaBringeOgHenteBarn" />
+          </xsd:choice>
           <xsd:element name="id" type="Tekst" />
           <xsd:element minOccurs="0" name="stedForBarnepass" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d779-4c6c-11e8-bb3e-005056821322" type="GenerellAdresse" />
-          <xsd:element minOccurs="0" name="faktiskKostnadForMerkjoeringForAaBringeOgHenteBarn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d715-4c6c-11e8-bb3e-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper" />
-          <xsd:element minOccurs="0" name="satsbaserteKostnaderForMerkjoeringForAaBringeOgHenteBarn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/46f4d768-4c6c-11e8-bb3e-005056821322" type="SatsbaserteKostnaderForMerkjoeringForAaBringeOgHenteBarn" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
