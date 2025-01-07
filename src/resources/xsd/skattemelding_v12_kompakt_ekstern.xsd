@@ -179,6 +179,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skattefriTilfeldigInntektFraSpillLotteriMv" type="SkattefriTilfeldigInntektFraSpillLotteriMv" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skattepliktigTilfeldigInntektFraSpillLotteriMv" type="SkattepliktigTilfeldigInntektFraSpillLotteriMv" />
       <xsd:element minOccurs="0" name="maksimalSkattEtterSkatteavtale" type="MaksimalSkattEtterSkatteavtale" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gevinstOgTapskontoUtenforVirksomhet" type="GevinstOgTapskontoUtenforVirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Naering">
@@ -1303,6 +1304,24 @@
       <xsd:element minOccurs="0" name="maksimalSkattPaaRenteinntektOmfattetAvSkatteavtaleVedSkatteavtalebostedIAnnenStat" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="maksimalSkattPaaUtbytteOmfattetAvSkatteavtaleVedSkatteavtalebostedIAnnenStat" skatt:erAvledet="true" type="BeloepSomHeltall" />
     </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GevinstOgTapskontoUtenforVirksomhet">
+    <xsd:complexContent>
+      <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
+        <xsd:sequence>
+          <xsd:element name="id" type="Tekst" />
+          <xsd:element name="gevinstOgTapskontoIdentifikator" type="TekstMedInnkapsling" />
+          <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="sumGevinstVedRealisasjonOgUttak" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="sumTapVedRealisasjonOgUttak" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="grunnlagForAaretsInntektsOgFradragsfoering" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element name="satsForInntektsfoeringOgInntektsfradrag" type="ProsentMedInnkapsling" />
+          <xsd:element minOccurs="0" name="inntektFraGevinstOgTapskonto" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="inntektsfradragFraGevinstOgTapskonto" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="NaeringsinntektMv">
     <xsd:complexContent>
