@@ -1285,18 +1285,18 @@
   <xsd:complexType name="SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg">
     <xsd:sequence>
       <xsd:element name="benyttesIGrunnrenteskattepliktigVirksomhet" type="BenyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregelMedInnkapsling" />
-      <xsd:element name="erAnleggsmiddelUnderUtfoerelse" type="BoolskMedInnkapsling" />
-      <xsd:element name="direkteUtgiftsfoertInvesteringsavgiftIGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
-      <xsd:element name="oppjustertGrunnlagForAvskrivningPer01012024" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="justeringPaaSaldo" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="grunnlagForAvskrivningIGrunnrenteinntekt" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="aaretsAvskrivningIGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="gevinstVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="tapVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="grunnlagForBeregningAvVenterente" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="venterente" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="erAnleggsmiddelUnderUtfoerelse" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="direkteUtgiftsfoertInvesteringsavgiftIGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="oppjustertGrunnlagForAvskrivningPer01012024" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="justeringPaaSaldo" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="grunnlagForAvskrivningIGrunnrenteinntekt" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="aaretsAvskrivningIGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="gevinstVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tapVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="grunnlagForBeregningAvVenterente" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="venterente" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SaldogruppeMedInnkapsling">
@@ -1344,17 +1344,18 @@
   </xsd:complexType>
   <xsd:complexType name="GevinstOgTapskontoKnyttetTilGrunnrente">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="grunnrenteomraade" type="GrunnrenteomraadeMedInnkapsling" />
+      <xsd:element name="grunnrenteomraade" type="GrunnrenteomraadeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="kraftverketsLoepenummer" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="behandlingsregelHavbruksvirksomhet" type="BehandlingsregelIHavbruksvirksomhetMedInnkapsling" />
       <xsd:element minOccurs="0" name="inngaaendeVerdi" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sumGevinstVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="sumTapVedRealisasjonOgUttak" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
-      <xsd:element name="inngaaendeVerdiFraErvervetGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="verdiAvRealisertGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="grunnlagForInntektsfoeringOgFradragsfoering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="inntektFraGevinstOgTapskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="inntektsfradragFraGevinstOgTapskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="inngaaendeVerdiFraErvervetGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="verdiAvRealisertGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="grunnlagForInntektsfoeringOgFradragsfoering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="inntektFraGevinstOgTapskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="inntektsfradragFraGevinstOgTapskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="utgaaendeVerdi" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk">

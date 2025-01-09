@@ -2751,9 +2751,9 @@
     "tekst_nn": "Del av formuesverdien (i prosent)",
     "tekst_nb": "Andel av formuesverdien (i prosent)",
     "tekst_en": "Share of the taxable value (in percent)",
-    "hjelpetekst_nn": "Ikkje aktuell for selskap.",
-    "hjelpetekst_nb": "Ikke aktuell for selskaper.",
-    "hjelpetekst_en": "Not relevant for companies."
+    "hjelpetekst_nn": "Legg inn del av formuesverdien i prosent.",
+    "hjelpetekst_nb": "Legg inn andel av formuesverdien i prosent.",
+    "hjelpetekst_en": "Enter share of the taxable value in percent."
   },
   {
     "skattemeldingSti": "fasteEiendommer.fastEiendom.fastEiendomSomFormuesobjekt.eiendomstype.eiendomstype",
@@ -3597,7 +3597,7 @@
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.andelAvBunnfradrag.andelAvMaksimalTillattBiomasse.prosent",
-    "tekst_nb": "Selskapets andel av maksimal tillatt biomasse før bunnfradrag "
+    "tekst_nb": "Selskapets andel av maksimal tillatt biomasse før bunnfradrag"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.andelAvBunnfradrag.bunnfradrag.beloepSomHeltall",
@@ -3617,7 +3617,7 @@
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.positivGrunnrenteinntektForAnsvarligSelskapFoerSamordningEtterBunnfradrag.beloepSomHeltall",
-    "tekst_nb": "Positiv grunnrenteinntekt før samordning, etter bunnfradrag"
+    "tekst_nb": "Positiv grunnrenteinntekt før samordning"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.beregnetGrunnrenteskatt.produksjonsavgiftTilFradragIGrunnrenteskatt.egenProduksjonsavgift.beloepSomHeltall",
@@ -3625,24 +3625,36 @@
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.datoForOverdragelse.dato",
-    "tekst_nb": "Dato for overdragelse"
+    "tekst_nn": "Dato for overdraging",
+    "tekst_nb": "Dato for overdragelse",
+    "tekst_en": "Date of change of ownership"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.motpartensIdentifikator.organisasjonsnummer",
+    "tekst_nn": "Motparten sin identifikator",
     "tekst_nb": "Motpartens identifikator",
-    "hjelpetekst_nb": "Motpartens identifikator er organisasjonsnummeret."
+    "tekst_en": "Identifier of counterparty",
+    "hjelpetekst_nn": "Motparten sin identifikator er organisasjonsnummeret.",
+    "hjelpetekst_nb": "Motpartens identifikator er organisasjonsnummeret.",
+    "hjelpetekst_en": "The identifier of the counterparty is the organisation number."
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.motpartensNavn.organisasjonsnavn",
-    "tekst_nb": "Motpartens navn"
+    "tekst_nn": "Motparten sitt namn",
+    "tekst_nb": "Motpartens navn",
+    "tekst_en": "Name of counterparty"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.overdragelsenErGjennomfoertMedKontinuitet.boolsk",
-    "tekst_nb": "Overdragelsen er gjennomført med kontinuitet"
+    "tekst_nn": "Overdraginga er gjennomført med kontinuitet",
+    "tekst_nb": "Overdragelsen er gjennomført med kontinuitet",
+    "tekst_en": "The transfer is effected in accordance with principles of continuity"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.overdragelseAvHavbruksvirksomhet.overdragelsestype.overdragelsestype",
-    "tekst_nb": "Overdragelsestype"
+    "tekst_nn": "Overdragingstype",
+    "tekst_nb": "Overdragelsestype",
+    "tekst_en": "Transfer type"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.alleProduksjonsenheterPaaLokasjonErOmfattetAvGrunnrenteskattepliktigAktivitet.boolsk",
@@ -3658,33 +3670,51 @@
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.grunnrenteskattepliktigProduksjonsenhet.produksjonsenhetsidentifikator.tekst",
+    "tekst_nn": "Produksjonseining",
     "tekst_nb": "Produksjonsenhetsidentifikator",
-    "hjelpetekst_nb": "Her oppgis produksjonsenhetens identifikator (nummer)."
+    "tekst_en": "Production unit",
+    "hjelpetekst_nn": "Her oppgir de identifikatoren til produksjonseininga (nummer).",
+    "hjelpetekst_nb": "Her oppgis produksjonsenhetens identifikator (nummer).",
+    "hjelpetekst_en": "Here you enter the production unit’s identifier (number)."
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.lokalitetsnummer.tekst",
+    "tekst_nn": "Lokalitet",
     "tekst_nb": "Lokalitetsnummer",
-    "hjelpetekst_nb": "Her oppgis lokalitetsnummer."
+    "tekst_en": "Locality",
+    "hjelpetekst_nn": "Her oppgir de lokalitetsnummer.",
+    "hjelpetekst_nb": "Her oppgis lokalitetsnummer.",
+    "hjelpetekst_en": "Here you enter the locality number."
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.driftsform.samarbeidsform",
-    "tekst_nb": "Driftsform"
+    "tekst_nn": "Samarbeidsform",
+    "tekst_nb": "Driftsform",
+    "tekst_en": "Form of collaboration"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.motpartensIdentifikator.organisasjonsnummer",
-    "tekst_nb": "Motpartsidentifikator"
+    "tekst_nn": "Motparten sin identifikator",
+    "tekst_nb": "Motpartsidentifikator",
+    "tekst_en": "Identifier of counterparty"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.periode.slutt.dato",
-    "tekst_nb": "Sluttdato for driftsform"
+    "tekst_nn": "Sluttdato for samarbeidsform",
+    "tekst_nb": "Sluttdato for samarbeidsform",
+    "tekst_en": "End date for type of collaboration"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.periode.start.dato",
-    "tekst_nb": "Startdato for driftsform"
+    "tekst_nn": "Startdato for samarbeidsform",
+    "tekst_nb": "Startdato for driftsform",
+    "tekst_en": "Start date for type of collaboration"
   },
   {
     "skattemeldingSti": "havbruksvirksomhet.spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet.spesifikasjonAvDriftsform.samdriftsbroek.prosent",
-    "tekst_nb": "Samdriftsbrøk"
+    "tekst_nn": "Samdriftsbrøk",
+    "tekst_nb": "Samdriftsbrøk",
+    "tekst_en": "Joint operations fraction"
   },
   {
     "skattemeldingSti": "inntektOgUnderskudd.ikkefradragsberettigetKostnad.andelAvKostnadIUnderliggendeSelskapMedDeltakerfastsetting.beloepSomHeltall",
@@ -3824,7 +3854,7 @@
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.antallEnheterSomForetaketHarKontrollerteTransaksjonerMedIAndreStaterEnnNorge.antall",
-    "tekst_nb": "Antall enheter som foretaket har kontrollerte transaksjoner med i andre stater enn i Norge"
+    "tekst_nb": "Antall enheter som foretaket har kontrollerte transaksjoner med i andre stater enn Norge"
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.antallRegistrertePatenter.antall",
@@ -3841,9 +3871,7 @@
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.erDetUtfoertTjenesteEllerOverfoertEiendelRettighetForpliktelseEllerRisikoTilNaerstaaendeForetakUtenEllerTilSymbolskVederlagIInntektsaaret.boolsk",
-    "tekst_nn": "Har føretaket utført eller fått tenester, overført eller fått eigedelar, rettar, forpliktingar eller risikoar til/frå nærståande føretak utan vederlag, eller mot symbolsk vederlag, i løpet av rekneskapsåret?",
     "tekst_nb": "Har foretaket i løpet av inntektsåret utført tjenester, overført eiendeler, rettigheter, forpliktelser og/eller risikoer til nærstående selskap eller innretning uten vederlag, eller mot symbolsk vederlag?",
-    "tekst_en": "Has the enterprise carried out or received services, transferred, or received assets, rights, liabilites, or risks to/from associated enterprises without compensation, or in exchange for a symbolic amount of compensation, during the accounting year?",
     "hjelpetekst_nn": "<p>Legg inn opplysning om føretaket har utført eller mottatt tenester, overført eller mottatt eigedelar, rettar, forpliktingar eller risikoar til/frå nærståande føretak utan vederlag, eller mot symbolsk vederlag, i løpet av rekneskapsåret? Eigedelar kan vere både materielle og immaterielle, som anleggsmiddel, maskinar, kundelister, teknisk knowhow med meir. Rettar omfattar forretningsmessig utnytting av materielle eller immaterielle eigedelar ved lisensar og liknande.</p><p> Forpliktingar vil til dømes vere gjeld (inkludert leverandørgjeld), garantiar eller andre sikringsordningar i låneforhold, eller i samband med forretningsdrifta slik som tilbakeleveringsavtaler av varelager med meir.</p>",
     "hjelpetekst_nb": "<p>Legg inn opplysning om foretaket har utført eller mottatt tjenester, overført eller mottatt eiendeler, rettigheter, forpliktelser eller risikoer til/fra nærstående foretak uten vederlag, eller mot symbolsk vederlag, i løpet av regnskapsåret? Eiendeler kan være både materielle og immaterielle som anleggsmidler, maskiner, kundelister, teknisk knowhow mv. Rettigheter omfatter forretningsmessig utnyttelse av materielle eller immaterielle eiendeler ved lisenser ol. </p><p>Forpliktelser vil for eksempel omfatte gjeld (herunder leverandørgjeld), garantier eller andre sikringsordninger i låneforhold eller i forbindelse med forretningsdriften slik som tilbakeleveringsavtaler av varelager mv.</p>",
     "hjelpetekst_en": "<p>Has the enterprise carried out or received services, transferred or received assets, rights, liabilities or risks to/from associated enterprises without compensation, or in exchange for a symbolic amount of compensation, during the accounting year. Assets may be tangible and/or intangible, including fixed assets, plant and machinery, customer lists, technical knowhow etc. Rights include commercial utilisation of tangible and/or intangible assets through licences etc.</p><p> Examples of liabilities are debt (including trade creditors), guarantees or other furnishing of security for borrowings or in connection with business operation, such as agreements relating to the return of stocks etc.Choose alternative Yes/No from the code list.</p>"
@@ -3871,17 +3899,19 @@
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.foretaksinformasjon.kostnadTilEgenutvikletImmaterieltAnleggsmiddelSisteInntektsaar.beloepSomHeltall",
-    "tekst_nn": "Kostnadsførte utgifter til eigeutvikla immaterielle anleggsmiddel",
     "tekst_nb": "Kostnader til immaterielle eiendeler",
-    "tekst_en": "Costs related to development of intangible non-current assets owned by the company",
     "hjelpetekst_nn": "Legg inn kostnadsførte utgifter til eigenutvikla immaterielle anleggsmiddel i rekneskapsåret. Her skal de føre utgifter som er direkte kostnadsførte (ikkje aktiverte), og som gjeld kostnader til utvikling av immaterielle anleggsmiddel som selskapet har utvikla sjølv, eller som selskapet har betalt ein oppdragsforskar for å utvikle. De skal føre opp kostnader her sjølv om anleggsmiddelet i løpet av inntektsåret ikkje er brukt i kontrollerte transaksjonar. Ein immateriell eigedel er noko som ikkje er ein fysisk eller finansiell eigedel, som det er mogleg å eige eller kontrollere for kommersiell bruk, og som uavhengige partar ville ha betalt for bruken av under samanliknbare forhold.",
     "hjelpetekst_nb": "Legg inn kostnadsførte utgifter til egenutviklede immaterielle anleggsmidler i regnskapsåret. Her skal dere føre utgifter som er direkte kostnadsført (ikke aktiverte) og som gjelder kostnader til utvikling av immaterielle anleggsmidler hvor selskapet selv har foretatt utviklingen, eller har betalt oppdragsforsker for å utvikle anleggsmiddelet. Dere skal føre opp kostnader her selv om anleggsmiddelet i løpet inntektsåret ikke er benyttet i kontrollerte transaksjoner. Med immateriell eiendel menes noe som ikke er en fysisk eller finansiell eiendel, som det er mulig å eie eller kontrollere for kommersiell bruk og hvor uavhengige parter ville betalt for bruk av de under sammenlignbare forhold.",
     "hjelpetekst_en": "Enter the costs related to development of non- current intangible property (IP). You should enter costs accrued in the accounting year, for self-developed IP. You should only enter direct costs (not capitalised). The costs of self-developed IP includes both costs where the company has carried out development, and where the company covers costs by commissioning a contract researcher. You should enter costs even if the IP has not been used in controlled transactions during the accounting year. IP is an asset that can be owned or controlled for commercial use and independent parties would have payed for the use under comparable conditions."
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.mellomvaerende.beloep.beloepSomHeltall",
+    "tekst_nn": "Mellomværebeløp",
     "tekst_nb": "Mellomværendebeløp",
-    "hjelpetekst_nb": "Legg inn mellomværendebeløp per mellomværendetype."
+    "tekst_en": "Amount of liability",
+    "hjelpetekst_nn": "Legg inn mellomværebeløp per mellomværetype.",
+    "hjelpetekst_nb": "Legg inn mellomværendebeløp per mellomværendetype.",
+    "hjelpetekst_en": "Enter the liability amount for each liability type."
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.mellomvaerende.landkode.landkode",
@@ -3892,7 +3922,9 @@
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.mellomvaerende.mellomvaerendetype.mellomvaerendetype",
     "tekst_nb": "Mellomværendetype",
-    "hjelpetekst_nb": "Velg mellomværende type fra kodeliste."
+    "hjelpetekst_nn": "Vel mellomvære type frå kodeliste.",
+    "hjelpetekst_nb": "Velg mellomværende type fra kodeliste.",
+    "hjelpetekst_en": "Choose type of outstanding accounts from code list."
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.oppgaveOgDokumentasjonsplikt.erDokumentasjonspliktig",
@@ -3905,12 +3937,18 @@
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.beloep.beloepSomHeltall",
     "tekst_nb": "Transaksjon-/disposisjonsbeløp",
-    "hjelpetekst_nb": "<p>Legg inn transaksjons- og disposisjonsbeløp per transaksjonstype.</p><p>For fast driftssted må dere identifisere om dere har disposisjoner og legge disse inn som om de var transaksjoner mellom det faste driftsstedet og andre deler av foretaket. Legg inn disposisjonsbeløp per transaksjonstype. Dere bruker da feltene for transaksjoner.</p><p>En disposisjon vil være en overføring av varer eller tjenester eller annen hendelse mellom et fast driftssted og andre deler av foretaket, som etter artikkel 7 i OECDs mønsteravtale med kommentarer og gjeldende skatteavtale, gir grunnlag for å tilordne en armlengdes fortjeneste til det faste driftsstedet tilknyttet disposisjonen (eller den andre delen av foretaket).</p>"
+    "hjelpetekst_nn": "<p>Legg inn transaksjons- og disposisjonsbeløp per transaksjonstype.</p><p>For fast driftsstad må de identifisere om de har disposisjonar og leggje desse inn som om dei var transaksjonar mellom den faste driftsstaden og andre delar av føretaket. Legg inn disposisjonsbeløp per transaksjonstype. De bruker då felta for transaksjonar.</p><p>Ein disposisjon vil vere ei overføring av varer eller tenester, eller ei anna hending mellom ein fast driftsstad og andre delar av føretaket, som etter artikkel 7 i OECDs mønsteravtale med kommentarar og gjeldande skatteavtale, gir grunnlag for å tilordne ei armlengds forteneste til den faste driftsstaden knytt til disposisjonen (eller den andre delen av føretaket).</p>",
+    "hjelpetekst_nb": "<p>Legg inn transaksjons- og disposisjonsbeløp per transaksjonstype.</p><p>For fast driftssted må dere identifisere om dere har disposisjoner og legge disse inn som om de var transaksjoner mellom det faste driftsstedet og andre deler av foretaket. Legg inn disposisjonsbeløp per transaksjonstype. Dere bruker da feltene for transaksjoner.</p><p>En disposisjon vil være en overføring av varer eller tjenester eller annen hendelse mellom et fast driftssted og andre deler av foretaket, som etter artikkel 7 i OECDs mønsteravtale med kommentarer og gjeldende skatteavtale, gir grunnlag for å tilordne en armlengdes fortjeneste til det faste driftsstedet tilknyttet disposisjonen (eller den andre delen av foretaket).</p>",
+    "hjelpetekst_en": "<p>Enter the transaction and dealing amount for each transaction type.</p><p>For permanent establishments, you must identify whether you have dealings and enter them as if they were transactions between the permanent establishment and other parts of the enterprise. Enter the dealing amount for each transaction type. You then use the fields for transactions.</p><p>A dealing is a transfer of goods or services or another event between a permanent establishment and other parts of the enterprise, which according to Article 7 of the OECD Model Tax Convention with comments and the applicable tax treaty, will provide a basis for allocating arm's length profit to the permanent establishment linked to the dealing (or the other part of the enterprise).</p> "
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.beskrivelse.tekst",
-    "tekst_nb": "Beskriv andre inntekter",
-    "hjelpetekst_nb": "Legg inn beskrivelse av andre inntekter og andre kostnader."
+    "tekst_nn": "Beskriv andre inntekter og andre kostnader",
+    "tekst_nb": "Beskriv andre inntekter og andre kostnader",
+    "tekst_en": "Describe other income and other expenses",
+    "hjelpetekst_nn": "Legg inn skildring av andre inntekter og andre kostnader.",
+    "hjelpetekst_nb": "Legg inn beskrivelse av andre inntekter og andre kostnader.",
+    "hjelpetekst_en": "Enter a description of other income and other expenses."
   },
   {
     "skattemeldingSti": "kontrollertTransaksjonDisposisjonOgMellomvaerende.transaksjonOgDisposisjon.landkode.landkode",
@@ -4191,15 +4229,15 @@
   },
   {
     "skattemeldingSti": "opplysningOmSelskapMedDeltakerfastsetting.restruktureringIForetaksstruktur.harForetakForetattOppkjoepInklKjoepAvInnmatIInntektsaaret.boolsk",
-    "tekst_nn": "Har føretaket gjort oppkjøp, inkludert kjøp av innmat i inntektsåret?",
-    "tekst_nb": "Har foretaket foretatt oppkjøp, inklusiv kjøp av innmat i inntektsåret?",
-    "tekst_en": "Has the enterprise made acquisitions, including the purchase of assets in the income year?"
+    "tekst_nn": "Har føretaket gjort oppkjøp i inntektsåret? Dette gjeld òg delvise oppkjøp av aksjar og innmat. ",
+    "tekst_nb": "Har foretaket foretatt et oppkjøp i løpet av året? Dette gjelder også delvise oppkjøp av aksjer og innmat.",
+    "tekst_en": "Has the enterprise made an acquisition during the year? This also applies to partial acquisitions of shares and assets. "
   },
   {
     "skattemeldingSti": "opplysningOmSelskapMedDeltakerfastsetting.restruktureringIForetaksstruktur.harForetakVaertGjenstandForOppkjoepInklSalgAvInnmatIInntektsaaret.boolsk",
-    "tekst_nn": "Har føretaket vore gjenstand for oppkjøp, inkludert sal av innmat i inntektsåret?",
-    "tekst_nb": "Har foretaket vært gjenstand for oppkjøp, inklusiv salg av innmat i inntektsåret?",
-    "tekst_en": "Has the enterprise been subject to acquisition, including the sale of assets in the income year?"
+    "tekst_nn": "Har føretaket vorte kjøpt opp i inntektsåret? Dette gjeld òg for delvise oppkjøp og sal av innmat.",
+    "tekst_nb": "Har foretaket vært gjenstand for oppkjøp i løpet av året? Dette gjelder også for delvise oppkjøp og salg av innmat.",
+    "tekst_en": "Has the enterprise been subject to an acquisition during the year? This also applies to partial acquisitions and the sale of assets."
   },
   {
     "skattemeldingSti": "opplysningOmSelskapMedDeltakerfastsetting.restruktureringIForetaksstruktur.harGjennomfoertEndringIForetaksstrukturIInntektsaaret.boolsk",
@@ -4418,9 +4456,9 @@
     "tekst_nn": "Skattleggingsordning",
     "tekst_nb": "Beskatningsordning",
     "tekst_en": "Taxation scheme",
-    "hjelpetekst_nn": "<p><strong>Selskapet krev seg behandla etter reglane for skattlegging av reiarlag</strong><ul><li>Bruk dette valet for det inntektsåret selskapet går inn i reiarlagsskatteordninga, og for alle seinare inntektsår der det blir kravd reiarlagsskattlegging.</li></ul></p><p><strong>Selskapet går ut av reiarlagsskatteordninga</strong><ul><li>Bruk dette valet for det inntektsåret selskapet går ut av reiarlagsskatteordninga. Dei andre felta under temaet Reiarlagsskatteordning skal då ikkje fyllast ut.</li></ul></p>",
-    "hjelpetekst_nb": "<p><strong>Selskapet krever seg behandlet etter reglene for skattlegging av rederi</strong><ul><li>Benytt valget ved inntreden, og alle senere inntektsår det kreves rederibeskatning</li></ul></p><p><strong>Selskapet går ut av rederibeskatningsordningen</strong><ul><li>Benytt valget det inntektsåret selskapet trer ut av rederiskatteordningen. Øvrige felter under temaet Rederiskatteordning skal da ikke fylles ut.</li></ul></p>",
-    "hjelpetekst_en": "<p><strong>The company requests to be taxed according to the tonnage tax regime</strong><ul><li>Select this option when entering the regime and in all other income years the tonnage tax regime is requested</li></ul></p><p><strong>The company is leaving the tonnage tax regime</strong><ul><li>Select this option the year in which the company leaves the tonnage tax regime. Other fields under the topic Tonnage tax regime must then be left blank.</li></ul></p>"
+    "hjelpetekst_nn": "<strong>Selskapet har  deltakar som er innanfor reiarlagsskatteordninga</strong><br> Bruk alle inntektsåra selskapet har deltakarar innanfor reiarlagsskatteordninga.",
+    "hjelpetekst_nb": "<strong>Selskapet har deltaker som er innenfor rederibeskatningsordningen</strong><br> Benytt alle inntektsår selskapet har deltakere innenfor rederibeskatningsordningen.",
+    "hjelpetekst_en": "<strong>The company has a partner who is covered by the tonnage tax regime</strong><br> Use all income years the company has partners covered by the tonnage tax regime."
   },
   {
     "skattemeldingSti": "rederiskatteordning.tonnasjeskatt.andelEoestonnasjeForRederibeskattetDeltaker.beloepSomHeltall",
@@ -4439,9 +4477,9 @@
     "tekst_nn": "Andel tonnasjeskatt frå selskap med deltakarfastsetjing eller NOKUS",
     "tekst_nb": "Andel tonnasjeskatt fra selskap med deltakerfastsetting eller NOKUS",
     "tekst_en": "Share of tonnage tax from a business assessed as a partnership or NOKUS",
-    "hjelpetekst_nn": "Andelar av tonnasjeskatt frå SDF og NOKUS skal leggjast til aksjeselskapet sin eigen tonnasjeskatt.",
-    "hjelpetekst_nb": "Andel av tonnasjeskatt fra SDF og NOKUS legges til aksjeselskapets egen tonnasjeskatt.",
-    "hjelpetekst_en": "The share of tonnage tax from SDF and NOKUS companies is added to the private limited company's own tonnage tax."
+    "hjelpetekst_nn": "Andelar av tonnasjeskatt frå SDF og NOKUS skal leggjast til selskapet sin eigen tonnasjeskatt.",
+    "hjelpetekst_nb": "Andel av tonnasjeskatt fra SDF og NOKUS legges til selskapets egen tonnasjeskatt.",
+    "hjelpetekst_en": "The share of tonnage tax from SDF and NOKUS companies is added to the company's own tonnage tax."
   },
   {
     "skattemeldingSti": "rederiskatteordning.tonnasjeskatt.heravAndelEoestonnasje.antall",
@@ -4457,9 +4495,9 @@
     "tekst_nn": "Nettotonnasje eigde skip",
     "tekst_nb": "Nettotonnasje eide skip",
     "tekst_en": "Net tonnage owned ships",
-    "hjelpetekst_nn": "Summer nettotonnasjen for alle skipa som aksjeselskapet eig ved utgangen av inntektsåret, uavhengig av flaggstat. Registrer samla nettotonnasje for alle skipa som har status \"Eigd skip som seglar under EØS-flagg ved utgangen av inntektsåret\" eller \"Eigd skip som ikkje seglar under EØS-flagg ved utgangen av inntektsåret\".",
-    "hjelpetekst_nb": "Summer nettotonnasje for samtlige skip aksjeselskapet eier ved utgangen av inntektsåret, uavhengig av flaggstat. Registrer samlet nettotonnasje for samtlige skip som har status \"Eid skip som seiler under EØS-flagg ved utgangen av inntektsåret\" eller \"Eid skip som ikke seiler under EØS-flagg ved utgangen av inntektsåret\".",
-    "hjelpetekst_en": "The total net tonnage for all ships the private limited company owns at the end of the income year, regardless of the flag country. Register the total net tonnage for all ships with the status \"Owned ship not sailing under the EEA flag at the end of the income year\" or \"Owned ship not sailing under the EEA flag at the end of the income year\"."
+    "hjelpetekst_nn": "Summer nettotonnasjen for alle skipa som selskapet eig ved utgangen av inntektsåret, uavhengig av flaggstat. Registrer samla nettotonnasje for alle skipa som har status \"Eigd skip som seglar under EØS-flagg ved utgangen av inntektsåret\" eller \"Eigd skip som ikkje seglar under EØS-flagg ved utgangen av inntektsåret\".",
+    "hjelpetekst_nb": "Summer nettotonnasje for samtlige skip selskapet eier ved utgangen av inntektsåret, uavhengig av flaggstat. Registrer samlet nettotonnasje for samtlige skip som har status \"Eid skip som seiler under EØS-flagg ved utgangen av inntektsåret\" eller \"Eid skip som ikke seiler under EØS-flagg ved utgangen av inntektsåret\".",
+    "hjelpetekst_en": "The total net tonnage for all ships the company owns at the end of the income year, regardless of the flag country. Register the total net tonnage for all ships with the status \"Owned ship not sailing under the EEA flag at the end of the income year\" or \"Owned ship not sailing under the EEA flag at the end of the income year\"."
   },
   {
     "skattemeldingSti": "rederiskatteordning.tonnasjeskatt.prosentandelEidAvRederibeskattetDeltaker.prosent",
@@ -4475,9 +4513,9 @@
     "tekst_nn": "Samla tonnasjeskatt",
     "tekst_nb": "Samlet tonnasjeskatt",
     "tekst_en": "Total tonnage tax",
-    "hjelpetekst_nn": "Summen av aksjeselskapet sin eigen tonnasjeskatt, og andelane av tonnasjeskatt i SDF og NOKUS.",
-    "hjelpetekst_nb": "Sum aksjeselskapets egen tonnasjeskatt, og andel av tonnasjeskatt i SDF og NOKUS.",
-    "hjelpetekst_en": "The share of the private limited company's own tonnage tax, as well as the share of tonnage tax from SDF and NOKUS companies."
+    "hjelpetekst_nn": "Summen av selskapet sin eigen tonnasjeskatt, og andelane av tonnasjeskatt i SDF og NOKUS.",
+    "hjelpetekst_nb": "Sum selskapets egen tonnasjeskatt, og andel av tonnasjeskatt i SDF og NOKUS.",
+    "hjelpetekst_en": "The share of the company's own tonnage tax, as well as the share of tonnage tax from SDF and NOKUS companies."
   },
   {
     "skattemeldingSti": "rederiskatteordning.tonnasjeskatt.samletTonnasjeskattIEgetSelskap.beloepSomHeltall",
@@ -5149,7 +5187,7 @@
     "tekst_nb": "Landkode",
     "tekst_en": "Country code",
     "hjelpetekst_nn": "Her vel du landkode for finansproduktet.",
-    "hjelpetekst_nb": " Her velger du landkode for finansproduktet.",
+    "hjelpetekst_nb": "Her velger du landkode for finansproduktet.",
     "hjelpetekst_en": "Here you choose the country code for the financial product."
   },
   {
