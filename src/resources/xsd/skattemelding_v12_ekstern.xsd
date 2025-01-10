@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v12" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v12">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2024-12-19T13:01:27.048+0100" name="generertDato" />
+      <xsd:attribute fixed="2025-01-06T16:29:39.726+0100" name="generertDato" />
       <xsd:attribute fixed="12.0" name="versjon" />
       <xsd:attribute fixed="Skattemelding for personlig skattepliktig inneholder informasjon om hva hver enkelt skattepliktig har i inntekter, utgifter, formue og gjeld som et grunnlag for beregning av formues- og inntektsskatt iht. skatteplikten. " name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v12" name="modellnavn" />
@@ -296,15 +296,18 @@
           <xsd:element name="bankensNavn" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/8ea2df23-7662-11e6-a74e-7e18b36b3fd9" type="TekstMedInnkapsling" />
           <xsd:element minOccurs="0" name="organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940" type="OrganisasjonsnummerMedInnkapsling" />
           <xsd:element name="kontonummer" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e328-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling" />
-          <xsd:element minOccurs="0" name="prosentandelAvGjeldOgPaaloepteRenter" type="ProsentMedInnkapsling" />
+          <xsd:element minOccurs="0" name="prosentandelAvGjeldInnskuddOgRente" type="ProsentMedInnkapsling" />
           <xsd:element minOccurs="0" name="erBoligsparekontoIAnnenEOeSStat" skatt:begrepsreferanse="http://data.skatteetaten.no/begrep/cf247fc7-dfe5-11e7-9101-005056821322" type="BoolskMedInnkapsling" />
           <xsd:element minOccurs="0" name="innskudd" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e324-9fe1-11e5-a9f8-e4115b280940" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="andelAvInnskudd" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
           <xsd:element minOccurs="0" name="opptjenteRenter" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="andelAvOpptjenteRenter" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
           <xsd:element minOccurs="0" name="gjeld" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/410ade56-9202-11e6-8b61-82ab1fa1f30b" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="andelAvGjeld" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
           <xsd:element minOccurs="0" name="paaloepteRenter" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1b0-9fe1-11e5-a9f8-e4115b280940" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
           <xsd:element minOccurs="0" name="andelAvPaaloepteRenter" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
           <xsd:element minOccurs="0" name="tilbakefoertRente" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/1e3330c5-6837-11e6-a7ce-fac03dffe1d7" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="andelAvTilbakefoertRente" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
           <xsd:element minOccurs="0" name="betalteMisligholdteRenter" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/20b2e1ab-9fe1-11e5-a9f8-e4115b280940" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="andelAvBetalteMisligholdteRenter" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
           <xsd:element minOccurs="0" name="tapValutalaan" skatt:begrepsreferanse="https://data.skatteetaten.no/begrep/cf24801e-dfe5-11e7-9101-005056821322" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
