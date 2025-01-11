@@ -2288,6 +2288,13 @@
     "hjelpetekst_en": "<p>Here you will find which assessment or which other deductions that will reduce your deduction amount.</p>"
   },
   {
+    "skattemeldingSti": "arbeidTrygdOgPensjon.fradragForIndividuellSparingTilPensjon.landkode.landkode",
+    "tekst_nn": "Land",
+    "tekst_se": "Riika",
+    "tekst_nb": "Land",
+    "tekst_en": "Country"
+  },
+  {
     "skattemeldingSti": "arbeidTrygdOgPensjon.fradragForIndividuellSparingTilPensjon.saerskiltSkatteplikt.saerskiltSkatteplikt",
     "tekst_nn": "Særskild skatteplikt",
     "tekst_se": "Earenoamáš vearrogeatnegasvuohta",
@@ -4760,6 +4767,14 @@
     "hjelpetekst_en": "<p>Here is the loan amount for your share of the loan. If you have 50 percent of a loan of 2 million, your share of the loan will be 1 million.</p><p>This amount is automatically calculated based on the total sum of the loan and your share. You cannot change this field.</p><p>If the amount here is incorrect, you must check that the total sum of the loan is correct and that your share is correct.</p>"
   },
   {
+    "skattemeldingSti": "bankLaanOgForsikring.konto.andelAvInnskudd",
+    "tekst_nb": "Min andel av innskudd"
+  },
+  {
+    "skattemeldingSti": "bankLaanOgForsikring.konto.andelAvOpptjenteRenter",
+    "tekst_nb": "Min andel av renteinntekter"
+  },
+  {
     "skattemeldingSti": "bankLaanOgForsikring.konto.andelAvPaaloepteRenter",
     "tekst_nn": "Min andel av renter på lån",
     "tekst_se": "Mu oassi loana reanttuin",
@@ -4769,6 +4784,10 @@
     "hjelpetekst_se": "<p>Dákko čuožžu submi du oassi loana reanttuin. Jus dus lea 50 proseantta loanas mas reanttut ledje 200 000 ruvnno. De lea du oassi loana reanttuin 100 000 ruvnno.</p><p>Dát submi rehkenasto automáhtalaččat oppalaš supmis reanttuin ja du oasis. Don it sáhte rievdadit dán ruvtto.</p><p>Jus submi lea boastut, de fertet dárkkistit ahte oppalaš supmi reanttuin stemme ja ahte du oassi lea riekta.</p>",
     "hjelpetekst_nb": "<p>Her står beløpet for din andel av renter på lån. Hvis du har 50 prosent av et lån der rentene var 200 000 kroner, er din andel av renter på lån 100 000 kroner. </p><p>Dette beløpet regnes ut automatisk basert på totalsum for renter på lånet og din andel. Du kan ikke endre dette feltet.</p><p>Hvis beløpet her er feil, må du sjekke at totalsummen på renter på lån stemmer og at din andel er riktig.</p>",
     "hjelpetekst_en": "<p>Here is the amount of your share of the interest on loans. If you have 50 percent of a loan where the interest was NOK 200,000, your share of the interest on the loan is NOK 100,000.</p><p>This amount is automatically calculated based on the total sum of the interest on the loan and your share. You cannot change this field.</p><p>If the amount here is incorrect, you must check that the total sum of the interest on the loan is correct and that your share is correct.</p>"
+  },
+  {
+    "skattemeldingSti": "bankLaanOgForsikring.konto.andelAvTilbakefoertRente",
+    "tekst_nb": "Min andel av tilbakeførte renter"
   },
   {
     "skattemeldingSti": "bankLaanOgForsikring.konto.bankensNavn.tekst",
@@ -4825,7 +4844,7 @@
     "skattemeldingSti": "bankLaanOgForsikring.konto.innskudd",
     "tekst_nn": "Innskot",
     "tekst_se": "Sisabidju",
-    "tekst_nb": "Innskudd",
+    "tekst_nb": "Totalsum innskudd",
     "tekst_en": "Deposits",
     "hjelpetekst_nn": "<p>Her legg du inn det samla beløpet (innskotet) du hadde på kontoen per 31. desember i inntektsåret. Beløpet finn du i årsoppgåva frå banken din.</p>",
     "hjelpetekst_se": "<p>Dása čálát oppalaš supmi (sisabiju) mii dus lei kontos juovlamánu 31. b. boahtojagi. Submi lea jahkelogahallamis man báŋku lea sádden.</p>",
@@ -4869,7 +4888,7 @@
     "skattemeldingSti": "bankLaanOgForsikring.konto.opptjenteRenter",
     "tekst_nn": "Renteinntekter",
     "tekst_se": "Reantosisaboađut",
-    "tekst_nb": "Renteinntekter",
+    "tekst_nb": "Totalsum renteinntekter",
     "tekst_en": "Interest income",
     "hjelpetekst_nn": "<p>Her legg du inn kor mykje du har opptent i renter frå pengar du har i banken (bankinnskott). Beløpet finn du i årsoppgåva frå banken din.</p><p>Har du innfridd eit lån til underkurs, blir dette rekna som renteinntekter. Det beløpet er også førehandsutfylt her.</p>",
     "hjelpetekst_se": "<p>Dákko bijat sisa man ollu don leat dinen reanttuid ruđain mat dus leat báŋkkus (báŋkosisabidju). Submi gávnnat jahkedieđáhusas maid oaččut iežat báŋkkus.</p><p>Leat go don máksán loana ruovttoluotta vuollekursii, rehkenasto dat de go reantosisaboahtu. Dat lea maid ovddalgihtii devdojuvvon dás.</p>",
@@ -4921,15 +4940,9 @@
     "hjelpetekst_en": "<p>Here you will find which assessment or which other deductions that will reduce your deduction amount.</p>"
   },
   {
-    "skattemeldingSti": "bankLaanOgForsikring.konto.prosentandelAvGjeldOgPaaloepteRenter.prosent",
-    "tekst_nn": "Min andel av lån og renter (i prosent)",
-    "tekst_se": "Mu oassi vealggis ja reanttut (proseantan)",
+    "skattemeldingSti": "bankLaanOgForsikring.konto.prosentandelAvGjeldInnskuddOgRente.prosent",
     "tekst_nb": "Min andel av lån og renter (i prosent)",
-    "tekst_en": "My share of debt and interest expenses (percent)",
-    "hjelpetekst_nn": "<p>Andelen din av lånet er kor stor prosentdel av lånet og rentene på lånet du skal ha. Dersom du er den einaste låntakaren, er andelen din 100 prosent.</p><p><strong>Har du lån saman med andre</strong>, er lån og renter fordelte likt mellom dykk. For to personar er det fordelt med 50 prosent på kvar. For tre personar er det fordelt med 33,3 prosent på kvar, og så frametter. Dette gjeld alle som er ansvarlege for lån saman.</p><p>Dersom de har avtalt ei anna fordeling, kan de endre andelane <strong>Hugs at alle låntakarane må endre.</strong> Dersom du aukar andelen din, må dei du har lån saman med redusere andelane sine. Til saman skal andelane dykkar vere lik 100 prosent.</p><p><a href=\"https://www.skatteetaten.no/nn/person/skatt/hjelp-til-rett-skatt/bank-og-lan/lan-og-renter/\" target=\"_blank\">Les mer om fordeling av lån og renter.</a></p>",
-    "hjelpetekst_se": "<p>Du oassi loanas lea man stuora proseantaoasi loanas ja reanttuin dutnje galgá. Jus don leat áidna lonejeaddji, de lea oassi 100 proseantta.</p><p><strong>Jus dus lea loatna ovttas earáiguin</strong>, lea loatna ja reanttut beliin juhkkojuvvon dudno gaskka. Guovtti olbmui lea de juhkkojuvvon 50 proseantta goabbái ge. Jus leat golmmas, de lea 33,3 proseantta geasa ge, ja nie viidáset. Diet gusto buohkaide geat leat ovddasvástideaddjit loana ovddas.</p><p>Jus dii lehpet soabadan eará juhkosa, de sáhttibehtet rievdadit oasi. <strong>Muitet fal ahte ahte buot lonejeaddjit fertejit rievdadit.</strong> Jus don lasihat iežat oasi, de ferte son geainna dus lea loatna ovttas, unnidit iežas oasi. Oktiibuot galget oasit leat 100 proseantta.</p><p><a href=\"https://www.skatteetaten.no/person/skatt/hjelp-til-riktig-skatt/bank-og-lan/lan-og-renter/\" target=\"_blank\">Loga eanet movt juohkit loana ja reanttuid.</a></p>",
-    "hjelpetekst_nb": "<p>Din andel av lånet er hvor stor prosentandel av lånet og rentene på lånet du skal ha. Hvis du er eneste låntaker, er andelen 100 prosent.</p><p><strong>Har du lån sammen andre</strong>, er lån og renter fordelt likt mellom dere. For to personer er det fordelt med 50 prosent på hver. For tre er det 33,3 prosent hver, og så videre. Dette gjelder alle som er ansvarlig for lån sammen.</p><p>Hvis dere har avtalt annen fordeling, kan dere endre andelen. <strong>Husk at alle låntakere må endre.</strong> Hvis du øker din andel, må den du har lån sammen med redusere sin andel. Til sammen skal andelene deres være 100 prosent.</p><p><a href=\"https://www.skatteetaten.no/person/skatt/hjelp-til-riktig-skatt/bank-og-lan/lan-og-renter/\" target=\"_blank\">Les mer om fordeling av lån og renter.</a></p>",
-    "hjelpetekst_en": "<p>Your share of the loan is the percentage of the loan and the interest you should have. If you are the only borrower, the share is 100 percent.</p><p><strong>If you have loans together with others</strong>, the loan and interest is shared between you. For two people, it is distributed with a 50 percent share to each. For three, it is 33.3 percent each, and so on. This applies to everyone who are responsible for a joint loan.</p><p>If you have agreed upon a different distribution, you can change the share. <strong>Remember that all borrowers must make a change.</strong>If you increase your share of the loan, the person you have the loan with must decrease their share. Together your shares must be 100 percent.</p><p><a href=\"https://www.skatteetaten.no/en/person/taxes/get-the-taxes-right/bank-and-loans/loans-and-interest-on-loans//\" target=”_blank”>Read more about the distribution of loans and interest here.</a></p>"
+    "hjelpetekst_nb": "<p>Din andel av lånet er hvor stor prosentandel av lånet og rentene på lånet du skal ha. Hvis du er eneste låntaker, er andelen 100 prosent.</p><p><strong>Har du lån sammen andre</strong>, er lån og renter fordelt likt mellom dere. For to personer er det fordelt med 50 prosent på hver. For tre er det 33,3 prosent hver, og så videre. Dette gjelder alle som er ansvarlig for lån sammen.</p><p>Hvis dere har avtalt annen fordeling, kan dere endre andelen. <strong>Husk at alle låntakere må endre.</strong> Hvis du øker din andel, må den du har lån sammen med redusere sin andel. Til sammen skal andelene deres være 100 prosent.</p><p><a href=\"https://www.skatteetaten.no/person/skatt/hjelp-til-riktig-skatt/bank-og-lan/lan-og-renter/\" target=\"_blank\">Les mer om fordeling av lån og renter.</a></p>"
   },
   {
     "skattemeldingSti": "bankLaanOgForsikring.konto.saerskiltSkatteplikt.saerskiltSkatteplikt",
@@ -4990,7 +5003,7 @@
     "skattemeldingSti": "bankLaanOgForsikring.konto.tilbakefoertRente",
     "tekst_nn": "Tilbakeførte renter",
     "tekst_se": "Reanttut mákson ruovttoluotta",
-    "tekst_nb": "Tilbakeførte renter",
+    "tekst_nb": "Totalsum tilbakeførte renter",
     "tekst_en": "Reversed interest",
     "hjelpetekst_nn": "<p>Dersom du har fått frådrag for renter du skulle ha betalt i eit tidlegare inntektsår, men som du ikkje har betalt, ser du beløpet her. Dette frådraget er tilbakeført. Då får du eit tillegg til inntekta di for dette inntektsåret. Tillegget er det same beløpet som det urette frådraget du har fått tidlegare. Desse opplysningane er rapporterte inn av banken din.</p>",
     "hjelpetekst_se": "<p>Jus don leat ožžon gessosa reanttuid ovddas maid don livččet galgan máksit ovddit sisaboahtojagi, muhto maid don it leat máksán, de oainnát supmi dákko. Dát geasus lea fievrreduvvon ruovttoluotta. De oaččut don lasáhusa sisabohtui dán sisaboahtojahkái. Lasáhus lea seamma submi go dat boasttu geasus maid don leat ovdal ožžon. Diet dieđut leat raporterejuvvon sisa du báŋkkus.</p>",

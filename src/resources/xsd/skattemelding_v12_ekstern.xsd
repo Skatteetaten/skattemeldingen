@@ -1276,6 +1276,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="andelISelskapMedDeltakerfastsettingOmfattetAvUtflyttingsskatt" type="AndelISelskapMedDeltakerfastsettingOmfattetAvUtflyttingsskatt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="aksjesparekontoOmfattetAvUtflyttingsskatt" type="AksjesparekontoOmfattetAvUtflyttingsskatt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fondskontoOmfattetAvUtflyttingsskatt" type="FondskontoOmfattetAvUtflyttingsskatt" />
+      <xsd:element minOccurs="0" name="forholdVedUtflyttingsskattKnyttetTilBortfallAvFradrag" type="ForholdVedUtflyttingsskattKnyttetTilBortfallAvFradrag" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkattefriTilfeldigInntektFraSpillLotteriMv">
@@ -2490,6 +2491,11 @@
       <xsd:element minOccurs="0" name="latentTapVedRealisasjonAvAksjedel" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="beregnetSkattepliktigTapVedRealisasjonAvAksjedel" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvFondskontoOmfattetAvUtflyttingsskatt" type="RealisasjonAvFondskontoOmfattetAvUtflyttingsskatt" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ForholdVedUtflyttingsskattKnyttetTilBortfallAvFradrag">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="tapVedOverfoeringAvEiendelTilLandUtenforEOeS" type="BeloepSomHeltall" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Naeringstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_naeringstype.xml">
