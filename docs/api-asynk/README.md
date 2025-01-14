@@ -8,7 +8,7 @@ Alle som har en næringsspesifikasjon som er større en 10MB skal bruke API'ene 
 1. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/last-opp.vedlegg`
    Først lastes næringsspesifikasjonen opp base64 encoded, retur objektet inneholder en referanse
 2. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/start`
-   Når en skal gjøre en validering, så må en egen valideringsjobb startes. I skattemeldingOgNaeringsspesifikasjonRequest så brukes referansen ved å  legge ved et dokument av typen naeringsspesifikasjonReferanse. Her retuneres en jobId
+   Når en skal gjøre en validering, så må en egen valideringsjobb startes. I skattemeldingOgNaeringsspesifikasjonRequest så brukes referansen ved å  legge ved et dokument av typen naeringsspesifikasjonReferanse. Her returneres en jobId
 3. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/status`
    Henter status på valideringsjobben mens den kjører. 
 4. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/resultat`
@@ -425,7 +425,7 @@ Rspons content-typen være av type application/xml
 
 
 ### Respons jobbstatus!=FERDIG
-Hvis jobben eksisterer og jobben ikke er ferdig, vil vi retunere en http 204
+Hvis jobben eksisterer og jobben ikke er ferdig, vil vi returnere en http 204
 
 
 # Vedlegg i næringsspesifikasjonen er ikke støttet

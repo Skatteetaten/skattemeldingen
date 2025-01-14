@@ -24,8 +24,8 @@ Hele dokumentet skal signeres, så her ligger signeringselementet på rotnoden (
 
 ## Altinn3
 
-**For å aktivere** signeringssteget i Altinn3 så må instansen opprettes med paramteret
-`"skalBekreftesAvRevisor": true` i `"dataValues":` elemenet. 
+**For å aktivere** signeringssteget i Altinn3 så må instansen opprettes med paramrteret
+`"skalBekreftesAvRevisor": true` i `"dataValues":` elementet. 
 
 _Det er viktig at dataValues settes ved opprettelse av Altinn3 instansen._
 
@@ -59,12 +59,12 @@ Dersom skattemeldingen eller næringsspesifiasjonen skal bekreftes av revisor s�
 Bekreftelsesstegene kan fullføres:
 
 - Ved å gå til Altinn innboks, åpne instansen og gå til visningsklienten for å signere (begge steg- rollestyrt). 
-  - PS! Lenken i Altinn går til produksjons, er dere i tt02 så må dere manuelt gå til "https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId={instans-id}"
+  - PS! Lenken i Altinn går til produksjon, er dere i tt02 så må dere manuelt gå til "https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId={instans-id}"
 - Det er mulig å laste opp revisorvedlegget og sette instansen over i neste steg via deres eget fagsystem. 
 
-1. Første steg, den skattepliktige signerer, utførs med en ‘next’ som er tilgangsstyrt
+1. Første steg, den skattepliktige signerer, utføres med en ‘next’ som er tilgangsstyrt
 2. Andre steg, revisor signerer, utføres ved å laste opp et signeringsdokument og deretter ‘next’, tilgangsstyrt
-   (beskrivelse av dokumetet på neste side).
+   (beskrivelse av dokumentet på neste side).
 
 Etter to `next` sendes skattemeldingen inn (går til feedback steget), og Skatt vil returnere en kvittering (ok/ikke ok)
 
@@ -107,14 +107,14 @@ Gitt følgende styring av revisors bekreftelseflag
 
 ### Case 1a, Revisorsteg i Altinn aktiveres, men ingen flagg i skattemeldingen/næringsspesifikasjonen
 
-Her vil skattepliktig bli veiledet i visningsklienten at revisor ikke har noe å signere, og vil mest sanysnlig bli tatt
+Her vil skattepliktig bli veiledet i visningsklienten at revisor ikke har noe å signere, og vil mest sannsynlig bli tatt
 ut i kontroll om det ikke rettes
 
 ### Case 1b, Revisorsteg i Altinn aktiveres, men selskapet har ingen revisor
 
 Innsender/regnskapsfører har mulighet til å slette instansen i Task2_rev
 
-### Case 2: Revisorsteg i Altinn aktveres ikke, men skattemeldingen/næringspesifikasjonen har satt flagget
+### Case 2: Revisorsteg i Altinn aktiveres ikke, men skattemeldingen/næringspesifikasjonen har satt flagget
 
 Slipper igjennom og blir fastsatt, vil bli fanget opp på kontroll.
 
