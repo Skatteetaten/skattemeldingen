@@ -4,7 +4,7 @@
   <tekniskNavn>2024_behandlingsartOgPensjonstype</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2024-11-01T12:54:25.000+01:00</sistEndret>
+  <sistEndret>2025-01-07T16:02:23.000+01:00</sistEndret>
   <sistEndretAv>x00sbj</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -883,6 +883,50 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>FERIETILLEGG_DAGPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Feriepenger dagpenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Feriepenger dagpenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Feriepengar dagpengar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Holiday pay unemployment benefits</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Luopmoruhta beaiveruhtii</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35513</oppgavekodeISL>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>85</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>ferietilleggDagpengerVedArbeidsloeshet</beskrivelseIAMelding>
+      <beskrivelseIAMelding>ferietilleggDagpengerTilFiskerSomBareHarHyre</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>DG_FRI_TRANSPORT</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -1018,25 +1062,25 @@
     <tekniskNavn>DIETT_HYBEL_UTEN_KOK_MM</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Overskudd diett hybel uten kokemulighet/pensjonat/brakke januar-august - overskuddsberegning / egenfastsetting</tekst>
+        <tekst>Overskudd diett hybel uten kokemulighet/pensjonat/brakke - overskuddsberegning / egenfastsetting</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Diett hybel uten kokemulighet / pensjonat / brakke fra januar til og med august</tekst>
+        <tekst>Diett hybel uten kokemulighet / pensjonat / brakke</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Diett hybel utan kokemoglegheit / pensjonat / brakke frå januar til og med august</tekst>
+        <tekst>Diett hybel utan kokemoglegheit / pensjonat / brakke</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Subsistence bedsit without cooking facilities / guest house / portacabin, from January up to and including August</tekst>
+        <tekst>Subsistence bedsit without cooking facilities / guest house / portacabin</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Biebmoruhta láigolanjas mas ii leat vuoššanvejolašvuohta / pensionáhta / bráhkka, ođđajagimánus borgemánu lohppii</tekst>
+        <tekst>Biebmoruhta láigolanjas mas ii leat vuoššanvejolašvuohta / pensionáhta / bráhkka</tekst>
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -1062,75 +1106,28 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>DIETT_HYBEL_U_KOK_FOM_SEPT_23</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Overskudd diett hybel uten kokemulighet/pensjonat/brakke september-desember - overskuddsberegning / egenfastsetting</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>Diett hybel uten kokemulighet / pensjonat / brakke fra september til og med desember</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Diett hybel utan kokemoglegheit / pensjonat / brakke frå september til og med desember</tekst>
-        <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Subsistence in a bedsit without cooking facilities / guest house / portacabin, from September up to and including December</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Biebmoruhta láigolanjas mas ii leat vuoššanvejolašvuohta / pensionáhta / bráhkka, čakčamánus juovlamánu lohppii</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <visningsfelt>beloep</visningsfelt>
-      <visningsfelt>antall</visningsfelt>
-      <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
-      <visningskategori>Lønn</visningskategori>
-      <kategori>Lønn</kategori>
-      <presentasjonsrekkefoelge>35</presentasjonsrekkefoelge>
-      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-      <inngaarIPrivatforbruksberegning>nei</inngaarIPrivatforbruksberegning>
-      <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
-      <beskrivelseIAMelding>reiseKostMedOvernattingPaaHybelUtenKokEllerPensjonatEllerBrakke</beskrivelseIAMelding>
-      <minstefradrag>minstefradragIInntekt</minstefradrag>
-      <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
-      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
-      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
-      <fordel>utgiftsgodtgjoerelse</fordel>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <sats>250</sats>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>DIETT_LANGTR</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Overskudd diett langtransportsjåfør januar-august - overskuddsberegning / egenfastsetting</tekst>
+        <tekst>Overskudd diett langtransportsjåfør - overskuddsberegning / egenfastsetting</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Diett langtransportsjåfør fra januar til og med august</tekst>
+        <tekst>Diett langtransportsjåfør</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Diett langtransportsjåfør frå januar til og med august</tekst>
+        <tekst>Diett langtransportsjåfør</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Subsistence long-distance driver from January up to and including August</tekst>
+        <tekst>Subsistence long-distance driver</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Biebmoruhta guhkilmasvuoddjái ođđajagimánus borgemánu lohppii</tekst>
+        <tekst>Biebmoruhta guhkilmasvuoddjái</tekst>
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -1157,32 +1154,34 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>DIETT_LANGTR_FOM_SEPT_23</tekniskNavn>
+    <tekniskNavn>DIETT_LANGTR_UTL</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Overskudd diett langtransportsjåfør september-desember - overskuddsberegning / egenfastsetting</tekst>
+        <tekst>Overskudd diett langtransportsjåfør i utlandet - overskuddsberegning / egenfastsetting</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Diett langtransportsjåfør fra september til og med desember</tekst>
+        <tekst>Diett langtransportsjåfør i utlandet</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Diett langtransportsjåfør frå september til og med desember</tekst>
+        <tekst>Diett langtransportsjåfør i utlandet</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Subsistence long-distance driver from September up to and including December</tekst>
+        <tekst>Subsistence long-distance lorry drivers abroad</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Biebmoruhta guhkkelmasvuoddjái čákčamánus juovlamánu lohpii</tekst>
+        <tekst>Biebmoruhta guorbmebiilla vuoddjis olgoriikkas</tekst>
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
+      <oppgavekodeISL>35514</oppgavekodeISL>
+      <oppgavekodeISL>35517</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelseMedOverstyring</visningsfelt>
@@ -1192,16 +1191,15 @@
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <inngaarIPrivatforbruksberegning>nei</inngaarIPrivatforbruksberegning>
       <loenntrekkordningenRegel>Utgiftsgodtgjørelse</loenntrekkordningenRegel>
-      <beskrivelseIAMelding>reiseKostMedOvernattingTilLangtransportsjaafoerForKjoeringInnenlands</beskrivelseIAMelding>
+      <beskrivelseIAMelding>reiseKostMedOvernattingTilLangtransportsjaafoerForKjoeringIUtlandet</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
-      <kommentar>SH-14176</kommentar>
       <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <sats>350</sats>
+      <sats>300</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -1553,19 +1551,19 @@
     </beskrivelse>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Utbetaling fra NAV ved fødsel eller adopsjon</tekst>
+        <tekst>Utbetaling fra Nav ved fødsel eller adopsjon</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Utbetaling frå NAV ved fødsel eller adopsjon</tekst>
+        <tekst>Utbetaling frå Nav ved fødsel eller adopsjon</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Payments from NAV related to births or adoptions</tekst>
+        <tekst>Payments from Nav related to births or adoptions</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Máksu NAVas riegádeami dahje adopšuvnna oktavuođas</tekst>
+        <tekst>Máksu Navas riegádeami dahje adopšuvnna oktavuođas</tekst>
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -2314,7 +2312,7 @@
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Introductory benefit,</tekst>
+        <tekst>Introductory benefit</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
@@ -4074,6 +4072,116 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>PLEIEPENGER_DAGM</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Pleiepenger til dagmamma</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Pleiepenger for barnepasser (dagmamma)</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Pleiepengar for barnepassar (dagmamma)</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Attendance allowance to childminder</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Spesiáladikšunruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>pleiepengerTilDagmamma</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>PLEIEPENGER_NAER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Pleiepenger til selvstendig næringsdrivende</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Pleiepenger for selvstendig næringsdrivende</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Pleiepengar for sjølvstendig næringsdrivande</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Attendance allowance to self-employed persons</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Spesiáladikšunruhta iehčanas ealáhusdolliide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>pleiepenger</beskrivelseIAMelding>
+      <beskrivelseIAMelding>pleiepengerTilJordOgSkogbrukere</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>PLEIEPENGER_NAER_FISK</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Pleiepenger til selvstendig næringsdrivende innen fiske</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Pleiepenger fiske</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Pleiepengar fiske</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Attendance allowance fishing</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Spesiáladikšunruhta guolásteddjiide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35510</oppgavekodeISL>
+      <oppgavekodeISL>35532</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>pleiepengerTilFisker</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>RENTEFORDEL_ARBEID</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -4741,6 +4849,412 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>PLEIEPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Pleiepenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Pleiepenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Pleiepengar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Attendance allowance</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Spesiáladikšunruhta</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>111</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>pleiepenger</beskrivelseIAMelding>
+      <beskrivelseIAMelding>pleiepengerTilFiskerSomBareHarHyre</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>OPPLAERINGSPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Opplæringspenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Opplæringspenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Opplæringspengar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Training allowance</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Oahpporuhta</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>111</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>opplaeringspenger</beskrivelseIAMelding>
+      <beskrivelseIAMelding>opplaeringspengerTilFiskerSomBareHarHyre</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>OMSORGSPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Omsorgspenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Omsorgspenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Omsorgspenger</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Care benefits</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Fuolahanruhta</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>111</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>omsorgspenger</beskrivelseIAMelding>
+      <beskrivelseIAMelding>omsorgspengerTilFiskerSomBareHarHyre</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>FERIEPENGER_FODSELSPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Feriepenger foreldrepenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Feriepenger foreldrepenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Feriepengar foreldrepengar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Holiday pay parental benefits</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Luopmoruhta váhnenruhtii</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>111</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>feriepengerForeldrepenger</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>FERIEPENGER_SYKEPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Feriepenger sykepenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Feriepenger sykepenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Feriepengar sjukepengar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Holiday pay sickness benefits</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Luopmoruhta buohcanruhtii</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>111</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>feriepengerSykepenger</beskrivelseIAMelding>
+      <beskrivelseIAMelding>feriepengerSykepengerTilFiskerSomBareHarHyre</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>FERIEPENGER_SVANGERSKAPSPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Feriepenger svangerskapspenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Feriepenger svangerskapspenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Feriepengar svangerskapspengar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Holiday pay pregnancy benefits</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Luopmoruhta áhpehisvuođaruhtii</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>111</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>feriepengerSvangerskapspenger</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>FERIEPENGER_PLEIEPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Feriepenger pleiepenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Feriepenger pleiepenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Feriepengar pleiepengar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Holiday pay attendance allowance</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Luopmoruhta spesiáladikšunruhtii</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35513</oppgavekodeISL>
+      <oppgavekodeISL>35514</oppgavekodeISL>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>111</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>feriepengerPleiepenger</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>FERIEPENGER_OPPLAERINGSPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Feriepenger opplæringspenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Feriepenger opplæringspenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Feriepengar opplæringspengar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Holiday pay training allowance</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Luopmoruhta oahpporuhtii</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35513</oppgavekodeISL>
+      <oppgavekodeISL>35514</oppgavekodeISL>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>111</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>feriepengerOpplaeringspenger</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>FERIEPENGER_OMSORGSPENGER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Feriepenger omsorgspenger</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Feriepenger omsorgspenger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Feriepengar omsorgspengar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Holiday pay care benefits</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Luopmoruhta fuolahanruhtii</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35513</oppgavekodeISL>
+      <oppgavekodeISL>35514</oppgavekodeISL>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Lønn</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>lonn</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>111</presentasjonsrekkefoelge>
+      <inngaarIPrivatforbruksberegning>ja</inngaarIPrivatforbruksberegning>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>feriepengerOmsorgspenger</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>SYKEPENGER</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -4788,6 +5302,158 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>OPPLAERINGSPENGER_DAGM</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Opplæringspenger til dagmamma</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Opplæringspenger for barnepasser (dagmamma)</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Opplæringspengar for barnepassar (dagmamma)</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Training allowance to childminder (nanny)</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Oahpporuhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35511</oppgavekodeISL>
+      <oppgavekodeISL>35516</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>opplaeringspengerTilDagmamma</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>OMSORGSPENGER_DAGM</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Omsorgspenger til dagmamma</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Omsorgspenger for barnepasser (dagmamma)</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Omsorgspengar for barnepassar (dagmamma)</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Care benefits to childminder (nanny)</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Fuolahanruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35511</oppgavekodeISL>
+      <oppgavekodeISL>35516</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>omsorgspengerTilDagmamma</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>FORELDREPENGER_DAGM</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Foreldrepenger til dagmamma</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Foreldrepenger for barnepasser (dagmamma)</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Foreldrepengar for barnepassar (dagmamma)</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Parental benefits to childminder (nanny)</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Váhnenruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35511</oppgavekodeISL>
+      <oppgavekodeISL>35516</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>foreldrepengerTilDagmamma</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>SVANGERSKAPSPENGER_DAGM</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Svangerskapspenger til dagmamma</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Svangerskapspenger for barnepasser (dagmamma)</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Svangerskapspengar for barnepassar (dagmamma)</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Pregnancy allowance to childminder (nanny)</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Áhpehisvuođaruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35511</oppgavekodeISL>
+      <oppgavekodeISL>35516</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>svangerskapspengerTilDagmamma</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>SYKEPENGER_DAGM</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -4805,11 +5471,11 @@
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Sickness benefits for childminders</tekst>
+        <tekst>Sickness benefits for childminder (nanny)</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Buhcciidruđat beaiveeadnái</tekst>
+        <tekst>Buohcanruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -4818,8 +5484,156 @@
       <oppgavekodeISL>35516</oppgavekodeISL>
       <visningskategori>Næring</visningskategori>
       <kategori>NæringsInntekt</kategori>
-      <beskrivelseIAMelding>sykepengerTilDagmamma</beskrivelseIAMelding>
+      <beskrivelseIAMelding>svangerskapspengerTilDagmamma</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>OPPLAERINGSPENGER_NAER_FISK</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Opplæringspenger til selvstendig næringsdrivende innen fiske</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Opplæringspenger fiske</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Opplæringspengar fiske</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Training allowance fishing</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Oahpporuhta guolásteddjiide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35510</oppgavekodeISL>
+      <oppgavekodeISL>35532</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>opplaeringspengerTilFisker</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>OMSORGSPENGER_NAER_FISK</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Omsorgspenger til selvstendig næringsdrivende innen fiske</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Omsorgspenger fiske</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Omsorgspengar fiske</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Care benefits fishing</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Fuolahanruhta guolásteddjiide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35510</oppgavekodeISL>
+      <oppgavekodeISL>35532</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>omsorgspengerTilFisker</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>FORELDREPENGER_NAER_FISK</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Foreldrepenger til selvstendig næringsdrivende  innen fiske</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Foreldrepenger fiske</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Foreldrepengar fiske</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Parental benefits fishing</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Váhnenruhta guolásteddjiide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35510</oppgavekodeISL>
+      <oppgavekodeISL>35532</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>foreldrepengerTilFisker</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>SVANGERSKAPSPENGER_NAER_FISK</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Svangerskapspenger til selvstendig næringsdrivende innen fiske</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Svangerskapspenger fiske</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Svangerskapspengar fiske</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Pregnancy benefits fishing</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Áhpehisvuođaruhta guolásteddjiide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35510</oppgavekodeISL>
+      <oppgavekodeISL>35532</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>svangerskapspengerTilFisker</beskrivelseIAMelding>
       <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
@@ -4858,6 +5672,162 @@
       <kategori>NæringsInntekt</kategori>
       <beskrivelseIAMelding>sykepengerTilFisker</beskrivelseIAMelding>
       <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>OMSORGSPENGER_NAER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Omsorgspenger til selvstendig næringsdrivende</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Omsorgspenger for selvstendig næringsdrivende</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Omsorgspengar for sjølvstendig næringsdrivande</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Care benefits to self-employed persons</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Fuolahanruhta iehčanas ealáhusdolliide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35512</oppgavekodeISL>
+      <oppgavekodeISL>35533</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>omsorgspenger</beskrivelseIAMelding>
+      <beskrivelseIAMelding>omsorgspengerTilJordOgSkogbrukere</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>FORELDREPENGER_NAER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst> Foreldrepenger til selvstendig næringsdrivende</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Foreldrepengar for selvstendig næringsdrivende</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Foreldrepengar for sjølvstendig næringsdrivande</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Parental benefits to self-employed persons</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Váhnenruhta iehčanas ealáhusdolliide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35512</oppgavekodeISL>
+      <oppgavekodeISL>35533</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>foreldrepenger</beskrivelseIAMelding>
+      <beskrivelseIAMelding>foreldrepengerTilJordOgSkogbrukere</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>SVANGERSKAPSPENGER_NAER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Svangerskapspenger til selvstendig næringsdrivende</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Svangerskapspenger for selvstendig næringsdrivende</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Svangerskapspengar for sjølvstendig næringsdrivande</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Pregnancy benefits to self-employed persons</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Áhpehisvuođaruhta iehčanas ealáhusdolliide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35512</oppgavekodeISL>
+      <oppgavekodeISL>35533</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>svangerskapspenger</beskrivelseIAMelding>
+      <beskrivelseIAMelding>svangerskapspengerTilJordOgSkogbrukere</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>OPPLAERINGSPENGER_NAER</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Opplæringspenger til selvstendig næringsdrivende</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Opplæringspenger for selvstendig næringsdrivende</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Opplæringspengar for sjølvstendig næringsdrivande</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Training allowance to self-employed persons</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Oahpporuhta iehčanas ealáhusdolliide</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <oppgavekodeISL>35512</oppgavekodeISL>
+      <oppgavekodeISL>35533</oppgavekodeISL>
+      <visningskategori>Næring</visningskategori>
+      <kategori>NæringsInntekt</kategori>
+      <beskrivelseIAMelding>opplaeringspenger</beskrivelseIAMelding>
+      <beskrivelseIAMelding>opplaeringspengerTilJordOgSkogbrukere</beskrivelseIAMelding>
+      <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
     </kodetillegg>
