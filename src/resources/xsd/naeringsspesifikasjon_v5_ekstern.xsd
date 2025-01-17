@@ -1376,7 +1376,7 @@
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk">
     <xsd:sequence>
-      <xsd:element name="benyttesIGrunnrenteskattepliktigVirksomhet" type="BoolskMedInnkapsling" />
+      <xsd:element name="benyttesIGrunnrenteskattepliktigVirksomhet" type="BenyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregelMedInnkapsling" />
       <xsd:element minOccurs="0" name="erAnleggsmiddelUnderUtfoerelse" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="kraftverketsLoepenummer" type="HeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gjenstaaendeLevetid" skatt:erAvledet="true" type="AntallMedInnkapsling" />

@@ -1616,6 +1616,7 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="nettoRentekostnad" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="rentefradragsramme" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="korrigertRentestoerrelse" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="differanseMellomNettoRentekostnadOgRentefradragsrammen" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tilbakefoertTilleggIInntektForSelskapIKonsernMv" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />

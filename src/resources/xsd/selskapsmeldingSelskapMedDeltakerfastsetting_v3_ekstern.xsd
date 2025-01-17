@@ -970,14 +970,14 @@
   <xsd:complexType name="SpesifikasjonAvSkattemessigInngangsverdiOgEgenkapitalkonto">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="inngaaendeVerdi" type="SkattemessigInngangsverdiOgEgenkapital" />
-      <xsd:element minOccurs="0" name="kostprisVedErvervAvAndel" type="SkattemessigInngangsverdiOgEgenkapital" />
+      <xsd:element minOccurs="0" name="kostprisVedErvervAvAndel" skatt:erAvledet="true" type="SkattemessigInngangsverdiOgEgenkapital" />
       <xsd:element minOccurs="0" name="realisasjonAvAndel" type="SkattemessigInngangsverdiOgEgenkapital" />
       <xsd:element minOccurs="0" name="innskudd" type="SkattemessigInngangsverdiOgEgenkapital" />
-      <xsd:element minOccurs="0" name="tilbakebetalingAvInnbetaltKapital" type="SkattemessigInngangsverdiOgEgenkapital" />
-      <xsd:element minOccurs="0" name="aaretsUtdeling" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="uegentligInnskudd" type="SkattemessigInngangsverdiOgEgenkapital" />
-      <xsd:element minOccurs="0" name="skattefordelAvUnderskudd" type="SkattemessigInngangsverdiOgEgenkapital" />
-      <xsd:element minOccurs="0" name="skattemessigResultat" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="tilbakebetalingAvInnbetaltKapital" skatt:erAvledet="true" type="SkattemessigInngangsverdiOgEgenkapital" />
+      <xsd:element minOccurs="0" name="aaretsUtdeling" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="uegentligInnskudd" skatt:erAvledet="true" type="SkattemessigInngangsverdiOgEgenkapital" />
+      <xsd:element minOccurs="0" name="skattefordelAvUnderskudd" skatt:erAvledet="true" type="SkattemessigInngangsverdiOgEgenkapital" />
+      <xsd:element minOccurs="0" name="skattemessigResultat" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvSkattefriInntekt" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvIkkeFradragsberettigetKostnad" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="annetTillegg" type="SkattemessigInngangsverdiOgEgenkapital" />
@@ -1012,8 +1012,8 @@
       <xsd:element minOccurs="0" name="ubenyttetSkjermingsfradrag" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="annetTillegg" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="annenReduksjon" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAndel" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="tapVedRealisasjonAvAndel" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="gevinstVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="tapVedRealisasjonAvAndel" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gevinstEllerTapErOmfattetAvFritaksmetoden" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="reguleringForPositivRiskIEiertiden" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="reguleringForNegativRiskIEiertiden" type="BeloepSomHeltallMedInnkapsling" />
@@ -1398,6 +1398,7 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="nettoRentekostnad" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="rentefradragsramme" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="korrigertRentestoerrelse" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="differanseMellomNettoRentekostnadOgRentefradragsrammen" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tilbakefoertTilleggIInntektForSelskapIKonsernMv" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
