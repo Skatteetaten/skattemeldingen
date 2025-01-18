@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2025-01-14T13:53:41.047+0100" name="generertDato" />
+      <xsd:attribute fixed="2025-01-15T11:53:13.989+0100" name="generertDato" />
       <xsd:attribute fixed="v4" name="versjon" />
       <xsd:attribute fixed="" name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v4" name="modellnavn" />
@@ -1011,6 +1011,7 @@
       <xsd:element minOccurs="0" name="harDetSkjeddVesentligEndringIFunksjonRisikoForetaketBaererEllerEiendelerSomForetaketBidrarMedIDeKontrollerteTransaksjoner" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="erDetUtfoertTjenesteEllerOverfoertEiendelRettighetForpliktelseEllerRisikoTilNaerstaaendeForetakUtenEllerTilSymbolskVederlagIInntektsaaret" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="erDetMottattTjenesteEiendelRettighetForpliktelseEllerRisikoFraNaerstaaendeForetakUtenEllerTilSymbolskVederlagIInntektsaaret" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="harForetaketStiltGarantiForAvtalerInngaattAvAndreForetakISammeKonsern" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OppgaveOgDokumentasjonsplikt">

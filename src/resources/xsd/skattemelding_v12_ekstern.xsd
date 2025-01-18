@@ -2419,6 +2419,8 @@
       <xsd:element name="datoForUtflyttingsskatt" type="DatoMedInnkapsling" />
       <xsd:element name="betalingsmaateForUtflyttingsskatt" type="BetalingsmaateForUtflyttingsskattMedInnkapsling" />
       <xsd:element minOccurs="0" name="land" type="LandkodeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="arvelatersPersonidentifikator" type="NorskPersonidentifikatorMedInnkapsling" />
+      <xsd:element minOccurs="0" name="prosentandelAvArvetUtflyttingsskatt" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AksjeOgAnnetFinansproduktOmfattetAvUtflyttingsskatt">
