@@ -232,7 +232,8 @@
       <xsd:element minOccurs="0" name="samletSkattefradrag" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="samletTilleggIBeregnetSkatt" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="gjelderBeskatningPaaSvalbard" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="gjelderBeskatningEtterPetroleumsskatteloven" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattefradragForKostnadKnyttetTilVirksomhetPaaSokkel" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="skattefradragForKostnadKnyttetTilVirksomhetPaaLand" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Forhaandsfastsetting">
@@ -1653,6 +1654,8 @@
           <xsd:element minOccurs="0" name="deltakersAndelIHavbruksvirksomhet" type="DeltakersAndelIHavbruksvirksomhet" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelAvSkattetrekkForKildeskattPaaRenteRoyaltyMv" type="DeltakersAndelAvSkattetrekkForKildeskattPaaRenteRoyaltyMv" />
           <xsd:element minOccurs="0" name="deltakersAndelAvSkattefradragForKostnaderTilForskningOgUtvikling" type="DeltakersAndelAvSkattefradragForKostnaderTilForskningOgUtvikling" />
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelILandbasertVindkraft" type="DeltakersAndelILandbasertVindkraft"/>
+          <xsd:element minOccurs="0" name="aarsakTilValgAvAnnenVerdiFoerVerdsettelsesrabattForNettoformueForDeltakerINokus" type="TekstMedInnkapsling"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2686,18 +2689,19 @@
   </xsd:complexType>
   <xsd:complexType name="DeltakersAndelIKraftverk">
     <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskattPerKommune" type="GrunnlagForNaturressursskattPerKommune" />
-      <xsd:element minOccurs="0" name="endeligSamordnetPositivGrunnrenteinntekt" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="endeligSamordnetNegativGrunnrenteinntekt" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelAvEiendomsskattegrunnlagPerKraftverk" type="DeltakersAndelAvEiendomsskattegrunnlagPerKraftverk" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="grunnlagForNaturressursskattPerKommune" type="GrunnlagForNaturressursskattPerKommune"/>
+      <xsd:element minOccurs="0" name="andelAvPositivGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelAvEiendomsskattegrunnlagPerKraftverk" type="DeltakersAndelAvEiendomsskattegrunnlagPerKraftverk"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DeltakersAndelIHavbruksvirksomhet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="endeligSamordnetPositivGrunnrenteinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="endeligSamordnetNegativGrunnrenteinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar" type="BeloepIValutaMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="produksjonsavgift" type="BeloepIValutaMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="endeligSamordnetPositivGrunnrenteinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="endeligSamordnetNegativGrunnrenteinntekt" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="positivGrunnrenteinntektForAnsvarligSelskapFoerSamordningEtterBunnfradrag" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="produksjonsavgift" type="BeloepIValutaMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DeltakersAndelAvSkattetrekkForKildeskattPaaRenteRoyaltyMv">
@@ -2746,6 +2750,17 @@
       <xsd:element minOccurs="0" name="nettoSkattefradragFoerAvkortingMotAnnenOffentligStoette" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="skattefradragPerProsjekt" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="tilleggIBeregnetSkattPerProsjekt" skatt:erAvledet="true" type="BeloepSomHeltall" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DeltakersAndelILandbasertVindkraft">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element name="loepenummer" type="HeltallMedInnkapsling"/>
+      <xsd:element name="kraftverketsNavn" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvPositivGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteskattVedDriftssettelse" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteskattVedOpphoer" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnnenOffentligStoette">
