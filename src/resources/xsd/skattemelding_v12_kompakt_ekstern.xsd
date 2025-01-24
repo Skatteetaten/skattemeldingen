@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v12" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v12">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2025-01-14T11:17:16.592+0100" name="generertDato" />
+      <xsd:attribute fixed="2025-01-15T12:31:30.308+0100" name="generertDato" />
       <xsd:attribute fixed="12.0" name="versjon" />
       <xsd:attribute fixed="Skattemelding for personlig skattepliktig inneholder informasjon om hva hver enkelt skattepliktig har i inntekter, utgifter, formue og gjeld som et grunnlag for beregning av formues- og inntektsskatt iht. skatteplikten. " name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v12" name="modellnavn" />
@@ -28,7 +28,6 @@
       <xsd:element minOccurs="0" name="finans" type="Finans" />
       <xsd:element minOccurs="0" name="gaveOgArv" type="GaveOgArv" />
       <xsd:element minOccurs="0" name="andreForhold" type="AndreForhold" />
-
       <xsd:element minOccurs="0" name="internSystemreferanse" type="Tekst" />
       <xsd:element minOccurs="0" name="naering" type="Naering" />
       <xsd:element minOccurs="0" name="skattemeldingOpprettet" type="DokumentOpprettet" />
@@ -1657,6 +1656,8 @@
           <xsd:element minOccurs="0" name="deltakersAndelAvSkattefradragForKostnaderTilForskningOgUtvikling" type="DeltakersAndelAvSkattefradragForKostnaderTilForskningOgUtvikling" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelILandbasertVindkraft" type="DeltakersAndelILandbasertVindkraft" />
           <xsd:element minOccurs="0" name="aarsakTilValgAvAnnenVerdiFoerVerdsettelsesrabattForNettoformueForDeltakerINokus" type="TekstMedInnkapsling" />
+          <xsd:element minOccurs="0" name="selskapMedDeltakerfastsettingErNokus" type="BoolskMedInnkapsling" />
+          <xsd:element minOccurs="0" name="selskapMedDeltakerfastsettingErUSDF" type="BoolskMedInnkapsling" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>

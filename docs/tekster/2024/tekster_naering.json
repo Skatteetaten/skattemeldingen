@@ -367,17 +367,6 @@
     "hjelpetekst_en": "<p>Here you enter the total amount of sales revenue and withdrawals for all types of products. The amount must be without value added tax.</p>"
   },
   {
-    "skattemeldingSti": "andreForhold.overnattingsOgServeringssted.varelagerPerVareart.salgsinntekterIKontant",
-    "tekst_nn": "Kontantdel av salsinntekter",
-    "tekst_se": "Reaidaruhtaoassi vuovdindietnasis",
-    "tekst_nb": "Kontantdel av salgsinntekter",
-    "tekst_en": "Cash share of sales revenue",
-    "hjelpetekst_nn": "<p>Her legg du inn det samla beløpet for kontantdelen av salsinntektene for alle varetypane.</p>",
-    "hjelpetekst_se": "<p>Dákko deavddát ollislaš supmi reaidaruhtaoasis vuovdindietnasis buot gálvosorttain.</p> ",
-    "hjelpetekst_nb": "<p>Her legger du inn det samlede beløpet for kontantdelen av salgsinntektene for alle varetypene.</p>",
-    "hjelpetekst_en": "<p>Here you enter the total cash share of sales revenue for all types of products.</p>"
-  },
-  {
     "skattemeldingSti": "andreForhold.overnattingsOgServeringssted.varelagerPerVareart.solgteVarersInntakskost",
     "tekst_nn": "Sum inntakskostnader for selde varer",
     "tekst_se": "Vuvdon gálvvuid oastingoluid submi",
@@ -2095,6 +2084,14 @@
     "tekst_en": "Net unrealised foreign exchange loss previous year"
   },
   {
+    "skattemeldingSti": "forskjellMellomRegnskapsmessigOgSkattemessigVerdi.alminneligOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta.resultatOmvurderingskonto",
+    "tekst_nb": "Resultat omvurderingskonto"
+  },
+  {
+    "skattemeldingSti": "forskjellMellomRegnskapsmessigOgSkattemessigVerdi.alminneligOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta.resultatOmvurderingskontoForrigeInntektsaar",
+    "tekst_nb": "Resultat omvurderingskonto forrige inntektsår"
+  },
+  {
     "skattemeldingSti": "forskjellMellomRegnskapsmessigOgSkattemessigVerdi.alminneligOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta.urealisertValutagevinst",
     "tekst_nn": "Urealisert valutagevinst",
     "tekst_se": "Valuhttavuoitu mii ii leat realiserejuvvon",
@@ -2584,6 +2581,14 @@
     "tekst_se": "Netto valuhttavahát ovddit jagi mii ii leat realiserejuvvon",
     "tekst_nb": "Netto urealisert valutatap forrige år",
     "tekst_en": "Net unrealised foreign exchange loss previous year"
+  },
+  {
+    "skattemeldingSti": "forskjellMellomRegnskapsmessigOgSkattemessigVerdi.separatOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta.resultatOmvurderingskonto",
+    "tekst_nb": "Resultat omvurderingskonto"
+  },
+  {
+    "skattemeldingSti": "forskjellMellomRegnskapsmessigOgSkattemessigVerdi.separatOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta.resultatOmvurderingskontoForrigeInntektsaar",
+    "tekst_nb": "Resultat omvurderingskonto forrige inntektsår"
   },
   {
     "skattemeldingSti": "forskjellMellomRegnskapsmessigOgSkattemessigVerdi.separatOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta.urealisertValutagevinst",
@@ -5990,7 +5995,7 @@
     "tekst_nb": "Årets inntektsføring av gevinst ved realisasjon og uttak av anleggsmiddel som er direkte utgiftsført"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.benyttesIGrunnrenteskattepliktigVirksomhet.boolsk",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
     "tekst_nn": "Gjeld vasskraftverk",
     "tekst_se": "Guoská čáhcefápmorusttegiid",
     "tekst_nb": "Gjelder vannkraftverk",
@@ -6495,7 +6500,7 @@
     "tekst_nb": "Årets inntektsføring av gevinst ved realisasjon og uttak av anleggsmiddel som er direkte utgiftsført"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.benyttesIGrunnrenteskattepliktigVirksomhet.boolsk",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
     "tekst_nn": "Gjeld vasskraftverk",
     "tekst_se": "Guoská čáhcefápmorusttegiid",
     "tekst_nb": "Gjelder vannkraftverk",
@@ -7067,15 +7072,15 @@
     "tekst_nb": "Korreksjon som følge av samordning eller omfordeling"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskattelovenPerInvesteringsaar.korreksjonAvTidligereAarsAvskrivningSomFoelgeAvSamordingEllerOmfordelingIAlminneligInntektFraVirksomhetPaaSokkel",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskattelovenPerInvesteringsaar.korreksjonAvTidligereAarsAvskrivningSomFoelgeAvSamordningEllerOmfordelingIAlminneligInntektFraVirksomhetPaaSokkel",
     "tekst_nb": "Korreksjon av tidligere års avskrivning som følge av samordning eller omfordeling i  alminnelig inntekt sokkel"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskattelovenPerInvesteringsaar.korreksjonAvTidligereAarsAvskrivningSomFoelgeAvSamordingEllerOmfordelingISaerskattegrunnlagFraVirksomhetPaaSokkel",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskattelovenPerInvesteringsaar.korreksjonAvTidligereAarsAvskrivningSomFoelgeAvSamordningEllerOmfordelingISaerskattegrunnlagFraVirksomhetPaaSokkel",
     "tekst_nb": "Korreksjon av tidligere års avskrivning som følge av samordning eller omfordeling i  særskattegrunnlaget"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskattelovenPerInvesteringsaar.korreksjonAvTidligereAarsFriinntektSomFoelgeAvSamordingEllerOmfordeling",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven.saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskattelovenPerInvesteringsaar.korreksjonAvTidligereAarsFriinntektSomFoelgeAvSamordningEllerOmfordeling",
     "tekst_nb": "Korreksjon av tidligere års friinntekt som følge av samordning eller omfordeling"
   },
   {
@@ -7934,7 +7939,7 @@
     "tekst_nb": "Årets inntektsføring av gevinst ved realisasjon og uttak av anleggsmiddel som er direkte utgiftsført"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.benyttesIGrunnrenteskattepliktigVirksomhet.boolsk",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
     "tekst_nn": "Gjeld vasskraftverk",
     "tekst_se": "Guoská čáhcefápmorusttegiid",
     "tekst_nb": "Gjelder vannkraftverk",
