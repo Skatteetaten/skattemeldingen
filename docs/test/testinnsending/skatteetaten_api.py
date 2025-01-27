@@ -150,7 +150,7 @@ def get_access_token(**kwargs) -> dict:
     quory_params = '?response_type=code' \
                    +f'&client_id={CLIENT_ID}' \
                    +f'&redirect_uri=http://localhost:{port}/token' \
-                   +'&scope=skatteetaten:formueinntekt/skattemelding openid' \
+                   +'&scope=skatteetaten:formueinntekt/skattemelding altinn:instances.read altinn:instances.write openid' \
                    +f'&state={state}' \
                    +f'&nonce={nonce}' \
                    +'&acr_values=idporten-loa-high' \
