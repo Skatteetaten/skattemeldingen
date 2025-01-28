@@ -5301,10 +5301,6 @@
     "hjelpetekst_en": "<p>Here you can see an ID number for this profit and loss account. You must use this number to identify the account across the years.</p>"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.gevinstOgTapskonto.gevinstOgTapskontoKnyttetTilGrunnrente.behandlingsregelHavbruksvirksomhet.behandlingsregelIHavbruksvirksomhet",
-    "tekst_nb": "Behandlingsregel i havbruksvirskomhet"
-  },
-  {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.gevinstOgTapskonto.gevinstOgTapskontoKnyttetTilGrunnrente.grunnlagForInntektsfoeringOgFradragsfoering",
     "tekst_nb": "Grunnlag for årets inntekts- og fradragsføring"
   },
@@ -5331,6 +5327,10 @@
   {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.gevinstOgTapskonto.gevinstOgTapskontoKnyttetTilGrunnrente.kraftverketsLoepenummer.tekst",
     "tekst_nb": "Kraftverkets løpenummer"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.gevinstOgTapskonto.gevinstOgTapskontoKnyttetTilGrunnrente.satsForInntektsfoeringOgInntektsfradrag.prosent",
+    "tekst_nb": "Sats for inntektsføring og fradragsføring"
   },
   {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.gevinstOgTapskonto.gevinstOgTapskontoKnyttetTilGrunnrente.sumGevinstVedRealisasjonOgUttak",
@@ -5906,6 +5906,14 @@
     "hjelpetekst_en": "<p>Here you enter how much of the conditional tax-exempt gain from a realisation the enterprise has reinvested. Only the reinvested amount is tax free.</p>"
   },
   {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.aaretsInntektsfoeringAvGevinstVedRealisasjonAvAnleggsmiddelSomErDirekteUtgiftsfoert",
+    "tekst_nb": "Årets inntektsføring av gevinst ved realisasjon av driftsmiddel som er direkte utgiftsført"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.aaretsInntektsfoeringAvGevinstVedUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert",
+    "tekst_nb": "Årets inntektsføring av gevinst ved uttak av driftsmiddel som er direkte utgiftsført"
+  },
+  {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
     "tekst_nb": "Benyttes i grunnrenteskattepliktig virksomhet"
   },
@@ -5925,7 +5933,7 @@
     "tekst_nb": "Er driftsmiddel under utførelse?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.gevinstVedRelisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.gevinstVedRealisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Gevinst ved realisasjon som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -5944,7 +5952,7 @@
     "hjelpetekst_en": "Here the company provides information on continued tax value upon purchases from related parties in the current income year, stated in NOK."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.tapVedRelisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.tapVedRealisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Tap ved realisasjon som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -5964,7 +5972,7 @@
     "tekst_nb": "Er driftsmiddel under utførelse?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.gevinstVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Gevinst ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -5972,7 +5980,7 @@
     "tekst_nb": "Grunnlag for beregning av venterente"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.tapVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Tap ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -6016,7 +6024,7 @@
     "tekst_en": "Is the fixed asset under construction?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.gevinstVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Gevinst ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -6071,7 +6079,7 @@
     "hjelpetekst_en": "The present value of future replacement costs is calculated only for fixed assets with a limited lifetime."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.tapVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Tap ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -6406,7 +6414,7 @@
     "tekst_nb": "Er driftsmiddel under utførelse?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.gevinstVedRelisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.gevinstVedRealisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Gevinst ved realisasjon som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -6425,7 +6433,7 @@
     "hjelpetekst_en": "Here the company provides information on continued tax value upon purchases from related parties in the current income year, stated in NOK."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.tapVedRelisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.tapVedRealisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Tap ved realisasjon som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -6453,7 +6461,7 @@
     "tekst_nb": "Er driftsmiddel under utførelse?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.gevinstVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Gevinst ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -6473,7 +6481,7 @@
     "tekst_nb": "Oppjustert grunnlag for avskrivning pr 1.1.2024"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.tapVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Tap ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -6521,7 +6529,7 @@
     "tekst_en": "Is the fixed asset under construction?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.gevinstVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Gevinst ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -6576,7 +6584,7 @@
     "hjelpetekst_en": "<p>Enter the present value of future replacement costs for the individual fixed asset groups in the power generation facility. Use this formula to calculate the present value:<ul><li>C0(1+r)<sup>(n-t)</sup> / (1+r)<sup>n</sup> -1, where C is the investment cost, r is the interest specified in the regulation pursuant to section 18-5, subsection 9 of the Taxation Act (Capitalisation interest is specified in regulation by the Ministry of Finance, see section 18-8-4 of the Taxation Regulation), n is the tax lifetime and t is the remaining lifetime.</li></ul>Example: c = 600,000, r = 0.06, n = 67, t = 45:<ul><li>600,000 (1+ 0.06)<sup>(67-45)</sup> / (1 + 0.06) <sup>67</sup> – 1</li></ul></p>"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.tapVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Tap ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -7845,7 +7853,7 @@
     "tekst_nb": "Er driftsmiddel under utførelse?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.gevinstVedRelisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.gevinstVedRealisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Gevinst ved realisasjon som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -7864,7 +7872,7 @@
     "hjelpetekst_en": "Here the company provides information on continued tax value upon purchases from related parties in the current income year, stated in NOK."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.tapVedRelisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.tapVedRealisasjonSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Tap ved realisasjon som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -7892,7 +7900,7 @@
     "tekst_nb": "Er driftsmiddel under utførelse?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.gevinstVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Gevinst ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -7912,7 +7920,7 @@
     "tekst_nb": "Oppjustert grunnlag for avskrivning pr 1.1.2024"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.tapVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Tap ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -7964,7 +7972,7 @@
     "tekst_en": "Is the fixed asset under construction?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.gevinstVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Gevinst ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
@@ -8023,7 +8031,7 @@
     "hjelpetekst_en": "<p>Enter the present value of future replacement costs for the individual fixed asset groups in the power generation facility. Use this formula to calculate the present value:<ul><li>C0(1+r)<sup>(n-t)</sup> / (1+r)<sup>n</sup> -1, where C is the investment cost, r is the interest specified in the regulation pursuant to section 18-5, subsection 9 of the Taxation Act (Capitalisation interest is specified in regulation by the Ministry of Finance, see section 18-8-4 of the Taxation Regulation), n is the tax lifetime and t is the remaining lifetime.</li></ul>Example: c = 600,000, r = 0.06, n = 67, t = 45:<ul><li>600,000 (1+ 0.06)<sup>(67-45)</sup> / (1 + 0.06) <sup>67</sup> – 1</li></ul></p>"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.tapVedRelisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nb": "Tap ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente"
   },
   {
