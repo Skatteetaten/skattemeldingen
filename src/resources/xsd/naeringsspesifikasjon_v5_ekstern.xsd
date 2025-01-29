@@ -1412,6 +1412,7 @@
     <xsd:sequence>
       <xsd:element name="benyttesIGrunnrenteskattepliktigVirksomhet" type="BenyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregelMedInnkapsling" />
       <xsd:element minOccurs="0" name="erAnleggsmiddelUnderUtfoerelse" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="kraftverketsLoepenummer" type="HeltallMedInnkapsling"/>
       <xsd:element minOccurs="0" name="direkteUtgiftsfoertInvesteringsavgiftIGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="oppjustertGrunnlagForAvskrivningPer01012024" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="justeringPaaSaldo" type="BeloepMedSkattemessigeEgenskaper" />
