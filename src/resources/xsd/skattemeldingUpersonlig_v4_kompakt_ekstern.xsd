@@ -978,7 +978,7 @@
       <xsd:element minOccurs="0" name="grunnlagForBeregningAvSelskapetsNettoRentekostnad" type="GrunnlagForBeregningAvSelskapetsNettoRentekostnad" />
       <xsd:element minOccurs="0" name="oeversteForetakIKonsernetSomHarUtarbeidetKonsolidertKonsernregnskapAaretFoerInntektsaaret" type="Foretak" />
       <xsd:element minOccurs="0" name="grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv" type="GrunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv" />
-      <xsd:element name="annetForetakRapportererPaaVegneAvKonsern" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="annetForetakRapportererPaaVegneAvKonsern" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="annetForetakSomRapportererPaaVegneAvKonsern" type="Foretak" />
       <xsd:element minOccurs="0" name="fremfoerbarRentekostnad" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="beregningsgrunnlagForRentefradragsramme" type="BeregningsgrunnlagForRentefradragsramme" />
@@ -1628,9 +1628,8 @@
       <xsd:element minOccurs="0" name="periodisertLeiekostnad" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="grunnlagForRentefradragsramme" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletMottattKonsernbidrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="avgittKonsernbidragPerMotpart" type="SpesifikasjonAvAvgittKonsernbidragPerMotpart" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="mottattKonsernbidragPerMotpart" type="SpesifikasjonAvMottattKonsernbidragPerMotpart" />
+      <xsd:element minOccurs="0" name="sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="konsernbidragPerMotpart" type="SpesifikasjonAvKonsernbidragPerMotpart" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeregningsgrunnlagTilleggEllerFradragIInntekt">
@@ -2192,18 +2191,13 @@
       <xsd:element minOccurs="0" name="tapVedRealisasjonAvSammensattMengdegjeldsbrevEllerFordringSomIkkeSkalDekomponeresTilAnnenNaerstaaendePart" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="SpesifikasjonAvAvgittKonsernbidragPerMotpart">
+  <xsd:complexType name="SpesifikasjonAvKonsernbidragPerMotpart">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element minOccurs="0" name="motpartensIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
-      <xsd:element minOccurs="0" name="beloep" type="BeloepSomHeltallMedInnkapsling" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="SpesifikasjonAvMottattKonsernbidragPerMotpart">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst" />
-      <xsd:element minOccurs="0" name="motpartensIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
-      <xsd:element minOccurs="0" name="beloep" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="avgivendeSelskapsIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="mottakendeSelskapsIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="mottattBeloep" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvKonsernbidragskjede">
