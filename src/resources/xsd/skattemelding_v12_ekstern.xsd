@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v12" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v12">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2025-01-27T21:23:21.200+0100" name="generertDato" />
+      <xsd:attribute fixed="2025-01-31T12:02:27.706+0100" name="generertDato" />
       <xsd:attribute fixed="12.0" name="versjon" />
       <xsd:attribute fixed="Skattemelding for personlig skattepliktig inneholder informasjon om hva hver enkelt skattepliktig har i inntekter, utgifter, formue og gjeld som et grunnlag for beregning av formues- og inntektsskatt iht. skatteplikten. " name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v12" name="modellnavn" />
@@ -2719,6 +2719,17 @@
       <xsd:element minOccurs="0" name="samletTilleggIBeregnetSkatt" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="DeltakersAndelILandbasertVindkraft">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="loepenummer" type="HeltallMedInnkapsling" />
+      <xsd:element name="kraftverketsNavn" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvPositivGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteskattVedDriftssettelse" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteskattVedOpphoer" type="BeloepSomHeltallMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:simpleType name="Uri" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e148-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
@@ -2752,17 +2763,6 @@
       <xsd:element minOccurs="0" name="nettoSkattefradragFoerAvkortingMotAnnenOffentligStoette" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="skattefradragPerProsjekt" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="tilleggIBeregnetSkattPerProsjekt" skatt:erAvledet="true" type="BeloepSomHeltall" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="DeltakersAndelILandbasertVindkraft">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst" />
-      <xsd:element name="loepenummer" type="HeltallMedInnkapsling" />
-      <xsd:element name="kraftverketsNavn" type="TekstMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvPositivGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteskattVedDriftssettelse" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteskattVedOpphoer" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnnenOffentligStoette">
