@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <kodeliste xmlns="urn:no:skatteetaten:informasjonsforvaltning:kodeliste:v2">
   <identifikator>d711db54-7966-401f-ad20-d21b21fea16d</identifikator>
-  <tekniskNavn>2024_satserIFastsettingAvFormuesOgInntektsskatt</tekniskNavn>
+  <tekniskNavn>2024_satserIFormuesOgInntektsskatt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2024-10-30T15:07:02.000+01:00</sistEndret>
-  <sistEndretAv>x00elo</sistEndretAv>
+  <sistEndret>2025-02-05T16:57:54.000+01:00</sistEndret>
+  <sistEndretAv>m79764</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
-      <tekst>Kodeliste over satser som benyttes i fastsetting av skattegrunnlag for formues- og inntektsskatt.</tekst>
+      <tekst>Kodeliste over satser for formues- og inntektsskatt.</tekst>
       <spraak>no</spraak>
     </spraakTekst>
   </beskrivelse>
@@ -240,7 +240,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>10</satsverdi>
+      <satsverdi>5</satsverdi>
       <satstype>verdsettingsfaktor</satstype>
       <kildereferanse>Takseringsregler §1-1-6</kildereferanse>
       <beregning>InnboLoesoereOgFritidsbaat</beregning>
@@ -317,7 +317,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
-      <satsverdi>2588</satsverdi>
+      <satsverdi>2812</satsverdi>
       <satstype>skattefrittBeloep</satstype>
       <kildereferanse>Takseringsregler §1-2-7</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelser</beregning>
@@ -700,40 +700,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>saerfradragForEnsligForsoerger.heltSaerfradrag</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>HalvSats</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/måned</satsenhet>
-      <satsverdi>4373</satsverdi>
-      <satstype>særfradrag</satstype>
-      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. § 6-6</kildereferanse>
-      <beregning>SaerfradragForEnsligForsoerger</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>saerfradragForEnsligForsoerger.halvtSaerfradrag</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>HelSats</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/måned</satsenhet>
-      <satsverdi>2187</satsverdi>
-      <satstype>særfradrag</satstype>
-      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. § 6-6</kildereferanse>
-      <beregning>SaerfradragForEnsligForsoerger</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>verdsettingAvNaeringseiendom.kalkulasjonsfaktor</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -743,7 +709,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>faktor</satsenhet>
-      <satsverdi>0.085</satsverdi>
+      <satsverdi>0.086</satsverdi>
       <satstype>kalkulasjonsfaktor</satstype>
       <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 4-10-5, kunngjøres i januar i året etter inntektsåret https://www.skatteetaten.no/satser/kalkulasjonsfaktor---formuesverdsettelse-av-naringseiendom/</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
@@ -760,7 +726,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>faktor</satsenhet>
-      <satsverdi>0.095</satsverdi>
+      <satsverdi>0.096</satsverdi>
       <satstype>kalkulasjonsfaktor</satstype>
       <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 4-10-5, kunngjøres i januar i året etter inntektsåret https://www.skatteetaten.no/satser/kalkulasjonsfaktor---formuesverdsettelse-av-naringseiendom/</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
@@ -845,27 +811,10 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>25</satsverdi>
+      <satsverdi>30</satsverdi>
       <satstype>verdsettingsfaktor</satstype>
       <kildereferanse>Takseringsregler § 3-1-2 og Lov om skatt av formue og inntekt (skatteloven) §4-10, 2l edd</kildereferanse>
       <beregning>FastEiendomSomFormuesobjekt</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>kostnaderTilDoktormiddag.maksimaltFradrag</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>maksFradragMiddagTilknyttetDoktorgrad</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok</satsenhet>
-      <satsverdi>28540</satsverdi>
-      <satstype>maksFradrag</satstype>
-      <kildereferanse>Takseringsregler §1-3-30</kildereferanse>
-      <beregning>KostnaderKnyttetTilArbeidOgAnnenInntekt</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
@@ -896,7 +845,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok</satsenhet>
-      <satsverdi>79600</satsverdi>
+      <satsverdi>88250</satsverdi>
       <satstype>maksFradrag</satstype>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §6-49, 2. ledd og Stortingsvedtak om skatt av inntekt og formue mv. §6-3</kildereferanse>
       <beregning>SaerskiltInntektsfradragIBarnsInntekt</beregning>
@@ -1014,7 +963,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>3.2</satsverdi>
+      <satsverdi>3.9</satsverdi>
       <satstype>skjermingsrente</satstype>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 10-42. 5. ledd og https://www.skatteetaten.no/satser/skjermingsrente-for-aksjer-og-enkeltpersonforetak/</kildereferanse>
       <beregningskontekst>selskapsmelding</beregningskontekst>
@@ -1135,7 +1084,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>177</satsverdi>
+      <satsverdi>400</satsverdi>
       <satstype>dagsats</satstype>
       <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
@@ -1204,7 +1153,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>634</satsverdi>
+      <satsverdi>658</satsverdi>
       <satstype>dagsats</satstype>
       <kildereferanse>Takseringsregler §1-3-4</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
@@ -1221,7 +1170,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>634</satsverdi>
+      <satsverdi>658</satsverdi>
       <satstype>dagsats</satstype>
       <kildereferanse>Takseringsregler §1-3-4</kildereferanse>
       <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
@@ -1343,7 +1292,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>98</satsverdi>
+      <satsverdi>102</satsverdi>
       <satstype>dagsats</satstype>
       <kildereferanse>Takseringsregler §1-3-2</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
@@ -1395,7 +1344,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>177</satsverdi>
+      <satsverdi>400</satsverdi>
       <satstype>dagsats</satstype>
       <kildereferanse>Takseringsregler §1-3-3</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
@@ -1413,7 +1362,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>507</satsverdi>
+      <satsverdi>526</satsverdi>
       <satstype>dagsats</satstype>
       <kildereferanse>Takseringsregler §1-3-4</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
@@ -1713,6 +1662,7 @@
       <satstype>maksfradrag</satstype>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 8-1, 8. ledd</kildereferanse>
       <beregningskontekst>fradragsOgLoennsomhetsvurdering</beregningskontekst>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
@@ -2072,6 +2022,7 @@
       <kildereferanse>Forskrift om grunnbeløp, reguleringsfaktorer, satser for minste pensjonsnivå og satser for garantipensjon i folketrygden fra 1. mai 2024 og virkningstidspunkt for regulering av kravet til minsteinntekt for rett til ytelser etter folketrygdloven kapitlene 4, 8, 9 og 14 § 1</kildereferanse>
       <beregning>Svalbard</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
+      <beregningskontekst>skatteberegning</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
@@ -2087,6 +2038,7 @@
       <satsverdi>1488336</satsverdi>
       <beregning>Svalbard</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
+      <beregningskontekst>skatteberegning</beregningskontekst>
       <avledet>grunnbeloepIFolketrygden.1G * 12</avledet>
     </kodetillegg>
   </kode>
@@ -2104,18 +2056,18 @@
       <kildereferanse>https://www.skatteetaten.no/satser/skjermingsrente-for-ekstra-skatt-pa-lan/</kildereferanse>
       <beregning>Privat fordringring utenfor virksomhet til selskap</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <november>3.5</november>
-      <januar>2.4</januar>
-      <august>3.2</august>
-      <mars>2.7</mars>
-      <april>2.7</april>
-      <september>3.5</september>
-      <mai>2.7</mai>
-      <juni>2.7</juni>
-      <februar>2.4</februar>
-      <oktober>3.5</oktober>
-      <juli>3.2</juli>
-      <desember>3.5</desember>
+      <november>3.9</november>
+      <januar>3.9</januar>
+      <august>3.9</august>
+      <mars>3.9</mars>
+      <april>3.9</april>
+      <september>3.9</september>
+      <mai>3.9</mai>
+      <juni>3.9</juni>
+      <februar>3.9</februar>
+      <oktober>3.9</oktober>
+      <juli>3.9</juli>
+      <desember>3.9</desember>
     </kodetillegg>
   </kode>
   <kode>
@@ -2743,9 +2695,9 @@
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §14-40</kildereferanse>
       <beregning>Anleggsmidler</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
-      <intervallFra>-15000</intervallFra>
+      <intervallFra>-30000</intervallFra>
       <intervallenhet>beloepINok</intervallenhet>
-      <intervallTilOgMed>15000</intervallTilOgMed>
+      <intervallTilOgMed>30000</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2758,11 +2710,12 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>4,2</satsverdi>
+      <satsverdi>4.9</satsverdi>
       <satstype>skjermingsrente</satstype>
       <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 10‑12‑1</kildereferanse>
       <beregning>Personinntekt</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
     </kodetillegg>
   </kode>
   <kode>
@@ -2825,7 +2778,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>10600</satsverdi>
+      <satsverdi>11000</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2842,7 +2795,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>8300</satsverdi>
+      <satsverdi>8600</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2859,7 +2812,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>3500</satsverdi>
+      <satsverdi>3600</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2876,7 +2829,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>2000</satsverdi>
+      <satsverdi>2100</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2893,7 +2846,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepINok/dyr</satsenhet>
-      <satsverdi>3600</satsverdi>
+      <satsverdi>3700</satsverdi>
       <satstype>satsPerDyr</satstype>
       <kildereferanse>Takseringsregler § 3-2-5</kildereferanse>
       <beregning>Rettigheter knyttet til skogeiendom</beregning>
@@ -2998,12 +2951,12 @@
       <beregning>Anleggsmidler</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <satsIntervallTilOgMedGrenseverdiEn>0-20</satsIntervallTilOgMedGrenseverdiEn>
-      <grenseverdiEn>-15000</grenseverdiEn>
+      <grenseverdiEn>-30000</grenseverdiEn>
       <grenseverdiTo>0</grenseverdiTo>
       <satsIntervallFraGrenseverdiEnTilTo>0-100</satsIntervallFraGrenseverdiEnTilTo>
       <satsIntervallFraOgMedGrenseverdiToTilTre>100-100</satsIntervallFraOgMedGrenseverdiToTilTre>
       <satsIntervallFraOgMedGrenseverdiTre>20-100</satsIntervallFraOgMedGrenseverdiTre>
-      <grenseverdiTre>15000</grenseverdiTre>
+      <grenseverdiTre>30000</grenseverdiTre>
     </kodetillegg>
   </kode>
   <kode>
@@ -3084,7 +3037,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>3</satsverdi>
+      <satsverdi>3.4</satsverdi>
       <satstype>sats</satstype>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-3, 3. ledd, bokstav b og Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-3</kildereferanse>
       <beregning>Friinntekt innen vannkraft</beregning>
@@ -3281,13 +3234,14 @@
     <tekniskNavn>alderNyAarsklasse</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Alder ny årsklasse</tekst>
+        <tekst>Alder ny årsklasse, nedre grense for å få skattekort for barn med forelder</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
       <satsenhet>aar</satsenhet>
       <satsverdi>13</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 2-14, fjerde ledd </kildereferanse>
       <beregningskontekst>forskudd</beregningskontekst>
     </kodetillegg>
   </kode>
@@ -3571,7 +3525,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsverdi>2023</satsverdi>
+      <satsverdi>2024</satsverdi>
       <beregningskontekst>forskudd</beregningskontekst>
       <beregningskontekst>skatteberegning</beregningskontekst>
     </kodetillegg>
@@ -4580,7 +4534,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>3.4</satsverdi>
+      <satsverdi>3.7</satsverdi>
       <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 18-8-2</kildereferanse>
       <beregningskontekst>skatteberegning</beregningskontekst>
       <beregningskontekst>upersonlig</beregningskontekst>
@@ -4806,7 +4760,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>3.0</satsverdi>
+      <satsverdi>3.4</satsverdi>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 19-7</kildereferanse>
       <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven (FSFIN) § 19-7-1</kildereferanse>
       <beregningskontekst>skatteberegning</beregningskontekst>
@@ -4856,7 +4810,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosentAvledet</satsenhet>
-      <satsverdi>22</satsverdi>
+      <satsverdi>18.5</satsverdi>
       <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2023 (Stortingets skattevedtak): SSV § 4-1</kildereferanse>
       <beregningskontekst>forskudd</beregningskontekst>
       <beregningskontekst>skatteberegning</beregningskontekst>
@@ -4985,21 +4939,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>minimumsBelopMinstefradragForskudd</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Fradrag i alminnelig inntekt, minstefradrag i pensjonsinntekt, nedre grense ved forskuddsutskrivningen</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepAvledet</satsenhet>
-      <satsverdi>0</satsverdi>
-      <avledet>minimumsBelopMinstefradrag * faktorForskuddsatser</avledet>
-      <beregningskontekst>forskudd</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>maksimumBelopMinstefradragStyrehonorarForskudd</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -5054,9 +4993,9 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>beloepAvledet</satsenhet>
-      <satsverdi>301100</satsverdi>
+      <satsverdi>331100</satsverdi>
       <beregningskontekst>skatteberegning</beregningskontekst>
-      <avledet>inntektsgrenseEktepar + personfradragFinnmarkKl1</avledet>
+      <avledet>inntektsgrenseEktepar + personfradragFinnmarkKl1 + personfradragFinnmarkKl1</avledet>
     </kodetillegg>
   </kode>
   <kode>
@@ -5314,20 +5253,84 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>2</satsverdi>
+      <satsverdi>3.4</satsverdi>
       <satstype>sats</satstype>
       <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-10</kildereferanse>
       <beregning>Grunnrenteskatt landbasert vindkraft</beregning>
       <beregningskontekst>skattemelding</beregningskontekst>
     </kodetillegg>
   </kode>
+  <kode>
+    <tekniskNavn>fastEiendomSomStroemprodusent.bunnfradrag</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Bunnfradrag for salg av overskuddsstrøm</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>15000</satsverdi>
+      <kildereferanse>Skatteloven §7-11</kildereferanse>
+      <beregning>fastEiendomSomStroemprodusent</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fastEiendomSomStroemprodusent.satsSjablongmessigFradrag</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Sats for beregning av skattepliktig inntekt av overskuddsstrøm</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>85</satsverdi>
+      <kildereferanse>Skatteloven §7-11</kildereferanse>
+      <beregning>fastEiendomSomStroemprodusent</beregning>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rentesatsNegativGrunnrenteinntektILandbasertVindkraftTilFremfoering</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Rentesats negativ grunnrenteinntekt i landbasert vindkraft til fremføring</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>3.4</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-10, ledd 4 </kildereferanse>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+      <beregningskontekst>upersonlig</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>rentesatsProduksjonsavgiftILandbasertVindkraftTilFremfoering</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Rentesats produksjonsavgift i landbasert vindkraft til fremfoering</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>3.4</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 18-11, ledd 1</kildereferanse>
+      <beregningskontekst>skatteberegning</beregningskontekst>
+      <beregningskontekst>upersonlig</beregningskontekst>
+    </kodetillegg>
+  </kode>
   <underkodeliste>
     <identifikator>f2553438-bf01-422b-801b-03937676e417</identifikator>
-    <tekniskNavn>2024_satserIFastsettingAvFormuesOgInntektsskattUtgaaende</tekniskNavn>
+    <tekniskNavn>2024_satserIFormuesOgInntektsskattUtgaaende</tekniskNavn>
     <status>aktiv</status>
     <versjonsnummer>1</versjonsnummer>
-    <sistEndret>2024-10-30T15:07:02.000+01:00</sistEndret>
-    <sistEndretAv>x00elo</sistEndretAv>
+    <sistEndret>2025-02-05T16:57:54.000+01:00</sistEndret>
+    <sistEndretAv>m79764</sistEndretAv>
     <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
       <spraakTekst>
@@ -5530,6 +5533,57 @@
         <kildereferanse>Lov om skatt til Svalbard (Svalbardskatteloven) § 3-2</kildereferanse>
         <beregningskontekst>svalbard</beregningskontekst>
         <avledet>grunnbeloepIFolketrygden.1G * 12</avledet>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>kostnaderTilDoktormiddag.maksimaltFradrag</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>maksFradragMiddagTilknyttetDoktorgrad</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok</satsenhet>
+        <satsverdi>28540</satsverdi>
+        <satstype>maksFradrag</satstype>
+        <kildereferanse>Takseringsregler §1-3-30</kildereferanse>
+        <beregning>KostnaderKnyttetTilArbeidOgAnnenInntekt</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>saerfradragForEnsligForsoerger.heltSaerfradrag</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>HalvSats</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/måned</satsenhet>
+        <satsverdi>4373</satsverdi>
+        <satstype>særfradrag</satstype>
+        <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. § 6-6</kildereferanse>
+        <beregning>SaerfradragForEnsligForsoerger</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>saerfradragForEnsligForsoerger.halvtSaerfradrag</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>HelSats</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/måned</satsenhet>
+        <satsverdi>2187</satsverdi>
+        <satstype>særfradrag</satstype>
+        <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. § 6-6</kildereferanse>
+        <beregning>SaerfradragForEnsligForsoerger</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
       </kodetillegg>
     </kode>
   </underkodeliste>

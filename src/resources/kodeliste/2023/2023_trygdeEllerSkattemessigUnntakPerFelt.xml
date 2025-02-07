@@ -4,7 +4,7 @@
   <tekniskNavn>2023_trygdeEllerSkattemessigUnntakPerFelt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1.1</versjonsnummer>
-  <sistEndret>2024-11-06T09:57:29.000+01:00</sistEndret>
+  <sistEndret>2024-11-08T15:19:02.000+01:00</sistEndret>
   <sistEndretAv>x00obo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -34,7 +34,7 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>grunnlagKnyttetTilLottaker.personinntektSomKanSamordnes.personinntektForLottaker</forekomstIGeneriskModell>
+      <forekomstIGeneriskModell>grunnlagKnyttetTilLottaker.personinntektForLottaker</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -626,7 +626,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/naering/grunnlagForBeregningAvNaeringsinntektOgSaerskiltFradragForFiskereOgFangstfolkKnyttetTilLottaker/oppdragsgiver/lottOgSykepengerMvFraOppdragsgiver/beloep</tekniskNavn>
+    <tekniskNavn>/skattemelding/naering/grunnlagForBeregningAvNaeringsinntektOgSaerskiltFradragForFiskereOgFangstfolkKnyttetTilLottaker/oppdragsgiver/lottMvFraOppdragsgiver/beloep</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
@@ -847,7 +847,15 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/deltakersAndelAvInntektPerNaeringstype/alminneligInntekt</tekniskNavn>
+    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/alminneligInntekt</tekniskNavn>
+    <kodetillegg>
+      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
+      <forekomstIGeneriskModell>deltakersAndelAvFormueOgInntekt.deltakersAndelAvInntektPerNaeringstype.alminneligInntekt</forekomstIGeneriskModell>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/heravAlminneligInntektFraFiskeOgFangstSomGirRettTilSaerskiltFradrag</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
@@ -914,7 +922,7 @@
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>livsforsikring.skattepliktigEngangsUtbetalingFraLivrente</forekomstIGeneriskModell>
+      <forekomstIGeneriskModell>livsforsikring.skattepliktigEngangsutbetalingFraLivrente</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -991,7 +999,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/deltakersAndelAvInntektPerNaeringstype/underskudd</tekniskNavn>
+    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/underskudd</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
@@ -1168,7 +1176,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/deltakersAndelAvInntektPerNaeringstype/tilleggIAlminneligInntekt</tekniskNavn>
+    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/tilleggIAlminneligInntekt</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
@@ -1425,7 +1433,7 @@
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>livsforsikring.skattepliktigEngangsUtbetalingFraUfoererente</forekomstIGeneriskModell>
+      <forekomstIGeneriskModell>livsforsikring.skattepliktigEngangsutbetalingFraUfoererente</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -2278,7 +2286,31 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/deltakersAndelAvInntektPerNaeringstype/personinntekt/personinntekt</tekniskNavn>
+    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/deltakersAndelAvInntektPerNaeringstype/personinntekt/personinntektInnenAnnenNaering</tekniskNavn>
+    <kodetillegg>
+      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
+      <forekomstIGeneriskModell>deltakersAndelAvFormueOgInntekt.deltakersAndelAvInntektPerNaeringstype.personinntektSomKanSamordnes.personinntekt</forekomstIGeneriskModell>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/deltakersAndelAvInntektPerNaeringstype/personinntekt/personinntektInnenFiskeOgFangst</tekniskNavn>
+    <kodetillegg>
+      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
+      <forekomstIGeneriskModell>deltakersAndelAvFormueOgInntekt.deltakersAndelAvInntektPerNaeringstype.personinntektSomKanSamordnes.personinntekt</forekomstIGeneriskModell>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/deltakersAndelAvInntektPerNaeringstype/personinntekt/annenPersoninntektInnenFiskeOgFangst</tekniskNavn>
+    <kodetillegg>
+      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
+      <forekomstIGeneriskModell>deltakersAndelAvFormueOgInntekt.deltakersAndelAvInntektPerNaeringstype.personinntektSomKanSamordnes.personinntekt</forekomstIGeneriskModell>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>/skattemelding/formueOgInntektISelskapMedDeltakerfastsetting/deltakersAndelAvFormueOgInntekt/deltakersAndelAvInntektPerNaeringstype/personinntekt/personinntektInnenFamiliebarnehageIDeltakersHjem</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
