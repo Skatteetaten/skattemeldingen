@@ -467,7 +467,7 @@
   "betjeningsstrategiSkattepliktig" : "merknadStandard"
 }, {
   "kontrollnavn" : "FORMUESVERDI_PRIVAT_UTESTAAENDE_FORDRING",
-  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(UtvidetVeiledningSkattepliktig) {\n        skattemelding utslagFor\n            hvis(\n                privatFordringUtenforVirksomhet\n                    hvor (\n                        (formuesverdiAvPrivatFordringUtenforVirksomhet er oppgitt)\n                            eller (opptjenteRenterFraPrivatFordringUtenforVirksomhet er oppgitt)\n                        )\n            ) {\n                betjeningsstrategiSettesTil(ikke, visUtvidetVeiledning, 1)\n            }\n    }",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(AdHocLabel) {\n        skattemelding utslagFor\n            hvis(\n                privatFordringUtenforVirksomhet\n                    hvor (\n                        (formuesverdiAvPrivatFordringUtenforVirksomhet er oppgitt)\n                            eller (opptjenteRenterFraPrivatFordringUtenforVirksomhet er oppgitt)\n                        )\n            ) {\n                betjeningsstrategiSettesTil(ikke, visUtvidetVeiledning, 1)\n            }\n    }",
   "hjelpetekstSME" : { },
   "betjeningsstrategiSkattepliktig" : "visUtvidetVeiledning"
 }, {
@@ -490,7 +490,7 @@
   "betjeningsstrategiSkattepliktig" : "merknadMangel"
 }, {
   "kontrollnavn" : "KONTO_FINNES",
-  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(UtvidetVeiledningSkattepliktig) {\n        skattemelding utslagFor\n            hvis(\n                konto er oppgitt\n            ) {\n                betjeningsstrategiSettesTil(ikke, visUtvidetVeiledning, 1)\n            }\n    }",
+  "kontrollformel" : "sakstype(Personlig)\n    .kontekst(AdHocLabel) {\n        skattemelding utslagFor\n            hvis(\n                konto er oppgitt\n            ) {\n                betjeningsstrategiSettesTil(ikke, visUtvidetVeiledning, 1)\n            }\n    }",
   "hjelpetekstSME" : { },
   "betjeningsstrategiSkattepliktig" : "visUtvidetVeiledning"
 }, {
