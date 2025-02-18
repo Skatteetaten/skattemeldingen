@@ -4,7 +4,7 @@
   <tekniskNavn>2024_trygdeEllerSkattemessigUnntakPerFelt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-02-02T10:38:11.000+01:00</sistEndret>
+  <sistEndret>2025-02-14T09:56:13.000+01:00</sistEndret>
   <sistEndretAv>x00obo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -123,6 +123,17 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>fondskonto.formuesverdiForKontanterMv</forekomstIGeneriskModell>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=OMSTILLINGSSTONAD]</tekniskNavn>
+    <kodetillegg>
+      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
+      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
