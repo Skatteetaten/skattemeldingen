@@ -126,6 +126,11 @@ def get_access_token(**kwargs) -> dict:
     else:
         verbose = False
 
+    if "scope" in kwargs:
+        scope = kwargs["scope"]
+    else:
+        scope = 'skatteetaten:formueinntekt/skattemelding altinn:instances.read altinn:instances.write openid'
+
     # Get the jwks from idporten (for token verification later)
     url_auth = requests.get('https://{}/.well-known/openid-configuration'.format(AUTH_DOMAIN), verify=VERIFY_SSL).json()["jwks_uri"].replace("\\", "")
     jwks = requests.get(url_auth, verify=VERIFY_SSL).json()
@@ -147,14 +152,15 @@ def get_access_token(**kwargs) -> dict:
     state = urlsafe_b64encode(random_bytes(16)).decode().rstrip("=")
     nonce = "{}".format(int(time.time() * 1e6))
 
+
     quory_params = '?response_type=code' \
                    +f'&client_id={CLIENT_ID}' \
                    +f'&redirect_uri=http://localhost:{port}/token' \
-                   +'&scope=skatteetaten:formueinntekt/skattemelding altinn:instances.read altinn:instances.write openid' \
+                   +f'&scope={scope}'\
                    +f'&state={state}' \
                    +f'&nonce={nonce}' \
                    +'&acr_values=idporten-loa-high' \
-                   +'&ui_locales=nb'\
+                   +'&ui_locales=nb' \
                    +f'&code_challenge={code_challenge}' \
                    +'&code_challenge_method=S256'
 
