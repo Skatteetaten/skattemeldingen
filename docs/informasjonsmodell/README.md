@@ -114,7 +114,7 @@ upersonlig skattemelding som har blitt beregnet.
 ## Forhåndsfastsetting på fjorårets format og kodelister
 
 Hovedregelen for forhåndsfastsetting på "fjorårets format" er at kodelistene for det formatet en bruker er gjeldende. 
-Ingen regel uten unntak, det er kodeliseter som inneholder satser og kommunenummer. For eksempel:
+Ingen regel uten unntak, det er kodelister som inneholder satser og kommunenummer. For eksempel:
 forhåndsfastsetting av 2025 på 2024 format, så skal følgende kodelister "overstyres":
 - 2025_aktiveKommunenummer
 - 2025_satserIFormuesOgInntektsskatt
