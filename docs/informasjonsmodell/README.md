@@ -111,7 +111,7 @@ upersonlig skattemelding som har blitt beregnet.
 | 2025       | [beregnet_skatt_v7.xsd](../../src/resources/xsd/beregnet_skatt_v7.xsd) | [beregnetskatt_upersonlig_v6.xsd](../../src/resources/xsd/beregnetskatt_upersonlig_v6.xsd)                   | [skatteberegningsgrunnlag_v10.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v10.xsd) | [summertSkattegrunnlagForVisning_upersonligskattyter_v3.xsd](../../src/resources/xsd/summertSkattegrunnlagForVisning_upersonligskattyter_v3.xsd) |
 
 
-## Forhåndsfastsetting på fjoråets format og kodelister
+## Forhåndsfastsetting på fjorårets format og kodelister
 
 Hovedregelen for forhåndsfastsetting på "fjorårets format" er at kodelistene for det formatet en bruker er gjeldende. 
 Ingen regel uten unntak, det er kodeliseter som inneholder satser og kommunenummer. For eksempel:
