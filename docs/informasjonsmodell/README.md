@@ -110,6 +110,20 @@ upersonlig skattemelding som har blitt beregnet.
 | 2024       | [beregnet_skatt_v6.xsd](../../src/resources/xsd/beregnet_skatt_v6.xsd) | [beregnetskatt_upersonlig_v5.xsd](../../src/resources/xsd/beregnetskatt_upersonlig_v5.xsd)                   | [skatteberegningsgrunnlag_v9.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v9.xsd)   | [summertSkattegrunnlagForVisning_upersonligskattyter_v3.xsd](../../src/resources/xsd/summertSkattegrunnlagForVisning_upersonligskattyter_v3.xsd) |
 | 2025       | [beregnet_skatt_v7.xsd](../../src/resources/xsd/beregnet_skatt_v7.xsd) | [beregnetskatt_upersonlig_v6.xsd](../../src/resources/xsd/beregnetskatt_upersonlig_v6.xsd)                   | [skatteberegningsgrunnlag_v10.xsd](../../src/resources/xsd/skatteberegningsgrunnlag_v10.xsd) | [summertSkattegrunnlagForVisning_upersonligskattyter_v3.xsd](../../src/resources/xsd/summertSkattegrunnlagForVisning_upersonligskattyter_v3.xsd) |
 
+
+## Forhåndsfastsetting på fjorårets format og kodelister
+
+Hovedregelen for forhåndsfastsetting på "fjorårets format" er at kodelistene for det formatet en bruker er gjeldende. 
+Ingen regel uten unntak, det er kodelister som inneholder satser og kommunenummer. For eksempel:
+forhåndsfastsetting av 2025 på 2024 format, så skal følgende kodelister "overstyres":
+- 2025_aktiveKommunenummer
+- 2025_satserIFormuesOgInntektsskatt
+- 2025_formuesobjekttypeUpersonligSkattepliktig
+- 2025_grunnlagFraFastsetting
+- 2025_prissoneOgKostnadssjablongPerKommunenummerVedFormuesfastsettingAvSkogeiendom
+- 2025_verdsettingsrabattsatser
+
+
 # Poster, felter og temaer i ny skattemelding for næringsdrivende
 
 Beskrivelse av poster og felter i ny
