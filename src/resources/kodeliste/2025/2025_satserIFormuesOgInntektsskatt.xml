@@ -4,7 +4,7 @@
   <tekniskNavn>2025_satserIFormuesOgInntektsskatt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-02-17T09:48:02.000+01:00</sistEndret>
+  <sistEndret>2025-03-04T13:58:15.000+01:00</sistEndret>
   <sistEndretAv>m79764</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -3194,6 +3194,50 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>utflyttingsskatt.skattepliktNedreGrenseNettoGevinstFoer20mars2024</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Nedre grense for skatteplikt for utflyttingsskatt på netto gevinst før 20. mars 2024, gjelder både utflytting og oversføring.</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>500000</satsverdi>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>utflyttingsskatt.skattepliktOverfoeringNedreGrenseNettoGevinst</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Nedre grense for skatteplikt for utflyttingsskatt  på  netto gevinst  for overføring</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>100000</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 10-70</kildereferanse>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>utflyttingsskatt.bunnfradragUtflyttingNedreGrenseNettoGevinst</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Nedre grense for bunnfradrag for utflyttingsskatt på netto gevinst for utflytting</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloepINok</satsenhet>
+      <satsverdi>3000000</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 10-70</kildereferanse>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>alderNyAarsklasse</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -5299,7 +5343,7 @@
     <tekniskNavn>2025_satserIFormuesOgInntektsskattUtgaaende</tekniskNavn>
     <status>aktiv</status>
     <versjonsnummer>1</versjonsnummer>
-    <sistEndret>2025-02-17T09:48:02.000+01:00</sistEndret>
+    <sistEndret>2025-03-04T13:58:15.000+01:00</sistEndret>
     <sistEndretAv>m79764</sistEndretAv>
     <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
