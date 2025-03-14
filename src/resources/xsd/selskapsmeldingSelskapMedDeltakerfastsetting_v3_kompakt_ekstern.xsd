@@ -2155,9 +2155,8 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="avgivendeSelskapsIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
-      <xsd:element minOccurs="0" name="mottakendeSelskapsIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="mottattBeloep" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvAvgittAndelAvKonsernbidrag" type="SpesifikasjonAvAvgittAndelAvKonsernbidrag" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvKonsernbidragskjede">
@@ -2426,6 +2425,13 @@
   <xsd:simpleType name="Eiendomstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2024_eiendomstype.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
+  <xsd:complexType name="SpesifikasjonAvAvgittAndelAvKonsernbidrag">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="mottakendeSelskapsIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap" type="BeloepSomHeltallMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="AarsakstypeTilAtAvgivendeSelskapErUnntattRentebegrensningMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="aarsakstype" type="AarsakstypeTilAtAvgivendeSelskapErUnntattRentebegrensning" />
