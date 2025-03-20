@@ -4,7 +4,7 @@
   <tekniskNavn>2023_trygdeEllerSkattemessigUnntakPerFelt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1.1</versjonsnummer>
-  <sistEndret>2024-11-08T15:19:02.000+01:00</sistEndret>
+  <sistEndret>2025-03-12T14:10:11.000+01:00</sistEndret>
   <sistEndretAv>x00obo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -78,7 +78,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=ALDERSP_FOLKETR]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=ALDERSP_FOLKETR]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -90,7 +90,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=SLITERTILLEGG]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=SLITERTILLEGG]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -310,7 +310,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=pensjonFraEOESTilsvarendeNorskAlderspensjonEllerAFP]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=pensjonFraEOESTilsvarendeNorskAlderspensjonEllerAFP]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
@@ -354,7 +354,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=PENSJON_NATURALYT]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=PENSJON_NATURALYT]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -392,19 +392,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=SLITERTILLEGG]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=AFP]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=AFP]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -474,7 +462,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=IPA_IPS_UFOREP]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=IPA_IPS_UFOREP]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -562,21 +550,9 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=FODERAD]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=FODERAD]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=AFP]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
@@ -668,19 +644,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=PENSJON_NATURALYT]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=BARNEP_ANDRE]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=BARNEP_ANDRE]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -736,7 +700,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=NY_AFP]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=NY_AFP]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -796,18 +760,6 @@
       <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftspliktForHelsedel</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftspliktForPensjonsdel</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=IPA_IPS_ENGANGS]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
@@ -889,7 +841,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=EFTILLEGG]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=EFTILLEGG]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -923,16 +875,6 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>livsforsikring.skattepliktigEngangsutbetalingFraLivrente</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=pensjonFraEOESTilsvarendeNorskAlderspensjonEllerAFP]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -979,7 +921,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=PENSJON_ANDRE]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=PENSJON_ANDRE]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -1126,19 +1068,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=BARNEP_FOLKETR]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=ETTERLATTEPENSJ]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=BARNEP_FOLKETR]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -1184,7 +1114,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=IPA_IPS_PERIODISK]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=IPA_IPS_PERIODISK]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -1222,7 +1152,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=ALDER_SKJERMING]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=ALDER_SKJERMING]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -1260,7 +1190,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=SUPPL_STONAD]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=SUPPL_STONAD]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
@@ -1277,7 +1207,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=UFOREP_ANDRE]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=UFOREP_ANDRE]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -1376,48 +1306,11 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=OVERGANGSSTONAD]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftspliktForPensjonsdel</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftspliktForHelsedel</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftspliktForHelsedel</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftspliktForPensjonsdel</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>/skattemelding/finans/verdipapirfond/verdiFoerVerdsettingsrabattForAndelIAksjedel</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>verdipapirfond.verdiFoerVerdsettingsrabattForAndelIAksjedel</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=KRIGSPENSJON]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=SUPPL_STONAD]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -1530,17 +1423,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=FODERAD]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=ETTERLONN_PENSJ]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=ETTERLONN_PENSJ]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -1592,18 +1475,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=UFOREP_ANDRE]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>/skattemelding/finans/verdipapirfond/skattepliktigGevinstVedRealisasjonAvAndelIAksjedel</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
@@ -1638,18 +1509,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=ALDERSP_FOLKETR]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>/skattemelding/naering/naeringsinntektMvFordeltFraEktefelle/naeringsinntekt</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
@@ -1657,18 +1516,6 @@
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>naeringsinntektMvFordeltFraEktefelle.naeringsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=NY_AFP]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -1687,29 +1534,6 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>gaveTilFrivilligOrganisasjon.beloep</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=PENSJON_DIVERSE]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=EF_TILLEGG_UFORETRYGD]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -1832,18 +1656,6 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>formuesgrunnlagEgenFritaksbehandletBolig.formuesverdiForFormuesandel</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=IPA_IPS_UFOREP]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -2022,7 +1834,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=UFORETR_E_OPPGJ_FOLKETR]</tekniskNavn>
+    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=UFORETR_E_OPPGJ_FOLKETR]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
@@ -2038,18 +1850,6 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>virtuellEiendel.skattepliktigTapVedRealisasjonAvVirtuellEiendel.beloepUtenHensynTilValgtPrioritertFradragstype</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=UFOREP_FOLKETR]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -2084,18 +1884,6 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>virtuellEiendel.annenSkattepliktigKapitalinntektFraVirtuellEiendel</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=SUPPL_STONAD_UFOR]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -2188,18 +1976,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=EFTILLEGG]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>/skattemelding/naering/naeringsinntektMvFordeltFraEktefelle/samordnetPersoninntekt/fordeltBeregnetPersoninntektOverfoertFraEktefelle</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
@@ -2207,18 +1983,6 @@
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>naeringsinntektMvFordeltFraEktefelle.samordnetPersoninntekt.fordeltBeregnetPersoninntektOverfoertFraEktefelle</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=ALDER_SKJERMING]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -2253,28 +2017,6 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>konto.tapValutalaan</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=ETTERLONN_PENSJ]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=INTROD_STONAD]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -2361,18 +2103,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=RENTEFORDEL_PENSJ]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>/skattemelding/boligOgEiendeler/kapitalkostnadOgKapitalinntektFraSkogeiendomUtenforNaeringsvirksomhet/kapitalkostnad</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
@@ -2386,17 +2116,6 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>kapitalisertFesteavgift.mottattFesteavgift</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=UFORETR_E_OPPGJ_FOLKETR]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -2421,18 +2140,6 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>obligasjonOgSertifikat.skattepliktigTapVedRealisasjonAvObligasjonOgSertifikat.beloepUtenHensynTilValgtPrioritertFradragstype</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=UFORETRYGD]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
@@ -2493,17 +2200,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=UFORETR_E_OPPGJ_ANDRE]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>/skattemelding/familieOgHelse/saerfradragOverfoertFraBarn/beloep</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
@@ -2536,45 +2232,9 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=BARNEP_FOLKETR]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=PENSJON_ANDRE]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=annenPensjonFraUtlandet]</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=IPA_IPS_BARNEP]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
@@ -2598,55 +2258,11 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=annenPensjonFraUtlandet]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=IPA_IPS_PERIODISK]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonstype=BARNEP_ANDRE]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriKildeskattPaaPensjon</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>/skattemelding/finans/aksjesparekonto/skattepliktigTapVedRealisasjon/beloepUtenHensynTilValgtPrioritertFradragstype</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>aksjesparekonto.skattepliktigTapVedRealisasjon.beloepUtenHensynTilValgtPrioritertFradragstype</forekomstIGeneriskModell>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>/skattemelding/arbeidTrygdOgPensjon/pensjonsinntekt/pensjonsinntektPerMaaned/beloep[pensjonsordningstype=ufoereytelseFraUtlandet]</tekniskNavn>
-    <kodetillegg>
-      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
-      <forekomstIGeneriskModell>pensjonsinntekt.perMaaned.pensjonsinntekt</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
 </kodeliste>
