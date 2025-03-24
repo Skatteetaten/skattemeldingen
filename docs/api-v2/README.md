@@ -2024,20 +2024,12 @@ Det API'et støttes kun for enhetstyper som skal levere skattemelding upersonlig
 
 
 # Søknad om utsatt frist for skattemeldingen <a name="utsattfrist-skattemeldingen"></a> [[back up]](#user-content-table-of-requests)
-Tjeneste for å søke om utsatt frist for levering av skattemeldingen. Tjenesten returnerer kun svar om at søknad er mottatt.
-Denne tjenesten returnerer ikke informasjon om ny frist ble innvilget.
+Tjeneste for å søke om utsatt frist for levering av skattemeldingen. 
 
 **Swagger dokumentasjon for API**
 - https://app.swaggerhub.com/apis/skatteetaten/utsattfrist-mottak_api/0.0.1
 
-**URL** `POST https://<env>/api/skattemelding/v2/utsattfristsoeknad/<identifikator>`
-
-**Forespørsel** :
-
-- `<env>: Miljøspesifikk adresse.`
-- `<identifikator>: Identifikator til skattepliktig. Et fødselsnummer/dnummer eller et organisasjonsnummer må være satt.`
-
-**Eks på request body**
+**Eks for bulk innsending med request body**
 
 ```json
 {
