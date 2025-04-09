@@ -2,8 +2,8 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v6" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v6">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2025-02-25T12:14:17.755+0100" name="generertDato"/>
-            <xsd:attribute fixed="6.1" name="versjon"/>
+            <xsd:attribute fixed="2025-03-20T14:49:16.830+0100" name="generertDato"/>
+            <xsd:attribute fixed="v6" name="versjon"/>
             <xsd:attribute fixed="Beregnet skatt - formues og inntektsskatt for personlige skattepliktige&#10;Inntektsår 2024" name="beskrivelse"/>
             <xsd:attribute fixed="v6 (2024)" name="modellnavn"/>
             <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v6" name="navnerom"/>
@@ -206,7 +206,10 @@
             <xsd:element minOccurs="0" name="utflyttingsskattMedUtsattBetalingAvFinnmarksfradrag" type="typekatalog:BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:simpleType name="Skatteklasse" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e211-9fe1-11e5-a9f8-e4115b280940" skatt:eksternKodeliste="mangler">
+    <xsd:simpleType name="Skatteklasse" skatt:begrepsreferanse="http://begrepskatalog/begrep/20b2e211-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="SaerskiltSkattepliktstype" skatt:eksternKodeliste="https://git.aurora.skead.no/projects/KOLI/repos/kodeliste-prod_v2/browse/formuesOgInntektsskatt/2024_saerskiltSkatteplikt.xml">
         <xsd:restriction base="xsd:string"/>
     </xsd:simpleType>
     <xsd:complexType name="Valideringsresultat">
@@ -214,9 +217,6 @@
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="avvik" type="Avvik"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:simpleType name="SaerskiltSkattepliktstype" skatt:eksternKodeliste="https://git.aurora.skead.no/projects/KOLI/repos/kodeliste/browse/formuesOgInntektsskatt/2023_saerskiltSkatteplikt.xml">
-        <xsd:restriction base="xsd:string"/>
-    </xsd:simpleType>
     <xsd:complexType name="Avvik">
         <xsd:sequence>
             <xsd:element name="avvikskode" type="typekatalog:Tekst"/>
