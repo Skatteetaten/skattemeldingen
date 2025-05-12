@@ -1,8 +1,149 @@
-# Asynkront API
+# Asynkront API V2
 
 ## Hvem skal bruke asynrkont API
 Det asynkrone api'et er laget for beregninger som tar for lang tid til at en kan bruke de synkrone endepunktene som er beskrevet under api-v2. 
 Alle som har en næringsspesifikasjon som er større en 10MB skal bruke API'ene beskrevet her.
+
+## Forskjell fra asynkront API V1 (Deprekert)
+Ved migrering fra deprekert asynkront API, så er det følgende endringer:
+- Konvolutten med næringsspesifikasjonen er i ny asynkron løsning håndtert som én fil. Referanse til næringsspesifikasjonen **utgår**.
+- Konvolutten må lastes opp til en instans ved bruk av Altinn sitt API, i stedenfor å laste opp data direkte til Skatteetatens API.
+- `/altinn` er lagt til i endepunktene etter `/jobb` for det nye asynkrone APIet.
+
+## Beskrivelse av bruksmønster
+1. Opprett eller gjenbruk en åpen instans i Altinn3-appen `skd/formueinntekt-skattemelding-v2`
+2. `/skd/formueinntekt-skattemelding-v2/instances/{instanceOwnerPartyId}/{instanceGuid}/data?dataType=skattemeldingOgNaeringsspesifikasjon`
+   Last opp konvolutten med skattemeldingen og næringsspesifikasjonen. Størrelsen på konvolutten kan være opp til 500MB.
+3. `/api/skattemelding/v2/jobb/altinn/{inntektsaar}/{identifikator}/start`
+   Når en skal gjøre en validering, så må en egen valideringsjobb startes. I forespørselen sender du med appId og instansId fra Altinn hvor konvolutten ligger lagret.
+4. `/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/<jobbId>/status`
+   Henter status på valideringsjobben mens den kjører.
+5. `/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/<jobbId>/resultat`
+   Når valideringen er ferdig så vil en kunne hente ned hele valideringsresultatet.
+6. Send inn via Altinn. Når valideringen er validert ok, så brukes samme instans til å sende inn skattemeldingen.
+
+
+## 1. Opprett instans i Altinn
+Oppretting av instans gjøres på samme måte som i andre tilfeller. Gjenbruk en eksisterende instans når det er mulig.
+
+## 2. Last opp konvolutt med skattemelding og næringsspesifikasjon
+Opplasting av konvolutten gjøres på Altinn-instansen. Se dokumentasjon hos Altinn: https://docs.altinn.studio//nb/api/apps/data-elements/
+
+Altinn3-applikasjonen `skd/formueinntekt-skattemelding-v2` har en dataType `skattemeldingOgNaeringsspesifikasjon` som kan brukes til å laste opp konvolutten.
+Størrelsen på konvolutten er konfigurert til å ha en størrelse på opp til 500MB.
+
+
+
+### Eksempel kall i testmiljøet:
+```bash
+
+curl 'https://tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/{partyId}/{instanceGuid}/data?dataType=skattemeldingOgNaeringsspesifikasjon' \
+-H 'Content-Disposition: attachment; filename=skattemeldingOgNaeringsspesifikasjon.xml' \
+-H 'Content-Type: text/xml' \
+-H 'Authorization: Bearer {{token}}' \
+--data-raw $'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<skattemeldingOgNaeringsspesifikasjonRequest xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingognaeringsspesifikasjon:request:v2">\n  <dokumenter>\n    <dokument>\n      <type>skattemeldingUpersonlig</type>\n      <encoding>utf-8</encoding>\n      <content>{{placeholderSme}}</content>\n    </dokument>\n    <dokument>\n      <type>naeringsspesifikasjon</type>\n      <encoding>utf-8</encoding>\n      <content>{{placeholderNsp}}</content>\n    </dokument>\n  </dokumenter>\n  <dokumentreferanseTilGjeldendeDokument>\n    <dokumenttype>skattemeldingUpersonlig</dokumenttype>\n    <dokumentidentifikator>{{placeholderSmeId}}</dokumentidentifikator>\n  </dokumentreferanseTilGjeldendeDokument>\n  <inntektsaar>{{placeholderInntektsaar}}</inntektsaar>\n  <innsendingsinformasjon>\n    <innsendingstype>komplett</innsendingstype>\n    <opprettetAv>{{placeholderSBSNavn}}</opprettetAv>\n    <tin>{{placeholderTin}}</tin>\n  </innsendingsinformasjon>\n</skattemeldingOgNaeringsspesifikasjonRequest>'
+```
+
+**Respons body:**
+
+```json
+{
+  "id": "{dataId}",
+  "instanceGuid": "{instanceGuid}",
+  "dataType": "skattemeldingOgNaeringsspesifikasjon",
+  "filename": "skattemeldingOgNaeringsspesifikasjon.xml",
+  "contentType": "text/xml",
+  "blobStoragePath": "skd/formueinntekt-skattemelding-v2/{instanceGuid}/data/{dataId}",
+  "selfLinks": {
+    "apps": "https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/{partyId}/{instanceGuid}/data/{dataId}",
+    "platform": "https://platform.tt02.altinn.no/storage/api/v1/instances/{partyId}/{instanceGuid}/data/{dataId}"
+  },
+  "size": 123,
+  "contentHash": null,
+  "locked": false,
+  "refs": null,
+  "isRead": true,
+  "tags": [],
+  "deleteStatus": null,
+  "fileScanResult": "Pending",
+  "references": null,
+  "created": "2025-05-09T08:08:57.0736662Z",
+  "createdBy": "1450179",
+  "lastChanged": "2025-05-09T08:08:57.073666Z",
+  "lastChangedBy": "1450179"
+}
+```
+
+## 3. Start en validerings jobb
+Dette API'et brukes til å starte en valideringsjobb. Her må du sende inn instansId og appId i body
+
+```curl
+curl 'https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/start' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {{token}}' \
+  --data-raw '{"appId":"{{appId}}","instansId":"{{instansId}}"}'
+```
+**Respons body:**
+
+```json
+{
+  "jobbStatus": "OPPRETTET",
+  "jobbId": "storeDokument-668226ad7643181b4c525c98ec96773492b9"
+}
+
+```
+
+
+## 4. Hent status
+Enkelte jobber kan ta tid, vår estimat for den største næringsspeifikasjonen for inntektsår 2023, kan ta over en time. Det er mulig å spørre på status på en jobb, uten at det påvirker beregningstiden
+URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/status`
+
+**Response body:**
+
+```json
+{
+  "jobbStatus": "FERDIG",
+  "forrigeStatus": "KJOERER",
+  "sekunderSidenOpprettelse": 10,
+  "sekunderSidenEndring": 9
+}
+```
+
+**Forklaring til respons**
+
+- jobbStatus: viser om jobben, følgende status er mulige:
+    - NY - jobben er opprettet, men ingenting er gjort enda
+    - KJOERER - jobben utføres
+    - VENTER - jobben venter, enten pga den satt på vent til det er nok tilgjenglige resurser eller en annen jobb kjører på samme identifikator.
+    - AVBRUTT - jobben ble avbrutt, av f.eks en nyere jobb for samme identifikator
+    - FEILET - jobben feilet av en teknisk årsak
+    - FERDIG - jobben er ferdig
+- forrigeStatus: sist jobbstatus
+- sekunderSidenOpprettelse: type Int, viser hvor mange sekunder det har vært siden jobben ble opprettet
+- sekunderSidenEndring: type Int, viser hvor mange sekunder jobben har hatt statusen den har nå.
+
+
+## 4. Hent resultat
+Når jobben har status ferdig, så kan resultatet hentes, da vil en få alle de beregnede modellene og valideringsrultatene.
+
+
+URL: `GET https://<env>/api/skattemelding/v2/jobb/altinn/<inntetkaar>/<identifikator>/<jobbId>/resultat`
+
+
+### Respons jobbstatus=FERDIG
+Responsen vil vær helt lik en normal validering på validering v2 og følge xsd'n til `skattemeldingOgNaeringsspesifikasjonResponse`.
+
+Respons content-typen vil være av type application/xml
+
+
+### Respons jobbstatus!=FERDIG
+Hvis jobben eksisterer og jobben ikke er ferdig, vil vi returnere en http 204
+
+
+
+# Asynkron API V1 (Deprekert)
+
+Under finner du beskrivelsen for deprekert asynkron API. Dette APIet vil etter planen bli fjernet etter fristen for inntektsår 2025.
 
 ## Beskrivelse av bruksmønster
 1. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/last-opp.vedlegg`
@@ -10,13 +151,10 @@ Alle som har en næringsspesifikasjon som er større en 10MB skal bruke API'ene 
 2. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/start`
    Når en skal gjøre en validering, så må en egen valideringsjobb startes. I skattemeldingOgNaeringsspesifikasjonRequest så brukes referansen ved å  legge ved et dokument av typen naeringsspesifikasjonReferanse. Her returneres en jobId
 3. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/status`
-   Henter status på valideringsjobben mens den kjører. 
+   Henter status på valideringsjobben mens den kjører.
 4. `/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/resultat`
-   Når valideringen er ferdig så vil en kunne hente ned hele valideringsresultatet. 
-5. Send inn via Altinn. Når valideringen er validert ok, så brukes samme naeringsspesifikasjonReferanse når en sender inn skattemeldingen via Altinn. 
-
-
-PS! det er ikke støtte for signering av revisor for dette innsendingsmønsteret per nå. 
+   Når valideringen er ferdig så vil en kunne hente ned hele valideringsresultatet.
+5. Send inn via Altinn. Når valideringen er validert ok, så brukes samme naeringsspesifikasjonReferanse når en sender inn skattemeldingen via Altinn.
 
 
 ## 1. Last opp næringsspesifikasjonen 
