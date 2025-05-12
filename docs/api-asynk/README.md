@@ -1,13 +1,13 @@
 # Asynkront API V2
 
-## Hvem skal bruke asynrkont API
-Det asynkrone api'et er laget for beregninger som tar for lang tid til at en kan bruke de synkrone endepunktene som er beskrevet under api-v2. 
-Alle som har en næringsspesifikasjon som er større en 10MB skal bruke API'ene beskrevet her.
+## Hvem skal bruke asynkront API
+Det asynkrone API-et er laget for beregninger som tar for lang tid til at en kan bruke de synkrone endepunktene som er beskrevet under api-v2. 
+Alle som har en næringsspesifikasjon som er større enn 10MB skal bruke API'ene beskrevet her.
 
 ## Forskjell fra asynkront API V1 (Deprekert)
 Ved migrering fra deprekert asynkront API, så er det følgende endringer:
 - Konvolutten med næringsspesifikasjonen er i ny asynkron løsning håndtert som én fil. Referanse til næringsspesifikasjonen **utgår**.
-- Konvolutten må lastes opp til en instans ved bruk av Altinn sitt API, i stedenfor å laste opp data direkte til Skatteetatens API.
+- Konvolutten må lastes opp til en instans ved bruk av Altinn sitt API, i stedet for å laste opp data direkte til Skatteetatens API.
 - `/altinn` er lagt til i endepunktene etter `/jobb` for det nye asynkrone APIet.
 
 ## Beskrivelse av bruksmønster
@@ -27,7 +27,7 @@ Ved migrering fra deprekert asynkront API, så er det følgende endringer:
 Oppretting av instans gjøres på samme måte som i andre tilfeller. Gjenbruk en eksisterende instans når det er mulig.
 
 ## 2. Last opp konvolutt med skattemelding og næringsspesifikasjon
-Opplasting av konvolutten gjøres på Altinn-instansen. Se dokumentasjon hos Altinn: https://docs.altinn.studio//nb/api/apps/data-elements/
+Opplasting av konvolutten gjøres på Altinn-instansen. Se dokumentasjon hos Altinn: https://docs.altinn.studio/nb/api/apps/data-elements/
 
 Altinn3-applikasjonen `skd/formueinntekt-skattemelding-v2` har en dataType `skattemeldingOgNaeringsspesifikasjon` som kan brukes til å laste opp konvolutten.
 Konvolutten kan ha en maksimal størrelse på 500MB.
@@ -95,7 +95,7 @@ curl 'https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/altinn/<inn
 
 
 ## 4. Hent status
-Enkelte jobber kan ta tid, vår estimat for den største næringsspeifikasjonen for inntektsår 2023, kan ta over en time. Det er mulig å spørre på status på en jobb, uten at det påvirker beregningstiden
+Enkelte jobber kan ta tid, vår estimat for den største næringsspesifikasjonen for inntektsår 2023, kan ta over en time. Det er mulig å spørre på status på en jobb, uten at det påvirker beregningstiden
 URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/status`
 
 **Response body:**
@@ -124,10 +124,10 @@ URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/
 
 
 ## 4. Hent resultat
-Når jobben har status ferdig, så kan resultatet hentes, da vil en få alle de beregnede modellene og valideringsrultatene.
+Når jobben har status ferdig, så kan resultatet hentes, da vil en få alle de beregnede modellene og valideringsresultatene.
 
 
-URL: `GET https://<env>/api/skattemelding/v2/jobb/altinn/<inntetkaar>/<identifikator>/<jobbId>/resultat`
+URL: `GET https://<env>/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/<jobbId>/resultat`
 
 
 ### Respons jobbstatus=FERDIG
@@ -550,16 +550,16 @@ URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/
 
 
 ## 4. Hent resultat
-Når jobben har status ferdig, så kan resultatet hentes, da vil en få alle de beregnede modellene og valideringsrultatene. 
+Når jobben har status ferdig, så kan resultatet hentes, da vil en få alle de beregnede modellene og valideringsresultatene. 
 
 
-URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntetkaar>/<identifikator>/<jobbId>/resultat`
+URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/resultat`
 
 
 ### Respons jobbstatus=FERDIG
 Responsen vil vær helt lik en normal validering på validering v2 og følge xsd'n til `skattemeldingOgNaeringsspesifikasjonResponse`.
 
-Rspons content-typen være av type application/xml
+Respons content-typen være av type application/xml
 
 
 ### Respons jobbstatus!=FERDIG
@@ -567,4 +567,4 @@ Hvis jobben eksisterer og jobben ikke er ferdig, vil vi returnere en http 204
 
 
 # Vedlegg i næringsspesifikasjonen er ikke støttet
-Asynk api'et støter ikke eksterne vedlegg i næringsspesifikasjonen. Ønsker en å legge til vedlegg for dokumentasjon, så må dette referes i skattemeldingen
+Asynk api'et støtter ikke eksterne vedlegg i næringsspesifikasjonen. Ønsker en å legge til vedlegg for dokumentasjon, så må dette referes i skattemeldingen
