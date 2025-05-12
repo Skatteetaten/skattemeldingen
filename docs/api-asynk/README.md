@@ -30,7 +30,7 @@ Oppretting av instans gjøres på samme måte som i andre tilfeller. Gjenbruk en
 Opplasting av konvolutten gjøres på Altinn-instansen. Se dokumentasjon hos Altinn: https://docs.altinn.studio//nb/api/apps/data-elements/
 
 Altinn3-applikasjonen `skd/formueinntekt-skattemelding-v2` har en dataType `skattemeldingOgNaeringsspesifikasjon` som kan brukes til å laste opp konvolutten.
-Størrelsen på konvolutten er konfigurert til å ha en størrelse på opp til 500MB.
+Konvolutten kan ha en maksimal størrelse på 500MB.
 
 
 
