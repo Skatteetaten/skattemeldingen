@@ -10,6 +10,9 @@
     <skattemeldingtekst-mapping.version>1.36.39</skattemeldingtekst-mapping.version>
     <skattemelding-kontroll.version>3.194.1</skattemelding-kontroll.version>
     <beregning-tjeneste-xsd.version>3.29.5</beregning-tjeneste-xsd.version>
+    <naering-beregning.version>2.128.1</naering-beregning.version>
+    <selskapsmelding.version>2.119.1</selskapsmelding.version>
+    <skattemelding-upersonlig.version>2.156.1</skattemelding-upersonlig.version>
   </properties>
 
   <groupId>ske.fastsetting.formueinntekt.skattemelding</groupId>
@@ -37,23 +40,32 @@
         <artifactId>beregning-tjeneste-xsd</artifactId>
         <version>${beregning-tjeneste-xsd.version}</version>
       </dependency>
+      <dependency>
+        <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
+        <artifactId>naering-beregning</artifactId>
+        <version>${naering-beregning.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding</groupId>
+        <artifactId>selskapsmelding-sdf</artifactId>
+        <version>${selskapsmelding.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
+        <artifactId>skattemelding-upersonlig-beregning</artifactId>
+        <version>${skattemelding-upersonlig.version}</version>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>
 
-  <dependencies></dependencies>
 
   <build>
-    <pluginManagement>
-      <plugins></plugins>
-
-    </pluginManagement>
-
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.8.1</version>
         <executions>
           <execution>
             <id>unpack</id>
@@ -63,6 +75,57 @@
             </goals>
             <configuration>
               <artifactItems>
+                <artifactItem>
+                  <classifier>sources</classifier>
+                  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
+                  <artifactId>naering-beregning</artifactId>
+                    <version>${naering-beregning.version}</version>
+                    <outputDirectory>src/kotlin/naeringspesifikasjon</outputDirectory>
+                    <includes>
+                          no/skatteetaten/fastsetting/formueinntekt/skattemelding/naering/beregning/kalkyler/kalkyler/**/*.*
+                    </includes>
+                  <fileMappers>
+                    <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                      <pattern>^\Qno/skatteetaten/fastsetting/formueinntekt/skattemelding/naering/beregning/kalkyler/kalkyler\E</pattern>
+                      <replacement>./</replacement>
+                    </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                  </fileMappers>
+                </artifactItem>
+
+                <artifactItem>
+                  <classifier>sources</classifier>
+                  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding</groupId>
+                  <artifactId>selskapsmelding-sdf</artifactId>
+                  <version>${selskapsmelding.version}</version>
+                  <outputDirectory>src/kotlin/selskapsmelding</outputDirectory>
+                  <includes>
+                    no/skatteetaten/fastsetting/formueinntekt/skattemelding/selskapsmelding/sdf/beregning/kalkyler/**/*.*
+                  </includes>
+                  <fileMappers>
+                    <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                      <pattern>^\Qno/skatteetaten/fastsetting/formueinntekt/skattemelding/selskapsmelding/sdf/beregning/kalkyler\E</pattern>
+                      <replacement>./</replacement>
+                    </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                  </fileMappers>
+                </artifactItem>
+
+                <artifactItem>
+                  <classifier>sources</classifier>
+                  <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
+                  <artifactId>skattemelding-upersonlig-beregning</artifactId>
+                  <version>${skattemelding-upersonlig.version}</version>
+                  <outputDirectory>src/kotlin/skattemelding-upersonlig</outputDirectory>
+                  <includes>
+                    no/skatteetaten/fastsetting/formueinntekt/skattemelding/upersonlig/beregning/kalkyle/kalkyler/**/*.*
+                  </includes>
+                  <fileMappers>
+                    <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                      <pattern>^\Qno/skatteetaten/fastsetting/formueinntekt/skattemelding/upersonlig/beregning/kalkyle/kalkyler\E</pattern>
+                      <replacement>./</replacement>
+                    </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                  </fileMappers>
+                </artifactItem>
+
                 <artifactItem>
                   <groupId>no.skatteetaten.fastsetting.formueinntekt.skattemelding</groupId>
                   <artifactId>skattemelding-mapping-resources</artifactId>
