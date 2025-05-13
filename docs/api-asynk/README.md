@@ -12,9 +12,9 @@ Ved migrering fra deprekert asynkront API, så er det følgende endringer:
 
 ## Beskrivelse av bruksmønster
 1. Opprett eller gjenbruk en åpen instans i Altinn3-appen `skd/formueinntekt-skattemelding-v2`
-2. `/skd/formueinntekt-skattemelding-v2/instances/{instanceOwnerPartyId}/{instanceGuid}/data?dataType=skattemeldingOgNaeringsspesifikasjon`
+2. `/skd/formueinntekt-skattemelding-v2/instances/<instanceOwnerPartyId>/<instanceGuid>/data?dataType=skattemeldingOgNaeringsspesifikasjon`
    Last opp konvolutten med skattemeldingen og næringsspesifikasjonen. Størrelsen på konvolutten kan være opp til 500MB.
-3. `/api/skattemelding/v2/jobb/altinn/{inntektsaar}/{identifikator}/start`
+3. `/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/start`
    Når en skal gjøre en validering, så må en egen valideringsjobb startes. I forespørselen sender du med appId og instansId fra Altinn hvor konvolutten ligger lagret.
 4. `/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/<jobbId>/status`
    Henter status på valideringsjobben mens den kjører.
@@ -24,6 +24,8 @@ Ved migrering fra deprekert asynkront API, så er det følgende endringer:
 
 
 ## 1. Opprett instans i Altinn
+Bruk Altinn3-applikasjonen `skd/formueinntekt-skattemelding-v2` for å opprette instans.
+
 Oppretting av instans gjøres på samme måte som i andre tilfeller. Gjenbruk en eksisterende instans når det er mulig.
 
 ## 2. Last opp konvolutt med skattemelding og næringsspesifikasjon
@@ -36,8 +38,7 @@ Konvolutten kan ha en maksimal størrelse på 500MB.
 
 ### Eksempel kall i testmiljøet:
 ```bash
-
-curl 'https://tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/{partyId}/{instanceGuid}/data?dataType=skattemeldingOgNaeringsspesifikasjon' \
+curl -X POST 'https://tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/<instanceOwnerPartyId>/<instanceGuid>/data?dataType=skattemeldingOgNaeringsspesifikasjon' \
 -H 'Content-Disposition: attachment; filename=skattemeldingOgNaeringsspesifikasjon.xml' \
 -H 'Content-Type: text/xml' \
 -H 'Authorization: Bearer {{token}}' \
@@ -77,11 +78,22 @@ curl 'https://tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/{party
 ## 3. Start en validerings jobb
 Dette API'et brukes til å starte en valideringsjobb. Her må du sende inn instansId og appId i body
 
-```curl
-curl 'https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/start' \
+**URL:** `POST https://<env>/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/start`
+
+**Body:**
+```json
+{
+  "appId": "skd/formueinntekt-skattemelding-v2",
+  "instansId": "<instanceOwnerPartyId>/<instanceGuid>"
+}
+```
+
+### Eksempel kall i testmiljøet:
+```bash
+curl -X POST 'https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/start' \
   -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer {{token}}' \
-  --data-raw '{"appId":"{{appId}}","instansId":"{{instansId}}"}'
+  -H 'Authorization: Bearer <token>' \
+  --data-raw '{"appId":"skd/formueinntekt-skattemelding-v2","instansId":"<instanceOwnerPartyId>/<instanceGuid>"}'
 ```
 **Respons body:**
 
@@ -96,7 +108,7 @@ curl 'https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/altinn/<inn
 
 ## 4. Hent status
 Enkelte jobber kan ta tid, vår estimat for den største næringsspesifikasjonen for inntektsår 2023, kan ta over en time. Det er mulig å spørre på status på en jobb, uten at det påvirker beregningstiden
-URL: `GET https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/<jobbId>/status`
+URL: `GET https://<env>/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/<jobbId>/status`
 
 **Response body:**
 
