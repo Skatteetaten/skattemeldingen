@@ -34,6 +34,8 @@ Opplasting av konvolutten gjøres på Altinn-instansen. Se dokumentasjon hos Alt
 Altinn3-applikasjonen `skd/formueinntekt-skattemelding-v2` har en dataType `skattemeldingOgNaeringsspesifikasjon` som kan brukes til å laste opp konvolutten.
 Konvolutten kan ha en maksimal størrelse på 500MB.
 
+Ved gjenbruk av instans, må man enten slette eksisterende dataType `skattemeldingOgNaeringsspesifikasjon` eller erstatte data på dataelementet.
+For å erstatte data på et eksisterende dataelement i Altinn kan man gjøre PUT beskreve på https://docs.altinn.studio/nb/api/apps/data-elements/#replace-data
 
 
 ### Eksempel kall i testmiljøet:
@@ -75,8 +77,109 @@ curl -X POST 'https://tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instance
 }
 ```
 
+### Eksempel på erstatting av data på eksisterende dataelement
+```bash
+curl -X 'PUT' 'https://tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/<instanceOwnerPartyId>/<instanceGuid>/data/<dataGuid>' \
+  -H 'Content-Disposition: attachment; filename=skattemeldingOgNaeringsspesifikasjon.xml' \
+  -H 'Content-Type: text/xml' \
+  -H 'Authorization: Bearer <token>' \
+  --data-raw $'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<skattemeldingOgNaeringsspesifikasjonRequest xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingognaeringsspesifikasjon:request:v2">\n  <dokumenter>\n    <dokument>\n      <type>skattemeldingUpersonlig</type>\n      <encoding>utf-8</encoding>\n      <content>{{placeholderSme}}</content>\n    </dokument>\n    <dokument>\n      <type>naeringsspesifikasjon</type>\n      <encoding>utf-8</encoding>\n      <content>{{placeholderNsp}}</content>\n    </dokument>\n  </dokumenter>\n  <dokumentreferanseTilGjeldendeDokument>\n    <dokumenttype>skattemeldingUpersonlig</dokumenttype>\n    <dokumentidentifikator>{{placeholderSmeId}}</dokumentidentifikator>\n  </dokumentreferanseTilGjeldendeDokument>\n  <inntektsaar>{{placeholderInntektsaar}}</inntektsaar>\n  <innsendingsinformasjon>\n    <innsendingstype>komplett</innsendingstype>\n    <opprettetAv>{{placeholderSBSNavn}}</opprettetAv>\n    <tin>{{placeholderTin}}</tin>\n  </innsendingsinformasjon>\n</skattemeldingOgNaeringsspesifikasjonRequest>'
+```
+**Respons body:**
+
+```json
+{
+  "id": "{dataId}",
+  "instanceGuid": "{instanceGuid}",
+  "dataType": "skattemeldingOgNaeringsspesifikasjon",
+  "filename": "skattemeldingOgNaeringsspesifikasjon.xml",
+  "contentType": "text/xml",
+  "blobStoragePath": "skd/formueinntekt-skattemelding-v2/{instanceGuid}/data/{dataId}",
+  "selfLinks": {
+    "apps": "https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/{partyId}/{instanceGuid}/data/{dataId}",
+    "platform": "https://platform.tt02.altinn.no/storage/api/v1/instances/{partyId}/{instanceGuid}/data/{dataId}"
+  },
+  "size": 123,
+  "contentHash": null,
+  "locked": false,
+  "refs": null,
+  "isRead": true,
+  "tags": [],
+  "deleteStatus": null,
+  "fileScanResult": "Pending",
+  "references": null,
+  "created": "2025-05-09T08:08:57.0736662Z",
+  "createdBy": "1450179",
+  "lastChanged": "2025-05-09T08:08:57.073666Z",
+  "lastChangedBy": "1450179"
+}
+```
+
+### Hent status på virussjekk
+For å sjekke status på virussjekken, kan du hente instans-metadata og filtrere på dataelementet med typen `skattemeldingOgNaeringsspesifikasjon`.
+
+#### Eksempel fra testmiljø
+```bash
+curl -X GET 'https://tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/<instanceOwnerPartyId>/<instanceGuid>' \
+  -H 'Authorization: Bearer <token>'
+```
+
+**Respons body (skjult felter for en ryddigere visning):**
+```json
+{
+  "id": "<instanceOwnerPartyId>/<instanceGuid>",
+  "instanceOwner": {
+    "partyId": "<instanceOwnerPartyId>",
+    "organisationNumber": "<identifikator>"
+  },
+  "appId": "skd/formueinntekt-skattemelding-v2",
+  "org": "skd",
+  "selfLinks": {},
+  "process": {
+    "startEvent": "StartEvent_1",
+    "currentTask": {
+      "elementId": "Task_1"
+    }
+  },
+  "status": {},
+  "data": [
+    {
+      "id": "<dataGuid>",
+      "instanceGuid": "<instanceGuid>",
+      "dataType": "skattemeldingOgNaeringsspesifikasjon",
+      "filename": "skattemeldingOgNaeringsspesifikasjon.xml",
+      "contentType": "text/xml",
+      "blobStoragePath": "skd/formueinntekt-skattemelding-v2/<instanceGuid>/data/<dataGuid>",
+      "selfLinks": {
+        "apps": "https://skd.apps.tt02.altinn.no/skd/formueinntekt-skattemelding-v2/instances/<instanceOwnerPartyId>/<instanceGuid>/data/<dataGuid>",
+        "platform": "https://platform.tt02.altinn.no/storage/api/v1/instances/<instanceOwnerPartyId>/<instanceGuid>/data/<dataGuid>"
+      },
+      "size": 123,
+      "fileScanResult": "Pending",
+      "created": "2025-05-13T10:17:18.6497999Z",
+      "createdBy": "1450179",
+      "lastChanged": "2025-05-13T12:25:22.81752Z",
+      "lastChangedBy": "1450179"
+    }
+  ],
+  "presentationTexts": {
+    "inntektsaar": "<inntektsaar>"
+  },
+  "dataValues": {
+    "inntektsaar": "<inntektsaar>",
+    "skalBekreftesAvRevisor": "false"
+  }
+}
+```
+
+For å finne om virussjekken er ferdig, så må en sjekke `fileScanResult` på dataelementet med `dataType == skattemeldingOgNaeringsspesifikasjon`.
+
+Eksempel med JSONPath: `$.data[?(@.dataType == 'skattemeldingOgNaeringsspesifikasjon')].fileScanResult`
+
 ## 3. Start en validerings jobb
-Dette API'et brukes til å starte en valideringsjobb. Her må du sende inn instansId og appId i body
+Dette API'et brukes til å starte en valideringsjobb. Her må du sende inn instansId og appId i body.
+
+OBS: Virussjekken hos Altinn må være ferdig med status "Clean" før jobben kan startes. Se her for hvordan man kan hente ut status: [Hent status på virussjekk](#hent-status-på-virussjekk).
 
 **URL:** `POST https://<env>/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/start`
 
