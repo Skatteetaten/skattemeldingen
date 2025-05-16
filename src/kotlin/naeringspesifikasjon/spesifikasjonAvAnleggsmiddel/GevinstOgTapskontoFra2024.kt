@@ -9,7 +9,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.konstanter.Inntektsaar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.antallMaanederIRegnskapsperiode
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk.samletPaastempletMerkeytelseIKvaOverGrense
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.virksomhetstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.medBegrensninger
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
@@ -18,16 +17,14 @@ internal object GevinstOgTapskontoFra2024 : HarKalkylesamling {
 
     internal val gevinstOgTapskontoKnyttetTilGrunnrenteKalkyle =
         kalkyle("grunnlagForInntektsfoeringOgFradragsfoeringKalkyle") {
-            forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
-                forAlleForekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) {
-                    hvis(forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_grunnrenteomraade.harVerdi()) {
-                        settFelt(forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_grunnlagForInntektsfoeringOgFradragsfoering) {
-                            forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_inngaaendeVerdi +
-                                forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_sumGevinstVedRealisasjonOgUttak -
-                                forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_sumTapVedRealisasjonOgUttak +
-                                forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_inngaaendeVerdiFraErvervetGevinstOgTapskonto -
-                                forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_verdiAvRealisertGevinstOgTapskonto
-                        }
+            forAlleForekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) {
+                hvis(forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_grunnrenteomraade.harVerdi()) {
+                    settFelt(forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_grunnlagForInntektsfoeringOgFradragsfoering) {
+                        forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_inngaaendeVerdi +
+                            forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_sumGevinstVedRealisasjonOgUttak -
+                            forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_sumTapVedRealisasjonOgUttak +
+                            forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_inngaaendeVerdiFraErvervetGevinstOgTapskonto -
+                            forekomstType.gevinstOgTapskontoKnyttetTilGrunnrente_verdiAvRealisertGevinstOgTapskonto
                     }
                 }
             }
