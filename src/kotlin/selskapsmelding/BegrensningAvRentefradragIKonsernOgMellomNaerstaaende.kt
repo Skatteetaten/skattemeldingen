@@ -526,21 +526,24 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
 
     val justeringForSdfEllerNokusKalkyle = kalkyle("justeringForSdfEllerNokus") {
         hvis(erSdf() || erNokus()) {
-            var naeringsinntekt = modell.inntektOgUnderskudd.naeringsinntekt.tall()
             var underskudd = modell.inntektOgUnderskudd.underskudd.tall()
             hvis(skalBeregneRederi(RederiUtil.beskatningsordning.verdi())) {
-                naeringsinntekt =
-                    modell.rederiskatteordning_finansinntektOgFinansunderskudd.samletFinansinntekt.tall()
                 underskudd =
                     modell.rederiskatteordning_finansinntektOgFinansunderskudd.samletFinansunderskudd.tall()
             }
+            var erNokus = erNokus()
+            var underskuddINokus = modell.inntektOgUnderskudd.inntektOgUnderskuddForSelskapMedPersonligDeltakerINokus_underskudd.tall()
+
 
             val satser = satser!!
             forAlleForekomsterAv(modell.rentebegrensning) {
+                hvis(erNokus && forekomstType.deltakerrolle lik Deltakerrolle.personligDeltakerINokus) {
+                    underskudd = underskuddINokus
+                }
                 val inntektEllerUnderskudd =
-                    naeringsinntekt -
-                        underskudd +
-                        forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsTilleggIInntekt
+                    forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsTilleggIInntekt -
+                        underskudd
+
 
                 var justertVerdiForSdfEllerNokus =
                     (inntektEllerUnderskudd * satser.sats(Sats.rentebegrensning_underskuddSdfOgNokusProsent)).somHeltall()

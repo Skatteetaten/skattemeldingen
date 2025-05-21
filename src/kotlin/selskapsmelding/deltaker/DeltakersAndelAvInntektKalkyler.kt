@@ -9,7 +9,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettUniktSyntetiskFelt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.selskapsmelding.sdf.domenemodell.v3_2024.v3
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsForFinansskattepliktigVirksomhet
@@ -48,8 +47,6 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
         }
 
         internal val sumFoerArbeidsgodtgjoerelseKalkyle = kalkyle {
-            val test = opprettUniktSyntetiskFelt(modell.opplysningOmSelskapMedDeltakerfastsetting, "org")
-
             forekomsterAv(deltaker) forHverForekomst {
                 settFelt(sumFoerArbeidsgodtgjoerelseFelt) {
                     if (forekomstType.forholdKnyttetTilKommandittistOgStilleDeltaker_erKommandittistEllerStilleDeltakerMedBeloepsbegrensetAnsvar.erSann()) {
@@ -118,13 +115,23 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
 
         internal val samletPositivUtdelingEllerUegentligInnskuddKalkyle = kalkyle {
             hvis(!erNokus()) {
+                val satser = satser!!
                 val inntektsaar = inntektsaar
                 forekomsterAv(deltaker) forHverForekomst {
                     val uegentligInnskuddEllerSamletPositivUtdeling = if (inntektsaar.tekniskInntektsaar >= 2024) {
-                        ((forekomstType.utdelingMv_kontantUtbetaling +
-                            forekomstType.utdelingMv_verdIAvEiendelOgTjenesteOverfoertTilDeltaker -
-                            forekomstType.utdelingMv_tilbakebetalingAvInnbetaltEgenkapital medMinimumsverdi 0) -
-                            forekomstType.utdelingMv_skattPaaDeltakersAndelAvSelskapetsOverskudd).somHeltall()
+                        if (forekomstType.erOmfattetAvRederiskatteordning.erSann()) {
+                            ((forekomstType.utdelingMv_kontantUtbetaling +
+                                    forekomstType.utdelingMv_verdIAvEiendelOgTjenesteOverfoertTilDeltaker -
+                                    forekomstType.utdelingMv_tilbakebetalingAvInnbetaltEgenkapital medMinimumsverdi 0) -
+                                    (forekomstType.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansinntekt
+                                        * satser.sats(skattPaaAlminneligInntekt_sats)).somHeltall())
+                        } else {
+                            ((forekomstType.utdelingMv_kontantUtbetaling +
+                                 forekomstType.utdelingMv_verdIAvEiendelOgTjenesteOverfoertTilDeltaker -
+                                 forekomstType.utdelingMv_tilbakebetalingAvInnbetaltEgenkapital medMinimumsverdi 0) -
+                                 forekomstType.utdelingMv_skattPaaDeltakersAndelAvSelskapetsOverskudd).somHeltall()
+                        }
+
                     } else {
                         (forekomstType.utdelingMv_kontantUtbetaling +
                             forekomstType.utdelingMv_verdIAvEiendelOgTjenesteOverfoertTilDeltaker -
@@ -702,6 +709,7 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
             KorreksjonIAlminneligInntekt.sumFoerFremfoeringAvUnderskuddForKommandittistOgStilleDeltakerKalkyle,
             KorreksjonIAlminneligInntekt.sumFoerArbeidsgodtgjoerelseKalkyle,
             KorreksjonIAlminneligInntekt.alminneligInntektEllerUnderskuddKalkyle,
+            rederi,
             UtdelingMv.skattPaaDeltakersAndelAvSelskapetsOverskuddKalkyle,
             UtdelingMv.samletPositivUtdelingEllerUegentligInnskuddKalkyle,
             Skjermingsfradrag.inngangsverdiJustertForInnskuddErvervRealisasjonMvKalkyle,
@@ -720,7 +728,6 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
             havbruk,
             kraftverk,
             skattefunn,
-            rederi,
             landbasertVindkraft
         )
     }

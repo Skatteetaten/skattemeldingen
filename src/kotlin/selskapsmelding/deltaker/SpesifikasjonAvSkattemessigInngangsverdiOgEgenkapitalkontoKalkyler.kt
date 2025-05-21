@@ -157,36 +157,17 @@ object SpesifikasjonAvSkattemessigInngangsverdiOgEgenkapitalkontoKalkyler : HarK
     }
 
     internal val uegentligInnskuddKalkyle = kalkyle {
-        val satser = satser!!
         if (inntektsaar.tekniskInntektsaar >= 2024 && erIkkeNokus()) {
             forekomsterAv(modell.deltaker) forHverForekomst {
-                val foreloepig =
-                    ((forekomstType.utdelingMv_kontantUtbetaling +
-                        forekomstType.utdelingMv_verdIAvEiendelOgTjenesteOverfoertTilDeltaker -
-                        forekomstType.utdelingMv_tilbakebetalingAvInnbetaltEgenkapital medMinimumsverdi 0) -
-                        forekomstType.utdelingMv_skattPaaDeltakersAndelAvSelskapetsOverskudd).somHeltall()
-                val uegentligInnskudd = if (forekomstType.erOmfattetAvRederiskatteordning.erSann()) {
-                    (forekomstType.utdelingMv_kontantUtbetaling +
-                        forekomstType.utdelingMv_verdIAvEiendelOgTjenesteOverfoertTilDeltaker -
-                        forekomstType.spesifikasjonAvSkattemessigInngangverdiOgEgenkapitalkonto_tilbakebetalingAvInnbetaltKapital_inngangsverdi)
-                        .medMinimumsverdi(0) -
-                        (forekomstType.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansinntekt *
-                            satser.sats(skattPaaAlminneligInntekt_sats))
-                } else {
-                    if (foreloepig mindreEllerLik 0) {
-                        foreloepig.absoluttverdi()
-                    } else {
-                        null
-                    }
-                }
+                val uegentligInnskudd = forekomstType.utdelingMv_uegentligInnskudd.tall()
                 settFelt(forekomstType.spesifikasjonAvSkattemessigInngangverdiOgEgenkapitalkonto_uegentligInnskudd_inngangsverdi) {
-                    uegentligInnskudd.somHeltall().absoluttverdi()
+                    uegentligInnskudd.somHeltall()
                 }
                 settFelt(forekomstType.spesifikasjonAvSkattemessigInngangverdiOgEgenkapitalkonto_uegentligInnskudd_innbetaltEgenkapital) {
-                    uegentligInnskudd.somHeltall().absoluttverdi()
+                    uegentligInnskudd.somHeltall()
                 }
                 settFelt(forekomstType.spesifikasjonAvSkattemessigInngangverdiOgEgenkapitalkonto_uegentligInnskudd_opptjentEgenkapital) {
-                    uegentligInnskudd.somHeltall().absoluttverdi()
+                    uegentligInnskudd.somHeltall()
                 }
             }
         }
