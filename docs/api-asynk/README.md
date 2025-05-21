@@ -4,6 +4,12 @@
 Det asynkrone API-et er laget for beregninger som tar for lang tid til at en kan bruke de synkrone endepunktene som er beskrevet under api-v2. 
 Alle som har en næringsspesifikasjon som er større enn 10MB skal bruke API'ene beskrevet her.
 
+### Grenser på størrelser for bruk av asynkront API
+- Minimum størrelse på base64-enkodet næringsspesifikasjon er 1 MB
+  - OBS: I testmiljøet er det ingen begrensning på størrelsen til næringsspesifikasjonen, så en kan bruke asynkront API selv om den er mindre enn 1 MB.
+- Base64-enkodet næringsspesifikasjon som er større enn 10 MB må bruke asynkront API
+- Maksimum størrelse på hele konvolutten er 500 MB
+
 ## Forskjell fra asynkront API V1 (Deprekert)
 Ved migrering fra deprekert asynkront API, så er det følgende endringer:
 - Konvolutten med næringsspesifikasjonen er i ny asynkron løsning håndtert som én fil. Referanse til næringsspesifikasjonen **utgår**.
