@@ -14,13 +14,14 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.s
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.erSdf
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.rederi.RederiUtil
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.rederi.RederiUtil.skalBeregneRederi
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modellV2
 
 private const val UNNTAKSREGEL_PAA_SELSKAPSNIVAA = "unntaksregelPaaSelskapsnivaa"
 private const val UNNTAKSREGEL_PAA_NASJONALTNIVAA = "unntaksregelPaaNasjonaltNivaa"
 
 object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesamling {
 
+    val modell = modellV2
     val samletRentekostnadOgGarantiprovisjonKalkyle = kalkyle("samletRentekostnadOgGarantiprovisjon") {
         forAlleForekomsterAv(modell.rentebegrensning) {
             val samletRentekostnadOgGarantiprovisjon =
@@ -280,46 +281,38 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
         }
     }
 
-    val tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle =
-        kalkyle("tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle") {
-            forAlleForekomsterAv(modell.rentebegrensning) {
-                hvis(forekomstType.erKonsernIhtRegelverkForRentebegrensning.erUsann()) {
-                    settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme) {
-                        if (forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad mindreEllerLik this@kalkyle.satser!!.sats(
-                                Sats.rentebegrensning_grensebeloepUtenforKonsern
-                            )
-                        ) {
-                            BigDecimal.ZERO
-                        } else {
-                            lavesteTallAv(
-                                forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall(),
-                                forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsern.tall()
-                            ) medMinimumsverdi 0
-                        }
-                    }
+    val tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle = kalkyle("tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammen") {
+        val satser = satser!!
+        forAlleForekomsterAv(modell.rentebegrensning) {
+            hvis(
+                forekomstType.erKonsernIhtRegelverkForRentebegrensning.erUsann() &&
+                    forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad stoerreEnn satser.sats(
+                    Sats.rentebegrensning_grensebeloepUtenforKonsern
+                )
+            ) {
+                settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme) {
+                    lavesteTallAv(
+                        forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall(),
+                        forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsern.tall()
+                    ) medMinimumsverdi 0
                 }
-                hvis(forekomstType.erKonsernIhtRegelverkForRentebegrensning.erSann()) {
+            }
+            hvis(forekomstType.erKonsernIhtRegelverkForRentebegrensning.erSann()) {
+                if (forekomstType.harRentekostnadLavereEnnTerskelbeloepPerNorskDelAvKonsern.erSann()) {
                     settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme) {
-                        if (
-                            forekomstType.harRentekostnadLavereEnnTerskelbeloepPerNorskDelAvKonsern.erSann() &&
-                            ((forekomstType.annetForetakRapportererPaaVegneAvKonsern.erSann() && forekomstType.annetForetakSomRapportererPaaVegneAvKonsern_identifikator.harVerdi()) ||
-                                (forekomstType.annetForetakRapportererPaaVegneAvKonsern.erUsann() &&
-                                    !generiskModell.verdiFor(forekomstType.annetSelskapIKonsern.selskapetsOrganisasjonsnummer)
-                                        .isNullOrBlank() &&
-                                    !generiskModell.verdiFor(forekomstType.annetSelskapIKonsern.nettoFradragsfoertRentekostnad)
-                                        .isNullOrBlank()))
-                        ) {
-                            BigDecimal.ZERO
-                        } else {
-                            lavesteTallAv(
-                                forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad.tall(),
-                                forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall()
-                            ) medMinimumsverdi 0
-                        }
+                        BigDecimal.ZERO
+                    }
+                } else {
+                    settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme) {
+                        lavesteTallAv(
+                            forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad.tall(),
+                            forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall()
+                        ) medMinimumsverdi 0
                     }
                 }
             }
         }
+    }
 
     val tilbakefoertTilleggIInntektForSelskapIKonsernMvKalkyle =
         kalkyle("tilbakefoertTilleggIInntektForSelskapIKonsernMv") {
@@ -405,32 +398,6 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
                 }
             }
         }
-
-    val korrigertRentestoerrelse = kalkyle("korrigertRentestoerrelse") {
-        forAlleForekomsterAv(modell.rentebegrensning) {
-            hvis(
-                forekomstType.erKonsernIhtRegelverkForRentebegrensning.erSann() &&
-                    (forekomstType.harRentekostnadLavereEnnTerskelbeloepPerNorskDelAvKonsern.erSann() &&
-                        (forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme lik 0 ||
-                            forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme.harIkkeVerdi())) ||
-                    forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilbakefoertTilleggIInntektForSelskapIKonsernMv.erPositiv()
-            ) {
-                var verdi =
-                    modell.rentebegrensning.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.tall()
-                val totalNettoRentekostnadTilSelskapISammeKonsern =
-                    modell.rentebegrensning.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_totalNettoRentekostnadTilSelskapISammeKonsern.tall()
-
-                if (totalNettoRentekostnadTilSelskapISammeKonsern.erNegativ()) {
-                    verdi -= totalNettoRentekostnadTilSelskapISammeKonsern
-                }
-                hvis(verdi.erPositiv()) {
-                    settFelt(modell.rentebegrensning.beregningsgrunnlagTilleggEllerFradragIInntekt_korrigertRentestoerrelse) {
-                        verdi
-                    }
-                }
-            }
-        }
-    }
 
     val tilleggIInntektForSelskapIKonsernMvSomFaarAvskaaretFradragForRenterTilAndreNaerstaaendeKalkyle =
         kalkyle("tilleggIInntektForSelskapIKonsernMvSomFaarAvskaaretFradragForRenterTilAndreNaerstaaende") {
@@ -607,36 +574,6 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
         }
     }
 
-    val samletMottattKonsernbidrag = kalkyle("samletMottattKonsernbidrag") {
-        forAlleForekomsterAv(modell.rentebegrensning) {
-            settFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_samletMottattKonsernbidrag) {
-                forekomsterAv(forekomstType.beregningsgrunnlagForRentefradragsramme_konsernbidragPerMotpart) summerVerdiFraHverForekomst {
-                    forekomstType.mottattBeloep.tall()
-                }
-            }
-        }
-    }
-
-    val sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap =
-        kalkyle("sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap") {
-            forAlleForekomsterAv(modell.rentebegrensning) {
-                settFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap) {
-                    forekomsterAv(forekomstType.beregningsgrunnlagForRentefradragsramme_konsernbidragPerMotpart.spesifikasjonAvAvgittAndelAvKonsernbidrag) summerVerdiFraHverForekomst {
-                        forekomstType.andelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap.tall()
-                    }
-                }
-            }
-        }
-
-    val fradragForKonsernbidragSomSkalEkskluderes = kalkyle("fradragForKonsernbidragSomSkalEkskluderes") {
-        forAlleForekomsterAv(modell.rentebegrensning) {
-            settFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_fradragForKonsernbidragSomSkalEkskluderes) {
-                forekomstType.beregningsgrunnlagForRentefradragsramme_samletMottattKonsernbidrag -
-                    forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap
-            }
-        }
-    }
-    
     val egenkapitalandelIKonsernregnskapKalkyle = kalkyle("egenkapitalandelIKonsernregnskap") {
         hvis(modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_positivEgenkapitalIKonsernregnskapGlobalt.beloepIValuta().erPositiv()) {
             settUniktFelt(modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap) {
@@ -780,16 +717,12 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
             totalNettoRentekostnadTilSelskapISammeKonsernKalkyle,
             nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsernKalkyle,
             totalNettoRentekostnadTilNaerstaaendeMvKalkyle,
-            samletMottattKonsernbidrag,
-            sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap,
-            fradragForKonsernbidragSomSkalEkskluderes,
             grunnlagForRentefradragsrammeKalkyle,
             nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle,
             rentefradragsrammeKalkyle,
             differanseMellomNettoRentekostnadOgRentefradragsrammenKalkyle,
             tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle,
             tilbakefoertTilleggIInntektForSelskapIKonsernMvKalkyle,
-            korrigertRentestoerrelse,
             tilleggIInntektForSelskapIKonsernMvSomFaarAvskaaretFradragForRenterTilAndreNaerstaaendeKalkyle,
             aaretsTilleggIInntektKalkyle,
             aaretsFradragIInntektKalkyle,
