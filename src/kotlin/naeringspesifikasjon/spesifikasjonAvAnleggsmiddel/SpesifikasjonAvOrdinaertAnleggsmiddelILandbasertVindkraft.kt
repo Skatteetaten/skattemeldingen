@@ -22,7 +22,8 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                 settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForBeregningAvVenterente) {
                     beregnHvis(
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik
-                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
+                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning &&
+                                !forekomstType.vederlagVedRealisasjonOgUttak.harVerdi()
                     ) {
                         (forekomstType.inngaaendeVerdi + forekomstType.utgaaendeVerdi) / 2
                     }
@@ -61,7 +62,8 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                             && forekomstType.ervervsdato.aar() mindreEnn inntektsaar
                     ) {
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024 +
-                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_justeringPaaSaldo
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_justeringPaaSaldo -
+                                forekomstType.vederlagVedRealisasjonOgUttak
                     }
                 }
 
@@ -79,6 +81,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                     beregnHvis(
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik
                             benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
+                            && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForAvskrivningIGrunnrenteinntekt stoerreEnn 0
                             && forekomstType.ervervsdato.aar() mindreEnn inntektsaar
                     ) {
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForAvskrivningIGrunnrenteinntekt / deltPaa(inntektsaar)
@@ -89,31 +92,40 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                     beregnHvis(
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik
                             benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
+                            && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForAvskrivningIGrunnrenteinntekt stoerreEnn 0
                             && forekomstType.ervervsdato.aar() stoerreEllerLik inntektsaar
                     ) {
-                        forekomstType.aaretsAvskrivning.tall()
+                        (forekomstType.aaretsAvskrivning.tall() / 100)
                     }
                 }
 
                 settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) {
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForAvskrivningIGrunnrenteinntekt -
-                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsAvskrivningIGrunnrenteinntekt
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsAvskrivningIGrunnrenteinntekt +
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto -
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto +
+                    forekomstType.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
                 }
 
-                settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForBeregningAvVenterente) {
-                    beregnHvis(
-                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik
-                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning &&
-                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024.harVerdi()
-                    ) {
-                        (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024 + forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) / 2
+                hvis(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning &&
+                        !forekomstType.vederlagVedRealisasjonOgUttak.harVerdi()) {
+                    settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForBeregningAvVenterente) {
+                        beregnHvis(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024.harVerdi()) {
+                            (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024 +
+                                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) / 2
+                        }
+                        beregnHvis(!forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024.harIkkeVerdi()) {
+                            (forekomstType.inngaaendeVerdi + forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) / 2
+                        }
                     }
                 }
 
                 settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_venterente) {
                     beregnHvis(
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik
-                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
+                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning &&
+                                !forekomstType.vederlagVedRealisasjonOgUttak.harVerdi()
                     ) {
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForBeregningAvVenterente *
                             satser.sats(Sats.landbasertVindkraft_normrenteForBeregningAvVenterente)
@@ -139,7 +151,8 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                             && forekomstType.ervervsdato.aar() mindreEnn inntektsaar
                     ) {
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024 +
-                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_justeringPaaSaldo
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_justeringPaaSaldo -
+                                forekomstType.vederlagVedRealisasjonOgUttak
                     }
                 }
 
@@ -170,24 +183,32 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                             && forekomstType.ervervsdato.aar() stoerreEllerLik inntektsaar
                     ) {
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForAvskrivningIGrunnrenteinntekt *
-                            forekomstType.avskrivningssats
+                                (forekomstType.avskrivningssats / 100)
                     }
                 }
 
                 settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) {
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForAvskrivningIGrunnrenteinntekt -
-                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsAvskrivningIGrunnrenteinntekt
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsAvskrivningIGrunnrenteinntekt +
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto -
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto +
+                    forekomstType.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
                 }
 
-                settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForBeregningAvVenterente) {
-                    beregnHvis(
-                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik
-                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning &&
-                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024.harVerdi()
-                    ) {
-                        (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024 + forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) / 2
+                hvis(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning &&
+                        !forekomstType.vederlagVedRealisasjonOgUttak.harVerdi()) {
+                    settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_grunnlagForBeregningAvVenterente) {
+                        beregnHvis(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024.harVerdi()) {
+                            (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024 +
+                                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) / 2
+                        }
+                        beregnHvis(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_oppjustertGrunnlagForAvskrivningPer01012024.harIkkeVerdi()) {
+                            (forekomstType.inngaaendeVerdi + forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) / 2
+                        }
                     }
                 }
+
 
                 settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_venterente) {
                     beregnHvis(
