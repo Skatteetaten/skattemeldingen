@@ -8,7 +8,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemod
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.biltype2022
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2020
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.satser.aar2020.TransportmiddelSatser
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 internal object TransportmiddelNaering2020 : HarKalkylesamling {
 
@@ -26,7 +25,7 @@ internal object TransportmiddelNaering2020 : HarKalkylesamling {
         opprettSyntetiskFelt(modell2020.spesifikasjonAvResultatregnskapOgBalanse_transportmiddelINaering, "kmSatsForPrivatBruk")
 
     internal val initielleBeregningerKalkyle = kalkyle("initielleBeregninger") {
-        val inntektsaar = statisk.naeringsopplysninger.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar
         forAlleForekomsterAv(modell2020.spesifikasjonAvResultatregnskapOgBalanse_transportmiddelINaering) {
             settFelt(bilensAlder) {
                 (forekomstType.registreringsaar - inntektsaar).absoluttverdi()
