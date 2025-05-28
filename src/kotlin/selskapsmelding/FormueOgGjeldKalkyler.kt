@@ -124,8 +124,8 @@ object FormueOgGjeldKalkyler : HarKalkylesamling {
             hvis(erOmfattetAvSaerreglerForHavbruksvirksomhet) {
 
                 val annenGjeld = modell.formueOgGjeld.gjeld_annenGjeld.tall()
-                val gjeldSDF = forekomsterAv(modell.akvakulturtillatelseSomFormuesobjekt) summerVerdiFraHverForekomst {
-                    forekomstType.andelAvSamletGjeldKnyttetTilAkvakulturtillatelse.tall()
+                val gjeldSDF = forekomsterAv(modell.deltakersAndelAvFormueOgInntekt) summerVerdiFraHverForekomst {
+                    forekomstType.gjeld.tall()
                 }
 
                 val sumAkvakulturtillatelseOmsetningsverdi =
