@@ -4,9 +4,9 @@ import java.math.BigDecimal
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v5_2024.inntektOgFradragIGrunnrente_2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
@@ -280,8 +280,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                     sumAaretsAvskrivningSaldo + sumAaretsAvskrivningLineaert - sumaAretsInntektsfoerigAvNegativSaldo + sumSaldoOgLinaert
 
                 if (beloep != null) {
-                    val kode =
-                        inntektOgFradragIGrunnrente_2024.fradragIGrunnrente.kode_skattemessigAvskrivningAvDriftsmiddel.kode
+                    val kode = fradragIGrunnrente.kode_skattemessigAvskrivningAvDriftsmiddel.kode
 
                     opprettNySubforekomstAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk) {
                         medId(kode)
@@ -352,8 +351,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                     sumDirekteUtgiftsfoertInvesteringsavgiftIGrunnrenteinntekt + sumDirekteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt
 
                 if (beloep != null) {
-                    val kode =
-                        inntektOgFradragIGrunnrente_2024.fradragIGrunnrente.kode_investeringskostnad.kode
+                    val kode = fradragIGrunnrente.kode_investeringskostnad.kode
                     opprettNySubforekomstAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk) {
                         medId(kode)
                         medFelt(
@@ -393,8 +391,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                     sumVenterenteSaldo(loepenummer) + sumVenterenteLineaere(loepenummer) + sumVenterenteIkkeAvskrivbare(loepenummer)
 
                 if (sumVenterente != null) {
-                    val kode =
-                        inntektOgFradragIGrunnrente_2024.fradragIGrunnrente.kode_venterente.kode
+                    val kode = fradragIGrunnrente.kode_venterente.kode
 
                     opprettNySubforekomstAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk) {
                         medId(kode)

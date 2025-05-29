@@ -6,7 +6,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v5_2024.v5
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v6_2025.v6
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
@@ -396,7 +396,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
         }
 
-    private fun ForekomstKontekst<v5.kraftverk_spesifikasjonAvKraftverkForekomst>.summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt() =
+    private fun ForekomstKontekst<v6.kraftverk_spesifikasjonAvKraftverkForekomst>.summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt() =
         forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
             forekomstType.salgsinntekt.harVerdi()
         } summerVerdiFraHverForekomst {

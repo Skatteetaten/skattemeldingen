@@ -10,7 +10,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.FeltMedEgenskaper
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v5_2024.v5
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v6_2025.v6
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erFradrag
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erTillegg
@@ -270,8 +270,8 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v5.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>.summerBeloepPerAndelPerLoepenummer(
-        beloepsfelt: FeltMedEgenskaper<v5.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>,
+    private fun ForekomstKontekst<v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>.summerBeloepPerAndelPerLoepenummer(
+        beloepsfelt: FeltMedEgenskaper<v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>,
         nyeForekomster: MutableMap<String, BigDecimal>
     ) {
 
@@ -293,8 +293,8 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v5.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>.summerAntallPerAndelPerLoepenummer(
-        felt: Felt<v5.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>,
+    private fun ForekomstKontekst<v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>.summerAntallPerAndelPerLoepenummer(
+        felt: Felt<v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>,
         nyeForekomster: MutableMap<String, BigDecimal>
     ) {
 
@@ -316,7 +316,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v5.spesifikasjonAvEnhetIVindkraftverkForekomst>.opprettNyForekomstFradrag(
+    private fun ForekomstKontekst<v6.spesifikasjonAvEnhetIVindkraftverkForekomst>.opprettNyForekomstFradrag(
         kodeverdi: KodeVerdi,
         beloep: BigDecimal?
     ) {
@@ -337,7 +337,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v5.spesifikasjonAvEnhetIVindkraftverkForekomst>.opprettNyForekomstInntekt(
+    private fun ForekomstKontekst<v6.spesifikasjonAvEnhetIVindkraftverkForekomst>.opprettNyForekomstInntekt(
         kodeverdi: KodeVerdi,
         beloep: BigDecimal?
     ) {

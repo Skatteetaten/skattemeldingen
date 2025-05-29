@@ -9,7 +9,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.selskapsmelding.sdf.domenemodell.v3_2024.v3
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.selskapsmelding.sdf.domenemodell.v4_2025.v4
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsForFinansskattepliktigVirksomhet
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsITiltakssone
@@ -695,7 +695,7 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v3.deltakerForekomst>.deltakersAndelAvInntektIProsent() =
+    private fun ForekomstKontekst<v4.deltakerForekomst>.deltakersAndelAvInntektIProsent() =
         forekomstType.deltakersAndelAvInntektIProsent.prosent() ?: forekomstType.selskapsandelIProsent.prosent()
 
     override fun kalkylesamling(): Kalkylesamling {

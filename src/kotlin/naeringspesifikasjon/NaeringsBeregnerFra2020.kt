@@ -13,7 +13,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemod
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.mapping.tilgenerisk.MappingTilGenerisk.FIXED_COMPONENT_ID
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.NaeringFelterKunForVisning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v2_2021.Regnskapspliktstype
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v5_2024.v5
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v6_2025.v6
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.xmldata.beregnedefelt.ErAvledetGeneriskNoekkel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.UgyldigInputException
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.NaeringsBeregner
@@ -567,7 +567,7 @@ private fun finnFelterSomSkalFjernesMidlertidigForskjell(forskjellstype: String,
     }
 }
 
-private fun finnFelterSomSkalFjernesForskjellForVirksomhetOmfattetAvPetroleumsskatteloven(forskjellstype: String): Set<FeltMedEgenskaper<v5.permanentForskjellForVirksomhetOmfattetAvPetroleumsskattelovenForekomst>> {
+private fun finnFelterSomSkalFjernesForskjellForVirksomhetOmfattetAvPetroleumsskatteloven(forskjellstype: String): Set<FeltMedEgenskaper<v6.permanentForskjellForVirksomhetOmfattetAvPetroleumsskattelovenForekomst>> {
     return permanentForskjellstypeTilBeregnedeFelter[forskjellstype]
             ?: error("Fant ikke forventet oversikt over felter som skal fjernes fra midlertidig forskjell.")
     }
