@@ -1,6 +1,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler
 
 import mu.KotlinLogging
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.GeneriskModellForKalkylerFunksjoner.tilGeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.fjernAvlededeFelt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.klienter.operasjoner.api.naering.NaeringForespoerselKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
@@ -55,7 +56,7 @@ class NaeringsBeregnerFra2020(
         generiskModell: GeneriskModell,
         forespoerselKontekst: NaeringForespoerselKontekst
     ): GeneriskModell {
-        var nullstilt = fjernAvlededeFelt(generiskModell, avlededeFelter)
+        var nullstilt = fjernAvlededeFelt(generiskModell.tilGeneriskModell(), avlededeFelter).tilGeneriskModell()
         nullstilt = filtrerGeneriskeTyperBasertPaaInnhold(
             nullstilt,
             forespoerselKontekst.gjelderSkjoennsfastsetting,
