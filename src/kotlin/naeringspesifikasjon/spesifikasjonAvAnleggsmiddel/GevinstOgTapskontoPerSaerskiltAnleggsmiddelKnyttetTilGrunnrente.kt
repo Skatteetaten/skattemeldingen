@@ -10,11 +10,6 @@ internal object GevinstOgTapskontoPerSaerskiltAnleggsmiddelKnyttetTilGrunnrente 
 
     internal val gevinstOgTapVedRealisasjonKalkyle = kalkyle("gevinstOgTapVedRealisasjonKalkyle") {
 
-        val sumVederlagVedRealisasjon =
-            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk) summerVerdiFraHverForekomst {
-                forekomstType.vederlagVedRealisasjon.tall()
-            }
-
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk) forHverForekomst {
             val sumGjenstaaendeSkattemessigVerdiPaaRealisasjonstidspunktet =
                 forekomsterAv(forekomstType.anskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk) summerVerdiFraHverForekomst { forekomstType.gjenstaaendeSkattemessigVerdiPaaRealisasjonstidspunktet.tall() }
@@ -24,7 +19,7 @@ internal object GevinstOgTapskontoPerSaerskiltAnleggsmiddelKnyttetTilGrunnrente 
                     sumGjenstaaendeSkattemessigVerdiPaaRealisasjonstidspunktet - forekomstType.vederlagVedRealisasjon
                 if (forekomstType.investeringskostnadErDirekteUtgiftsfoertIGrunnrenteinntekt.erSann()) {
                     realisasjonsVerdi =
-                        sumVederlagVedRealisasjon * -1
+                        forekomstType.vederlagVedRealisasjon.tall() * -1
                 }
 
                 if (realisasjonsVerdi mindreEllerLik 0) {

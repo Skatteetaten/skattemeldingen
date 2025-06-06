@@ -44,11 +44,9 @@ object InntektOgUnderskudd : HarKalkylesamling {
                 modell.rentebegrensning.beregningsgrunnlagTilleggEllerFradragIInntekt_fradragIInntektSomFoelgeAvRentebegrensning
 
             val beregnetFinansinntekt =
-                if (!tilbakefoertUnderskuddFraForhaandsfastsetting.harVerdi()) {
+                if (!tilbakefoertUnderskuddFraForhaandsfastsetting.harVerdi() || (inntektsaar.tekniskInntektsaar >= 2024 && verdi mindreEllerLik 0)) {
                     verdi
-                } else if (tilbakefoertUnderskuddFraForhaandsfastsetting.harVerdi() &&
-                    verdi stoerreEnn 0
-                ) {
+                } else if (verdi stoerreEnn 0) {
                     verdi - tilbakefoertUnderskuddFraForhaandsfastsetting medMinimumsverdi 0
                 } else {
                     null
