@@ -5,8 +5,8 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v5_2025.v5.havbruksvirksomhetForekomst
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettUniktSyntetiskFelt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.overdragelsestype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
@@ -14,65 +14,72 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregn
 
 object HavbrukFra2024 : HarKalkylesamling {
 
+    internal val negativGrunnrenteinntektIHavbruksvirksomhetTilFremfoering  =
+        opprettUniktSyntetiskFelt(modell.havbruksvirksomhet, "negativGrunnrenteinntektIHavbruksvirksomhetTilFremfoering")
+
     internal val grunnrenteinntektHavbruk = kalkyle("grunnrenteinntektHavbruk") {
         hvis(erOmfattetAvSaerreglerForHavbruksvirksomhet.erSann()) {
             val satser = satser!!
 
-            forAlleForekomsterAv(modell.havbruksvirksomhet) {
                 val sumAvgittGrunnrenteinntekt = sumAvgittGrunnrenteinntekt()
 
                 val sumMottattGrunnrenteinntekt = sumMottattGrunnrenteinntekt()
 
-                if (forekomstType.beregnetGrunnrenteskatt_negativGrunnrenteinntektFoerSamordning.harVerdi()) {
-                    settFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag) {
+                val positivGrunnrenteinntektFoerBunnfradrag = if (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteinntektFoerSamordning.harVerdi()) {
+                    BigDecimal.ZERO
+                } else {
+                    modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning -
+                        sumAvgittGrunnrenteinntekt +
+                        sumMottattGrunnrenteinntekt
+                }
+
+                if (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteinntektFoerSamordning.harVerdi()) {
+                    settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag) {
                         BigDecimal.ZERO
                     }
                 } else {
-                    settFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag) {
-                        (forekomstType.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning -
-                            forekomstType.beregnetGrunnrenteskatt_negativGrunnrenteinntektFoerSamordning -
-                            sumAvgittGrunnrenteinntekt +
-                            sumMottattGrunnrenteinntekt -
-                            forekomstType.fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar) medMinimumsverdi 0
+                    settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag) {
+                        (positivGrunnrenteinntektFoerBunnfradrag -
+                                modell.havbruksvirksomhet.fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar) medMinimumsverdi 0
                     }
                 }
 
 
-                hvis(forekomstType.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimalTillattBiomasse.harVerdi()) {
-                    settFelt(forekomstType.beregnetGrunnrenteskatt_andelAvBunnfradrag_bunnfradrag) {
+                hvis(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimalTillattBiomasse.harVerdi()) {
+                    settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_bunnfradrag) {
                         (satser.sats(Sats.havbruk_maksimaltBunnfradrag) *
                             (BigDecimal(1) - satser.sats(Sats.skattPaaAlminneligInntekt_sats)) *
-                            forekomstType.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimalTillattBiomasse / 100)
+                                modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimalTillattBiomasse / 100)
                             .somHeltall()
                     }
                 }
 
 
-                settFelt(forekomstType.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntekt) {
-                    (forekomstType.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag -
-                        forekomstType.beregnetGrunnrenteskatt_andelAvBunnfradrag_bunnfradrag).medMinimumsverdi(0)
+                settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntekt) {
+                    (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag -
+                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_bunnfradrag).medMinimumsverdi(0)
                 }
 
-                settFelt(forekomstType.beregnetGrunnrenteskatt_endeligSamordnetNegativGrunnrenteinntekt) {
-                    (forekomstType.beregnetGrunnrenteskatt_negativGrunnrenteinntektFoerSamordning -
+                settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetNegativGrunnrenteinntekt) {
+                    (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteinntektFoerSamordning -
                         sumMottattGrunnrenteinntekt).medMinimumsverdi(0)
                 }
 
-               settFelt(forekomstType.beregnetGrunnrenteskatt_beregnetGrunnrenteskattFoerProduksjonsavgift) {
-                    (forekomstType.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntekt *
+               settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_beregnetGrunnrenteskattFoerProduksjonsavgift) {
+                    (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntekt *
                         satser.sats(Sats.havbruk_skattesatsGrunnrenteinntekt)).somHeltall()
                }
 
 
-                settFelt(forekomstType.beregnetGrunnrenteskatt_positivGrunnrenteskatt) {
-                    (   forekomstType.beregnetGrunnrenteskatt_beregnetGrunnrenteskattFoerProduksjonsavgift -
-                        forekomstType.beregnetGrunnrenteskatt_produksjonsavgiftTilFradragIGrunnrenteskatt_egenProduksjonsavgift +
+                settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteskatt) {
+                    (   modell.havbruksvirksomhet.beregnetGrunnrenteskatt_beregnetGrunnrenteskattFoerProduksjonsavgift -
+                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_produksjonsavgiftTilFradragIGrunnrenteskatt_egenProduksjonsavgift +
                             sumAvgittProduksjonsavgift() -
                             sumMottattProduksjonsavgift()).medMinimumsverdi(0)
                 }
 
                 var erUttredenEllerSalgMedOpphoerAvVirksomhet = false
-                forAlleForekomsterAv(forekomstType.overdragelseAvHavbruksvirksomhet) {
+                forAlleForekomsterAv(modell.havbruksvirksomhet.overdragelseAvHavbruksvirksomhet) {
                     hvis (forekomstType.overdragelsestype lik overdragelsestype.kode_uttreden ||
                         (forekomstType.overdragelsestype lik overdragelsestype.kode_salgVedOpphoerAvVirksomhet &&
                             forekomstType.overdragelsenErGjennomfoertMedKontinuitet.erSann())) {
@@ -81,42 +88,52 @@ object HavbrukFra2024 : HarKalkylesamling {
                 }
 
                 if (erUttredenEllerSalgMedOpphoerAvVirksomhet) {
-                    settFelt(forekomstType.beregnetGrunnrenteskatt_negativGrunnrenteskattOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet) {
-                        (forekomstType.beregnetGrunnrenteskatt_endeligSamordnetNegativGrunnrenteinntekt *
+                    settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteskattOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet) {
+                        (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetNegativGrunnrenteinntekt *
                             satser.sats(Sats.havbruk_skattesatsGrunnrenteinntekt)).somHeltall()
                     }
                 }
-            }
+
+                settUniktFelt(negativGrunnrenteinntektIHavbruksvirksomhetTilFremfoering) {
+                    (modell.havbruksvirksomhet.fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar +
+                    modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteinntektFoerSamordning  -
+                    modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning +
+                    sumAvgittGrunnrenteinntekt() -
+                    sumMottattGrunnrenteinntekt()
+                    ).medMinimumsverdi(0)
+
+                }
+
         }
     }
 
-    private fun ForekomstKontekst<havbruksvirksomhetForekomst>.sumMottattProduksjonsavgift(): BigDecimal? {
+    private fun GeneriskModellKontekst.sumMottattProduksjonsavgift(): BigDecimal? {
         val sumMottattProduksjonsavgift =
-            forekomsterAv(forekomstType.beregnetGrunnrenteskatt_produksjonsavgiftTilFradragIGrunnrenteskatt_selskapSomDelerProduksjonsavgift) summerVerdiFraHverForekomst {
+            forekomsterAv(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_produksjonsavgiftTilFradragIGrunnrenteskatt_selskapSomDelerProduksjonsavgift) summerVerdiFraHverForekomst {
                 forekomstType.mottattProduksjonsavgift.tall()
             }
         return sumMottattProduksjonsavgift
     }
 
-    private fun ForekomstKontekst<havbruksvirksomhetForekomst>.sumAvgittProduksjonsavgift(): BigDecimal? {
+    private fun GeneriskModellKontekst.sumAvgittProduksjonsavgift(): BigDecimal? {
         val sumAvgittProduksjonsavgift =
-            forekomsterAv(forekomstType.beregnetGrunnrenteskatt_produksjonsavgiftTilFradragIGrunnrenteskatt_selskapSomDelerProduksjonsavgift) summerVerdiFraHverForekomst {
+            forekomsterAv(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_produksjonsavgiftTilFradragIGrunnrenteskatt_selskapSomDelerProduksjonsavgift) summerVerdiFraHverForekomst {
                 forekomstType.avgittProduksjonsavgift.tall()
             }
         return sumAvgittProduksjonsavgift
     }
 
-    private fun ForekomstKontekst<havbruksvirksomhetForekomst>.sumMottattGrunnrenteinntekt(): BigDecimal? {
+    private fun GeneriskModellKontekst.sumMottattGrunnrenteinntekt(): BigDecimal? {
         val sumMottattGrunnrenteinntekt =
-            forekomsterAv(forekomstType.beregnetGrunnrenteskatt_samordningAvGrunnrenteinntekt) summerVerdiFraHverForekomst  {
+            forekomsterAv(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_samordningAvGrunnrenteinntekt) summerVerdiFraHverForekomst  {
                 forekomstType.mottattGrunnrenteinntekt.tall()
             }
         return sumMottattGrunnrenteinntekt
     }
 
-    private fun ForekomstKontekst<havbruksvirksomhetForekomst>.sumAvgittGrunnrenteinntekt(): BigDecimal? {
+    private fun GeneriskModellKontekst.sumAvgittGrunnrenteinntekt(): BigDecimal? {
         val sumAvgittGrunnrenteinntekt =
-            forekomsterAv(forekomstType.beregnetGrunnrenteskatt_samordningAvGrunnrenteinntekt) summerVerdiFraHverForekomst {
+            forekomsterAv(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_samordningAvGrunnrenteinntekt) summerVerdiFraHverForekomst {
                 forekomstType.avgittGrunnrenteinntekt.tall()
             }
         return sumAvgittGrunnrenteinntekt
