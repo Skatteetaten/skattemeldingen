@@ -8,7 +8,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV3
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.service.overfoeringAvFelter.FORDELTSKATTEMESSIGRESULTAT_BELOEPALMINNELIGINNTEKTFRAVIRKSOMHETPAALAND_FRA_NAERINGSSPESIFIKASJON_FELT
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.service.overfoeringAvFelter.FORDELTSKATTEMESSIGRESULTAT_ANDELFINANSTILLAND_FRA_NAERINGSSPESIFIKASJON_FELT
 
 object InntektOgUnderskuddForVirksomhetPaaSokkel {
 
@@ -66,7 +66,10 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
 
     internal val nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel =
         kalkyle {
-            val andelFinansFoertMotLandinntekt = andelFinansFoertMotLandinntekt()
+            val andelFinansFoertMotLandinntekt = generiskModell.verdiFor(
+                        FORDELTSKATTEMESSIGRESULTAT_ANDELFINANSTILLAND_FRA_NAERINGSSPESIFIKASJON_FELT
+                    )?.toBigDecimal()
+
             hvis(andelFinansFoertMotLandinntekt mindreEnn 0 && modell.inntektOgUnderskudd.inntektsfradrag_underskudd stoerreEnn 0) {
                 settUniktFelt(forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
                     if (andelFinansFoertMotLandinntekt.absoluttverdi() stoerreEllerLik modell.inntektOgUnderskudd.inntektsfradrag_underskudd.tall()) {
@@ -386,15 +389,6 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
         modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_fremfoertUnderskuddFraTidligereAar -
             modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar -
             modellV3.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_mottattKonsernbidragTilReduksjonIForegaaendeAarsFremfoerbareUnderskudd
-
-    fun GeneriskModellKontekst.andelFinansFoertMotLandinntekt() =
-        generiskModell.verdiFor(
-            FORDELTSKATTEMESSIGRESULTAT_BELOEPALMINNELIGINNTEKTFRAVIRKSOMHETPAALAND_FRA_NAERINGSSPESIFIKASJON_FELT
-        )?.let {
-            modell.inntektOgUnderskudd.naeringsinntekt -
-                modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
-                it.toBigDecimal()
-        }
 
 
     fun GeneriskModellKontekst.grunnlagLandinntekt() =

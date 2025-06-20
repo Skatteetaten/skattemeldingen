@@ -396,7 +396,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
 
                 hvis(
                     forekomstType.installertEffektIKwhIHenholdTilKonsesjon.stoerreEllerLik(1)
-                        || forekomstType.antallTurbiner.stoerreEllerLik(5)
+                        || forekomstType.antallTurbiner.stoerreEnn(5)
                 ) {
                     settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_grunnlagForBeregningAvSelskapsskatt) {
                         val inntekt = sumInntektIGrunnrenteUnntattAndelFraSDF.plus(
