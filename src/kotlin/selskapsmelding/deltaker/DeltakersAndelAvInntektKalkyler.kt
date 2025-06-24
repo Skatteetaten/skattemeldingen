@@ -49,7 +49,8 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
         internal val sumFoerArbeidsgodtgjoerelseKalkyle = kalkyle {
             forekomsterAv(deltaker) forHverForekomst {
                 settFelt(sumFoerArbeidsgodtgjoerelseFelt) {
-                    if (forekomstType.forholdKnyttetTilKommandittistOgStilleDeltaker_erKommandittistEllerStilleDeltakerMedBeloepsbegrensetAnsvar.erSann()) {
+                    if (forekomstType.forholdKnyttetTilKommandittistOgStilleDeltaker_erKommandittistEllerStilleDeltakerMedBeloepsbegrensetAnsvar.erSann() &&
+                        forekomstType.erOmfattetAvRederiskatteordning.erUsann()) {
                         (sumFoerFremfoeringAvUnderskuddForKommandittistOgStilleDeltakerFelt - forekomstType.forholdKnyttetTilKommandittistOgStilleDeltaker_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) medMinimumsverdi 0
                     } else {
                         sumFoerFremfoeringAvUnderskuddForKommandittistOgStilleDeltakerFelt.tall()
