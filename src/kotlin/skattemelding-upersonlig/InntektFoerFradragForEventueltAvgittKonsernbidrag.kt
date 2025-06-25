@@ -4,7 +4,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV3
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.util.RederiUtil
 
 object InntektFoerFradragForEventueltAvgittKonsernbidrag : HarKalkylesamling {
@@ -113,9 +112,7 @@ object InntektFoerFradragForEventueltAvgittKonsernbidrag : HarKalkylesamling {
                 settUniktFelt(modell.inntektOgUnderskudd.inntektFoerFradragForEventueltAvgittKonsernbidrag) {
                     modell.rederiskatteordning_finansinntektOgFinansunderskudd.samletFinansinntekt -
                         modell.rederiskatteordning_finansinntektOgFinansunderskudd.samletFinansunderskudd -
-                        modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar -
-                        modellV3.inntektOgUnderskudd.tilbakefoertUnderskuddFraForhaandsfastsettingSenereAar_tilbakefoertUnderskudd - // t.o.m. 2023
-                        modell.inntektOgUnderskudd.tilbakefoertUnderskuddFraForhaandsfastsetting_tilbakefoertUnderskudd // f.o.m. 2024
+                        modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar
                 }
             }
         }
