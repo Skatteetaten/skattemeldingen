@@ -160,8 +160,10 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
 
             fun summerSaldoavskrevetAnleggsmiddelAaretsInntektAvNegativSaldo(loepenummer: String?): BigDecimal? {
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
-                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning &&
-                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet likEnAv listOf(
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning,
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag
+                    ) && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
                 } summerVerdiFraHverForekomst {
                     forekomstType.aaretsInntektsfoeringAvNegativSaldo.tall()
                 }
