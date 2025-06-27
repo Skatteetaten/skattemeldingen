@@ -182,9 +182,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
         hvis(harForekomsterAv(forekomstType)) {
             settUniktFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_grunnlagForRentefradragsramme) {
                 modell.inntektOgUnderskudd.inntektFoerFradragForEventueltAvgittKonsernbidrag +
-                    modell.inntektOgUnderskuddSvalbard.inntektFoerFradragForEventueltAvgittKonsernbidrag -
                     modell.inntektOgUnderskudd.inntektsfradrag_samletAvgittKonsernbidrag -
-                    modell.inntektOgUnderskuddSvalbard.inntektsfradrag_samletAvgittKonsernbidrag +
                     modell.rederiskatteordning_gevinstkonto.inntektsfoeringAvGevinstkonto +
                     forekomstType.beregningsgrunnlagForRentefradragsramme_tilleggForSkattemessigAvskrivning -
                     forekomstType.beregningsgrunnlagForRentefradragsramme_periodisertLeiekostnad -
@@ -195,11 +193,19 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
         }
     }
 
-    val nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle = kalkyle("nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntekt") {
-        settUniktFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad) {
-            forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.tall() medMinimumsverdi 0
+    val nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle =
+        kalkyle("nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntekt") {
+            settUniktFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad) {
+                if (
+                    forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.harIkkeVerdi() &&
+                    forekomstType.erKonsernIhtRegelverkForRentebegrensning.harVerdi()
+                ) {
+                    BigDecimal.ZERO
+                } else {
+                    forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.tall() medMinimumsverdi 0
+                }
+            }
         }
-    }
 
     val rentefradragsrammeKalkyle = kalkyle("rentefradragsramme") {
         hvis(harForekomsterAv(forekomstType)) {

@@ -243,13 +243,21 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
         }
     }
 
-    val nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle = kalkyle("nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntekt") {
-        forAlleForekomsterAv(modell.rentebegrensning) {
-            settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad) {
-                forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.tall() medMinimumsverdi 0
+    val nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle =
+        kalkyle("nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntekt") {
+            forAlleForekomsterAv(modell.rentebegrensning) {
+                settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad) {
+                    if (
+                        forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.harIkkeVerdi() &&
+                        forekomstType.erKonsernIhtRegelverkForRentebegrensning.harVerdi()
+                    ) {
+                        BigDecimal.ZERO
+                    } else {
+                        forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.tall() medMinimumsverdi 0
+                    }
+                }
             }
         }
-    }
 
     val rentefradragsrammeKalkyle = kalkyle("rentefradragsramme") {
         val satser = satser!!
