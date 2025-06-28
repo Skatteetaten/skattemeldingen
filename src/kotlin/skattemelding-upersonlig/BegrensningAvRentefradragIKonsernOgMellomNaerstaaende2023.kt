@@ -410,8 +410,11 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
     }
 
     val aaretsAnvendelseAvFremfoertRentefradragFraTidligereAarKalkyle = kalkyle("aaretsAnvendelseAvFremfoertRentefradragFraTidligereAar") {
+        val inntektsaar = inntektsaar
         var resterendeFremfoertRentefradrag = forekomstType.rentefradragTilFremfoeringIInntektsaaret_fremfoertRentefradragFraTidligereAarInnenforAaretsTillatteRentefradrag.tall()
-        forekomsterAv(forekomstType.rentefradragTilFremfoeringTidligereAar) transformerListe {
+        forekomsterAv(forekomstType.rentefradragTilFremfoeringTidligereAar) der {
+            forekomstType.inntektsaar stoerreEllerLik (inntektsaar.gjeldendeInntektsaar - 10)
+        } transformerListe {
             liste -> liste.sortedBy { it.generiskModell.verdiFor(it.forekomstType.inntektsaar) }
         } forHverForekomst {
             hvis (resterendeFremfoertRentefradrag.erPositiv()) {

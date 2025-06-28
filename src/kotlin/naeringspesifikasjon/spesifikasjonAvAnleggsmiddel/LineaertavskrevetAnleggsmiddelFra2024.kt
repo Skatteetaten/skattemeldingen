@@ -3,6 +3,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel
 
 import java.math.BigDecimal
+import java.time.temporal.ChronoUnit
 import kotlin.math.ceil
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.erTryggAaDelePaa
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
@@ -21,11 +22,21 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
     internal val antallAarErvervet =
         opprettSyntetiskFelt(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel, "antallAarErvervet")
-    internal val antallAarErvervetKalkyle = kalkyle {
+    internal val antallAarErvervetKalkyle = kalkyle("antallAarErvervetKalkyle") {
+        val regnskapsperiodeStart = modell.virksomhet.regnskapsperiode_start.dato()
         val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
-        forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) forHverForekomst {
+        forAlleForekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) {
+            val ervervsdato = forekomstType.ervervsdato
             settFelt(antallAarErvervet) {
-                (modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.ervervsdato.aar() - inntektsaar).absoluttverdi()
+                if (regnskapsperiodeStart != null && ervervsdato.harVerdi()) {
+                    if (ervervsdato.dato()!!.isBefore(regnskapsperiodeStart)) {
+                        ChronoUnit.YEARS.between(ervervsdato.dato(), regnskapsperiodeStart).toBigDecimal() + 1
+                    } else {
+                        BigDecimal.ZERO
+                    }
+                } else {
+                    (ervervsdato.aar() - inntektsaar).absoluttverdi()
+                }
             }
         }
     }

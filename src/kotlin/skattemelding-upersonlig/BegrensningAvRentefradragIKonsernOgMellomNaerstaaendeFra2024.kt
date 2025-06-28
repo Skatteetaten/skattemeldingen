@@ -181,8 +181,8 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
     val grunnlagForRentefradragsrammeKalkyle = kalkyle("grunnlagForRentefradragsramme") {
         hvis(harForekomsterAv(forekomstType)) {
             settUniktFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_grunnlagForRentefradragsramme) {
-                modell.inntektOgUnderskudd.inntektFoerFradragForEventueltAvgittKonsernbidrag +
-                    modell.inntektOgUnderskudd.inntektsfradrag_samletAvgittKonsernbidrag -
+                modell.inntektOgUnderskudd.inntektFoerFradragForEventueltAvgittKonsernbidrag -
+                    modell.inntektOgUnderskudd.inntektsfradrag_samletAvgittKonsernbidrag +
                     modell.rederiskatteordning_gevinstkonto.inntektsfoeringAvGevinstkonto +
                     forekomstType.beregningsgrunnlagForRentefradragsramme_tilleggForSkattemessigAvskrivning -
                     forekomstType.beregningsgrunnlagForRentefradragsramme_periodisertLeiekostnad -
@@ -452,8 +452,11 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
     }
 
     val aaretsAnvendelseAvFremfoertRentefradragFraTidligereAarKalkyle = kalkyle("aaretsAnvendelseAvFremfoertRentefradragFraTidligereAar") {
+        val inntektsaar = inntektsaar
         var resterendeFremfoertRentefradrag = forekomstType.rentefradragTilFremfoeringIInntektsaaret_fremfoertRentefradragFraTidligereAarInnenforAaretsTillatteRentefradrag.tall()
-        forekomsterAv(forekomstType.rentefradragTilFremfoeringTidligereAar) transformerListe {
+        forekomsterAv(forekomstType.rentefradragTilFremfoeringTidligereAar) der {
+            forekomstType.inntektsaar stoerreEllerLik (inntektsaar.gjeldendeInntektsaar - 10)
+        } transformerListe {
             liste -> liste.sortedBy { it.generiskModell.verdiFor(it.forekomstType.inntektsaar) }
         } forHverForekomst {
             hvis (resterendeFremfoertRentefradrag.erPositiv()) {

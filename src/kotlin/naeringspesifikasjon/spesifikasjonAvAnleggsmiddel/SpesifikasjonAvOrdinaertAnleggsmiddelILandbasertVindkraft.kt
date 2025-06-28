@@ -263,6 +263,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                 forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet.lik(
                     benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
                 ) && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsAvskrivningIGrunnrenteinntekt.harIkkeVerdi()
+                    && forekomstType.realisasjonsdato.harIkkeVerdi()
                     && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_kraftverketsLoepenummer.verdi() == loepenummer
             } summerVerdiFraHverForekomst {
                 forekomstType.aaretsAvskrivning.tall()
@@ -273,6 +274,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                 forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet.lik(
                     benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
                 ) && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsAvskrivningIGrunnrenteinntekt.harIkkeVerdi()
+                    && forekomstType.realisasjonsdato.harIkkeVerdi()
                     && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_kraftverketsLoepenummer.verdi() == loepenummer
             } summerVerdiFraHverForekomst {
                 forekomstType.aaretsAvskrivning.tall()

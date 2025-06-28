@@ -14,14 +14,6 @@ object LineaertavskrevetAnleggsmiddel2021 : HarKalkylesamling {
             modell2021.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel,
             "antallAarErvervet"
         )
-    internal val antallAarErvervetKalkyle = kalkyle("antallAarErvervetKalkyle") {
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
-        forAlleForekomsterAv(modell2021.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) {
-            settFelt(antallAarErvervet) {
-                (forekomstType.ervervsdato.aar() - inntektsaar).absoluttverdi()
-            }
-        }
-    }
 
     internal val utgaaendeVerdiKalkyle = kalkyle("utgaaendeVerdiKalkyle") {
         forAlleForekomsterAv(modell2021.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) {
@@ -101,7 +93,7 @@ object LineaertavskrevetAnleggsmiddel2021 : HarKalkylesamling {
 
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
-            antallAarErvervetKalkyle,
+            LineaertavskrevetAnleggsmiddelFra2024.antallAarErvervetKalkyle,
             utgaaendeVerdiKalkyle,
             grunnlagForAvskrivningOgInntektsfoeringKalkyle
         )
