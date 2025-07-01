@@ -10,14 +10,23 @@ object InntektOgUnderskuddSvalbard : HarKalkylesamling {
 
     internal val samletInntektEllerUnderskuddKalkyle = kalkyle {
         hvis(harForekomsterAv(modell.inntektOgUnderskuddSvalbard)) {
-            val samletInntektEllerUnderskudd = modell.inntektOgUnderskuddSvalbard.naeringsinntekt -
-                modell.inntektOgUnderskuddSvalbard.inntektsfradrag_underskudd +
-                modell.inntektOgUnderskuddSvalbard.inntekt_samletMottattKonsernbidrag -
-                modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
-                modell.inntektOgUnderskuddSvalbard.tilleggForIkkeFradragsberettigetEtterbetalingTilMedlemIEgetSamvirkeforetak -
-                modell.inntektOgUnderskuddSvalbard.inntektsfradrag_samletAvgittKonsernbidrag +
-                modell.rentebegrensning.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvRentebegrensning -
-                modell.rentebegrensning.beregningsgrunnlagTilleggEllerFradragIInntekt_fradragIInntektSomFoelgeAvRentebegrensning
+            val samletInntektEllerUnderskudd = if (inntektsaar.tekniskInntektsaar < 2024) {
+                modell.inntektOgUnderskuddSvalbard.naeringsinntekt -
+                    modell.inntektOgUnderskuddSvalbard.inntektsfradrag_underskudd +
+                    modell.inntektOgUnderskuddSvalbard.inntekt_samletMottattKonsernbidrag -
+                    modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
+                    modell.inntektOgUnderskuddSvalbard.tilleggForIkkeFradragsberettigetEtterbetalingTilMedlemIEgetSamvirkeforetak -
+                    modell.inntektOgUnderskuddSvalbard.inntektsfradrag_samletAvgittKonsernbidrag +
+                    modell.rentebegrensning.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvRentebegrensning -
+                    modell.rentebegrensning.beregningsgrunnlagTilleggEllerFradragIInntekt_fradragIInntektSomFoelgeAvRentebegrensning
+            } else {
+                modell.inntektOgUnderskuddSvalbard.naeringsinntekt -
+                    modell.inntektOgUnderskuddSvalbard.inntektsfradrag_underskudd +
+                    modell.inntektOgUnderskuddSvalbard.inntekt_samletMottattKonsernbidrag -
+                    modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
+                    modell.inntektOgUnderskuddSvalbard.tilleggForIkkeFradragsberettigetEtterbetalingTilMedlemIEgetSamvirkeforetak -
+                    modell.inntektOgUnderskuddSvalbard.inntektsfradrag_samletAvgittKonsernbidrag
+            }
 
             if (samletInntektEllerUnderskudd mindreEnn 0) {
                 settUniktFelt(modell.inntektOgUnderskuddSvalbard.samletUnderskudd) { samletInntektEllerUnderskudd?.abs() }

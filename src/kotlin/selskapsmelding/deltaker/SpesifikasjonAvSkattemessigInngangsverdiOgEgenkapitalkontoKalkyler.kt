@@ -187,7 +187,7 @@ object SpesifikasjonAvSkattemessigInngangsverdiOgEgenkapitalkontoKalkyler : HarK
                     satser.sats(skattPaaAlminneligInntekt_sats)
                 }
                 val skattefordelAvUnderskudd = if (forekomstType.erOmfattetAvRederiskatteordning.erSann()) {
-                    (forekomstType.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansUnderskudd * skattesats)
+                    (forekomstType.andelAvSamletUnderskudd * skattesats)
                         .somHeltall()
                 } else {
                     if (sumFoerArbeidsgodtgjoerelseFelt.mindreEnn(0)) {
