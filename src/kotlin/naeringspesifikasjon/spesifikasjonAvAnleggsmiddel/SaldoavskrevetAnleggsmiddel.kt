@@ -10,6 +10,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIAnskaffelsesaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIRealisasjonsaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.KonsumprisindeksVannkraft.hentKonsumprisindeksVannkraft
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Saldogruppe.enkeltsaldoene
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Saldogruppe.minsteGjenstaaendeLevetid
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Saldogruppe.skattemessigLevetid
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
@@ -23,14 +24,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
  * Spec: https://wiki.sits.no/pages/viewpage.action?pageId=279550129
  */
 internal object SaldoavskrevetAnleggsmiddel : HarKalkylesamling {
-
-    internal val enkeltsaldoene = listOf(
-        saldogruppe.kode_e,
-        saldogruppe.kode_f,
-        saldogruppe.kode_g,
-        saldogruppe.kode_h,
-        saldogruppe.kode_i,
-    )
 
     val aaretsAvskrivningKalkyle = kalkyle {
         val inntektsaar = inntektsaar

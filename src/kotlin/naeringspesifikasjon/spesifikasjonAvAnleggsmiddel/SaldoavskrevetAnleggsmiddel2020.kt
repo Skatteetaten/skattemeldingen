@@ -4,6 +4,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Saldogruppe.enkeltsaldoene
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2020
@@ -64,14 +65,6 @@ internal object SaldoavskrevetAnleggsmiddel2020 : HarKalkylesamling {
             }
         }
     }
-
-    internal val saldogruppeEFGHI = listOf(
-        saldogruppe.kode_e,
-        saldogruppe.kode_f,
-        saldogruppe.kode_g,
-        saldogruppe.kode_h,
-        saldogruppe.kode_i,
-    )
 
     val aaretsAvskrivningKalkyle = kalkyle {
         forekomsterAv(modell2020.spesifikasjonAvResultatregnskapOgBalanse_saldoavskrevetAnleggsmiddel) der {
@@ -179,7 +172,7 @@ internal object SaldoavskrevetAnleggsmiddel2020 : HarKalkylesamling {
 
     internal val utgaaendeVerdiKalkyle = kalkyle {
         forekomsterAv(modell2020.spesifikasjonAvResultatregnskapOgBalanse_saldoavskrevetAnleggsmiddel) forHverForekomst {
-            hvis(forekomstType.saldogruppe likEnAv saldogruppeEFGHI) {
+            hvis(forekomstType.saldogruppe likEnAv enkeltsaldoene) {
                 settFelt(forekomstType.utgaaendeVerdi) {
                     forekomstType.grunnlagForAvskrivningOgInntektsfoering -
                         forekomstType.aaretsAvskrivning -
