@@ -169,6 +169,38 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                 }
             }
 
+            fun summerSaldoavskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(loepenummer: String?): BigDecimal? {
+                return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet likEnAv listOf(
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning,
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag
+                    ) && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
+                } summerVerdiFraHverForekomst {
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert.tall()
+                }
+            }
+
+            fun summerLineaertAvskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(loepenummer: String?): BigDecimal? {
+                return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) der {
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet likEnAv listOf(
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning,
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag
+                    ) && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
+                } summerVerdiFraHverForekomst {
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert.tall()
+                }
+            }
+
+            fun summerIkkeAvskrivbartAnleggsmiddelAaretsInntektsfoeringAvGevinst(loepenummer: String?): BigDecimal? {
+                return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel) der {
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet likEnAv listOf(
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaUtenDirekteFradragOgAvskrivning
+                    ) && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
+                } summerVerdiFraHverForekomst {
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert.tall()
+                }
+            }
+
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
@@ -176,7 +208,10 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                     summerSaerskiltAnleggsmiddelAaretsAvskrivning(forekomstType.loepenummer.verdi()) +
                         summerSaldoavskrevetAnleggsmiddelAaretsAvskrivning(forekomstType.loepenummer.verdi()) +
                         summerLineaertavskrevetAnleggsmiddelAaaretsAvskrivning(forekomstType.loepenummer.verdi()) -
-                        summerSaldoavskrevetAnleggsmiddelAaretsInntektAvNegativSaldo(forekomstType.loepenummer.verdi())
+                        summerSaldoavskrevetAnleggsmiddelAaretsInntektAvNegativSaldo(forekomstType.loepenummer.verdi()) -
+                        summerSaldoavskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi()) -
+                        summerLineaertAvskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi()) -
+                        summerIkkeAvskrivbartAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi())
                 }
             }
         }

@@ -40,6 +40,18 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet : HarKa
                     }
                 }
             }
+
+            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel) forHverForekomst {
+                settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet_direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt) {
+                    beregnHvis(
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet_benyttesIGrunnrenteskattepliktigVirksomhet lik
+                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag
+                    ) {
+                        forekomstType.nyanskaffelse +
+                            forekomstType.paakostning
+                    }
+                }
+            }
         }
 
     override fun kalkylesamling(): Kalkylesamling {
