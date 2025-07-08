@@ -4,7 +4,7 @@
   <tekniskNavn>2024_grunnlagIUnderlagForSkjoennsfastsetting</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-06-06T14:54:51.000+02:00</sistEndret>
+  <sistEndret>2025-07-02T13:02:16.000+02:00</sistEndret>
   <sistEndretAv>x00obo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -2120,6 +2120,19 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>salgsinntekt</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Salgsinntekt</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
+      <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>finanskostnad</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
@@ -2185,6 +2198,20 @@
       <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaar</kilde>
       <kilde>selskapsmeldingFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregningUpersonlig>I-Informasjon</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>resultatAvAnalysemodell</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Resultat av analysemodell</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>analyseTilUnderlagForKontrollOgFastsetting</kilde>
+      <anvendelseIBeregning>kontroll</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>kontroll</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
 </kodeliste>
