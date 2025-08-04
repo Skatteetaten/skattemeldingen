@@ -33,7 +33,7 @@ def valider(payload, inntektsår=2022,
             s: requests.Session() = None,
             tin: str = "",
             idporten_header: dict = dict,
-            base_url: str = "idporten-api-sbstest.sits.no"):
+            base_url: str = "idporten-api-test.sits.no"):
     url_valider = f'https://{base_url}/api/skattemelding/v2/valider/{inntektsår}/{tin}'
     header = dict(idporten_header)
     header["Content-Type"] = "application/xml"
@@ -113,7 +113,7 @@ def base64_decode_response(r: requests):
 
 def skattemelding_visning(instans_data: dict,
                           appnavn: str = "skd/formueinntekt-skattemelding-v2",
-                          url_testmiljoe = "https://skatt-sbstest.sits.no") -> None:
+                          url_testmiljoe = "https://skatt-test.sits.no") -> None:
     instans_id = instans_data['id']
     url_visning = f"{url_testmiljoe}/web/skattemelding-visning/altinn?appId={appnavn}&instansId={instans_id}"
     webbrowser.open(url_visning, new=0, autoraise=True)

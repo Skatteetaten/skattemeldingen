@@ -199,7 +199,7 @@ OBS: Virussjekken hos Altinn må være ferdig med status "Clean" før jobben kan
 
 ### Eksempel kall i testmiljøet:
 ```bash
-curl -X POST 'https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/start' \
+curl -X POST 'https://idporten-api-test.sits.no/api/skattemelding/v2/jobb/altinn/<inntektsaar>/<identifikator>/start' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer <token>' \
   --data-raw '{"appId":"skd/formueinntekt-skattemelding-v2","instansId":"<instanceOwnerPartyId>/<instanceGuid>"}'
@@ -289,7 +289,7 @@ URL: `POST https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>
 
 
 ### Eksempel kall i testmiljøet: 
-curl -XPOST https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/2023/{{identifikator}}/last-opp.vedlegg
+curl -XPOST https://idporten-api-test.sits.no/api/skattemelding/v2/jobb/2023/{{identifikator}}/last-opp.vedlegg
 Authorization: Bearer {{token}}
 Content-Type: multipart/form-data; boundary=boundary
 
@@ -325,7 +325,7 @@ For å bruke brotli i payloaden så må en legge til .br i filnavnet
 Se eksempelet nedenfor for bruk av gzip. 
 
 ### Eksempel kall i testmiljøet med gzipet payload:
-curl -XPOST https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/2023/{{identifikator}}/last-opp.vedlegg
+curl -XPOST https://idporten-api-test.sits.no/api/skattemelding/v2/jobb/2023/{{identifikator}}/last-opp.vedlegg
 Authorization: Bearer {{token}}
 Content-Type: multipart/form-data; boundary=boundary
 
@@ -601,7 +601,7 @@ URL: `POST https://<env>/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>
 
 ### Eksempel kall i testmiljøet
 
-curl -XPOST `https://idporten-api-sbstest.sits.no/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/start` -d\
+curl -XPOST `https://idporten-api-test.sits.no/api/skattemelding/v2/jobb/<inntektsaar>/<identifikator>/start` -d\
 
 ```xml
 <skattemeldingOgNaeringsspesifikasjonRequest xmlns="no:skatteetaten:fastsetting:formueinntekt:skattemeldingognaeringsspesifikasjon:request:v2">

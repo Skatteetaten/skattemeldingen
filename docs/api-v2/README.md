@@ -135,8 +135,8 @@ eksisterende løsninger.
 
 | Miljø                             | Adresse                      | Påloggingsmetode      |
 |-----------------------------------|------------------------------|-----------------------|
-| Test                              | idporten-api-sbstest.sits.no | OIDC                  |
-| Test virksomhetssertifikat        | api-sbstest.sits.no          | Virksomhetssertifikat |
+| Test                              | idporten-api-test.sits.no | OIDC                  |
+| Test virksomhetssertifikat        | api-test.sits.no          | Virksomhetssertifikat |
 | Produksjon                        | idporten.api.skatteetaten.no | OIDC                  |
 | Produksjon virksomhetssertifikat | api.skatteetaten.no          | Virksomhetssertifikat |
 
@@ -2284,7 +2284,7 @@ Skatteetaten tilbyr en visningsklient for å se innholdet av skattemelding og n�
 
 Url'en til visningsklient kan åpnes fra nettleser:
 
-**Testmiljø:** `https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId=50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c`
+**Testmiljø:** `https://skatt-test.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId=50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c`
 
 **Produksjonsmiljø:** `https://skatt.skatteetaten.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId=50091259/d7bdc27a-6d8f-4fee-8d95-8cc46a39504c`
 

@@ -70,22 +70,22 @@ For detaljer rundt hvilken HTTP parametere som må sendes med i kallet, se filen
 
 Når callback-URL blir kalt må klienten plukke ut JWT-tokenet fra responsen og legge det i header-feltet Authorization og kalle skattemeldings-API. For detaljer, se [demo klient](./testinnsending/person-enk-2022.ipynb)
 
-URL til skattemeldings-API i test er: https://idporten-api-sbstest.sits.no/
+URL til skattemeldings-API i test er: https://idporten-api-test.sits.no/
 
 Første testen bør være å teste at klienten når frem, dette kan gjøres ved å kalle ping tjenesten:
 
 - `GET https://<env>/api/skattemelding/v2/ping`
-- `Eksempel: GET https://idporten-api-sbstest.sits.no/api/skattemelding/v2/ping`
+- `Eksempel: GET https://idporten-api-test.sits.no/api/skattemelding/v2/ping`
 
 For nærmere beskrivelse av skattemelding-API og Altinn3-API, se kapitelet [API](/docs/api-v2/README.md)
 
 # Se skattemelding i portal
 
 Hvis du gjør en ikke komplett insending så dukker det opp en melding i innboksen i Altinn. Denne sier at du må logge på skatteetatens sider for å fullføre innsendingen, med en lenke til "Min skatt" sidene i produksjon. 
-Lenken i testmiljøet til "Min skatt" sidene er: https://skatt-sbstest.sits.no/web/mineskatteforhold/
+Lenken i testmiljøet til "Min skatt" sidene er: https://skatt-test.sits.no/web/mineskatteforhold/
 
 Det er også mulig å gå direkte til skattemelding portalen.  
-Direkte URL til skattemelding portal: https://skatt-sbstest.sits.no/web/skattemeldingen/2021
+Direkte URL til skattemelding portal: https://skatt-test.sits.no/web/skattemeldingen/2021
 
 
 Bruk TestId innlogging; fnr på testbruker

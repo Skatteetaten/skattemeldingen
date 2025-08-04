@@ -59,7 +59,7 @@ Dersom skattemeldingen eller næringsspesifiasjonen skal bekreftes av revisor s�
 Bekreftelsesstegene kan fullføres:
 
 - Ved å gå til Altinn innboks, åpne instansen og gå til visningsklienten for å signere (begge steg- rollestyrt). 
-  - PS! Lenken i Altinn går til produksjon, er dere i tt02 så må dere manuelt gå til "https://skatt-sbstest.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId={instans-id}"
+  - PS! Lenken i Altinn går til produksjon, er dere i tt02 så må dere manuelt gå til "https://skatt-test.sits.no/web/skattemelding-visning/altinn?appId=skd/formueinntekt-skattemelding-v2&instansId={instans-id}"
 - Det er mulig å laste opp revisorvedlegget og sette instansen over i neste steg via deres eget fagsystem. 
 
 1. Første steg, den skattepliktige signerer, utføres med en ‘next’ som er tilgangsstyrt
