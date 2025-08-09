@@ -116,23 +116,13 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
 
         internal val samletPositivUtdelingEllerUegentligInnskuddKalkyle = kalkyle {
             hvis(!erNokus()) {
-                val satser = satser!!
                 val inntektsaar = inntektsaar
                 forekomsterAv(deltaker) forHverForekomst {
                     val uegentligInnskuddEllerSamletPositivUtdeling = if (inntektsaar.tekniskInntektsaar >= 2024) {
-                        if (forekomstType.erOmfattetAvRederiskatteordning.erSann()) {
-                            ((forekomstType.utdelingMv_kontantUtbetaling +
-                                    forekomstType.utdelingMv_verdIAvEiendelOgTjenesteOverfoertTilDeltaker -
-                                    forekomstType.utdelingMv_tilbakebetalingAvInnbetaltEgenkapital medMinimumsverdi 0) -
-                                    (forekomstType.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansinntekt
-                                        * satser.sats(skattPaaAlminneligInntekt_sats)).somHeltall())
-                        } else {
-                            ((forekomstType.utdelingMv_kontantUtbetaling +
+                        ((forekomstType.utdelingMv_kontantUtbetaling +
                                  forekomstType.utdelingMv_verdIAvEiendelOgTjenesteOverfoertTilDeltaker -
                                  forekomstType.utdelingMv_tilbakebetalingAvInnbetaltEgenkapital medMinimumsverdi 0) -
                                  forekomstType.utdelingMv_skattPaaDeltakersAndelAvSelskapetsOverskudd).somHeltall()
-                        }
-
                     } else {
                         (forekomstType.utdelingMv_kontantUtbetaling +
                             forekomstType.utdelingMv_verdIAvEiendelOgTjenesteOverfoertTilDeltaker -
