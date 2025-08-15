@@ -2,8 +2,8 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v8" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v8">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2025-06-11T11:11:31.120+0200" name="generertDato"/>
-            <xsd:attribute fixed="8.0" name="versjon"/>
+            <xsd:attribute fixed="2025-08-14T15:04:33.867+0200" name="generertDato"/>
+            <xsd:attribute fixed="8.1" name="versjon"/>
             <xsd:attribute fixed="Beregnet skatt - formues og inntektsskatt for personlige skattepliktige&#10;Inntektsår 2025" name="beskrivelse"/>
             <xsd:attribute fixed="Beregnet skatt v8 (2026)" name="modellnavn"/>
             <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v8" name="navnerom"/>
@@ -148,6 +148,7 @@
             <xsd:element minOccurs="0" name="beregnetKildeskattPaaLoenn" skatt:erAvledet="true" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="fremfoerbarNegativGrunnrenteinntektIHavbruksvirksomhet" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="fellesskattFraEierinntekt" type="Skatt"/>
+            <xsd:element minOccurs="0" name="utflyttingsskattFastsatt" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="utflyttingsskattMedUtsattBetaling" type="typekatalog:BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
