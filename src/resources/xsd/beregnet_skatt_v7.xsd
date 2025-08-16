@@ -2,8 +2,8 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v7" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v7">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2025-06-24T11:27:33.893+0200" name="generertDato"/>
-            <xsd:attribute fixed="7.3" name="versjon"/>
+            <xsd:attribute fixed="2025-08-14T14:53:18.302+0200" name="generertDato"/>
+            <xsd:attribute fixed="7.4" name="versjon"/>
             <xsd:attribute fixed="Beregnet skatt - formues og inntektsskatt for personlige skattepliktige&#10;Inntektsår 2025" name="beskrivelse"/>
             <xsd:attribute fixed="Beregnet skatt v7 (2025)" name="modellnavn"/>
             <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v7" name="navnerom"/>
@@ -115,8 +115,6 @@
             <xsd:element minOccurs="0" name="alminneligInntektFoerSaerfradrag" skatt:begrepsreferanse="http://begrepskatalog/begrep/e88c7380-5684-11e7-a43d-0050568351d2" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="anvendtSaerfradrag" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbcd3-ad07-11e8-8ffd-005056821322" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="pensjonsgivendeInntekt" skatt:begrepsreferanse="http://begrepskatalog/begrep/649cbce4-ad07-11e8-8ffd-005056821322" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="nettoTapVedUtflytting" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2cad-a9e1-11e8-8514-005056821322" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="nettoGevinstVedUtflytting" skatt:begrepsreferanse="http://begrepskatalog/begrep/367f2cac-a9e1-11e8-8514-005056821322" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUEget" type="Skatt"/>
             <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUOverfoertTilEktefelle" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="anvendtSkattefradragVedBSUOverfoertFraEktefelle" type="typekatalog:BeloepSomHeltall"/>
