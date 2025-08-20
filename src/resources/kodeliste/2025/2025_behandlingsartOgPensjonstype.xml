@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <kodeliste xmlns="urn:no:skatteetaten:informasjonsforvaltning:kodeliste:v2">
-  <identifikator>31db4239-77a4-4be0-9bc4-fb9750106f5e</identifikator>
+  <identifikator>3a7aa25a-0a39-4303-87d1-a215bdbf25f8</identifikator>
   <tekniskNavn>2025_behandlingsartOgPensjonstype</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-03-18T10:32:51.000+01:00</sistEndret>
+  <sistEndret>2025-06-13T12:46:24.000+02:00</sistEndret>
   <sistEndretAv>x00obo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -303,7 +303,10 @@
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <presentasjonsrekkefoelge>utland</presentasjonsrekkefoelge>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
     </kodetillegg>
   </kode>
   <kode>
@@ -890,14 +893,6 @@
       <spraakTekst>
         <tekst>Feriepengar dagpengar</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Holiday pay unemployment benefits</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Luopmoruhta beaiveruhtii</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -3953,7 +3948,10 @@
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <presentasjonsrekkefoelge>utland</presentasjonsrekkefoelge>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
       <harPensjonsgrad>ja</harPensjonsgrad>
     </kodetillegg>
   </kode>
@@ -4078,14 +4076,6 @@
         <tekst>Pleiepengar for barnepassar (dagmamma)</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Attendance allowance to childminder</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Spesiáladikšunruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <visningskategori>Næring</visningskategori>
@@ -4113,14 +4103,6 @@
       <spraakTekst>
         <tekst>Pleiepengar for sjølvstendig næringsdrivande</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Attendance allowance to self-employed persons</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Spesiáladikšunruhta iehčanas ealáhusdolliide</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -4150,14 +4132,6 @@
       <spraakTekst>
         <tekst>Pleiepengar fiske</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Attendance allowance fishing</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Spesiáladikšunruhta guolásteddjiide</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -4855,14 +4829,6 @@
         <tekst>Pleiepengar</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Attendance allowance</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Spesiáladikšunruhta</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
@@ -4899,14 +4865,6 @@
       <spraakTekst>
         <tekst>Opplæringspengar</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Training allowance</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Oahpporuhta</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -4945,14 +4903,6 @@
         <tekst>Omsorgspenger</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Care benefits</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Fuolahanruhta</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
@@ -4990,14 +4940,6 @@
         <tekst>Feriepengar foreldrepengar</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Holiday pay parental benefits</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Luopmoruhta váhnenruhtii</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
@@ -5033,14 +4975,6 @@
       <spraakTekst>
         <tekst>Feriepengar sjukepengar</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Holiday pay sickness benefits</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Luopmoruhta buohcanruhtii</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -5079,14 +5013,6 @@
         <tekst>Feriepengar svangerskapspengar</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Holiday pay pregnancy benefits</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Luopmoruhta áhpehisvuođaruhtii</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
@@ -5122,14 +5048,6 @@
       <spraakTekst>
         <tekst>Feriepengar pleiepengar</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Holiday pay attendance allowance</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Luopmoruhta spesiáladikšunruhtii</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -5169,14 +5087,6 @@
         <tekst>Feriepengar opplæringspengar</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Holiday pay training allowance</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Luopmoruhta oahpporuhtii</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <oppgavekodeISL>35513</oppgavekodeISL>
@@ -5214,14 +5124,6 @@
       <spraakTekst>
         <tekst>Feriepengar omsorgspengar</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Holiday pay care benefits</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Luopmoruhta fuolahanruhtii</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -5308,14 +5210,6 @@
         <tekst>Opplæringspengar for barnepassar (dagmamma)</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Training allowance to childminder (nanny)</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Oahpporuhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <oppgavekodeISL>35511</oppgavekodeISL>
@@ -5345,14 +5239,6 @@
       <spraakTekst>
         <tekst>Omsorgspengar for barnepassar (dagmamma)</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Care benefits to childminder (nanny)</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Fuolahanruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -5384,14 +5270,6 @@
         <tekst>Foreldrepengar for barnepassar (dagmamma)</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Parental benefits to childminder (nanny)</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Váhnenruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <oppgavekodeISL>35511</oppgavekodeISL>
@@ -5421,14 +5299,6 @@
       <spraakTekst>
         <tekst>Svangerskapspengar for barnepassar (dagmamma)</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Pregnancy allowance to childminder (nanny)</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Áhpehisvuođaruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -5461,11 +5331,11 @@
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Sickness benefits for childminder (nanny)</tekst>
+        <tekst>Sickness benefits for childminders</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Buohcanruhta mánnáfuolaheapmái (beaiveruoktu)</tekst>
+        <tekst>Buhcciidruđat beaiveeadnái</tekst>
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -5498,14 +5368,6 @@
         <tekst>Opplæringspengar fiske</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Training allowance fishing</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Oahpporuhta guolásteddjiide</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <oppgavekodeISL>35510</oppgavekodeISL>
@@ -5534,14 +5396,6 @@
       <spraakTekst>
         <tekst>Omsorgspengar fiske</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Care benefits fishing</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Fuolahanruhta guolásteddjiide</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -5572,14 +5426,6 @@
         <tekst>Foreldrepengar fiske</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Parental benefits fishing</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Váhnenruhta guolásteddjiide</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <oppgavekodeISL>35510</oppgavekodeISL>
@@ -5608,14 +5454,6 @@
       <spraakTekst>
         <tekst>Svangerskapspengar fiske</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Pregnancy benefits fishing</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Áhpehisvuođaruhta guolásteddjiide</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -5683,14 +5521,6 @@
         <tekst>Omsorgspengar for sjølvstendig næringsdrivande</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Care benefits to self-employed persons</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Fuolahanruhta iehčanas ealáhusdolliide</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <oppgavekodeISL>35512</oppgavekodeISL>
@@ -5715,20 +5545,12 @@
     </beskrivelse>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Foreldrepenger for selvstendig næringsdrivende</tekst>
+        <tekst>Foreldrepengar for selvstendig næringsdrivende</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
         <tekst>Foreldrepengar for sjølvstendig næringsdrivande</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Parental benefits to self-employed persons</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Váhnenruhta iehčanas ealáhusdolliide</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -5761,14 +5583,6 @@
         <tekst>Svangerskapspengar for sjølvstendig næringsdrivande</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
-      <spraakTekst>
-        <tekst>Pregnancy benefits to self-employed persons</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Áhpehisvuođaruhta iehčanas ealáhusdolliide</tekst>
-        <spraak>se_NO</spraak>
-      </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <oppgavekodeISL>35512</oppgavekodeISL>
@@ -5799,14 +5613,6 @@
       <spraakTekst>
         <tekst>Opplæringspengar for sjølvstendig næringsdrivande</tekst>
         <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Training allowance to self-employed persons</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Oahpporuhta iehčanas ealáhusdolliide</tekst>
-        <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
@@ -6241,7 +6047,10 @@
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <presentasjonsrekkefoelge>utland</presentasjonsrekkefoelge>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
     </kodetillegg>
   </kode>
   <kode>
