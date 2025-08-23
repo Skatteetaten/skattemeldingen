@@ -2,9 +2,9 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v5">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2025-03-04T14:54:45.558+0100" name="generertDato" />
-      <xsd:attribute fixed="v5" name="versjon" />
-      <xsd:attribute fixed="" name="beskrivelse" />
+      <xsd:attribute fixed="2025-06-25T14:02:15.849+0200" name="generertDato" />
+      <xsd:attribute fixed="5.0" name="versjon" />
+      <xsd:attribute fixed="Skattemelding for upersonlig skattepliktig inneholder selskapets inntekter, utgifter, formue og gjeld som et grunnlag for beregning av formues- og inntektsskatt iht. skatteplikten. " name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v5" name="modellnavn" />
       <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v5" name="navnerom" />
       <xsd:attribute fixed="true" name="begrepsreferanse" />
@@ -1629,7 +1629,7 @@
       <xsd:element minOccurs="0" name="periodisertLeiekostnad" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="grunnlagForRentefradragsramme" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletMottattKonsernbidrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="konsernbidragPerMotpart" type="SpesifikasjonAvKonsernbidragPerMotpart" />
     </xsd:sequence>
   </xsd:complexType>
@@ -2432,7 +2432,7 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="mottakendeSelskapsIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AarsakstypeTilAtAvgivendeSelskapErUnntattRentebegrensningMedInnkapsling">

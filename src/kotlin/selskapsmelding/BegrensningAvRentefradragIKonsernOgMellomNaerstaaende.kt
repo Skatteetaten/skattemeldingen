@@ -15,6 +15,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.s
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.rederi.RederiUtil
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.rederi.RederiUtil.skalBeregneRederi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modellV3
 
 private const val UNNTAKSREGEL_PAA_SELSKAPSNIVAA = "unntaksregelPaaSelskapsnivaa"
 private const val UNNTAKSREGEL_PAA_NASJONALTNIVAA = "unntaksregelPaaNasjonaltNivaa"
@@ -630,22 +631,41 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
         }
     }
 
-    val sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap =
-        kalkyle("sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap") {
-            forAlleForekomsterAv(modell.rentebegrensning) {
-                settFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap) {
-                    forekomsterAv(forekomstType.beregningsgrunnlagForRentefradragsramme_konsernbidragPerMotpart.spesifikasjonAvAvgittAndelAvKonsernbidrag) summerVerdiFraHverForekomst {
-                        forekomstType.andelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap.tall()
+    val sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap =
+        kalkyle("sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap") {
+            if (inntektsaar.tekniskInntektsaar >= 2025) {
+                forAlleForekomsterAv(modell.rentebegrensning) {
+                    settFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap) {
+                        forekomsterAv(forekomstType.beregningsgrunnlagForRentefradragsramme_konsernbidragPerMotpart.spesifikasjonAvAvgittAndelAvKonsernbidrag) summerVerdiFraHverForekomst {
+                            forekomstType.andelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap.tall()
+                        }
+                    }
+                }
+            } else {
+                forAlleForekomsterAv(modellV3.rentebegrensning) {
+                    settFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap) {
+                        forekomsterAv(forekomstType.beregningsgrunnlagForRentefradragsramme_konsernbidragPerMotpart.spesifikasjonAvAvgittAndelAvKonsernbidrag) summerVerdiFraHverForekomst {
+                            forekomstType.andelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap.tall()
+                        }
                     }
                 }
             }
         }
 
     val fradragForKonsernbidragSomSkalEkskluderes = kalkyle("fradragForKonsernbidragSomSkalEkskluderes") {
-        forAlleForekomsterAv(modell.rentebegrensning) {
-            settFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_fradragForKonsernbidragSomSkalEkskluderes) {
-                forekomstType.beregningsgrunnlagForRentefradragsramme_samletMottattKonsernbidrag -
-                    forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap
+        if (inntektsaar.tekniskInntektsaar >= 2025) {
+            forAlleForekomsterAv(modell.rentebegrensning) {
+                settFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_fradragForKonsernbidragSomSkalEkskluderes) {
+                    forekomstType.beregningsgrunnlagForRentefradragsramme_samletMottattKonsernbidrag -
+                        forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap
+                }
+            }
+        } else {
+            forAlleForekomsterAv(modellV3.rentebegrensning) {
+                settFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_fradragForKonsernbidragSomSkalEkskluderes) {
+                    forekomstType.beregningsgrunnlagForRentefradragsramme_samletMottattKonsernbidrag -
+                        forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap
+                }
             }
         }
     }
@@ -794,7 +814,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
             nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsernKalkyle,
             totalNettoRentekostnadTilNaerstaaendeMvKalkyle,
             samletMottattKonsernbidrag,
-            sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap,
+            sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap,
             fradragForKonsernbidragSomSkalEkskluderes,
             grunnlagForRentefradragsrammeKalkyle,
             nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle,

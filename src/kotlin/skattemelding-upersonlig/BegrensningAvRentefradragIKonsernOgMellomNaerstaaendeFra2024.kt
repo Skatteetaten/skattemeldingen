@@ -10,6 +10,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV4
 
 object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkylesamling {
 
@@ -496,10 +497,18 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
         }
     }
 
-    val sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap = kalkyle("sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap") {
-        settUniktFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap) {
-            forekomsterAv(forekomstType.beregningsgrunnlagForRentefradragsramme_konsernbidragPerMotpart.spesifikasjonAvAvgittAndelAvKonsernbidrag) summerVerdiFraHverForekomst {
-                forekomstType.andelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap.tall()
+    val sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap = kalkyle("sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap") {
+        if (inntektsaar.tekniskInntektsaar >= 2025) {
+            settUniktFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap) {
+                forekomsterAv(forekomstType.beregningsgrunnlagForRentefradragsramme_konsernbidragPerMotpart.spesifikasjonAvAvgittAndelAvKonsernbidrag) summerVerdiFraHverForekomst {
+                    forekomstType.andelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap.tall()
+                }
+            }
+        } else {
+            settUniktFelt(modellV4.rentebegrensning.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap) {
+                forekomsterAv(modellV4.rentebegrensning.beregningsgrunnlagForRentefradragsramme_konsernbidragPerMotpart.spesifikasjonAvAvgittAndelAvKonsernbidrag) summerVerdiFraHverForekomst {
+                    forekomstType.andelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap.tall()
+                }
             }
         }
     }
@@ -507,7 +516,8 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
     val fradragForKonsernbidragSomSkalEkskluderes = kalkyle("fradragForKonsernbidragSomSkalEkskluderes") {
         settUniktFelt(forekomstType.beregningsgrunnlagForRentefradragsramme_fradragForKonsernbidragSomSkalEkskluderes) {
             forekomstType.beregningsgrunnlagForRentefradragsramme_samletMottattKonsernbidrag -
-                forekomstType.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap
+                modellV4.rentebegrensning.beregningsgrunnlagForRentefradragsramme_sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap - // før 2025
+                modell.rentebegrensning.beregningsgrunnlagForRentefradragsramme_sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap // fra og med 2025
         }
     }
 
@@ -655,7 +665,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
             nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsernKalkyle,
             totalNettoRentekostnadTilNaerstaaendeMvKalkyle,
             samletMottattKonsernbidrag,
-            sumAndelAvMotattKonsernbidragSomErAvgittTilAnnetSelskap,
+            sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap,
             fradragForKonsernbidragSomSkalEkskluderes,
             grunnlagForRentefradragsrammeKalkyle,
             nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle,

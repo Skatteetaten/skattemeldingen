@@ -9,6 +9,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.felles.naeringsspesifikasjon.modellNaering
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.sdfharOrgformANS
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modellV3
 
 object HavbrukFra2024 : HarKalkylesamling {
 
@@ -32,14 +33,17 @@ object HavbrukFra2024 : HarKalkylesamling {
 
     private val bunnfradrag = kalkyle("bunnfradrag") {
         val satser = satser!!
-        val andelAvMaksimalTillattBiomasse =
-            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimalTillattBiomasse
+        val andelAvMaksimaltTillattBiomasse = if (inntektsaar.tekniskInntektsaar >= 2025) {
+            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimaltTillattBiomasse
+        } else {
+            modellV3.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimalTillattBiomasse
+        }
 
-        hvis(andelAvMaksimalTillattBiomasse.harVerdi()) {
+        hvis(andelAvMaksimaltTillattBiomasse.harVerdi()) {
             val maksimaltBunnfradrag = satser.sats(Sats.havbruk_maksimaltBunnfradrag)
             val skattesatsAlminneligInntektUtenforTiltakssone = satser.sats(Sats.skattPaaAlminneligInntekt_sats)
             val bunnfradrag =
-                (maksimaltBunnfradrag * (BigDecimal.ONE - skattesatsAlminneligInntektUtenforTiltakssone)) * andelAvMaksimalTillattBiomasse / 100
+                (maksimaltBunnfradrag * (BigDecimal.ONE - skattesatsAlminneligInntektUtenforTiltakssone)) * andelAvMaksimaltTillattBiomasse / 100
 
             hvis(bunnfradrag != null) {
                 settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_bunnfradrag) { bunnfradrag }

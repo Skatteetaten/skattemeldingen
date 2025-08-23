@@ -10,6 +10,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemod
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.overdragelsestype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV4
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.skattepliktForekomst.erOmfattetAvSaerreglerForHavbruksvirksomhet
 
 object HavbrukFra2024 : HarKalkylesamling {
@@ -44,12 +45,17 @@ object HavbrukFra2024 : HarKalkylesamling {
                     }
                 }
 
+                val andelAvMaksimaltTillattBiomasse = if (inntektsaar.tekniskInntektsaar >= 2025) {
+                    modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimaltTillattBiomasse
+                } else {
+                    modellV4.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimalTillattBiomasse
+                }
 
-                hvis(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimalTillattBiomasse.harVerdi()) {
+                hvis(andelAvMaksimaltTillattBiomasse.harVerdi()) {
                     settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_bunnfradrag) {
                         (satser.sats(Sats.havbruk_maksimaltBunnfradrag) *
                             (BigDecimal(1) - satser.sats(Sats.skattPaaAlminneligInntekt_sats)) *
-                                modell.havbruksvirksomhet.beregnetGrunnrenteskatt_andelAvBunnfradrag_andelAvMaksimalTillattBiomasse / 100)
+                            andelAvMaksimaltTillattBiomasse / 100)
                             .somHeltall()
                     }
                 }
@@ -88,7 +94,13 @@ object HavbrukFra2024 : HarKalkylesamling {
                 }
 
                 if (erUttredenEllerSalgMedOpphoerAvVirksomhet) {
-                    settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteskattOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet) {
+                    settUniktFelt(
+                        if (inntektsaar.tekniskInntektsaar >= 2025) {
+                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteskattVedOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet
+                        } else {
+                            modellV4.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteskattOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet
+                        }
+                    ) {
                         (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetNegativGrunnrenteinntekt *
                             satser.sats(Sats.havbruk_skattesatsGrunnrenteinntekt)).somHeltall()
                     }
