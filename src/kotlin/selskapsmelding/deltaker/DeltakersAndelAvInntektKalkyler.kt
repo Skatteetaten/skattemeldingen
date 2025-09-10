@@ -7,6 +7,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.selskapsmelding.sdf.domenemodell.v4_2025.v4
@@ -613,7 +614,7 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
         val samletFinansinntekt = modell.rederiskatteordning_finansinntektOgFinansunderskudd.samletFinansinntekt.tall()
         val samletFinansunderskudd =
             modell.rederiskatteordning_finansinntektOgFinansunderskudd.samletFinansunderskudd.tall()
-
+        val aaretsTilleggEllerFradragIInntekt = aaretsTilleggEllerFradragIInntekt()
         forekomsterAv(deltaker) der { forekomstType.erOmfattetAvRederiskatteordning.erSann() } forHverForekomst {
             val deltakersAndelAvInntektIProsent = deltakersAndelAvInntektIProsent()
 
@@ -622,11 +623,11 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
             }
 
             settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansinntekt) {
-                (samletFinansinntekt * deltakersAndelAvInntektIProsent).somHeltall()
+                ((samletFinansinntekt + aaretsTilleggEllerFradragIInntekt) * deltakersAndelAvInntektIProsent).somHeltall()
             }
 
             settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansUnderskudd) {
-                (samletFinansunderskudd * deltakersAndelAvInntektIProsent).somHeltall()
+                ((samletFinansunderskudd + aaretsTilleggEllerFradragIInntekt) * deltakersAndelAvInntektIProsent).somHeltall()
             }
 
             settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvDifferanseMellomVirkeligVerdiOgSkattemessigVerdiVedUttredenTilFremfoering) {
@@ -688,6 +689,11 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
 
     private fun ForekomstKontekst<v4.deltakerForekomst>.deltakersAndelAvInntektIProsent() =
         forekomstType.deltakersAndelAvInntektIProsent.prosent() ?: forekomstType.selskapsandelIProsent.prosent()
+
+    private fun GeneriskModellKontekst.aaretsTilleggEllerFradragIInntekt() = forekomsterAv(modell.rentebegrensning) summerVerdiFraHverForekomst  {
+        forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsTilleggIInntekt.tall() -
+            forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsFradragIInntekt.tall()
+    }
 
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
