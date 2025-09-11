@@ -622,12 +622,18 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
                 (samletTonnasjeskatt * deltakersAndelAvInntektIProsent).somHeltall()
             }
 
-            settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansinntekt) {
-                ((samletFinansinntekt + aaretsTilleggEllerFradragIInntekt) * deltakersAndelAvInntektIProsent).somHeltall()
+            val finansinntektEllerUnderskudd = samletFinansinntekt - samletFinansunderskudd + aaretsTilleggEllerFradragIInntekt
+
+            hvis(finansinntektEllerUnderskudd stoerreEllerLik BigDecimal.ZERO) {
+                settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansinntekt) {
+                    (finansinntektEllerUnderskudd * deltakersAndelAvInntektIProsent).somHeltall()
+                }
             }
 
-            settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansUnderskudd) {
-                ((samletFinansunderskudd + aaretsTilleggEllerFradragIInntekt) * deltakersAndelAvInntektIProsent).somHeltall()
+            hvis(finansinntektEllerUnderskudd mindreEnn BigDecimal.ZERO) {
+                settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansUnderskudd) {
+                    (finansinntektEllerUnderskudd.absoluttverdi() * deltakersAndelAvInntektIProsent).somHeltall()
+                }
             }
 
             settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvDifferanseMellomVirkeligVerdiOgSkattemessigVerdiVedUttredenTilFremfoering) {
