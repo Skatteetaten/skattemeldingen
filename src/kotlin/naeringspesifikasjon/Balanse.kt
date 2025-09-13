@@ -97,7 +97,14 @@ internal object BalanseverdiForAnleggsmiddel {
         skalTrekkeFraNedreGrenseForAvskrivning: Boolean = false,
         beloepsfilter: ForekomstKontekst<*>.(beloep: BigDecimal?) -> Boolean = { true },
     ) = kalkyle(kalkyleNavn) {
-        lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(saldogruppe, kode, skalTrekkeFraNedreGrenseForAvskrivning, beloepsfilter)
+        if (erIkkeSkjoennsfastsatt()) {
+            lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(
+                saldogruppe,
+                kode,
+                skalTrekkeFraNedreGrenseForAvskrivning,
+                beloepsfilter
+            )
+        }
     }
 
     private fun GeneriskModellKontekst.lagBalanseverdiFraSaldoavskrevetAnleggsmiddel(
@@ -197,7 +204,7 @@ internal object BalanseverdiForAnleggsmiddel {
         lagBalanseverdiFraSaldoavskrevetAnleggsmiddel("kontormaskiner", saldogruppe.kode_a, balanseverdiForAnleggsmiddel.kode_1280) { it stoerreEllerLik 0 }
 
     internal val negativGevinstOgTapskonto = kalkyle("negativGevinstOgTapskonto") {
-        hvis(ingenEllerBegrensetRegnskapsplikt()) {
+        hvis(ingenEllerBegrensetRegnskapsplikt() && erIkkeSkjoennsfastsatt()) {
             val sumUtgaaendeVerdi = forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) der {
                 forekomstType.utgaaendeVerdi.erNegativ()
             } summerVerdiFraHverForekomst {
@@ -221,7 +228,7 @@ internal object BalanseverdiForAnleggsmiddel {
 
     internal val driftsmidlerSomAvskrivesLineaertKalkyle =
         kalkyle("driftsmidlerSomAvskrivesLineaertKalkyle") {
-            hvis(ingenEllerBegrensetRegnskapsplikt()) {
+            hvis(ingenEllerBegrensetRegnskapsplikt() && erIkkeSkjoennsfastsatt()) {
                 val sumUtgaaendeVerdiForLinaertAvskrevetAnleggsmiddel =
                     forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) summerVerdiFraHverForekomst {
                         forekomstType.utgaaendeVerdi.tall()
@@ -348,7 +355,7 @@ internal object Egenkapital {
     )
 
     internal val negativSaldoKalkyle = kalkyle("negativSaldo") {
-        hvis(ingenEllerBegrensetRegnskapsplikt()) {
+        hvis(ingenEllerBegrensetRegnskapsplikt() && erIkkeSkjoennsfastsatt()) {
             val saldogruppeBaserPaaAar = if (inntektsaar.tekniskInntektsaar < 2024) {
                 acc2dj
             } else {
@@ -366,7 +373,7 @@ internal object Egenkapital {
     }
 
     internal val positivGevinstOgTapskontoKalkyle = kalkyle("positivGevinstOgTapskonto") {
-        hvis(ingenEllerBegrensetRegnskapsplikt()) {
+        hvis(ingenEllerBegrensetRegnskapsplikt() && erIkkeSkjoennsfastsatt()) {
             opprettNyForekomstForEgenkapital(
                 forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) der {
                     forekomstType.utgaaendeVerdi.erPositiv()

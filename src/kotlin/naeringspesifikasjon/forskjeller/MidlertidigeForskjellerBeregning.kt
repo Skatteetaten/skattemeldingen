@@ -10,6 +10,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.erIkkeSkjoennsfastsatt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.erPetroleumsforetak
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fullRegnskapsplikt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.gjelderBankOgForsikring
@@ -24,7 +25,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
 
     internal val forskjellstypeDriftsmiddelOgGoodwillKalkyle = kalkyle {
-        hvis(fullRegnskapspliktOgIkkePetroleum()) {
+        hvis(fullRegnskapspliktOgIkkePetroleum() && erIkkeSkjoennsfastsatt()) {
             val inntektsaar = inntektsaar
             val utgaaendeVerdiSaldoavskrevetAnleggsmiddel =
                 forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) summerVerdiFraHverForekomst {
@@ -148,7 +149,7 @@ internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
     }
 
     internal val forskjellstypePositivSaldoPaaGevinstOgTapskontoKalkyle = kalkyle {
-        hvis(fullRegnskapspliktOgIkkePetroleum()) {
+        hvis(fullRegnskapspliktOgIkkePetroleum() && erIkkeSkjoennsfastsatt()) {
             val skattemessigVerdi = forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) der {
                 forekomstType.utgaaendeVerdi.erPositiv()
             } summerVerdiFraHverForekomst {
@@ -169,7 +170,7 @@ internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
     }
 
     internal val forskjellstypeNegativSaldoPaaGevinstOgTapskontoKalkyle = kalkyle {
-        hvis(fullRegnskapspliktOgIkkePetroleum()) {
+        hvis(fullRegnskapspliktOgIkkePetroleum() && erIkkeSkjoennsfastsatt()) {
             val skattemessigVerdi = forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) der {
                 forekomstType.utgaaendeVerdi.erNegativ()
             } summerVerdiFraHverForekomst {
@@ -190,7 +191,7 @@ internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
     }
 
     internal val forskjellstypeBetingetSkattefriGevinstKalkyle = kalkyle {
-        hvis(fullRegnskapspliktOgIkkePetroleum()) {
+        hvis(fullRegnskapspliktOgIkkePetroleum() && erIkkeSkjoennsfastsatt()) {
             val skattemessigVerdi =
                 forekomsterAv(modell.balanseregnskap_annenSpesifikasjonAvBalanseregnskap_spesifikasjonAvBetingetSkattefriGevinst) summerVerdiFraHverForekomst {
                     forekomstType.betingetSkattefriGevinst.tall()

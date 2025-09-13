@@ -26,7 +26,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 internal object Resultatregnskapet : HarKalkylesamling {
 
     val aaretsAvskrivningKalkyle = kalkyle("aaretsAvskrivning") {
-        hvis(ingenEllerBegrensetRegnskapsplikt()) {
+        hvis(ingenEllerBegrensetRegnskapsplikt() && erIkkeSkjoennsfastsatt()) {
             val aaretsAvskrivningForSaldoavskrevetAnleggsmiddel =
                 forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) summerVerdiFraHverForekomst {
                     forekomstType.aaretsAvskrivning.tall()
@@ -61,7 +61,9 @@ internal object Resultatregnskapet : HarKalkylesamling {
     }
 
     val annenDriftsinntektstypeInntektKalkyle = kalkyle("annenDriftsinntektstypeInntekt") {
-        hvis(ingenEllerBegrensetRegnskapsplikt()) {
+        hvis(
+            ingenEllerBegrensetRegnskapsplikt() && erIkkeSkjoennsfastsatt()
+        ) {
             opprettNyForekomstForAnnenDriftsinntekt(
                 forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) summerVerdiFraHverForekomst {
                     forekomstType.inntektFraGevinstOgTapskonto.tall()
@@ -72,7 +74,7 @@ internal object Resultatregnskapet : HarKalkylesamling {
     }
 
     val aaretsInntektsfoeringAvNegativSaldoKalkyle = kalkyle("aaretsInntektsfoeringAvNegativSaldo") {
-        hvis(ingenEllerBegrensetRegnskapsplikt()) {
+        hvis(ingenEllerBegrensetRegnskapsplikt() && erIkkeSkjoennsfastsatt()) {
             val vederlagVedRealisasjonOgUttakInntektsfoertIAarLinear =
                 forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) summerVerdiFraHverForekomst {
                     forekomstType.vederlagVedRealisasjonOgUttakInntektsfoertIAar.tall()
@@ -100,7 +102,7 @@ internal object Resultatregnskapet : HarKalkylesamling {
     }
 
     val annenDriftsinntektstypeFradragKalkyle = kalkyle("annenDriftsinntektstypeFradrag") {
-        hvis(ingenEllerBegrensetRegnskapsplikt()) {
+        hvis(ingenEllerBegrensetRegnskapsplikt() && erIkkeSkjoennsfastsatt()) {
             opprettNyForekomstForAnnenDriftskostnad(
                 forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) der {
                     forekomstType.inntektsfradragFraGevinstOgTapskonto stoerreEnn 0
