@@ -642,8 +642,8 @@
       <xsd:element name="prosjektnummer" type="HeltallMedInnkapsling" />
       <xsd:element name="prosjekttittel" type="TekstMedInnkapsling" />
       <xsd:element name="prosjektstatus" type="FoUvedtakstatustypeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="godkjentSkattefunnperiode" type="PeriodePerAarMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletBruttoSkattefradragFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element  name="godkjentSkattefunnperiode" type="PeriodePerAarMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletNettoSkattefradragFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" name="spesifikasjonAvArbeidspakke" type="SpesifikasjonAvArbeidspakke" />
       <xsd:element minOccurs="0" name="skattefradragForKostnaderTilForskningOgUtvikling" type="SkattefradragForKostnaderTilForskningOgUtvikling" />
       <xsd:element name="erSamarbeidsprosjektMellomFlereVirksomheter" type="BoolskMedInnkapsling" />
@@ -1346,8 +1346,8 @@
   </xsd:complexType>
   <xsd:complexType name="PeriodePerAarMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/dcfb4799-e484-11e6-9cb3-005056821322">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="start" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/dcfb47c2-e484-11e6-9cb3-005056821322" type="AarstallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="slutt" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52b6e-9fe1-11e5-a9f8-e4115b280940" type="AarstallMedInnkapsling" />
+      <xsd:element name="start" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/dcfb47c2-e484-11e6-9cb3-005056821322" type="AarstallMedInnkapsling" />
+      <xsd:element name="slutt" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52b6e-9fe1-11e5-a9f8-e4115b280940" type="AarstallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvArbeidspakke">
@@ -1377,7 +1377,7 @@
       <xsd:element name="virksomhetskategori" type="FoUvirksomhetskategoriMedInnkapsling" />
       <xsd:element name="harOmfattendeSpredningGjennomKonferanserPublikasjonerMv" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="offentligStoetteSomRedusertArbeidsgiveravgift" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletBruttoOffentligStoetteIProsjektperioden" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletNettoOffentligStoetteIProsjektperioden" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="soektAnnenOffentligStoetteINorge" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
