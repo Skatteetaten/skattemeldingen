@@ -527,6 +527,10 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="kontraktsnummer" type="TekstMedInnkapsling" />
+      <xsd:element minOccurs="0" name="hovedoppdragsgiversNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="hovedoppdragsgiversIdentifikator" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="oppdragsgiversNavn" type="OrganisasjonsnavnMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="oppdragsgiversIdentifikator" type="OrganisasjonsnummerMedInnkapsling"/>
       <xsd:element minOccurs="0" name="kontraktsperiode" type="PeriodePerDato" />
       <xsd:element minOccurs="0" name="arbeidsstedsbeliggenhet" type="ArbeidsstedsbeliggenhetMedInnkapsling" />
       <xsd:element minOccurs="0" name="oppdragUtfoertIPeriode" type="PeriodePerDato" />

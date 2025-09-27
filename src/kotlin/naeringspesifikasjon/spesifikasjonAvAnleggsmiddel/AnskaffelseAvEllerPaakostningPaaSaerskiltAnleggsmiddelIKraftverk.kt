@@ -6,6 +6,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.hentFoersteFeltMedVerdiEllerNull
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIAnskaffelsesaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIRealisasjonsaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerIkkeEidIAnskaffelsesaaret
@@ -53,14 +54,14 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
                     val dagerEid =
                         dagerEidIAnskaffelsesaaret(forekomstType.anskaffelsesEllerPaakostningsdato.dato())
                     settFelt(forekomstType.aaretsAvskrivning) {
-                        forekomstType.historiskKostpris / avskrivningstid * (dagerEid / 365)
+                        forekomstType.historiskKostpris / avskrivningstid * (dagerEid / antallDagerIAar(inntektsaar))
                     }
                 }
 
                 hvis(realisasjonsaar == gjeldendeInnteksaar) {
                     val dagerEid = dagerEidIRealisasjonsaaret(realisasjonsdato)
                     settFelt(forekomstType.aaretsAvskrivning) {
-                        forekomstType.historiskKostpris / avskrivningstid * (dagerEid / 365)
+                        forekomstType.historiskKostpris / avskrivningstid * (dagerEid / antallDagerIAar(inntektsaar))
                     }
                 }
 
@@ -70,7 +71,7 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
                         realisasjonsdato
                     )
                     settFelt(forekomstType.aaretsAvskrivning) {
-                        forekomstType.historiskKostpris / avskrivningstid * (dagerEid / 365)
+                        forekomstType.historiskKostpris / avskrivningstid * (dagerEid / antallDagerIAar(inntektsaar))
                     }
                 }
             }

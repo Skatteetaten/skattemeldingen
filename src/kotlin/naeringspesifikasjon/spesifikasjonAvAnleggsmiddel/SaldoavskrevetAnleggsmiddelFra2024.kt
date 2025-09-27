@@ -8,6 +8,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.anleggsmiddelOgToemmerkonto_grenseverdiEn
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIAnskaffelsesaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIRealisasjonsaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.KonsumprisindeksVannkraft.hentKonsumprisindeksVannkraft
@@ -112,7 +113,7 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
                         forekomstType.forretningsbyggAnskaffetFoer01011984_nedreGrenseForAvskrivning
                 } else {
                     val antallDager = if (forekomstType.antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret.harVerdi()) {
-                        (forekomstType.antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret / 365)
+                        (forekomstType.antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret / antallDagerIAar(inntektsaar))
                     } else { 1.toBigDecimal() }
 
                     forekomstType.grunnlagForAvskrivningOgInntektsfoering *
@@ -126,6 +127,7 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
     internal val aaretsInntektsfoeringAvNegativSaldoKalkyle = kalkyle {
         val satser = satser!!
         val harSpesifikasjonAvKraftverk = harMinstEnForekomstAv(modell.kraftverk_spesifikasjonAvKraftverk)
+        val inntektsaar = inntektsaar
         val saldogruppeBasertPaaInntektsaar = if (inntektsaar.tekniskInntektsaar <= 2023) {
             saldogruppeACC2DJ
         } else {
@@ -153,7 +155,7 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
                             } else {
                                 modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.grunnlagForAvskrivningOgInntektsfoering *
                                     modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.avskrivningssats.prosent() *
-                                    (forekomstType.antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret / 365)
+                                    (forekomstType.antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret / antallDagerIAar(inntektsaar))
                             }
 
                         settFelt(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo) {
@@ -359,14 +361,14 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
                 hvis(kraftverk.datoForOverdragelseVedErvervIInntektsaaret.aar() == inntektsaar) {
                     val dagerEid = dagerEidIAnskaffelsesaaret(kraftverk.datoForOverdragelseVedErvervIInntektsaaret)
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsFriinntekt) {
-                        (forekomstType.nyanskaffelse + forekomstType.utgaaendeVerdi) / 2 * normRente * (dagerEid / 365)
+                        (forekomstType.nyanskaffelse + forekomstType.utgaaendeVerdi) / 2 * normRente * (dagerEid / antallDagerIAar(inntektsaar!!.toInt()))
                     }
                 }
 
                 hvis(kraftverk.datoForOverdragelseVedRealisasjonIInntektsaaret.aar() == inntektsaar) {
                     val dagerEid = dagerEidIRealisasjonsaaret(kraftverk.datoForOverdragelseVedRealisasjonIInntektsaaret)
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsFriinntekt) {
-                        forekomstType.inngaaendeVerdi / 2 * normRente + (dagerEid / 365)
+                        forekomstType.inngaaendeVerdi / 2 * normRente + (dagerEid / antallDagerIAar(inntektsaar!!.toInt()))
                     }
                 }
             }

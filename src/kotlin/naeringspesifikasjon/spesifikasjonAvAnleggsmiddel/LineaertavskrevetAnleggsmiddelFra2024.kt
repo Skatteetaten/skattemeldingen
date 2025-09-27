@@ -11,6 +11,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIAnskaffelsesaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIRealisasjonsaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.KonsumprisindeksVannkraft.hentKonsumprisindeksVannkraft
@@ -241,14 +242,14 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
                 hvis(kraftverk.datoForOverdragelseVedErvervIInntektsaaret.aar() == inntektsaar) {
                     val dagerEid = dagerEidIAnskaffelsesaaret(kraftverk.datoForOverdragelseVedErvervIInntektsaaret)
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsFriinntekt) {
-                        (forekomstType.anskaffelseskost + forekomstType.utgaaendeVerdi) / 2 * normRente * (dagerEid / 365)
+                        (forekomstType.anskaffelseskost + forekomstType.utgaaendeVerdi) / 2 * normRente * (dagerEid / antallDagerIAar(inntektsaar!!.toInt()))
                     }
                 }
 
                 hvis(kraftverk.datoForOverdragelseVedRealisasjonIInntektsaaret.aar() == inntektsaar) {
                     val dagerEid = dagerEidIRealisasjonsaaret(kraftverk.datoForOverdragelseVedRealisasjonIInntektsaaret)
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsFriinntekt) {
-                        forekomstType.inngaaendeVerdi / 2 * normRente * (dagerEid / 365)
+                        forekomstType.inngaaendeVerdi / 2 * normRente * (dagerEid / antallDagerIAar(inntektsaar!!.toInt()))
                     }
                 }
             }

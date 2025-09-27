@@ -12,6 +12,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.biltype2022
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2021
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.satser.aar2021.TransportmiddelSatser
@@ -242,6 +243,7 @@ internal object TransportmiddelNaering2021 : HarKalkylesamling {
     }
 
     internal val saldoavskrivningPrivatBrukKalkyle = kalkyle("saldoavskrivningPrivatBruk") {
+        val inntektsaar = inntektsaar
         forekomsterAv(modell2021.spesifikasjonAvAnleggsmiddel_transportmiddelINaering) der {
             forekomstType.biltype likEnAv listOf(
                 biltype2022.kode_personbil,
@@ -261,7 +263,7 @@ internal object TransportmiddelNaering2021 : HarKalkylesamling {
             ) {
                 settFelt(forekomstType.saldoavskrivningPrivatBruk) {
                     forekomstType.listeprisSomNy * TransportmiddelSatser.sats1SaldoavskrivningPrivatBruk.pow(bilensAlder.tall()) *
-                        TransportmiddelSatser.sats2SaldoavskrivningPrivatBruk * antallDagerTilDisposisjon / 365
+                        TransportmiddelSatser.sats2SaldoavskrivningPrivatBruk * antallDagerTilDisposisjon / antallDagerIAar(inntektsaar)
                 }
             }
         }
