@@ -94,6 +94,11 @@ En autentisering gjort via Maskinporten tilrettelegger for høyere grad av autom
 kodebrikke eller liknende. Vi tror Maskinporten vil passe for store selskap og regnskapsførere som skal levere
 skattemeldingen for mange.
 
+Vi støtter systembruker via Maskinporten i våre API-er. Systembruker er en bruker 
+i Altinn som lar virksomheten gi fullmakter til en upersonlig bruker, slik at den kan løse oppgaver på vegne av 
+virksomheten. [Du kan lese mer om systembruker og hvordan systemet ditt kan ta det i bruk her](https://samarbeid.digdir.no/altinn/systembruker/2542).
+
+
 Bruk av Maskinporten forutsetter at organisasjonen har et virksomhetssertifikat eller en tilsvarende mekanisme. Figuren
 under skisserer hvordan samhandlingen fungerer:
 
@@ -111,34 +116,35 @@ eksisterende løsninger.
 
 ## Oppsummering API endepunkt <a name="table-of-requests">
 
-| TYPE | API path                                                                                                                                                       | Virksomhetssertifikat |
-|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                               | Ja                    |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                         | Ja                    |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)          | Ja                    |
-| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                     | Ja                    |
-| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                       | Nei                   |
-| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                               | Planlagt              |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                     | Nei                   |
-| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf](#user-content-hentGjeldendeFastsettingPdf)                                 | Nei                   |
-| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                                 | Ja                    |
-| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                  | Ja                    |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                   | Ja                    |
-| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                           | Ja                    |
-| POST | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#user-content-avregning)                                                            | Nei                   |
-| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiIkkeUtiledNaeringseiendom)                      | Ja                    |
-| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#user-content-lagret-skattemelding-for-visning-personlig)                             | Nei                   |
-| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#user-content-lagret-skattemelding-for-visning-upersonlig) | Nei                   |
-| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-for-forhaandsfastsetting)                 | Nei                   |
-| POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-som-mangler-utkast)                                       | Nei                   |
-| POST | [/api/skattemelding/v2/utsattfristsoeknad/\<identifikator\>](#utsattfrist-skattemeldingen)                                                                     | Nei                   |
+| TYPE | API path                                                                                                                                                       | Maskinporten |
+|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
+| GET  | [/api/skattemelding/v2/ping](#user-content-ping)                                                                                                               | Ja           |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>](#user-content-hentGjeldende)                                                                         | Ja           |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)          | Ja           |
+| GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                     | Ja           |
+| GET  | [/api/skattemelding/v2/innsendt/\<inntektsaar\>/\<identifikator\>](#user-content-hentInnsendt)                                                                 | Ja           |
+| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                       | Nei          |
+| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                               | Planlagt     |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                     | Nei          |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf](#user-content-hentGjeldendeFastsettingPdf)                                 | Nei          |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                                 | Ja           |
+| GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                  | Ja           |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                   | Ja           |
+| POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                           | Ja           |
+| POST | [/api/skattemelding/v2/avregning/avregn/\<inntektsaar\>/\<identifikator\>](#user-content-avregning)                                                            | Nei          |
+| POST | [/api/skattemelding/v2/eiendom/utleieverdi/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiIkkeUtiledNaeringseiendom)                      | Ja           |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning](#user-content-lagret-skattemelding-for-visning-personlig)                             | Nei          |
+| POST | [/api/skattemelding/v2/til-midlertidig-lagret-skattemelding-for-visning-upersonlig/<identifikator>](#user-content-lagret-skattemelding-for-visning-upersonlig) | Nei          |
+| POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-for-forhaandsfastsetting)                 | Nei          |
+| POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-som-mangler-utkast)                                       | Nei          |
+| POST | [/api/skattemelding/v2/utsattfristsoeknad/\<identifikator\>](#utsattfrist-skattemeldingen)                                                                     | Nei          |
 
-| Miljø                             | Adresse                      | Påloggingsmetode      |
-|-----------------------------------|------------------------------|-----------------------|
-| Test                              | idporten-api-test.sits.no | OIDC                  |
-| Test virksomhetssertifikat        | api-test.sits.no          | Virksomhetssertifikat |
-| Produksjon                        | idporten.api.skatteetaten.no | OIDC                  |
-| Produksjon virksomhetssertifikat | api.skatteetaten.no          | Virksomhetssertifikat |
+| Miljø                   | Adresse                      | Påloggingsmetode      |
+|-------------------------|------------------------------|-----------------------|
+| Test                    | idporten-api-test.sits.no    | ID-porten - OIDC      |
+| Test maskinporten       | api-test.sits.no             | Maskinporten - OAuth2 |
+| Produksjon              | idporten.api.skatteetaten.no | ID-porten - OIDC      |
+| Produksjon maskinporten | api.skatteetaten.no          | Maskinporten - OAuth2 |
 
 ## Ping tjeneste <a name="ping"></a> [[back up]](#user-content-table-of-requests)
 
@@ -277,6 +283,29 @@ skattemeldinger er støttet:
   XML: skattemeldingerognaeringsopplysninger_response.xml (ikke noe eksempel)
 
 For nærmere beskrivelse av felt i XSDen eller hvordan man henter ut utvidede veiledninger, se forrige kapittel.
+
+## Hent innsendt skattemelding  <a name="hentInnsendt"></a> [[back up]](#user-content-table-of-requests)
+
+API som returnerer den siste innsendte skattemeldingen for gitt inntektsår. En innsendt skattemelding er den versjonen regnskaps-/årsoppgjørsystemet har lastet opp og signert via Altinn3.
+
+**URL** : `GET https://<env>/api/skattemelding/v2/innsendt/<inntektsaar>/<identifikator>/`
+
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/utkast/2020/974761076`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse`
+- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
+- `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige som man spør om skattemeldingen for.`
+
+**Respons** :
+
+- Iht.
+  XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd)
+- Eksempel
+  XML: [upersonligSkattemeldingOgNaeringssepsifikasjonRequest.xml](src/resources/eksempler/2024/upersonligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
+
+For nærmere beskrivelse av felt i XSDen, se kapittel under. Inndata til valider-APIet blir det samme som utdata fra dette APIet.
 
 ## Valider skattemelding <a name="valider"></a> [[back up]](#user-content-table-of-requests)
 
