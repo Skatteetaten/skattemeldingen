@@ -290,7 +290,7 @@ API som returnerer den siste innsendte skattemeldingen for gitt inntektsår. En 
 
 **URL** : `GET https://<env>/api/skattemelding/v2/innsendt/<inntektsaar>/<identifikator>/`
 
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/utkast/2020/974761076`
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/innsendt/2024/974761076`
 
 **Forespørsel** :
 
@@ -303,7 +303,7 @@ API som returnerer den siste innsendte skattemeldingen for gitt inntektsår. En 
 - Iht.
   XSD: [skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd](/src/resources/xsd/skattemeldingognaeringsspesifikasjonrequest_v2_kompakt.xsd)
 - Eksempel
-  XML: [upersonligSkattemeldingOgNaeringssepsifikasjonRequest.xml](src/resources/eksempler/2024/upersonligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
+  XML: [upersonligSkattemeldingOgNaeringssepsifikasjonRequest.xml](/src/resources/eksempler/2024/upersonligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
 
 For nærmere beskrivelse av felt i XSDen, se kapittel under. Inndata til valider-APIet blir det samme som utdata fra dette APIet.
 
