@@ -3,7 +3,6 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregnin
 import mu.KotlinLogging
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.GeneriskModellForKalkylerFunksjoner.tilGeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.fjernAvlededeFelt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.klienter.operasjoner.api.naering.NaeringForespoerselKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell.Predicates.feltSomSlutterMed
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
@@ -54,12 +53,12 @@ class NaeringsBeregnerFra2020(
 
     override fun nullstill(
         generiskModell: GeneriskModell,
-        forespoerselKontekst: NaeringForespoerselKontekst
+        gjelderSkjoennsfastsetting: Boolean
     ): GeneriskModell {
         var nullstilt = fjernAvlededeFelt(generiskModell.tilGeneriskModell(), avlededeFelter).tilGeneriskModell()
         nullstilt = filtrerGeneriskeTyperBasertPaaInnhold(
             nullstilt,
-            forespoerselKontekst.gjelderSkjoennsfastsetting,
+            gjelderSkjoennsfastsetting,
             inntektsaar
         )
         return fjernFelterSomSkalUtledesPaaNyttBasertPaaAnnetInnholdINsp(nullstilt)
@@ -77,9 +76,6 @@ private fun validerGlobaleFelt(generiskModell: GeneriskModell) {
 
 private fun verifiserGlobaltFeltHarVerdi(felt: Felt<*>, generiskModell: GeneriskModell) {
     if (generiskModell.felt(felt).verdi().isNullOrBlank()) {
-        logger.warn {
-            "Feil i input til beregning, naeringsspesifikasjon mangler det obligatoriske feltet ${felt.key}"
-        }
         throw UgyldigInputException("Feil i input til beregning, naeringsspesifikasjon mangler feltet ${felt.key}")
     }
 }
@@ -88,7 +84,7 @@ private fun validerVirksomhet(inntektsaar: Int, generiskModell: GeneriskModell) 
     val virksomhetNoekkel = modell.virksomhet.gruppe()
     val virksomhet = generiskModell.filter { it.key.startsWith(virksomhetNoekkel) }
     if (virksomhet.any { it.forekomstIder.values.firstOrNull() != FIXED_COMPONENT_ID }) {
-        logger.warn {
+        logger.info {
             "Feil i input til beregning, mottok en eller flere virksomheter med forekomstId != fixed - " +
                 " inntektsaar=$inntektsaar" +
                 " alleVirksomhetFelter=${virksomhet.alleInformasjonsElementer()}"
@@ -138,7 +134,7 @@ private fun validerVirksomhetsfelt(
     } else null
 
     if (feilmelding != null) {
-        logger.warn { "$feilmelding - alleVirksomhetFelter=${virksomhet.alleInformasjonsElementer()}" }
+        logger.info { "$feilmelding - alleVirksomhetFelter=${virksomhet.alleInformasjonsElementer()}" }
         throw UgyldigInputException(feilmelding)
     }
 }
@@ -358,7 +354,6 @@ private fun beregnedeKontoerSomSkalFjernes(
         }
 
         null -> {
-            logger.warn { "Naeringsspesifikasjon mangler feltet regnskapspliktstype" }
             error("Mangler obligatorisk felt ${modell.virksomhet.regnskapspliktstype.key}")
         }
     }

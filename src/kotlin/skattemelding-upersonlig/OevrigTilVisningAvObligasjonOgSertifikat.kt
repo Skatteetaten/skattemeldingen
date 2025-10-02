@@ -4,13 +4,14 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV3
 
 object OevrigTilVisningAvObligasjonOgSertifikat : HarKalkylesamling {
 
     internal val samletRenteinntektAvObligasjonOgSertifikat =
         kalkyle("samletRenteinntektAvObligasjonOgSertifikat") {
             settUniktFelt(
-                modell
+                modellV3
                     .spesifikasjonAvForholdRelevanteForBeskatning_oevrigTilVisningAvObligasjonOgSertifikat
                     .samletRenteinntektAvObligasjonOgSertifikat
             ) {
@@ -24,7 +25,7 @@ object OevrigTilVisningAvObligasjonOgSertifikat : HarKalkylesamling {
     internal val samletGevinstVedRealisasjonAvObligasjonOgSertifikat =
         kalkyle("samletGevinstVedRealisasjonAvObligasjonOgSertifikat") {
             settUniktFelt(
-                modell
+                modellV3
                     .spesifikasjonAvForholdRelevanteForBeskatning_oevrigTilVisningAvObligasjonOgSertifikat
                     .samletGevinstVedRealisasjonAvObligasjonOgSertifikat
             ) {
@@ -37,7 +38,7 @@ object OevrigTilVisningAvObligasjonOgSertifikat : HarKalkylesamling {
     internal val tapVedRealisasjonAvObligasjonOgSertifikat =
         kalkyle("tapVedRealisasjonAvObligasjonOgSertifikat") {
             settUniktFelt(
-                modell
+                modellV3
                     .spesifikasjonAvForholdRelevanteForBeskatning_oevrigTilVisningAvObligasjonOgSertifikat
                     .samletTapVedRealisasjonAvObligasjonOgSertifikat
             ) {
