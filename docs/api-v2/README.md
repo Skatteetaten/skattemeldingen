@@ -73,12 +73,26 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
       ta [kontakt med Skatteetaten](mailto:skattemelding-sbs-brukerstotte@skatteetaten.no) slik at vi kan gi dere
       tilgang til scopet (i mellomtiden kan dere forsatt bruke denne integrasjonen da Skatteetaten pt. ikke sjekker
       scope ved validering av access tokenet. Men denne sjekken vil vi på et senere tidspunkt slå på).
+    - Husk å inkludere Altinn-scope hvis dere integrerer mot Altinn sine API. For lesing og redigering av instanser i Altinn er det scopene _"altinn:instances.read"_ og _"altinn:instances.write"_ som gjelder.
 - Skriv inn redirect uri-er (kommaseparert og uten mellomrom). Dette er Uri-(er) som klienten får lov å gå til etter
   innlogging (ref. pilnummer 6 i figuren over)
 - Sett ønskede verdier for levetiden på autoriasjons-, access og refresh-token.
 - Et eksempel på hvordan integrasjonen kan bli seende ut:
 
 ![id-porten_integrasjon.png](id-porten_integrasjon.png)
+
+#### Levetidsparametre for scopes
+Scopene våre er satt opp med følgende maks levetid:
+|scope	| levetid access-token |	levetid refresh-token|
+|-------|---------------------|----------------------|
+| skatteetaten:formueinntekt/skattemelding | 8 timer | 90 dager |
+| skatteetaten:formueinntekt/skattemelding/eiendom | 8 timer | 90 dager |
+
+For å se maksimal levetid til Altinn sine scopes, finner man oversikt over disse på [DigDir Scopes - Altinn dokumentasjon](https://docs.altinn.studio/nb/api/authentication/digdirscopes/).
+
+**OBS:** Husk at scopet med den korteste levetiden vil være gjeldende for hele access-tokenet.
+
+Vi anbefaler å begrense levetiden på access-tokenet ytterligere, og heller ta i bruk refresh-token.
 
 ### Maskinporten
 
