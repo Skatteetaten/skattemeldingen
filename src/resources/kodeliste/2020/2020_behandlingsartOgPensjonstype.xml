@@ -4,8 +4,8 @@
   <tekniskNavn>2020_behandlingsartOgPensjonstype</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2024-04-16T09:33:37.668+02:00</sistEndret>
-  <sistEndretAv>m74453</sistEndretAv>
+  <sistEndret>2025-10-08T10:33:17.000+02:00</sistEndret>
+  <sistEndretAv>x00obo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
@@ -86,16 +86,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
-      <etterbetalingstypeISL>alder</etterbetalingstypeISL>
-      <harPensjonsgrad>ja</harPensjonsgrad>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <beskrivelseIAMelding>avtalefestetPensjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingstypeISL>alder</etterbetalingstypeISL>
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <harPensjonsgrad>ja</harPensjonsgrad>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kommentar>2019_pensjonstype</kommentar>
     </kodetillegg>
   </kode>
@@ -173,16 +173,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
-      <etterbetalingstypeISL>alder</etterbetalingstypeISL>
-      <harPensjonsgrad>ja</harPensjonsgrad>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <beskrivelseIAMelding>alderspensjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingstypeISL>alder</etterbetalingstypeISL>
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <harPensjonsgrad>ja</harPensjonsgrad>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kommentar>2019_pensjonstype</kommentar>
     </kodetillegg>
   </kode>
@@ -247,6 +247,10 @@
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <presentasjonsrekkefoelge>utland</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -318,16 +322,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
-      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
-      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <beskrivelseIAMelding>barnepensjonFraAndreEnnFolketrygden</beskrivelseIAMelding>
       <minstefradrag>minstefradragIBarnePensjon</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kommentar>2019_pensjonstype</kommentar>
     </kodetillegg>
   </kode>
@@ -361,7 +365,6 @@
       <oppgavekodeISL>35520</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>barnepensjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIBarnePensjon</minstefradrag>
@@ -372,6 +375,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -406,19 +410,19 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>fastBilgodtgjoerelse</beskrivelseIAMelding>
       <beskrivelseIAMelding>kilometergodtgjoerelseBil</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>310</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>skattefriOrganisasjon</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>310</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -484,7 +488,6 @@
       <visningsfelt>loenn</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>bolig</beskrivelseIAMelding>
       <beskrivelseIAMelding>kostDoegn</beskrivelseIAMelding>
@@ -495,6 +498,7 @@
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <kommentar>Fordel endret fra naturalytelse til utgiftsgodtgjørelse</kommentar>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
     </kodetillegg>
   </kode>
   <kode>
@@ -791,18 +795,18 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <sats>589</sats>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>reiseKostMedOvernattingPaaHotell</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>335</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>335</presentasjonsrekkefoelge>
+      <sats>589</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -838,11 +842,7 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
-      <presentasjonsrekkefoelge>345</presentasjonsrekkefoelge>
-      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-      <sats>91</sats>
       <beskrivelseIAMelding>reiseKostMedOvernattingPaaHybelBrakkePrivat</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -850,6 +850,10 @@
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
+      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>345</presentasjonsrekkefoelge>
+      <sats>91</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -885,11 +889,7 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
-      <presentasjonsrekkefoelge>350</presentasjonsrekkefoelge>
-      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-      <sats>300</sats>
       <beskrivelseIAMelding>reiseKostMedOvernattingTilLangtransportsjaafoerForKjoeringIUtlandet</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -897,6 +897,10 @@
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
+      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>350</presentasjonsrekkefoelge>
+      <sats>300</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -932,11 +936,7 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
-      <presentasjonsrekkefoelge>340</presentasjonsrekkefoelge>
-      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-      <sats>164</sats>
       <beskrivelseIAMelding>reiseKostMedOvernattingPaaPensjonat</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -944,6 +944,10 @@
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
+      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>340</presentasjonsrekkefoelge>
+      <sats>164</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -976,7 +980,6 @@
       <oppgavekodeISL>36629</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>YtelseFraOffentlige</kategori>
       <beskrivelseIAMelding>ektefelletilleggUfoeretrygd</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -986,6 +989,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -1018,7 +1022,6 @@
       <oppgavekodeISL>35524</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>ektefelletillegg</beskrivelseIAMelding>
       <minstefradrag>minstefradragIEktefelletillegg</minstefradrag>
@@ -1029,6 +1032,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -1067,7 +1071,6 @@
       <beskrivelseIAMelding>elektroniskKommunikasjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>120</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>skattefriOrganisasjon</skatteOgAvgiftsregel>
@@ -1075,6 +1078,7 @@
       <fordel>naturalytelse</fordel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>120</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -1109,16 +1113,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
-      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
-      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <beskrivelseIAMelding>etterlattepensjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kommentar>2019_pensjonstype</kommentar>
     </kodetillegg>
   </kode>
@@ -1150,7 +1154,6 @@
     </visningsnavn>
     <kodetillegg>
       <oppgavekodeISL>35528</oppgavekodeISL>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>etterloennOgEtterpensjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -1159,6 +1162,7 @@
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -1219,16 +1223,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>flyttegodtgjoerelse</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -1423,7 +1427,6 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>besoeksreiserHjemmetAnnet</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -1433,6 +1436,7 @@
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <kommentar>Fordel endret fra naturalytelse til utgiftsgodtgjørelse</kommentar>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
     </kodetillegg>
   </kode>
   <kode>
@@ -1511,7 +1515,6 @@
       <beskrivelseIAMelding>losji</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>381</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>skattefriOrganisasjon</skatteOgAvgiftsregel>
@@ -1519,6 +1522,7 @@
       <fordel>naturalytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <kommentar>L hvis sum &gt; kr 10000</kommentar>
+      <presentasjonsrekkefoelge>381</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -1680,17 +1684,17 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>besoeksreiserHjemmetAnnet</beskrivelseIAMelding>
       <beskrivelseIAMelding>besoeksreiserHjemmetKilometergodtgjoerelseBil</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>381</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>381</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -1762,15 +1766,15 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>arbeidsoppholdKost</beskrivelseIAMelding>
       <beskrivelseIAMelding>arbeidsoppholdLosji</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>384</presentasjonsrekkefoelge>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>384</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -1803,16 +1807,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>kilometergodtgjoerelseAndreFremkomstmidler</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>325</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>325</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2020,7 +2024,6 @@
       <oppgavekodeISL>35529</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>ipaEllerIpsBarnepensjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -2032,6 +2035,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -2064,7 +2068,6 @@
       <oppgavekodeISL>35522</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>engangsutbetalingInnskuddspensjon</beskrivelseIAMelding>
       <beskrivelseIAMelding>ipaEllerIpsEngangsutbetaling</beskrivelseIAMelding>
@@ -2073,6 +2076,7 @@
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -2105,7 +2109,6 @@
       <oppgavekodeISL>35522</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>ipaEllerIpsPeriodiskeYtelser</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -2116,6 +2119,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -2148,7 +2152,6 @@
       <oppgavekodeISL>36593</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>ipaEllerIpsUfoerepensjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -2158,6 +2161,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -2319,16 +2323,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
-      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
-      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <beskrivelseIAMelding>krigspensjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kommentar>2019_pensjonstype</kommentar>
     </kodetillegg>
   </kode>
@@ -2420,12 +2424,12 @@
       <beskrivelseIAMelding>uregelmessigeTilleggKnyttetTilIkkeArbeidetTid</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>100</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>skattefriOrganisasjon</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>100</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2476,9 +2480,9 @@
       <beskrivelseIAMelding>uregelmessigeTilleggKnyttetTilIkkeArbeidetTid</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <fordel>kontantytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2515,9 +2519,9 @@
       <beskrivelseIAMelding>loennForBarnepassIBarnetsHjem</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <fordel>kontantytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2567,9 +2571,9 @@
       <beskrivelseIAMelding>uregelmessigeTilleggKnyttetTilIkkeArbeidetTid</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2619,11 +2623,11 @@
       <beskrivelseIAMelding>uregelmessigeTilleggKnyttetTilIkkeArbeidetTid</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2675,12 +2679,12 @@
       <beskrivelseIAMelding>uregelmessigeTilleggKnyttetTilIkkeArbeidetTid</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstakManuellBehandling</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>skattefriOrganisasjon</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2718,10 +2722,10 @@
       <beskrivelseIAMelding>loennUtbetaltAvVeldedigEllerAllmennyttigInstitusjonEllerOrganisasjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <fordel>kontantytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <kommentar>L hvis sum &gt; kr 10000</kommentar>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2752,10 +2756,10 @@
       <beskrivelseIAMelding>loennTilVergeFraFylkesmannen</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <fordel>kontantytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <kommentar>L hvis sum &gt; kr 6000</kommentar>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2789,17 +2793,17 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <sats>65</sats>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>losjiEgenBrakkeCampingvogn</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>375</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>375</presentasjonsrekkefoelge>
+      <sats>65</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -2918,11 +2922,11 @@
       <beskrivelseIAMelding>bil</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstakManuellBehandling</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>naturalytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -2966,12 +2970,12 @@
       <beskrivelseIAMelding>yrkebilTjenestligbehovListepris</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>nettoloenn</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>nettoloennForSjoefolk</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <fordel>naturalytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -3016,13 +3020,13 @@
       <beskrivelseIAMelding>yrkebilTjenestligbehovListepris</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstakManuellBehandling</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>nettoloenn</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>nettoloennForSjoefolk</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <fordel>naturalytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
       <kommentar>SH-4249 fjernet utgiftsgodtgjoerelse fra fordel</kommentar>
+      <presentasjonsrekkefoelge>110</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -3057,16 +3061,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
-      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
-      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <beskrivelseIAMelding>nyAvtalefestetPensjonPrivatSektor</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kommentar>2019_pensjonstype</kommentar>
     </kodetillegg>
   </kode>
@@ -3261,7 +3265,6 @@
       <oppgavekodeISL>35520</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>overgangsstoenadTilEnsligMorEllerFarSomBegynteAaLoepe31Mars2014EllerTidligere</beskrivelseIAMelding>
       <beskrivelseIAMelding>overgangsstoenadTilGjenlevendeEktefelle</beskrivelseIAMelding>
@@ -3272,6 +3275,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -3305,16 +3309,16 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <sats>1</sats>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>kilometergodtgjoerelsePassasjertillegg</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
-      <presentasjonsrekkefoelge>320</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>320</presentasjonsrekkefoelge>
+      <sats>1</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -3348,16 +3352,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
-      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
-      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <beskrivelseIAMelding>pensjonOgLivrenterIArbeidsforhold</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kommentar>2019_pensjonstype</kommentar>
     </kodetillegg>
   </kode>
@@ -3392,16 +3396,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
-      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
-      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <beskrivelseIAMelding>annet</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kommentar>2019_pensjonstype</kommentar>
     </kodetillegg>
   </kode>
@@ -3435,7 +3439,6 @@
       <oppgavekodeISL>35521</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>annet</beskrivelseIAMelding>
       <beskrivelseIAMelding>bil</beskrivelseIAMelding>
@@ -3446,6 +3449,7 @@
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>naturalytelse</fordel>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kommentar>2019_pensjonstype</kommentar>
     </kodetillegg>
   </kode>
@@ -3470,9 +3474,13 @@
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <harPensjonsgrad>ja</harPensjonsgrad>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <harPensjonsgrad>ja</harPensjonsgrad>
+      <presentasjonsrekkefoelge>utland</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -3648,7 +3656,6 @@
       <oppgavekodeISL>35535</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>rentefordelLaan</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -3656,6 +3663,7 @@
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>naturalytelse</fordel>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -3816,8 +3824,8 @@
       <beskrivelseIAMelding>sluttvederlag</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
       <fordel>kontantytelse</fordel>
+      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -3865,13 +3873,13 @@
       <beskrivelseIAMelding>skattepliktigDelForsikringer</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>115</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>skattefriOrganisasjon</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>naturalytelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>115</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -3897,12 +3905,12 @@
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
       <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
       <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -3936,17 +3944,17 @@
       <oppgavekodeISL>35517</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <sats>2530</sats>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>smusstillegg</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
+      <sats>2530</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -3981,18 +3989,18 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>stipend</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>387</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>skattefriOrganisasjon</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>387</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -4063,7 +4071,6 @@
     <begrepsreferanse>http://begrepskatalog/begrep/cf248016-dfe5-11e7-9101-005056821322</begrepsreferanse>
     <kodetillegg>
       <oppgavekodeISL>35523</oppgavekodeISL>
-      <harPensjonsgrad>ja</harPensjonsgrad>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
       <kategori>PensjonEllerTrygd</kategori>
@@ -4075,6 +4082,7 @@
       <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <harPensjonsgrad>ja</harPensjonsgrad>
     </kodetillegg>
   </kode>
   <kode>
@@ -4333,17 +4341,17 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
-      <sats>3,50</sats>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>kilometergodtgjoerelseBil</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>315</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>315</presentasjonsrekkefoelge>
+      <sats>3,50</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -4376,17 +4384,17 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <sats>93</sats>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>besoeksreiserHjemmetKost</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>355</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>355</presentasjonsrekkefoelge>
+      <sats>93</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -4422,11 +4430,7 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
-      <presentasjonsrekkefoelge>360</presentasjonsrekkefoelge>
-      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
-      <sats>589</sats>
       <beskrivelseIAMelding>reiseKostMedOvernattingPaaHotellBeordringUtover28Doegn</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
@@ -4434,6 +4438,10 @@
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
+      <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>360</presentasjonsrekkefoelge>
+      <sats>589</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -4467,16 +4475,16 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <sats>589</sats>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>reiseKostMedOvernattingPaaHotellBeordringUtover28Doegn</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>365</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>365</presentasjonsrekkefoelge>
+      <sats>589</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -4510,17 +4518,17 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <sats>400</sats>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>reiseKostUtenOvernatting</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>370</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>370</presentasjonsrekkefoelge>
+      <sats>400</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -4558,8 +4566,8 @@
       <beskrivelseIAMelding>annet</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>391</presentasjonsrekkefoelge>
       <fordel>naturalytelse</fordel>
+      <presentasjonsrekkefoelge>391</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -4597,9 +4605,9 @@
       <beskrivelseIAMelding>kostDager</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>diskvalifiserer</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>391</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <fordel>naturalytelse</fordel>
+      <presentasjonsrekkefoelge>391</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -4632,16 +4640,16 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>stipend</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>390</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>390</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -4667,6 +4675,10 @@
     <kodetillegg>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <etterbetalingstypeISL>barnepensjon</etterbetalingstypeISL>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <presentasjonsrekkefoelge>utland</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -4700,7 +4712,6 @@
       <oppgavekodeISL>36593</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>ufoerepensjonFraAndreEnnFolketrygden</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4710,6 +4721,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -4742,7 +4754,6 @@
       <oppgavekodeISL>36586</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>ufoerepensjon</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4752,6 +4763,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -4785,7 +4797,6 @@
       <oppgavekodeISL>36593</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>PensjonEllerTrygd</kategori>
       <beskrivelseIAMelding>ufoereytelseEtteroppgjoerFraAndreEnnFolketrygden</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4795,6 +4806,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -4827,7 +4839,6 @@
       <oppgavekodeISL>36586</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>YtelseFraOffentlige</kategori>
       <beskrivelseIAMelding>ufoereytelseEtteroppgjoer</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4837,6 +4848,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -4869,7 +4881,6 @@
       <oppgavekodeISL>36586</oppgavekodeISL>
       <visningsfelt>beloep</visningsfelt>
       <visningskategori>Pensjon</visningskategori>
-      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
       <kategori>YtelseFraOffentlige</kategori>
       <beskrivelseIAMelding>ufoeretrygd</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
@@ -4879,6 +4890,7 @@
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
       <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
   <kode>
@@ -4912,17 +4924,17 @@
       <visningsfelt>antall</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
-      <sats>435</sats>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>reiseNattillegg</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>378</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>ja</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>378</presentasjonsrekkefoelge>
+      <sats>435</sats>
     </kodetillegg>
   </kode>
   <kode>
@@ -4958,18 +4970,18 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>annet</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>skattefriOrganisasjon</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -5004,7 +5016,6 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>arbeidsoppholdKost</beskrivelseIAMelding>
       <beskrivelseIAMelding>arbeidsoppholdLosji</beskrivelseIAMelding>
@@ -5015,13 +5026,14 @@
       <beskrivelseIAMelding>reiseLosji</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>330</presentasjonsrekkefoelge>
       <skatteOgAvgiftsregel>janMayenOgBilandene</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>saerskiltFradragForSjoefolk</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>skattefriOrganisasjon</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>loennMv</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>330</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
@@ -5054,14 +5066,14 @@
       <visningsfelt>beloep</visningsfelt>
       <visningsfelt>overskuddAvUtgiftsgodtgjoerelse</visningsfelt>
       <visningskategori>Lønn</visningskategori>
-      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
       <kategori>Lønn</kategori>
       <beskrivelseIAMelding>annet</beskrivelseIAMelding>
       <minstefradrag>minstefradragIInntekt</minstefradrag>
       <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
-      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
       <fordel>utgiftsgodtgjoerelse</fordel>
       <loennEllerTrekkfriUtgiftsgodtgjoerelse>trekkfriUtgiftsgodtgjoerelse</loennEllerTrekkfriUtgiftsgodtgjoerelse>
+      <overskuddKanOverstyres>nei</overskuddKanOverstyres>
+      <presentasjonsrekkefoelge>395</presentasjonsrekkefoelge>
     </kodetillegg>
   </kode>
   <kode>
