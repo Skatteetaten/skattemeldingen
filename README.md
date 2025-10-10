@@ -86,4 +86,6 @@ upersonligSkattemeldingV1.xml – eksempelfil på skattemelding upersonlig (AS) 
 [Funksjonell spesifikasjon.pdf - oppdatert 29. mars 2023](Funksjonell%20spesifikasjon%20-%2029.03.2023.pdf)
 
 ## Brukerstøtte
-Ved spørsmål eller ønske om tilgang til slack opprett en brukerstøtte sak ved å sende en e-post til skattemelding-sbs-brukerstotte@skatteetaten.no
+
+Send oss en [henvendelse](https://eksternjira.sits.no/servicedesk/customer/user/login?destination=plugins/servlet/desk/site/global) her hvis du skal bestille tilgang til API for skattemeldingen. Det er også her dere som allerede er integrert mot skattemeldingen kan sende inn henvendelser til Skatteetaten.  
+Ved å få tilgang aksepterer dere samtidig [Bruksvilkår for tilgang til Skatteetatens tjenester - Leverandør av sluttbrukersystem ](https://www.skatteetaten.no/samarbeidspartnere/sluttbrukersystemer/bruksvilkar/)
