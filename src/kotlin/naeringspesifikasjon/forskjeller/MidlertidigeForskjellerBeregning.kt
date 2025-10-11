@@ -21,6 +21,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2022
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
 
 internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
 
@@ -104,12 +105,18 @@ internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
 
     internal val forskjellstypeVarebeholdingOgBiologiskEiendelKalkyle = kalkyle {
         hvis(fullRegnskapspliktOgIkkeBankForsikringPetroleum()) {
-            val skattemessigVerdi = forekomsterAv(modell.spesifikasjonAvOmloepsmiddel_spesifikasjonAvVarelager) der {
-                forekomstType.verditype.verdi() ==
-                    SpesifikasjonAvVarelagerVerditype.skattemessigVerdi
-            } summerVerdiFraHverForekomst {
-                forekomstType.sumVerdiAvVarelager.tall() - forekomstType.buskap.tall()
-            } medAntallDesimaler 2
+            val skattemessigVerdi = if (inntektsaar.tekniskInntektsaar <= 2024) {
+                forekomsterAv(modell2024.spesifikasjonAvOmloepsmiddel_spesifikasjonAvVarelager) der {
+                    forekomstType.verditype.verdi() ==
+                        SpesifikasjonAvVarelagerVerditype.skattemessigVerdi
+                } summerVerdiFraHverForekomst {
+                    forekomstType.sumVerdiAvVarelager.tall() - forekomstType.buskap.tall()
+                } medAntallDesimaler 2
+            } else {
+                forekomsterAv(modell.spesifikasjonAvOmloepsmiddel_spesifikasjonAvSkattemessigVarelager) summerVerdiFraHverForekomst {
+                    forekomstType.sumVerdiAvVarelager.tall() - forekomstType.buskap.tall()
+                } medAntallDesimaler 2
+            }
 
             oppdaterEllerOpprettForskjellstype(
                 if (inntektsaar.tekniskInntektsaar <= 2022) {

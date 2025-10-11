@@ -14,6 +14,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v4_2023.saldogruppe_2023.kode_i as saldoGruppeI
 
 internal object Balanse : HarKalkylesamling {
@@ -288,23 +289,41 @@ internal object BalanseverdiForOmloepsmiddel {
 
     internal val balanseverdi1400Kalkyle = kalkyle("balanseverdi1400") {
         hvis(ingenEllerBegrensetRegnskapsplikt()) {
-            opprettNyForekomstForBalanseverdiForOmloepsmiddel(
-                forekomsterAv(modell.spesifikasjonAvOmloepsmiddel_spesifikasjonAvVarelager) summerVerdiFraHverForekomst {
-                    forekomstType.sumVerdiAvVarelager - forekomstType.selvprodusertVareBenyttetIEgenProduksjon
-                },
-                balanseverdiForOmloepsmiddel.kode_1400
-            )
+            if (inntektsaar.tekniskInntektsaar >= 2025) {
+                opprettNyForekomstForBalanseverdiForOmloepsmiddel(
+                    forekomsterAv(modell.spesifikasjonAvOmloepsmiddel_spesifikasjonAvSkattemessigVarelager) summerVerdiFraHverForekomst {
+                        forekomstType.sumVerdiAvVarelager - forekomstType.selvprodusertVareBenyttetIEgenProduksjon
+                    },
+                    balanseverdiForOmloepsmiddel.kode_1400
+                )
+            } else {
+                opprettNyForekomstForBalanseverdiForOmloepsmiddel(
+                    forekomsterAv(modell2024.spesifikasjonAvOmloepsmiddel_spesifikasjonAvVarelager) summerVerdiFraHverForekomst {
+                        forekomstType.sumVerdiAvVarelager - forekomstType.selvprodusertVareBenyttetIEgenProduksjon
+                    },
+                    balanseverdiForOmloepsmiddel.kode_1400
+                )
+            }
         }
     }
 
     internal val balanseverdi1401Kalkyle = kalkyle("balanseverdi1401") {
         hvis(ingenEllerBegrensetRegnskapsplikt()) {
-            opprettNyForekomstForBalanseverdiForOmloepsmiddel(
-                forekomsterAv(modell.spesifikasjonAvOmloepsmiddel_spesifikasjonAvVarelager) summerVerdiFraHverForekomst {
-                    forekomstType.selvprodusertVareBenyttetIEgenProduksjon.tall()
-                },
-                balanseverdiForOmloepsmiddel.kode_1401
-            )
+            if (inntektsaar.tekniskInntektsaar >= 2025) {
+                opprettNyForekomstForBalanseverdiForOmloepsmiddel(
+                    forekomsterAv(modell.spesifikasjonAvOmloepsmiddel_spesifikasjonAvSkattemessigVarelager) summerVerdiFraHverForekomst {
+                        forekomstType.selvprodusertVareBenyttetIEgenProduksjon.tall()
+                    },
+                    balanseverdiForOmloepsmiddel.kode_1401
+                )
+            } else {
+                opprettNyForekomstForBalanseverdiForOmloepsmiddel(
+                    forekomsterAv(modell2024.spesifikasjonAvOmloepsmiddel_spesifikasjonAvVarelager) summerVerdiFraHverForekomst {
+                        forekomstType.selvprodusertVareBenyttetIEgenProduksjon.tall()
+                    },
+                    balanseverdiForOmloepsmiddel.kode_1401
+                )
+            }
         }
     }
 

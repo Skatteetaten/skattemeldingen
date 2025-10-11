@@ -166,7 +166,7 @@
   <xsd:complexType name="SpesifikasjonAvOmloepsmiddel">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="spesifikasjonAvSkattemessigVerdiPaaFordring" type="SpesifikasjonAvSkattemessigVerdiPaaFordring" />
-      <xsd:element maxOccurs="2" minOccurs="0" name="spesifikasjonAvVarelager" type="SpesifikasjonAvVarelager" />
+      <xsd:element maxOccurs="2" minOccurs="0" name="spesifikasjonAvSkattemessigVarelager" type="SpesifikasjonAvSkattemessigVarelager"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DokumentOpprettet">
@@ -766,10 +766,9 @@
       <xsd:element minOccurs="0" name="sumSkattemessigVerdiPaaFordring" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="SpesifikasjonAvVarelager">
+  <xsd:complexType name="SpesifikasjonAvSkattemessigVarelager">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="verditype" type="VerditypeMedInnkapsling" />
       <xsd:element minOccurs="0" name="raavareOgInnkjoeptHalvfabrikata" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="vareUnderTilvirkning" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="ferdigTilvirketVare" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1595,11 +1594,6 @@
       <xsd:maxLength value="254" />
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:complexType name="VerditypeMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="verditype" type="Verditype" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="ResultatOgBalanseregnskapstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_resultatregnskapOgBalanse.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -2081,12 +2075,6 @@
       <xsd:element name="desimaltall" type="DesimaltallMed4Desimaler" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Verditype" skatt:eksternKodeliste="inline">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="regnskapsmessigVerdi" />
-      <xsd:enumeration value="skattemessigVerdi" />
-    </xsd:restriction>
-  </xsd:simpleType>
   <xsd:simpleType name="Egenkapitalendringstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_egenkapitalendringstype.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>

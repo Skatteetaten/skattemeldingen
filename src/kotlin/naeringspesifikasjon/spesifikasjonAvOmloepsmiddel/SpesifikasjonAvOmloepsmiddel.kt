@@ -5,6 +5,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.omloepsmiddel_skattemessigVerdiPaaFordringer
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
 
 object SpesifikasjonAvOmloepsmiddel : HarKalkylesamling {
 
@@ -47,15 +48,29 @@ object SpesifikasjonAvOmloepsmiddel : HarKalkylesamling {
     }
 
     val sumVerdiAvVarelagerKalkyle = kalkyle("sumVerdiAvVarelager") {
-        forAlleForekomsterAv(modell.spesifikasjonAvOmloepsmiddel_spesifikasjonAvVarelager) {
-            settFelt(modell.spesifikasjonAvOmloepsmiddel_spesifikasjonAvVarelager.sumVerdiAvVarelager) {
-                forekomstType.raavareOgInnkjoeptHalvfabrikata +
-                    forekomstType.vareUnderTilvirkning +
-                    forekomstType.ferdigTilvirketVare +
-                    forekomstType.innkjoeptVareForVideresalg +
-                    forekomstType.buskap +
-                    forekomstType.selvprodusertVareBenyttetIEgenProduksjon +
-                    forekomstType.reinPelsdyrOgPelsdyrskinnPaaLager
+        if (inntektsaar.tekniskInntektsaar >= 2025) {
+            forAlleForekomsterAv(modell.spesifikasjonAvOmloepsmiddel_spesifikasjonAvSkattemessigVarelager) {
+                settFelt(forekomstType.sumVerdiAvVarelager) {
+                    forekomstType.raavareOgInnkjoeptHalvfabrikata +
+                        forekomstType.vareUnderTilvirkning +
+                        forekomstType.ferdigTilvirketVare +
+                        forekomstType.innkjoeptVareForVideresalg +
+                        forekomstType.buskap +
+                        forekomstType.selvprodusertVareBenyttetIEgenProduksjon +
+                        forekomstType.reinPelsdyrOgPelsdyrskinnPaaLager
+                }
+            }
+        } else {
+            forAlleForekomsterAv(modell2024.spesifikasjonAvOmloepsmiddel_spesifikasjonAvVarelager) {
+                settFelt(forekomstType.sumVerdiAvVarelager) {
+                    forekomstType.raavareOgInnkjoeptHalvfabrikata +
+                        forekomstType.vareUnderTilvirkning +
+                        forekomstType.ferdigTilvirketVare +
+                        forekomstType.innkjoeptVareForVideresalg +
+                        forekomstType.buskap +
+                        forekomstType.selvprodusertVareBenyttetIEgenProduksjon +
+                        forekomstType.reinPelsdyrOgPelsdyrskinnPaaLager
+                }
             }
         }
     }
