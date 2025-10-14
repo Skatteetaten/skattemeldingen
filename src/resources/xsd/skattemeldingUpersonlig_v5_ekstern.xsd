@@ -214,7 +214,6 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="beregnetGrunnrenteskatt" type="BeregnetGrunnrenteskatt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="overdragelseAvHavbruksvirksomhet" type="OverdragelseAvHavbruksvirksomhet" />
-      <xsd:element minOccurs="0" name="fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet" type="SpesifikasjonAvLokalitetMedGrunnrenteskattepliktigAktivitet" />
     </xsd:sequence>
   </xsd:complexType>
@@ -953,6 +952,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="samordningAvGrunnrenteinntekt" type="SamordningAvGrunnrenteinntekt" />
       <xsd:element minOccurs="0" name="andelAvBunnfradrag" type="AndelAvBunnfradrag" />
       <xsd:element minOccurs="0" name="produksjonsavgiftTilFradragIGrunnrenteskatt" type="ProduksjonsavgiftTilFradragIGrunnrenteskatt" />
+      <xsd:element minOccurs="0" name="spesifikasjonAvNegativGrunnrenteinntekt" type="SpesifikasjonAvNegativGrunnrenteinntekt"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OverdragelseAvHavbruksvirksomhet">
@@ -1559,6 +1559,13 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="egenProduksjonsavgift" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="selskapSomDelerProduksjonsavgift" type="SelskapSomDelerProduksjonsavgift" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvNegativGrunnrenteinntekt">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvNegativGrunnrenteinntektFraTidligereAar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="fremfoerbarNegativGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OverdragelsestypeMedInnkapsling">
