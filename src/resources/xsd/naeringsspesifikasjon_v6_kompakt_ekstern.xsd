@@ -1003,7 +1003,7 @@
       <xsd:element name="loepenummer" type="HeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="prisomraade" type="PrisomraadeForKraftLevertAvKraftverkMedInnkapsling" />
       <xsd:element minOccurs="0" name="aarForDriftssettelse" type="AarstallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="installertEffektIKwhIHenholdTilKonsesjon" type="DesimaltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="installertEffektIMwIHenholdTilKonsesjon" type="DesimaltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="antallTurbiner" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="eierandel" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="vindkraftanleggOpphoertIInntektsaaret" type="BoolskMedInnkapsling" />
@@ -1289,7 +1289,7 @@
       <xsd:element name="benyttesIGrunnrenteskattepliktigVirksomhet" type="BenyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregelMedInnkapsling" />
       <xsd:element minOccurs="0" name="erAnleggsmiddelUnderUtfoerelse" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="kraftverketsLoepenummer" type="HeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="direkteUtgiftsfoertInvesteringsavgiftIGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+      <xsd:element minOccurs="0" name="direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="oppjustertGrunnlagForAvskrivningPer01012024" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="justeringPaaSaldo" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="grunnlagForAvskrivningIGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1417,7 +1417,6 @@
       <xsd:element minOccurs="0" name="korreksjonAvKostprisSomFoelgeAvOverdragelseMv" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="korreksjonAvKostprisSomFoelgeAvSamordningEllerOmfordeling" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="kostprisEtterKorreksjon" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="korreksjonAvTidligereAarsFriinntekt" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="aaretsAvskrivningIAlminneligInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
       <xsd:element minOccurs="0" name="fradragForGjenvaerendeKostprisVedAvsluttetProduksjonIAlminneligInntektFraVirksomhetPaaSokkel" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="utgaaendeVerdiAlminneligInntektFraVirksomhetPaaSokkel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />

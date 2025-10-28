@@ -1361,7 +1361,6 @@
           <xsd:element name="id" type="Tekst" />
           <xsd:element name="naeringstype" type="NaeringstypeMedInnkapsling" />
           <xsd:element minOccurs="0" name="naeringsinntekt" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/dcfb4779-e484-11e6-9cb3-005056821322" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-          <xsd:element minOccurs="0" name="underskudd" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/6c325d60-ff95-11e8-a756-005056823b15" type="FradragMedLoennsomhetsvurderingmMvOgOverstyring" />
           <xsd:element minOccurs="0" name="samordnetPersoninntekt" type="SamordnetPersoninntekt" />
         </xsd:sequence>
       </xsd:extension>
@@ -3028,7 +3027,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="IndividuellPensjonsordningstype" skatt:eksternKodeliste="inline">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="individuellPensjonsavtale" />
+      <xsd:enumeration skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1c7-9fe1-11e5-a9f8-e4115b280940" value="individuellPensjonsavtale" />
       <xsd:enumeration value="skattefavorisertIndividuellSparingTilPensjon" />
     </xsd:restriction>
   </xsd:simpleType>
@@ -3717,7 +3716,7 @@
       <xsd:totalDigits value="5" />
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="Bruksnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/bruksnummer">
+  <xsd:simpleType name="Bruksnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e102-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="Heltall">
       <xsd:totalDigits value="4" />
     </xsd:restriction>

@@ -332,18 +332,23 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
 
     internal val samletAnnetSkattefradragFraVirksomhetPaaSokkel =
         kalkyle("samletAnnetSkattefradragFraVirksomhetPaaSokkel") {
+            var samletAnnetSkattefradragFraVirksomhetPaaSokkel = forekomstType.skattefradragForVirksomhetPaaSokkel_annetFradragKnyttetTilSaerskattegrunnlaget +
+            forekomstType.skattefradragForVirksomhetPaaSokkel_annetFradragKnyttetTilAlminneligInntektFraVirksomhetPaaSokkel
+
+            if (inntektsaar.tekniskInntektsaar <= 2024) {
+                samletAnnetSkattefradragFraVirksomhetPaaSokkel = samletAnnetSkattefradragFraVirksomhetPaaSokkel +
+                modellV3.inntektOgUnderskuddForVirksomhetPaaSokkel.skattefradragForVirksomhetPaaSokkel_fradragVedVirksomhetsoverdragelseErvervOgRealisasjonAvLisensMvKnyttetTilSaerskattegrunnlaget +
+                modellV3.inntektOgUnderskuddForVirksomhetPaaSokkel.skattefradragForVirksomhetPaaSokkel_fradragVedVirksomhetsoverdragelseErvervOgRealisasjonAvLisensMvKnyttetTilAlminneligInntektFraVirksomhetPaaSokkel
+            }
             settUniktFelt(forekomstType.samletAnnetSkattefradragFraVirksomhetPaaSokkel) {
-                forekomstType.skattefradragForVirksomhetPaaSokkel_fradragVedVirksomhetsoverdragelseErvervOgRealisasjonAvLisensMvKnyttetTilSaerskattegrunnlaget +
-                    forekomstType.skattefradragForVirksomhetPaaSokkel_fradragVedVirksomhetsoverdragelseErvervOgRealisasjonAvLisensMvKnyttetTilAlminneligInntektFraVirksomhetPaaSokkel +
-                    forekomstType.skattefradragForVirksomhetPaaSokkel_annetFradragKnyttetTilSaerskattegrunnlaget +
-                    forekomstType.skattefradragForVirksomhetPaaSokkel_annetFradragKnyttetTilAlminneligInntektFraVirksomhetPaaSokkel
+                samletAnnetSkattefradragFraVirksomhetPaaSokkel
             }
         }
 
     internal val samletAnnetSkattefradragFraVirksomhetPaaLand =
         kalkyle("samletAnnetSkattefradragFraVirksomhetPaaLand") {
             settUniktFelt(forekomstType.samletAnnetSkattefradragFraVirksomhetPaaLand) {
-                forekomstType.skattefradragForVirksomhetPaaSokkel_fradragVedVirksomhetsoverdragelseErvervOgRealisasjonAvLisensMvKnyttetTilAlminneligInntektFraVirksomhetPaaLand +
+                modellV3.inntektOgUnderskuddForVirksomhetPaaSokkel.skattefradragForVirksomhetPaaSokkel_fradragVedVirksomhetsoverdragelseErvervOgRealisasjonAvLisensMvKnyttetTilAlminneligInntektFraVirksomhetPaaLand +
                     forekomstType.skattefradragForVirksomhetPaaSokkel_annetFradragKnyttetTilAlminneligInntektFraVirksomhetPaaLand
             }
         }

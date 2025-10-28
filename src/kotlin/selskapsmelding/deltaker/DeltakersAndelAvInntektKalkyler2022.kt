@@ -74,9 +74,9 @@ object DeltakersAndelAvInntektKalkyler2022 : HarKalkylesamling {
         internal val skattPaaDeltakersAndelAvSelskapetsOverskuddKalkyle = kalkyle {
             val satser = satser!!
             forekomsterAv(deltaker) forHverForekomst {
-                val skattesats = if (deltakerErPersonlig() && !erBosattInnenforTiltakssonenINordTromsOgFinnmark()) {
+                val skattesats = if (deltakerErPersonlig() && !erBosattInnenforTiltakssonenINordTromsOgFinnmark(this@kalkyle.inntektsaar.tekniskInntektsaar)) {
                     satser.sats(skattPaaAlminneligInntekt_sats)
-                } else if (deltakerErPersonlig() && erBosattInnenforTiltakssonenINordTromsOgFinnmark()) {
+                } else if (deltakerErPersonlig() && erBosattInnenforTiltakssonenINordTromsOgFinnmark(this@kalkyle.inntektsaar.tekniskInntektsaar)) {
                     satser.sats(skattPaaAlminneligInntekt_satsITiltakssone)
                 } else if (!deltakerErPersonlig() && erFinansskattepliktig()) {
                     satser.sats(skattPaaAlminneligInntekt_satsForFinansskattepliktigVirksomhet)

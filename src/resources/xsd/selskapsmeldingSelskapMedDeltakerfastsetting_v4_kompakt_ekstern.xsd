@@ -249,6 +249,7 @@
       <xsd:element minOccurs="0" name="erNokus" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="erUtenlandskSelskapMedDeltakerfastsetting" type="BoolskMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelILandbasertVindkraft" type="AndelILandbasertVindkraft" />
+      <xsd:element minOccurs="0" name="erBosattInnenforTiltakssonenNordTromsOgFinnmark" type="BoolskMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ProsentMedInnkapsling">
@@ -929,7 +930,7 @@
       <xsd:element name="kraftverketsNavn" skatt:erAvledet="true" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="navnPaaKonsesjonshaverForProduksjonsavgift" type="NavnMedInnkapsling" />
       <xsd:element minOccurs="0" name="identifikatorForKonsesjonshaverForProduksjonsavgift" type="OrganisasjonsnummerMedInnkapsling" />
-      <xsd:element name="installertEffektIKwhIHenholdTilKonsesjon" skatt:erAvledet="true" type="DesimaltallMedInnkapsling" />
+      <xsd:element name="installertEffektIMwIHenholdTilKonsesjon" skatt:erAvledet="true" type="DesimaltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="positivGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="negativGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="negativGrunnrenteskattVedDriftssettelse" type="BeloepSomHeltallMedInnkapsling" />
@@ -1678,7 +1679,7 @@
   <xsd:complexType name="AndelAvBunnfradrag">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="maksimaltTillattBiomasse" type="AntallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvMaksimalTillattBiomasse" type="ProsentMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvMaksimaltTillattBiomasse" type="ProsentMedInnkapsling" />
       <xsd:element minOccurs="0" name="bunnfradrag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>

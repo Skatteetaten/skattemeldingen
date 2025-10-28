@@ -62,6 +62,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel.SaldoavskrevetAnleggsmiddelFra2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel.SpesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel.SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel.SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel.SpesifikasjonVedBeregningAvRentefradragsramme
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel.TransportmiddelNaering2020
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel.TransportmiddelNaering2021
@@ -146,7 +147,8 @@ val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkyle
     .bareI(2023, OmsetningOgEtterbetalingMvISamvirkeforetak)
     .fra(2024, OmsetningOgEtterbetalingMvISamvirkeforetakFra2024)
     .fra(2024, SpesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet)
-    .fra(2024, SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft)
+    .bareI(2024, SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft2024)
+    .fra(2025, SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft)
     .fra(2024, SpesifikasjonAvGrunnrenteinntektFra2024)
     .fra(2022, OevrigTilVisningForSpesifikasjonAvAnleggsmiddel)
     .fra(2023, SpesifikasjonAvForskjellForSelskapOmfattetAvPetroleumsskatteloven)

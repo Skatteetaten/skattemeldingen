@@ -177,9 +177,10 @@ object SpesifikasjonAvSkattemessigInngangsverdiOgEgenkapitalkontoKalkyler : HarK
         if (inntektsaar.tekniskInntektsaar >= 2024 && erIkkeNokus()) {
             val satser = satser!!
             forekomsterAv(modell.deltaker) forHverForekomst {
-                val skattesats = if (deltakerErPersonlig() && !erBosattInnenforTiltakssonenINordTromsOgFinnmark()) {
+                val erBosattInnenforTiltakssonenINordTromsOgFinnmark = erBosattInnenforTiltakssonenINordTromsOgFinnmark(this@kalkyle.inntektsaar.tekniskInntektsaar)
+                val skattesats = if (deltakerErPersonlig() && !erBosattInnenforTiltakssonenINordTromsOgFinnmark) {
                     satser.sats(skattPaaAlminneligInntekt_sats)
-                } else if (deltakerErPersonlig() && erBosattInnenforTiltakssonenINordTromsOgFinnmark()) {
+                } else if (deltakerErPersonlig() && erBosattInnenforTiltakssonenINordTromsOgFinnmark) {
                     satser.sats(skattPaaAlminneligInntekt_satsITiltakssone)
                 } else if (!deltakerErPersonlig() && erFinansskattepliktig()) {
                     satser.sats(skattPaaAlminneligInntekt_satsForFinansskattepliktigVirksomhet)

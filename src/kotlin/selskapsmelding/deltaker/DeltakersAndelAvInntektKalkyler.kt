@@ -96,15 +96,17 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
             hvis(!erNokus()) {
                 val satser = satser!!
                 forekomsterAv(deltaker) forHverForekomst {
-                    val skattesats = if (deltakerErPersonlig() && !erBosattInnenforTiltakssonenINordTromsOgFinnmark()) {
-                        satser.sats(skattPaaAlminneligInntekt_sats)
-                    } else if (deltakerErPersonlig() && erBosattInnenforTiltakssonenINordTromsOgFinnmark()) {
-                        satser.sats(skattPaaAlminneligInntekt_satsITiltakssone)
-                    } else if (!deltakerErPersonlig() && erFinansskattepliktig()) {
-                        satser.sats(skattPaaAlminneligInntekt_satsForFinansskattepliktigVirksomhet)
-                    } else {
-                        satser.sats(skattPaaAlminneligInntekt_sats)
-                    }
+                    val erBosattInnenforTiltakssonenINordTromsOgFinnmark = erBosattInnenforTiltakssonenINordTromsOgFinnmark(this@hvis.inntektsaar.tekniskInntektsaar)
+                    val skattesats =
+                        if (deltakerErPersonlig() && !erBosattInnenforTiltakssonenINordTromsOgFinnmark) {
+                            satser.sats(skattPaaAlminneligInntekt_sats)
+                        } else if (deltakerErPersonlig() && erBosattInnenforTiltakssonenINordTromsOgFinnmark) {
+                            satser.sats(skattPaaAlminneligInntekt_satsITiltakssone)
+                        } else if (!deltakerErPersonlig() && erFinansskattepliktig()) {
+                            satser.sats(skattPaaAlminneligInntekt_satsForFinansskattepliktigVirksomhet)
+                        } else {
+                            satser.sats(skattPaaAlminneligInntekt_sats)
+                        }
 
                     if (sumFoerArbeidsgodtgjoerelseFelt.stoerreEnn(0)) {
                         settFelt(forekomstType.utdelingMv_skattPaaDeltakersAndelAvSelskapetsOverskudd) {
