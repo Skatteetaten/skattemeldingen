@@ -86,7 +86,7 @@ internal object GrunnrenteskattHavbruk : HarKalkylesamling {
                             forekomstType.realisasjonAvGrunnrentepliktigHavbruksvirksomhet_andelAvVederlagKnyttetTilAkvakulturtillatelse -
                             forekomstType.realisasjonAvGrunnrentepliktigHavbruksvirksomhet_skattepliktigVerdiAvAnleggsmiddelSomBenyttesIDenGrunnrentepliktigeHavbruksvirksomheten
 
-                    if (gevinstTapVedRealisasjonEllerOpphoerAvHavbruksvirksomhet.stoerreEllerLik(0)) {
+                    if (gevinstTapVedRealisasjonEllerOpphoerAvHavbruksvirksomhet stoerreEllerLik 0) {
                         settFelt(forekomstType.realisasjonAvGrunnrentepliktigHavbruksvirksomhet_gevinstVedRealisasjonAvHavbruksvirksomhet) {
                             gevinstTapVedRealisasjonEllerOpphoerAvHavbruksvirksomhet
                         }
@@ -124,12 +124,12 @@ internal object GrunnrenteskattHavbruk : HarKalkylesamling {
                                 forekomstType.beregnetSelskapsskatt_fradragForAaretsTapIAlminneligInntektVedRealisasjonAvAnleggsmiddelSomErDirekteFradragsfoertIGrunnrenteinntekt)
                     }
 
-                    if (forekomstType.beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt.stoerreEllerLik(0)) {
+                    if (forekomstType.beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt stoerreEllerLik 0) {
                         settFelt(forekomstType.beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet) {
                             (forekomstType.beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt *
                                 satser.sats(Sats.skattPaaAlminneligInntekt_sats))
                         }
-                    } else if (forekomstType.beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt.mindreEnn(0)) {
+                    } else if (forekomstType.beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt mindreEnn 0) {
                         settFelt(forekomstType.beregnetSelskapsskatt_aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet) {
                             forekomstType.beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt.tall()
                                 .absoluttverdi() *
@@ -137,18 +137,16 @@ internal object GrunnrenteskattHavbruk : HarKalkylesamling {
                         }
                     }
 
-                    if (forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                            .stoerreEnn(0) &&
+                    if (forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar stoerreEnn 0 &&
                         forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                            .stoerreEllerLik(forekomstType.beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()) //beregnes over
+                            .stoerreEllerLik(forekomstType.beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet) //beregnes over
                     ) {
                         settFelt(forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
                             forekomstType.beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()
                         }
-                    } else if (forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                            .stoerreEnn(0) &&
+                    } else if (forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar stoerreEnn 0 &&
                         forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                            .mindreEnn(forekomstType.beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall())
+                            .mindreEnn(forekomstType.beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet)
                     ) {
                         settFelt(forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
                             forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()

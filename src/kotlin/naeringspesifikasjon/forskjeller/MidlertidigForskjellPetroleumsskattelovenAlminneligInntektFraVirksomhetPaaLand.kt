@@ -2,9 +2,9 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregnin
 
 import java.math.BigDecimal
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.api.KodeVerdi
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medAntallDesimaler
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medToDesimaler
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medToDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -267,7 +267,7 @@ internal object MidlertidigForskjellPetroleumsskattelovenAlminneligInntektFraVir
         hvis(fullRegnskapsplikt() && erPetroleumsforetak()) {
             val utgaaendeVerdiGevinstOgTapskonto =
                 forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) der {
-                    forekomstType.utgaaendeVerdi stoerreEnn BigDecimal.ZERO &&
+                    forekomstType.utgaaendeVerdi stoerreEnn 0 &&
                     forekomstType.gjelderVirksomhetPaaSokkel.erUsann()
                 } summerVerdiFraHverForekomst {
                     forekomstType.utgaaendeVerdi.tall()
@@ -286,7 +286,7 @@ internal object MidlertidigForskjellPetroleumsskattelovenAlminneligInntektFraVir
         hvis(fullRegnskapsplikt() && erPetroleumsforetak()) {
             val utgaaendeVerdiGevinstOgTapskonto =
                 forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) der {
-                    forekomstType.utgaaendeVerdi mindreEnn BigDecimal.ZERO &&
+                    forekomstType.utgaaendeVerdi mindreEnn 0 &&
                     forekomstType.gjelderVirksomhetPaaSokkel.erUsann()
                 } summerVerdiFraHverForekomst {
                     forekomstType.utgaaendeVerdi.tall()

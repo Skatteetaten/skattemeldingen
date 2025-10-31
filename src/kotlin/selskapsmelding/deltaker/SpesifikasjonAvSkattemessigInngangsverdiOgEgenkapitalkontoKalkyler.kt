@@ -1,6 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.deltaker
 
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -191,7 +191,7 @@ object SpesifikasjonAvSkattemessigInngangsverdiOgEgenkapitalkontoKalkyler : HarK
                     (forekomstType.andelAvSamletUnderskudd * skattesats)
                         .somHeltall()
                 } else {
-                    if (sumFoerArbeidsgodtgjoerelseFelt.mindreEnn(0)) {
+                    if (sumFoerArbeidsgodtgjoerelseFelt mindreEnn 0) {
                         (sumFoerArbeidsgodtgjoerelseFelt * skattesats).somHeltall().absoluttverdi()
                     } else {
                        null

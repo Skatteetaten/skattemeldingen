@@ -1,9 +1,9 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt.personinntekt
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.divideInternal
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.GeneriskModellForKalkyler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.avrundTilToDesimalerString
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.divideInternal
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -11,6 +11,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskM
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v1_2020.Skjermingsgrunnlagstype
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.sum
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2020
 
 /**
@@ -28,8 +29,8 @@ object PersoninntektBeregning2020 : HarKalkylesamling {
                         .groupBy(
                             { it.verdiFor(modell2020.personinntektFraEnkeltpersonforetak.spesifikasjonAvSkjermingsgrunnlag.skjermingsgrunnlagstype) },
                             {
-                                (BigDecimal(it.verdiFor(modell2020.personinntektFraEnkeltpersonforetak.spesifikasjonAvSkjermingsgrunnlag.inngaaendeVerdi)) +
-                                    BigDecimal(it.verdiFor(modell2020.personinntektFraEnkeltpersonforetak.spesifikasjonAvSkjermingsgrunnlag.utgaaendeVerdi)))
+                                (it.verdiSomBigDecimal(modell2020.personinntektFraEnkeltpersonforetak.spesifikasjonAvSkjermingsgrunnlag.inngaaendeVerdi) +
+                                    it.verdiSomBigDecimal(modell2020.personinntektFraEnkeltpersonforetak.spesifikasjonAvSkjermingsgrunnlag.utgaaendeVerdi))
                                     ?.divideInternal(
                                         BigDecimal(2)
                                     )
@@ -59,41 +60,35 @@ object PersoninntektBeregning2020 : HarKalkylesamling {
                     val foersteLedd = gjennomsnittsverdier
                         .filter { skjermingsgrunnlagtyper.contains(it.key) }
                         .flatMap { it.value }
-                        .fold(BigDecimal.ZERO, BigDecimal::add)
+                        .sum()
 
                     val leverandoergjeld =
                         gjennomsnittsverdier
                             .filter { it.key == Skjermingsgrunnlagstype.leverandoergjeld }
                             .flatMap { it.value }
-                            .fold(BigDecimal.ZERO, BigDecimal::add)
+                            .sum()
 
                     val foretaksgjeld = gjennomsnittsverdier
                         .filter { it.key == Skjermingsgrunnlagstype.foretaksgjeld }
                         .flatMap { it.value }
-                        .fold(BigDecimal.ZERO, BigDecimal::add)
+                        .sum()
 
-                    val sumSkjermingsgrunnlagFoerGjeldsfradrag = if ((foersteLedd - leverandoergjeld)!!.signum() == -1) {
-                        BigDecimal.ZERO
-                    } else {
-                        foersteLedd - leverandoergjeld
-                    }
+                    val sumSkjermingsgrunnlagFoerGjeldsfradrag =
+                        (foersteLedd - leverandoergjeld) medMinimumsverdi 0
+
                     val sumSkjermingsgrunnlagEtterGjeldsfradrag =
-                        if ((sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld)!!.signum() == -1) {
-                            BigDecimal.ZERO
-                        } else {
-                            sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld
-                        }
+                        (sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld) medMinimumsverdi 0
+
                     val skjermingsrente =
-                        forekomstPerson.verdiFor(modell2020.personinntektFraEnkeltpersonforetak.skjermingsrente)
-                            ?.let { BigDecimal(it).divideInternal(BigDecimal(100)) }
+                        forekomstPerson.verdiSomBigDecimal(modell2020.personinntektFraEnkeltpersonforetak.skjermingsrente)
+                            ?.divideInternal(BigDecimal(100))
 
                     val faktorForSkjermingsrente =
-                        (forekomstPerson.verdiFor(modell2020.personinntektFraEnkeltpersonforetak.antallMaanederDrevetIAar)
-                            ?.let { BigDecimal(it) }
+                        (forekomstPerson.verdiSomBigDecimal(modell2020.personinntektFraEnkeltpersonforetak.antallMaanederDrevetIAar)
                             ?: BigDecimal(12)).divideInternal(BigDecimal(12))
 
                     val skjermingsfradrag =
-                        if (sumSkjermingsgrunnlagFoerGjeldsfradrag!!.signum() == -1) {
+                        if (sumSkjermingsgrunnlagFoerGjeldsfradrag.erNegativ()) {
                             BigDecimal.ZERO
                         } else if (skjermingsrente != null) {
                             sumSkjermingsgrunnlagEtterGjeldsfradrag * faktorForSkjermingsrente * skjermingsrente
@@ -173,31 +168,28 @@ object PersoninntektBeregning2020 : HarKalkylesamling {
 
                     val forekomstAvNaeringsinntekt = naeringsfordelingForekomster[0]
                     val verdi =
-                        forekomstAvNaeringsinntekt.verdiFor(modell2020.fordelingAvNaeringsinntekt.skattemessigResultatForNaeringEtterKorreksjon)
+                        forekomstAvNaeringsinntekt.verdiSomBigDecimal(modell2020.fordelingAvNaeringsinntekt.skattemessigResultatForNaeringEtterKorreksjon)
                     if (verdi != null) {
                         val aaretsBeregnedePersoninntektFoerFordelingOgSamordning =
-                            BigDecimal(verdi)
+                            verdi
                                 .minus(
-                                    nullsafe(
-                                        personForekomst,
+                                    personForekomst.verdiSomBigDecimalEller0(
                                         modell2020.personinntektFraEnkeltpersonforetak.rentekostnadPaaForetaksgjeld
                                     )
                                 )
-                                .minus(nullsafe(personForekomst, modell2020.personinntektFraEnkeltpersonforetak.kapitalinntekt))
-                                .plus(nullsafe(personForekomst, modell2020.personinntektFraEnkeltpersonforetak.kapitalkostnad))
+                                .minus(personForekomst.verdiSomBigDecimalEller0(modell2020.personinntektFraEnkeltpersonforetak.kapitalinntekt))
+                                .plus(personForekomst.verdiSomBigDecimalEller0(modell2020.personinntektFraEnkeltpersonforetak.kapitalkostnad))
                                 .minus(
-                                    nullsafe(
-                                        personForekomst,
+                                    personForekomst.verdiSomBigDecimalEller0(
                                         modell2020.personinntektFraEnkeltpersonforetak.reduksjonsbeloepForLeidEiendomMotInnskudd
                                     )
                                 )
                                 .minus(
-                                    nullsafe(
-                                        personForekomst,
+                                    personForekomst.verdiSomBigDecimalEller0(
                                         modell2020.personinntektFraEnkeltpersonforetak.gevinstVedRealisasjonAvAlminneligGaardsbrukEllerSkogbruk
                                     )
                                 )
-                                .minus(nullsafe(personForekomst, modell2020.personinntektFraEnkeltpersonforetak.skjermingsfradrag))
+                                .minus(personForekomst.verdiSomBigDecimalEller0(modell2020.personinntektFraEnkeltpersonforetak.skjermingsfradrag))
 
                         informasjonsElement = InformasjonsElement(
                             modell2020.personinntektFraEnkeltpersonforetak.aaretsBeregnedePersoninntektFoerFordelingOgSamordning,
@@ -231,13 +223,6 @@ object PersoninntektBeregning2020 : HarKalkylesamling {
                 )
             )
         }
-    }
-
-    private fun nullsafe(
-        personForekomst: GeneriskModell, felt: Felt<*>
-    ): BigDecimal {
-        val verdiFor = personForekomst.verdiFor(felt)
-        return BigDecimal(verdiFor ?: "0")
     }
 
     override fun kalkylesamling(): Kalkylesamling {

@@ -1,12 +1,12 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.rederi
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import java.time.Year
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.KalkyleUtil
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.util.RederiUtil.skalBeregneRederi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellNaering
@@ -81,13 +81,7 @@ object InntektstilleggForHoeyEgenkapital : HarKalkylesamling {
         }
     }
 
-    private fun finnAntallDagerIAar(aar: Int): BigDecimal {
-        if (KalkyleUtil.erSkuddAar(aar)) {
-            return BigDecimal(366)
-        } else {
-            return BigDecimal(365)
-        }
-    }
+    private fun finnAntallDagerIAar(aar: Int): BigDecimal = Year.of(aar).length().toBigDecimal()
 
     private val inntektstillegg = kalkyle {
         hvis(skalBeregneRederi(RederiUtil.beskatningsordning.verdi())) {

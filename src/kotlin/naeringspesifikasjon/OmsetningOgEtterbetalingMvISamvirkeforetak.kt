@@ -1,6 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler
 
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.maksAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.maksAntallDesimaler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -34,7 +34,7 @@ internal object OmsetningOgEtterbetalingMvISamvirkeforetak : HarKalkylesamling {
             ) {
                 val verdi = (forekomstType.omsetningMedMedlemIEgetSamvirkeforetak / forekomstType.samletOmsetning) * 100
                 settUniktFelt(forekomstType.andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak) {
-                    verdi?.maksAntallDesimaler(10)
+                    verdi maksAntallDesimaler 10
                 }
                 settVilkaar()
             }

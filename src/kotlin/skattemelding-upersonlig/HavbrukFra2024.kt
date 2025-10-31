@@ -1,7 +1,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -38,20 +38,20 @@ object HavbrukFra2024 : HarKalkylesamling {
             if (inntektsaar.tekniskInntektsaar >= 2025) {
                 //Beregning av "aaretsAnvendelseAvNegativGrunnrenteinntektFraTidligereAar"
                 hvis(
-                    modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar stoerreEnn BigDecimal.ZERO
-                        && modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning stoerreEnn BigDecimal.ZERO
+                    modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar stoerreEnn 0
+                        && modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning stoerreEnn 0
                 ) {
                     hvis(
-                        modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar.tall() stoerreEllerLik
-                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning.tall()
+                        modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar stoerreEllerLik
+                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning
                     ) {
                         settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_aaretsAnvendelseAvNegativGrunnrenteinntektFraTidligereAar) {
                                 modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning.tall()
                         }
                     }
                     hvis(
-                        modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning.tall() stoerreEnn
-                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar.tall()
+                        modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning stoerreEnn
+                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar
                     ) {
                         settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_aaretsAnvendelseAvNegativGrunnrenteinntektFraTidligereAar) {
                             modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar.tall()
@@ -78,16 +78,11 @@ object HavbrukFra2024 : HarKalkylesamling {
                 ) {
                     if (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar.harVerdi()) {
                         //Hjelpeberegning rest positiv grunnrenteinntekt etter anvendelse av tidligere års negative grunnrenteinntekt
-                        val restPositivGrunnrenteinntektEtterAnvendelseAvTidligereAarsNegativeGrunnrenteinntekt = if (
-                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning.tall()!! stoerreEllerLik
-                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar.tall()
-                        ) {
-                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning -
-                                modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar
-                        } else {
-                            BigDecimal.ZERO
-                        }
-                        hvis(restPositivGrunnrenteinntektEtterAnvendelseAvTidligereAarsNegativeGrunnrenteinntekt stoerreEllerLik BigDecimal.ZERO) {
+                        val restPositivGrunnrenteinntektEtterAnvendelseAvTidligereAarsNegativeGrunnrenteinntekt =
+                            (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning -
+                                modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar) medMinimumsverdi 0
+
+                        hvis(restPositivGrunnrenteinntektEtterAnvendelseAvTidligereAarsNegativeGrunnrenteinntekt stoerreEllerLik 0) {
                             settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag) {
                                 restPositivGrunnrenteinntektEtterAnvendelseAvTidligereAarsNegativeGrunnrenteinntekt -
                                     sumAvgittGrunnrenteinntekt medMinimumsverdi 0

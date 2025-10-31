@@ -92,7 +92,7 @@ object FordeltBeregnetNaeringsinntektUnntak2022 : HarKalkylesamling {
                 modell2022.fordeltBeregnetNaeringsinntekt.fordeltSkattemessigResultat,
                 fordeltBeregnetNaeringsinntektForekomstId +
                     mapOf(
-                        modell2022.fordeltBeregnetNaeringsinntekt.fordeltSkattemessigResultat.gruppe!! to "fixed"
+                        modell2022.fordeltBeregnetNaeringsinntekt.fordeltSkattemessigResultat.gruppe to "fixed"
                     ),
                 gm.verdiFor(modell2022.beregnetNaeringsinntekt_skattemessigResultat) ?: gm.verdiFor(modell2022.resultatregnskap_aarsresultat)
             ),

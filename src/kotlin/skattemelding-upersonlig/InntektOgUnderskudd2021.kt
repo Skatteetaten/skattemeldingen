@@ -3,6 +3,7 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.bereg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV1
 
 object InntektOgUnderskudd2021 : HarKalkylesamling {
@@ -33,24 +34,16 @@ object InntektOgUnderskudd2021 : HarKalkylesamling {
                 forekomstType.inntektsfradrag_underskudd +
                 forekomstType.inntekt_mottattKonsernbidrag
 
-            val underhaandsakkordMotregnetFremfoertUnderskudd = if (
-                forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-                stoerreEllerLik forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall()
-            ) {
-                forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar
-            } else {
-                forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-            }
+            val underhaandsakkordMotregnetFremfoertUnderskudd = minsteVerdiAv(
+                forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall(),
+                forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
+            )
 
             val restFremfoertUnderskudd = forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar -
                 underhaandsakkordMotregnetFremfoertUnderskudd
 
             val aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar = beregnHvis(inntektFoerAnvendelseAvUnderskudd stoerreEnn 0) {
-                if (inntektFoerAnvendelseAvUnderskudd stoerreEllerLik restFremfoertUnderskudd) {
-                    restFremfoertUnderskudd
-                } else {
-                    inntektFoerAnvendelseAvUnderskudd
-                }
+                minsteVerdiAv(restFremfoertUnderskudd, inntektFoerAnvendelseAvUnderskudd)
             }
             settFelt(forekomstType.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
                 aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar
@@ -60,14 +53,10 @@ object InntektOgUnderskudd2021 : HarKalkylesamling {
 
     internal val restOppnaaddUnderhaandsakkordOgGjeldsettergivelseKalkyle = kalkyle("restOppnaaddUnderhaandsakkordOgGjeldsettergivelse") {
         forekomsterAv(modellV1.inntektOgUnderskudd) forHverForekomst {
-            val underhaandsakkordMotregnetFremfoertUnderskudd = if (
-                forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-                stoerreEllerLik forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall()
-            ) {
-                forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar
-            } else {
-                forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-            }
+            val underhaandsakkordMotregnetFremfoertUnderskudd = minsteVerdiAv(
+                forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall(),
+                forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
+            )
             settFelt(forekomstType.underskuddTilFremfoering_restOppnaaddUnderhaandsakkordOgGjeldsettergivelse) {
                 forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse -
                     underhaandsakkordMotregnetFremfoertUnderskudd
@@ -77,25 +66,17 @@ object InntektOgUnderskudd2021 : HarKalkylesamling {
 
     internal val fremfoerbartUnderskuddIInntektKalkyle = kalkyle("fremfoerbartUnderskuddIInntekt") {
         forekomsterAv(modellV1.inntektOgUnderskudd) forHverForekomst {
-            val underhaandsakkordMotregnetFremfoertUnderskudd = if (
-                forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-                stoerreEllerLik forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall()
-            ) {
-                forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar
-            } else {
-                forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-            }
+            val underhaandsakkordMotregnetFremfoertUnderskudd = minsteVerdiAv(
+                forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall(),
+                forekomstType.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
+            )
             val restFremfoertUnderskudd = forekomstType.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar -
                 underhaandsakkordMotregnetFremfoertUnderskudd
 
-            val restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd = if (
-                forekomstType.underskuddTilFremfoering_restOppnaaddUnderhaandsakkordOgGjeldsettergivelse
-                stoerreEllerLik forekomstType.samletUnderskudd.tall()
-            ) {
-                forekomstType.samletUnderskudd
-            } else {
-                forekomstType.underskuddTilFremfoering_restOppnaaddUnderhaandsakkordOgGjeldsettergivelse
-            }
+            val restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd = minsteVerdiAv(
+                forekomstType.samletUnderskudd.tall(),
+                forekomstType.underskuddTilFremfoering_restOppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
+            )
 
             settFelt(forekomstType.underskuddTilFremfoering_fremfoerbartUnderskuddIInntekt) {
                 restFremfoertUnderskudd -

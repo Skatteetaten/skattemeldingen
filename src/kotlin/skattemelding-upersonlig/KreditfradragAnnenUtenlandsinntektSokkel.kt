@@ -1,6 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler
 
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -160,7 +160,7 @@ object KreditfradragAnnenUtenlandsinntektSokkel : HarKalkylesamling {
                 modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigertNettoinntekt.harVerdi()
                     && modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigertNettoinntekt.stoerreEnn(0)
                     && modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigertNettoinntekt
-                    .stoerreEnn(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader.tall())
+                    .stoerreEnn(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader)
             ) {
                 settUniktFelt(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.samletKostnadTilordnetUtlandetEtterIndirekteFordelingsmetode) {
                     ((tilleggForKostnaderSomSkalFordelesEtterIndirekteMetode() *
@@ -172,7 +172,7 @@ object KreditfradragAnnenUtenlandsinntektSokkel : HarKalkylesamling {
                 (modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigertNettoinntekt.harVerdi()
                     && modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigertNettoinntekt.mindreEllerLik(0))
                     || modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.korrigertNettoinntekt
-                    .mindreEllerLik(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader.tall())
+                    .mindreEllerLik(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader)
             ) {
                 settUniktFelt(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntektForVirksomhetPaaSokkel.samletKostnadTilordnetUtlandetEtterIndirekteFordelingsmetode) {
                     tilleggForKostnaderSomSkalFordelesEtterIndirekteMetode()

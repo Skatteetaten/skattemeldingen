@@ -1,7 +1,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -32,7 +32,7 @@ object Havbruk : HarKalkylesamling {
                     settFelt(modellV2.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag) {
                         (forekomstType.beregnetGrunnrenteskatt_positivGrunnrenteinntektFoerSamordning -
                             forekomstType.beregnetGrunnrenteskatt_negativGrunnrenteinntektFoerSamordning -
-                            sumAvgittGrunnrenteinntekt + sumMottattGrunnrenteinntekt).medMinimumsverdi(0)
+                            sumAvgittGrunnrenteinntekt + sumMottattGrunnrenteinntekt) medMinimumsverdi 0
                     }
                 }
 
@@ -48,12 +48,12 @@ object Havbruk : HarKalkylesamling {
 
                 settFelt(forekomstType.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntekt) {
                     (forekomstType.beregnetGrunnrenteskatt_endeligSamordnetPositivGrunnrenteinntektFoerBunnfradrag -
-                        sumBunnfradrag(organisasjonsnummer)).medMinimumsverdi(0)
+                        sumBunnfradrag(organisasjonsnummer)) medMinimumsverdi 0
                 }
 
                 settFelt(forekomstType.beregnetGrunnrenteskatt_endeligSamordnetNegativGrunnrenteinntekt) {
                     (forekomstType.beregnetGrunnrenteskatt_negativGrunnrenteinntektFoerSamordning -
-                        sumMottattGrunnrenteinntekt).medMinimumsverdi(0)
+                        sumMottattGrunnrenteinntekt) medMinimumsverdi 0
                 }
 
                 settFelt(forekomstType.beregnetGrunnrenteskatt_beregnetGrunnrenteskattFoerProduksjonsavgift) {
@@ -66,7 +66,7 @@ object Havbruk : HarKalkylesamling {
                     (forekomstType.beregnetGrunnrenteskatt_beregnetGrunnrenteskattFoerProduksjonsavgift -
                         sumEgenProduksjonsavgift(organisasjonsnummer) +
                         sumAvgittProduksjonsavgift(organisasjonsnummer) -
-                        sumMottattProduksjonsavgift(organisasjonsnummer)).medMinimumsverdi(0)
+                        sumMottattProduksjonsavgift(organisasjonsnummer)) medMinimumsverdi 0
                 }
 
                 var erUttredenEllerSalgMedOpphoerAvVirksomhet = false

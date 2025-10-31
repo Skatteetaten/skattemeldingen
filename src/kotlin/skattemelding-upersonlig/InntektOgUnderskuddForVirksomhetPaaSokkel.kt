@@ -1,11 +1,12 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.petroleum_andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_sats
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV3
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.service.overfoeringAvFelter.FORDELTSKATTEMESSIGRESULTAT_ANDELFINANSTILLAND_FRA_NAERINGSSPESIFIKASJON_FELT
@@ -33,11 +34,10 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
         kalkyle("aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskattFraTidligereAar") {
             hvis(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeSelskapsskatt stoerreEnn 0) {
                 settUniktFelt(forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskattFraTidligereAar) {
-                    if (forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar stoerreEllerLik forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeSelskapsskatt.tall()) {
-                        forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeSelskapsskatt.tall()
-                    } else {
+                    minsteVerdiAv(
+                        forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeSelskapsskatt.tall(),
                         forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()
-                    }
+                    )
                 }
             }
         }
@@ -55,11 +55,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
         kalkyle("beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlaget") {
             hvis(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeNegativeSelskapsskatt.harVerdi()) {
                 settUniktFelt(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlagFraVirksomhetPaaSokkel) {
-                    if (forekomstType.negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand.erPositiv()) {
-                        forekomstType.negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand.tall()
-                    } else {
-                        BigDecimal.ZERO
-                    }
+                    forekomstType.negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand.tall() medMinimumsverdi 0
                 }
             }
         }
@@ -72,11 +68,10 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
 
             hvis(andelFinansFoertMotLandinntekt mindreEnn 0 && modell.inntektOgUnderskudd.inntektsfradrag_underskudd stoerreEnn 0) {
                 settUniktFelt(forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
-                    if (andelFinansFoertMotLandinntekt.absoluttverdi() stoerreEllerLik modell.inntektOgUnderskudd.inntektsfradrag_underskudd.tall()) {
-                        modell.inntektOgUnderskudd.inntektsfradrag_underskudd.tall()
-                    } else {
+                    minsteVerdiAv(
+                        modell.inntektOgUnderskudd.inntektsfradrag_underskudd.tall(),
                         andelFinansFoertMotLandinntekt.absoluttverdi()
-                    }
+                    )
                 }
             }
         }
@@ -97,24 +92,19 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
     internal val underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvAaretsUnderskudd =
         kalkyle {
             hvis(
-                modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
-                    forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel stoerreEnn 0 &&
-                    forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
-                    forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel -
-                    forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel stoerreEnn 0
+                (modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
+                    forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) stoerreEnn 0 &&
+                    (forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
+                        forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel -
+                        forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) stoerreEnn 0
             ) {
                 settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvAaretsUnderskudd) {
-                    if (forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskudd.tall() mindreEnn
-                        forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
-                        forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel -
-                        forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel
-                    ) {
-                        forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskudd.tall()
-                    } else {
-                        forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
+                    minsteVerdiAv(
+                        forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskudd.tall(),
+                        (forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
                             forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel -
-                            forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel
-                    }
+                            forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel)
+                    )
                 }
             }
         }
@@ -206,39 +196,25 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
         kalkyle {
             hvis(erPetroleumsforetak() && modell.inntektOgUnderskudd.inntektsfradrag_underskudd - forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel stoerreEnn 0) {
                 settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd) {
-                    if (modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag.tall() mindreEnn
-                        modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
-                        forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
-                        modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvAaretsUnderskudd
-                    ) {
-                        modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag.tall()
-                    } else {
-                        modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
+                    minsteVerdiAv(
+                        modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag.tall(),
+                        (modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
                             forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
-                            modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvAaretsUnderskudd
-                    }
+                            modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvAaretsUnderskudd)
+                    )
                 }
             }
         }
 
     internal val andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd =
         kalkyle {
-            if(
-                modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd *
-                    BigDecimal.valueOf(0.5) mindreEnn
-                    forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskudd -
-                    forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel
-            ) {
-                settUniktFelt(forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd) {
-                    (modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd * BigDecimal.valueOf(
-                        0.5
-                    )).somHeltall()
-                }
-            } else {
-                settUniktFelt(forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd) {
-                    forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskudd -
-                        forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel
-                }
+            settUniktFelt(forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd) {
+                minsteVerdiAv(
+                    (modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd *
+                        BigDecimal.valueOf(0.5)).somHeltall(),
+                    (forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskudd -
+                        forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel)
+                )
             }
         }
 
@@ -257,32 +233,29 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
 
             hvis(landinntekt + modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag stoerreEnn 0) {
                 settUniktFelt(modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand) {
-                    if (landinntekt + modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag mindreEnn
+                    minsteVerdiAv(
+                        landinntekt + modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag,
                         modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_fremfoertUnderskuddFraTidligereAar.tall()
-                    ) {
-                        landinntekt + modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag
-                    } else {
-                        modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_fremfoertUnderskuddFraTidligereAar.tall()
-                    }
+                    )
                 }
             }
         }
 
     internal val fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel =
         kalkyle {
-            val sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskud =
+            val sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd =
                 sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd()
-            hvis(sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskud -
+            hvis(sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd -
                 forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel stoerreEnn 0 &&
                 forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_fremfoertUnderskuddFraTidligereAar.harVerdi()
             ) {
                 settUniktFelt(forekomstType.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
-                    listOfNotNull(
-                        sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskud - forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel,
+                    minsteVerdiAv(
+                        sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd - forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel,
                         forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_fremfoertUnderskuddFraTidligereAar.tall(),
                         modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_fremfoertUnderskuddFraTidligereAar -
                             modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand
-                    ).minOrNull()
+                    )
                 }
             }
         }
@@ -366,18 +339,12 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
 
             hvis(landinntekt stoerreEnn 0) {
                 settUniktFelt(modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand) {
-                    if (
-                            landinntekt - modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand mindreEnn
-                        forekomstType.underskuddTilFremfoeringFraVirksomhetPaaSokkel_fremfoertUnderskuddFraTidligereAar -
-                        modell.inntektOgUnderskuddForVirksomhetPaaSokkel.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel.tall()
-                            .absoluttverdi()
-                    ) {
-                        landinntekt - modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand
-                    } else {
+                    minsteVerdiAv(
+                        landinntekt - modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand,
                         forekomstType.underskuddTilFremfoeringFraVirksomhetPaaSokkel_fremfoertUnderskuddFraTidligereAar -
                             modell.inntektOgUnderskuddForVirksomhetPaaSokkel.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel.tall()
                                 .absoluttverdi()
-                    }
+                    )
                 }
             }
         }
@@ -410,18 +377,17 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
 
     internal val fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAArFoertMotAlminneligInntektFraVirksomhetPaaSokkel =
         kalkyle {
-            val sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskud =
+            val sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd =
                 sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd()
             hvis(
-                sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskud stoerreEnn 0 &&
+                sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd stoerreEnn 0 &&
                     forekomstType.underskuddTilFremfoeringFraVirksomhetPaaSokkel_fremfoertUnderskuddFraTidligereAar.harVerdi()
             ) {
                 settUniktFelt(forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
-                    if (sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskud mindreEllerLik forekomstType.underskuddTilFremfoeringFraVirksomhetPaaSokkel_fremfoertUnderskuddFraTidligereAar.tall()) {
-                        sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskud
-                    } else {
+                    minsteVerdiAv(
+                        sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd,
                         forekomstType.underskuddTilFremfoeringFraVirksomhetPaaSokkel_fremfoertUnderskuddFraTidligereAar.tall()
-                    }
+                    )
                 }
             }
 

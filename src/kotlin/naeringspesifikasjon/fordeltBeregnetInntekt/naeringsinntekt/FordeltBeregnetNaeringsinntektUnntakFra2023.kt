@@ -177,7 +177,7 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat,
                 fordeltBeregnetNaeringsinntektForekomstId +
                     mapOf(
-                        modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat.gruppe!! to "fixed"
+                        modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat.gruppe to "fixed"
                     ),
                 gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat)
                     ?: gm.verdiFor(modell.resultatregnskap_aarsresultat)
@@ -221,7 +221,7 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
                 modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultat,
                 fordeltBeregnetNaeringsinntektForekomstId +
                     mapOf(
-                        modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultat.gruppe!! to "fixed"
+                        modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultat.gruppe to "fixed"
                     ),
                 gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat)
                     ?: gm.verdiFor(modell.resultatregnskap_aarsresultat)
@@ -231,7 +231,7 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
                 modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultatEtterKorreksjon,
                 fordeltBeregnetNaeringsinntektForekomstId +
                     mapOf(
-                        modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultatEtterKorreksjon.gruppe!! to "fixed"
+                        modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultatEtterKorreksjon.gruppe to "fixed"
                     ),
                 gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat)
                     ?: gm.verdiFor(modell.resultatregnskap_aarsresultat)

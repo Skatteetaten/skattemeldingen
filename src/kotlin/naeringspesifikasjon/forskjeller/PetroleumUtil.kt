@@ -8,7 +8,7 @@ object PetroleumUtil {
     fun GeneriskModellKontekst.positiveUtgaaendeVerdierGevinstOgTapskonto(): BigDecimal? {
         val utgaaendeVerdiGevinstOgTapskonto =
             forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) der {
-                forekomstType.utgaaendeVerdi stoerreEnn BigDecimal.ZERO &&
+                forekomstType.utgaaendeVerdi.erPositiv() &&
                 forekomstType.gjelderVirksomhetPaaSokkel.erSann()
             } summerVerdiFraHverForekomst {
                 forekomstType.utgaaendeVerdi.tall()
@@ -19,7 +19,7 @@ object PetroleumUtil {
     fun GeneriskModellKontekst.negativeUtgaaendeVerdierGevinstOgTapskonto(): BigDecimal? {
         val utgaaendeVerdiGevinstOgTapskonto =
             forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) der {
-                forekomstType.utgaaendeVerdi mindreEnn BigDecimal.ZERO &&
+                forekomstType.utgaaendeVerdi.erNegativ() &&
                     forekomstType.gjelderVirksomhetPaaSokkel.erSann()
             } summerVerdiFraHverForekomst {
                 forekomstType.utgaaendeVerdi.tall()

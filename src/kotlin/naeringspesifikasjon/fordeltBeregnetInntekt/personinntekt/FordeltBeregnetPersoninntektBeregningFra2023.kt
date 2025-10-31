@@ -1,10 +1,10 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt.personinntekt
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.divideInternal
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.GeneriskModellForKalkyler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.avrundTilToDesimaler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.avrundTilToDesimalerString
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.divideInternal
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.overstyrtVerdiHvisOverstyrt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
@@ -14,6 +14,9 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.Informasj
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.konstanter.Inntektsaar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Aarsliste
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.erNegativ
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.sum
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.ulik0
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt.skalBeregnePersoninntektFra2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.skjermingsgrunnlagstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.skjermingsgrunnlagstype2023
@@ -82,8 +85,7 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
 
                     val fordeltSkattemessigResultatEtterKorreksjonBeloep =
                         naeringinntektForekomsterPerIdentifikator[personinntektIdentifikator]
-                            ?.map { forekomst -> forekomst.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultatEtterKorreksjon) }
-                            ?.filter { forekomst -> forekomst != null && forekomst.isNotBlank() }
+                            ?.mapNotNull { forekomst -> forekomst.verdiSomBigDecimal(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultatEtterKorreksjon) }
 
                     if (fordeltSkattemessigResultatEtterKorreksjonBeloep != null
                         && fordeltSkattemessigResultatEtterKorreksjonBeloep.isNotEmpty()
@@ -94,7 +96,7 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
                         )
                             ?: beregnAaretsBeregnedePersoninntektFoerFordelingOgSamordning(
                                 personinntektForekomst,
-                                fordeltSkattemessigResultatEtterKorreksjonBeloep.sumOf { s -> BigDecimal(s) }
+                                fordeltSkattemessigResultatEtterKorreksjonBeloep.sum()
                             )
 
                         resultat = GeneriskModell.fra(
@@ -108,7 +110,7 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
                             )
                         )
 
-                        if (beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning != BigDecimal.ZERO) {
+                        if (beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning.ulik0()) {
                             val andelAvPersoninntektTilordnetInnehaver =
                                 personinntektForekomst.verdiFor(modell.fordeltBeregnetPersoninntekt.andelAvPersoninntektTilordnetInnehaver)
                                     ?: "100"
@@ -162,10 +164,10 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
                             { it.verdiFor(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.skjermingsgrunnlagstype) },
                             {
                                 val inngaaendeVerdi =
-                                    it.verdiFor(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.inngaaendeVerdi)
+                                    it.verdiSomBigDecimalEller0(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.inngaaendeVerdi)
                                 val utgaaendeVerdi =
-                                    it.verdiFor(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.utgaaendeVerdi)
-                                (BigDecimal(inngaaendeVerdi ?: "0") + BigDecimal(utgaaendeVerdi ?: "0")).divideInternal(
+                                    it.verdiSomBigDecimalEller0(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.utgaaendeVerdi)
+                                (inngaaendeVerdi + utgaaendeVerdi).divideInternal(
                                     BigDecimal(2)
                                 )
                             })
@@ -189,12 +191,11 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
                             )
 
                     val skjermingsrente =
-                        fordeltBeregnetPersoninntektForekomst.verdiFor(modell.fordeltBeregnetPersoninntekt.skjermingsrente)
-                            ?.let { BigDecimal(it).divideInternal(BigDecimal(100)) }
+                        fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimal(modell.fordeltBeregnetPersoninntekt.skjermingsrente)
+                            ?.divideInternal(BigDecimal(100))
 
                     val faktorForSkjermingsrente =
-                        (fordeltBeregnetPersoninntektForekomst.verdiFor(modell.fordeltBeregnetPersoninntekt.antallMaanederDrevetIAar)
-                            ?.let { BigDecimal(it) }
+                        (fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimal(modell.fordeltBeregnetPersoninntekt.antallMaanederDrevetIAar)
                             ?: BigDecimal(12)).divideInternal(BigDecimal(12))
 
                     val skjermingsfradrag = overstyrtVerdiHvisOverstyrt(
@@ -216,7 +217,7 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
                         modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagFoerGjeldsfradrag,
                         mapOf(
                             modell.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to idPersonInntekt,
-                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagFoerGjeldsfradrag.gruppe!! to "fixed"
+                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagFoerGjeldsfradrag.gruppe to "fixed"
                         ),
                         sumSkjermingsgrunnlagFoerGjeldsfradrag
                     )
@@ -226,7 +227,7 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
                         modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagEtterGjeldsfradrag,
                         mapOf(
                             modell.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to idPersonInntekt,
-                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagEtterGjeldsfradrag.gruppe!! to "fixed"
+                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagEtterGjeldsfradrag.gruppe to "fixed"
                         ),
                         sumSkjermingsgrunnlagEtterGjeldsfradrag
                     )
@@ -235,7 +236,7 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
                         modell.fordeltBeregnetPersoninntekt.skjermingsfradrag,
                         mapOf(
                             modell.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to idPersonInntekt,
-                            modell.fordeltBeregnetPersoninntekt.skjermingsfradrag.gruppe!! to "fixed"
+                            modell.fordeltBeregnetPersoninntekt.skjermingsfradrag.gruppe to "fixed"
                         ),
                         skjermingsfradrag
                     )
@@ -252,24 +253,20 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
         gjennomsnittsverdier: Map<String, List<BigDecimal>>,
         inntektsaar: Inntektsaar
     ): BigDecimal {
-        var skjermingsgrunnlagtyper = skjermingsgrunnlagtyper[inntektsaar.tekniskInntektsaar]!!
+        val skjermingsgrunnlagtyper = skjermingsgrunnlagtyper[inntektsaar.tekniskInntektsaar]!!
 
         val foersteLedd = gjennomsnittsverdier
             .filter { skjermingsgrunnlagtyper.contains(it.key) }
             .flatMap { it.value }
-            .fold(BigDecimal.ZERO, BigDecimal::add)
+            .sum()
 
         val leverandoergjeld =
             gjennomsnittsverdier
                 .filter { it.key == skjermingsgrunnlagstype.kode_leverandoergjeld.kode }
                 .flatMap { it.value }
-                .fold(BigDecimal.ZERO, BigDecimal::add)
+                .sum()
 
-        return if ((foersteLedd - leverandoergjeld).signum() == -1) {
-            BigDecimal.ZERO
-        } else {
-            foersteLedd - leverandoergjeld
-        }
+        return (foersteLedd - leverandoergjeld).coerceAtLeast(BigDecimal.ZERO)
     }
 
     private fun beregnSumSkjermingsgrunnlagEtterGjeldsfradrag(
@@ -279,13 +276,10 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
         val foretaksgjeld = gjennomsnittsverdier
             .filter { it.key == skjermingsgrunnlagstype.kode_foretaksgjeld.kode }
             .flatMap { it.value }
-            .fold(BigDecimal.ZERO, BigDecimal::add)
+            .sum()
 
-        return if ((sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld).signum() == -1) {
-            BigDecimal.ZERO
-        } else {
-            sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld
-        }
+        return (sumSkjermingsgrunnlagFoerGjeldsfradrag - foretaksgjeld)
+            .coerceAtLeast(BigDecimal.ZERO)
     }
 
     private fun beregnSkjermingsfradrag(
@@ -294,7 +288,7 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
         sumSkjermingsgrunnlagEtterGjeldsfradrag: BigDecimal,
         faktorForSkjermingsrente: BigDecimal
     ): BigDecimal? {
-        return if (sumSkjermingsgrunnlagFoerGjeldsfradrag.signum() == -1) {
+        return if (sumSkjermingsgrunnlagFoerGjeldsfradrag.erNegativ()) {
             BigDecimal.ZERO
         } else if (skjermingsrente != null) {
             sumSkjermingsgrunnlagEtterGjeldsfradrag * faktorForSkjermingsrente * skjermingsrente
@@ -309,56 +303,47 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
     ): BigDecimal {
         return fordeltSkattemessigResultatEtterKorreksjon
             .minus(
-                nullsafe(
-                    fordeltBeregnetPersoninntektForekomst,
+                fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimalEller0(
                     modell.fordeltBeregnetPersoninntekt.rentekostnadPaaForetaksgjeld
                 )
             )
             .minus(
-                nullsafe(
-                    fordeltBeregnetPersoninntektForekomst,
+                fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimalEller0(
                     modell.fordeltBeregnetPersoninntekt.kapitalinntektTilKorrigeringAvPersoninntekt
                 )
             )
             .plus(
-                nullsafe(
-                    fordeltBeregnetPersoninntektForekomst,
+                fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimalEller0(
                     modell.fordeltBeregnetPersoninntekt.kapitalkostnadTilKorrigeringAvPersoninntekt
                 )
             )
             .minus(
-                nullsafe(
-                    fordeltBeregnetPersoninntektForekomst,
+                fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimalEller0(
                     modell.fordeltBeregnetPersoninntekt.reduksjonsbeloepForLeidEiendomMotInnskudd
                 )
             )
             .minus(
-                nullsafe(
-                    fordeltBeregnetPersoninntektForekomst,
+                fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimalEller0(
                     modell.fordeltBeregnetPersoninntekt.salgAvMelkekvote
                 )
             )
             .minus(
-                nullsafe(
-                    fordeltBeregnetPersoninntektForekomst,
+                fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimalEller0(
                     modell.fordeltBeregnetPersoninntekt.gevinstVedRealisasjonAvAlminneligGaardsbrukEllerSkogbruk
                 )
             )
             .minus(
-                nullsafe(
-                    fordeltBeregnetPersoninntektForekomst,
+                fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimalEller0(
                     modell.fordeltBeregnetPersoninntekt.inntektsfoertBeloepFraGevinstOgTapskontoSomIkkeInngaarIPersoninntekt
                 )
             )
             .plus(
-                nullsafe(
-                    fordeltBeregnetPersoninntektForekomst,
+                fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimalEller0(
                     modell.fordeltBeregnetPersoninntekt.fradragsfoertBeloepFraGevinstOgTapskontoSomIkkeInngaarIPersoninntekt
                 )
             )
             .minus(
-                nullsafe(
-                    fordeltBeregnetPersoninntektForekomst,
+                fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimalEller0(
                     modell.fordeltBeregnetPersoninntekt.skjermingsfradrag
                 )
             )
@@ -389,13 +374,6 @@ object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
                 )
             )
         }
-    }
-
-    private fun nullsafe(
-        personForekomst: GeneriskModell, felt: Felt<*>,
-    ): BigDecimal {
-        val verdiFor = personForekomst.verdiFor(felt)
-        return BigDecimal(verdiFor ?: "0")
     }
 
     override fun kalkylesamling(): Kalkylesamling {

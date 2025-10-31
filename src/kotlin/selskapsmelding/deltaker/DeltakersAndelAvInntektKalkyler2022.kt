@@ -1,6 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.deltaker
 
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -9,6 +9,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsForFinansskattepliktigVirksomhet
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsITiltakssone
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skjermingsrenteForPersonligeAksjonaererOgDeltakereIAnsvarligSelskapMv
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.deltakerErPersonlig
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.erBosattInnenforTiltakssonenINordTromsOgFinnmark
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.erFinansskattepliktig
@@ -57,7 +58,7 @@ object DeltakersAndelAvInntektKalkyler2022 : HarKalkylesamling {
                             forekomstType.korreksjonIAlminneligInntekt_arbeidsgodtgjoerelseInnenFamiliebarnehageIDeltakersHjem +
                             forekomstType.korreksjonIAlminneligInntekt_arbeidsgodtgjoerelseInnenAnnenNaering
                     } else {
-                        sumFoerFremfoeringAvUnderskuddForKomandittistOgStilleDeltakerFelt.tall().medMinimumsverdi(0) -
+                        (sumFoerFremfoeringAvUnderskuddForKomandittistOgStilleDeltakerFelt.tall() medMinimumsverdi 0) -
                             forekomstType.forholdKnyttetTilKommandittistOgStilleDeltaker_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar
                     }
 
@@ -84,7 +85,7 @@ object DeltakersAndelAvInntektKalkyler2022 : HarKalkylesamling {
                     satser.sats(skattPaaAlminneligInntekt_sats)
                 }
 
-                if (sumFoerArbeidsgodtgjoerelseFelt.stoerreEnn(0)) {
+                if (sumFoerArbeidsgodtgjoerelseFelt stoerreEnn 0) {
                     settFelt(forekomstType.utdelingMv_skattPaaDeltakersAndelAvSelskapetsOverskudd) {
                         (sumFoerArbeidsgodtgjoerelseFelt * skattesats).somHeltall()
                     }
@@ -170,17 +171,13 @@ object DeltakersAndelAvInntektKalkyler2022 : HarKalkylesamling {
 
         internal val anvendtSkjermingsfradragIInntektsaarKalkyle = kalkyle {
             forekomsterAv(deltaker) forHverForekomst {
-                val verdi = if (
-                    forekomstType.utdelingMv_samletPositivUtdeling
-                        .mindreEnn(forekomstType.skjermingsfradrag_skjermingsfradragTilAnvendelseOgFremfoering.tall())
-                ) {
-                    forekomstType.utdelingMv_samletPositivUtdeling.tall()
-                } else {
+                val verdi = minsteVerdiAv(
+                    forekomstType.utdelingMv_samletPositivUtdeling.tall(),
                     forekomstType.skjermingsfradrag_skjermingsfradragTilAnvendelseOgFremfoering.tall()
-                }
+                )
 
                 settFelt(forekomstType.skjermingsfradrag_anvendtSkjermingsfradragIInntektsaar) {
-                    verdi.medMinimumsverdi(0)
+                    verdi medMinimumsverdi 0
                 }
             }
         }
@@ -213,7 +210,7 @@ object DeltakersAndelAvInntektKalkyler2022 : HarKalkylesamling {
                 forekomstType.skjermingsfradrag_anvendtSkjermingsfradragIInntektsaar
 
             settFelt(forekomstType.tilleggIAlminneligInntekt) {
-                tilleggIAlminneligInntekt.medMinimumsverdi(0).somHeltall()
+                (tilleggIAlminneligInntekt medMinimumsverdi 0).somHeltall()
             }
         }
     }
@@ -230,14 +227,10 @@ object DeltakersAndelAvInntektKalkyler2022 : HarKalkylesamling {
                     }
 
                 val underskuddSomMotregnesUnderhandsakkord =
-                    if (
-                        forekomstType.forholdKnyttetTilKommandittistOgStilleDeltaker_oppnaaddUnderhaandsakkordOgGjeldsettergivelse stoerreEllerLik
-                        samletUnderskuddSomKanFremfoeres
-                    ) {
-                        samletUnderskuddSomKanFremfoeres
-                    } else {
+                    minsteVerdiAv(
+                        samletUnderskuddSomKanFremfoeres,
                         forekomstType.forholdKnyttetTilKommandittistOgStilleDeltaker_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
-                    }
+                    )
 
                 val underskuddFoerAnvendelse = samletUnderskuddSomKanFremfoeres - underskuddSomMotregnesUnderhandsakkord
 

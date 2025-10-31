@@ -1,11 +1,11 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.timesNullsafe
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.timesNullsafe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2021
 
 internal object SkogOgToemmerkonto2021 : HarKalkylesamling {
@@ -13,9 +13,9 @@ internal object SkogOgToemmerkonto2021 : HarKalkylesamling {
     private val skattefordelAvSkogfondKalkyle = kalkyle("skattefordelAvSkogfond") {
         forAlleForekomsterAv(modell2021.skogbruk_skogOgToemmerkonto) {
             settFelt(forekomstType.skogfond_skattefordelAvSkogfond) {
-                (forekomstType.skogfond_utbetaltFraSkogfondkontoTilFormaalMedSkattefordel -
+                ((forekomstType.skogfond_utbetaltFraSkogfondkontoTilFormaalMedSkattefordel -
                     forekomstType.skogfond_innbetaltOffentligTilskuddTilSkogfondkonto
-                    )?.times(BigDecimal("0.85"))?.max(BigDecimal.ZERO)
+                    ) * 0.85) medMinimumsverdi 0
             }
         }
     }
@@ -24,9 +24,7 @@ internal object SkogOgToemmerkonto2021 : HarKalkylesamling {
         kalkyle("tilbakefoeringAvTidligereBeregnetSkattefordelPaaSkogfondkonto") {
             forAlleForekomsterAv(modell2021.skogbruk_skogOgToemmerkonto) {
                 settFelt(forekomstType.skogfond_tilbakefoeringAvTidligereBeregnetSkattefordelPaaSkogfondkonto) {
-                    forekomstType.skogfond_innbetaltOffentligTilskuddTilSkogfondkontoTilInvesteringForetattTidligereAar.times(
-                        0.85
-                    )
+                    forekomstType.skogfond_innbetaltOffentligTilskuddTilSkogfondkontoTilInvesteringForetattTidligereAar * 0.85
                 }
             }
         }
@@ -105,7 +103,7 @@ internal object SkogOgToemmerkonto2021 : HarKalkylesamling {
                     settFelt(forekomstType.inntektFraToemmerkonto) { inntektEllerInntektsfradragFraToemmerkonto }
                 }
                 hvis(inntektEllerInntektsfradragFraToemmerkonto.erNegativ()) {
-                    settFelt(forekomstType.inntektsfradragFraToemmerkonto) { inntektEllerInntektsfradragFraToemmerkonto?.abs() }
+                    settFelt(forekomstType.inntektsfradragFraToemmerkonto) { inntektEllerInntektsfradragFraToemmerkonto.absoluttverdi() }
                 }
             }
         }

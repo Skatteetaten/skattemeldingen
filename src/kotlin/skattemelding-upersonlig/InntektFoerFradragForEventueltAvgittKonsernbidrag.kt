@@ -3,20 +3,17 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.bereg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.util.RederiUtil
 
 object InntektFoerFradragForEventueltAvgittKonsernbidrag : HarKalkylesamling {
 
     internal val aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAarKalkyle = kalkyle {
-        val underhaandsakkordMotregnetFremfoertUnderskudd = if (
-            modell.inntektOgUnderskudd.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-            stoerreEllerLik (modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall())
-        ) {
-            modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall()
-        } else {
+        val underhaandsakkordMotregnetFremfoertUnderskudd = minsteVerdiAv(
+            modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall(),
             modell.inntektOgUnderskudd.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
-        }
+        )
         val restFremfoertUnderskudd =
             modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar -
                 underhaandsakkordMotregnetFremfoertUnderskudd
@@ -30,14 +27,8 @@ object InntektFoerFradragForEventueltAvgittKonsernbidrag : HarKalkylesamling {
                 modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag
 
             hvis(inntektFoerAnvendelseAvUnderskudd stoerreEnn 0) {
-                if (inntektFoerAnvendelseAvUnderskudd stoerreEllerLik restFremfoertUnderskudd) {
-                    settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
-                        restFremfoertUnderskudd
-                    }
-                } else {
-                    settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
-                        inntektFoerAnvendelseAvUnderskudd
-                    }
+                settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
+                    minsteVerdiAv(restFremfoertUnderskudd, inntektFoerAnvendelseAvUnderskudd)
                 }
             }
         }
@@ -46,28 +37,18 @@ object InntektFoerFradragForEventueltAvgittKonsernbidrag : HarKalkylesamling {
                 modell.rederiskatteordning_finansinntektOgFinansunderskudd.samletFinansinntekt.tall()
 
             hvis(inntektFoerAnvendelseAvUnderskudd stoerreEnn 0) {
-                if (inntektFoerAnvendelseAvUnderskudd stoerreEllerLik restFremfoertUnderskudd) {
-                    settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
-                        restFremfoertUnderskudd
-                    }
-                } else {
-                    settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
-                        inntektFoerAnvendelseAvUnderskudd
-                    }
+                settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
+                    minsteVerdiAv(restFremfoertUnderskudd, inntektFoerAnvendelseAvUnderskudd)
                 }
             }
         }
     }
 
     internal val aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAarSvalbardKalkyle = kalkyle {
-        val underhaandsakkordMotregnetFremfoertUnderskudd = if (
-            modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-            stoerreEllerLik (modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall())
-        ) {
-            modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall()
-        } else {
+        val underhaandsakkordMotregnetFremfoertUnderskudd = minsteVerdiAv(
+            modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall(),
             modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
-        }
+        )
 
         val restFremfoertUnderskudd = modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar -
             underhaandsakkordMotregnetFremfoertUnderskudd
@@ -77,14 +58,8 @@ object InntektFoerFradragForEventueltAvgittKonsernbidrag : HarKalkylesamling {
             modell.inntektOgUnderskuddSvalbard.inntekt_samletMottattKonsernbidrag
 
         hvis(inntektFoerAnvendelseAvUnderskudd stoerreEnn 0) {
-            if (inntektFoerAnvendelseAvUnderskudd stoerreEllerLik restFremfoertUnderskudd) {
-                settUniktFelt(modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
-                    restFremfoertUnderskudd
-                }
-            } else {
-                settUniktFelt(modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
-                    inntektFoerAnvendelseAvUnderskudd
-                }
+            settUniktFelt(modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
+                minsteVerdiAv(restFremfoertUnderskudd, inntektFoerAnvendelseAvUnderskudd)
             }
         }
     }

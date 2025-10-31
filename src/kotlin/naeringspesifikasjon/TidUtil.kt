@@ -3,6 +3,7 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregnin
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.Month
+import java.time.Year
 import java.time.temporal.ChronoUnit
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.dagerMellomInkludertStartOgSluttBeregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.maanederMellomInkludertStartOgSluttBeregning
@@ -42,14 +43,6 @@ fun dagerEidIRealisasjonsaaret(realisasjonsdato: LocalDate?): BigDecimal? {
 }
 fun dagerIkkeEidIAnskaffelsesaaret(anskaffelsesdato: LocalDate) = dagerIAaretFoer(anskaffelsesdato)
 
-fun erSkuddAar(aar: Int): Boolean {
-    return (aar % 4 == 0) && (aar % 100 != 0 || aar % 400 == 0)
-}
-
-fun antallDagerIAar(aar: Int) = if (erSkuddAar(aar)) {
-    BigDecimal(366)
-} else {
-    BigDecimal(365)
-}
+fun antallDagerIAar(aar: Int) = Year.of(aar).length().toBigDecimal()
 
 fun antallDagerIAar(aar: Inntektsaar) = antallDagerIAar(aar.gjeldendeInntektsaar)

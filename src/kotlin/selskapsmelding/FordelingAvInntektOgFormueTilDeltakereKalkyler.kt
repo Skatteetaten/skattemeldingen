@@ -1,7 +1,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -108,7 +108,7 @@ object FordelingAvInntektOgFormueTilDeltakereKalkyler : HarKalkylesamling {
                 }
 
                 val andelAvSamletUnderskudd = (underskuddForDeltaker * prosent).somHeltall()
-                val andelAvSamletInntekt = (inntektForDeltaker * prosent).somHeltall().medMinimumsverdi(0)
+                val andelAvSamletInntekt = (inntektForDeltaker * prosent).somHeltall() medMinimumsverdi 0
 
                 if (andelAvSamletUnderskudd.erNegativ()) {
                     settFelt(modell.deltaker.andelAvSamletUnderskudd) { andelAvSamletUnderskudd.absoluttverdi() }

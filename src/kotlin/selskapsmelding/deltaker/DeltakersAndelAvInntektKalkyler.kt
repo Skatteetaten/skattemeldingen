@@ -1,8 +1,8 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.deltaker
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medAntallDesimaler
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -15,6 +15,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsForFinansskattepliktigVirksomhet
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsITiltakssone
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skjermingsrenteForPersonligeAksjonaererOgDeltakereIAnsvarligSelskapMv
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.deltakerErPersonlig
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.deltakerErUpersonlig
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.deltakerErUpersonligEllerSdf
@@ -108,7 +109,7 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
                             satser.sats(skattPaaAlminneligInntekt_sats)
                         }
 
-                    if (sumFoerArbeidsgodtgjoerelseFelt.stoerreEnn(0)) {
+                    if (sumFoerArbeidsgodtgjoerelseFelt stoerreEnn 0) {
                         settFelt(forekomstType.utdelingMv_skattPaaDeltakersAndelAvSelskapetsOverskudd) {
                             (sumFoerArbeidsgodtgjoerelseFelt * skattesats).somHeltall()
                         }
@@ -225,17 +226,13 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
         internal val anvendtSkjermingsfradragIInntektsaarKalkyle = kalkyle {
             forekomsterAv(deltaker) forHverForekomst {
                 hvis(deltakerErPersonlig()) {
-                    val verdi = if (
-                        forekomstType.utdelingMv_samletPositivUtdeling
-                            .mindreEnn(forekomstType.skjermingsfradragForPersonligDeltaker_skjermingsfradragTilAnvendelseOgFremfoering.tall())
-                    ) {
-                        forekomstType.utdelingMv_samletPositivUtdeling.tall()
-                    } else {
+                    val verdi = minsteVerdiAv(
+                        forekomstType.utdelingMv_samletPositivUtdeling.tall(),
                         forekomstType.skjermingsfradragForPersonligDeltaker_skjermingsfradragTilAnvendelseOgFremfoering.tall()
-                    }
+                    )
 
                     settFelt(forekomstType.skjermingsfradragForPersonligDeltaker_anvendtSkjermingsfradragIInntektsaar) {
-                        verdi.medMinimumsverdi(0)
+                        verdi medMinimumsverdi 0
                     }
                 }
             }
@@ -296,14 +293,10 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
                     }
 
                 val underskuddSomMotregnesUnderhandsakkord =
-                    if (
-                        forekomstType.forholdKnyttetTilKommandittistOgStilleDeltaker_oppnaaddUnderhaandsakkordOgGjeldsettergivelse stoerreEllerLik
-                        samletUnderskuddSomKanFremfoeres
-                    ) {
-                        samletUnderskuddSomKanFremfoeres
-                    } else {
+                    minsteVerdiAv(
+                        samletUnderskuddSomKanFremfoeres,
                         forekomstType.forholdKnyttetTilKommandittistOgStilleDeltaker_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
-                    }
+                    )
 
                 val underskuddFoerAnvendelse = samletUnderskuddSomKanFremfoeres - underskuddSomMotregnesUnderhandsakkord
 
@@ -341,12 +334,12 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
         internal val aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAarPer31122002Kalkyle = kalkyle {
             hvis(erNokus()) {
                 forekomsterAv(deltaker) forHverForekomst {
-                    if (grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt.stoerreEllerLik(forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_fremfoertUnderskuddFraTidligereAar.tall())) {
+                    if (grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt stoerreEllerLik forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_fremfoertUnderskuddFraTidligereAar) {
                         settFelt(forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
                             forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_fremfoertUnderskuddFraTidligereAar.tall()
                         }
-                    } else if (grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt.stoerreEnn(0) &&
-                        grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt.mindreEnn(forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_fremfoertUnderskuddFraTidligereAar.tall())
+                    } else if (grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt stoerreEnn 0 &&
+                        grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt mindreEnn forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_fremfoertUnderskuddFraTidligereAar
                     ) {
                         settFelt(forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
                             grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt.tall()
@@ -396,23 +389,21 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
                     if (
                         (grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt -
                             forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar)
-                            .stoerreEllerLik(forekomstType.underskuddTilFremfoeringINokus_fremfoertUnderskuddFraTidligereAar.tall())
+                            .stoerreEllerLik(forekomstType.underskuddTilFremfoeringINokus_fremfoertUnderskuddFraTidligereAar)
                     ) {
                         settFelt(forekomstType.underskuddTilFremfoeringINokus_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
                             forekomstType.underskuddTilFremfoeringINokus_fremfoertUnderskuddFraTidligereAar.tall()
                         }
                     } else if (
                         (grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt -
-                            forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar).stoerreEnn(
-                            0
-                        )
+                            forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) stoerreEnn 0
                         && (grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt -
                             forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar).mindreEnn(
-                            forekomstType.underskuddTilFremfoeringINokus_fremfoertUnderskuddFraTidligereAar.tall()
+                            forekomstType.underskuddTilFremfoeringINokus_fremfoertUnderskuddFraTidligereAar
                         )
                     ) {
                         settFelt(forekomstType.underskuddTilFremfoeringINokus_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
-                            grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt.tall() -
+                            grunnlagForBeregningAvAaretsAnvendelseAvUnderskuddFelt -
                                 forekomstType.underskuddTilFremfoeringKnyttetTilAksjeEllerAndelINokusEidPer31122002_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar
                         }
                     }
@@ -466,9 +457,7 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
                     hvis(
                         ((inntektsaar.tekniskInntektsaar <= 2023 && deltakerErUpersonligEllerSdf()) ||
                             (inntektsaar.tekniskInntektsaar >= 2024 && deltakerErUpersonlig())) &&
-                            forekomstType.direkteEidEllerKontrollertAksjeEllerAndelINokus_antallAksjeEllerAndel.stoerreEnn(
-                                0
-                            )
+                            forekomstType.direkteEidEllerKontrollertAksjeEllerAndelINokus_antallAksjeEllerAndel stoerreEnn 0
                     ) {
                         settFelt(forekomstType.regulertInngangsverdiPerAksjeINokusForUpersonligDeltaker_regulertInngangsverdiPerAksje) {
                             (forekomstType.regulertInngangsverdiPerAksjeINokusForUpersonligDeltaker_endringISelskapetsSkattlagteKapital / forekomstType.direkteEidEllerKontrollertAksjeEllerAndelINokus_antallAksjeEllerAndel).medAntallDesimaler(
@@ -626,13 +615,13 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
 
             val finansinntektEllerUnderskudd = samletFinansinntekt - samletFinansunderskudd + aaretsTilleggEllerFradragIInntekt
 
-            hvis(finansinntektEllerUnderskudd stoerreEllerLik BigDecimal.ZERO) {
+            hvis(finansinntektEllerUnderskudd stoerreEllerLik 0) {
                 settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansinntekt) {
                     (finansinntektEllerUnderskudd * deltakersAndelAvInntektIProsent).somHeltall()
                 }
             }
 
-            hvis(finansinntektEllerUnderskudd mindreEnn BigDecimal.ZERO) {
+            hvis(finansinntektEllerUnderskudd.erNegativ()) {
                 settFelt(deltaker.deltakersAndelAvInntektOmfattetAvRederiskatteordningen_andelAvFinansUnderskudd) {
                     (finansinntektEllerUnderskudd.absoluttverdi() * deltakersAndelAvInntektIProsent).somHeltall()
                 }

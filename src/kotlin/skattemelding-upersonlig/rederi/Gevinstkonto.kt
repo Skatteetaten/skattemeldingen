@@ -1,12 +1,12 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.rederi
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.prosent
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.prosent
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.util.RederiUtil.skalBeregneRederi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.util.RederiUtil
@@ -51,11 +51,9 @@ object Gevinstkonto : HarKalkylesamling {
                 }
             }
             hvis(modell.rederiskatteordning_gevinstkonto.grunnlagForAaretsInntektsfoering stoerreEllerLik sats) {
-                var satsMinst20 =
-                    modell.rederiskatteordning_gevinstkonto.satsForInntektsfoering.tall() medMinimumsverdi BigDecimal(20) medMaksimumsverdi 100
-                if (satsMinst20 == null) {
-                    satsMinst20 = BigDecimal(20)
-                }
+                val satsMinst20 =
+                    (modell.rederiskatteordning_gevinstkonto.satsForInntektsfoering.tall() medMinimumsverdi 20 medMaksimumsverdi 100)
+                        ?: BigDecimal(20)
                 settUniktFelt(modell.rederiskatteordning_gevinstkonto.inntektsfoeringAvGevinstkonto) {
                     forekomsterAv(modell.rederiskatteordning_gevinstkonto) summerVerdiFraHverForekomst {
                         (forekomstType.grunnlagForAaretsInntektsfoering * satsMinst20.prosent()).somHeltall()

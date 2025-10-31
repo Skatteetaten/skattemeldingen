@@ -1,8 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.minusNullsafe
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.plusNullsafe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.GeneriskModellForKalkyler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.avrundTilToDesimaler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.avrundTilToDesimalerString
@@ -12,6 +10,8 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minusNullsafe
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.plusNullsafe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Egenkapitalendringstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Egenkapitalendringstype.kategori
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2021
@@ -31,7 +31,7 @@ object EgenkapitalavstemmingBeregning2021 : HarKalkylesamling {
         val gm = generiskModell.tilGeneriskModell()
 
         val inngaaendeEgenkapitalVerdi = hentEgenkapitalavstemmingForekomst(gm)
-            ?.verdiFor(modell2021.egenkapitalavstemming.inngaaendeEgenkapital)?.let { BigDecimal(it) }
+            ?.verdiSomBigDecimal(modell2021.egenkapitalavstemming.inngaaendeEgenkapital)
 
         val sumNettoPositivEllerNegativPrinsippendring = beregnSumNettoPositivEllerNegativPrinsippendring(gm)
 
@@ -101,7 +101,7 @@ object EgenkapitalavstemmingBeregning2021 : HarKalkylesamling {
             )
         }
 
-        leggTilIKontekst(GeneriskModellForKalkyler.Companion.fra(nyeElementer))
+        leggTilIKontekst(GeneriskModellForKalkyler.fra(nyeElementer))
     }
 
     internal fun GeneriskModellKontekst.beregnSumNettoPositivEllerNegativPrinsippendring(gm: GeneriskModell): BigDecimal? {
@@ -120,13 +120,13 @@ object EgenkapitalavstemmingBeregning2021 : HarKalkylesamling {
 
         val egenkapitalavstemmingForekomst = hentEgenkapitalavstemmingForekomst(gm)
         val utsattSkatt = egenkapitalavstemmingForekomst
-            ?.verdiFor(modell2021.egenkapitalavstemming.utsattSkatt)
+            ?.verdiSomBigDecimal(modell2021.egenkapitalavstemming.utsattSkatt)
         val utsattSkattefordel = egenkapitalavstemmingForekomst
-            ?.verdiFor(modell2021.egenkapitalavstemming.utsattSkattefordel)
+            ?.verdiSomBigDecimal(modell2021.egenkapitalavstemming.utsattSkattefordel)
 
         return sumNettoPrinsippendring
-            ?.minus(BigDecimal(utsattSkatt ?: "0"))
-            ?.plus(BigDecimal(utsattSkattefordel ?: "0"))
+            .minusNullsafe(utsattSkatt)
+            .plusNullsafe(utsattSkattefordel)
     }
 
     private fun hentEgenkapitalavstemmingForekomst(gm: GeneriskModell): GeneriskModell? {

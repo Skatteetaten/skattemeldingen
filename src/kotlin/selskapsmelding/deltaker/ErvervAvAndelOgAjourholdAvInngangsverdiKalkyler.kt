@@ -1,7 +1,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.deltaker
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -37,7 +37,7 @@ object ErvervAvAndelOgAjourholdAvInngangsverdiKalkyler : HarKalkylesamling {
         forekomsterAv(modell.deltaker) forHverForekomst {
             hvis (deltakerErPersonlig() && this@kalkyle.erNokus()) {
                 forAlleForekomsterAv(forekomstType.ervervAvAndelOgAjourholdAvInngangsverdi) {
-                    hvis(forekomstType.aaretsSkjermingsfradrag.stoerreEnn(forekomstType.skattepliktigUtbytteFoerSkjermingsfradrag)) {
+                    hvis(forekomstType.aaretsSkjermingsfradrag stoerreEnn forekomstType.skattepliktigUtbytteFoerSkjermingsfradrag) {
                         settFelt(forekomstType.ubenyttetSkjermingsfradragTilFremfoering) {
                             forekomstType.aaretsSkjermingsfradrag -
                                 forekomstType.skattepliktigUtbytteFoerSkjermingsfradrag
@@ -105,7 +105,7 @@ object ErvervAvAndelOgAjourholdAvInngangsverdiKalkyler : HarKalkylesamling {
                             (forekomstType.skattepliktigUtbytteFoerSkjermingsfradrag -
                                 forekomstType.aaretsSkjermingsfradrag -
                                 forekomstType.ubenyttetSkjermingsfradragFraTidligereAar)
-                        hvis(skattepliktigUtbytteEtterSkjermingsfradrag.stoerreEllerLik(0)) {
+                        hvis(skattepliktigUtbytteEtterSkjermingsfradrag stoerreEllerLik 0) {
                             settFelt(forekomstType.skattepliktigUtbytte) {
                                 skattepliktigUtbytteEtterSkjermingsfradrag
                             }
@@ -123,7 +123,7 @@ object ErvervAvAndelOgAjourholdAvInngangsverdiKalkyler : HarKalkylesamling {
                             (forekomstType.skattepliktigUtbytteFoerSkjermingsfradrag -
                                 forekomstType.aaretsSkjermingsfradrag -
                                 forekomstType.ubenyttetSkjermingsfradragFraTidligereAar)
-                        hvis(skattepliktigUtbytteEtterSkjermingsfradrag.mindreEnn(0)) {
+                        hvis(skattepliktigUtbytteEtterSkjermingsfradrag mindreEnn 0) {
                             settFelt(forekomstType.ubenyttetSkjermingsfradragTilFremfoering) {
                                 skattepliktigUtbytteEtterSkjermingsfradrag.absoluttverdi()
                             }

@@ -1,7 +1,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -406,7 +406,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                         stoerreEnn 0 &&
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
                         stoerreEllerLik
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet
                 ) {
                     settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()
@@ -419,7 +419,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                         stoerreEnn 0 &&
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
                         mindreEnn
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet
                 ) {
                     settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()

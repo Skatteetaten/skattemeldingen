@@ -1,7 +1,8 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.erTryggAaDelePaa
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -135,7 +136,7 @@ internal object SaldoavskrevetAnleggsmiddel : HarKalkylesamling {
             val konsumprisindeks1997 =
                 hentKonsumprisindeksVannkraft(BigDecimal.valueOf(1997))
 
-            hvis(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIKraftverk_gjelderVannkraftverk.erSann() && konsumprisindeks != BigDecimal.ZERO && konsumprisindeks != null) {
+            hvis(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIKraftverk_gjelderVannkraftverk.erSann() && konsumprisindeks.erTryggAaDelePaa()) {
                 settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIKraftverk_konsumprisindeksjustertInvesteringskostnad) {
                     (forekomstType.nyanskaffelse * konsumprisindeks1997) / konsumprisindeks
                 }

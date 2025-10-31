@@ -1,10 +1,10 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.rederi
 
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medAntallDesimaler
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.rundAvOppTilNaermesteHundre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.rundAvTilNaermesteHundre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.rundAvTilNaermesteTusen
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.rundAvOppTilNaermesteHundre
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.rundAvTilNaermesteHundre
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.rundAvTilNaermesteTusen
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle

@@ -1,11 +1,11 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.rederi
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.prosent
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.prosent
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modell
 
 object Gevinstkonto : HarKalkylesamling {
@@ -48,7 +48,7 @@ object Gevinstkonto : HarKalkylesamling {
             }
             hvis(modell.rederiskatteordning_gevinstkonto.grunnlagForAaretsInntektsfoering stoerreEllerLik 15000) {
                 var satsMinst20 =
-                    modell.rederiskatteordning_gevinstkonto.satsForInntektsfoering.tall() medMinimumsverdi BigDecimal(20) medMaksimumsverdi 100
+                    modell.rederiskatteordning_gevinstkonto.satsForInntektsfoering.tall() medMinimumsverdi 20 medMaksimumsverdi 100
                 if (satsMinst20 == null) {
                     satsMinst20 = BigDecimal(20)
                 }

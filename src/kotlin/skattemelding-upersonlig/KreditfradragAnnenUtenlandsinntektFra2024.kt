@@ -1,14 +1,14 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.mindreEllerLikNullsafe
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v2_2022.kostnadsfordelingsmetodeVedSkattBetaltIUtlandet_2022.kode_annenFordelingsmetode
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v2_2022.kostnadsfordelingsmetodeVedSkattBetaltIUtlandet_2022.kode_indirekteFordelingsmetode
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV3
 
@@ -177,7 +177,7 @@ object KreditfradragAnnenUtenlandsinntektFra2024 : HarKalkylesamling {
                 modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.korrigertNettoinntekt.harVerdi()
                     && modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.korrigertNettoinntekt.stoerreEnn(0)
                     && modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.korrigertNettoinntekt
-                    .stoerreEnn(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader.tall())
+                    .stoerreEnn(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader)
             ) {
                 settUniktFelt(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.samletKostnadTilordnetUtlandetEtterIndirekteFordelingsmetode) {
                     ((tilleggForKostnaderSomSkalFordelesEtterIndirekteMetode() *
@@ -189,7 +189,7 @@ object KreditfradragAnnenUtenlandsinntektFra2024 : HarKalkylesamling {
                 (modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.korrigertNettoinntekt.harVerdi()
                     && modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.korrigertNettoinntekt.mindreEllerLik(0))
                     || modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.korrigertNettoinntekt
-                    .mindreEllerLik(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader.tall())
+                    .mindreEllerLik(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader)
             ) {
                 settUniktFelt(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.samletKostnadTilordnetUtlandetEtterIndirekteFordelingsmetode) {
                     tilleggForKostnaderSomSkalFordelesEtterIndirekteMetode()
@@ -245,13 +245,10 @@ object KreditfradragAnnenUtenlandsinntektFra2024 : HarKalkylesamling {
                     } else if (modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.norskAndelAvInntektFoerAvgittKonsernbidrag.erPositiv() &&
                         samletAvgittKonsernbidrag.erPositiv()) {
                         samletAvgittKonsernbidrag -
-                            (if (samletAvgittKonsernbidrag.tall()
-                                    .mindreEllerLikNullsafe(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.norskAndelAvInntektFoerAvgittKonsernbidrag.tall())
-                            ) {
-                                samletAvgittKonsernbidrag.tall()
-                            } else {
+                            minsteVerdiAv(
+                                samletAvgittKonsernbidrag.tall(),
                                 modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilAnnenUtenlandsinntekt.norskAndelAvInntektFoerAvgittKonsernbidrag.tall()
-                            })
+                            )
                     } else {
                         BigDecimal.ZERO
                     }

@@ -1,10 +1,10 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.rederi
 
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medAntallDesimaler
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.rundAvOppTilNaermesteHundre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.rundAvTilNaermesteHundre
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.rundAvTilNaermesteTusen
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.rundAvOppTilNaermesteHundre
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.rundAvTilNaermesteHundre
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.rundAvTilNaermesteTusen
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -51,7 +51,7 @@ object Tonnasjeskatt : HarKalkylesamling {
 
                 val beregningOver25000 =
                     if (forekomstType.nettotonnasje stoerreEnn 25000) {
-                        (forekomstType.nettotonnasje - 25000)!!.rundAvTilNaermesteTusen() *
+                        (forekomstType.nettotonnasje - 25000).rundAvTilNaermesteTusen() *
                             forekomstType.antallDager *
                             satser.sats(Sats.rederi_tonnasjeskattNivaaFire) / 1000
                     } else null
@@ -63,7 +63,7 @@ object Tonnasjeskatt : HarKalkylesamling {
                     beregningOver25000) * 25 / 100
                 var miljoereduksjon = forekomstType.miljoereduksjon.tall()
                 if (forekomstType.miljoereduksjon.harVerdi()
-                    && forekomstType.miljoereduksjon.tall()!! > maxTonnasjeskattAndel
+                    && forekomstType.miljoereduksjon stoerreEnn maxTonnasjeskattAndel
                 ) {
                     miljoereduksjon = maxTonnasjeskattAndel
                 }

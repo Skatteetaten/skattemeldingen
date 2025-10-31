@@ -1,11 +1,12 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 
 object Vindkraft : HarKalkylesamling {
@@ -55,15 +56,11 @@ object Vindkraft : HarKalkylesamling {
                 forekomstType.spesifikasjonAvProduksjonsavgiftIVindkraft_aaretsProduksjonsavgift
 
 
-            hvis(forekomstType.beregnetGrunnrenteskattFoerProduksjonsavgift stoerreEllerLik samletProduksjonsavgift) {
-                settFelt(forekomstType.spesifikasjonAvProduksjonsavgiftIVindkraft_aaretsAnvendelseAvProduksjonsavgift) {
-                    samletProduksjonsavgift
-                }
-            }
-            hvis(forekomstType.beregnetGrunnrenteskattFoerProduksjonsavgift mindreEnn samletProduksjonsavgift) {
-                settFelt(forekomstType.spesifikasjonAvProduksjonsavgiftIVindkraft_aaretsAnvendelseAvProduksjonsavgift) {
+            settFelt(forekomstType.spesifikasjonAvProduksjonsavgiftIVindkraft_aaretsAnvendelseAvProduksjonsavgift) {
+                minsteVerdiAv(
+                    samletProduksjonsavgift,
                     forekomstType.beregnetGrunnrenteskattFoerProduksjonsavgift.tall()
-                }
+                )
             }
 
             settFelt(forekomstType.spesifikasjonAvProduksjonsavgiftIVindkraft_fremfoerbarProduksjonsavgift) {
@@ -74,7 +71,7 @@ object Vindkraft : HarKalkylesamling {
 
             settFelt(forekomstType.positivGrunnrenteskatt) {
                 (forekomstType.beregnetGrunnrenteskattFoerProduksjonsavgift -
-                    forekomstType.spesifikasjonAvProduksjonsavgiftIVindkraft_aaretsAnvendelseAvProduksjonsavgift) medMinimumsverdi BigDecimal.ZERO
+                    forekomstType.spesifikasjonAvProduksjonsavgiftIVindkraft_aaretsAnvendelseAvProduksjonsavgift) medMinimumsverdi 0
             }
         }
 

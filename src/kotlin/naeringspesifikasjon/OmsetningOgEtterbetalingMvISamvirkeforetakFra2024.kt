@@ -1,6 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler
 
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.maksAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.maksAntallDesimaler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -49,7 +49,7 @@ internal object OmsetningOgEtterbetalingMvISamvirkeforetakFra2024 : HarKalkylesa
                     ) {
                         val verdi = (forekomstType.andreforhold_kjoepFraMedlemmerISamvirkeforetakOgOevrige_omsetningMedMedlemIEgetSamvirkeforetak / forekomstType.andreforhold_kjoepFraMedlemmerISamvirkeforetakOgOevrige_samletOmsetning) * 100
                         settFelt(forekomstType.andreforhold_kjoepFraMedlemmerISamvirkeforetakOgOevrige_andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak, maksAntallDesimaler) {
-                            verdi?.maksAntallDesimaler(maksAntallDesimaler)
+                            verdi maksAntallDesimaler maksAntallDesimaler
                         }
                     }
                 }
@@ -69,7 +69,7 @@ internal object OmsetningOgEtterbetalingMvISamvirkeforetakFra2024 : HarKalkylesa
                     ) {
                         val verdi = (forekomstType.omsetningMedMedlemIEgetSamvirkeforetak / forekomstType.samletOmsetning) * 100
                         settFelt(forekomstType.andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak, maksAntallDesimaler) {
-                            verdi?.maksAntallDesimaler(maksAntallDesimaler)
+                            verdi maksAntallDesimaler maksAntallDesimaler
                         }
                     }
                 }

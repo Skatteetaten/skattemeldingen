@@ -1,13 +1,13 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler
 
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v2_2022.kostnadsfordelingsmetodeVedSkattBetaltIUtlandet_2022.kode_annenFordelingsmetode
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v2_2022.kostnadsfordelingsmetodeVedSkattBetaltIUtlandet_2022.kode_indirekteFordelingsmetode
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 
 object KreditfradragNokusSokkel : HarKalkylesamling {
 
@@ -135,7 +135,7 @@ object KreditfradragNokusSokkel : HarKalkylesamling {
                 modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigertNettoinntekt.harVerdi()
                     && modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigertNettoinntekt.stoerreEnn(0)
                     && modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigertNettoinntekt
-                    .stoerreEnn(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader.tall())
+                    .stoerreEnn(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader)
             ) {
                 settUniktFelt(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.samletKostnadTilordnetUtlandetEtterIndirekteFordelingsmetode) {
                     ((tilleggForKostnaderSomSkalFordelesEtterIndirekteMetodeNokus() *
@@ -147,7 +147,7 @@ object KreditfradragNokusSokkel : HarKalkylesamling {
                 (modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigertNettoinntekt.harVerdi()
                     && modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigertNettoinntekt.mindreEllerLik(0))
                     || modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.korrigertNettoinntekt
-                    .mindreEllerLik(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader.tall())
+                    .mindreEllerLik(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.nettoinntektUnderlagtBeskatningIUtlandetFoerFradragForIndirekteKostnader)
             ) {
                 settUniktFelt(modell.fradragINorskInntektsskattForSkattBetaltTilFremmedStatKnyttetTilInntektFraNOKUSSelskapEllerVirksomhetILavskattelandForVirksomhetPaaSokkel.samletKostnadTilordnetUtlandetEtterIndirekteFordelingsmetode) {
                     tilleggForKostnaderSomSkalFordelesEtterIndirekteMetodeNokus()

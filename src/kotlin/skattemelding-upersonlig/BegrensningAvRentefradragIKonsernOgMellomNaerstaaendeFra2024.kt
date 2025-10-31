@@ -3,12 +3,13 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medAntallDesimaler
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV4
 
@@ -246,7 +247,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
                     ) {
                         BigDecimal.ZERO
                     } else {
-                        lavesteTallAv(
+                        minsteVerdiAv(
                             forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall(),
                             forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsern.tall()
                         ) medMinimumsverdi 0
@@ -267,7 +268,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
                     ) {
                         BigDecimal.ZERO
                     } else {
-                        lavesteTallAv(
+                        minsteVerdiAv(
                             forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad.tall(),
                             forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall()
                         ) medMinimumsverdi 0
@@ -289,8 +290,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
                     || modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_negativEgenkapitalIKonsernregnskapGlobalt.harVerdi()
                     )
                     && modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_balansesumIKonsernregnskapGlobalt.harVerdi()
-                    && ((modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalandelForSelskapetEllerNorskDelAvKonsernet + BigDecimal(
-                    2) stoerreEllerLik modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap.tall()))
+                    && ((modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalandelForSelskapetEllerNorskDelAvKonsernet + 2) stoerreEllerLik modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap)
             ) {
                 settUniktFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilbakefoertTilleggIInntektForSelskapIKonsernMv) {
                     forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme.tall().somHeltall()
@@ -330,8 +330,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
                         && (modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_positivEgenkapitalIKonsernregnskapGlobalt.harVerdi()
                         || modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_negativEgenkapitalIKonsernregnskapGlobalt.harVerdi())
                         && modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_balansesumIKonsernregnskapGlobalt.harVerdi()
-                        && ((modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalandelForSelskapetEllerNorskDelAvKonsernet + BigDecimal(
-                        2) stoerreEllerLik modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap.tall()))
+                        && ((modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalandelForSelskapetEllerNorskDelAvKonsernet + 2) stoerreEllerLik modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap)
                 ) {
                     settUniktFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilbakefoertTilleggIInntektForSelskapIKonsernMv) {
                         forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme.tall().somHeltall()
@@ -375,11 +374,11 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
                     && forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_korrigertRentestoerrelse stoerreEnn satser!!.sats(
                     Sats.rentebegrensning_grensebeloepUtenforKonsern
                 )
-                    && forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_korrigertRentestoerrelse stoerreEnn forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_rentefradragsramme.tall()
+                    && forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_korrigertRentestoerrelse stoerreEnn forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_rentefradragsramme
                     && forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsern.erPositiv()
                 hvis(skalSetteFelt) {
                     settUniktFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektForSelskapIKonsernMvSomFaarAvskaaretFradragForRenterTilAndreNaerstaaende) {
-                        lavesteTallAv(
+                        minsteVerdiAv(
                             forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsern.tall(),
                             (forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_korrigertRentestoerrelse - forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_rentefradragsramme)
                         )
@@ -406,7 +405,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
             }
             hvis (sumFremfoertRentefradragFraTidligereAar.erPositiv()) {
                 settUniktFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsFradragIInntekt) {
-                    lavesteTallAv(
+                    minsteVerdiAv(
                         forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall().absoluttverdi(),
                         sumFremfoertRentefradragFraTidligereAar
                     )
@@ -438,7 +437,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
                 forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvRentebegrensning +
                 forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_fradragIInntektSomFoelgeAvRentebegrensning) medMinimumsverdi 0
             settUniktFelt(forekomstType.rentefradragTilFremfoeringIInntektsaaret_fremfoertRentefradragFraTidligereAarInnenforAaretsTillatteRentefradrag) {
-                lavesteTallAv(sumFremfoertRentefradragFraTidligereAar, nettoRentekostnad)
+                minsteVerdiAv(sumFremfoertRentefradragFraTidligereAar, nettoRentekostnad)
             }
         }
     }
@@ -643,12 +642,6 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
                 modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_fordringMotSelskapMvSomErKonsolidertLinjeForLinjeIKonsernregnskapet.beloepIValuta()
                 ).somHeltall()
         }
-    }
-
-    private fun lavesteTallAv(vararg args: BigDecimal?): BigDecimal? = if (args.contains(null)) {
-        null
-    } else {
-        args.toList().filterNotNull().minOrNull()
     }
 
     override fun kalkylesamling(): Kalkylesamling {

@@ -2,7 +2,7 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregnin
 
 import java.math.BigDecimal
 import mu.KotlinLogging
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.erTryggAaDelePaa
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.erTryggAaDelePaa
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.hentFoersteFeltMedVerdiEllerNull

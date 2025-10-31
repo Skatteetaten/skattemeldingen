@@ -3,8 +3,8 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medAntallDesimaler
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -344,8 +344,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
             val harSelskapetErInkludertIAnnenInnrapportering = modell.unntakForRentebegrensning.anvendtUnntaksregel_selskapetErInkludertIAnnenInnrapportering.erSann()
             val harIdentifikator = modell.unntakForRentebegrensning.anvendtUnntaksregel_annetSelskapSomRapportererPaaVegneAvKonsern_identifikator.harVerdi()
             val harBalansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret = modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_balansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret.harVerdi()
-            val egenkapitalandelForSelskapetEllerNorskDelAvKonsernetSoerst = ((modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalandelForSelskapetEllerNorskDelAvKonsernet + BigDecimal(
-            2) stoerreEllerLik modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap.tall()))
+            val egenkapitalandelForSelskapetEllerNorskDelAvKonsernetSoerst = (modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalandelForSelskapetEllerNorskDelAvKonsernet + 2) stoerreEllerLik modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap
             val harAnnetSelskapINorskDelAvEllerInnenlandskKonsernSelskapetsOrganisasjonsnummer = finnForekomsterMed(modell.unntakForRentebegrensning.anvendtUnntaksregel_annetSelskapINorskDelAvEllerInnenlandskKonsern) {
                 forekomstType.selskapetsOrganisasjonsnummer.harVerdi()
             }.isNotEmpty()
@@ -486,7 +485,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
                 forekomsterAv(forekomstType.rentefradragTilFremfoeringTidligereAar) summerVerdiFraHverForekomst {
                     forekomstType.fremfoertRentefradragFraTidligereAar.tall()
                 }
-            hvis(sumFremfoertRentefradragFraTidligereAar.erPositiv() && forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad.stoerreEllerLik(0)) {
+            hvis(sumFremfoertRentefradragFraTidligereAar.erPositiv() && forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad stoerreEllerLik 0) {
                 val nettoRentekostnad = (forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad -
                     forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvRentebegrensning +
                     forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_fradragIInntektSomFoelgeAvRentebegrensning) medMinimumsverdi 0
@@ -518,7 +517,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
                 var justertVerdiForSdfEllerNokus =
                     (inntektEllerUnderskudd * satser.sats(Sats.rentebegrensning_underskuddSdfOgNokusProsent)).somHeltall()
                         .absoluttverdi()
-                if (justertVerdiForSdfEllerNokus stoerreEnn forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsTilleggIInntekt.tall()) {
+                if (justertVerdiForSdfEllerNokus stoerreEnn forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsTilleggIInntekt) {
                     justertVerdiForSdfEllerNokus =
                         forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsTilleggIInntekt.tall()
                 }

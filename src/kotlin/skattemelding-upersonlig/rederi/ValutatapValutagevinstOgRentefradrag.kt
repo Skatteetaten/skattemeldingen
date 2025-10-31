@@ -1,8 +1,8 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.rederi
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medAntallDesimaler
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -97,31 +97,31 @@ object ValutatapValutagevinstOgRentefradrag : HarKalkylesamling {
 
     private val samletSkattepliktigValutagevinstEllerTap = kalkyle {
         hvis(skalBeregneRederi(RederiUtil.beskatningsordning.verdi())) {
-            var nettoKortsiktigValutagevinst = BigDecimal(0)
-            var nettoKortsiktigValutatap = BigDecimal(0)
-            var nettoRealisertLangsiktigValutagevinstEtablertFom2005 = BigDecimal(0)
-            var nettoRealisertLangsiktigValutatapEtablertFom2005 = BigDecimal(0)
+            var nettoKortsiktigValutagevinst = BigDecimal.ZERO
+            var nettoKortsiktigValutatap = BigDecimal.ZERO
+            var nettoRealisertLangsiktigValutagevinstEtablertFom2005 = BigDecimal.ZERO
+            var nettoRealisertLangsiktigValutatapEtablertFom2005 = BigDecimal.ZERO
             hvis(modell.rederiskatteordning_valutatapValutagevinstOgRentefradrag.gjennomsnittligFinansaktivaIProsentAvGjennomsnittligTotalkapital.harVerdi()) {
                 nettoKortsiktigValutagevinst =
                     (forekomsterAv(modell.rederiskatteordning_valutatapValutagevinstOgRentefradrag) summerVerdiFraHverForekomst {
                         forekomstType.kortsiktigValutagevinst *
                             forekomstType.gjennomsnittligFinansaktivaIProsentAvGjennomsnittligTotalkapital / 100
-                    }) ?: BigDecimal(0)
+                    }) ?: BigDecimal.ZERO
                 nettoKortsiktigValutatap =
                     (forekomsterAv(modell.rederiskatteordning_valutatapValutagevinstOgRentefradrag) summerVerdiFraHverForekomst {
                         forekomstType.kortsiktigValutatap *
                             forekomstType.gjennomsnittligFinansaktivaIProsentAvGjennomsnittligTotalkapital / 100
-                    }) ?: BigDecimal(0)
+                    }) ?: BigDecimal.ZERO
                 nettoRealisertLangsiktigValutagevinstEtablertFom2005 =
                     (forekomsterAv(modell.rederiskatteordning_valutatapValutagevinstOgRentefradrag) summerVerdiFraHverForekomst {
                         forekomstType.realisertLangsiktigValutagevinstEtablertFom2005 *
                             forekomstType.gjennomsnittligFinansaktivaIProsentAvGjennomsnittligTotalkapital / 100
-                    }) ?: BigDecimal(0)
+                    }) ?: BigDecimal.ZERO
                 nettoRealisertLangsiktigValutatapEtablertFom2005 =
                     (forekomsterAv(modell.rederiskatteordning_valutatapValutagevinstOgRentefradrag) summerVerdiFraHverForekomst {
                         forekomstType.realisertLangsiktigValutatapEtablertFom2005 *
                             forekomstType.gjennomsnittligFinansaktivaIProsentAvGjennomsnittligTotalkapital / 100
-                    }) ?: BigDecimal(0)
+                    }) ?: BigDecimal.ZERO
             }
             val samletSkattepliktigValutagevinstEllerTap =
                 forekomsterAv(modell.rederiskatteordning_valutatapValutagevinstOgRentefradrag) summerVerdiFraHverForekomst {

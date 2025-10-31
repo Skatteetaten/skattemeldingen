@@ -1,7 +1,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.deltaker
 
 import java.time.LocalDate
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.somHeltall
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -90,9 +90,9 @@ object RealisasjonOgAnnenOverdragelseAvAndelKalkyler : HarKalkylesamling {
                 }
 
                 hvis(forekomstType.ubenyttetSkjermingsfradrag.erPositiv()
-                    && (forekomstType.vederlag - forekomstType.realisasjonskostnad - inngangsverdi).stoerreEllerLik(0)
+                    && (forekomstType.vederlag - forekomstType.realisasjonskostnad - inngangsverdi) stoerreEllerLik 0
                 ) {
-                    gevinstEllerTap = (gevinstEllerTap - forekomstType.ubenyttetSkjermingsfradrag).medMinimumsverdi(0)
+                    gevinstEllerTap = (gevinstEllerTap - forekomstType.ubenyttetSkjermingsfradrag) medMinimumsverdi 0
                 }
 
                 if (gevinstEllerTap stoerreEllerLik 0) {

@@ -109,9 +109,9 @@ internal object SkogOgToemmerkonto2022 : HarKalkylesamling {
     val inntektEllerInntektsfradragFraToemmerkontoKalkyle =
         kalkyle("inntektEllerInntektsfradragFraToemmerkonto") {
             val satser = satser!!
-            val grenseverdiEn = satser.sats(Sats.anleggsmiddelOgToemmerkonto_grenseverdiEn).toInt()
-            val grenseverdiTo = satser.sats(Sats.anleggsmiddelOgToemmerkonto_grenseverdiTo).toInt()
-            val grenseverdiTre = satser.sats(Sats.anleggsmiddelOgToemmerkonto_grenseverdiTre).toInt()
+            val grenseverdiEn = satser.sats(Sats.anleggsmiddelOgToemmerkonto_grenseverdiEn)
+            val grenseverdiTo = satser.sats(Sats.anleggsmiddelOgToemmerkonto_grenseverdiTo)
+            val grenseverdiTre = satser.sats(Sats.anleggsmiddelOgToemmerkonto_grenseverdiTre)
             val satsIntervallTilOgMedGrenseverdiEn = satser
                 .satsIntervall(Sats.anleggsmiddelOgToemmerkonto_satsIntervallTilOgMedGrenseverdiEn)
             val satsIntervallFraGrenseverdiEnTilTo = satser

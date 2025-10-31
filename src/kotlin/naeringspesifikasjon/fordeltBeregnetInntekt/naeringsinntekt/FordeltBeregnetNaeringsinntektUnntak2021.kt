@@ -6,8 +6,8 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.lagDefaultElementHvisDetIkkeEksisterer
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.virksomhetstype
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.lagDefaultElementHvisDetIkkeEksisterer
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2021
 
 object FordeltBeregnetNaeringsinntektUnntak2021 : HarKalkylesamling {
@@ -90,7 +90,7 @@ object FordeltBeregnetNaeringsinntektUnntak2021 : HarKalkylesamling {
                 modell2021.fordeltBeregnetNaeringsinntekt.fordeltSkattemessigResultat,
                 fordeltBeregnetNaeringsinntektForekomstId +
                     mapOf(
-                        modell2021.fordeltBeregnetNaeringsinntekt.fordeltSkattemessigResultat.gruppe!! to "fixed"
+                        modell2021.fordeltBeregnetNaeringsinntekt.fordeltSkattemessigResultat.gruppe to "fixed"
                     ),
                 gm.verdiFor(modell2021.beregnetNaeringsinntekt_skattemessigResultat) ?: gm.verdiFor(modell2021.resultatregnskap_aarsresultat)
             ),

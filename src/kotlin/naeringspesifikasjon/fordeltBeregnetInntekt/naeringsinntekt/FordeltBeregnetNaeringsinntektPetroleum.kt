@@ -1,7 +1,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt.naeringsinntekt
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.medAntallDesimaler
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -81,11 +81,8 @@ internal object FordeltBeregnetNaeringsinntektPetroleum : HarKalkylesamling {
             hvis(fullRegnskapspliktOgVirksomhetsTypePetroleumsforetak()) {
                 var gjennomsnittligRentebaerendeGjeld =
                     petroleumFordeling.gjennomsnittligRentebaerendeGjeld.tall()
-                if (!gjennomsnittligRentebaerendeGjeld.harVerdi() || gjennomsnittligRentebaerendeGjeld.erNegativ() || gjennomsnittligRentebaerendeGjeld.lik(
-                        0
-                    )
-                ) {
-                    gjennomsnittligRentebaerendeGjeld = BigDecimal("1")
+                if (!gjennomsnittligRentebaerendeGjeld.harVerdi() || gjennomsnittligRentebaerendeGjeld.erNegativ() || gjennomsnittligRentebaerendeGjeld lik 0) {
+                    gjennomsnittligRentebaerendeGjeld = BigDecimal.ONE
                 }
                 val mellomBeregning =
                     petroleumFordeling.sumSkattemessigNedskrevetFormuesverdiForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel /

@@ -3,6 +3,7 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.bereg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV3
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.util.RederiUtil
@@ -100,14 +101,10 @@ object InntektOgUnderskudd : HarKalkylesamling {
     }
 
     internal val restOppnaaddUnderhaandsakkordOgGjeldsettergivelseKalkyle = kalkyle {
-        val underhaandsakkordMotregnetFremfoertUnderskudd = if (
-            modell.inntektOgUnderskudd.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-            stoerreEllerLik (modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall())
-        ) {
-            modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall()
-        } else {
+        val underhaandsakkordMotregnetFremfoertUnderskudd = minsteVerdiAv(
+            modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall(),
             modell.inntektOgUnderskudd.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
-        }
+        )
 
         settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoering_restOppnaaddUnderhaandsakkordOgGjeldsettergivelse) {
             modell.inntektOgUnderskudd.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse -
@@ -117,30 +114,22 @@ object InntektOgUnderskudd : HarKalkylesamling {
 
     internal val fremfoerbartUnderskuddIInntektKalkyle = kalkyle {
         hvis(!harForekomsterAv(modell.inntektOgUnderskuddForVirksomhetPaaSokkel)) {
-            val underhaandsakkordMotregnetFremfoertUnderskudd = if (
-                modell.inntektOgUnderskudd.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse
-                stoerreEllerLik (modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall())
-            ) {
-                modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall()
-            } else {
+            val underhaandsakkordMotregnetFremfoertUnderskudd = minsteVerdiAv(
+                modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall(),
                 modell.inntektOgUnderskudd.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
-            }
+            )
 
-            val restFremoertUnderskudd =
+            val restFremfoertUnderskudd =
                 modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar -
                     underhaandsakkordMotregnetFremfoertUnderskudd
 
-            val restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd = if (
-                modell.inntektOgUnderskudd.underskuddTilFremfoering_restOppnaaddUnderhaandsakkordOgGjeldsettergivelse
-                stoerreEllerLik (modell.inntektOgUnderskudd.samletUnderskudd.tall())
-            ) {
-                modell.inntektOgUnderskudd.samletUnderskudd.tall()
-            } else {
+            val restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd = minsteVerdiAv(
+                modell.inntektOgUnderskudd.samletUnderskudd.tall(),
                 modell.inntektOgUnderskudd.underskuddTilFremfoering_restOppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
-            }
+            )
 
             settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoerbartUnderskuddIInntekt) {
-                restFremoertUnderskudd -
+                restFremfoertUnderskudd -
                     modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
                     modell.inntektOgUnderskudd.samletUnderskudd -
                     restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd
