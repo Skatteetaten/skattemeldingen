@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <kodeliste xmlns="urn:no:skatteetaten:informasjonsforvaltning:kodeliste:v2">
-  <identifikator>9056e176-c7ae-4f4c-8e65-d5bf8e47fd1f</identifikator>
+  <identifikator>6b037b70-8784-403c-93ac-eaca6fa99234</identifikator>
   <tekniskNavn>2025_trygdeEllerSkattemessigUnntakPerFelt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-03-12T13:57:32.000+01:00</sistEndret>
+  <sistEndret>2025-10-22T16:10:49.000+02:00</sistEndret>
   <sistEndretAv>x00obo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -592,6 +592,7 @@
     <tekniskNavn>/skattemelding/naering/grunnlagForBeregningAvNaeringsinntektOgSaerskiltFradragForFiskereOgFangstfolkKnyttetTilLottaker/oppdragsgiver/lottMvFraOppdragsgiver/beloep</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>grunnlagKnyttetTilLottaker.oppdragsgiver.lottMvFraOppdragsgiver.beloep</forekomstIGeneriskModell>
@@ -1274,6 +1275,14 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>skadeforsikring.renteinntektAvSkadeforsikring</forekomstIGeneriskModell>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>/skattemelding/bankLaanOgForsikring/forsikring/skadeforsikring/utbetalingFraSkadeforsikring</tekniskNavn>
+    <kodetillegg>
+      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
+      <forekomstIGeneriskModell>skadeforsikring.utbetalingFraSkadeforsikring</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>

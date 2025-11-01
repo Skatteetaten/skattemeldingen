@@ -4,7 +4,7 @@
   <tekniskNavn>2024_trygdeEllerSkattemessigUnntakPerFelt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-03-12T13:57:32.000+01:00</sistEndret>
+  <sistEndret>2025-10-22T15:56:16.000+02:00</sistEndret>
   <sistEndretAv>x00obo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -592,6 +592,7 @@
     <tekniskNavn>/skattemelding/naering/grunnlagForBeregningAvNaeringsinntektOgSaerskiltFradragForFiskereOgFangstfolkKnyttetTilLottaker/oppdragsgiver/lottMvFraOppdragsgiver/beloep</tekniskNavn>
     <kodetillegg>
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattefriMedTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattepliktigUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>grunnlagKnyttetTilLottaker.oppdragsgiver.lottMvFraOppdragsgiver.beloep</forekomstIGeneriskModell>
@@ -1274,6 +1275,14 @@
       <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
       <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
       <forekomstIGeneriskModell>skadeforsikring.renteinntektAvSkadeforsikring</forekomstIGeneriskModell>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>/skattemelding/bankLaanOgForsikring/forsikring/skadeforsikring/utbetalingFraSkadeforsikring</tekniskNavn>
+    <kodetillegg>
+      <trygdeEllerSkattemessigUnntak>ingen</trygdeEllerSkattemessigUnntak>
+      <trygdeEllerSkattemessigUnntak>skattefriUtenTrygdeavgiftsplikt</trygdeEllerSkattemessigUnntak>
+      <forekomstIGeneriskModell>skadeforsikring.utbetalingFraSkadeforsikring</forekomstIGeneriskModell>
     </kodetillegg>
   </kode>
   <kode>
