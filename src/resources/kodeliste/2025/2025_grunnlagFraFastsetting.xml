@@ -4,7 +4,7 @@
   <tekniskNavn>2025_grunnlagFraFastsetting</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1.2</versjonsnummer>
-  <sistEndret>2025-09-09T11:30:11.000+02:00</sistEndret>
+  <sistEndret>2025-10-13T08:52:49.000+02:00</sistEndret>
   <sistEndretAv>x00elo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -279,26 +279,10 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>barnepensjonFraAndreEnnFolketrygden</tekniskNavn>
-    <begrepsreferanse>https://data.skatteetaten.no/begrep/d9baf22f-fb0b-5c45-9ad7-53907303b5db</begrepsreferanse>
-    <kodetillegg>
-      <kommentar>Konsolidert for mapping fra SL</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>barnepensjonFraAndreEnnFolketrygdenFra2024</tekniskNavn>
     <begrepsreferanse>https://data.skatteetaten.no/web/datakatalog/begrep/d9baf22f-fb0b-5c45-9ad7-53907303b5db</begrepsreferanse>
     <kodetillegg>
       <kommentar>SPAP-20836 og SH-22170</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>barnepensjonFraFolketrygden</tekniskNavn>
-    <begrepsreferanse>https://data.skatteetaten.no/begrep/b5740884-d96a-11e6-8d9b-005056821322</begrepsreferanse>
-    <kodetillegg>
-      <temakategori>familieOgHelse</temakategori>
-      <postnummer>2.6.3</postnummer>
-      <temaunderkategori>fHInntekt</temaunderkategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -309,10 +293,6 @@
       <temaunderkategori>fHInntekt</temaunderkategori>
       <kommentar>SPAP-20836 og SH-22170</kommentar>
     </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>barnepensjonFraIPAOgIPS</tekniskNavn>
-    <begrepsreferanse>https://data.skatteetaten.no/begrep/641ba94e-48e9-934f-b26a-74a1bddce3bf</begrepsreferanse>
   </kode>
   <kode>
     <tekniskNavn>barnepensjonFraIPAOgIPSFra2024</tekniskNavn>
@@ -415,6 +395,9 @@
     <tekniskNavn>deltakersAndelAvNegativGrunnrenteinntektIHavbruksvirksomhet</tekniskNavn>
   </kode>
   <kode>
+    <tekniskNavn>deltakersAndelAvPositivGrunnrenteinntektIHavbruksvirksomhet</tekniskNavn>
+  </kode>
+  <kode>
     <tekniskNavn>ektefelletilleggTilPensjon</tekniskNavn>
     <begrepsreferanse>https://data.skatteetaten.no/begrep/367f2c88-a9e1-11e8-8514-005056821322</begrepsreferanse>
     <kodetillegg>
@@ -457,6 +440,12 @@
     <kodetillegg>
       <temakategori>arbeidTrygdPensjon</temakategori>
       <temaunderkategori>pensjonTrygdInntekt</temaunderkategori>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>etteroppgjoerOmstillingsstoenad</tekniskNavn>
+    <kodetillegg>
+      <temakategori>arbeidTrygdPensjon</temakategori>
     </kodetillegg>
   </kode>
   <kode>
@@ -1248,48 +1237,18 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>korrigertGlobalAlminneligInntektKreditfradragUtenLatentGevinstOgTap</tekniskNavn>
+    <kodetillegg>
+      <kommentar>ifbm beregning av utflyttingsskatt</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>krigspensjon</tekniskNavn>
     <begrepsreferanse>https://data.skatteetaten.no/begrep/dcfb4760-e484-11e6-9cb3-005056821322</begrepsreferanse>
   </kode>
   <kode>
     <tekniskNavn>kvalifiseringsstoenad</tekniskNavn>
     <begrepsreferanse>https://data.skatteetaten.no/begrep/6c325cf8-ff95-11e8-a756-005056823b16</begrepsreferanse>
-  </kode>
-  <kode>
-    <tekniskNavn>latentEllerRealisertGevinstPaaAksjeAndelMvVedUtflytting</tekniskNavn>
-    <begrepsreferanse>https://data.skatteetaten.no/begrep/7d1e76b9-3494-d24f-abc9-44cc5fe7431a</begrepsreferanse>
-  </kode>
-  <kode>
-    <tekniskNavn>latentEllerRealisertTapPaaAksjeAndelMvVedUtflytting</tekniskNavn>
-    <begrepsreferanse>https://data.skatteetaten.no/begrep/07201552-c635-7249-bbd1-9e19b035d16c</begrepsreferanse>
-  </kode>
-  <kode>
-    <tekniskNavn>latentEllerRealisertGevinstPaaAnnetFinansproduktMvVedUtflytting</tekniskNavn>
-    <begrepsreferanse>https://data.skatteetaten.no/begrep/04821f28-53a6-8f40-ae46-98e8afa2f190</begrepsreferanse>
-  </kode>
-  <kode>
-    <tekniskNavn>latentEllerRealisertTapPaaAnnetFinansproduktMvVedUtflytting</tekniskNavn>
-    <begrepsreferanse>https://data.skatteetaten.no/begrep/c1a3afdd-7452-5a4b-95f2-f3cfe79c4e6b</begrepsreferanse>
-  </kode>
-  <kode>
-    <tekniskNavn>latentGevinstMedUtsattBeskatningPaaVerdipapirerOgAndelerMvVedUtflytting</tekniskNavn>
-    <kodetillegg>
-      <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
-      <alias>latentGevinstPaaAksjerOgAndelerMvVedUtflytting</alias>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>latentTapMedUtsattBeskatningPaaVerdipapirerOgAndelerMvVedUtflytting</tekniskNavn>
-    <kodetillegg>
-      <kommentar>Flyttet fra beregningsgrunnlag i 2018</kommentar>
-      <alias>latentTapPaaAksjerOgAndelerMvVedUtflytting</alias>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>latentEllerRealisertGevinstPaaOpsjonerIArbeidsforholdVedUtflytting</tekniskNavn>
-  </kode>
-  <kode>
-    <tekniskNavn>latentEllerRealisertTapPaaOpsjonerIArbeidsforholdVedUtflytting</tekniskNavn>
   </kode>
   <kode>
     <tekniskNavn>latentGevinstPaaAksjeAndelMvVedUtflyttingUtenUtsattBetalingAvSkatt</tekniskNavn>
@@ -1432,14 +1391,6 @@
     <tekniskNavn>maksimalSkattPaaUtbytteOmfattetAvSkatteavtaleVedSkatteavtalebostedIAnnenStat</tekniskNavn>
   </kode>
   <kode>
-    <tekniskNavn>minstefradragIBarnepensjon</tekniskNavn>
-    <begrepsreferanse>https://data.skatteetaten.no/begrep/cf247fec-dfe5-11e7-9101-005056821322</begrepsreferanse>
-    <kodetillegg>
-      <temakategori>familieOgHelse</temakategori>
-      <temaunderkategori>underholdsbidrag</temaunderkategori>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>minstefradragIInntekt</tekniskNavn>
     <begrepsreferanse>https://data.skatteetaten.no/begrep/367f2ca9-a9e1-11e8-8514-005056821322</begrepsreferanse>
     <kodetillegg>
@@ -1512,6 +1463,18 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>nettoinntektFraAndreEnnDenNorskeStatIEOESVedAlternativFordelingUtenLatentGevinstOgTap</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Beregningsgrunnlag - kreditfradrag</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <kommentar>Beregningsgrunnlag - kreditfradrag - ifbm utflyttingsskatt</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>nettoinntektFraAndreEnnDenNorskeStatUtenforEOESVedAlternativFordeling</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -1522,6 +1485,18 @@
     <begrepsreferanse>https://data.skatteetaten.no/begrep/367f2cb0-a9e1-11e8-8514-005056821322</begrepsreferanse>
     <kodetillegg>
       <kommentar>Beregningsgrunnlag - kreditfradrag</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>nettoinntektFraAndreEnnDenNorskeStatUtenforEOESVedAlternativFordelingUtenLatentGevinstOgTap</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Beregningsgrunnlag - kreditfradrag</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <kommentar>Beregningsgrunnlag - kreditfradrag - ifbm utflyttingsskatt</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1538,6 +1513,18 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>nettoinntektFraDenNorskeStatIEOESVedAlternativFordelingUtenLatentGevinstOgTap</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Beregningsgrunnlag - kreditfradrag</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <kommentar>Beregningsgrunnlag - kreditfradrag - ifbm utflyttingsskatt</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>nettoinntektFraDenNorskeStatUtenforEOESVedAlternativFordeling</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -1548,6 +1535,18 @@
     <begrepsreferanse>https://data.skatteetaten.no/begrep/367f2cb2-a9e1-11e8-8514-005056821322</begrepsreferanse>
     <kodetillegg>
       <kommentar>Beregningsgrunnlag - kreditfradrag</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>nettoinntektFraDenNorskeStatUtenforEOESVedAlternativFordelingUtenLatentGevinstOgTap</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Beregningsgrunnlag - kreditfradrag</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <kommentar>Beregningsgrunnlag - kreditfradrag - ifbm utflyttingsskatt</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -1564,6 +1563,18 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>nettoinntektIEOESVedKreditfradragUtenLatentGevinstOgTap</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Beregningsgrunnlag - kreditfradrag</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <kommentar>Beregningsgrunnlag - kreditfradrag - ifbm utflyttingsskatt</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>nettoinntektUtenforEOESVedKreditfradrag</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -1574,6 +1585,18 @@
     <begrepsreferanse>https://data.skatteetaten.no/begrep/367f2cb4-a9e1-11e8-8514-005056821322</begrepsreferanse>
     <kodetillegg>
       <kommentar>Beregningsgrunnlag - kreditfradrag</kommentar>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>nettoinntektUtenforEOESVedKreditfradragUtenLatentGevinstOgTap</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Beregningsgrunnlag - kreditfradrag</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <kommentar>Beregningsgrunnlag - kreditfradrag - ifbm utflyttingsskatt</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -2933,7 +2956,7 @@
     <tekniskNavn>2025_grunnlagFraFastsettingAndreFelter</tekniskNavn>
     <status>aktiv</status>
     <versjonsnummer>1.2</versjonsnummer>
-    <sistEndret>2025-09-09T11:30:11.000+02:00</sistEndret>
+    <sistEndret>2025-10-13T08:52:49.000+02:00</sistEndret>
     <sistEndretAv>x00elo</sistEndretAv>
     <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
