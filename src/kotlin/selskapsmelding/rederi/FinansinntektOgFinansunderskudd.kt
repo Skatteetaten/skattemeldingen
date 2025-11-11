@@ -26,7 +26,8 @@ object FinansinntektOgFinansunderskudd : HarKalkylesamling {
                 forekomsterAv(modell.rederiskatteordning_valutatapValutagevinstOgRentefradrag) summerVerdiFraHverForekomst {
                     forekomstType.fradragsberettigetRentekostnad.tall()
                 }
-            val sum =
+            var sum = inntektstillegg + samletSkattepliktigValutagevinst - fradragsberettigetRentekostnad - samletFradragsberettigetValutatap
+            sum +=
                 forekomsterAv(modell.rederiskatteordning_finansinntektOgFinansunderskudd) summerVerdiFraHverForekomst {
                     forekomstType.renteinntekt +
                         forekomstType.annenFinansinntekt +
@@ -38,18 +39,14 @@ object FinansinntektOgFinansunderskudd : HarKalkylesamling {
                         forekomstType.inntektKnyttetTilSolidaransvarForArbeidstakere +
                         forekomstType.andelAvSkattemessigFinansoverskuddFraSdfOgNokus +
                         forekomstType.garantiprovisjonsinntekt +
-                        forekomstType.skattepliktigUtbytte +
-                        inntektstillegg +
-                        samletSkattepliktigValutagevinst -
+                        forekomstType.skattepliktigUtbytte -
                         forekomstType.annenFinanskostnad -
-                        fradragsberettigetRentekostnad -
                         forekomstType.tapPaaRenteswapavtale -
                         forekomstType.fradragsberettigetTapVedRealisasjonAvAksjeMv -
                         (forekomstType.fradragsberettigetTapVedRealisasjonAvFinansiellValutakontraktInngaattFom2010 *
                             forekomstType.finanskapitalandelVedUtgangenAvInntektsaaret.prosent()) -
                         forekomstType.andelAvFradragsberettigetFinansunderskuddFraSdf -
-                        forekomstType.garantiprovisjonskostnad -
-                        samletFradragsberettigetValutatap
+                        forekomstType.garantiprovisjonskostnad
                 }
             hvis(sum.harVerdi()) {
                 hvis(sum stoerreEllerLik 0) {
