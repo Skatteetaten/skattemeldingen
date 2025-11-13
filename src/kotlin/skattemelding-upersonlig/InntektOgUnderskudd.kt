@@ -160,6 +160,22 @@ object InntektOgUnderskudd : HarKalkylesamling {
                 }
             }
         }
+        hvis(inntektsaar.tekniskInntektsaar >= 2024) {
+            forAlleForekomsterAv(modell.inntektOgUnderskudd) {
+                hvis(
+                    antallForekomsterAv(forekomstType.inntekt_mottattKonsernbidrag_mottattKonsernbidragPerAvgiver).erPositiv() &&
+                        forekomstType.inntekt_mottattKonsernbidrag_mottattKonsernbidragSkalBekreftesAvRevisor.harIkkeVerdi()
+                ) {
+                    settFelt(forekomstType.inntekt_mottattKonsernbidrag_mottattKonsernbidragSkalBekreftesAvRevisor, "false")
+                }
+                hvis(
+                    antallForekomsterAv(forekomstType.inntektsfradrag_avgittKonsernbidrag_avgittKonsernbidragPerMottaker).erPositiv() &&
+                        forekomstType.inntektsfradrag_avgittKonsernbidrag_avgittKonsernbidragSkalBekreftesAvRevisor.harIkkeVerdi()
+                ) {
+                    settFelt(forekomstType.inntektsfradrag_avgittKonsernbidrag_avgittKonsernbidragSkalBekreftesAvRevisor, "false")
+                }
+            }
+        }
     }
 
     override fun kalkylesamling(): Kalkylesamling {
