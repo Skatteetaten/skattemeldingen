@@ -6,7 +6,7 @@
   <artifactId>skattemeldingen</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <skattemelding.mapping.version>2.373.0</skattemelding.mapping.version>
+    <skattemelding.mapping.version>feature_SPAP_36069-SNAPSHOT</skattemelding.mapping.version>
     <skattemeldingtekst-mapping.version>1.41.6</skattemeldingtekst-mapping.version>
     <skattemelding-kontroll.version>3.239.0</skattemelding-kontroll.version>
     <beregning-tjeneste-xsd.version>3.34.4</beregning-tjeneste-xsd.version>
@@ -154,12 +154,12 @@
                   <artifactId>skattemelding-mapping-resources</artifactId>
                   <version>${skattemelding.mapping.version}</version>
                   <outputDirectory>src/resources/kodeliste</outputDirectory>
-                  <includes>kodelister/*.xml</includes>
+                  <includes>kodelister/*.xml,kodelister/*.json</includes>
                   <excludes>kodelister/2018_*.xml,kodelister/2019_*.xml,kodelister/*_summertSkattegrunnlagForVisning.xml</excludes>
                   <fileMappers>
                     <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FlattenFileMapper"/>
                     <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
-                      <pattern>(\d{4})(_.*\.xml)</pattern>
+                      <pattern>(\d{4})(_.*\.*)</pattern>
                       <replacement>$1/$1$2</replacement>
                     </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
                   </fileMappers>
