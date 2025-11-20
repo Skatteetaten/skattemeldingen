@@ -1025,6 +1025,7 @@
       <xsd:element minOccurs="0" name="samletSalgsinntektFraFysiskAvtale" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="samletGevinstFraFoertidigTerminering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="samletTapFraFoertidigTerminering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="samletDekningskjoepForFysiskAvtale" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BeloepMedInnkapsling">
@@ -1924,7 +1925,7 @@
       <xsd:element minOccurs="0" name="datoForLeveranseoppstart" type="DatoMedInnkapsling" />
       <xsd:element minOccurs="0" name="motpartensOrganisasjonsnavn" type="OrganisasjonsnavnMedInnkapsling" />
       <xsd:element minOccurs="0" name="motpartensIdentifikator" type="TekstMedInnkapsling" />
-      <xsd:element minOccurs="0" name="volumIKWh" type="KiloWattimeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="volumIKWhIInntektsaaret" type="KiloWattimeMedInnkapsling" />
       <xsd:element minOccurs="0" name="kontraktspris" type="KonsesjonsEllerKontraktspris" />
       <xsd:element minOccurs="0" name="referansepristype" type="ReferansepristypeMedInnkapsling" />
       <xsd:element minOccurs="0" name="salgsinntektFraFysiskAvtale" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
@@ -1934,6 +1935,8 @@
       <xsd:element minOccurs="0" name="tapVedFoertidigTermineringMvAvAvtaleOmFinansiellSikring" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="avtaleInngaattAvAnnetSelskapISammeKonsern" type="Foretak" />
       <xsd:element maxOccurs="unbounded" name="kontraktspart" type="Kontraktspart" />
+      <xsd:element minOccurs="0" name="dekningskjoep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="volumDekningskjoep" type="KiloWattimeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ResultatregnskapsbeloepForVirksomhetOmfattetAvPetroleumsskatteloven">
@@ -2252,6 +2255,8 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="produksjon" type="KiloWattimeMedInnkapsling" />
       <xsd:element minOccurs="0" name="spotmarkedspris" type="KonsesjonsEllerKontraktspris" />
+      <xsd:element minOccurs="0" name="dekningskjoep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="volumDekningskjoep" type="KiloWattimeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="LoepenummerVindkraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_loepenummerVindkraftverk.xml">
