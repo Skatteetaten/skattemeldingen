@@ -8,6 +8,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Saldogruppe.samlesaldoene
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
@@ -375,7 +376,12 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                     sumAaretsAvskrivningSaldo + sumAaretsAvskrivningLineaert - sumaAretsInntektsfoerigAvNegativSaldo + sumSaldoOgLinaert
 
                 if (beloep != null) {
-                    val kode = fradragIGrunnrente.kode_skattemessigAvskrivningAvDriftsmiddel.kode
+                    var kode = if (this@kalkyle.inntektsaar.tekniskInntektsaar >= 2025) {
+                        fradragIGrunnrente.kode_skattemessigAvskrivningAvOppjustertDriftsmiddel.kode
+                    } else {
+                        fradragIGrunnrente2024.kode_skattemessigAvskrivningAvDriftsmiddel.kode
+                    }
+
 
                     opprettNySubforekomstAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk) {
                         medId(kode)

@@ -18,6 +18,8 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erFradrag
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erTillegg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente.harBehandlingsregelFradrag
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente.harBehandlingsregelTilleg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.inntektIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.kontraktstypeForKraftLevertAvKraftverk
@@ -31,13 +33,18 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
 
     private val kontraktForLandbasertVindkraft =
         kalkyle("kontraktForLandbasertVindkraft") {
+            val volum = if (inntektsaar.tekniskInntektsaar >= 2025) {
+                modell.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.volumIKWhIInntektsaaret
+            } else {
+                modell2024.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.volumIKWh
+            }
 
             forekomsterAv(modell.kontraktForLandbasertVindkraft) forHverForekomst {
 
                 forekomsterAv(forekomstType.spesifikasjonAvKontraktIVindkraftverk) forHverForekomst {
                     if (forekomstType.kontraktstype ulik kontraktstypeForKraftLevertAvKraftverk.kode_finansiellSikringsavtaleInngaattFoer28092022) {
                         settFelt(forekomstType.salgsinntektFraFysiskAvtale) {
-                            forekomstType.kontraktspris * forekomstType.volumIKWh
+                            forekomstType.kontraktspris * generiskModell.verdiFor(volum)!!.toBigDecimal()
                         }
                     }
                 }
@@ -48,6 +55,13 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                     }
                 }
 
+                hvis(this@kalkyle.inntektsaar.tekniskInntektsaar >= 2025) {
+                    settFelt(forekomstType.samletDekningskjoepForFysiskAvtale) {
+                        forekomsterAv(forekomstType.spesifikasjonAvKontraktIVindkraftverk) summerVerdiFraHverForekomst {
+                            forekomstType.dekningskjoep.tall()
+                        }
+                    }
+                }
                 settFelt(forekomstType.samletGevinstFraFoertidigTerminering) {
                     forekomsterAv(forekomstType.spesifikasjonAvKontraktIVindkraftverk) summerVerdiFraHverForekomst {
                         forekomstType.gevinstVedFoertidigTermineringMvAvAvtaleOmFinansiellSikring.tall()
@@ -89,34 +103,63 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         val samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030 = mutableMapOf<String, BigDecimal>()
         val samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022 = mutableMapOf<String, BigDecimal>()
         val samletVolumForKontraktstypeLangsiktigFastpriskontrakt = mutableMapOf<String, BigDecimal>()
+        val samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022 = mutableMapOf<String, BigDecimal>()
+        val samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030 = mutableMapOf<String, BigDecimal>()
+        val samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt = mutableMapOf<String, BigDecimal>()
 
         forekomsterAv(modell.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk) forHverForekomst {
 
+            val volum = if (this@kalkyle.inntektsaar.tekniskInntektsaar >= 2025) {
+                modell.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.volumIKWhIInntektsaaret
+            } else {
+                modell2024.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.volumIKWh
+            }
+
+
             if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattFoer28092022) {
                 summerAntallPerAndelPerLoepenummer(
-                    forekomstType.volumIKWh,
+                    volum,
                     samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022
                 )
             }
 
             if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
                 summerAntallPerAndelPerLoepenummer(
-                    forekomstType.volumIKWh,
+                    volum,
                     samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030
                 )
             }
 
             if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_finansiellSikringsavtaleInngaattFoer28092022) {
                 summerAntallPerAndelPerLoepenummer(
-                    forekomstType.volumIKWh,
+                    volum,
                     samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022
                 )
             }
 
             if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_langsiktigFastpriskontrakt) {
                 summerAntallPerAndelPerLoepenummer(
-                    forekomstType.volumIKWh,
+                    volum,
                     samletVolumForKontraktstypeLangsiktigFastpriskontrakt
+                )
+            }
+
+            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattFoer28092022) {
+                summerAntallPerAndelPerLoepenummer(
+                    forekomstType.volumDekningskjoep,
+                    samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022
+                )
+            }
+            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                summerAntallPerAndelPerLoepenummer(
+                    forekomstType.volumDekningskjoep,
+                    samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030
+                )
+            }
+            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_langsiktigFastpriskontrakt) {
+                summerAntallPerAndelPerLoepenummer(
+                    forekomstType.volumDekningskjoep,
+                    samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt
                 )
             }
         }
@@ -148,6 +191,30 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                     samletVolumForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
                 }
             }
+
+            if (samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022.containsKey(loepenummer)) {
+                settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022) {
+                    samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022[loepenummer]
+                }
+            }
+
+            if (samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.containsKey(loepenummer)) {
+                settFelt(forekomstType.samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                    samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030[loepenummer]
+                }
+            }
+
+            if (samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt.containsKey(loepenummer)) {
+                settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt) {
+                    samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
+                }
+            }
+
+            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForDekningskjoepForOevrigKraftsalg) {
+                forekomsterAv(forekomstType) summerVerdiFraHverForekomst {
+                    forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris_volumDekningskjoep.tall()
+                }
+            }
         }
     }
 
@@ -168,6 +235,12 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         val nyeForekomsterTapVedFoertidigOppgjoerAvFinansiellSikringsavtaleInngaattFoer28092022 =
             mutableMapOf<String, BigDecimal>()
         val nyeForekomsterTapVedFoertidigOppgjoerAvKjoepekontraktInngaattMellom2024Og2030 =
+            mutableMapOf<String, BigDecimal>()
+        val nyeForekomsterdekningskjoepForKjoepekontraktMellomUavhengigeParterInngaattFoer28092022 =
+            mutableMapOf<String, BigDecimal>()
+        val dekningskjoepKjoepekontraktMellomUavhengigeParterInngaattMellom2024Og2030 =
+            mutableMapOf<String, BigDecimal>()
+        val dekningskjoepForLangsiktigFastpriskontrakt =
             mutableMapOf<String, BigDecimal>()
 
         forekomsterAv(modell.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk) forHverForekomst {
@@ -225,6 +298,24 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                     nyeForekomsterTapVedFoertidigOppgjoerAvKjoepekontraktInngaattMellom2024Og2030
                 )
             }
+            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattFoer28092022) {
+                summerBeloepPerAndelPerLoepenummer(
+                    forekomstType.dekningskjoep,
+                    nyeForekomsterdekningskjoepForKjoepekontraktMellomUavhengigeParterInngaattFoer28092022
+                )
+            }
+            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                summerBeloepPerAndelPerLoepenummer(
+                    forekomstType.dekningskjoep,
+                    dekningskjoepKjoepekontraktMellomUavhengigeParterInngaattMellom2024Og2030
+                )
+            }
+            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_langsiktigFastpriskontrakt) {
+                summerBeloepPerAndelPerLoepenummer(
+                    forekomstType.dekningskjoep,
+                    dekningskjoepForLangsiktigFastpriskontrakt
+                )
+            }
         }
 
         forekomsterAv(modell.spesifikasjonAvEnhetIVindkraftverk) forHverForekomst {
@@ -270,7 +361,22 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 fradragIGrunnrente.kode_tapVedFoertidigOppgjoerAvKjoepekontraktInngaattMellom2024Og2030,
                 nyeForekomsterTapVedFoertidigOppgjoerAvKjoepekontraktInngaattMellom2024Og2030[forekomstType.loepenummer.verdi()]
             )
-
+            opprettNyForekomstInntekt(
+                inntektIGrunnrente.kode_dekningskjoepForKjoepekontraktMellomUavhengigeParterInngaattFoer28092022,
+                nyeForekomsterdekningskjoepForKjoepekontraktMellomUavhengigeParterInngaattFoer28092022[forekomstType.loepenummer.verdi()]
+            )
+            opprettNyForekomstInntekt(
+                inntektIGrunnrente.kode_dekningskjoepKjoepekontraktMellomUavhengigeParterInngaattMellom2024Og2030,
+                dekningskjoepKjoepekontraktMellomUavhengigeParterInngaattMellom2024Og2030[forekomstType.loepenummer.verdi()]
+            )
+            opprettNyForekomstInntekt(
+                inntektIGrunnrente.kode_dekningskjoepForLangsiktigFastpriskontrakt,
+                dekningskjoepForLangsiktigFastpriskontrakt[forekomstType.loepenummer.verdi()]
+            )
+            opprettNyForekomstInntekt(
+                inntektIGrunnrente.kode_dekningskjoepForOevrigKraftsalg,
+                forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris_dekningskjoep.tall()
+            )
         }
     }
 
@@ -297,14 +403,14 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>.summerAntallPerAndelPerLoepenummer(
-        felt: Felt<v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>,
+    private fun ForekomstKontekst<*>.summerAntallPerAndelPerLoepenummer(
+        felt: Felt<*>,
         nyeForekomster: MutableMap<String, BigDecimal>
     ) {
 
-        val antall = felt.tall()
+        val antall = generiskModell.verdiFor(felt)?.toBigDecimal()
         if (antall != null) {
-            forekomsterAv(forekomstType.kontraktspart) forHverForekomst {
+            forekomsterAv(v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst.kontraktspart) forHverForekomst {
                 val andel: BigDecimal =
                     forekomstType.andelAvKontrakt.prosent()
                         ?: BigDecimal.ZERO
@@ -508,12 +614,27 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
     ) {
         forekomsterAv(modell.spesifikasjonAvEnhetIVindkraftverk) forHverForekomst {
 
-            val sumInntektIGrunnrente =
+            val sumInntektIGrunnrenteTillegg =
                 forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk) der {
                     forekomstType.type likEnAv InntektOgFradragIGrunnrente.inntekterIGrunnrente(inntektsaar)
                 } summerVerdiFraHverForekomst {
-                    forekomstType.beloep.tall()
+                    if (forekomstType.type.verdi().harBehandlingsregelTilleg(inntektsaar)) {
+                        forekomstType.beloep.tall()
+                    } else {
+                        BigDecimal.ZERO
+                    }
                 }
+            val sumInntektIGrunnrenteFradrag =
+                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk) der {
+                    forekomstType.type likEnAv InntektOgFradragIGrunnrente.inntekterIGrunnrente(inntektsaar)
+                } summerVerdiFraHverForekomst {
+                    if (forekomstType.type.verdi().harBehandlingsregelFradrag(inntektsaar)) {
+                        forekomstType.beloep.tall()
+                    } else {
+                        BigDecimal.ZERO
+                    }
+                }
+
 
             val sumInntektIGrunnrenteUnntattAndelFraSDF =
                 forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk) der {
@@ -614,7 +735,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 }
 
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_samletInntektIBruttoGrunnrenteinntekt) {
-                    sumInntektIGrunnrente
+                    sumInntektIGrunnrenteTillegg - sumInntektIGrunnrenteFradrag
                 }
             }
 
