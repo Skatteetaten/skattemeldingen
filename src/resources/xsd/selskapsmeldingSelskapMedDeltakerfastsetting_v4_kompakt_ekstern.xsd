@@ -2,7 +2,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:selskapsmelding:selskapmeddeltakerfastsetting:ekstern:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:selskapsmelding:selskapmeddeltakerfastsetting:ekstern:v4">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2025-08-14T13:53:23.996+0200" name="generertDato" />
+      <xsd:attribute fixed="2025-10-09T10:25:22.018+0200" name="generertDato" />
       <xsd:attribute fixed="4.0" name="versjon" />
       <xsd:attribute fixed="Selskapsmelding for selskap med deltakerfastsetting inneholder selskapets inntekter, utgifter, formue og gjeld inkludert fordeling av disse per deltaker. " name="beskrivelse" />
       <xsd:attribute fixed="Selskapsmelding for selskap med deltakerfastsetting v4" name="modellnavn" />
@@ -249,7 +249,7 @@
       <xsd:element minOccurs="0" name="erNokus" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="erUtenlandskSelskapMedDeltakerfastsetting" type="BoolskMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="deltakersAndelILandbasertVindkraft" type="AndelILandbasertVindkraft" />
-      <xsd:element minOccurs="0" name="erBosattInnenforTiltakssonenNordTromsOgFinnmark" type="BoolskMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erBosattInnenforTiltakssonenNordTromsOgFinnmark" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ProsentMedInnkapsling">
@@ -660,7 +660,7 @@
   <xsd:complexType name="SpesifikasjonPerKraftverk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="loepenummer" skatt:erAvledet="true" type="HeltallMedInnkapsling" />
+      <xsd:element name="loepenummer" skatt:erAvledet="true" type="LoepenummerVannkraftverkMedInnkapsling" />
       <xsd:element name="kraftverketsNavn" skatt:erAvledet="true" type="TekstMedInnkapsling" />
       <xsd:element name="samletPaastempletMerkeytelseIKva" skatt:erAvledet="true" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="positivGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
@@ -926,7 +926,7 @@
   <xsd:complexType name="SpesifikasjonPerVindkraftverk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="loepenummer" skatt:erAvledet="true" type="HeltallMedInnkapsling" />
+      <xsd:element name="loepenummer" skatt:erAvledet="true" type="LoepenummerVindkraftverkMedInnkapsling" />
       <xsd:element name="kraftverketsNavn" skatt:erAvledet="true" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="navnPaaKonsesjonshaverForProduksjonsavgift" type="NavnMedInnkapsling" />
       <xsd:element minOccurs="0" name="identifikatorForKonsesjonshaverForProduksjonsavgift" type="OrganisasjonsnummerMedInnkapsling" />
@@ -1157,7 +1157,7 @@
   <xsd:complexType name="AndelILandbasertVindkraft">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="loepenummer" skatt:erAvledet="true" type="HeltallMedInnkapsling" />
+      <xsd:element name="loepenummer" skatt:erAvledet="true" type="LoepenummerVindkraftverkMedInnkapsling" />
       <xsd:element name="kraftverketsNavn" skatt:erAvledet="true" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvPositivGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteinntektFoerSamordning" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
@@ -1351,7 +1351,7 @@
   <xsd:complexType name="DeltakersAndelILandbasertVindkraft">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="loepenummer" type="HeltallMedInnkapsling" />
+      <xsd:element name="loepenummer" type="LoepenummerVindkraftverkMedInnkapsling" />
       <xsd:element name="kraftverketsNavn" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvPositivGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling" />
@@ -1586,9 +1586,14 @@
   <xsd:simpleType name="KiloWattime">
     <xsd:restriction base="Heltall" />
   </xsd:simpleType>
-  <xsd:complexType name="HeltallMedInnkapsling">
+  <xsd:complexType name="LoepenummerVannkraftverkMedInnkapsling">
     <xsd:sequence>
-      <xsd:element name="heltall" type="Heltall" />
+      <xsd:element name="loepenummer" type="LoepenummerVannkraftverk" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HeltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940" type="Heltall" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FordelingsnoekkelMedInnkapsling">
@@ -1760,6 +1765,11 @@
       <xsd:element name="mellomvaerendetype" type="Mellomvaerendetype" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="LoepenummerVindkraftverkMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="loepenummer" type="LoepenummerVindkraftverk" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="DesimaltallMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="desimaltall" type="Desimaltall" />
@@ -1884,7 +1894,7 @@
   <xsd:complexType name="AndelAvEiendomsskattegrunnlagPerKraftverk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="loepenummer" skatt:erAvledet="true" type="HeltallMedInnkapsling" />
+      <xsd:element name="loepenummer" skatt:erAvledet="true" type="LoepenummerVannkraftverkMedInnkapsling" />
       <xsd:element name="kraftverketsNavn" skatt:erAvledet="true" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="eiendomsskattegrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
@@ -1986,7 +1996,7 @@
   <xsd:complexType name="DeltakersAndelAvEiendomsskattegrunnlagPerKraftverk">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="loepenummer" type="HeltallMedInnkapsling" />
+      <xsd:element name="loepenummer" type="LoepenummerVannkraftverkMedInnkapsling" />
       <xsd:element name="kraftverketsNavn" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="eiendomsskattegrunnlag" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
@@ -2202,6 +2212,9 @@
       <xsd:element minOccurs="0" name="negativEffektPaaBalansesum" type="BeloepIValuta" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="LoepenummerVannkraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_loepenummerVannkraftverk.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
   <xsd:simpleType name="Reduksjonsfaktor">
     <xsd:restriction base="Desimaltall">
       <xsd:totalDigits value="30" />
@@ -2266,6 +2279,9 @@
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="Mellomvaerendetype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_mellomvaerendetype.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="LoepenummerVindkraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_loepenummerVindkraftverk.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="Beloep">

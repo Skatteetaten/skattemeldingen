@@ -25,6 +25,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.balanseverdiForOmloepsmiddel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.egenkapital
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.inntektIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.midlertidigForskjellstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.midlertidigForskjellstype2022
@@ -153,7 +154,7 @@ internal fun filtrerGeneriskeTyperBasertPaaInnhold(
             .fjernFelter(beregnedeVerdierIMidlertidigeForskjellerSomSkalNullstilles(generiskModell, inntektsaar))
             .fjernFelter(beregnedeVerdierIForskjellForVirksomhetOmfattetAvPetroleumsskatteloven(generiskModell, inntektsaar))
             .fjernFelter(felterSomSkalNullstillesVindkraftInntekt(generiskModell))
-            .fjernFelter(felterSomSkalNullstillesVindkraftFradrag(generiskModell))
+            .fjernFelter(felterSomSkalNullstillesVindkraftFradrag(generiskModell, inntektsaar))
     }
 }
 
@@ -231,8 +232,16 @@ fun felterSomSkalNullstillesVindkraftInntekt(
 }
 
 fun felterSomSkalNullstillesVindkraftFradrag(
-    generiskModell: GeneriskModell
+    generiskModell: GeneriskModell,
+    inntektsaar: Int
 ): GeneriskModell {
+
+    val skattemessigAvskrivningAvDriftsmiddel = if (inntektsaar >= 2025) {
+        fradragIGrunnrente.kode_skattemessigAvskrivningAvOppjustertDriftsmiddel.kode
+    } else {
+        fradragIGrunnrente2024.kode_skattemessigAvskrivningAvDriftsmiddel.kode
+    }
+
     val typerSomSkalSlettesFradrag =
         listOf(
             fradragIGrunnrente.kode_tapVedFoertidigOppgjoerAvKjoepekontraktInngaattFoer28092022.kode,
@@ -241,7 +250,7 @@ fun felterSomSkalNullstillesVindkraftFradrag(
             fradragIGrunnrente.kode_tapVedFoertidigOppgjoerAvKjoepekontraktInngaattMellom2024Og2030.kode,
             fradragIGrunnrente.kode_investeringskostnad.kode,
             fradragIGrunnrente.kode_venterente.kode,
-            fradragIGrunnrente.kode_skattemessigAvskrivningAvDriftsmiddel.kode
+            skattemessigAvskrivningAvDriftsmiddel
         )
 
     val forekomst =
