@@ -4,7 +4,7 @@
   <tekniskNavn>2025_behandlingsartOgPensjonstype</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-09-25T08:55:54.000+02:00</sistEndret>
+  <sistEndret>2025-10-30T13:05:52.000+01:00</sistEndret>
   <sistEndretAv>x00sbj</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -6857,6 +6857,49 @@
       <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
       <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
       <fordel>kontantytelse</fordel>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>OMSTILLINGSSTONAD_E_OPPGJ</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Omstillingsstønad etteroppgjør fra folketrygden</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Omstillingsstønad etteroppgjør fra folketrygden</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Omstillingsstønad etteroppgjer frå folketrygda</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Transitional benefit back payment from the National Insurance scheme</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Nuppástuhttindoarjja maŋŋilšiehtadallamis álbmotoajus</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <visningsfelt>beloep</visningsfelt>
+      <visningskategori>Pensjon</visningskategori>
+      <kategori>YtelseFraOffentlige</kategori>
+      <etterbetalingstypeISL>pensjon</etterbetalingstypeISL>
+      <presentasjonsrekkefoelge>pensjonGenerell</presentasjonsrekkefoelge>
+      <loenntrekkordningenRegel>Lønn</loenntrekkordningenRegel>
+      <beskrivelseIAMelding>etteroppgjoerOmstillingsstoenad</beskrivelseIAMelding>
+      <minstefradrag>minstefradragIInntekt</minstefradrag>
+      <kildeskattPaaLoennRegel>beregnesIkkeMedIInntektstak</kildeskattPaaLoennRegel>
+      <skatteOgAvgiftsregel>kildeskattPaaPensjoner</skatteOgAvgiftsregel>
+      <skatteOgAvgiftsregel>svalbard</skatteOgAvgiftsregel>
+      <fordel>kontantytelse</fordel>
+      <etterbetalingSkalOmberegnes>ja</etterbetalingSkalOmberegnes>
+      <kildeskattPaaPensjonRegel>kildeskattPensjon</kildeskattPaaPensjonRegel>
     </kodetillegg>
   </kode>
 </kodeliste>
