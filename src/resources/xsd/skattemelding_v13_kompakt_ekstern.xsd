@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2025-10-30T13:51:36.544+0100" name="generertDato" />
+      <xsd:attribute fixed="2025-11-05T13:08:14.543+0100" name="generertDato" />
       <xsd:attribute fixed="13.0" name="versjon" />
       <xsd:attribute fixed="Skattemelding for personlig skattepliktig inneholder informasjon om hva hver enkelt skattepliktig har i inntekter, utgifter, formue og gjeld som et grunnlag for beregning av formues- og inntektsskatt iht. skatteplikten. " name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v13" name="modellnavn" />
@@ -17,7 +17,7 @@
   <xsd:element name="skattemelding" type="Skattemelding" />
   <xsd:complexType name="Skattemelding">
     <xsd:sequence>
-      <xsd:element name="partsreferanse" type="Tekst" />
+      <xsd:element name="partsreferanse" type="Partsnummer" />
       <xsd:element name="inntektsaar" type="Aarstall" />
       <xsd:element minOccurs="0" name="gjelderKunGrensegjenger" type="Boolsk" />
       <xsd:element minOccurs="0" name="bankLaanOgForsikring" type="BankLaanOgForsikring" />
@@ -48,10 +48,8 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="aarsakTilEndring" type="AarsakTilEndringMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="Tekst">
-    <xsd:restriction base="xsd:string">
-      <xsd:maxLength value="4000" />
-    </xsd:restriction>
+  <xsd:simpleType name="Partsnummer">
+    <xsd:restriction base="Heltall" />
   </xsd:simpleType>
   <xsd:simpleType name="Aarstall">
     <xsd:restriction base="xsd:gYear" />
@@ -182,6 +180,11 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="gevinstOgTapskontoUtenforVirksomhet" type="GevinstOgTapskontoUtenforVirksomhet" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="Tekst">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4000" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:complexType name="Naering">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="naeringsinntektMv" type="NaeringsinntektMv" />
