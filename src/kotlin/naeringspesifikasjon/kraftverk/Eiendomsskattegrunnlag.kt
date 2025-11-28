@@ -11,6 +11,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 /**
@@ -22,7 +23,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
         kalkyle("indeksRegulerteVerdierForegaaendeInntektsaar") {
             val gjeldendeInntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrense()
+                samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
                 forekomsterAv(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagForegaaendeInntektsaar) der {
                     forekomstType.inntektsaar.harVerdi()
@@ -53,25 +54,72 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
             }
         }
 
-    private val bruttoSalgsinntektOgFradragForKostnader =
-        kalkyle("bruttoSalgsinntektOgFradragForKostnader") {
-            forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrense()
-            } forHverForekomst {
-                settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_bruttoSalgsinntekt) {
-                    (forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_konsesjonskraft *
-                        forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_konsesjonspris) +
-                        forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft
+    internal val salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft =
+        kalkyle("salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft") {
+            forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
+
+                val sumKraftTattUtIhtKonsesjonProduksjon =
+                    forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon.tall()
+                    }
+
+                settFelt(forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon) {
+                    forekomstType.totalAarsproduksjon - sumKraftTattUtIhtKonsesjonProduksjon
                 }
 
-                settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_fradragForKostnader) {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_driftskostnad +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadTilPumpingAvKraft +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_konsesjonsavgift +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_eiendomsskatt +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadVedAvslutningEllerEndringAvFastpriskontrakt
+
+                settFelt(forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_salgsinntekt) {
+                    forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon * forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_konsesjonsEllerKontraktspris
+                }
+            }
+        }
+
+    private val bruttoSalgsinntektOgFradragForKostnaderTil2024 =
+        kalkyle("bruttoSalgsinntektOgFradragForKostnader") {
+            hvis(inntektsaar.tekniskInntektsaar <= 2024) {
+                forekomsterAv(modell2024.kraftverk_spesifikasjonAvKraftverk) der {
+                    samletPaastempletMerkeytelseIKvaOverGrenseV5()
+                } forHverForekomst {
+                    settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_bruttoSalgsinntekt) {
+                        (forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_konsesjonskraft *
+                            forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_konsesjonspris) +
+                            forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft
+                    }
+
+                    settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_fradragForKostnader) {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_driftskostnad +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadTilPumpingAvKraft +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_konsesjonsavgift +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_eiendomsskatt +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadVedAvslutningEllerEndringAvFastpriskontrakt
+                    }
+                }
+            }
+        }
+
+    private val bruttoSalgsinntektOgFradragForKostnaderFra2025 =
+        kalkyle("bruttoSalgsinntektOgFradragForKostnader") {
+            hvis(inntektsaar.tekniskInntektsaar >= 2025) {
+                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
+                    samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                } forHverForekomst {
+                    settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_bruttoSalgsinntekt) {
+                        (forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_konsesjonskraft *
+                            forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_konsesjonspris) +
+                            forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_salgsinntekt
+                    }
+
+                    settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_fradragForKostnader) {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_driftskostnad +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadTilPumpingAvKraft +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_konsesjonsavgift +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_eiendomsskatt +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadVedAvslutningEllerEndringAvFastpriskontrakt
+                    }
                 }
             }
         }
@@ -80,7 +128,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
         kalkyle("gjennomsnittligIndeksregulertSisteFemAar") {
             val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrense()
+                samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
 
                 val aktuelleForekomster =
@@ -119,7 +167,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
     private val kontantstroemForDriften =
         kalkyle("kontantstroemForDriften") {
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrense()
+                samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
                 settFelt(forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_kontantstroemForDriften) {
                     forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_gjennomsnittligIndeksregulertBruttoSalgsinntektSisteFemAar -
@@ -133,7 +181,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
         kalkyle("naaverdiPaaKontantstroemOverUendeligLevetid") {
             val satser = satser!!
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrense()
+                samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
                 settFelt(forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_naaverdiPaaKontantstroemOverUendeligLevetid) {
                     forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_kontantstroemForDriften.div(
@@ -185,7 +233,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
                 }
             }
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrense()
+                samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
                 settFelt(forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_fradragForFremtidigeUtskiftningskostnader) {
                     summerNaaverdiAvFremtidigeUtskiftningskostnaderSaerskiltAnleggsmiddel(forekomstType.loepenummer.verdi()) +
@@ -198,7 +246,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
     private val formuesverdi =
         kalkyle("formuesverdi") {
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrense()
+                samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
                 settFelt(forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_formuesverdi) {
                     (forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_naaverdiPaaKontantstroemOverUendeligLevetid -
@@ -211,7 +259,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
         kalkyle("minimumsOgMaksimumsverdiForEiendomsskattegrunnlag") {
             val satser = satser!!
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrense()
+                samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
                 val antallAar = antallForekomsterAv(forekomstType.grunnlagForBeregningAvNaturressursskatt_grunnlagForNaturressursskattPerInntektsaar) medMaksimumsverdi 7
                 hvis (antallAar stoerreEnn 0) {
@@ -238,7 +286,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
         val inntektsaar = inntektsaar
 
         forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-            samletPaastempletMerkeytelseIKvaOverGrense() && forekomstType.aarForDriftssettelse.mindreEllerLik(inntektsaar.gjeldendeInntektsaar)
+            samletPaastempletMerkeytelseIKvaOverGrenseV6() && forekomstType.aarForDriftssettelse.mindreEllerLik(inntektsaar.gjeldendeInntektsaar)
         } forHverForekomst {
             settFelt(forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_eiendomsskattegrunnlag) {
                 forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_formuesverdi.tall()
@@ -336,7 +384,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
 
         forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
             samletPaastempletMerkeytelseIKvaUnderGrense() ||
-                    (samletPaastempletMerkeytelseIKvaOverGrense() && forekomstType.aarForDriftssettelse.stoerreEnn(inntektsaar.gjeldendeInntektsaar))
+                    (samletPaastempletMerkeytelseIKvaOverGrenseV6() && forekomstType.aarForDriftssettelse.stoerreEnn(inntektsaar.gjeldendeInntektsaar))
         } forHverForekomst {
             settFelt(forekomstType.beregnetFormuesverdiOgGrunnlagForBeregningAvSaerskiltEiendomsskattegrunnlag_eiendomsskattegrunnlag) {
                 summerUtgaaendeVerdiSaldoavskrevetAnleggsmiddel(forekomstType.loepenummer.verdi()) +
@@ -351,14 +399,16 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
             indeksRegulerteVerdierForegaaendeInntektsaar,
-            bruttoSalgsinntektOgFradragForKostnader,
+            bruttoSalgsinntektOgFradragForKostnaderTil2024,
+            bruttoSalgsinntektOgFradragForKostnaderFra2025,
             gjennomsnittligIndeksregulertSisteFemAar,
             kontantstroemForDriften,
             naaverdiPaaKontantstroemOverUendeligLevetid,
             fradragForFremtidigeUtskiftningskostnader,
             formuesverdi,
             minimumsOgMaksimumsverdiForEiendomsskattegrunnlag,
-            eiendomsskattegrunnlag
+            eiendomsskattegrunnlag,
+            salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft
         )
     }
 }

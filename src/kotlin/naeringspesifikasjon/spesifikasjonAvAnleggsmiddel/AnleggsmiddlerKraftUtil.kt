@@ -3,10 +3,8 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregnin
 import java.math.BigDecimal
 import java.time.LocalDate
 import kotlin.math.pow
-import kotlin.reflect.full.memberProperties
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v4_2023.v4
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk.samletPaastempletMerkeytelseIKvaOverGrense
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk.samletPaastempletMerkeytelseIKvaOverGrenseV6
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 
 fun naaverdiAvFremtidigeUtskiftningskostnader(
@@ -34,7 +32,7 @@ fun GeneriskModellKontekst.lagSpesifikasjonAvKraftverkMap(): Map<String, Spesifi
             kraftverkMap[it] = SpesifikasjonAvKraftverk(
                 datoForOverdragelseVedErvervIInntektsaaret = forekomstType.datoForOverdragelseVedErvervIInntektsaaret.dato(),
                 datoForOverdragelseVedRealisasjonIInntektsaaret = forekomstType.datoForOverdragelseVedRealisasjonIInntektsaaret.dato(),
-                samletPaastempletMerkeytelseIKvaOverGrense = samletPaastempletMerkeytelseIKvaOverGrense()
+                samletPaastempletMerkeytelseIKvaOverGrense = samletPaastempletMerkeytelseIKvaOverGrenseV6()
             )
         }
     }

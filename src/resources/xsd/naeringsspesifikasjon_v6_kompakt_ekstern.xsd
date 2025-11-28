@@ -2230,7 +2230,7 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="konsesjonspris" type="KonsesjonsEllerKontraktspris" />
       <xsd:element minOccurs="0" name="konsesjonskraft" type="KiloWattimeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft" type="SalgsinntektFraKraftLevert" />
       <xsd:element minOccurs="0" name="bruttoSalgsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fradragForKostnader" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fradragForGrunnrenteskatt" type="BeloepMedSkattemessigeEgenskaper" />
@@ -2386,6 +2386,8 @@
       <xsd:element minOccurs="0" name="produksjon" type="KiloWattimeMedInnkapsling" />
       <xsd:element minOccurs="0" name="konsesjonsEllerKontraktspris" type="KonsesjonsEllerKontraktspris" />
       <xsd:element minOccurs="0" name="salgsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="dekningskjoep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="volumDekningskjoep" type="KiloWattimeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="KraftLevertIhtKontrakt">
