@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2025-11-05T13:08:14.356+0100" name="generertDato" />
+      <xsd:attribute fixed="2025-11-28T08:33:45.559+0100" name="generertDato" />
       <xsd:attribute fixed="13.0" name="versjon" />
       <xsd:attribute fixed="Skattemelding for personlig skattepliktig inneholder informasjon om hva hver enkelt skattepliktig har i inntekter, utgifter, formue og gjeld som et grunnlag for beregning av formues- og inntektsskatt iht. skatteplikten. " name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v13" name="modellnavn" />
@@ -615,7 +615,7 @@
         <xsd:sequence>
           <xsd:element name="samletBetaltFagforeningskontingentPerSkattleggingsperiode" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940" type="BeloepIValutaMedSkattemessigeEgenskaper" />
           <xsd:element minOccurs="0" name="inntektsfradragForFagforeningskontingent" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv" />
-          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaperMedOverstyring" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -628,7 +628,7 @@
           <xsd:element minOccurs="0" name="reisefradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/b57408ee-d96a-11e6-8d9b-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="besoeksreiseTilHjemInnenforEOeS" type="BesoeksreiseTilHjemInnenforEOeS" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="besoeksreiseTilHjemUtenforEOeS" type="BesoeksreiseTilHjemUtenforEOeS" />
-          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepMedFordelingIForbindelseMedSaerskiltSkattepliktUtland" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -641,7 +641,8 @@
           <xsd:element minOccurs="0" name="minstefradragIInntekt" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv" />
           <xsd:element minOccurs="0" name="fradragForKostnaderKnyttetTilArbeid" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv" />
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="kostnad" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/b574089a-d96a-11e6-8d9b-005056821322" type="KostnadKnyttetTilArbeidOgAnnenInntekt" />
-          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="heravAndelMinstefradragTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="heravAndelKostnaderTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepMedFordelingIForbindelseMedSaerskiltSkattepliktUtland" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -999,6 +1000,8 @@
           <xsd:element minOccurs="0" name="kontofoerersEllerBankensNavn" type="OrganisasjonsnavnMedInnkapsling" />
           <xsd:element minOccurs="0" name="forvaltningskostnadForVerdipapir" type="FradragSomBeloepIValutaMedLoennsomhetsvurderingMv" />
           <xsd:element minOccurs="0" name="beskrivelseAvForvaltningskostnad" type="Tekst" />
+          <xsd:element minOccurs="0" name="heravAndelAvForvaltningskostnadIForbindelseMedJuridiskBistandTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="heravAndelAvForvaltningskostnadForVerdipapirTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -2132,6 +2135,14 @@
       <xsd:element minOccurs="0" name="fergeutgift" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/cf247fc9-dfe5-11e7-9101-005056821322" type="BeloepIValutaMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="BeloepMedFordelingIForbindelseMedSaerskiltSkattepliktUtland">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element minOccurs="0" name="ikkeBeregnetFordeltBeloep" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+        <xsd:element minOccurs="0" name="beregnetFordeltBeloep" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="KostnadKnyttetTilArbeidOgAnnenInntekt">
     <xsd:sequence>
       <xsd:element name="id" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940" type="Tekst" />
@@ -2145,7 +2156,7 @@
       <xsd:extension base="EntitetMedSkattemessigeEgenskaper">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="fradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/b57408ae-d96a-11e6-8d9b-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv" />
-          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepMedFordelingIForbindelseMedSaerskiltSkattepliktUtland" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -3125,7 +3136,7 @@
     <xsd:sequence>
       <xsd:element name="opprinneligProsentandel" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/2b2920af-e7e6-11e8-b7e4-005056821322" skatt:erAvledet="true" type="ProsentMedInnkapsling" />
       <xsd:element name="beloepsandel" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/367f2c94-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="FradragMedLoennsomhetsvurderingMv" />
-      <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="heravAndelTilordnetSaerskiltSkattepliktVedArbeidsoppholdIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Sykdomskostnadstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_sykdomskostnad.xml">
