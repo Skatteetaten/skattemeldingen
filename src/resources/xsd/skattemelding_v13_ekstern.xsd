@@ -178,6 +178,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="skattepliktigTilfeldigInntektFraSpillLotteriMv" type="SkattepliktigTilfeldigInntektFraSpillLotteriMv" />
       <xsd:element minOccurs="0" name="maksimalSkattEtterSkatteavtale" type="MaksimalSkattEtterSkatteavtale" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="gevinstOgTapskontoUtenforVirksomhet" type="GevinstOgTapskontoUtenforVirksomhet" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="arvetUtflyttingsskatt" type="ArvetUtflyttingsskatt" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Tekst">
@@ -1291,7 +1292,6 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="andelISelskapMedDeltakerfastsettingOmfattetAvUtflyttingsskatt" type="AndelISelskapMedDeltakerfastsettingOmfattetAvUtflyttingsskatt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="aksjesparekontoOmfattetAvUtflyttingsskatt" type="AksjesparekontoOmfattetAvUtflyttingsskatt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="fondskontoOmfattetAvUtflyttingsskatt" type="FondskontoOmfattetAvUtflyttingsskatt" />
-      <xsd:element minOccurs="0" name="forholdVedUtflyttingsskattKnyttetTilBortfallAvFradrag" type="ForholdVedUtflyttingsskattKnyttetTilBortfallAvFradrag" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SkattefriTilfeldigInntektFraSpillLotteriMv">
@@ -1341,6 +1341,17 @@
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ArvetUtflyttingsskatt">
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst"/>
+      <xsd:element minOccurs="0" name="spesifikasjonAvArvetUtflyttingsskatt" type="SpesifikasjonAvUtflyttingOgUtflyttingsskatt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="aksjeOgAnnetFinansproduktOmfattetAvArvetUtflyttingsskatt" type="AksjeOgAnnetFinansproduktOmfattetAvUtflyttingsskatt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="opsjonerIArbeidsforholdOmfattetAvArvetUtflyttingsskatt" type="OpsjonerIArbeidsforholdOmfattetAvUtflyttingsskatt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="andelISelskapMedDeltakerfastsettingOmfattetAvArvetUtflyttingsskatt" type="AndelISelskapMedDeltakerfastsettingOmfattetAvUtflyttingsskatt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="aksjesparekontoOmfattetAvArvetUtflyttingsskatt" type="AksjesparekontoOmfattetAvUtflyttingsskatt"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fondskontoOmfattetAvArvetUtflyttingsskatt" type="FondskontoOmfattetAvUtflyttingsskatt"/>
+    </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="NaeringsinntektMv">
     <xsd:complexContent>
@@ -2446,7 +2457,6 @@
       <xsd:element name="betalingsmaateForUtflyttingsskatt" type="BetalingsmaateForUtflyttingsskattMedInnkapsling" />
       <xsd:element minOccurs="0" name="land" type="LandkodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="arvelatersPersonidentifikator" type="NorskPersonidentifikatorMedInnkapsling" />
-      <xsd:element minOccurs="0" name="prosentandelAvArvetUtflyttingsskatt" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AksjeOgAnnetFinansproduktOmfattetAvUtflyttingsskatt">
@@ -2463,6 +2473,7 @@
       <xsd:element minOccurs="0" name="beregnetSkattepliktigTapVedRealisasjonAvAksjeOgAnnetFinansprodukt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvAksjeOgAnnetFinansprodukt" type="RealisasjonOmfattetAvUtflyttingsskatt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="utbytteEllerUtdelingAvAksjeOgAnnetFinansprodukt" type="UtbytteEllerUtdelingOmfattetAvUtflyttingsskatt" />
+      <xsd:element minOccurs="0" name="prosentandelAvArvetUtflyttingsskatt" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OpsjonerIArbeidsforholdOmfattetAvUtflyttingsskatt">
@@ -2470,11 +2481,12 @@
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling" />
       <xsd:element name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling" />
-      <xsd:element minOccurs="0" name="latentGevinstVedRealisasjonAvOpsjonIArbeidsforhold" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="latentGevinstVedRealisasjonAvOpsjonIArbeidsforhold" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="beregnetSkattepliktigGevinstVedRealisasjonAvOpsjonIArbeidsforhold" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="latentTapVedRealisasjonAvOpsjonIArbeidsforhold" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="beregnetSkattepliktigTapVedRealisasjonAvOpsjonIArbeidsforhold" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvOpsjonIArbeidsforhold" type="RealisasjonOmfattetAvUtflyttingsskatt" />
+      <xsd:element minOccurs="0" name="prosentandelAvArvetUtflyttingsskatt" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AndelISelskapMedDeltakerfastsettingOmfattetAvUtflyttingsskatt">
@@ -2489,6 +2501,7 @@
       <xsd:element minOccurs="0" name="beregnetSkattepliktigTapVedRealisasjonAvAndel" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvAndelISelskapMedDeltakerfastsetting" type="RealisasjonOmfattetAvUtflyttingsskatt" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="utdelingAvAndelISelskapMedDeltakerfastsetting" type="UtbytteEllerUtdelingOmfattetAvUtflyttingsskatt" />
+      <xsd:element minOccurs="0" name="prosentandelAvArvetUtflyttingsskatt" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AksjesparekontoOmfattetAvUtflyttingsskatt">
@@ -2501,6 +2514,7 @@
       <xsd:element minOccurs="0" name="latentTapVedRealisasjonAvAksjesparekonto" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="beregnetSkattepliktigTapVedRealisasjonAvAksjesparekonto" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvAksjesparekonto" type="RealisasjonOmfattetAvUtflyttingsskatt" />
+      <xsd:element minOccurs="0" name="prosentandelAvArvetUtflyttingsskatt" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FondskontoOmfattetAvUtflyttingsskatt">
@@ -2517,11 +2531,7 @@
       <xsd:element minOccurs="0" name="latentTapVedRealisasjonAvAksjedel" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="beregnetSkattepliktigTapVedRealisasjonAvAksjedel" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvFondskontoOmfattetAvUtflyttingsskatt" type="RealisasjonAvFondskontoOmfattetAvUtflyttingsskatt" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="ForholdVedUtflyttingsskattKnyttetTilBortfallAvFradrag">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="tapVedOverfoeringAvEiendelTilLandUtenforEOeS" type="BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="prosentandelAvArvetUtflyttingsskatt" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Naeringstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_naeringstype.xml">
@@ -3214,15 +3224,17 @@
   <xsd:complexType name="RealisasjonOmfattetAvUtflyttingsskatt">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="realisasjonsaar" type="AarstallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjon" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjon" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element name="realisasjonsdato" type="DatoMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjon" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjon" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelSkattepliktigGevinstVedRealisasjon" type="ProsentMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelSkattepliktigTapVedRealisasjon" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="UtbytteEllerUtdelingOmfattetAvUtflyttingsskatt">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="utbytteEllerUtdelingsaar" type="AarstallMedInnkapsling" />
+      <xsd:element name="utbytteEllerUtdelingsdato" type="DatoMedInnkapsling" />
       <xsd:element name="beloep" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="skattBetaltINorge" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="skattBetaltIUtlandet" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
@@ -3237,11 +3249,15 @@
   <xsd:complexType name="RealisasjonAvFondskontoOmfattetAvUtflyttingsskatt">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
-      <xsd:element name="realisasjonsaar" type="AarstallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvAksjedel" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvAksjedel" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvRentedel" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvRentedel" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element name="realisasjonsdato" type="DatoMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvAksjedel" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvAksjedel" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattepliktigGevinstVedRealisasjonAvRentedel" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="skattepliktigTapVedRealisasjonAvRentedel" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelSkattepliktigGevinstVedRealisasjonAvAksjedel" type="ProsentMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelSkattepliktigTapVedRealisasjonAvAksjedel" type="ProsentMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelSkattepliktigGevinstVedRealisasjonAvRentedel" type="ProsentMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelSkattepliktigTapVedRealisasjonAvRentedel" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="VilkaarstypeForSaerskiltFradragForFiskereOgFangstfolk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_vilkaarstypeForSaerskiltFradragForFiskereOgFangstfolk.xml">
