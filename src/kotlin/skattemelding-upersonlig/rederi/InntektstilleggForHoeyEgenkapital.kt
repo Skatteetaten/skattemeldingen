@@ -23,7 +23,7 @@ object InntektstilleggForHoeyEgenkapital : HarKalkylesamling {
     }
 
     private val samletKorrigertEiendelVedInngangenTilInntektsaaret = kalkyle {
-        hvis(skalBeregneRederi(RederiUtil.beskatningsordning.verdi())) {
+        hvis(inntektsaar.tekniskInntektsaar <= 2024 && skalBeregneRederi(RederiUtil.beskatningsordning.verdi())) {
             settUniktFelt(modell.rederiskatteordning_inntektstilleggForHoeyEgenkapital.samletKorrigertEiendelVedInngangenTilInntektsaaret) {
                 (modell.rederiskatteordning_valutatapValutagevinstOgRentefradrag.samletEiendelVedInngangenTilInntektsaaret -
                     modell.rederiskatteordning_inntektstilleggForHoeyEgenkapital.fradragForBokfoertVerdiAvAndelISdfEllerAksjeINokusBokfoertEtterKostmetodenOgAksjeIRederibeskattetAksjeselskapVedInngangenTilInntektsaaret +

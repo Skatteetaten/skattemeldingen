@@ -367,18 +367,25 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
         }
 
         fun summerUtgaaendeVerdiAnleggsmiddelUnderUtfoerelse(loepenummer: String?): BigDecimal? {
-            if (inntektsaar.tekniskInntektsaar >= 2024) {
-                return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
-                    forekomstType.kraftverketsLoepenummer.verdi() == loepenummer
-                } summerVerdiFraHverForekomst {
-                    forekomstType.anskaffelseskost.tall()
-                }
-            } else {
-                return forekomsterAv(modell2023.spesifikasjonAvAnleggsmiddel_anleggsmiddelIKraftverkUnderUtfoerelse) der {
-                    forekomstType.kraftverketsLoepenummer.verdi() == loepenummer
-                } summerVerdiFraHverForekomst {
-                    forekomstType.anskaffelseskost.tall()
-                }
+            return when (inntektsaar.tekniskInntektsaar) {
+                2025 ->
+                    forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
+                        forekomstType.vannkraftverketsLoepenummer.verdi() == loepenummer
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.anskaffelseskost.tall()
+                    }
+                2024 ->
+                    forekomsterAv(modell2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
+                        forekomstType.kraftverketsLoepenummer.verdi() == loepenummer
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.anskaffelseskost.tall()
+                    }
+                else ->
+                    forekomsterAv(modell2023.spesifikasjonAvAnleggsmiddel_anleggsmiddelIKraftverkUnderUtfoerelse) der {
+                        forekomstType.kraftverketsLoepenummer.verdi() == loepenummer
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.anskaffelseskost.tall()
+                    }
             }
         }
 

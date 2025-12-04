@@ -71,7 +71,16 @@ internal object GrunnrenteskattHavbruk : HarKalkylesamling {
             val ikkeAvskrivbart = forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel) summerVerdiFraHverForekomst {
                 forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet_direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt.tall()
             }
-            lineaertavskrevet + saldoavskrevet + ikkeAvskrivbart
+            val ikkeErAktivert = if (statisk.skatteplikt.erOmfattetAvSaerreglerForHavbruksvirksomhet.erSann()) {
+                forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
+                    forekomstType.vannkraftverketsLoepenummer.verdi() == null &&
+                    forekomstType.vindkraftverketsLoepenummer.verdi() == null
+                } summerVerdiFraHverForekomst {
+                    forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
+                }
+            } else null
+
+            lineaertavskrevet + saldoavskrevet + ikkeAvskrivbart + ikkeErAktivert
         }
     }
 

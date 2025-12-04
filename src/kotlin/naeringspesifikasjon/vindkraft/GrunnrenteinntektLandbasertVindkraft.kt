@@ -164,55 +164,99 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
             }
         }
 
+        forekomsterAv(modell2024.spesifikasjonAvEnhetIVindkraftverk) forHverForekomst {
+            hvis(this@kalkyle.inntektsaar.tekniskInntektsaar == 2024) {
+                val loepenummer = forekomstType.loepenummer.verdi()
+
+                if (samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022.containsKey(loepenummer)) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022) {
+                        samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022[loepenummer]
+                    }
+                }
+
+                if (samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.containsKey(
+                        loepenummer
+                    )
+                ) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                        samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030[loepenummer]
+                    }
+                }
+
+                if (samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022.containsKey(loepenummer)) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022) {
+                        samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022[loepenummer]
+                    }
+                }
+
+                if (samletVolumForKontraktstypeLangsiktigFastpriskontrakt.containsKey(loepenummer)) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeLangsiktigFastpriskontrakt) {
+                        samletVolumForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
+                    }
+                }
+            }
+        }
+
         forekomsterAv(modell.spesifikasjonAvEnhetIVindkraftverk) forHverForekomst {
 
-            val loepenummer = forekomstType.loepenummer.verdi()
+            hvis(this@kalkyle.inntektsaar.tekniskInntektsaar >= 2025) {
+                val loepenummer = forekomstType.loepenummer.verdi()
 
-            if (samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022.containsKey(loepenummer)) {
-                settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022) {
-                    samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022[loepenummer]
+                if (samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022.containsKey(loepenummer)) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022) {
+                        samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022[loepenummer]
+                    }
                 }
-            }
 
-            if (samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.containsKey(loepenummer)) {
-                settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
-                    samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030[loepenummer]
+                if (samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.containsKey(
+                        loepenummer
+                    )
+                ) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                        samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030[loepenummer]
+                    }
                 }
-            }
 
-            if (samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022.containsKey(loepenummer)) {
-                settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022) {
-                    samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022[loepenummer]
+                if (samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022.containsKey(loepenummer)) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022) {
+                        samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022[loepenummer]
+                    }
                 }
-            }
 
-            if (samletVolumForKontraktstypeLangsiktigFastpriskontrakt.containsKey(loepenummer)) {
-                settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeLangsiktigFastpriskontrakt) {
-                    samletVolumForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
+                if (samletVolumForKontraktstypeLangsiktigFastpriskontrakt.containsKey(loepenummer)) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForKontraktstypeLangsiktigFastpriskontrakt) {
+                        samletVolumForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
+                    }
                 }
-            }
 
-            if (samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022.containsKey(loepenummer)) {
-                settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022) {
-                    samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022[loepenummer]
+                if (samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022.containsKey(
+                        loepenummer
+                    )
+                ) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022) {
+                        samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022[loepenummer]
+                    }
                 }
-            }
 
-            if (samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.containsKey(loepenummer)) {
-                settFelt(forekomstType.samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
-                    samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030[loepenummer]
+                if (samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.containsKey(
+                        loepenummer
+                    )
+                ) {
+                    settFelt(forekomstType.samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                        samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030[loepenummer]
+                    }
                 }
-            }
 
-            if (samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt.containsKey(loepenummer)) {
-                settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt) {
-                    samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
+                if (samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt.containsKey(loepenummer)) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt) {
+                        samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
+                    }
                 }
-            }
 
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForDekningskjoepForOevrigKraftsalg) {
-                forekomsterAv(forekomstType) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris_volumDekningskjoep.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForOevrigKraftsalg) {
+                    forekomsterAv(forekomstType) summerVerdiFraHverForekomst {
+                        forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris_volumDekningskjoep.tall()
+                    }
                 }
             }
         }

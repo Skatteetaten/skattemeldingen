@@ -12,6 +12,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.kontraktstypeForKraftLevertAvKraftverk
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 /**
@@ -109,12 +110,19 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             fun summerSaldoavskrevetAnleggsmiddelAaretsAvskrivning(loepenummer: String?): BigDecimal? {
+                val inntektsaar = inntektsaar
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning &&
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
                 } summerVerdiFraHverForekomst {
                     val aaretsAvskrivning = forekomstType.aaretsAvskrivning.tall()
-                    val delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt = forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt
+
+                    val delAvAaretsInvesteringskostnad = if(inntektsaar.tekniskInntektsaar >= 2025) {
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
+                    } else {
+                        generiskModell.verdiFor(modell2024.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt)?.toBigDecimalOrNull()
+                    }
+
                     val grunnlagForAvskrivningOgInntektsfoering = forekomstType.grunnlagForAvskrivningOgInntektsfoering
                     val nedreGrenseForAvskrivning = forekomstType.forretningsbyggAnskaffetFoer01011984_nedreGrenseForAvskrivning
 
@@ -133,14 +141,14 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                     ) {
                         when {
                             forekomstType.saldogruppe ulik saldogruppe.kode_i &&
-                                grunnlagForAvskrivningOgInntektsfoering - delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt stoerreEnn 0 -> {
-                                aaretsAvskrivning - (delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt * forekomstType.avskrivningssats.prosent())
+                                grunnlagForAvskrivningOgInntektsfoering - delAvAaretsInvesteringskostnad stoerreEnn 0 -> {
+                                aaretsAvskrivning - (delAvAaretsInvesteringskostnad * forekomstType.avskrivningssats.prosent())
                             }
                             forekomstType.saldogruppe lik saldogruppe.kode_i -> {
                                 if(nedreGrenseForAvskrivning.harIkkeVerdi() || nedreGrenseForAvskrivning mindreEnn utgaaendeVerdiMellomverdi)
-                                    aaretsAvskrivning - (delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt * forekomstType.avskrivningssats.prosent())
+                                    aaretsAvskrivning - (delAvAaretsInvesteringskostnad * forekomstType.avskrivningssats.prosent())
                                 else
-                                    aaretsAvskrivning - delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt - nedreGrenseForAvskrivning
+                                    aaretsAvskrivning - delAvAaretsInvesteringskostnad - nedreGrenseForAvskrivning
 
                             }
                         }
@@ -235,6 +243,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             fun investeringskostnadKnyttetTilSaldoavskrevetAnleggsmidler(loepenummer: String?): BigDecimal? {
+                val inntektsaar = inntektsaar
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag &&
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
@@ -242,10 +251,15 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                     if ((forekomstType.nyanskaffelse.harVerdi() || forekomstType.paakostning.harVerdi()) &&
                         forekomstType.ervervsdato.harVerdi()
                     ) {
-                        if (forekomstType.ervervsdato.aar() == gjeldendeInntektsaar) {
-                            forekomstType.nyanskaffelse.tall() - forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt
+                        val delAvAaretsInvesteringskostnad = if(inntektsaar.tekniskInntektsaar >= 2025) {
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
                         } else {
-                            forekomstType.nyanskaffelse + forekomstType.paakostning - forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt
+                            generiskModell.verdiFor(modell2024.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt)?.toBigDecimalOrNull()
+                        }
+                        if (forekomstType.ervervsdato.aar() == gjeldendeInntektsaar) {
+                            forekomstType.nyanskaffelse.tall() - delAvAaretsInvesteringskostnad
+                        } else {
+                            forekomstType.nyanskaffelse + forekomstType.paakostning - delAvAaretsInvesteringskostnad
                         }
                     } else
                         null
@@ -253,6 +267,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             fun investeringskostnadKnyttetTilLineaertavskrevetAnleggsmidler(loepenummer: String?): BigDecimal? {
+                val inntektsaar = inntektsaar
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) der {
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag &&
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
@@ -260,10 +275,15 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                     if (
                         (forekomstType.anskaffelseskost.harVerdi() || forekomstType.paakostning.harVerdi()) && forekomstType.ervervsdato.harVerdi()
                     ) {
-                        if (forekomstType.ervervsdato.aar() == gjeldendeInntektsaar) {
-                            forekomstType.anskaffelseskost.tall() - forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt
+                        val delAvAaretsInvesteringskostnad = if(inntektsaar.tekniskInntektsaar >= 2025) {
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
                         } else {
-                            forekomstType.paakostning.tall() - forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt
+                            generiskModell.verdiFor(modell2024.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt)?.toBigDecimalOrNull()
+                        }
+                        if (forekomstType.ervervsdato.aar() == gjeldendeInntektsaar) {
+                            forekomstType.anskaffelseskost.tall() - delAvAaretsInvesteringskostnad
+                        } else {
+                            forekomstType.paakostning.tall() - delAvAaretsInvesteringskostnad
                         }
                     } else
                         null
@@ -271,6 +291,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             fun investeringskostnadKnyttetTilIkkeAvskrivbarAnleggsmidler(loepenummer: String?): BigDecimal? {
+                val inntektsaar = inntektsaar
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel) der {
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag &&
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
@@ -278,10 +299,16 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                     if (
                         (forekomstType.nyanskaffelse.harVerdi() || forekomstType.paakostning.harVerdi()) && forekomstType.ervervsdato.harVerdi()
                     ) {
-                        if (forekomstType.ervervsdato.aar() == gjeldendeInntektsaar) {
-                            forekomstType.nyanskaffelse.tall() - forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt
+                        val delAvAaretsInvesteringskostnad = if(inntektsaar.tekniskInntektsaar >= 2025) {
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
                         } else {
-                            forekomstType.nyanskaffelse + forekomstType.paakostning - forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt
+                            generiskModell.verdiFor(modell2024.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt)?.toBigDecimalOrNull()
+                        }
+
+                        if (forekomstType.ervervsdato.aar() == gjeldendeInntektsaar) {
+                            forekomstType.nyanskaffelse.tall() - delAvAaretsInvesteringskostnad
+                        } else {
+                            forekomstType.nyanskaffelse + forekomstType.paakostning - delAvAaretsInvesteringskostnad
                         }
                     } else
                         null
@@ -289,8 +316,14 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             fun investeringskostnadKnyttetAnleggsmiddelUnderUtfoerelse(loepenummer: String?): BigDecimal? {
+                val inntektsaar = inntektsaar
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
-                    forekomstType.kraftverketsLoepenummer.verdi() == loepenummer
+                    val loepenummerForekomst = if(inntektsaar.tekniskInntektsaar >= 2025) {
+                        forekomstType.vannkraftverketsLoepenummer.verdi()
+                    } else {
+                        generiskModell.verdiFor(modell2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer)
+                    }
+                    loepenummerForekomst == loepenummer
                 } summerVerdiFraHverForekomst {
                     forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
                 }
@@ -525,8 +558,14 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             fun summerAnleggsmiddelIKraftverkUnderUtfoerelseAaretsFriinntekt(loepenummer: String?): BigDecimal? {
+                val inntektsaar = inntektsaar
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
-                    forekomstType.kraftverketsLoepenummer.verdi() == loepenummer
+                    val loepenummerForekomst = if(inntektsaar.tekniskInntektsaar >= 2025) {
+                        forekomstType.vannkraftverketsLoepenummer.verdi()
+                    } else {
+                        generiskModell.verdiFor(modell2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer)
+                    }
+                    loepenummerForekomst == loepenummer
                 } summerVerdiFraHverForekomst {
                     forekomstType.aaretsFriinntektForAnleggsmiddelIVannkraftOmfattetAvGrunnrenteskatt.tall()
                 }

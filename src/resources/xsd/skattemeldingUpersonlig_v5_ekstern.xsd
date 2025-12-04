@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v5">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2025-10-09T14:04:45.185+0200" name="generertDato" />
+      <xsd:attribute fixed="2025-11-21T15:03:15.104+0100" name="generertDato" />
       <xsd:attribute fixed="5.0" name="versjon" />
       <xsd:attribute fixed="Skattemelding for upersonlig skattepliktig inneholder selskapets inntekter, utgifter, formue og gjeld som et grunnlag for beregning av formues- og inntektsskatt iht. skatteplikten. " name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v5" name="modellnavn" />
@@ -528,10 +528,10 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="kontraktsnummer" type="TekstMedInnkapsling" />
-      <xsd:element minOccurs="0" name="hovedoppdragsgiversNavn" type="OrganisasjonsnavnMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="hovedoppdragsgiversIdentifikator" type="OrganisasjonsnummerMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="oppdragsgiversNavn" type="OrganisasjonsnavnMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="oppdragsgiversIdentifikator" type="OrganisasjonsnummerMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="hovedoppdragsgiversNavn" type="OrganisasjonsnavnMedInnkapsling" />
+      <xsd:element minOccurs="0" name="hovedoppdragsgiversIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="oppdragsgiversNavn" type="OrganisasjonsnavnMedInnkapsling" />
+      <xsd:element minOccurs="0" name="oppdragsgiversIdentifikator" type="OrganisasjonsnummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="kontraktsperiode" type="PeriodePerDato" />
       <xsd:element minOccurs="0" name="arbeidsstedsbeliggenhet" type="ArbeidsstedsbeliggenhetMedInnkapsling" />
       <xsd:element minOccurs="0" name="oppdragUtfoertIPeriode" type="PeriodePerDato" />
@@ -647,7 +647,7 @@
       <xsd:element name="prosjektnummer" type="HeltallMedInnkapsling" />
       <xsd:element name="prosjekttittel" type="TekstMedInnkapsling" />
       <xsd:element name="prosjektstatus" type="FoUvedtakstatustypeMedInnkapsling" />
-      <xsd:element  name="godkjentSkattefunnperiode" type="PeriodePerAarMedInnkapsling" />
+      <xsd:element name="godkjentSkattefunnperiode" type="PeriodePerAarMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletNettoSkattefradragFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" name="spesifikasjonAvArbeidspakke" type="SpesifikasjonAvArbeidspakke" />
       <xsd:element minOccurs="0" name="skattefradragForKostnaderTilForskningOgUtvikling" type="SkattefradragForKostnaderTilForskningOgUtvikling" />
@@ -828,7 +828,7 @@
       <xsd:element minOccurs="0" name="tilleggForAndelISdfEllerAksjeINokusBokfoertEtterKostmetodenVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tilleggForAndelGjeldForAndelISdfEllerAksjeINokusBokfoertEtterEgenkapitalmetodenVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="tilleggForAndelGjeldForAndelISdfEllerAksjeINokusBokfoertEtterEgenkapitalmetodenVedUtgangenAvInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="samletKorrigertEiendelVedInngangenTilInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletKorrigertEiendelVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletKorrigertEiendelVedUtgangenAvInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="gjennomsnittligSamletKorrigertEiendel" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="egenGjeldVedInngangenTilInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
@@ -951,7 +951,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="samordningAvGrunnrenteinntekt" type="SamordningAvGrunnrenteinntekt" />
       <xsd:element minOccurs="0" name="andelAvBunnfradrag" type="AndelAvBunnfradrag" />
       <xsd:element minOccurs="0" name="produksjonsavgiftTilFradragIGrunnrenteskatt" type="ProduksjonsavgiftTilFradragIGrunnrenteskatt" />
-      <xsd:element minOccurs="0" name="spesifikasjonAvNegativGrunnrenteinntekt" type="SpesifikasjonAvNegativGrunnrenteinntekt"/>
+      <xsd:element minOccurs="0" name="spesifikasjonAvNegativGrunnrenteinntekt" type="SpesifikasjonAvNegativGrunnrenteinntekt" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OverdragelseAvHavbruksvirksomhet">
@@ -1529,9 +1529,9 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="skipetsNavn" type="OrganisasjonsnavnMedInnkapsling" />
-      <xsd:element minOccurs="0" name="skipstype" type="SkipstypeKnyttetTilRederiskatteordning" />
+      <xsd:element name="skipstype" type="SkipstypeKnyttetTilRederiskatteordning" />
       <xsd:element minOccurs="0" name="beskrivelseAvSkipstype" type="TekstMedInnkapsling" />
-      <xsd:element minOccurs="0" name="skipsstatus" type="SkipsstatusKnyttetTilRederiskatteordning" />
+      <xsd:element name="skipsstatus" type="SkipsstatusKnyttetTilRederiskatteordning" />
       <xsd:element name="nettotonnasje" type="AntallMedInnkapsling" />
       <xsd:element name="antallDager" type="AntallMedInnkapsling" />
       <xsd:element minOccurs="0" name="miljoereduksjon" type="BeloepSomHeltallMedInnkapsling" />
@@ -1567,9 +1567,9 @@
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvNegativGrunnrenteinntekt">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="aaretsAnvendelseAvNegativGrunnrenteinntektFraTidligereAar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="fremfoerbarNegativGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="aaretsAnvendelseAvNegativGrunnrenteinntektFraTidligereAar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fremfoerbarNegativGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OverdragelsestypeMedInnkapsling">
@@ -1989,8 +1989,8 @@
       <xsd:element minOccurs="0" name="grunnlagForBeregnetUtleieverdiForNaeringseiendom" type="GrunnlagForBeregnetUtleieverdiForNaeringseiendom" />
       <xsd:element minOccurs="0" name="areal" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/46f4d756-4c6c-11e8-bb3e-005056821322" type="HeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="naeringseiendomstype" type="NaeringseiendomstypeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="bygningUtgjoerUtleieeiendommensHovedfunksjon" type="BoolskMedInnkapsling"/>
       <xsd:element minOccurs="0" name="utleidAreal" type="HeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="bygningUtgjoerUtleieeiendommensHovedfunksjon" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="antallMaanederUtleid" type="AntallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
