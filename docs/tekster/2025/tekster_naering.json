@@ -5809,13 +5809,6 @@
     "tekst_en": "Investment costs directly expensed in the income year"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer.loepenummer",
-    "tekst_nn": "Løpenummeret til kraftverket",
-    "tekst_se": "Fápmorusttega ráidonummar",
-    "tekst_nb": "Kraftverkets løpenummer",
-    "tekst_en": "Serial number of the power plant"
-  },
-  {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.objektbeskrivelse.tekst",
     "tekst_nn": "Skildring av driftsmiddel",
     "tekst_se": "Čilgejupmi doalloreaiddu birra",
@@ -5828,6 +5821,14 @@
     "tekst_se": "Doallobiergasa dovdomearka",
     "tekst_nb": "Kjennemerke for driftsmiddelet",
     "tekst_en": "Identifier of the fixed asset"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.vannkraftverketsLoepenummer.loepenummer",
+    "tekst_nb": "Vannkraftverkets løpenummer"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.vindkraftverketsLoepenummer.loepenummer",
+    "tekst_nb": "Vindkraftverkets løpenummer"
   },
   {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.gevinstOgTapskonto.gevinstOgTapskontoIdentifikator.tekst",
@@ -6532,6 +6533,11 @@
     "hjelpetekst_en": "Here the company must provide information about whether the relevant balance group includes fixed assets that are used in aquaculture activities subject to resource rent tax. State whether the fixed assets are fully for use (Yes, with depreciation/direct deduction) or partly for use, and whether they have been acquired from related parties."
   },
   {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar",
+    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt tidligere inntektsår (havbruk)",
+    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten."
+  },
+  {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt",
     "tekst_nn": "Direkte utgiftsført investeringskostnad",
     "tekst_se": "Investerengollu mii lea njuolgut fievrreduvvon gollun",
@@ -6609,7 +6615,19 @@
     "hjelpetekst_en": "The contents here are not yet translated."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.aaretsAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024",
+    "tekst_nb": "Årets avskrivning i grunnrenteinntekt av anskaffelse etter 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024",
+    "tekst_nb": "Årets avskrivning i grunnrenteinntekt av oppjustert verdi pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.andelAvDriftsmiddelAnskaffetIInntektsaaretSomAvskrives",
+    "tekst_nb": "Andel av driftsmiddel anskaffet i inntektsåret som avskrives"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
     "tekst_nn": "Blir brukt i grunnrenteskattepliktig verksemd",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Benyttes i grunnrenteskattepliktig virksomhet",
@@ -6620,7 +6638,12 @@
     "hjelpetekst_en": "Here is entered whether the fixed asset is linked to the power production."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar",
+    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt (vindkraft)",
+    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten."
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt",
     "tekst_nn": "Direkte utgiftsført investeringskostnad",
     "tekst_se": "Investerengollu mii lea njuolgut fievrreduvvon gollun",
     "tekst_nb": "Direkte utgiftsført investeringskostnad",
@@ -6631,14 +6654,14 @@
     "hjelpetekst_en": "Here you enter this year’s investment cost that has been recognised directly as a deduction in the resource rent income in NOK."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.erAnleggsmiddelUnderUtfoerelse.boolsk",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.erAnleggsmiddelUnderUtfoerelse.boolsk",
     "tekst_nn": "Er driftsmiddel under utføring?",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Er driftsmiddel under utførelse?",
     "tekst_en": "Is the fixed asset under construction?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nn": "Gevinst ved realisasjon og uttak som skal overførast til gevinst- og tapskonto knytt til grunnrente",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Gevinst ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente",
@@ -6649,14 +6672,30 @@
     "hjelpetekst_en": "Only applies to fixed assets that are not covered by the cash flow deduction."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.grunnlagForBeregningAvVenterente",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.grunnlagForAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024",
+    "tekst_nb": "Grunnlag for avskrivning i grunnrenteinntekt av anskaffelse etter 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.grunnlagForAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024",
+    "tekst_nb": "Grunnlag for avskrivning i grunnrenteinntekt av oppjustert verdi pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.grunnlagForBeregningAvVenterente",
     "tekst_nn": "Grunnlag for berekning av venterente",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Grunnlag for beregning av venterente",
     "tekst_en": "Basis for the calculation of deferment interest"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.kraftverketsLoepenummer.loepenummer",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.inngaaendeVerdiForDriftsmiddelAnskaffetEtter01012024",
+    "tekst_nb": "Inngående verdi for driftsmiddel anskaffet etter 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.inngaaendeVerdiForDriftsmiddelOppjustertPr01012024",
+    "tekst_nb": "Inngående verdi for driftsmiddel oppjustert pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.kraftverketsLoepenummer.loepenummer",
     "tekst_nn": "Løpenummer",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Løpenummer",
@@ -6667,7 +6706,7 @@
     "hjelpetekst_en": "The power plant ID from the NVE is basically the same as the serial number and is used to identify the individual wind power plant. Discrepancies between NVE's power plant ID and what is considered one wind power plant for tax purposes may occur. Taxpayers must make an independent assessment of what constitutes one and the same wind power plant for tax purposes."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nn": "Tap ved realisasjon og uttak som skal overførast til gevinst- og tapskonto knytt til grunnrente",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Tap ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente",
@@ -6678,7 +6717,15 @@
     "hjelpetekst_en": "Only applies to fixed assets that are not covered by the cash flow deduction."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.venterente",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.utgaaendeVerdiAvAnskaffelseEtter01012024",
+    "tekst_nb": "Utgående verdi av anskaffelse etter 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.utgaaendeVerdiAvOppjustertVerdiPr01012024",
+    "tekst_nb": "Utgående verdi av oppjustert verdi pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.venterente",
     "tekst_nn": "Venterente",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Venterente",
@@ -6710,11 +6757,9 @@
     "tekst_en": "Used in activities subject to resource rent tax"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt",
-    "tekst_nn": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt",
-    "tekst_se": "Oassi jagi investerengolus mii lea njuolgut girjejuvvon vuođđoreantosisabohtui",
-    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt",
-    "tekst_en": "Share of the year's investment cost that is directly recognised as a cost in resource rent income"
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar",
+    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt tidligere inntektsår (vannkraft)",
+    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten."
   },
   {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.ikkeAvskrivbartAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.erAnleggsmiddelUnderUtfoerelse.boolsk",
@@ -7137,6 +7182,11 @@
     "hjelpetekst_en": "Here the company must provide information about whether the relevant balance group includes fixed assets that are used in aquaculture activities subject to resource rent tax. State whether the fixed assets are fully for use (Yes, with depreciation/direct deduction) or partly for use, and whether they have been acquired from related parties."
   },
   {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar",
+    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt tidligere inntektsår (havbruk)",
+    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten."
+  },
+  {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt",
     "tekst_nn": "Direkte utgiftsført investeringskostnad",
     "tekst_se": "Investerengollu mii lea njuolgut fievrreduvvon gollun",
@@ -7214,28 +7264,38 @@
     "hjelpetekst_en": "The contents here are not yet translated."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.aaretsAvskrivningIGrunnrenteinntekt",
-    "tekst_nn": "Årets avskriving i grunnrenteinntekt",
-    "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Årets avskrivning i grunnrenteinntekt",
-    "tekst_en": "This year's depreciation in resource rent income"
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.aaretsAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024",
+    "tekst_nb": "Årets avskrivning i grunnrenteinntekt av anskaffelse etter 01012024"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024",
+    "tekst_nb": "Årets avskrivning i grunnrenteinntekt av oppjustert verdi pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert",
     "tekst_nn": "Årets inntektsføring av gevinst ved realisasjon og uttak av driftsmiddel som er direkte utgiftsførte",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Årets inntektsføring av gevinst ved realisasjon og uttak av driftsmiddel som er direkte utgiftsført",
     "tekst_en": "This year's recognition of gains on divestments and withdrawals of fixed assets that are directly expensed"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.andelAvDriftsmiddelAnskaffetIInntektsaaretSomAvskrives",
+    "tekst_nb": "Andel av driftsmiddel anskaffet i inntektsåret som avskrives"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
     "tekst_nn": "Blir brukt i grunnrenteskattepliktig verksemd",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Benyttes i grunnrenteskattepliktig virksomhet",
     "tekst_en": "Used in activities subject to resource rent tax"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar",
+    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt (vindkraft)",
+    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten."
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt",
     "tekst_nn": "Direkte utgiftsført investeringskostnad",
     "tekst_se": "Investerengollu mii lea njuolgut fievrreduvvon gollun",
     "tekst_nb": "Direkte utgiftsført investeringskostnad",
@@ -7246,14 +7306,14 @@
     "hjelpetekst_en": "Here you enter this year’s investment cost that has been recognised directly as a deduction in the resource rent income in NOK."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.erAnleggsmiddelUnderUtfoerelse.boolsk",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.erAnleggsmiddelUnderUtfoerelse.boolsk",
     "tekst_nn": "Er driftsmiddel under utføring?",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Er driftsmiddel under utførelse?",
     "tekst_en": "Is the fixed asset under construction?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nn": "Gevinst ved realisasjon og uttak som skal overførast til gevinst- og tapskonto knytt til grunnrente",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Gevinst ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente",
@@ -7264,32 +7324,37 @@
     "hjelpetekst_en": "Only applies to fixed assets that are not covered by the cash flow deduction."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.grunnlagForAvskrivningIGrunnrenteinntekt",
-    "tekst_nn": "Grunnlag for avskriving i grunnrenteinntekt",
-    "tekst_se": "ikke oversett",
-    "tekst_nb": "Grunnlag for avskrivning i grunnrenteinntekt",
-    "tekst_en": "Basis for depreciation of resource rent income",
-    "hjelpetekst_nn": "Skal avskrivast med like store beløp over 5 år.",
-    "hjelpetekst_se": "ikke oversett",
-    "hjelpetekst_nb": "Avskrives med like store beløp over 5 år.",
-    "hjelpetekst_en": "Depreciated by equal amounts over 5 years."
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.grunnlagForAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024",
+    "tekst_nb": "Grunnlag for avskrivning i grunnrenteinntekt av anskaffelse etter 01012024"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.grunnlagForBeregningAvVenterente",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.grunnlagForAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024",
+    "tekst_nb": "Grunnlag for avskrivning i grunnrenteinntekt av oppjustert verdi pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.grunnlagForBeregningAvVenterente",
     "tekst_nn": "Grunnlag for berekning av venterente",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Grunnlag for beregning av venterente",
     "tekst_en": "Basis for the calculation of deferment interest"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.justeringPaaSaldo",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.inngaaendeVerdiForDriftsmiddelAnskaffetEtter01012024",
+    "tekst_nb": "Inngående verdi for driftsmiddel anskaffet etter 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.inngaaendeVerdiForDriftsmiddelOppjustertPr01012024",
+    "tekst_nb": "Inngående verdi for driftsmiddel oppjustert pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.justeringPaaSaldo",
     "tekst_nn": "Justering på saldo",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Justering på saldo",
     "tekst_en": "Balance adjustment"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.kraftverketsLoepenummer.loepenummer",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.kraftverketsLoepenummer.loepenummer",
     "tekst_nn": "Løpenummer",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Løpenummer",
@@ -7300,7 +7365,7 @@
     "hjelpetekst_en": "The power plant ID from the NVE is basically the same as the serial number and is used to identify the individual wind power plant. Discrepancies between NVE's power plant ID and what is considered one wind power plant for tax purposes may occur. Taxpayers must make an independent assessment of what constitutes one and the same wind power plant for tax purposes."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.oppjustertGrunnlagForAvskrivningPer01012024",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.oppjustertGrunnlagForAvskrivningPer01012024",
     "tekst_nn": "Oppjustert grunnlag for avskriving per 1. januar 2024",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Oppjustert grunnlag for avskrivning per 1. januar 2024",
@@ -7311,7 +7376,7 @@
     "hjelpetekst_en": "Here is entered the upwardly adjusted value if the transitional rule has been applied."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nn": "Tap ved realisasjon og uttak som skal overførast til gevinst- og tapskonto knytt til grunnrente",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Tap ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente",
@@ -7322,14 +7387,15 @@
     "hjelpetekst_en": "Only applies to fixed assets that are not covered by the cash flow deduction."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.utgaaendeVerdi",
-    "tekst_nn": "Utgåande verdi",
-    "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Utgående verdi",
-    "tekst_en": "Closing value"
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.utgaaendeVerdiAvAnskaffelseEtter01012024",
+    "tekst_nb": "Utgående verdi av anskaffelse etter 01012024"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.venterente",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.utgaaendeVerdiAvOppjustertVerdiPr01012024",
+    "tekst_nb": "Utgående verdi av oppjustert verdi pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.venterente",
     "tekst_nn": "Venterente",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Venterente",
@@ -7361,15 +7427,9 @@
     "tekst_en": "Used in activities subject to resource rent tax"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt",
-    "tekst_nn": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt",
-    "tekst_se": "Oassi jagi investerengolus mii lea njuolgut girjejuvvon vuođđoreantosisabohtui",
-    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt",
-    "tekst_en": "Share of the year's investment cost that is directly recognised as a cost in resource rent income",
-    "hjelpetekst_nn": "Oppgi kor mykje av årets aktiveringspliktige kostnader som er frådragsførte direkte i grunnrenteinntekta.",
-    "hjelpetekst_se": "Dieđit man olu jagáš aktiverengeatnegas goluin mat leat vajot geasus čálihuvvon vuođđoreantosisaboađus.",
-    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten.",
-    "hjelpetekst_en": "State how much of this year's costs subject to capitalisation have been deducted immediately from the resource rent income."
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar",
+    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt tidligere inntektsår (vannkraft)",
+    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten."
   },
   {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.lineaertavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.erAnleggsmiddelUnderUtfoerelse.boolsk",
@@ -8796,6 +8856,11 @@
     "hjelpetekst_en": "Here the company must provide information about whether the relevant balance group includes fixed assets that are used in aquaculture activities subject to resource rent tax. State whether the fixed assets are fully for use (Yes, with depreciation/direct deduction) or partly for use, and whether they have been acquired from related parties."
   },
   {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar",
+    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt tidligere inntektsår (havbruk)",
+    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten."
+  },
+  {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt",
     "tekst_nn": "Direkte utgiftsført investeringskostnad",
     "tekst_se": "Investerengollu mii lea njuolgut fievrreduvvon gollun",
@@ -8873,21 +8938,26 @@
     "hjelpetekst_en": "The contents here are not yet translated."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.aaretsAvskrivningIGrunnrenteinntekt",
-    "tekst_nn": "Årets avskriving i grunnrenteinntekt",
-    "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Årets avskrivning i grunnrenteinntekt",
-    "tekst_en": "This year's depreciation in resource rent income"
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.aaretsAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024",
+    "tekst_nb": "Årets avskrivning i grunnrenteinntekt av anskaffelse etter 01012024"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024",
+    "tekst_nb": "Årets avskrivning i grunnrenteinntekt av oppjustert verdi pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert",
     "tekst_nn": "Årets inntektsføring av gevinst ved realisasjon og uttak av driftsmiddel som er direkte utgiftsførte",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Årets inntektsføring av gevinst ved realisasjon og uttak av driftsmiddel som er direkte utgiftsført",
     "tekst_en": "This year's recognition of gains on divestments and withdrawals of fixed assets that are directly expensed"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.andelAvDriftsmiddelAnskaffetIInntektsaaretSomAvskrives",
+    "tekst_nb": "Andel av driftsmiddel anskaffet i inntektsåret som avskrives"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.benyttesIGrunnrenteskattepliktigVirksomhet.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel",
     "tekst_nn": "Blir brukt i grunnrenteskattepliktig verksemd",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Benyttes i grunnrenteskattepliktig virksomhet",
@@ -8898,7 +8968,12 @@
     "hjelpetekst_en": "Here the company must provide information about whether the relevant balance group includes fixed assets that are used in onshore wind power subject to resource rent tax."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar",
+    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt (vindkraft)",
+    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten."
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt",
     "tekst_nn": "Direkte utgiftsført investeringskostnad",
     "tekst_se": "Investerengollu mii lea njuolgut fievrreduvvon gollun",
     "tekst_nb": "Direkte utgiftsført investeringskostnad",
@@ -8909,14 +8984,14 @@
     "hjelpetekst_en": "Here you enter this year’s investment cost that has been recognised directly as a deduction in the resource rent income in NOK."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.erAnleggsmiddelUnderUtfoerelse.boolsk",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.erAnleggsmiddelUnderUtfoerelse.boolsk",
     "tekst_nn": "Er driftsmiddel under utføring?",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Er driftsmiddel under utførelse?",
     "tekst_en": "Is the fixed asset under construction?"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nn": "Gevinst ved realisasjon og uttak som skal overførast til gevinst- og tapskonto knytt til grunnrente",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Gevinst ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente",
@@ -8927,32 +9002,37 @@
     "hjelpetekst_en": "Only applies to fixed assets that are not covered by the cash flow deduction."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.grunnlagForAvskrivningIGrunnrenteinntekt",
-    "tekst_nn": "Grunnlag for avskriving i grunnrenteinntekt",
-    "tekst_se": "ikke oversatt",
-    "tekst_nb": "Grunnlag for avskrivning i grunnrenteinntekt",
-    "tekst_en": "Basis for depreciation of resource rent income",
-    "hjelpetekst_nn": "Skal avskrivast med like store beløp over 5 år.",
-    "hjelpetekst_se": "ikke oversatt",
-    "hjelpetekst_nb": "Avskrives med like store beløp over 5 år.",
-    "hjelpetekst_en": "Depreciated by equal amounts over 5 years."
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.grunnlagForAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024",
+    "tekst_nb": "Grunnlag for avskrivning i grunnrenteinntekt av anskaffelse etter 01012024"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.grunnlagForBeregningAvVenterente",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.grunnlagForAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024",
+    "tekst_nb": "Grunnlag for avskrivning i grunnrenteinntekt av oppjustert verdi pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.grunnlagForBeregningAvVenterente",
     "tekst_nn": "Grunnlag for berekning av venterente",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Grunnlag for beregning av venterente",
     "tekst_en": "Basis for the calculation of deferment interest"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.justeringPaaSaldo",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.inngaaendeVerdiForDriftsmiddelAnskaffetEtter01012024",
+    "tekst_nb": "Inngående verdi for driftsmiddel anskaffet etter 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.inngaaendeVerdiForDriftsmiddelOppjustertPr01012024",
+    "tekst_nb": "Inngående verdi for driftsmiddel oppjustert pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.justeringPaaSaldo",
     "tekst_nn": "Justering på saldo",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Justering på saldo",
     "tekst_en": "Balance adjustment"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.kraftverketsLoepenummer.loepenummer",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.kraftverketsLoepenummer.loepenummer",
     "tekst_nn": "Løpenummer",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Løpenummer",
@@ -8963,7 +9043,7 @@
     "hjelpetekst_en": "The power plant ID from the NVE is basically the same as the serial number and is used to identify the individual wind power plant. Discrepancies between NVE's power plant ID and what is considered one wind power plant for tax purposes may occur. Taxpayers must make an independent assessment of what constitutes one and the same wind power plant for tax purposes."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.oppjustertGrunnlagForAvskrivningPer01012024",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.oppjustertGrunnlagForAvskrivningPer01012024",
     "tekst_nn": "Oppjustert grunnlag for avskriving per 1. januar 2024",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Oppjustert grunnlag for avskrivning pr 1. januar 2024",
@@ -8974,7 +9054,7 @@
     "hjelpetekst_en": "Here is entered the upwardly adjusted value if the transitional rule has been applied."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto",
     "tekst_nn": "Tap ved realisasjon og uttak som skal overførast til gevinst- og tapskonto knytt til grunnrente",
     "tekst_se": "Ikke oversatt",
     "tekst_nb": "Tap ved realisasjon og uttak som skal overføres til gevinst og tapskonto knyttet til grunnrente",
@@ -8985,14 +9065,15 @@
     "hjelpetekst_en": "Only applies to fixed assets that are not covered by the cash flow deduction."
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.utgaaendeVerdi",
-    "tekst_nn": "Utgåande verdi",
-    "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Utgående verdi",
-    "tekst_en": "Closing value"
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.utgaaendeVerdiAvAnskaffelseEtter01012024",
+    "tekst_nb": "Utgående verdi av anskaffelse etter 01012024"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg.venterente",
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.utgaaendeVerdiAvOppjustertVerdiPr01012024",
+    "tekst_nb": "Utgående verdi av oppjustert verdi pr 01012024"
+  },
+  {
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk.venterente",
     "tekst_nn": "Venterente",
     "tekst_se": "ikke oversatt",
     "tekst_nb": "Venterente",
@@ -9024,15 +9105,9 @@
     "tekst_en": "Used in activities subject to resource rent tax"
   },
   {
-    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntekt",
-    "tekst_nn": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt",
-    "tekst_se": "Oassi jagi investerengolus mii lea njuolgut girjejuvvon vuođđoreantosisabohtui",
-    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt",
-    "tekst_en": "Share of the year's investment cost that is directly recognised as a cost in resource rent income",
-    "hjelpetekst_nn": "Oppgi kor mykje av årets aktiveringspliktige kostnader som er frådragsførte direkte i grunnrenteinntekta.",
-    "hjelpetekst_se": "Dieđit man olu jagáš aktiverengeatnegas goluin mat leat vajot geasus čálihuvvon vuođđoreantosisaboađus.",
-    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten.",
-    "hjelpetekst_en": "State how much of this year's costs subject to capitalisation have been deducted immediately from the resource rent income."
+    "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar",
+    "tekst_nb": "Del av årets investeringskostnad som er direkte utgiftsført i grunnrenteinntekt tidligere inntektsår (vannkraft)",
+    "hjelpetekst_nb": "Oppgi hvor mye av årets aktiveringspliktige kostnader som er fradragsført umiddelbart i grunnrenteinntekten."
   },
   {
     "skattemeldingSti": "spesifikasjonAvAnleggsmiddel.saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk.erAnleggsmiddelUnderUtfoerelse.boolsk",
@@ -9828,44 +9903,44 @@
     "tekst_en": "Resource rent income"
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg.samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022.kiloWattime",
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk.samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022.kiloWattime",
     "tekst_nb": "Samlet volum for dekningskjøp for kontraktstype kjøpekontrakt inngått før 28.09.2022"
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg.samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.kiloWattime",
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk.samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.kiloWattime",
     "tekst_nb": "Samlet volum for dekningskjøp for kontraktstype kjøpekontrakt inngått i perioden fra 01.01.2024 til 31.12.2030"
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg.samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt.kiloWattime",
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk.samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt.kiloWattime",
     "tekst_nb": "Samlet volum for dekningskjøp for kontraktstype langsiktig fastpriskontrakt"
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg.samletVolumForDekningskjoepForOevrigKraftsalg.kiloWattime",
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk.samletVolumForDekningskjoepForOevrigKraftsalg.kiloWattime",
     "tekst_nb": "Samlet volum for dekningskjøp for øvrig kraftsalg"
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg.samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022.kiloWattime",
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk.samletVolumForKontraktstypeFinansiellSikringsavtaleInngaattFoer28092022.kiloWattime",
     "tekst_nn": "Samla volum for kontraktstype \"Finansiell sikringsavtale inngått før 28.09.2022\"",
     "tekst_se": "Buohkanas voluma šiehtadusmálli \"Ruđalaš sihkkarastinšiehtadus šiehtaduvvon ovdal 28.09.2022\"",
     "tekst_nb": "Samlet volum for kontraktstype \"Finansiell sikringsavtale inngått før 28.09.2022\"",
     "tekst_en": "Total volume for the contract type \"Financial hedging agreement entered into before 28 September 2022\""
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg.samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022.kiloWattime",
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk.samletVolumForKontraktstypeKjoepekontraktInngaattFoer28092022.kiloWattime",
     "tekst_nn": "Samla volum for kontraktstype \"Kjøpekontrakt inngått før 28.09.2022\"",
     "tekst_se": "Buohkanas voluma šiehtadusmálli \"Oastinšiehtadus šiehtaduvvon ovdal 28.09.2022\"",
     "tekst_nb": "Samlet volum for kontraktstype \"Kjøpekontrakt inngått før 28.09.2022\"",
     "tekst_en": "Total volume for the contract type \"Purchase contract entered into before 28 September 2022\""
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg.samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.kiloWattime",
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk.samletVolumForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030.kiloWattime",
     "tekst_nn": "Samla volum for kontraktstype \"Kjøpekontrakt inngått i perioden 2024 til 2030\"",
     "tekst_se": "Buohkanas voluma šiehtadusmálli \"Oastinšiehtadus šiehtaduvvon gaskkal 2024 ja 2030\"",
     "tekst_nb": "Samlet volum for kontraktstype \"Kjøpekontrakt inngått i perioden 2024 til 2030\"",
     "tekst_en": "Total volume for the contract type \"Purchase contract entered into in the period from 2024 to 2030\""
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg.samletVolumForKontraktstypeLangsiktigFastpriskontrakt.kiloWattime",
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.spesifikasjonAvGrunnrenteinntektIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk.samletVolumForKontraktstypeLangsiktigFastpriskontrakt.kiloWattime",
     "tekst_nn": "Samla volum for kontraktstype \"Langsiktig fastpriskontrakt\"",
     "tekst_se": "Buohkanas voluma šiehtadusmálli \"Guhkesáigasaš vuođđohaddešiehtadus\"",
     "tekst_nb": "Samlet volum for kontraktstype \"Langsiktig fastpriskontrakt\"",
@@ -9933,18 +10008,12 @@
     "tekst_en": "Total annual output in kWh"
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.vindkraftanleggErUnderOppfoering.boolsk",
-    "tekst_nn": "Vindkraftanlegget er under oppføring",
-    "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Vindkraftanlegget er under oppføring",
-    "tekst_en": "The wind power plant is under construction"
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.vindkraftverkErUnderOppfoering.boolsk",
+    "tekst_nb": "Vindkraftanlegget er under oppføring"
   },
   {
-    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.vindkraftanleggOpphoertIInntektsaaret.boolsk",
-    "tekst_nn": "Vindkraftanlegget er opphøyrt i inntektsåret",
-    "tekst_se": "Ikke oversatt",
-    "tekst_nb": "Vindkraftanlegget er opphørt i inntektsåret",
-    "tekst_en": "The wind power plant was discontinued in the income year"
+    "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.vindkraftverkOpphoertIInntektsaaret.boolsk",
+    "tekst_nb": "Vindkraftanlegget er opphørt i inntektsåret"
   },
   {
     "skattemeldingSti": "vindkraftverk.spesifikasjonAvEnhetIVindkraftverk.volumFraElhub.heltall",

@@ -690,6 +690,12 @@
       <xsd:element minOccurs="0" name="aarsakTilValgAvAnnenVerdiFoerVerdsettelsesrabattForNettoformueForDeltakerINokus" type="TekstMedInnkapsling" />
       <xsd:element minOccurs="0" name="selskapMedDeltakerfastsettingErNokus" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="selskapMedDeltakerfastsettingErUSDF" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="deltakersAndelAvFormuesverdiPaaAksjerINokus" type="DeltakersAndelAvFormuesverdiPaaAksjerINokus" />
+      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddKnyttetTilAksjeEllerAndelINokusEidPer31122002" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="fremfoerbartUnderskuddINokus" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletRisk" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletKostpris" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="samletNegativKostpris" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="InntektFraVirksomhetPaaSokkel">
@@ -1474,6 +1480,13 @@
       <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteinntektFoerSamordning" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteskattVedDriftssettelse" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="andelAvNegativGrunnrenteskattVedOpphoer" type="BeloepSomHeltallMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DeltakersAndelAvFormuesverdiPaaAksjerINokus">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="andelAvKursverdi1JanuarIAaretEtterInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvNettoSkattemessigFormueIInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="andelAvAntattSalgsverdi1JanuarIAaretEtterInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="KiloWattime">
