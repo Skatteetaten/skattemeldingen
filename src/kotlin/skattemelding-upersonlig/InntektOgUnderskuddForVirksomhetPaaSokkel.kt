@@ -7,8 +7,8 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.petroleum_andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV3
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV4 as modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.service.overfoeringAvFelter.FORDELTSKATTEMESSIGRESULTAT_ANDELFINANSTILLAND_FRA_NAERINGSSPESIFIKASJON_FELT
 
 object InntektOgUnderskuddForVirksomhetPaaSokkel {
