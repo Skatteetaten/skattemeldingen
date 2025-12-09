@@ -11,8 +11,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 internal object OmsetningOgEtterbetalingMvISamvirkeforetak : HarKalkylesamling {
 
     private val samletOmsetning = kalkyle("samletOmsetning") {
-        val virksomhetstypeVerdi = generiskModell.verdiFor(modell2023.virksomhet.virksomhetstype.key)
-        hvis(virksomhetstypeVerdi == virksomhetstype.kode_samvirkeforetak.kode) {
+        hvis(modell2023.virksomhet.virksomhetstype.verdi() == virksomhetstype.kode_samvirkeforetak.kode) {
             val forekomstType = modell2023.andreForhold_omsetningOgEtterbetalingISamvirkeforetak
             settUniktFelt(forekomstType.samletOmsetning) {
                 forekomstType.omsetningMedMedlemIEgetSamvirkeforetak +
@@ -25,10 +24,9 @@ internal object OmsetningOgEtterbetalingMvISamvirkeforetak : HarKalkylesamling {
 
     internal val andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak =
         kalkyle("andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak") {
-            val virksomhetstypeVerdi = generiskModell.verdiFor(modell2023.virksomhet.virksomhetstype.key)
             val forekomstType = modell2023.andreForhold_omsetningOgEtterbetalingISamvirkeforetak
             hvis(
-                virksomhetstypeVerdi == virksomhetstype.kode_samvirkeforetak.kode
+                modell2023.virksomhet.virksomhetstype.verdi() == virksomhetstype.kode_samvirkeforetak.kode
                     && forekomstType.samletOmsetning.harVerdi()
                     && forekomstType.samletOmsetning ulik 0
             ) {
@@ -42,8 +40,7 @@ internal object OmsetningOgEtterbetalingMvISamvirkeforetak : HarKalkylesamling {
 
     private val skattepliktigNaeringsinntektForSamvirkeforetak =
         kalkyle("skattepliktigNaeringsinntektForSamvirkeforetak") {
-            val virksomhetstypeVerdi = generiskModell.verdiFor(modell2023.virksomhet.virksomhetstype.key)
-            hvis(virksomhetstypeVerdi == virksomhetstype.kode_samvirkeforetak.kode) {
+            hvis(modell2023.virksomhet.virksomhetstype.verdi() == virksomhetstype.kode_samvirkeforetak.kode) {
                 settUniktFelt(modell2023.andreForhold_omsetningOgEtterbetalingISamvirkeforetak.skattepliktigNaeringsinntektForSamvirkeforetak) {
                     modell2023.beregnetNaeringsinntekt_skattemessigResultat.tall()
                 }

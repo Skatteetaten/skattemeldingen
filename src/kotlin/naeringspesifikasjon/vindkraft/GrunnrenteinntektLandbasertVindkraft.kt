@@ -15,6 +15,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.konstante
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v6_2025.v6
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Satser
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erFradrag
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erTillegg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente
@@ -33,18 +34,20 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
 
     private val kontraktForLandbasertVindkraft =
         kalkyle("kontraktForLandbasertVindkraft") {
-            val volum = if (inntektsaar.tekniskInntektsaar >= 2025) {
-                modell.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.volumIKWhIInntektsaaret
-            } else {
-                modell2024.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.volumIKWh
-            }
+            val inntektsaar = inntektsaar
 
             forekomsterAv(modell.kontraktForLandbasertVindkraft) forHverForekomst {
 
                 forekomsterAv(forekomstType.spesifikasjonAvKontraktIVindkraftverk) forHverForekomst {
                     if (forekomstType.kontraktstype ulik kontraktstypeForKraftLevertAvKraftverk.kode_finansiellSikringsavtaleInngaattFoer28092022) {
+                        val volum = if (inntektsaar.tekniskInntektsaar >= 2025) {
+                            modell.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.volumIKWhIInntektsaaret
+                        } else {
+                            felt2024.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.volumIKWh
+                        }
+
                         settFelt(forekomstType.salgsinntektFraFysiskAvtale) {
-                            forekomstType.kontraktspris * generiskModell.verdiFor(volum)!!.toBigDecimal()
+                            forekomstType.kontraktspris * volum
                         }
                     }
                 }

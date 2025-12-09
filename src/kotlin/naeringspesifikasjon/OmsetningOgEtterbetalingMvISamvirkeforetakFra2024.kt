@@ -11,8 +11,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 internal object OmsetningOgEtterbetalingMvISamvirkeforetakFra2024 : HarKalkylesamling {
 
     internal val samletOmsetningKjoepFraMedlemmerISamvirkeforetakOgOevrige = kalkyle("samletOmsetningKjoepFraMedlemmerISamvirkeforetakOgOevrige") {
-        val virksomhetstypeVerdi = generiskModell.verdiFor(modell.virksomhet.virksomhetstype.key)
-        hvis(virksomhetstypeVerdi == virksomhetstype.kode_samvirkeforetak.kode) {
+        hvis(modell.virksomhet.virksomhetstype.verdi() == virksomhetstype.kode_samvirkeforetak.kode) {
             forekomsterAv(modell.andreForhold_kjoepFraMedlemmerISamvirkeforetakOgOevrige) forHverForekomst {
                 settFelt(forekomstType.andreforhold_kjoepFraMedlemmerISamvirkeforetakOgOevrige_samletOmsetning) {
                     forekomstType.andreforhold_kjoepFraMedlemmerISamvirkeforetakOgOevrige_omsetningMedMedlemIEgetSamvirkeforetak +
@@ -24,8 +23,7 @@ internal object OmsetningOgEtterbetalingMvISamvirkeforetakFra2024 : HarKalkylesa
     }
 
     internal val samletOmsetningSalgTilMedlemmerISamvirkeforetakOgOevrige = kalkyle("samletOmsetningSalgTilMedlemmerISamvirkeforetakOgOevrige") {
-        val virksomhetstypeVerdi = generiskModell.verdiFor(modell.virksomhet.virksomhetstype.key)
-        hvis(virksomhetstypeVerdi == virksomhetstype.kode_samvirkeforetak.kode) {
+        hvis(modell.virksomhet.virksomhetstype.verdi() == virksomhetstype.kode_samvirkeforetak.kode) {
             forekomsterAv(modell.andreForhold_salgTilMedlemmerISamvirkeforetakOgOevrige) forHverForekomst {
                 settFelt(forekomstType.samletOmsetning) {
                     forekomstType.omsetningMedMedlemIEgetSamvirkeforetak +
@@ -38,10 +36,9 @@ internal object OmsetningOgEtterbetalingMvISamvirkeforetakFra2024 : HarKalkylesa
 
     internal val andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetakKjoepFraMedlemmerISamvirkeforetakOgOevrige =
         kalkyle("andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak") {
-            val virksomhetstypeVerdi = generiskModell.verdiFor(modell.virksomhet.virksomhetstype.key)
             val forekomstType = modell.andreForhold_kjoepFraMedlemmerISamvirkeforetakOgOevrige
             val maksAntallDesimaler = 10
-            hvis(virksomhetstypeVerdi == virksomhetstype.kode_samvirkeforetak.kode) {
+            hvis(modell.virksomhet.virksomhetstype.verdi() == virksomhetstype.kode_samvirkeforetak.kode) {
                 forekomsterAv(forekomstType) forHverForekomst {
                     hvis(
                         forekomstType.andreforhold_kjoepFraMedlemmerISamvirkeforetakOgOevrige_samletOmsetning.harVerdi()
@@ -58,10 +55,9 @@ internal object OmsetningOgEtterbetalingMvISamvirkeforetakFra2024 : HarKalkylesa
 
     internal val andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetakSalgTilMedlemmerISamvirkeforetakOgOevrige =
         kalkyle("andelAvOmsetningSomKommerFraMedlemIEgetSamvirkeforetak") {
-            val virksomhetstypeVerdi = generiskModell.verdiFor(modell.virksomhet.virksomhetstype.key)
             val forekomstType = modell.andreForhold_salgTilMedlemmerISamvirkeforetakOgOevrige
             val maksAntallDesimaler = 10
-            hvis(virksomhetstypeVerdi == virksomhetstype.kode_samvirkeforetak.kode) {
+            hvis(modell.virksomhet.virksomhetstype.verdi() == virksomhetstype.kode_samvirkeforetak.kode) {
                 forekomsterAv(forekomstType) forHverForekomst {
                     hvis(
                         forekomstType.samletOmsetning.harVerdi()
@@ -77,8 +73,7 @@ internal object OmsetningOgEtterbetalingMvISamvirkeforetakFra2024 : HarKalkylesa
         }
 
     internal val fremfoerbarFradragsramme = kalkyle("fremfoerbarFradragsramme") {
-        val virksomhetstypeVerdi = generiskModell.verdiFor(modell.virksomhet.virksomhetstype.key)
-        hvis(virksomhetstypeVerdi == virksomhetstype.kode_samvirkeforetak.kode) {
+        hvis(modell.virksomhet.virksomhetstype.verdi() == virksomhetstype.kode_samvirkeforetak.kode) {
             forekomsterAv(modell.andreForhold_fradragsrammeForEtterbetalingISamvirkeforetakTilFremfoering) forHverForekomst {
                 settFelt(forekomstType.fremfoerbarFradragsramme) {
                     forekomstType.fremfoerbarFradragsrammeFraTidligereAar +

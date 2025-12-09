@@ -9,7 +9,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemod
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.realisasjonsregelForVirksomhetOmfattetAvPetroleumsskatteloven
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 /**
  * Spec: https://wiki.sits.no/display/SIR/FR+-+Spesifikasjon+av+anleggsmidler
@@ -33,7 +32,7 @@ internal object GevinstOgTapskontoVedRealisasjonAvAnleggsmiddelOmfattetAvPetrole
         )
 
     internal val faktorAntallAarKalkyle = kalkyle("faktorAntallAar") {
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskontoVedRealisasjonAvAnleggsmiddelOmfattetAvPetroleumsskatteloven) forHverForekomst {
             val avskrivningsregelAar = BigDecimal(
                 if (forekomstType.inntektsEllerFradragsfoeringsregel likEnAv inntektsEllerFradragsfoeresOver3AarEtterPetroleumsskattelovenParagraf3bOg11) 3

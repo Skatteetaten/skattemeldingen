@@ -8,6 +8,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.anleggsmiddelOgToemmerkonto_grenseverdiEn
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIAnskaffelsesaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIRealisasjonsaaret
@@ -19,8 +20,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 /**
  * Saldogruppe A og B håndteres helt likt.
@@ -84,19 +83,16 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
     val aaretsAvskrivningKalkyle = kalkyle {
         val inntektsaar = inntektsaar
-        val erAnleggsmiddelUnderUtfoerelse2025 = modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_erAnleggsmiddelUnderUtfoerelse
-        val erAnleggsmiddelUnderUtfoerelse2024 = modell2024.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_erAnleggsmiddelUnderUtfoerelse
-        val erAnleggsmiddelUnderUtfoerelse = if (inntektsaar.tekniskInntektsaar > 2024) {
-            erAnleggsmiddelUnderUtfoerelse2025
-        } else {
-            erAnleggsmiddelUnderUtfoerelse2024
-        }
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
+            val erAnleggsmiddelUnderUtfoerelse = if (inntektsaar.tekniskInntektsaar > 2024) {
+                modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_erAnleggsmiddelUnderUtfoerelse
+            } else {
+                felt2024.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_erAnleggsmiddelUnderUtfoerelse
+            }
             forekomstType.grunnlagForAvskrivningOgInntektsfoering.erPositiv()
                 && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_erAnleggsmiddelUnderUtfoerelse.erUsann()
                 && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet_erAnleggsmiddelUnderUtfoerelse.erUsann()
-                && (generiskModell.verdiFor(erAnleggsmiddelUnderUtfoerelse).isNullOrBlank()
-                || generiskModell.verdiFor(erAnleggsmiddelUnderUtfoerelse)  == "false")
+                && erAnleggsmiddelUnderUtfoerelse.erUsann()
                 && (!(forekomstType.saldogruppe likEnAv enkeltsaldoene) || (if (inntektsaar.tekniskInntektsaar >= 2023) {
                 forekomstType.erDetFysiskAnleggsmiddelIUtgaaendeVerdi.erSann()
             } else {
@@ -144,14 +140,13 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
         }
 
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) forHverForekomst {
-            val erAnleggsmiddelUnderUtfoerelse2025 = modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_erAnleggsmiddelUnderUtfoerelse
-            val erAnleggsmiddelUnderUtfoerelse2024 = modell2024.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_erAnleggsmiddelUnderUtfoerelse
-            val erAnleggsmiddelUnderUtfoerelse = if (inntektsaar.tekniskInntektsaar > 2024) {
-                erAnleggsmiddelUnderUtfoerelse2025
-            } else {
-                erAnleggsmiddelUnderUtfoerelse2024
-            }
             hvis(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.saldogruppe likEnAv saldogruppeBasertPaaInntektsaar) {
+                val erAnleggsmiddelUnderUtfoerelse = if (inntektsaar.tekniskInntektsaar > 2024) {
+                    modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_erAnleggsmiddelUnderUtfoerelse
+                } else {
+                    felt2024.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_erAnleggsmiddelUnderUtfoerelse
+                }
+
                 when {
                     harSpesifikasjonAvKraftverk && modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.grunnlagForAvskrivningOgInntektsfoering.erNegativ() -> {
                         settFelt(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.aaretsInntektsfoeringAvNegativSaldo) {
@@ -183,8 +178,7 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
                             && modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.grunnlagForAvskrivningOgInntektsfoering.erNegativ()
                             && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_erAnleggsmiddelUnderUtfoerelse.erUsann()
                             && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet_erAnleggsmiddelUnderUtfoerelse.erUsann()
-                            && (generiskModell.verdiFor(erAnleggsmiddelUnderUtfoerelse).isNullOrBlank()
-                            || generiskModell.verdiFor(erAnleggsmiddelUnderUtfoerelse)  == "false")
+                            && erAnleggsmiddelUnderUtfoerelse.erUsann()
                                  -> {
                         val aaretsInntektsfoeringAvNegativSaldo =
                             modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.grunnlagForAvskrivningOgInntektsfoering.tall()
@@ -267,11 +261,12 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
     val konsumprisindeksjustertInvesteringskostnadKalkye = kalkyle {
         val kraftverkMap = lagSpesifikasjonAvKraftverkMap()
+        val gjeldendeInntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         val konsumprisindeksInntektsaar =
-            hentKonsumprisindeksVannkraft(statisk.naeringsspesifikasjon.inntektsaar.tall())
+            hentKonsumprisindeksVannkraft(gjeldendeInntektsaar)
 
         val konsumprisindeksDesemberInntektsaar =
-            hentKonsumprisindeksVannkraft(statisk.naeringsspesifikasjon.inntektsaar.tall(), forDesember = true)
+            hentKonsumprisindeksVannkraft(gjeldendeInntektsaar, forDesember = true)
 
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.harVerdi() && forekomstType.realisasjonsdato.harIkkeVerdi()
@@ -356,7 +351,7 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
     val aaretsFriinntektKalkyle = kalkyle {
         val satser = satser!!
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         val kraftverkMap = lagSpesifikasjonAvKraftverkMap()
 
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {

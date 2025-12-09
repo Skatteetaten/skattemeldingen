@@ -16,7 +16,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.biltype2022
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2021
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.satser.aar2021.TransportmiddelSatser
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 internal object TransportmiddelNaering2021 : HarKalkylesamling {
 
@@ -42,7 +41,7 @@ internal object TransportmiddelNaering2021 : HarKalkylesamling {
         opprettSyntetiskFelt(modell2021.spesifikasjonAvAnleggsmiddel_transportmiddelINaering, "kmSatsForPrivatBruk")
 
     internal val bilensAlderKalkyle = kalkyle("bilensAlder") {
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         forAlleForekomsterAv(modell2021.spesifikasjonAvAnleggsmiddel_transportmiddelINaering) {
             settFelt(bilensAlder) {
                 (forekomstType.aarForFoerstegangsregistrering - inntektsaar).absoluttverdi()
@@ -52,7 +51,7 @@ internal object TransportmiddelNaering2021 : HarKalkylesamling {
 
     internal val disponertIPeriodeSkalVaereInnenforInntektsaarKalkyle = kalkyle {
         val gm = generiskModell.tilGeneriskModell()
-        val inntektsaar = gm.verdiFor(statisk.naeringsspesifikasjon.inntektsaar.key)!!.toInt()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar
 
         val nyeElementer = mutableListOf<InformasjonsElement>()
         gm.grupper(modell2021.spesifikasjonAvAnleggsmiddel_transportmiddelINaering.rotForekomstIdNoekkel)

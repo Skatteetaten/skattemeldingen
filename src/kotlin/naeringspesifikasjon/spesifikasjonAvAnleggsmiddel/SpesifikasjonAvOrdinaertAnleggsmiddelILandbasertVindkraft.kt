@@ -5,20 +5,19 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Saldogruppe.samlesaldoene
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarKalkylesamling {
 
     private val direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt =
         kalkyle("direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt")
         {
-            val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+            val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
             val satser = satser!!
 
             forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel) forHverForekomst {
@@ -405,12 +404,12 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
         fun sumDirekteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt(loepenummer: String): BigDecimal? {
             val inntektsaar = inntektsaar
             return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
-                val loepenummerForekomst = if (inntektsaar.tekniskInntektsaar >= 2025) {
-                    forekomstType.vindkraftverketsLoepenummer.verdi()
+                val kraftverketsLoepenummer = if (inntektsaar.tekniskInntektsaar >= 2025) {
+                    forekomstType.vindkraftverketsLoepenummer
                 } else {
-                    generiskModell.verdiFor(modell2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer)
+                    felt2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer
                 }
-                loepenummerForekomst == loepenummer
+                kraftverketsLoepenummer lik loepenummer
             } summerVerdiFraHverForekomst {
                 forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
             }

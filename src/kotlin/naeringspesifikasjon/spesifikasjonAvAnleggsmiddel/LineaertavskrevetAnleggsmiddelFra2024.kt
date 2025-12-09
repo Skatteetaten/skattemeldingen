@@ -17,7 +17,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.KonsumprisindeksVannkraft.hentKonsumprisindeksVannkraft
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
@@ -25,7 +24,7 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
         opprettSyntetiskFelt(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel, "antallAarErvervet")
     internal val antallAarErvervetKalkyle = kalkyle("antallAarErvervetKalkyle") {
         val regnskapsperiodeStart = modell.virksomhet.regnskapsperiode_start.dato()
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         forAlleForekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) {
             val ervervsdato = forekomstType.ervervsdato
             settFelt(antallAarErvervet) {
@@ -119,11 +118,12 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
     val konsumprisindeksjustertInvesteringskostnadKalkyle = kalkyle {
         val kraftverkMap = lagSpesifikasjonAvKraftverkMap()
+        val gjeldendeInntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         val konsumprisindeksInntektsaar =
-            hentKonsumprisindeksVannkraft(statisk.naeringsspesifikasjon.inntektsaar.tall())
+            hentKonsumprisindeksVannkraft(gjeldendeInntektsaar)
 
         val konsumprisindeksDesemberInntektsaar =
-            hentKonsumprisindeksVannkraft(statisk.naeringsspesifikasjon.inntektsaar.tall(), forDesember = true)
+            hentKonsumprisindeksVannkraft(gjeldendeInntektsaar, forDesember = true)
 
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) der {
             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.harVerdi() && forekomstType.realisasjonsdato.harIkkeVerdi()
@@ -164,7 +164,7 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
 
     val gjenstaaendeLevetidKalkyle = kalkyle {
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
 
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) der {
             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.harVerdi() &&
@@ -216,7 +216,7 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
     val aaretsFriinntektKalkyle = kalkyle {
         val satser = satser!!
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
 
         val kraftverkMap = lagSpesifikasjonAvKraftverkMap()
 

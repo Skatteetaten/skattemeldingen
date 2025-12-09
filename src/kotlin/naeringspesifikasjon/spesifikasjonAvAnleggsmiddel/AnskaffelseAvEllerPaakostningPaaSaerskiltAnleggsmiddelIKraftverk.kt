@@ -14,7 +14,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.AnleggsmiddeltypeForSaerskiltAnleggsmiddelIKraftverk.skattemessigLevetid
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.KonsumprisindeksVannkraft.hentKonsumprisindeksVannkraft
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk {
     private val logger = KotlinLogging.logger("AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk")
@@ -80,12 +79,13 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
 
     internal val konsumprisindeksjustertInvesteringskostnadKalkyle =
         kalkyle("konsumprisindeksjustertInvesteringskostnadKalkyle") {
+            val gjeldendeInntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
 
             val konsumprisindeksInntektsaar =
-                hentKonsumprisindeksVannkraft(statisk.naeringsspesifikasjon.inntektsaar.tall())
+                hentKonsumprisindeksVannkraft(gjeldendeInntektsaar)
 
             val konsumprisindeksDesemberInntektsaar =
-                hentKonsumprisindeksVannkraft(statisk.naeringsspesifikasjon.inntektsaar.tall(), forDesember = true)
+                hentKonsumprisindeksVannkraft(gjeldendeInntektsaar, forDesember = true)
 
             forekomsterAv(modell2023.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk.anskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk) forHverForekomst {
 

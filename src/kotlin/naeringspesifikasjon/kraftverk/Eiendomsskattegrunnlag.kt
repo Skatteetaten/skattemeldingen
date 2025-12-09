@@ -12,7 +12,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 /**
  * Spec: https://wiki.sits.no/display/SIR/FR+-+Beregnet+formuesverdi+og+grunnlag+for+beregning+av+særskilt+eiendomsskattegrunnlag
@@ -21,7 +20,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
 
     private val indeksRegulerteVerdierForegaaendeInntektsaar =
         kalkyle("indeksRegulerteVerdierForegaaendeInntektsaar") {
-            val gjeldendeInntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+            val gjeldendeInntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
@@ -126,7 +125,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
 
     val gjennomsnittligIndeksregulertSisteFemAar =
         kalkyle("gjennomsnittligIndeksregulertSisteFemAar") {
-            val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+            val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {

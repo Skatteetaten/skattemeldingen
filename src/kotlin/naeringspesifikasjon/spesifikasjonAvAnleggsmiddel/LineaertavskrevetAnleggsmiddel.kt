@@ -14,7 +14,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIRealisasjonsaaret
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.KonsumprisindeksVannkraft.hentKonsumprisindeksVannkraft
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 object LineaertavskrevetAnleggsmiddel : HarKalkylesamling {
 
@@ -34,7 +33,7 @@ object LineaertavskrevetAnleggsmiddel : HarKalkylesamling {
     }
 
     val gjenstaaendeLevetidKalkyle = kalkyle {
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
 
         forekomsterAv(modell2023.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) der {
             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIKraftverk_gjelderVannkraftverk.erSann()
@@ -84,8 +83,8 @@ object LineaertavskrevetAnleggsmiddel : HarKalkylesamling {
 
     val aaretsFriinntektKalkyle = kalkyle {
         val satser = satser!!
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
-        val antallDagerIAar = antallDagerIAar(inntektsaar!!.toInt())
+        val antallDagerIAar = antallDagerIAar(inntektsaar.gjeldendeInntektsaar)
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
 
         val kraftverkMap = lagSpesifikasjonAvKraftverkMap()
 

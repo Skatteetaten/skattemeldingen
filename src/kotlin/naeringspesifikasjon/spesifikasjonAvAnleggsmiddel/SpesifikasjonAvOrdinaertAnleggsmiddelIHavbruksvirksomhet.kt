@@ -5,14 +5,13 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 internal object SpesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet : HarKalkylesamling {
 
     internal val direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt =
         kalkyle("direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt")
         {
-            val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+            val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
 
             forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) forHverForekomst {
                 hvis(

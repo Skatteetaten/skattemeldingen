@@ -10,14 +10,13 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft2024 : HarKalkylesamling {
 
     private val direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt =
         kalkyle("direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt")
         {
-            val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+            val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
             val satser = satser!!
 
             forekomsterAv(modell2024.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel) forHverForekomst {

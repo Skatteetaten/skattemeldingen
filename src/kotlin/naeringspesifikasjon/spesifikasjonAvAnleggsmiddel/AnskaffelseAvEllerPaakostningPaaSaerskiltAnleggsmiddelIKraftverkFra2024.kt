@@ -15,13 +15,12 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.AnleggsmiddeltypeForSaerskiltAnleggsmiddelIKraftverk.skattemessigLevetid
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.KonsumprisindeksVannkraft.hentKonsumprisindeksVannkraft
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverkFra2024 {
     private val logger = KotlinLogging.logger("AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk")
     internal val aaretsAvskrivningKalkyle = kalkyle("aaretsAvskrivningKalkyle") {
-        val gjeldendeInntektsaar = inntektsaar.gjeldendeInntektsaar
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val antallDagerIAar = antallDagerIAar(inntektsaar.gjeldendeInntektsaar)
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk) forHverForekomst {
             val realisasjonsdato = forekomstType.realisasjonsdato.dato()
             val realisasjonsaar = realisasjonsdato?.year?.toBigDecimal()
@@ -44,7 +43,7 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
                                     ?.let { dagerIkkeEidIAnskaffelsesaaret(it) }
                             (hentFoersteFeltMedVerdiEllerNull(
                                 forekomstType.historiskKostpris, forekomstType.gjenanskaffelsesverdiFoer1Januar1997
-                            )?.tall() / forekomstType.avskrivningstid.tall()) * (dagerEid / antallDagerIAar(gjeldendeInntektsaar))
+                            )?.tall() / forekomstType.avskrivningstid.tall()) * (dagerEid / antallDagerIAar)
                         }
                     }
                 }
@@ -53,14 +52,14 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
                     val dagerEid =
                         dagerEidIAnskaffelsesaaret(forekomstType.anskaffelsesEllerPaakostningsdato.dato())
                     settFelt(forekomstType.aaretsAvskrivning) {
-                        forekomstType.historiskKostpris / forekomstType.avskrivningstid.tall() * (dagerEid / antallDagerIAar(gjeldendeInntektsaar))
+                        forekomstType.historiskKostpris / forekomstType.avskrivningstid.tall() * (dagerEid / antallDagerIAar)
                     }
                 }
 
                 hvis(realisasjonsaar == inntektsaar) {
                     val dagerEid = dagerEidIRealisasjonsaaret(realisasjonsdato)
                     settFelt(forekomstType.aaretsAvskrivning) {
-                        forekomstType.historiskKostpris / forekomstType.avskrivningstid.tall() * (dagerEid / antallDagerIAar(gjeldendeInntektsaar))
+                        forekomstType.historiskKostpris / forekomstType.avskrivningstid.tall() * (dagerEid / antallDagerIAar)
                     }
                 }
 
@@ -70,7 +69,7 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
                         realisasjonsdato
                     )
                     settFelt(forekomstType.aaretsAvskrivning) {
-                        forekomstType.historiskKostpris / forekomstType.avskrivningstid.tall() * (dagerEid / antallDagerIAar(gjeldendeInntektsaar))
+                        forekomstType.historiskKostpris / forekomstType.avskrivningstid.tall() * (dagerEid / antallDagerIAar)
                     }
                 }
             }
@@ -106,11 +105,13 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
         kalkyle("konsumprisindeksjustertInvesteringskostnadKalkyle") {
             val kraftverkMap = lagSpesifikasjonAvKraftverkMap()
 
+            val gjeldendeInntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
+
             val konsumprisindeksInntektsaar =
-                hentKonsumprisindeksVannkraft(statisk.naeringsspesifikasjon.inntektsaar.tall())
+                hentKonsumprisindeksVannkraft(gjeldendeInntektsaar)
 
             val konsumprisindeksDesemberInntektsaar =
-                hentKonsumprisindeksVannkraft(statisk.naeringsspesifikasjon.inntektsaar.tall(), forDesember = true)
+                hentKonsumprisindeksVannkraft(gjeldendeInntektsaar, forDesember = true)
 
             forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk) der {
                 forekomstType.kraftverketsLoepenummer.harVerdi() && forekomstType.realisasjonsdato.harIkkeVerdi()
@@ -201,7 +202,7 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
         }
 
     internal val aaretsFriinntektKalkyle = kalkyle("aaretsFriinntektKalkyle") {
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         val satser = satser!!
         val kraftverkMap = lagSpesifikasjonAvKraftverkMap()
 
@@ -251,7 +252,7 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
 
     internal val konsumprisindeksjustertInvesteringskostnadForKorrigeringAvKommunefordelingAvEiendomsskattegrunnlagKalkyle =
         kalkyle("konsumprisindeksjustertInvesteringskostnadForKorrigeringAvKommunefordelingAvEiendomsskattegrunnlagKalkyle") {
-            val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+            val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
             val konsumprisindeks1997Desember =
                 hentKonsumprisindeksVannkraft(BigDecimal.valueOf(1997))
             val konsumprisindeksInntektsaar =

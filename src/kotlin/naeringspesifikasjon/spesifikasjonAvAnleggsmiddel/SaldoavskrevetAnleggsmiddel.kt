@@ -18,7 +18,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 /**
  * Saldogruppe A og B håndteres helt likt.
@@ -188,7 +187,7 @@ internal object SaldoavskrevetAnleggsmiddel : HarKalkylesamling {
 
     val aaretsFriinntektKalkyle = kalkyle {
         val satser = satser!!
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         val kraftverkMap = lagSpesifikasjonAvKraftverkMap()
 
         forekomsterAv(modell2023.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {

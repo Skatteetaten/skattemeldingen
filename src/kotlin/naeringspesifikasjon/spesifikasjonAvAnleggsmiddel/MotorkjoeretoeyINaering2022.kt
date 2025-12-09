@@ -13,7 +13,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.biltype2022
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerMellom
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.maanederMellom
 
@@ -39,7 +38,7 @@ internal object MotorkjoeretoeyINaering2022 : HarKalkylesamling {
         opprettSyntetiskFelt(modell.spesifikasjonAvAnleggsmiddel_motorkjoeretoeyINaering, "kmSatsForPrivatBruk")
 
     internal val bilensAlderKalkyle = kalkyle("bilensAlder") {
-        val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
         forAlleForekomsterAv(modell.spesifikasjonAvAnleggsmiddel_motorkjoeretoeyINaering) {
             settFelt(bilensAlder) {
                 (modell.spesifikasjonAvAnleggsmiddel_motorkjoeretoeyINaering.aarForFoerstegangsregistrering - inntektsaar).absoluttverdi()
@@ -49,7 +48,7 @@ internal object MotorkjoeretoeyINaering2022 : HarKalkylesamling {
 
     internal val disponertIPeriodeSkalVaereInnenforInntektsaarKalkyle = kalkyle {
         val gm = generiskModell.tilGeneriskModell()
-        val inntektsaar = gm.verdiFor(statisk.naeringsspesifikasjon.inntektsaar)!!.toInt()
+        val inntektsaar = inntektsaar.gjeldendeInntektsaar
 
         val nyeElementer = mutableListOf<InformasjonsElement>()
         gm.grupper(modell.spesifikasjonAvAnleggsmiddel_motorkjoeretoeyINaering)

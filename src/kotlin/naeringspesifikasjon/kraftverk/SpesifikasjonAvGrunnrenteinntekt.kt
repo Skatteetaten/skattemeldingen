@@ -10,7 +10,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.d
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 /**
  * Spec: https://wiki.sits.no/display/SIR/FR+-+Beregnet+formuesverdi+og+grunnlag+for+beregning+av+særskilt+eiendomsskattegrunnlag
@@ -66,11 +65,11 @@ internal object SpesifikasjonAvGrunnrenteinntekt : HarKalkylesamling {
 
     internal val gevinstOgTapVedRealisasjonAvAnleggsmiddelSomBenyttesIKraftproduksjon =
         kalkyle("gevinstOgTapVedRealisasjonAvAnleggsmiddelSomBenyttesIKraftproduksjon") {
+            val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
             fun gjenstaaendeVerdiPaaGevinstOgTapskontoForGrunnrenteinntekt(
                 realisasjonsAar: BigDecimal?,
                 vederlagVedRealisasjon: BigDecimal?
             ): BigDecimal? {
-                val inntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
                 return (inntektsaar - realisasjonsAar)?.let {
                     BigDecimal.valueOf(0.8).pow(it.intValueExact())
                 } * vederlagVedRealisasjon
@@ -207,7 +206,7 @@ internal object SpesifikasjonAvGrunnrenteinntekt : HarKalkylesamling {
 
     val investeringskostnadKnyttetTilKraftproduksjon =
         kalkyle("investeringskostnadKnyttetTilKraftproduksjon") {
-            val gjeldendeInntektsaar = statisk.naeringsspesifikasjon.inntektsaar.tall()
+            val gjeldendeInntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
             fun investeringskostnadKnyttetTilSaerskilteAnleggsmidler(loepenummer: String?): BigDecimal? {
                 return forekomsterAv(modell2023.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk) der {
                     forekomstType.kraftverketsLoepenummer.verdi() == loepenummer &&
