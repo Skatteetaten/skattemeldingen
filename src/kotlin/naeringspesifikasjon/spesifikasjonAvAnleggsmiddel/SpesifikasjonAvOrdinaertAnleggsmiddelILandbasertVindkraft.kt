@@ -6,10 +6,8 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2024
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Saldogruppe.samlesaldoene
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 
 internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarKalkylesamling {
@@ -53,17 +51,6 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                     ) {
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForBeregningAvVenterente *
                                 satser.sats(Sats.landbasertVindkraft_normrenteForBeregningAvVenterente)
-                    }
-                }
-
-                hvis(
-                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik
-                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag &&
-                        forekomstType.ervervsdato.aar() == inntektsaar
-                ) {
-                    settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt) {
-                        forekomstType.nyanskaffelse +
-                            forekomstType.paakostning
                     }
                 }
             }
@@ -287,7 +274,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
             }
         }
 
-    internal val skattemessigAvskrivningAvDriftsmiddel = kalkyle {
+    internal val skattemessigAvskrivningAvOppjustertDriftsmiddel = kalkyle {
 
         fun sumAaretsAvskrivningIGrunnrenteinntektSaldo(loepenummer: String) =
             forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
@@ -303,56 +290,55 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                 forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024.tall()
             }
 
-        fun sumAaretsAvskrivningSaldo(loepenummer: String) =
-            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
-                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.lik(
-                    benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
-                ) && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024.harIkkeVerdi()
-                    && (forekomstType.realisasjonsdato.harIkkeVerdi() || forekomstType.saldogruppe likEnAv samlesaldoene)
-                    && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
-            } summerVerdiFraHverForekomst {
-                forekomstType.aaretsAvskrivning.tall()
-            }
-
-        fun sumAaretsAvskrivningLineaert(loepenummer: String) =
-            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) der {
-                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.lik(
-                    benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
-                ) && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024.harIkkeVerdi()
-                    && forekomstType.realisasjonsdato.harIkkeVerdi()
-                    && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
-            } summerVerdiFraHverForekomst {
-                forekomstType.aaretsAvskrivning.tall()
-            }
-
-        fun sumaAretsInntektsfoerigAvNegativSaldo(loepenummer: String) =
-            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
-                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.lik(
-                    benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
-                ) && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024.harIkkeVerdi()
-                    && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
-            } summerVerdiFraHverForekomst {
-                forekomstType.aaretsInntektsfoeringAvNegativSaldo.tall()
-            }
 
         forekomsterAv(modell.spesifikasjonAvEnhetIVindkraftverk) forHverForekomst {
             val loepenummer = forekomstType.loepenummer.verdi()
             loepenummer?.let {
-                val sumAaretsAvskrivningSaldo = sumAaretsAvskrivningSaldo(loepenummer)
-                val sumAaretsAvskrivningLineaert = sumAaretsAvskrivningLineaert(loepenummer)
-                val sumaAretsInntektsfoerigAvNegativSaldo = sumaAretsInntektsfoerigAvNegativSaldo(loepenummer)
-                val sumSaldoOgLinaert = sumAaretsAvskrivningIGrunnrenteinntektSaldo(loepenummer) + sumAaretsAvskrivningIGrunnrenteinntektLineaert(loepenummer)
-
-                val beloep =
-                    sumAaretsAvskrivningSaldo + sumAaretsAvskrivningLineaert - sumaAretsInntektsfoerigAvNegativSaldo + sumSaldoOgLinaert
+                val beloep = sumAaretsAvskrivningIGrunnrenteinntektSaldo(loepenummer) + sumAaretsAvskrivningIGrunnrenteinntektLineaert(loepenummer)
 
                 if (beloep != null) {
-                    var kode = if (this@kalkyle.inntektsaar.tekniskInntektsaar >= 2025) {
-                        fradragIGrunnrente.kode_skattemessigAvskrivningAvOppjustertDriftsmiddel.kode
-                    } else {
-                        fradragIGrunnrente2024.kode_skattemessigAvskrivningAvDriftsmiddel.kode
-                    }
+                    val kode = fradragIGrunnrente.kode_skattemessigAvskrivningAvOppjustertDriftsmiddel.kode
 
+                    opprettNySubforekomstAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk) {
+                        medId(kode)
+                        medFelt(
+                            forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk.type,
+                            kode
+                        )
+                        medFelt(
+                            forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk.beloep,
+                            beloep
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    internal val skattemessigAvskrivningAvDriftsmiddelAnskaffetEtter01012024 = kalkyle {
+
+        fun sumAaretsAvskrivningIGrunnrenteinntektSaldo(loepenummer: String) =
+            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
+                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
+            } summerVerdiFraHverForekomst {
+                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024.tall()
+            }
+
+        fun sumAaretsAvskrivningIGrunnrenteinntektLineaert(loepenummer: String) =
+            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) der {
+                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
+            } summerVerdiFraHverForekomst {
+                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024.tall()
+            }
+
+
+        forekomsterAv(modell.spesifikasjonAvEnhetIVindkraftverk) forHverForekomst {
+            val loepenummer = forekomstType.loepenummer.verdi()
+            loepenummer?.let {
+                val beloep = sumAaretsAvskrivningIGrunnrenteinntektSaldo(loepenummer) + sumAaretsAvskrivningIGrunnrenteinntektLineaert(loepenummer)
+
+                if (beloep != null) {
+                    val kode = fradragIGrunnrente.kode_skattemessigAvskrivningAvDriftsmiddelAnskaffetEtter01012024.kode
 
                     opprettNySubforekomstAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk) {
                         medId(kode)
@@ -502,7 +488,8 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
             direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt,
-            skattemessigAvskrivningAvDriftsmiddel,
+            skattemessigAvskrivningAvOppjustertDriftsmiddel,
+            skattemessigAvskrivningAvDriftsmiddelAnskaffetEtter01012024,
             investeringskostnad,
             venterente
         )

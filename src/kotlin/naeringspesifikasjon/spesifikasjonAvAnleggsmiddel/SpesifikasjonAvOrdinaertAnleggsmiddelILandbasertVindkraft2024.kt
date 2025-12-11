@@ -375,11 +375,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft2024 : 
                     sumAaretsAvskrivningSaldo + sumAaretsAvskrivningLineaert - sumaAretsInntektsfoerigAvNegativSaldo + sumSaldoOgLinaert
 
                 if (beloep != null) {
-                    var kode = if (this@kalkyle.inntektsaar.tekniskInntektsaar >= 2025) {
-                        fradragIGrunnrente.kode_skattemessigAvskrivningAvOppjustertDriftsmiddel.kode
-                    } else {
-                        fradragIGrunnrente2024.kode_skattemessigAvskrivningAvDriftsmiddel.kode
-                    }
+                    var kode = fradragIGrunnrente2024.kode_skattemessigAvskrivningAvDriftsmiddel.kode
 
                     opprettNySubforekomstAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk) {
                         medId(kode)
