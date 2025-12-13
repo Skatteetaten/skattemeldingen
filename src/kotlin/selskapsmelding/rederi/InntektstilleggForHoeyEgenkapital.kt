@@ -11,7 +11,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.s
 object InntektstilleggForHoeyEgenkapital : HarKalkylesamling {
 
     private val samletKorrigertEiendelVedInngangenTilInntektsaaret = kalkyle {
-        hvis(RederiUtil.skalBeregneRederi(RederiUtil.beskatningsordning.verdi())) {
+        hvis(inntektsaar.tekniskInntektsaar <= 2024 && RederiUtil.skalBeregneRederi(RederiUtil.beskatningsordning.verdi())) {
             val samletEiendelVedInngangenTilInntektsaaret =
                 modell.rederiskatteordning_valutatapValutagevinstOgRentefradrag.samletEiendelVedInngangenTilInntektsaaret.tall()
             settUniktFelt(modell.rederiskatteordning_inntektstilleggForHoeyEgenkapital.samletKorrigertEiendelVedInngangenTilInntektsaaret) {
