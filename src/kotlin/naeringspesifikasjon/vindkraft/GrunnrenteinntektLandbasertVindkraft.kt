@@ -193,7 +193,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 }
 
                 if (samletVolumForKontraktstypeLangsiktigFastpriskontrakt.containsKey(loepenummer)) {
-                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeLangsiktigFastpriskontrakt) {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_oevrigTilVisningAvKontraktsinformasjonPerVindkraftanlegg_samletVolumForKontraktstypeLangsiktigFastpriskontrakt) {
                         samletVolumForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
                     }
                 }
@@ -227,7 +227,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 }
 
                 if (samletVolumForKontraktstypeLangsiktigFastpriskontrakt.containsKey(loepenummer)) {
-                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForKontraktstypeLangsiktigFastpriskontrakt) {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForKontraktstypeLangsiktigFastpriskontrakt) {
                         samletVolumForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
                     }
                 }
@@ -245,7 +245,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                         loepenummer
                     )
                 ) {
-                    settFelt(forekomstType.samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
                         samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030[loepenummer]
                     }
                 }
@@ -610,31 +610,31 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 }
 
                 hvis(
-                    forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                    forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
                         .stoerreEnn(0)
                             && forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.harVerdi()
                             && forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_grunnlagForBeregningAvSelskapsskatt
                         .stoerreEllerLik(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet)
                 ) {
-                    settFelt(forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
                         forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()
                     }
                 }
 
                 hvis(
-                    forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                    forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
                         .stoerreEnn(0)
-                            && forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            && forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
                         .mindreEnn(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet)
                 ) {
-                    settFelt(forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
-                        forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
+                        forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()
                     }
                 }
 
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoerbarBeregnetNegativSelskapsskatt) {
-                    forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                        .minus(forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt)
+                    forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                        .minus(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt)
                         .plus(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet)
                 }
 
@@ -645,7 +645,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
 
             settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_samletFradragIBruttoGrunnrenteinntekt) {
                 sumFradragIGrunnrente.plus(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet)
-                    .minus(forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt)
+                    .minus(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt)
             }
 
             settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_grunnrenteinntektFoerSamordning) {
@@ -753,31 +753,31 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 }
 
                 hvis(
-                    forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                    forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
                         .stoerreEnn(0)
                             && forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.harVerdi()
                             && forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_grunnlagForBeregningAvSelskapsskatt
                         .stoerreEllerLik(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet)
                 ) {
-                    settFelt(forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
                         forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()
                     }
                 }
 
                 hvis(
-                    forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                    forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
                         .stoerreEnn(0)
-                            && forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            && forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
                         .mindreEnn(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet)
                 ) {
-                    settFelt(forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
-                        forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
+                        forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()
                     }
                 }
 
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoerbarBeregnetNegativSelskapsskatt) {
-                    forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                        .minus(forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt)
+                    forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                        .minus(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt)
                         .plus(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet)
                 }
 
@@ -788,7 +788,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
 
             settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_samletFradragIBruttoGrunnrenteinntekt) {
                 sumFradragIGrunnrente.plus(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet)
-                    .minus(forekomstType.beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt)
+                    .minus(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_beregnetNegativSelskapsskattTilFremfoeringIVindkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt)
             }
 
             settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_grunnrenteinntektFoerSamordning) {

@@ -34,7 +34,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkelFra2025 {
                 forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeNegativeSelskapsskatt.tall()
 
             hvis(aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand stoerreEnn 0) {
-                settUniktFelt(forekomstType.negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand) {
+                settUniktFelt(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand) {
                     if (aaretsBeregnedeNegativeSelskapsskatt mindreEllerLik
                         aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand * sats
                     ) {
@@ -105,7 +105,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkelFra2025 {
                 forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeSelskapsskatt -
                     forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskattFraTidligereAar -
                     forekomstType.beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaarBenyttetMotAaretsBeregnedeSelskapsskatt -
-                    forekomstType.negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
+                    forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
                     forekomstType.beregnetNegativSelskapsskattKnyttetTilUnderskuddFraVirksomhetPaaSokkelFraTidligereInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand -
                     forekomstType.beregnetNegativSelskapsskattKnyttetTilTilbakefoertUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand
 
@@ -149,11 +149,11 @@ object InntektOgUnderskuddForVirksomhetPaaSokkelFra2025 {
     internal fun GeneriskModellKontekst.forloepigSamletInntektEllerUnderskuddSokkel() =
         forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
             forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel -
-            forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
+            forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
             forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
             forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
-            forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
-            forekomstType.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel
+            forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
+            forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel
 
     internal val tilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaSokkel =
         kalkyle("tilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaSokkel") {
@@ -172,7 +172,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkelFra2025 {
 
     internal val aaretsAnvendelseAvTilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaar =
         kalkyle("aaretsAnvendelseAvTilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaar") {
-            settUniktFelt(forekomstType.aaretsAnvendelseAvTilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaar) {
+            settUniktFelt(forekomstType.tilbakefoertUnderskuddFraForhaandsfastsettingFraVirksomhetPaaSokkel_aaretsAnvendelseAvTilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaar) {
                 modell.inntektOgUnderskudd.tilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand +
                     forekomstType.tilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaSokkel
             }
@@ -183,11 +183,11 @@ object InntektOgUnderskuddForVirksomhetPaaSokkelFra2025 {
             val inntektEllerUnderskudd =
                 forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
                     forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel -
-                    forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
+                    forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
                     forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
                     forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
-                    forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
-                    forekomstType.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
+                    forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
+                    forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
                     forekomstType.tilbakefoertUnderskuddFraForhaandsfastsettingFraVirksomhetPaaSokkel_underskuddFraVirksomhetPaaSokkelSomKrevesTilbakefoertTilTidligereInntektsaar -
                     forekomstType.tilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
                     forekomstType.tilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaSokkel

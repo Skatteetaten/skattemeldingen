@@ -13,7 +13,7 @@ object InntektOgUnderskuddFra2025 {
         hvis(!RederiUtil.skalBeregneRederi(RederiUtil.beskatningsordning.verdi())) {
             val samletInntektEllerUnderskudd = modell.inntektOgUnderskudd.naeringsinntekt -
                 modell.inntektOgUnderskudd.inntektsfradrag_underskudd +
-                modell.inntektOgUnderskuddForVirksomhetPaaSokkel.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
+                modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
                 modell.inntektOgUnderskuddForVirksomhetPaaSokkel.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
                 modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand +
                 modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag -
@@ -92,7 +92,7 @@ object InntektOgUnderskuddFra2025 {
     internal fun GeneriskModellKontekst.forloepigSamletInntektEllerUnderskudd() =
         modell.inntektOgUnderskudd.naeringsinntekt -
             modell.inntektOgUnderskudd.samletUnderskudd +
-            modell.inntektOgUnderskuddForVirksomhetPaaSokkel.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
+            modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
             modell.inntektOgUnderskuddForVirksomhetPaaSokkel.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
             modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand +
             modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag -
@@ -143,7 +143,7 @@ object InntektOgUnderskuddFra2025 {
 
     internal val aaretsAnvendelseAvTilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaar =
         kalkyle("aaretsAnvendelseAvTilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaar") {
-            settUniktFelt(modell.inntektOgUnderskudd.aaretsAnvendelseAvTilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaar) {
+            settUniktFelt(modell.inntektOgUnderskudd.tilbakefoertUnderskuddForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvTilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaar) {
                 modell.inntektOgUnderskudd.tilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand +
                     modell.inntektOgUnderskuddForVirksomhetPaaSokkel.tilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaSokkel
             }

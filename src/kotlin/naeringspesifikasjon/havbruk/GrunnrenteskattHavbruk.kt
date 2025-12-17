@@ -71,6 +71,21 @@ internal object GrunnrenteskattHavbruk : HarKalkylesamling {
             val ikkeAvskrivbart = forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel) summerVerdiFraHverForekomst {
                 forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet_direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt.tall()
             }
+
+            val sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektLineaertavskrevet =
+                forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) summerVerdiFraHverForekomst {
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
+                }
+            val sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektSaldoavskrevet =
+                forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) summerVerdiFraHverForekomst {
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
+                }
+            val sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektIkkeAvskrivbart =
+                forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel) summerVerdiFraHverForekomst {
+                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIHavbruksvirksomhet_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
+
+                }
+
             val ikkeErAktivert = if (statisk.skatteplikt.erOmfattetAvSaerreglerForHavbruksvirksomhet.erSann()) {
                 forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
                     forekomstType.vannkraftverketsLoepenummer.verdi() == null &&
@@ -80,7 +95,10 @@ internal object GrunnrenteskattHavbruk : HarKalkylesamling {
                 }
             } else null
 
-            lineaertavskrevet + saldoavskrevet + ikkeAvskrivbart + ikkeErAktivert
+            lineaertavskrevet + saldoavskrevet + ikkeAvskrivbart + ikkeErAktivert -
+                sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektLineaertavskrevet -
+                sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektIkkeAvskrivbart -
+                sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektSaldoavskrevet
         }
     }
 

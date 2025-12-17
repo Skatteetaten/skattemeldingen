@@ -62,7 +62,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
                     forekomstType.filialensRentekostnadOgGarantiprovisjonTilSelskapMvISammeIKonsern_samletGjeldVedUtgangenAvInntektsaaret
             val rentekostnad = forekomstType.filialensRentekostnadOgGarantiprovisjonTilSelskapMvISammeIKonsern_samletRentekostnadOgGarantiprovisjon
             hvis(samletGjeldTilNaerstaaende.harVerdi() && samletGjeld.erPositiv() && rentekostnad.harVerdi()) {
-                settFelt(forekomstType.filialensRentekostnadOgGarantiprovisjonTilSelskapMvISammeIKonsern_andelAvRentekostnad) {
+                settFelt(forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_filialensRentekostnadOgGarantiprovisjonTilSelskapMvISammeIKonsern_andelAvRentekostnad) {
                     ((samletGjeldTilNaerstaaende / samletGjeld) * rentekostnad).somHeltall()
                 }
             }
@@ -119,7 +119,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
                     rentekostnaderNaerstaaendeSomGarantist +
                     rentekostnaderNaerstaaendeSomFordringshaver +
                     forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_rentekostnadTilGarantiprovisjonForGjeldTilSelskapMvISammeKonsern +
-                    forekomstType.filialensRentekostnadOgGarantiprovisjonTilSelskapMvISammeIKonsern_andelAvRentekostnad
+                    forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_filialensRentekostnadOgGarantiprovisjonTilSelskapMvISammeIKonsern_andelAvRentekostnad
             }
         }
     }

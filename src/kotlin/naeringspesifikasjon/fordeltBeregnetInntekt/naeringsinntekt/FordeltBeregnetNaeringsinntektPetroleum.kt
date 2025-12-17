@@ -53,7 +53,7 @@ internal object FordeltBeregnetNaeringsinntektPetroleum : HarKalkylesamling {
                 settUniktFelt(petroleumFordeling.sumSkattemessigNedskrevetFormuesverdiForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel) {
                     petroleumFordeling.skattemessigNedskrevetFormuesverdiForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel_anleggsmiddelSomRoerledningProduksjonsinnretningMv +
                         petroleumFordeling.skattemessigNedskrevetFormuesverdiForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel_varigOgBetydeligAnleggsmiddelMv +
-                        petroleumFordeling.anleggsmiddelKnyttetTilEgetForskningOgUtviklingsprosjekt +
+                        petroleumFordeling.skattemessigNedskrevetFormuesverdiForAnleggsmiddelISaerskattegrunnlagTilordnetVirksomhetPaaSokkel_anleggsmiddelKnyttetTilEgetForskningOgUtviklingsprosjekt +
                         petroleumFordeling.annetErvervetImmaterieltFormuesobjektEnnErvervetForretningsverdi +
                         petroleumFordeling.annenKorreksjonISkattemessigNedskrevetFormuesverdi
                 }

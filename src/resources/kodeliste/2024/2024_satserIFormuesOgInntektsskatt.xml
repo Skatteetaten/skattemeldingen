@@ -4,8 +4,8 @@
   <tekniskNavn>2024_satserIFormuesOgInntektsskatt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-03-19T13:49:16.000+01:00</sistEndret>
-  <sistEndretAv>x00obo</sistEndretAv>
+  <sistEndret>2025-08-06T12:23:42.000+02:00</sistEndret>
+  <sistEndretAv>m79764</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
@@ -840,24 +840,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>saerskiltFradragIBarnsInntekt.maksimaltFradrag</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>MaksFradrag</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok</satsenhet>
-      <satsverdi>88250</satsverdi>
-      <satstype>maksFradrag</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-49, 2. ledd</kildereferanse>
-      <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2024 (Stortingets skattevedtak) §6-3</kildereferanse>
-      <beregning>SaerskiltInntektsfradragIBarnsInntekt</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>saerskiltFradragIBarnepensjon.maksimaltFradrag</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -1085,25 +1067,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettPensjonat</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Overskudd diett pensjonat - overskuddsberegning / egenfastsetting (DIETT_PENSJONAT)</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>400</satsverdi>
-      <satstype>dagsats</satstype>
-      <kildereferanse>Forskrift om taksering av formues-, inntekts- og fradragsposter mv. som må fastsettes ved skjønn til bruk ved fastsettingen for 2024 §1-3-3</kildereferanse>
-      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2024 § 2</kildereferanse>
-      <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <kommentar>Utgår for 2023</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.losjiBrakke</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -1301,25 +1264,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostBrakkeMvMedKokemulighet</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Kost - egen brakke eller campingvogn med kokemulighet</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>102</satsverdi>
-      <satstype>dagsats</satstype>
-      <kildereferanse>Forskrift om taksering av formues-, inntekts- og fradragsposter mv. som må fastsettes ved skjønn til bruk ved fastsettingen for 2024 § 1-3-2</kildereferanse>
-      <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2024 § 2</kildereferanse>
-      <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <kommentar>Utgår for 2023</kommentar>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostPrivatperson</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -1352,24 +1296,6 @@
       <kildereferanse>Forskrift om taksering av formues-, inntekts- og fradragsposter mv. som må fastsettes ved skjønn til bruk ved fastsettingen for 2024 § 1-3-3</kildereferanse>
       <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostBrakkeMvUtenKokemulighet</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Kost - egen brakke eller campingvogn uten kokemulighet</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>beloepINok/dag</satsenhet>
-      <satsverdi>400</satsverdi>
-      <satstype>dagsats</satstype>
-      <kildereferanse>Forskrift om taksering av formues-, inntekts- og fradragsposter mv. som må fastsettes ved skjønn til bruk ved fastsettingen for 2024 § 1-3-3</kildereferanse>
-      <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
-      <kommentar>Utgår for 2023</kommentar>
     </kodetillegg>
   </kode>
   <kode>
@@ -2517,90 +2443,6 @@
       <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven av 26. mars 1999 nr. 14 § 5-13-5</kildereferanse>
       <beregning>Privat bruk av bil</beregning>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>privatBrukAvBil.elbilNyereEnnTreAar</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Sats nyere enn tre år</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>prosent</satsenhet>
-      <satsverdi>80</satsverdi>
-      <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
-      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven av 26. mars 1999 nr. 14 § 5-13-5</kildereferanse>
-      <beregning>Privat bruk av bil</beregning>
-      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
-      <intervallFra>0</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>3</intervallTilOgMed>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>privatBrukAvBil.elbilEldreEnnTreAar</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Sats eldre enn tre år</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>prosent</satsenhet>
-      <satsverdi>60</satsverdi>
-      <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
-      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven av 26. mars 1999 nr. 14 § 5-13-5</kildereferanse>
-      <beregning>Privat bruk av bil</beregning>
-      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
-      <intervallFra>3</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>privatBrukAvBil.elbilNyereEnnTreAarYrkeskjoeringOverGrenseverdi</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Sats nyere enn tre år, elbil med yrkeskjøring over grenseverdi</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>prosent</satsenhet>
-      <satsverdi>75</satsverdi>
-      <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
-      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven av 26. mars 1999 nr. 14 § 5-13-5</kildereferanse>
-      <beregning>Privat bruk av bil</beregning>
-      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
-      <intervallFra>0</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>3</intervallTilOgMed>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>privatBrukAvBil.elbilEldreEnnTreAarYrkeskjoeringOverGrenseverdi</tekniskNavn>
-    <beskrivelse>
-      <spraakTekst>
-        <tekst>Sats eldre enn tre år, elbil med yrkeskjøring over grenseverdi</tekst>
-        <spraak>no</spraak>
-      </spraakTekst>
-    </beskrivelse>
-    <kodetillegg>
-      <satsenhet>prosent</satsenhet>
-      <satsverdi>56.25</satsverdi>
-      <satstype>sats</satstype>
-      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
-      <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven av 26. mars 1999 nr. 14 § 5-13-5</kildereferanse>
-      <beregning>Privat bruk av bil</beregning>
-      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
-      <intervallFra>3</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -4890,6 +4732,21 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>utflyttingsskatt.bortfallUtsettelseUtflyttingsskattVedUtbytteMv </tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Faktor for bortfall av utsettelse av utflyttingsskatt ved utbytte mv  </tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>faktor</satsenhet>
+      <satsverdi>0.7</satsverdi>
+      <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 10-70</kildereferanse>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>statsskattProsent</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -5455,8 +5312,8 @@
     <tekniskNavn>2024_satserIFormuesOgInntektsskattUtgaaende</tekniskNavn>
     <status>aktiv</status>
     <versjonsnummer>1</versjonsnummer>
-    <sistEndret>2025-03-19T13:49:16.000+01:00</sistEndret>
-    <sistEndretAv>x00obo</sistEndretAv>
+    <sistEndret>2025-08-06T12:23:42.000+02:00</sistEndret>
+    <sistEndretAv>m79764</sistEndretAv>
     <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
     <beskrivelse>
       <spraakTekst>
@@ -5710,6 +5567,164 @@
         <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2024 (Stortingets skattevedtak) § 6-6</kildereferanse>
         <beregning>SaerfradragForEnsligForsoerger</beregning>
         <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>saerskiltFradragIBarnsInntekt.maksimaltFradrag</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>MaksFradrag</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok</satsenhet>
+        <satsverdi>88250</satsverdi>
+        <satstype>maksFradrag</satstype>
+        <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) § 6-49, 2. ledd</kildereferanse>
+        <kildereferanse>Stortingsvedtak om skatt av inntekt og formue mv. for inntektsåret 2024 (Stortingets skattevedtak) §6-3</kildereferanse>
+        <beregning>SaerskiltInntektsfradragIBarnsInntekt</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>overskuddAvUtgiftsgodtgjoerelse.diettPensjonat</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Overskudd diett pensjonat - overskuddsberegning / egenfastsetting (DIETT_PENSJONAT)</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/dag</satsenhet>
+        <satsverdi>400</satsverdi>
+        <satstype>dagsats</satstype>
+        <kildereferanse>Forskrift om taksering av formues-, inntekts- og fradragsposter mv. som må fastsettes ved skjønn til bruk ved fastsettingen for 2024 §1-3-3</kildereferanse>
+        <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2024 § 2</kildereferanse>
+        <beregning>OverskuddAvUtgiftsgodtgjoerelse</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+        <kommentar>Utgår for 2023</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostBrakkeMvMedKokemulighet</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Kost - egen brakke eller campingvogn med kokemulighet</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/dag</satsenhet>
+        <satsverdi>102</satsverdi>
+        <satstype>dagsats</satstype>
+        <kildereferanse>Forskrift om taksering av formues-, inntekts- og fradragsposter mv. som må fastsettes ved skjønn til bruk ved fastsettingen for 2024 § 1-3-2</kildereferanse>
+        <kildereferanse>Forskrift om satser mv. til bruk for forskudd og skattefastsetting for 2024 § 2</kildereferanse>
+        <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+        <kommentar>Utgår for 2023</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>fradragForMerkostnaderVedFravaerFraHjemGrunnetArbeid.kostBrakkeMvUtenKokemulighet</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Kost - egen brakke eller campingvogn uten kokemulighet</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>beloepINok/dag</satsenhet>
+        <satsverdi>400</satsverdi>
+        <satstype>dagsats</satstype>
+        <kildereferanse>Forskrift om taksering av formues-, inntekts- og fradragsposter mv. som må fastsettes ved skjønn til bruk ved fastsettingen for 2024 § 1-3-3</kildereferanse>
+        <beregning>ArbeidsoppholdUtenforHjemmet</beregning>
+        <beregningskontekst>fastsettingsberegning</beregningskontekst>
+        <kommentar>Utgår for 2023</kommentar>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>privatBrukAvBil.elbilNyereEnnTreAar</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Sats nyere enn tre år</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>prosent</satsenhet>
+        <satsverdi>80</satsverdi>
+        <satstype>sats</satstype>
+        <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
+        <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven av 26. mars 1999 nr. 14 § 5-13-5</kildereferanse>
+        <beregning>Privat bruk av bil</beregning>
+        <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+        <intervallFra>0</intervallFra>
+        <intervallenhet>aar</intervallenhet>
+        <intervallTilOgMed>3</intervallTilOgMed>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>privatBrukAvBil.elbilEldreEnnTreAar</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Sats eldre enn tre år</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>prosent</satsenhet>
+        <satsverdi>60</satsverdi>
+        <satstype>sats</satstype>
+        <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
+        <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven av 26. mars 1999 nr. 14 § 5-13-5</kildereferanse>
+        <beregning>Privat bruk av bil</beregning>
+        <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+        <intervallFra>3</intervallFra>
+        <intervallenhet>aar</intervallenhet>
+        <intervallTilOgMed>uendelig</intervallTilOgMed>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>privatBrukAvBil.elbilNyereEnnTreAarYrkeskjoeringOverGrenseverdi</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Sats nyere enn tre år, elbil med yrkeskjøring over grenseverdi</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>prosent</satsenhet>
+        <satsverdi>75</satsverdi>
+        <satstype>sats</satstype>
+        <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
+        <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven av 26. mars 1999 nr. 14 § 5-13-5</kildereferanse>
+        <beregning>Privat bruk av bil</beregning>
+        <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+        <intervallFra>0</intervallFra>
+        <intervallenhet>aar</intervallenhet>
+        <intervallTilOgMed>3</intervallTilOgMed>
+      </kodetillegg>
+    </kode>
+    <kode>
+      <tekniskNavn>privatBrukAvBil.elbilEldreEnnTreAarYrkeskjoeringOverGrenseverdi</tekniskNavn>
+      <beskrivelse>
+        <spraakTekst>
+          <tekst>Sats eldre enn tre år, elbil med yrkeskjøring over grenseverdi</tekst>
+          <spraak>no</spraak>
+        </spraakTekst>
+      </beskrivelse>
+      <kodetillegg>
+        <satsenhet>prosent</satsenhet>
+        <satsverdi>56.25</satsverdi>
+        <satstype>sats</satstype>
+        <kildereferanse>Lov om skatt av formue og inntekt (skatteloven) §5-13</kildereferanse>
+        <kildereferanse>Forskrift til utfylling og gjennomføring mv. av skatteloven av 26. mars 1999 nr. 14 § 5-13-5</kildereferanse>
+        <beregning>Privat bruk av bil</beregning>
+        <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+        <intervallFra>3</intervallFra>
+        <intervallenhet>aar</intervallenhet>
+        <intervallTilOgMed>uendelig</intervallTilOgMed>
       </kodetillegg>
     </kode>
   </underkodeliste>

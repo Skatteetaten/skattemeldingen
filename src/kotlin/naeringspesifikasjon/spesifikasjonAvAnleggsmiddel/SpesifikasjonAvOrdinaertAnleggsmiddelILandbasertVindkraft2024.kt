@@ -148,7 +148,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft2024 : 
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsAvskrivningIGrunnrenteinntekt +
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto -
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto +
-                            forekomstType.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
                     }
                 } else if (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag) {
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) {
@@ -156,7 +156,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft2024 : 
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_direkteUtgiftsfoertInvesteringsavgiftIGrunnrenteinntekt +
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto -
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto +
-                            forekomstType.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
                     }
                 }
 
@@ -269,7 +269,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft2024 : 
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsAvskrivningIGrunnrenteinntekt +
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto -
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto +
-                            forekomstType.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
                     }
                 } else if (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag) {
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_utgaaendeVerdi) {
@@ -277,7 +277,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft2024 : 
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_direkteUtgiftsfoertInvesteringsavgiftIGrunnrenteinntekt +
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto -
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto +
-                            forekomstType.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftanlegg_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
                     }
                 }
 

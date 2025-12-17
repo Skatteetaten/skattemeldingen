@@ -128,7 +128,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024 +
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto -
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto +
-                            forekomstType.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
                     }
                 }
 
@@ -241,7 +241,7 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024 +
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto -
                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto +
-                            forekomstType.aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
                     }
                 }
 
@@ -401,6 +401,21 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
             }
         }
 
+        fun sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaarSaldo(loepenummer: String) =
+            saldoForekomster(loepenummer) summerVerdiFraHverForekomst {
+                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
+            }
+
+        fun sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaarLineaere(loepenummer: String) =
+            lineaereForekomster(loepenummer) summerVerdiFraHverForekomst {
+                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
+            }
+
+        fun sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaarIkkeAvskrivbare(loepenummer: String) =
+            ikkeAvskrivbareForekomster(loepenummer) summerVerdiFraHverForekomst {
+                forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_delAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar.tall()
+            }
+
         forekomsterAv(modell.spesifikasjonAvEnhetIVindkraftverk) forHverForekomst {
             val loepenummer = forekomstType.loepenummer.verdi()
             loepenummer?.let {
@@ -412,8 +427,14 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                 val sumDirekteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt =
                     sumDirekteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt(loepenummer)
 
-                val beloep =
-                    sumDirekteUtgiftsfoertInvesteringsavgiftIGrunnrenteinntekt + sumDirekteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt
+                val sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar =
+                    sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaarSaldo(loepenummer) +
+                    sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaarLineaere(loepenummer) +
+                    sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaarIkkeAvskrivbare(loepenummer)
+
+                val beloep = sumDirekteUtgiftsfoertInvesteringsavgiftIGrunnrenteinntekt +
+                    sumDirekteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt -
+                    sumDelAvAaretsInvesteringskostnadSomErDirekteUtgiftsfoertIGrunnrenteinntektTidligereInntektsaar
 
                 if (beloep != null) {
                     val kode = fradragIGrunnrente.kode_investeringskostnad.kode

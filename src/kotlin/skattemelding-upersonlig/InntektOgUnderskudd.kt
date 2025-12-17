@@ -19,7 +19,7 @@ object InntektOgUnderskudd : HarKalkylesamling {
         hvis(!RederiUtil.skalBeregneRederi(RederiUtil.beskatningsordning.verdi())) {
             val samletInntektEllerUnderskudd = modell.inntektOgUnderskudd.naeringsinntekt -
                 modell.inntektOgUnderskudd.inntektsfradrag_underskudd +
-                modell.inntektOgUnderskuddForVirksomhetPaaSokkel.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
+                modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
                 modell.inntektOgUnderskuddForVirksomhetPaaSokkel.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
                 modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand +
                 modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag -
@@ -89,11 +89,11 @@ object InntektOgUnderskudd : HarKalkylesamling {
     internal val aaretsFremfoerbareUnderskuddKalkyle = kalkyle("aaretsFremfoerbareUnderskudd") {
         hvis(
             harForekomsterAv(modell.inntektOgUnderskuddForVirksomhetPaaSokkel) &&
-                (modell.inntektOgUnderskudd.inntektsfradrag_underskudd - modell.inntektOgUnderskuddForVirksomhetPaaSokkel.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel).erPositiv()
+                (modell.inntektOgUnderskudd.inntektsfradrag_underskudd - modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel).erPositiv()
         ) {
             settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsFremfoerbareUnderskudd) {
                 (modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
-                    modell.inntektOgUnderskuddForVirksomhetPaaSokkel.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
+                    modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
                     modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvAaretsUnderskudd -
                     modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd) medMinimumsverdi 0
             }

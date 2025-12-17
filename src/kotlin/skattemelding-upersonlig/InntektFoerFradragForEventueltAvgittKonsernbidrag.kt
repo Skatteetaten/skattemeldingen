@@ -98,7 +98,7 @@ object InntektFoerFradragForEventueltAvgittKonsernbidrag : HarKalkylesamling {
                     modell.inntektOgUnderskuddSvalbard.naeringsinntekt -
                         modell.inntektOgUnderskuddSvalbard.inntektsfradrag_underskudd +
                         modell.inntektOgUnderskuddSvalbard.inntekt_samletMottattKonsernbidrag -
-                        modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar -
+                        modell.inntektOgUnderskuddSvalbard.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
                         modell.inntektOgUnderskuddSvalbard.tilleggForIkkeFradragsberettigetEtterbetalingTilMedlemIEgetSamvirkeforetak
                 }
         }

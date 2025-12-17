@@ -47,7 +47,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
             settUniktFelt(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_beregnetSelskapsskattSomFradragsfoeresISaerskattegrunnlagFraVirksomhetPaaSokkel) {
                 (forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeSelskapsskatt -
                     forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskattFraTidligereAar -
-                    forekomstType.negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand) medMinimumsverdi 0
+                    forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand) medMinimumsverdi 0
             }
         }
 
@@ -55,7 +55,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
         kalkyle("beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlaget") {
             hvis(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeNegativeSelskapsskatt.harVerdi()) {
                 settUniktFelt(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlagFraVirksomhetPaaSokkel) {
-                    forekomstType.negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand.tall() medMinimumsverdi 0
+                    forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand.tall() medMinimumsverdi 0
                 }
             }
         }
@@ -67,7 +67,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
                     )?.toBigDecimal()
 
             hvis(andelFinansFoertMotLandinntekt mindreEnn 0 && modell.inntektOgUnderskudd.inntektsfradrag_underskudd stoerreEnn 0) {
-                settUniktFelt(forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
+                settUniktFelt(forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
                     minsteVerdiAv(
                         modell.inntektOgUnderskudd.inntektsfradrag_underskudd.tall(),
                         andelFinansFoertMotLandinntekt.absoluttverdi()
@@ -80,7 +80,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
         hvis(harForekomsterAv(forekomstType)) {
             val sats = satser!!.sats(petroleum_andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel)
             val underskudd = modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
-                forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel
+                forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel
             hvis(underskudd.erPositiv()) {
                 settUniktFelt(forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskudd) {
                     (underskudd * sats).somHeltall()
@@ -93,17 +93,17 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
         kalkyle {
             hvis(
                 (modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
-                    forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) stoerreEnn 0 &&
+                    forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) stoerreEnn 0 &&
                     (forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
                         forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel -
-                        forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) stoerreEnn 0
+                        forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel) stoerreEnn 0
             ) {
                 settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvAaretsUnderskudd) {
                     minsteVerdiAv(
                         forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskudd.tall(),
                         (forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
                             forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel -
-                            forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel)
+                            forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel)
                     )
                 }
             }
@@ -139,7 +139,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
             hvis(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeNegativeSelskapsskatt.erPositiv()) {
                 settUniktFelt(forekomstType.aaretsBeregnedeNegativeSelskapsskattEtterKorrigeringForUnderskuddIAlminneligInntektFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand) {
                     forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeNegativeSelskapsskatt -
-                        forekomstType.negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand
+                        forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand
                 }
             }
         }
@@ -194,12 +194,12 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
 
     internal val underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd =
         kalkyle {
-            hvis(erPetroleumsforetak() && modell.inntektOgUnderskudd.inntektsfradrag_underskudd - forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel stoerreEnn 0) {
+            hvis(erPetroleumsforetak() && modell.inntektOgUnderskudd.inntektsfradrag_underskudd - forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel stoerreEnn 0) {
                 settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_mottattKonsernbidragTilReduksjonIAaretsFremfoerbareUnderskudd) {
                     minsteVerdiAv(
                         modell.inntektOgUnderskudd.inntekt_samletMottattKonsernbidrag.tall(),
                         (modell.inntektOgUnderskudd.inntektsfradrag_underskudd -
-                            forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
+                            forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
                             modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvAaretsUnderskudd)
                     )
                 }
@@ -246,12 +246,12 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
             val sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd =
                 sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd()
             hvis(sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd -
-                forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel stoerreEnn 0 &&
+                forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel stoerreEnn 0 &&
                 forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_fremfoertUnderskuddFraTidligereAar.harVerdi()
             ) {
-                settUniktFelt(forekomstType.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
+                settUniktFelt(forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
                     minsteVerdiAv(
-                        sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd - forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel,
+                        sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd - forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel,
                         forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_fremfoertUnderskuddFraTidligereAar.tall(),
                         modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_fremfoertUnderskuddFraTidligereAar -
                             modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand
@@ -266,11 +266,11 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
             settUniktFelt(forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
                 if (
                     forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_fremfoertUnderskuddFraTidligereAar -
-                    forekomstType.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel mindreEnn restUnderskuddTidligereAar
+                    forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel mindreEnn restUnderskuddTidligereAar
                 ) {
                     forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_fremfoertUnderskuddFraTidligereAar -
                         (forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_fremfoertUnderskuddFraTidligereAar -
-                            forekomstType.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel)
+                            forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel)
                 } else {
                     forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_fremfoertUnderskuddFraTidligereAar - restUnderskuddTidligereAar
                 }
@@ -329,7 +329,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
     fun GeneriskModellKontekst.landinntektEtterAnvendelseAvAaretsUnderskudd(): BigDecimal? =
         modell.inntektOgUnderskudd.naeringsinntekt -
             modell.inntektOgUnderskudd.inntektsfradrag_underskudd +
-            forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
+            forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
             forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
             forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand
 
@@ -342,7 +342,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
                     minsteVerdiAv(
                         landinntekt - modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand,
                         forekomstType.underskuddTilFremfoeringFraVirksomhetPaaSokkel_fremfoertUnderskuddFraTidligereAar -
-                            modell.inntektOgUnderskuddForVirksomhetPaaSokkel.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel.tall()
+                            modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel.tall()
                                 .absoluttverdi()
                     )
                 }
@@ -352,7 +352,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
     internal val underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar =
         kalkyle {
             settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoeringForVirksomhetPaaLandOmfattetAvPetroleumsskatteloven_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
-                forekomstType.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
+                forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
                     modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand
             }
         }
@@ -371,7 +371,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
     fun GeneriskModellKontekst.sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd() =
         forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel - // overført fra næring
             forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel - // overført fra næring
-            forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
+            forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
             forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
             forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand
 
@@ -383,7 +383,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
                 sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd stoerreEnn 0 &&
                     forekomstType.underskuddTilFremfoeringFraVirksomhetPaaSokkel_fremfoertUnderskuddFraTidligereAar.harVerdi()
             ) {
-                settUniktFelt(forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
+                settUniktFelt(forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel) {
                     minsteVerdiAv(
                         sumGrunnlagForFradragsfoeringAvFremfoerbareUnderskudd,
                         forekomstType.underskuddTilFremfoeringFraVirksomhetPaaSokkel_fremfoertUnderskuddFraTidligereAar.tall()
@@ -395,7 +395,7 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
 
     internal val underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAAr = kalkyle {
         settUniktFelt(forekomstType.underskuddTilFremfoeringFraVirksomhetPaaSokkel_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar) {
-            forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
+            forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
                 modell.inntektOgUnderskudd.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaLand
         }
     }
@@ -405,11 +405,11 @@ object InntektOgUnderskuddForVirksomhetPaaSokkel {
             val inntektEllerUnderskudd =
                 forekomstType.inntektFraVirksomhetPaaSokkel_inntektAlminneligInntektFraVirksomhetPaaSokkel -
                     forekomstType.underskuddFraVirksomhetPaaSokkel_underskuddAlminneligInntektFraVirksomhetPaaSokkel -
-                    forekomstType.nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
+                    forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
                     forekomstType.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
                     forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
-                    forekomstType.fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
-                    forekomstType.fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel
+                    forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaSokkelFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
+                    forekomstType.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_fremfoertUnderskuddFraVirksomhetPaaLandFraTidligereAarFoertMotAlminneligInntektFraVirksomhetPaaSokkel
 
             if (inntektEllerUnderskudd stoerreEllerLik 0) {
                 settUniktFelt(forekomstType.samletInntektAlminneligInntektFraVirksomhetPaaSokkel) {

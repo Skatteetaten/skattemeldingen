@@ -62,13 +62,13 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon.tall()
                     }
 
-                settFelt(forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon) {
+                settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon) {
                     forekomstType.totalAarsproduksjon - sumKraftTattUtIhtKonsesjonProduksjon
                 }
 
 
-                settFelt(forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_salgsinntekt) {
-                    forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon * forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_konsesjonsEllerKontraktspris
+                settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_salgsinntekt) {
+                    forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon * forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_konsesjonsEllerKontraktspris
                 }
             }
         }
@@ -107,7 +107,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
                     settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_bruttoSalgsinntekt) {
                         (forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_konsesjonskraft *
                             forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_konsesjonspris) +
-                            forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_salgsinntekt
+                            forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_salgsinntekt
                     }
 
                     settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_fradragForKostnader) {
