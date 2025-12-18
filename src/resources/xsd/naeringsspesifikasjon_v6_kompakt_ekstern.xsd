@@ -1951,23 +1951,17 @@
   </xsd:complexType>
   <xsd:complexType name="InntektOgKostnadJordbrukskonto">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="salgsinntektOgUttakFraJordHagevirksomhet" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="tilskuddIJordHagevirksomhet" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="leiekjoering" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="utleieAvDriftsmiddelByggGrunnMv" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="leieinntektFraJaktFiskerettighet" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="uttakAvJordSandSteinMv" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="inntektFraAvlOppdrettOppstallingHest" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="annenOmsetningSomIkkeErJordHagevirksomhet" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="inntektFraGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="inntektsfradragFraGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="inntektsfoeringAvNegativSaldo" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="tilleggForPositivMidlertidigForskjell" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="reduksjonForNegativMidlertidigForskjell" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="sumDriftskostnadJordbruk" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="andelAvDriftskostnadKnyttetTilInntektOgUttakSomIkkeInngaarPaaJordbrukskonto" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="salgsinntektOgUttakAvVedBiomasseOverfoertFraSkogbruk" type="BeloepMedSkattemessigeEgenskaper"/>
-      <xsd:element minOccurs="0" name="driftsresultatSomIkkeInngaarPaaJordbrukskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="inntektFraGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="inntektsfradragFraGevinstOgTapskonto" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="inntektsfoeringAvNegativSaldo" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="tilleggForPositivMidlertidigForskjell" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="reduksjonForNegativMidlertidigForskjell" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumDriftskostnadJordbruk" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="andelAvDriftskostnadKnyttetTilInntektOgUttakSomIkkeInngaarPaaJordbrukskonto" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="salgsinntektOgUttakAvVedBiomasseOverfoertFraSkogbruk" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="driftsresultatSomIkkeInngaarPaaJordbrukskonto" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="driftsinntektUttakOgTilskuddKnyttetTilJordHagevirksomhetSomOmfattesAvJordbrukskonto" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="driftsinntektKnyttetTilJordHagevirksomhetSomIkkeOmfattesAvJordbrukskonto" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="LoepenummerVindkraftverkMedInnkapsling">

@@ -170,4 +170,5 @@ val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkyle
     .fra(2023, RevisorsBekreftelse)
     .fra(2024, GrunnrenteinntektLandbasertVindkraft)
     .fra(2024, SkogfondForSelskap)
+    .fra(2025, Jordbrukskonto)
     .sorterPaaAarFra(2020).mapValues { Kalkylesamling(*it.value.toTypedArray()) }
