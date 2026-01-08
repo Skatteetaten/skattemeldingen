@@ -233,8 +233,8 @@
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="forskningOgUtviklingsprosjekt" type="ForskningOgUtviklingsprosjekt" />
       <xsd:element minOccurs="0" name="samletTotalkostnad" skatt:erAvledet="true" type="BeloepSomHeltall" />
-      <xsd:element minOccurs="0" name="samletSkattefradrag" skatt:erAvledet="true" type="BeloepSomHeltall" />
-      <xsd:element minOccurs="0" name="samletTilleggIBeregnetSkatt" skatt:erAvledet="true" type="BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="samletSkattefradrag" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
+      <xsd:element minOccurs="0" name="samletTilleggIBeregnetSkatt" skatt:erAvledet="true" type="BeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="gjelderBeskatningPaaSvalbard" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="skattefradragForKostnadKnyttetTilVirksomhetPaaSokkel" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="skattefradragForKostnadKnyttetTilVirksomhetPaaLand" type="BeloepSomHeltallMedInnkapsling" />
@@ -1752,6 +1752,12 @@
   <xsd:simpleType name="BeloepSomHeltall">
     <xsd:restriction base="Heltall" />
   </xsd:simpleType>
+  <xsd:complexType name="BeloepSomHeltallMedOverstyring">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
+      <xsd:element minOccurs="0" name="erOverstyrt" type="BoolskMedInnkapsling"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="BoolskMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="boolsk" type="Boolsk" />

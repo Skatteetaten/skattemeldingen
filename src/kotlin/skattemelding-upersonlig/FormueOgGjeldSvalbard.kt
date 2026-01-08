@@ -10,6 +10,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.core.kodeliste.Eiendomstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.verdiFoerVerdsettingsrabattForAndelIFellesNettoformueISDF
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.verdiFoerVerdsettingsrabattForKapitalisertFesteavgift
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.FormueOgGjeld.satsForFormuesobjekttype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.skatteplikt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.skattepliktForekomst
@@ -76,12 +77,13 @@ object FormueOgGjeldSvalbard : HarKalkylesamling {
 
     internal val verdsettingsrabatt = kalkyle {
         val satser = satser!!
+        val inntektsaar = inntektsaar
+
         hvis(skattepliktForekomst.erFritattForFormuesskatt.erUsann()) {
             forekomsterAv(modell.formuesobjektSvalbard) der {
-                satser.verdsettingsrabattsatsForFormuesobjekttype(forekomstType.formuesobjekttype.verdi()).harVerdi()
+                satser.satsForFormuesobjekttype(inntektsaar, forekomstType.formuesobjekttype.verdi()).harVerdi()
             } forHverForekomst {
-                val sats =
-                    1.toBigDecimal() - satser.verdsettingsrabattsatsForFormuesobjekttype(forekomstType.formuesobjekttype.verdi())
+                val sats = 1.toBigDecimal() - satser.satsForFormuesobjekttype(inntektsaar, forekomstType.formuesobjekttype.verdi())
                 settFelt(forekomstType.verdsettingsrabatt) {
                     (forekomstType.verdiFoerEventuellVerdsettingsrabatt * sats).somHeltall()
                 }

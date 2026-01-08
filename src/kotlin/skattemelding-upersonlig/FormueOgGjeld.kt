@@ -9,9 +9,11 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.core.kodeliste.Eiendomstype
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.konstanter.Inntektsaar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.verdiFoerVerdsettingsrabattForAndelIFellesNettoformueISDF
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.verdiFoerVerdsettingsrabattForKapitalisertFesteavgift
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Satser
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellNaering
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.skatteplikt
@@ -49,25 +51,40 @@ object FormueOgGjeld : HarKalkylesamling {
 
     internal val verdsettingsrabatt = kalkyle {
         val satser = satser!!
+        val inntektsaar = inntektsaar
+
         hvis(skattepliktForekomst.erFritattForFormuesskatt.erUsann()) {
             forekomsterAv(modell.formuesobjekt) der {
-                satser.verdsettingsrabattsatsForFormuesobjekttype(forekomstType.formuesobjekttype.verdi()).harVerdi()
+                satser.satsForFormuesobjekttype(inntektsaar, forekomstType.formuesobjekttype.verdi()).harVerdi()
             } forHverForekomst {
-                val sats = 1.toBigDecimal() - satser.verdsettingsrabattsatsForFormuesobjekttype(forekomstType.formuesobjekttype.verdi())
+                val sats = 1.toBigDecimal() - satser.satsForFormuesobjekttype(inntektsaar, forekomstType.formuesobjekttype.verdi())
                 settFelt(forekomstType.verdsettingsrabatt) {
                     (forekomstType.verdiFoerEventuellVerdsettingsrabatt * sats).somHeltall()
                 }
             }
 
-            val satsVerdsettingsrabatt =
-                satser.verdsettingsrabattsatsForFormuesobjekttype("formuesobjektOmfattetAvVerdsettingsrabattDriftsmidlerMv")
+            hvis(inntektsaar.tekniskInntektsaar <= 2024) {
+                val satsVerdsettingsrabatt =
+                    satser.verdsettingsrabattsatsForFormuesobjekttype("formuesobjektOmfattetAvVerdsettingsrabattDriftsmidlerMv")
 
-            forAlleForekomsterAv(modell.akvakulturtillatelseSomFormuesobjekt) {
-                settFelt(forekomstType.verdsettingsrabatt) {
-                    (forekomstType.verdiFoerEventuellVerdsettingsrabatt *
-                        (1.toBigDecimal() - satsVerdsettingsrabatt)).somHeltall()
+                forAlleForekomsterAv(modell.akvakulturtillatelseSomFormuesobjekt) {
+                    settFelt(forekomstType.verdsettingsrabatt) {
+                        (forekomstType.verdiFoerEventuellVerdsettingsrabatt *
+                            (1.toBigDecimal() - satsVerdsettingsrabatt)).somHeltall()
+                    }
                 }
             }
+        }
+    }
+
+    fun Satser.satsForFormuesobjekttype(
+        inntektsaar: Inntektsaar,
+        formuesobjekttype: String?
+    ): BigDecimal? {
+        return if (inntektsaar.gjeldendeInntektsaar <= 2024) {
+            verdsettingsrabattsatsForFormuesobjekttype(formuesobjekttype)
+        } else {
+           tekniskNavnForFormuesobjekttype[formuesobjekttype]?.let { sats(it) }
         }
     }
 
@@ -323,6 +340,11 @@ object FormueOgGjeld : HarKalkylesamling {
                 formueOgInntektISelskapMedDeltakerfastsetting
         return sumVerdiFoerVerdsettingsrabatt
     }
+
+    internal val tekniskNavnForFormuesobjekttype = mapOf(
+        "formuesobjektOmfattetAvVerdsettingsrabattDriftsmidlerMv" to Sats.verdiFoerVerdsettingsrabattForFormuesobjekterINaeringOmfattetAvVerdsettingsrabatt,
+        "formuesobjektOmfattetAvVerdsettingsrabattAksjerMv" to Sats.verdiFoerVerdsettingsrabattForAksje
+    )
 
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
