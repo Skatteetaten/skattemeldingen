@@ -65,6 +65,7 @@ internal object Balanse : HarKalkylesamling {
         BalanseverdiForAnleggsmiddel.kontormaskiner,
         BalanseverdiForAnleggsmiddel.negativGevinstOgTapskonto,
         BalanseverdiForAnleggsmiddel.negativToemmerkonto,
+        BalanseverdiForAnleggsmiddel.negativUtgaaendeVerdiPaaJordbrukskonto,
         BalanseverdiForAnleggsmiddel.driftsmidlerSomAvskrivesLineaertKalkyle,
         BalanseverdiForAnleggsmiddel.sumBalanseverdiForAnleggsmiddelKalkyle,
         BalanseverdiForOmloepsmiddel.kundefordringKalkyle,
@@ -77,6 +78,7 @@ internal object Balanse : HarKalkylesamling {
         Egenkapital.negativSaldoKalkyle,
         Egenkapital.positivGevinstOgTapskontoKalkyle,
         Egenkapital.positivToemmerkontoKalkyle,
+        Egenkapital.positivUtgaaendeVerdiPaaJordbrukskonto,
         Balanseregnskap.kontoForUtsattInntektsfoeringKalkyle,
         Balanseregnskap.sumSkattemessigVerdiAvFinansieltDerivatSomEiendelKalkyle,
         Balanseregnskap.sumSkattemessigVerdiAvFinansieltDerivatSomGjeldEllerAvsetning,
@@ -226,6 +228,17 @@ internal object BalanseverdiForAnleggsmiddel {
                 opprettNyForekomstForBalanseverdiForAnleggsmiddel(sumUtgaaendeVerdi, balanseverdiForAnleggsmiddel.kode_1298)
             }
         }
+
+    internal val negativUtgaaendeVerdiPaaJordbrukskonto = kalkyle("negativUtgaaendeVerdiPaaJordbrukskonto") {
+        hvis(ingenEllerBegrensetRegnskapsplikt() && inntektsaar.tekniskInntektsaar >= 2025) {
+            val sumUtgaaendeVerdi = forekomsterAv(modell.jordbruk_jordbrukskonto) der {
+                forekomstType.utgaaendeVerdiPaaJordbrukskonto.erNegativ()
+            } summerVerdiFraHverForekomst {
+                forekomstType.utgaaendeVerdiPaaJordbrukskonto * -1
+            }
+            opprettNyForekomstForBalanseverdiForAnleggsmiddel(sumUtgaaendeVerdi, balanseverdiForAnleggsmiddel.kode_1299)
+        }
+    }
 
     internal val driftsmidlerSomAvskrivesLineaertKalkyle =
         kalkyle("driftsmidlerSomAvskrivesLineaertKalkyle") {
@@ -413,6 +426,20 @@ internal object Egenkapital {
                     forekomstType.utgaaendeVerdiPaaToemmerkonto.tall()
                 },
                 egenkapital.kode_2098
+            )
+        }
+    }
+
+    internal val positivUtgaaendeVerdiPaaJordbrukskonto = kalkyle("positivUtgaaendeVerdiPaaJordbrukskonto") {
+        hvis(ingenEllerBegrensetRegnskapsplikt() && inntektsaar.tekniskInntektsaar >= 2025) {
+            val sum = forekomsterAv(modell.jordbruk_jordbrukskonto) der {
+                forekomstType.utgaaendeVerdiPaaJordbrukskonto.erPositiv()
+            } summerVerdiFraHverForekomst {
+                forekomstType.utgaaendeVerdiPaaJordbrukskonto.tall()
+            }
+            opprettNyForekomstForEgenkapital(
+                sum,
+                egenkapital.kode_2099
             )
         }
     }

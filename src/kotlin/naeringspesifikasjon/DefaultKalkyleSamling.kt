@@ -103,6 +103,7 @@ val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkyle
     .bareI(2023, SaerskiltAnleggsmiddelIKraftverk2023)
     .fra(2024, SaerskiltAnleggsmiddelIKraftverkFra2024)
     .fra(2023, ResultatregnskapForVirksomhetOmfattetAvPetroleumsskatteloven)
+    .fra(2025, Jordbrukskonto)
     .bareI(2020, Resultatregnskapet2020)
     .bareI(2021, Resultatregnskapet2021)
     .fra(2022, Resultatregnskapet)
@@ -170,5 +171,4 @@ val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkyle
     .fra(2023, RevisorsBekreftelse)
     .fra(2024, GrunnrenteinntektLandbasertVindkraft)
     .fra(2024, SkogfondForSelskap)
-    .fra(2025, Jordbrukskonto)
     .sorterPaaAarFra(2020).mapValues { Kalkylesamling(*it.value.toTypedArray()) }

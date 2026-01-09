@@ -73,6 +73,17 @@ internal object Resultatregnskapet : HarKalkylesamling {
         }
     }
 
+    val inntektFraJordbrukskontoKalkyle = kalkyle("inntektFraJordbrukskonto") {
+        hvis(ingenEllerBegrensetRegnskapsplikt() && inntektsaar.tekniskInntektsaar >= 2025) {
+            opprettNyForekomstForAnnenDriftsinntekt(
+                forekomsterAv(modell.jordbruk_jordbrukskonto) summerVerdiFraHverForekomst {
+                    forekomstType.inntektFraJordbrukskonto.tall()
+                },
+                annenDriftsinntekt.kode_3911
+            )
+        }
+    }
+
     val aaretsInntektsfoeringAvNegativSaldoKalkyle = kalkyle("aaretsInntektsfoeringAvNegativSaldo") {
         hvis(ingenEllerBegrensetRegnskapsplikt() && erIkkeSkjoennsfastsatt()) {
             val vederlagVedRealisasjonOgUttakInntektsfoertIAarLinear =
@@ -147,6 +158,31 @@ internal object Resultatregnskapet : HarKalkylesamling {
                 )
             }
         }
+
+    val andelAvDriftsresultatSomOverfoeresTilJordbrukskontoKalkyle =
+        kalkyle("andelAvDriftsresultatSomOverfoeresTilJordbrukskonto") {
+            hvis(ingenEllerBegrensetRegnskapsplikt() && inntektsaar.tekniskInntektsaar >= 2025) {
+                opprettNyForekomstForAnnenDriftskostnad(
+                    forekomsterAv(modell.jordbruk_jordbrukskonto) summerVerdiFraHverForekomst {
+                        forekomstType.andelAvDriftsresultatSomOverfoeresTilJordbrukskonto.tall()
+                    },
+                    annenDriftskostnad.kode_7912
+                )
+            }
+        }
+
+    val inntektsfradragFraJordbrukskontoKalkyle =
+        kalkyle("inntektsfradragFraJordbrukskonto") {
+            hvis(ingenEllerBegrensetRegnskapsplikt() && inntektsaar.tekniskInntektsaar >= 2025) {
+                opprettNyForekomstForAnnenDriftskostnad(
+                    forekomsterAv(modell.jordbruk_jordbrukskonto) summerVerdiFraHverForekomst {
+                        forekomstType.inntektsfradragFraJordbrukskonto.tall()
+                    },
+                    annenDriftskostnad.kode_7913
+                )
+            }
+        }
+
 
     val tilbakefoertKostnadForPrivatBrukAvNaeringsbilKalkyle =
         kalkyle("tilbakefoertKostnadForPrivatBrukAvNaeringsbil") {
@@ -721,7 +757,10 @@ internal object Resultatregnskapet : HarKalkylesamling {
         heravAndelResultatTekniskRegnskapLivsforsikringOgPensjonskasse,
         heravAndelResultatIkkeTekniskRegnskapLivsforsikringOgPensjonskasse,
         fordeltAarsresultatFoerOmklassifisertInntektEllerKostnad,
-        fordeltAarsresultat
+        fordeltAarsresultat,
+        inntektFraJordbrukskontoKalkyle,
+        andelAvDriftsresultatSomOverfoeresTilJordbrukskontoKalkyle,
+        inntektsfradragFraJordbrukskontoKalkyle
     )
     override fun kalkylesamling(): Kalkylesamling {
         return kalkyleSamling
