@@ -1378,6 +1378,7 @@
           <xsd:element name="id" type="Tekst" />
           <xsd:element name="naeringstype" type="NaeringstypeMedInnkapsling" />
           <xsd:element minOccurs="0" name="naeringsinntekt" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/dcfb4779-e484-11e6-9cb3-005056821322" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+          <xsd:element minOccurs="0" name="underskudd" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/6c325d60-ff95-11e8-a756-005056823b15" type="FradragMedLoennsomhetsvurderingMvOgOverstyring" />
           <xsd:element minOccurs="0" name="samordnetPersoninntekt" type="SamordnetPersoninntekt" />
         </xsd:sequence>
       </xsd:extension>
@@ -2505,7 +2506,7 @@
       <xsd:element name="selskapetsNavn" type="OrganisasjonsnavnMedInnkapsling" />
       <xsd:element name="selskapetsOrganisasjonsnummer" type="OrganisasjonsnummerMedInnkapsling" />
       <xsd:element minOccurs="0" name="latentGevinstVedRealisasjonAvOpsjonIArbeidsforhold" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="beregnetSkattepliktigGevinstVedRealisasjonAvOpsjonIArbeidsforhold" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beregnetSkattepliktigGevinstVedRealisasjonAvOpsjonIArbeidsforhold" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="latentTapVedRealisasjonAvOpsjonIArbeidsforhold" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="beregnetSkattepliktigTapVedRealisasjonAvOpsjonIArbeidsforhold" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="realisasjonAvOpsjonIArbeidsforhold" type="RealisasjonOmfattetAvUtflyttingsskatt" />
