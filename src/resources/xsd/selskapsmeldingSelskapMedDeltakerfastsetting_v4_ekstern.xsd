@@ -2562,7 +2562,9 @@
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3294-98ef-11ea-8a84-005056828ed3" type="AarstallMedInnkapsling" />
       <xsd:element minOccurs="0" name="justertMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d329a-98ef-11ea-8a84-005056828ed3" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="datoForDokumentertMarkedsverdi" type="DatoMedInnkapsling" />
-      <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdi" type="ReduksjonsfaktorMedInnkapsling" />
+      <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdi" type="ReduksjonsfaktorMedInnkapsling" skatt:erAvledet="true" />
+      <xsd:element minOccurs="0" name="boligverdiTidligereInntektsaar" type="BeloepSomHeltall" />
+      <xsd:element minOccurs="0" name="beregnetBoligverdiTidligereInntektsaar" type="BeloepSomHeltall" skatt:erAvledet="true" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DokumentertMarkedsverdiForNaeringseiendom">
