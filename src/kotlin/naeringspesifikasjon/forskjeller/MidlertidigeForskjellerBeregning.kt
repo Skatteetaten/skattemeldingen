@@ -241,6 +241,36 @@ internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
         }
     }
 
+    internal val forskjellstypePositivSaldoJordbrukskontoKalkyle = kalkyle {
+        hvis(fullRegnskapspliktOgIkkePetroleum()) {
+            val skattemessigVerdi = forekomsterAv(modell.jordbruk_jordbrukskonto) der {
+                forekomstType.utgaaendeVerdiPaaJordbrukskonto.erPositiv()
+            } summerVerdiFraHverForekomst {
+                forekomstType.utgaaendeVerdiPaaJordbrukskonto.tall()
+            }
+
+            oppdaterEllerOpprettForskjellstype(
+                midlertidigForskjellstype.kode_positivSaldoJordbrukskonto,
+                skattemessigVerdi = skattemessigVerdi
+            )
+        }
+    }
+
+    internal val forskjellstypeNegativSaldoJordbrukskontoKalkyle = kalkyle {
+        hvis(fullRegnskapspliktOgIkkePetroleum()) {
+            val skattemessigVerdi = forekomsterAv(modell.jordbruk_jordbrukskonto) der {
+                forekomstType.utgaaendeVerdiPaaJordbrukskonto.erNegativ()
+            } summerVerdiFraHverForekomst {
+                forekomstType.utgaaendeVerdiPaaJordbrukskonto.tall().absoluttverdi()
+            }
+
+            oppdaterEllerOpprettForskjellstype(
+                midlertidigForskjellstype.kode_negativSaldoJordbrukskonto,
+                skattemessigVerdi = skattemessigVerdi
+            )
+        }
+    }
+
     internal val forskjell = opprettSyntetiskFelt(modell.midlertidigForskjell, "forskjell")
     internal val forskjellForrigeInntektsaar =
         opprettSyntetiskFelt(modell.midlertidigForskjell, "forskjellForrigeInntektsaar")
@@ -438,6 +468,8 @@ internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
         forskjellstypeBetingetSkattefriGevinstKalkyle,
         forskjellstypePositivSaldoToemmerkontoKalkyle,
         forskjellstypeNegativSaldoToemmerkontoKalkyle,
+        forskjellstypePositivSaldoJordbrukskontoKalkyle,
+        forskjellstypeNegativSaldoJordbrukskontoKalkyle,
         midlertidigeForskjellerTilleggKalkyle,
         midlertidigeForskjellerFradragKalkyle,
         sumEndringIForskjellKalkyle,
