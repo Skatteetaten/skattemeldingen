@@ -88,8 +88,7 @@ internal object Jordbrukskonto : HarKalkylesamling {
         kalkyle("utgaaendeVerdiPaaToemmerkonto") {
             forAlleForekomsterAv(modell.jordbruk_jordbrukskonto) {
                 settFelt(forekomstType.utgaaendeVerdiPaaJordbrukskonto) {
-                   forekomstType.inngaaendeVerdiPaaJordbrukskonto  +
-                   forekomstType.andelAvDriftsresultatSomOverfoeresTilJordbrukskonto -
+                   forekomstType.grunnlagForInntektOgFradragPaaJordbrukskontoIInntektsaaret -
                    forekomstType.inntektFraJordbrukskonto +
                    forekomstType.inntektsfradragFraJordbrukskonto
                 }

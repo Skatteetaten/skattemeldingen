@@ -2,7 +2,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v5" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v5">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2025-11-21T15:03:15.104+0100" name="generertDato" />
+      <xsd:attribute fixed="2026-01-07T14:57:23.947+0100" name="generertDato" />
       <xsd:attribute fixed="5.0" name="versjon" />
       <xsd:attribute fixed="Skattemelding for upersonlig skattepliktig inneholder selskapets inntekter, utgifter, formue og gjeld som et grunnlag for beregning av formues- og inntektsskatt iht. skatteplikten. " name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding upersonlige skattepliktige v5" name="modellnavn" />
@@ -2002,13 +2002,13 @@
       <xsd:element minOccurs="0" name="boligegenskaper" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3296-98ef-11ea-8a84-005056828ed3" type="Boligegenskaper" />
       <xsd:element minOccurs="0" name="boligbruk" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/9c33fcfa-2964-11e6-b2bc-96405985e0fa" type="BoligbrukskodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="grunnlagForBeregnetMarkedsverdi" type="GrunnlagForBeregnetMarkedsverdiForBolig" />
-      <xsd:element name="beregnetMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3295-98ef-11ea-8a84-005056828ed3" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element name="beregnetMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3295-98ef-11ea-8a84-005056828ed3" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="markedsverdiErGrunnlagForBeregningAvFormuesverdiForBolig" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FormuesspesifikasjonForFlerboligbygning">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="beregnetMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3295-98ef-11ea-8a84-005056828ed3" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beregnetMarkedsverdi" skatt:erAvledet="true" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3295-98ef-11ea-8a84-005056828ed3" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="grunnlagForBeregnetMarkedsverdi" type="GrunnlagForBeregnetMarkedsverdiForBolig" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="useksjonertBoenhet" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/9c33fd5f-2964-11e6-b2bc-96405985e0fa" type="UseksjonertBoenhet" />
       <xsd:element minOccurs="0" name="markedsverdiErGrunnlagForBeregningAvFormuesverdiForFlerboligbygning" type="BoolskMedInnkapsling" />
@@ -2383,7 +2383,7 @@
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregnetMarkedsverdiForBolig">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="boligverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ec675d4c-0e65-8144-aa88-9bedd74371f6" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="boligverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ec675d4c-0e65-8144-aa88-9bedd74371f6" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBolig" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3297-98ef-11ea-8a84-005056828ed3" type="DokumentertMarkedsverdiForBolig" />
     </xsd:sequence>
   </xsd:complexType>
@@ -2393,7 +2393,7 @@
       <xsd:element minOccurs="0" name="boligegenskaper" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3296-98ef-11ea-8a84-005056828ed3" type="Boligegenskaper" />
       <xsd:element minOccurs="0" name="boligbruk" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/9c33fcfa-2964-11e6-b2bc-96405985e0fa" type="BoligbrukskodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="bruksenhetsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e101-9fe1-11e5-a9f8-e4115b280940" type="TekstMedInnkapsling" />
-      <xsd:element minOccurs="0" name="boligverdiForUseksjonertBoenhet" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/28455522-e51f-f94a-8c69-21c455f69e78" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="boligverdiForUseksjonertBoenhet" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/28455522-e51f-f94a-8c69-21c455f69e78" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="formuesverdiForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="verdiFoerVerdsettingsrabattForFormuesandel" skatt:erAvledet="true" type="BeloepSomHeltall" />
     </xsd:sequence>
@@ -2562,7 +2562,7 @@
       <xsd:element minOccurs="0" name="dokumentertMarkedsverdiForBoligIRandsoneEtterKommunereformen" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="dokumentertMarkedsverdiTidligereInntektsaar" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3294-98ef-11ea-8a84-005056828ed3" type="AarstallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="justertMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d329a-98ef-11ea-8a84-005056828ed3" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="justertMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d329a-98ef-11ea-8a84-005056828ed3" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="datoForDokumentertMarkedsverdi" type="DatoMedInnkapsling" />
       <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdi" type="ReduksjonsfaktorMedInnkapsling" skatt:erAvledet="true" />
       <xsd:element minOccurs="0" name="boligverdiTidligereInntektsaar" type="BeloepSomHeltall" />
@@ -2576,8 +2576,11 @@
       <xsd:element minOccurs="0" name="aarForMottattMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d3294-98ef-11ea-8a84-005056828ed3" type="AarstallMedInnkapsling" />
       <xsd:element minOccurs="0" name="justertMarkedsverdi" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/ce6d329a-98ef-11ea-8a84-005056828ed3" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="datoForDokumentertMarkedsverdi" type="DatoMedInnkapsling" />
-      <xsd:element minOccurs="0" name="avvikVedAnvendtDokumentertMarkedsverdi" skatt:erAvledet="true" type="Prosent" />
       <xsd:element minOccurs="0" name="reduksjonsfaktorForJustertMarkedsverdi" type="ReduksjonsfaktorMedInnkapsling" />
+      <xsd:element minOccurs="0" name="reduksjonsfaktorVedAnvendtDokumentertMarkedsverdi" skatt:erAvledet="true" type="ReduksjonsfaktorMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beregnetReduksjonsfaktorForJustertMarkedsverdi" skatt:erAvledet="true" type="ReduksjonsfaktorMedInnkapsling" />
+      <xsd:element minOccurs="0" name="utleieverdiFraSergTidligereInntektsaar" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="beregnetUtleieverdiFraSergTidligereInntektsaar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Naeringseiendomstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_naeringseiendomstype.xml">
