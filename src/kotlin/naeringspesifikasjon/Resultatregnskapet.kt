@@ -736,6 +736,9 @@ internal object Resultatregnskapet : HarKalkylesamling {
         inntektFraToemmerkontoKalkyle,
         inntektsfradragFraToemmerkontoKalkyle,
         andelAvDriftsresultatOverfoertTilToemmerkontoKalkyle,
+        inntektFraJordbrukskontoKalkyle,
+        andelAvDriftsresultatSomOverfoeresTilJordbrukskontoKalkyle,
+        inntektsfradragFraJordbrukskontoKalkyle,
         sumDriftsinntekterKalkyle,
         sumDriftsinntekterBankOgForsikringKalkyle,
         sumDriftsinntekterSomInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak,
@@ -758,9 +761,6 @@ internal object Resultatregnskapet : HarKalkylesamling {
         heravAndelResultatIkkeTekniskRegnskapLivsforsikringOgPensjonskasse,
         fordeltAarsresultatFoerOmklassifisertInntektEllerKostnad,
         fordeltAarsresultat,
-        inntektFraJordbrukskontoKalkyle,
-        andelAvDriftsresultatSomOverfoeresTilJordbrukskontoKalkyle,
-        inntektsfradragFraJordbrukskontoKalkyle
     )
     override fun kalkylesamling(): Kalkylesamling {
         return kalkyleSamling

@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v4" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v4">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2023-10-23T15:26:13.660+0200" name="generertDato"/>
+            <xsd:attribute fixed="2023-12-19T13:44:22.015+0100" name="generertDato"/>
             <xsd:attribute fixed="v4" name="versjon"/>
             <xsd:attribute fixed="" name="beskrivelse"/>
             <xsd:attribute fixed="v4 (2023)" name="modellnavn"/>
@@ -30,7 +30,7 @@
     <xsd:complexType name="InformasjonTilSkattelister">
         <xsd:sequence>
             <xsd:element name="organisasjonsnummer" type="typekatalog:Organisasjonsnummer"/>
-            <xsd:element name="kommune" type="typekatalog:Kommunenummer"/>
+            <xsd:element minOccurs="0" name="kommune" type="typekatalog:Kommunenummer"/>
             <xsd:element name="nettoinntekt" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element name="nettoformue" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element name="beregnetSkatt" type="typekatalog:BeloepSomHeltall"/>

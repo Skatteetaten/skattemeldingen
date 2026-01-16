@@ -2,7 +2,7 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skatteberegningsgrunnlag:v7" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skatteberegningsgrunnlag:v7">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2023-11-21T13:28:02.241+0100" name="generertDato"/>
+            <xsd:attribute fixed="2024-03-21T09:49:02.351+0100" name="generertDato"/>
             <xsd:attribute fixed="v7" name="versjon"/>
             <xsd:attribute fixed="urn:ske:fastsetting:skatt:skatteobjektstyper:v2_95" name="beskrivelse"/>
             <xsd:attribute fixed="v7 (2022)" name="modellnavn"/>
@@ -102,6 +102,14 @@
     <xsd:simpleType name="Tolvdel">
         <xsd:restriction base="typekatalog:Heltall"/>
     </xsd:simpleType>
+    <xsd:complexType name="Vedtak">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="saksid" type="typekatalog:Tekst"/>
+            <xsd:element minOccurs="0" name="journalpostreferanse" type="typekatalog:Tekst"/>
+            <xsd:element minOccurs="0" name="vedtaksdato" type="typekatalog:Dato"/>
+            <xsd:element minOccurs="0" name="vedtakstekstkode" type="Vedtakstekstkode"/>
+        </xsd:sequence>
+    </xsd:complexType>
     <xsd:simpleType name="GrunnlagstypeForSatsForVerdsettingsrabattForNaeringseiendom">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="utleieverdi"/>
@@ -142,6 +150,14 @@
             <xsd:enumeration value="K"/>
         </xsd:restriction>
     </xsd:simpleType>
+    <xsd:simpleType name="saTypeFraSL">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="0"/>
+            <xsd:enumeration value="1"/>
+            <xsd:enumeration value="2"/>
+            <xsd:enumeration value="3"/>
+        </xsd:restriction>
+    </xsd:simpleType>
     <xsd:simpleType name="SaerskiltSkattepliktstype">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="kildeskattepliktPaaPensjon"/>
@@ -151,14 +167,6 @@
             <xsd:enumeration value="kildeskattepliktPaaLoenn"/>
             <xsd:enumeration value="skattepliktVedUtenriksoppholdINorskStatstjenesteEllerNato"/>
             <xsd:enumeration value="skattepliktPaaLoennFraDenNorskeStatOpptjentIUtlandet"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-    <xsd:simpleType name="saTypeFraSL">
-        <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="0"/>
-            <xsd:enumeration value="1"/>
-            <xsd:enumeration value="2"/>
-            <xsd:enumeration value="3"/>
         </xsd:restriction>
     </xsd:simpleType>
     <xsd:simpleType name="TrygdeEllerSkattemessigUnntak">
@@ -195,14 +203,6 @@
     <xsd:simpleType name="Skattegrunnlagsobjektkategori">
         <xsd:restriction base="xsd:string"/>
     </xsd:simpleType>
-    <xsd:complexType name="Vedtak">
-        <xsd:sequence>
-            <xsd:element minOccurs="0" name="saksid" type="typekatalog:Tekst"/>
-            <xsd:element minOccurs="0" name="journalpostreferanse" type="typekatalog:Tekst"/>
-            <xsd:element name="vedtaksdato" type="typekatalog:Dato"/>
-            <xsd:element minOccurs="0" name="vedtakstekstkode" type="Vedtakstekstkode"/>
-        </xsd:sequence>
-    </xsd:complexType>
     <xsd:simpleType name="Vedtakstekstkode">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="1"/>
