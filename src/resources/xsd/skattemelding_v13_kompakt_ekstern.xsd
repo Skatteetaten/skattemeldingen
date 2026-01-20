@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:ekstern:v13">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2026-01-07T14:50:17.804+0100" name="generertDato" />
+      <xsd:attribute fixed="2026-01-16T11:28:08.159+0100" name="generertDato" />
       <xsd:attribute fixed="13.0" name="versjon" />
       <xsd:attribute fixed="Skattemelding for personlig skattepliktig inneholder informasjon om hva hver enkelt skattepliktig har i inntekter, utgifter, formue og gjeld som et grunnlag for beregning av formues- og inntektsskatt iht. skatteplikten. " name="beskrivelse" />
       <xsd:attribute fixed="Skattemelding personlige skattepliktige v13" name="modellnavn" />
@@ -720,7 +720,7 @@
           <xsd:element minOccurs="0" name="sumBeregnetSkattInkludertEtterbetalingForAlleRefererteAar" type="BeloepSomHeltall" />
           <xsd:element minOccurs="0" name="sumBeregnetSkattEkskludertEtterbetalingForAlleRefererteAar" type="BeloepSomHeltall" />
           <xsd:element minOccurs="0" name="differanseIFremfoerbartUnderskuddHensyntattEtterbetaltePensjonerOgTrygdeytelserForAlleReferteAar" type="BeloepSomHeltall" />
-          <xsd:element minOccurs="0" name="fremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelser" type="FremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelser"/>
+          <xsd:element minOccurs="0" name="fremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelser" type="FremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelser" />
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -1756,8 +1756,8 @@
   </xsd:simpleType>
   <xsd:complexType name="BeloepSomHeltallMedOverstyring">
     <xsd:sequence>
-      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="erOverstyrt" type="BoolskMedInnkapsling"/>
+      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="erOverstyrt" type="BoolskMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BoolskMedInnkapsling">
@@ -2257,7 +2257,7 @@
   </xsd:complexType>
   <xsd:complexType name="FremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelser">
     <xsd:sequence>
-      <xsd:element maxOccurs="5" minOccurs="0" name="fremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelserPerReferertAar" type="FremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelserPerReferertAar"/>
+      <xsd:element maxOccurs="5" minOccurs="0" name="fremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelserPerReferertAar" type="FremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelserPerReferertAar" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="OmsetningAvRaafiskPerSalg">
@@ -2727,14 +2727,14 @@
       <xsd:element name="fradragstype" type="FradragstypeINaeringsvirksomhetMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="LoepenummerVannkraftverkMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="loepenummer" type="LoepenummerVannkraftverk" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="HeltallMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="heltall" type="Heltall" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LoepenummerVannkraftverkMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="loepenummer" type="LoepenummerVannkraftverk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="KravOmKreditfradragForUtenlandskSkatt">
@@ -3192,9 +3192,9 @@
   </xsd:simpleType>
   <xsd:complexType name="FremfoertUtenlandskSkattHensyntattEtterbetaltePensjonerOgTrygdeytelserPerReferertAar">
     <xsd:sequence>
-      <xsd:element name="id" type="Tekst"/>
-      <xsd:element name="inntektsaar" type="Aarstall"/>
-      <xsd:element name="fremfoertUtenlandskInntektsskatt" type="BeloepSomHeltall"/>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element name="inntektsaar" type="Aarstall" />
+      <xsd:element name="fremfoertUtenlandskInntektsskatt" type="BeloepSomHeltall" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SatsbaserteKostnaderForMerkjoeringForAaBringeOgHenteBarn">
