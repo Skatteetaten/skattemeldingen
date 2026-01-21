@@ -1,5 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler
 
+import java.math.BigDecimal
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
@@ -52,26 +53,38 @@ internal object Jordbrukskonto : HarKalkylesamling {
         kalkyle("inntektOgInntektsfradragFraJordbrukskonto") {
             val satser = satser!!
             forAlleForekomsterAv(modell.jordbruk_jordbrukskonto) {
-                val sats = if (forekomstType.grunnlagForInntektOgFradragPaaJordbrukskontoIInntektsaaret stoerreEllerLik 0) {
-                    if (forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent() stoerreEnn satser.sats(
-                            jordbrukskonto_andelSaldoJordbrukskontoInntektsOgFradragsfoering
+                val sats =
+                    if (forekomstType.grunnlagForInntektOgFradragPaaJordbrukskontoIInntektsaaret stoerreEllerLik 0) {
+                        if (forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent() stoerreEnn satser.sats(
+                                jordbrukskonto_andelSaldoJordbrukskontoInntektsOgFradragsfoering
+                            )
+                        ) {
+                            forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent()
+                        } else {
+                            satser.sats(jordbrukskonto_andelSaldoJordbrukskontoInntektsOgFradragsfoering)
+                        }
+                    } else if (forekomstType.grunnlagForInntektOgFradragPaaJordbrukskontoIInntektsaaret mindreEnn BigDecimal(
+                            -29_999
                         )
                     ) {
-                        forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent()
-                    } else {
-                        satser.sats(jordbrukskonto_andelSaldoJordbrukskontoInntektsOgFradragsfoering)
+                        if (forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent() stoerreEnn satser.sats(
+                                jordbrukskonto_andelSaldoJordbrukskontoInntektsOgFradragsfoering
+                            ) || !forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent().harVerdi()
+                        ) {
+                            satser.sats(jordbrukskonto_andelSaldoJordbrukskontoInntektsOgFradragsfoering)
+                        } else {
+                            forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent()
+                        }
                     }
-                } else {
-                    if (forekomstType.satsForInntektsfoeringOgInntektsfradrag.harVerdi() &&
-                        forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent() mindreEnn satser.sats(
-                            jordbrukskonto_andelSaldoJordbrukskontoInntektsOgFradragsfoering
-                        )
-                    ) {
-                        forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent()
-                    } else {
-                        satser.sats(jordbrukskonto_andelSaldoJordbrukskontoInntektsOgFradragsfoering).absoluttverdi()
+                    //Denne slår inn når verdien er mellom -1 og -29_999
+                    else {
+                        if (forekomstType.satsForInntektsfoeringOgInntektsfradrag.harVerdi()) {
+                            forekomstType.satsForInntektsfoeringOgInntektsfradrag.prosent()
+                        } else {
+                            satser.sats(jordbrukskonto_andelSaldoJordbrukskontoInntektsOgFradragsfoering)
+                                .absoluttverdi()
+                        }
                     }
-                }
 
                 val inntektEllerFradrag = forekomstType.grunnlagForInntektOgFradragPaaJordbrukskontoIInntektsaaret.times(sats)
 
