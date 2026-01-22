@@ -111,7 +111,7 @@ skattemeldingen for mange.
 Vi støtter systembruker via Maskinporten i våre API-er. Systembruker er en bruker 
 i Altinn som lar virksomheten gi fullmakter til en upersonlig bruker, slik at den kan løse oppgaver på vegne av 
 virksomheten. [Du kan lese mer om systembruker og hvordan systemet ditt kan ta det i bruk her](https://samarbeid.digdir.no/altinn/systembruker/2542).
-
+Ressursen som systembrukeren må ha for å bli autorisert er `app_skd_formueinntekt-skattemelding-v2`.
 
 Bruk av Maskinporten forutsetter at organisasjonen har et virksomhetssertifikat eller en tilsvarende mekanisme. Figuren
 under skisserer hvordan samhandlingen fungerer:
@@ -141,6 +141,7 @@ eksisterende løsninger.
 | POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                               | Planlagt     |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                     | Nei          |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf](#user-content-hentGjeldendeFastsettingPdf)                                 | Nei          |
+| GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/lenker/publikumsportaler](#user-content-hentPublikumsportaler)                                        | Nei          |
 | GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                                 | Ja           |
 | GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                  | Ja           |
 | POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                   | Ja           |
@@ -495,19 +496,57 @@ Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, en
 
 Api som returnerer gjeldende fastsetting i PDF-format.
 
-**URL** : `GET https://<env>/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf`
+**URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/gjeldende-fastsetting.pdf`
 
-**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf`
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/<inntektsaar>/<identifikator>/gjeldende-fastsetting.pdf`
 
 **Forespørsel** :
 
 - `<env>: Miljøspesifikk adresse`
-- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY`
+- `<inntektsaar>: Inntektsåret man spør om informasjon for, i formatet YYYY`
 - `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige`
 
 **Respons** :
 
 - En PDF på formatet `application/pdf`.
+
+
+## Hent lenker til publikumsportaler <a name="hentPublikumsportaler"></a> [[back up]](#user-content-table-of-requests)
+
+Api som returnerer lenker til publikumsportaler. For personlige returneres lenker til Min Skatt, skattemeldingen og Tilsvar.
+For upersonlige returneres lenke til Tilsvar.
+
+**URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/lenker/publikumsportaler`
+
+**Eksempel URL** : `GET https://idporten.api.skatteetaten.no/api/skattemelding/v2/<inntektsaar>/<identifikator>/lenker/publikumsportaler`
+
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse`
+- `<inntektsaar>: Inntektsåret man spør om informasjon for, i formatet YYYY`
+- `<identifikator>: Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige`
+
+**Respons** :
+
+For personlig:
+
+```json
+{
+  "minskattPortalLenke": "https://skatt.skatteetaten.no/web/mineskatteforhold/for/<partsreferanse>",
+  "skattemeldingPortalLenke": "https://skatt.skatteetaten.no/web/skattemeldingen/<inntektsaar>?partsreferanse=<partsreferanse>",
+  "tilsvarPortalLenke": "https://skatt.skatteetaten.no/web/tilsvar/?partsreferanse=<partsreferanse>"
+}
+```
+
+For upersonlig:
+
+```json
+{
+  "tilsvarPortalLenke": "https://skatt.skatteetaten.no/web/tilsvar/?partsreferanse=<partsreferanse>"
+}
+```
+
+- `<partsreferanse>` er en unik identifikator som brukes for å identifisere skattepliktig i Skatteetatens systemer. Det er ingen informasjon i partsreferansen som direkte identifiserer skattepliktig.
 
 ## Eiendom API
 
