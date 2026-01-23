@@ -91,7 +91,7 @@ object InntektOgUnderskuddFra2025 {
 
     internal fun GeneriskModellKontekst.forloepigSamletInntektEllerUnderskudd() =
         modell.inntektOgUnderskudd.naeringsinntekt -
-            modell.inntektOgUnderskudd.samletUnderskudd +
+            modell.inntektOgUnderskudd.inntektsfradrag_underskudd +
             modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_nettoFinanskostnadIAlminneligInntektFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel +
             modell.inntektOgUnderskuddForVirksomhetPaaSokkel.andelAvUnderskuddTilFremfoeringPaaLandFremfoerbartMotSokkel_aaretsUnderskuddFraVirksomhetPaaLandFoertMotAlminneligInntektFraVirksomhetPaaSokkel -
             modell.inntektOgUnderskuddForVirksomhetPaaSokkel.korrigeringerIInntektOgUnderskuddForVirksomhetPaaSokkel_aaretsUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand +
