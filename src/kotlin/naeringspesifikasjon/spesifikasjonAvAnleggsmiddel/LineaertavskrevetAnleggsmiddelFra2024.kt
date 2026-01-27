@@ -9,7 +9,9 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v6_2025.v6
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIAnskaffelsesaaret
@@ -45,17 +47,12 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) forHverForekomst {
             hvis(antallAarErvervet stoerreEnn 0) {
                 val utgaaendeVerdi = modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.inngaaendeVerdi -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.offentligTilskudd +
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringAvInngaaendeMva +
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringForAapenbarVerdiendring -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.tilbakefoeringAvTilskuddTilInvesteringIDistriktene -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.aaretsAvskrivning -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.vederlagVedRealisasjonOgUttak +
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.vederlagVedRealisasjonOgUttakInntektsfoertIAar +
+                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.aaretsAvskrivning +
                     modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.gevinstOverfoertTilGevinstOgTapskonto -
                     modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.tapOverfoertTilGevinstOgTapskonto +
                     modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.verdiOverfoertFraPaakostningVedRealisasjon -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.verdiOverfoertTilAnleggsmiddelVedRealisasjon
+                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.verdiOverfoertTilAnleggsmiddelVedRealisasjon +
+                    korrigeringer()
 
                 settFelt(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.utgaaendeVerdi) { utgaaendeVerdi.nullHvisNegativt() }
             }
@@ -69,15 +66,10 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
                     }
 
                 val utgaaendeVerdi = paakostningEllerAnskaffelseskost -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.offentligTilskudd +
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringAvInngaaendeMva +
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringForAapenbarVerdiendring -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.tilbakefoeringAvTilskuddTilInvesteringIDistriktene -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.aaretsAvskrivning -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.vederlagVedRealisasjonOgUttak +
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.vederlagVedRealisasjonOgUttakInntektsfoertIAar +
+                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.aaretsAvskrivning +
                     modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.gevinstOverfoertTilGevinstOgTapskonto -
-                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.tapOverfoertTilGevinstOgTapskonto
+                    modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.tapOverfoertTilGevinstOgTapskonto +
+                    korrigeringer()
 
                 settFelt(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.utgaaendeVerdi) { utgaaendeVerdi.nullHvisNegativt() }
             }
@@ -86,14 +78,7 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
     internal val grunnlagForAvskrivningOgInntektsfoeringKalkyle = kalkyle {
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) forHverForekomst {
-            val korrigeringer = modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringAvInngaaendeMva +
-                modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringForAapenbarVerdiendring -
-                modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.offentligTilskudd -
-                modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.vederlagVedRealisasjonOgUttak +
-                modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.vederlagVedRealisasjonOgUttakInntektsfoertIAar -
-                modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.tilbakefoeringAvTilskuddTilInvesteringIDistriktene +
-                modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.reinvestertBetingetSkattefriSalgsgevinst -
-                modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.nedskrivningPaaNyanskaffelserMedBetingetSkattefriSalgsgevinst
+            val korrigeringer = korrigeringer()
 
             val erErvervetIInntektsaaret = antallAarErvervet lik 0
             hvis(erErvervetIInntektsaaret && modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.paakostning.harVerdi()) {
@@ -115,6 +100,16 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
             }
         }
     }
+
+    private fun ForekomstKontekst<v6.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddelForekomst>.korrigeringer(): BigDecimal? =
+        modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringAvInngaaendeMva -
+            modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.offentligTilskudd +
+            modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringForAapenbarVerdiendring -
+            modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.vederlagVedRealisasjonOgUttak +
+            modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.vederlagVedRealisasjonOgUttakInntektsfoertIAar -
+            modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.tilbakefoeringAvTilskuddTilInvesteringIDistriktene +
+            modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.reinvestertBetingetSkattefriSalgsgevinst -
+            modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.nedskrivningPaaNyanskaffelserMedBetingetSkattefriSalgsgevinst
 
     val konsumprisindeksjustertInvesteringskostnadKalkyle = kalkyle {
         val kraftverkMap = lagSpesifikasjonAvKraftverkMap()

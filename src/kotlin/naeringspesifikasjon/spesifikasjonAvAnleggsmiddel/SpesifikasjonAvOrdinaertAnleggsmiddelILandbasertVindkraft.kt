@@ -91,8 +91,9 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik
                             benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivning
                     ) {
+                        val anskaffelseskost = if(forekomstType.ervervsdato.aar() == inntektsaar) forekomstType.anskaffelseskost.tall() else null
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelAnskaffetEtter01012024 +
-                            forekomstType.anskaffelseskost +
+                            anskaffelseskost +
                             forekomstType.paakostning
                     }
                 }

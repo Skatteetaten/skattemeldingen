@@ -19,7 +19,9 @@ internal object IkkeAvskrivbartAnleggsmiddel : HarKalkylesamling {
                 forekomstType.tilbakefoeringAvTilskuddTilInvesteringIDistriktene +
                 forekomstType.vederlagVedRealisasjonOgUttakInntektsfoertIAar +
                 forekomstType.gevinstOverfoertTilGevinstOgTapskonto -
-                forekomstType.tapOverfoertTilGevinstOgTapskonto
+                forekomstType.tapOverfoertTilGevinstOgTapskonto -
+                forekomstType.nedskrivningPaaNyanskaffelserMedBetingetSkattefriSalgsgevinst +
+                forekomstType.reinvestertBetingetSkattefriSalgsgevinst
 
             hvis(utgaaendeVerdiPositivOgNegativ stoerreEllerLik 0) {
                 settFelt(forekomstType.utgaaendeVerdi) {
