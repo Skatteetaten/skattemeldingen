@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <kodeliste xmlns="urn:no:skatteetaten:informasjonsforvaltning:kodeliste:v2">
-  <identifikator>45deb538-ade6-4fac-aab0-a59bf5949989</identifikator>
+  <identifikator>fc458630-d9af-4790-9116-956785c37b5f</identifikator>
   <tekniskNavn>2025_grunnlagIUnderlagForSkjoennsfastsetting</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-05-20T12:19:37.000+02:00</sistEndret>
-  <sistEndretAv>m83692</sistEndretAv>
+  <sistEndret>2026-01-23T17:09:12.000+01:00</sistEndret>
+  <sistEndretAv>x00elo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
@@ -139,6 +139,7 @@
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
+      <skalHaResultatOgBalanseregnskapstype>true</skalHaResultatOgBalanseregnskapstype>
     </kodetillegg>
   </kode>
   <kode>
@@ -336,7 +337,7 @@
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <kilde>gld.amelding</kilde>
+      <kilde>aordning.opplysningspliktig</kilde>
       <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>alltidForNaeringsinntekt</anvendelseIBeregningUpersonlig>
     </kodetillegg>
@@ -360,6 +361,7 @@
     <kodetillegg>
       <kilde>gld.aku</kilde>
       <anvendelseIBeregning>PB</anvendelseIBeregning>
+      <anvendelseIBeregning>kontroll</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
@@ -424,6 +426,7 @@
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
+      <skalHaResultatOgBalanseregnskapstype>true</skalHaResultatOgBalanseregnskapstype>
     </kodetillegg>
   </kode>
   <kode>
@@ -940,28 +943,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>kontantstroemINaeringsvirksomhet</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>Kontantstrøm i næringsvirksomhet</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Kontantstraum i næringsverksemd</tekst>
-        <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Cash flow in business activity</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>skattemelding</kilde>
-      <anvendelseIBeregning>PB</anvendelseIBeregning>
-      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>kontrolloppgaveEgg</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
@@ -1244,7 +1225,9 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
+      <kilde>naeringsspesifikasjon</kilde>
       <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
+      <anvendelseIBeregning>kontantstroemINaering</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
@@ -1353,76 +1336,9 @@
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <kilde>gld.amelding</kilde>
+      <kilde>aordning.opplysningspliktig</kilde>
       <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>alltidForNaeringsinntekt</anvendelseIBeregningUpersonlig>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>negativSaldoForSaldoavskrevetAnleggsmiddel</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>Negativ saldo for saldoavskrevet anleggsmiddel</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Negativ saldo for saldoavskrive anleggsmiddel</tekst>
-        <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Negative balance for balance-depreciated fixed asset</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
-      <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>negativSaldoPaaGevinstOgTapskonto</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>Negativ saldo på gevinst- og tapskonto</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Negativ saldo på gevinst- og tapskonto</tekst>
-        <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Negative balance in profit and loss account</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
-      <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>negativSaldoPaaSkogOgToemmerkonto</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>Negativ saldo på skog- og tømmerkonto</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Negativ saldo på skog- og tømmerkonto</tekst>
-        <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Negative balance in forest and timber account</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
-      <anvendelseIBeregning>kontroll</anvendelseIBeregning>
-      <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
   <kode>
@@ -1442,7 +1358,7 @@
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <kilde>dvh.mva</kilde>
+      <kilde>mva</kilde>
       <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>alltidForNaeringsinntekt</anvendelseIBeregningUpersonlig>
     </kodetillegg>
@@ -1464,7 +1380,7 @@
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <kilde>dvh.oppdragsregister</kilde>
+      <kilde>oppdragsregister</kilde>
       <anvendelseIBeregning>I-Informasjon</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>I-Informasjon</anvendelseIBeregningUpersonlig>
     </kodetillegg>
@@ -1602,18 +1518,42 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>positivSaldoForSaldoavskrevetAnleggsmiddel</tekniskNavn>
+    <tekniskNavn>saldoavskrevetAnleggsmiddel</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Positiv saldo for saldoavskrevet anleggsmiddel</tekst>
+        <tekst>Saldoavskrevet anleggsmiddel</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Positiv saldo for saldoavskrive anleggsmiddel</tekst>
+        <tekst>Saldoavskrive anleggsmiddel</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Positive balance for balance-depreciated fixed asset</tekst>
+        <tekst>Balance-depreciated fixed asset</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
+      <kilde>naeringsspesifikasjon</kilde>
+      <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
+      <anvendelseIBeregning>kontantstroemINaering</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>gevinstOgTapskonto</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Gevinst- og tapskonto</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Gevinst- og tapskonto</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Profit and loss account</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
     </visningsnavn>
@@ -1624,47 +1564,27 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>positivSaldoPaaGevinstOgTapskonto</tekniskNavn>
+    <tekniskNavn>skogOgToemmerkonto</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Positiv saldo på gevinst- og tapskonto</tekst>
+        <tekst>Skog- og tømmerkonto</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Positiv saldo på gevinst- og tapskonto</tekst>
+        <tekst>Skog- og tømmerkonto</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Positive balance in profit and loss account</tekst>
+        <tekst>Forest and timber account</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
-      <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>positivSaldoPaaSkogOgToemmerkonto</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>Positiv saldo på skog- og tømmerkonto</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Positiv saldo på skog- og tømmerkonto</tekst>
-        <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Positive balance in forest and timber account</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
+      <kilde>naeringsspesifikasjon</kilde>
       <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
       <anvendelseIBeregning>kontroll</anvendelseIBeregning>
+      <anvendelseIBeregning>kontantstroemINaering</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
@@ -1979,28 +1899,6 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>tilskuddFraKompensasjonsordningenForNaeringslivet</tekniskNavn>
-    <visningsnavn>
-      <spraakTekst>
-        <tekst>Tilskudd fra kompensasjonsordningen for næringslivet</tekst>
-        <spraak>nb_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Tilskott frå kompensasjonsordninga for næringslivet</tekst>
-        <spraak>nn_NO</spraak>
-      </spraakTekst>
-      <spraakTekst>
-        <tekst>Subsidies from the Business Compensation Scheme</tekst>
-        <spraak>en_GB</spraak>
-      </spraakTekst>
-    </visningsnavn>
-    <kodetillegg>
-      <kilde>dvh.tilskudd</kilde>
-      <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
-      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
-    </kodetillegg>
-  </kode>
-  <kode>
     <tekniskNavn>tilskuddOgPremieTilPensjonTilAnsatt</tekniskNavn>
     <visningsnavn>
       <spraakTekst>
@@ -2013,7 +1911,7 @@
       </spraakTekst>
     </visningsnavn>
     <kodetillegg>
-      <kilde>gld.amelding</kilde>
+      <kilde>aordning.opplysningspliktig</kilde>
       <anvendelseIBeregning>alltidForNaeringsinntekt</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>alltidForNaeringsinntekt</anvendelseIBeregningUpersonlig>
     </kodetillegg>
@@ -2141,8 +2039,6 @@
     <kodetillegg>
       <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaar</kilde>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
-      <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
       <anvendelseIBeregningUpersonlig>I-Informasjon</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
@@ -2156,8 +2052,6 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
-      <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
       <anvendelseIBeregning>kostnadsberegning</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
     </kodetillegg>
@@ -2172,9 +2066,9 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
-      <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
+      <kilde>naeringsspesifikasjon</kilde>
       <anvendelseIBeregning>kostnadsberegning</anvendelseIBeregning>
+      <anvendelseIBeregning>korrigeringAvAarsresultatIKontantstroemsberegning</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
@@ -2188,9 +2082,22 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
-      <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
+      <kilde>naeringsspesifikasjon</kilde>
       <anvendelseIBeregning>kostnadsberegning</anvendelseIBeregning>
+      <anvendelseIBeregning>korrigeringAvAarsresultatIKontantstroemsberegning</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>salgsinntekt</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Salgsinntekt</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
       <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
@@ -2204,8 +2111,6 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
-      <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
       <anvendelseIBeregning>kostnadsberegning</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
     </kodetillegg>
@@ -2220,8 +2125,6 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
-      <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
       <anvendelseIBeregning>kostnadsberegning</anvendelseIBeregning>
       <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
     </kodetillegg>
@@ -2236,8 +2139,6 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
-      <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
       <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
@@ -2251,8 +2152,6 @@
     </visningsnavn>
     <kodetillegg>
       <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
-      <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
       <anvendelseIBeregningUpersonlig>kostnadsberegning</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
@@ -2267,10 +2166,168 @@
     <kodetillegg>
       <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaar</kilde>
       <kilde>selskapsmeldingFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaar</kilde>
-      <kilde>skattemeldingUpersonligFastsattForForegaaendeInntektsaarISL</kilde>
-      <kilde>selskapsmeldingFastsattForForegaaendeInntektsaarISL</kilde>
       <anvendelseIBeregningUpersonlig>I-Informasjon</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>resultatAvAnalysemodell</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Resultat av analysemodell</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>analyseTilUnderlagForKontrollOgFastsetting</kilde>
+      <anvendelseIBeregning>kontroll</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>kontroll</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>fastEiendomSomStroemprodusent</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Fast eiendom som strømprodusent</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skattemessigResultat</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Skattemessig årsresultat</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjon</kilde>
+      <anvendelseIBeregning>korrigeringAvAarsresultatIKontantstroemsberegning</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>skjoennsfastsattInntektEllerKostnad</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Skjønnsfastsatt inntekt eller kostnad</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjon</kilde>
+      <anvendelseIBeregning>kontantstroemINaering</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>omloepsmiddelFraBalanseregnskap</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Omløpsmiddel fra balanseregnskap</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjon</kilde>
+      <anvendelseIBeregning>kontantstroemINaering</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
+      <skalHaResultatOgBalanseregnskapstype>true</skalHaResultatOgBalanseregnskapstype>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>langsiktigGjeldFraBalanseregnskap</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Langsiktig gjeld fra balanseregnskap</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjon</kilde>
+      <anvendelseIBeregning>kontantstroemINaering</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
+      <skalHaResultatOgBalanseregnskapstype>true</skalHaResultatOgBalanseregnskapstype>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>kortsiktigGjeldFraBalanseregnskap</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Kortsiktig gjeld fra balanseregnskap</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjon</kilde>
+      <anvendelseIBeregning>kontantstroemINaering</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
+      <skalHaResultatOgBalanseregnskapstype>true</skalHaResultatOgBalanseregnskapstype>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>ikkeAvskrivbartAnleggsmiddel</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Ikke avskrivbart anleggsmiddel</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Ikke avskrivbart anleggsmiddel</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>naeringsspesifikasjonFastsattForForegaaendeInntektsaar</kilde>
+      <kilde>naeringsspesifikasjon</kilde>
+      <anvendelseIBeregning>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregning>
+      <anvendelseIBeregning>kontantstroemINaering</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>etterBeregnetPrivatforbrukForNaeringsinntekt</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>aarsresultatKorrigertForBeloepSomIkkeErInnEllerUtbetalinger</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Årsresultat korrigert for beløp som ikke er inn- eller utbetalinger</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Årsresultat korrigert for beløp som ikkje er inn- eller utbetalingar</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>beregnesIUnderlag</kilde>
+      <anvendelseIBeregning>kontantstroemINaering</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>kontantstroemINaeringsvirksomhet</tekniskNavn>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Kontantstrøm i næringsvirksomhet</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Kontantstraum i næringsverksemd</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Cash flow in business activity</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <kilde>skattemelding</kilde>
+      <anvendelseIBeregning>PB</anvendelseIBeregning>
+      <anvendelseIBeregningUpersonlig>uaktuell</anvendelseIBeregningUpersonlig>
     </kodetillegg>
   </kode>
 </kodeliste>
