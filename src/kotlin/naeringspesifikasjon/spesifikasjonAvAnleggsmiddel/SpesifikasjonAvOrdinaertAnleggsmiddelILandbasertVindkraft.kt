@@ -12,7 +12,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 
 internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarKalkylesamling {
 
-    private val direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt =
+    internal val direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt =
         kalkyle("direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt")
         {
             val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
@@ -35,12 +35,60 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                     }
                 }
 
+                settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024) {
+                    beregnHvis(
+                        (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.harVerdi() &&
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet ulik
+                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_nei) &&
+                            forekomstType.ervervsdato.harVerdi() && forekomstType.ervervsdato.aar() mindreEnn 2024
+
+                    ) {
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelOppjustertPr01012024 -
+                            forekomstType.vederlagVedRealisasjonOgUttak
+                    }
+                }
+
+                settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024) {
+                    beregnHvis(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.harVerdi() &&
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet ulik
+                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_nei
+                    ) {
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelAnskaffetEtter01012024 +
+                            forekomstType.nyanskaffelse +
+                            forekomstType.paakostning +
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_andelAvDriftsmiddelAnskaffetIInntektsaaretSomAvskrives
+                    }
+                }
+
+                hvis(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024.harVerdi()) {
+                    settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_utgaaendeVerdiAvAnskaffelseEtter01012024) {
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024 -
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvAnskaffelseEtter01012024
+                    }
+                }
+
                 settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForBeregningAvVenterente) {
                     beregnHvis(
-                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik
-                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaUtenDirekteFradragOgAvskrivning
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet ulik
+                            benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_nei
                     ) {
-                        (forekomstType.inngaaendeVerdi + forekomstType.utgaaendeVerdi) / 2
+                        (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelOppjustertPr01012024 +
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelAnskaffetEtter01012024 +
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_utgaaendeVerdiAvOppjustertVerdiPr01012024 +
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_utgaaendeVerdiAvAnskaffelseEtter01012024) / 2
+                    }
+                }
+
+                hvis(
+                    (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.harVerdi() &&
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet ulik
+                        benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_nei)
+                ) {
+                    settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForBeregningAvVenterente) {
+                        (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelOppjustertPr01012024 +
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelAnskaffetEtter01012024 +
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_utgaaendeVerdiAvOppjustertVerdiPr01012024 +
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_utgaaendeVerdiAvAnskaffelseEtter01012024) / 2
                     }
                 }
 
