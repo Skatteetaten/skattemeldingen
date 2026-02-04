@@ -3912,6 +3912,9 @@
       <xsd:element name="desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940" type="Reduksjonsfaktor" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="DokumentasjonstypeMarkedsverdi" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_dokumentasjonstypeMarkedsverdi.xml">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
   <xsd:simpleType name="Bonitetstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2025_bonitetstype.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
