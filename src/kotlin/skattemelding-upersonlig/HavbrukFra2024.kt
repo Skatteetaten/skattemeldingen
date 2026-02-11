@@ -1,4 +1,4 @@
-package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle
+package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler
 
 import java.math.BigDecimal
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
@@ -8,7 +8,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettUniktSyntetiskFelt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.overdragelsestype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV4
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.skattepliktForekomst.erOmfattetAvSaerreglerForHavbruksvirksomhet
@@ -158,18 +157,19 @@ object HavbrukFra2024 : HarKalkylesamling {
                     }
                 }
 
-                if (erUttredenEllerSalgMedOpphoerAvVirksomhet) {
-                    settUniktFelt(
-                        if (inntektsaar.tekniskInntektsaar >= 2025) {
-                            modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteskattVedOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet
-                        } else {
-                            modellV4.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteskattOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet
-                        }
-                    ) {
-                        (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetNegativGrunnrenteinntekt *
-                            satser.sats(Sats.havbruk_skattesatsGrunnrenteinntekt)).somHeltall()
+            if (erUttredenEllerSalgMedOpphoerAvVirksomhet) {
+                settUniktFelt(
+                    if (inntektsaar.tekniskInntektsaar >= 2025) {
+                        modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteskattVedOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet
+                    } else {
+                        modellV4.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteskattOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet
                     }
+                ) {
+                    ((modell.havbruksvirksomhet.beregnetGrunnrenteskatt_endeligSamordnetNegativGrunnrenteinntekt +
+                        modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoertNegativGrunnrenteinntektInkludertRenterFraTidligereAar) *
+                        satser.sats(Sats.havbruk_skattesatsGrunnrenteinntekt)).somHeltall()
                 }
+            }
 
             if (inntektsaar.tekniskInntektsaar <= 2024) {
                 settUniktFelt(negativGrunnrenteinntektIHavbruksvirksomhetTilFremfoering) {
@@ -184,9 +184,15 @@ object HavbrukFra2024 : HarKalkylesamling {
             }
 
             if (inntektsaar.tekniskInntektsaar >= 2025) {
-                hvis(restNegativGrunnrenteinntektTilFremfoering stoerreEnn sumMottattGrunnrenteinntekt) {
+                if (modell.havbruksvirksomhet.beregnetGrunnrenteskatt_negativGrunnrenteskattVedOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet.harVerdi()) {
                     settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoerbarNegativGrunnrenteinntekt) {
-                        restNegativGrunnrenteinntektTilFremfoering - sumMottattGrunnrenteinntekt
+                        BigDecimal.ZERO
+                    }
+                } else {
+                    hvis(restNegativGrunnrenteinntektTilFremfoering stoerreEnn sumMottattGrunnrenteinntekt) {
+                        settUniktFelt(modell.havbruksvirksomhet.beregnetGrunnrenteskatt_spesifikasjonAvNegativGrunnrenteinntekt_fremfoerbarNegativGrunnrenteinntekt) {
+                            restNegativGrunnrenteinntektTilFremfoering - sumMottattGrunnrenteinntekt
+                        }
                     }
                 }
             }

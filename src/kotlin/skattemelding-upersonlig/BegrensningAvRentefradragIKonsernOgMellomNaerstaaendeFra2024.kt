@@ -495,9 +495,15 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
 
     val fremfoerbartRentefradragIInntektTidligereAar = kalkyle("fremfoerbartRentefradragIInntektTidligereAar") {
         forAlleForekomsterAv(forekomstType.rentefradragTilFremfoeringTidligereAar) {
-            settFelt(forekomstType.fremfoerbartRentefradragIInntekt) {
-                forekomstType.fremfoertRentefradragFraTidligereAar -
-                    forekomstType.aaretsAnvendelseAvFremfoertRentefradragFraTidligereAar
+            if (forekomstType.inntektsaar lik (this@kalkyle.inntektsaar.gjeldendeInntektsaar - 10)) {
+                settFelt(forekomstType.fremfoerbartRentefradragIInntekt) {
+                    BigDecimal.ZERO
+                }
+            } else {
+                settFelt(forekomstType.fremfoerbartRentefradragIInntekt) {
+                    forekomstType.fremfoertRentefradragFraTidligereAar -
+                        forekomstType.aaretsAnvendelseAvFremfoertRentefradragFraTidligereAar
+                }
             }
         }
     }

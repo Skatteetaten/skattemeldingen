@@ -20,7 +20,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erTillegg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente.harBehandlingsregelFradrag
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente.harBehandlingsregelTilleg
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente.harBehandlingsregelTillegg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.inntektIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.kontraktstypeForKraftLevertAvKraftverk
@@ -256,11 +256,6 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                     }
                 }
 
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForOevrigKraftsalg) {
-                    forekomsterAv(forekomstType) summerVerdiFraHverForekomst {
-                        forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris_volumDekningskjoep.tall()
-                    }
-                }
             }
         }
     }
@@ -419,10 +414,6 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
             opprettNyForekomstInntekt(
                 inntektIGrunnrente.kode_dekningskjoepForLangsiktigFastpriskontrakt,
                 dekningskjoepForLangsiktigFastpriskontrakt[forekomstType.loepenummer.verdi()]
-            )
-            opprettNyForekomstInntekt(
-                inntektIGrunnrente.kode_dekningskjoepForOevrigKraftsalg,
-                forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris_dekningskjoep.tall()
             )
         }
     }
@@ -665,7 +656,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk) der {
                     forekomstType.type likEnAv InntektOgFradragIGrunnrente.inntekterIGrunnrente(inntektsaar)
                 } summerVerdiFraHverForekomst {
-                    if (forekomstType.type.verdi().harBehandlingsregelTilleg(inntektsaar)) {
+                    if (forekomstType.type.verdi().harBehandlingsregelTillegg(inntektsaar)) {
                         forekomstType.beloep.tall()
                     } else {
                         BigDecimal.ZERO
@@ -687,6 +678,14 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk) der {
                     forekomstType.type likEnAv InntektOgFradragIGrunnrente.inntekterIGrunnrente(inntektsaar) &&
                             forekomstType.type ulik inntektIGrunnrente.kode_andelAvPositivGrunnrenteinntektFraSelskapMedDeltakerfastsetting
+                } summerVerdiFraHverForekomst {
+                    forekomstType.beloep.tall()
+                }
+
+            val sumInntektIGrunnrenteMedBehandlingsregelFradrag =
+                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk) der {
+                    forekomstType.type likEnAv InntektOgFradragIGrunnrente.inntekterIGrunnrente(inntektsaar) &&
+                            forekomstType.type.verdi().harBehandlingsregelFradrag(inntektsaar)
                 } summerVerdiFraHverForekomst {
                     forekomstType.beloep.tall()
                 }
@@ -726,13 +725,15 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                     )
 
                     val fradrag = sumFradragIGrunnrenteUnntattInvesteringskostnadOgVenterenteMv.plus(
-                        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVindkraft) summerVerdiFraHverForekomst {
-                            if (forekomstType.type.verdi().erFradrag(inntektsaar)) {
-                                forekomstType.beloep.tall()
-                            } else {
-                                BigDecimal.ZERO
+                        sumInntektIGrunnrenteMedBehandlingsregelFradrag.plus(
+                            forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVindkraft) summerVerdiFraHverForekomst {
+                                if (forekomstType.type.verdi().erFradrag(inntektsaar)) {
+                                    forekomstType.beloep.tall()
+                                } else {
+                                    BigDecimal.ZERO
+                                }
                             }
-                        }
+                        )
                     )
 
                     inntekt.minus(fradrag)
