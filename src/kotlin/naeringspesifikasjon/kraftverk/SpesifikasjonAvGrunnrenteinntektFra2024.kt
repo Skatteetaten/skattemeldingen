@@ -389,8 +389,10 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                 }
 
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt) {
-                    (forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt +
-                        summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt() +
+                    (forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt -
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_dekningskjoep +
+                        summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt() -
+                        summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt() +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
@@ -488,8 +490,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                         summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt() -
                         summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt() +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt -
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_dekningskjoep +
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_driftsstoetteTilProduksjonAvNyVannkraft +
@@ -770,47 +771,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
         }
     }
-    internal val samletVolumForDekningskjoepForOevrigKraftsalg = kalkyle("samletVolumForDekningskjoepForOevrigKraftsalg") {
-        forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
-            val kraftTattUtIhtKonsesjonVolumDekningskjoep =
-                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_volumDekningskjoep.tall()
-                }
-            val kraftForbruktIEgenProduksjonsvirksomhetVolumDekningskjoep =
-                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_volumDekningskjoep.tall()
-                }
 
-            val oevrigAarsproduksjonVolumDekningskjoep =
-                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_volumDekningskjoep.tall()
-                }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForDekningskjoepForOevrigKraftsalg) {
-                kraftTattUtIhtKonsesjonVolumDekningskjoep + kraftForbruktIEgenProduksjonsvirksomhetVolumDekningskjoep + oevrigAarsproduksjonVolumDekningskjoep
-            }
-        }
-    }
-
-    internal val samletDekningskjoepForOevrigKraftsalg = kalkyle("samletDekningskjoepForOevrigKraftsalg") {
-        forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
-            val kraftTattUtIhtKonsesjonDekningskjoep =
-                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_dekningskjoep.tall()
-                }
-            val kraftForbruktIEgenProduksjonsvirksomhetDekningskjoep =
-                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_dekningskjoep.tall()
-                }
-
-            val oevrigAarsproduksjonDekningskjoep =
-                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_dekningskjoep.tall()
-                }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletDekningskjoepForOevrigKraftsalg) {
-                kraftTattUtIhtKonsesjonDekningskjoep + kraftForbruktIEgenProduksjonsvirksomhetDekningskjoep + oevrigAarsproduksjonDekningskjoep
-            }
-        }
-    }
 
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
@@ -828,9 +789,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             kontraktstypeKjoepekontrakt,
             kontraktstypeFastprisavtale,
             samletVolumForOevrigKraftsalg,
-            samletSalgsinntektForOevrigKraftsalg,
-            samletVolumForDekningskjoepForOevrigKraftsalg,
-            samletDekningskjoepForOevrigKraftsalg
+            samletSalgsinntektForOevrigKraftsalg
         )
     }
 }
