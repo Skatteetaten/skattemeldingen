@@ -81,15 +81,15 @@ object InntektOgUnderskuddForVirksomhetPaaSokkelFra2025 {
             val sats = satser!!.sats(skattPaaAlminneligInntekt_sats)
             hvis(
                 tilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand stoerreEnn 0
-                    && (forekomstType.beregnetNegativSelskapsskattTilFremfoering_beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaar.harVerdi()
-                        || forekomstType.beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaarBenyttetMotAaretsBeregnedeSelskapsskatt.harVerdi())
+                    && forekomstType.beregnetNegativSelskapsskattTilFremfoering_beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaar.harVerdi()
             ) {
                 settUniktFelt(forekomstType.beregnetNegativSelskapsskattKnyttetTilTilbakefoertUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand) {
                     if (forekomstType.beregnetNegativSelskapsskattTilFremfoering_beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaar
                         - forekomstType.beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaarBenyttetMotAaretsBeregnedeSelskapsskatt mindreEnn
                         tilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand * sats
                     )
-                        forekomstType.beregnetNegativSelskapsskattTilFremfoering_beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaar.tall()
+                        forekomstType.beregnetNegativSelskapsskattTilFremfoering_beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaar -
+                            forekomstType.beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaarBenyttetMotAaretsBeregnedeSelskapsskatt
                     else
                         (tilbakefoertUnderskuddFraVirksomhetPaaSokkelFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand * sats).somHeltall()
                 }
@@ -101,27 +101,17 @@ object InntektOgUnderskuddForVirksomhetPaaSokkelFra2025 {
             settUniktFelt(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_beregnetSelskapsskattSomFradragsfoeresISaerskattegrunnlagFraVirksomhetPaaSokkel) {
                 (forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeSelskapsskatt -
                     forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskattFraTidligereAar -
-                    forekomstType.beregnetNegativSelskapsskattKnyttetTilTilbakefoertUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
-                    forekomstType.beregnetNegativSelskapsskattTilFremfoering_beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaar
+                    forekomstType.beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaarBenyttetMotAaretsBeregnedeSelskapsskatt
                 ) medMinimumsverdi 0
             }
         }
 
     internal val beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlaget =
         kalkyle("beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlaget") {
-            val beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlaget =
-                forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_aaretsBeregnedeSelskapsskatt -
-                    forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskattFraTidligereAar -
-                    forekomstType.beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaarBenyttetMotAaretsBeregnedeSelskapsskatt -
-                    forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
-                    forekomstType.beregnetNegativSelskapsskattKnyttetTilUnderskuddFraVirksomhetPaaSokkelFraTidligereInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand -
-                    forekomstType.beregnetNegativSelskapsskattKnyttetTilTilbakefoertUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
-                    forekomstType.beregnetNegativSelskapsskattTilFremfoering_beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaar
-
-            hvis(beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlaget mindreEnn 0) {
-                settUniktFelt(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlagFraVirksomhetPaaSokkel) {
-                    beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlaget.absoluttverdi()
-                }
+            settUniktFelt(forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_beregnetNegativSelskapsskattSomInntektsfoeresISaerskattegrunnlagFraVirksomhetPaaSokkel) {
+                forekomstType.beregnetSelskapsskattForAndelAvVirksomhetSomErSaerskattepliktig_negativSelskapsskattKnyttetTilVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand +
+                    forekomstType.beregnetNegativSelskapsskattKnyttetTilUnderskuddFraVirksomhetPaaSokkelFraTidligereInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand +
+                    forekomstType.beregnetNegativSelskapsskattKnyttetTilTilbakefoertUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand
             }
         }
 
@@ -143,15 +133,19 @@ object InntektOgUnderskuddForVirksomhetPaaSokkelFra2025 {
         }
 
     internal val fremfoerbarBeregnetNegativSelskapsskatt = kalkyle("fremfoerbarBeregnetNegativSelskapsskatt") {
-        settUniktFelt(forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoerbarBeregnetNegativSelskapsskatt) {
-            (forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar -
-                forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskattFraTidligereAar -
-                forekomstType.beregnetNegativSelskapsskattKnyttetTilUnderskuddFraVirksomhetPaaSokkelFraTidligereInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand -
-                forekomstType.beregnetNegativSelskapsskattKnyttetTilTilbakefoertUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand +
-                forekomstType.aaretsBeregnedeNegativeSelskapsskattEtterKorrigeringForUnderskuddIAlminneligInntektFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
-                forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsBeregnedeNegativeSelskapsskattTilbakefoertMotTidligereAarsSaerskattegrunnlagFraVirksomhetPaaSokkel +
-                forekomstType.beregnetNegativSelskapsskattTilFremfoering_beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaar -
-                forekomstType.beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaarBenyttetMotAaretsBeregnedeSelskapsskatt).absoluttverdi()
+        val sum = forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar -
+            forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskattFraTidligereAar -
+            forekomstType.beregnetNegativSelskapsskattKnyttetTilUnderskuddFraVirksomhetPaaSokkelFraTidligereInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand -
+            forekomstType.beregnetNegativSelskapsskattKnyttetTilTilbakefoertUnderskuddFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand +
+            forekomstType.aaretsBeregnedeNegativeSelskapsskattEtterKorrigeringForUnderskuddIAlminneligInntektFraVirksomhetPaaSokkelFoertMotAlminneligInntektFraVirksomhetPaaLand -
+            forekomstType.beregnetNegativSelskapsskattTilFremfoering_aaretsBeregnedeNegativeSelskapsskattTilbakefoertMotTidligereAarsSaerskattegrunnlagFraVirksomhetPaaSokkel +
+            forekomstType.beregnetNegativSelskapsskattTilFremfoering_beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaar -
+            forekomstType.beregnetNegativSelskapsskattTilbakefoertFraFremtidigInntektsaarBenyttetMotAaretsBeregnedeSelskapsskatt
+
+        hvis(sum.stoerreEnn(0)) {
+            settUniktFelt(forekomstType.beregnetNegativSelskapsskattTilFremfoering_fremfoerbarBeregnetNegativSelskapsskatt) {
+                sum
+            }
         }
     }
 
