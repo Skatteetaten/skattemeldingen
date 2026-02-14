@@ -2,8 +2,8 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v7" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v7">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2025-11-04T14:34:14.259+0100" name="generertDato"/>
-            <xsd:attribute fixed="7.5" name="versjon"/>
+            <xsd:attribute fixed="2025-12-18T10:48:50.324+0100" name="generertDato"/>
+            <xsd:attribute fixed="7.6" name="versjon"/>
             <xsd:attribute fixed="Beregnet skatt - formues og inntektsskatt for personlige skattepliktige&#10;Inntektsår 2025" name="beskrivelse"/>
             <xsd:attribute fixed="Beregnet skatt v7 (2025)" name="modellnavn"/>
             <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:beregnetskatt:v7" name="navnerom"/>
@@ -63,7 +63,6 @@
             <xsd:element minOccurs="0" name="skattefradragForKostnaderTilFoU" skatt:begrepsreferanse="649cbceb-ad07-11e8-8ffd-005056821322" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="skattefradragForOmberegnetGevinstPaaOpsjoner" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="korrigertSkattForEtterbetaltPensjonOgTrygdeytelse" skatt:begrepsreferanse="367f2c86-a9e1-11e8-8514-005056821322" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element minOccurs="0" name="skattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="begrensningAvSkattVedSkatteavtalebostedIAnnenStat" type="typekatalog:BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -139,7 +138,6 @@
             <xsd:element minOccurs="0" name="resultaterAvBeregningEtterMetodeVedDobbeltbeskatning" type="ResultaterAvBeregningEtterMetodeVedDobbeltbeskatning"/>
             <xsd:element minOccurs="0" name="endretSkattToAarEtterInntektsaaretOverfoertFraEktefelle" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="endretSkattToAarEtterInntektsaaretOverfoertTilEktefelle" type="typekatalog:BeloepSomHeltall"/>
-            <xsd:element maxOccurs="5" minOccurs="0" name="fremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv" type="FremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv"/>
             <xsd:element minOccurs="0" name="formuesverdiForPrimaerbolig" skatt:begrepsreferanse="367f2c96-a9e1-11e8-8514-005056821322" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="formuesverdiForSelveidFritidseiendomEllerAndelIFritidsboligselskap" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjeld" skatt:begrepsreferanse="410ade56-9202-11e6-8b61-82ab1fa1f30b" type="BeloepSomHeltallMedSkattemessigeEgenskaper"/>
@@ -155,12 +153,6 @@
             <xsd:element name="beloep" skatt:begrepsreferanse="0af6b37c-729e-433b-853c-7b4bb20337ef" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="saerskiltSkatteplikt" type="SaerskiltSkattepliktstype"/>
             <xsd:element minOccurs="0" name="kommunenummer" skatt:begrepsreferanse="20b2e0f3-9fe1-11e5-a9f8-e4115b280940" type="typekatalog:Kommunenummer"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="FremfoerbartSkattefradragForBetaltKildeskattPaaRenterOgRoyaltyMv">
-        <xsd:sequence>
-            <xsd:element name="inntektsaar" skatt:begrepsreferanse="6f4cdc65-b01b-409f-a936-be7046cb9391" type="typekatalog:Inntektsaar"/>
-            <xsd:element name="fremfoerbartSkattefradrag" type="typekatalog:BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="FremfoerbartSkattefradragForSkattBetaltIUtlandet">
