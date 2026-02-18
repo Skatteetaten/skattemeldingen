@@ -4,8 +4,8 @@
   <tekniskNavn>2025_aarsakTilUtflyttingsskatt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2025-05-20T10:44:37.000+02:00</sistEndret>
-  <sistEndretAv>m74453</sistEndretAv>
+  <sistEndret>2026-02-09T17:40:55.000+01:00</sistEndret>
+  <sistEndretAv>x00sbj</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
     <spraakTekst>
@@ -39,6 +39,9 @@
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
+    <kodetillegg>
+      <aarsak>egenUtflyttingsskatt</aarsak>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>bostedEtterSkatteavtale</tekniskNavn>
@@ -66,6 +69,9 @@
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
+    <kodetillegg>
+      <aarsak>egenUtflyttingsskatt</aarsak>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>finansproduktOverfoertTilEktefelle</tekniskNavn>
@@ -93,6 +99,9 @@
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
+    <kodetillegg>
+      <aarsak>egenUtflyttingsskatt</aarsak>
+    </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>flyttetTilSvalbard</tekniskNavn>
@@ -120,9 +129,12 @@
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
+    <kodetillegg>
+      <aarsak>egenUtflyttingsskatt</aarsak>
+    </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>arvetTidligereFastsattUtflyttingsskatt</tekniskNavn>
+    <tekniskNavn>arvetTidligereFastsattUtflyttingsskattEmigrasjon</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Jeg er bosatt i utlandet og har arvet eiendeler som det tidligere er fastsatt utflyttingsskatt på</tekst>
@@ -131,15 +143,15 @@
     </beskrivelse>
     <visningsnavn>
       <spraakTekst>
-        <tekst>Jeg er bosatt i utlandet og har arvet eiendeler som det tidligere er fastsatt utflyttingsskatt på</tekst>
+        <tekst>Jeg er bosatt i utlandet og har arvet eiendeler som det tidligere er fastsatt utflyttingsskatt på som følge av utflytting</tekst>
         <spraak>nb_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>Eg er busett i utlandet og har arva eigedelar som det tidlegare er fastsett utflyttingsskatt på</tekst>
+        <tekst>Eg er busett i utlandet og har arva eigedelar som det tidlegare er fastsett utflyttingsskatt på som følgje av utflytting</tekst>
         <spraak>nn_NO</spraak>
       </spraakTekst>
       <spraakTekst>
-        <tekst>I am resident abroad and have inherited assets previously assessed with exit tax</tekst>
+        <tekst>I am resident abroad and have inherited assets previously assessed with exit tax as a result of moving out</tekst>
         <spraak>en_GB</spraak>
       </spraakTekst>
       <spraakTekst>
@@ -147,9 +159,42 @@
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
+    <kodetillegg>
+      <aarsak>arvetUtflyttingsskatt</aarsak>
+    </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>arvetFraPersonBosattINorge</tekniskNavn>
+    <tekniskNavn>arvetTidligereFastsattUtflyttingsskattOverfoersel</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Jeg er bosatt i utlandet og har arvet eiendeler som det tidligere er fastsatt utflyttingsskatt på som følge av overføring</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <visningsnavn>
+      <spraakTekst>
+        <tekst>Jeg er bosatt i utlandet og har arvet eiendeler som det tidligere er fastsatt utflyttingsskatt på som følge av overføring</tekst>
+        <spraak>nb_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Eg er busett i utlandet og har arva eigedelar som det tidlegare er fastsett utflyttingsskatt på som følgje av overføring</tekst>
+        <spraak>nn_NO</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>I am resident abroad and have inherited assets previously assessed with exit tax as a result of transferring</tekst>
+        <spraak>en_GB</spraak>
+      </spraakTekst>
+      <spraakTekst>
+        <tekst>Jeg er bosatt i utlandet og har arvet eiendeler som det tidligere er fastsatt utflyttingsskatt på som følge av overføring</tekst>
+        <spraak>se_NO</spraak>
+      </spraakTekst>
+    </visningsnavn>
+    <kodetillegg>
+      <aarsak>arvetUtflyttingsskatt</aarsak>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>arvetFraPersonBosattINorgeOverfoersel</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Jeg er bosatt i utlandet og har arvet eiendeler fra person bosatt i Norge</tekst>
@@ -174,5 +219,8 @@
         <spraak>se_NO</spraak>
       </spraakTekst>
     </visningsnavn>
+    <kodetillegg>
+      <aarsak>arvetUtflyttingsskatt</aarsak>
+    </kodetillegg>
   </kode>
 </kodeliste>
