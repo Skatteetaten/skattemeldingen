@@ -234,6 +234,20 @@
         "begrepsreferanse": "https://data.skatteetaten.no/web/datakatalog/begrep/060a305f-d46b-4e48-8ada-0a2a2d38b997"
       },
       {
+        "tekniskNavn": "deltakersAndelAvNegativGrunnrenteinntektIHavbruksvirksomhet",
+        "visningsnavn_nb_NO": "Andel av negativ grunnrenteinntekt fra havbruk",
+        "visningsnavn_nn_NO": "Del av negativ grunnrenteinntekt frå havbruk",
+        "visningsnavn_se_NO": "Oassi negatiivva vuođđoreantosisaboađus mearadoalus",
+        "visningsnavn_en_US": "Share of negative resource rent income from aquaculture"
+      },
+      {
+        "tekniskNavn": "deltakersAndelAvPositivGrunnrenteinntektIHavbruksvirksomhet",
+        "visningsnavn_nb_NO": "Andel av positiv grunnrenteinntekt fra havbruk",
+        "visningsnavn_nn_NO": "Del av positiv grunnrenteinntekt frå havbruk",
+        "visningsnavn_se_NO": "Oassi positiivva vuođđoreantosisaboađus mearadoalus",
+        "visningsnavn_en_US": "Share of positive resource rent income from aquaculture"
+      },
+      {
         "tekniskNavn": "ektefelletilleggTilPensjon",
         "visningsnavn_nb_NO": "Ektefelletillegg til pensjon",
         "visningsnavn_nn_NO": "Ektefelletillegg til pensjon",
@@ -1026,14 +1040,16 @@
         "visningsnavn_nb_NO": "Latent eller realisert gevinst på opsjoner i arbeidsforhold ved utflytting",
         "visningsnavn_nn_NO": "Latent eller realisert gevinst på opsjonar i arbeidsforhold ved utflytting",
         "visningsnavn_se_NO": "Lateanta dahje realiserejuvvon vuoitu opšuvnnain bargodilis go fárret eret Norggas",
-        "visningsnavn_en_US": "Latent or realised gains on employment-related options upon moving from Norway"
+        "visningsnavn_en_US": "Latent or realised gains on employment-related options upon moving from Norway",
+        "kategori": "inntekt"
       },
       {
         "tekniskNavn": "latentEllerRealisertTapPaaOpsjonerIArbeidsforholdVedUtflytting",
         "visningsnavn_nb_NO": "Latent eller realisert tap på opsjoner i arbeidsforhold ved utflytting",
         "visningsnavn_nn_NO": "Latent eller realisert tap på opsjonar i arbeidsforhold ved utflytting",
         "visningsnavn_se_NO": "Lateanta dahje realiserejuvvon táhpa opšuvnnain bargodilis go fárret eret Norggas",
-        "visningsnavn_en_US": "Latent or realised losses on employment-related options upon moving from Norway"
+        "visningsnavn_en_US": "Latent or realised losses on employment-related options upon moving from Norway",
+        "kategori": "inntektsfradrag"
       },
       {
         "tekniskNavn": "latentGevinstPaaAksjeAndelMvVedUtflyttingUtenUtsattBetalingAvSkatt",
@@ -1184,24 +1200,6 @@
         "visningsnavn_en_US": "Salary and payments in kind, etc. - Svalbard",
         "kategori": "inntekt",
         "begrepsreferanse": "https://data.skatteetaten.no/web/datakatalog/begrep/367f2ca5-a9e1-11e8-8514-005056821322"
-      },
-      {
-        "tekniskNavn": "minstefradragIBarnepensjon",
-        "visningsnavn_nb_NO": "Minstefradrag i egen barnepensjon",
-        "visningsnavn_nn_NO": "Minstefrådrag i eigen barnepensjon",
-        "visningsnavn_se_NO": "Vuolimus geasus mánáidpenšuvnnastis",
-        "visningsnavn_en_US": "Minimum standard deduction from own children’s pension",
-        "kategori": "inntektsfradrag",
-        "begrepsreferanse": "https://data.skatteetaten.no/web/datakatalog/begrep/367f2ca7-a9e1-11e8-8514-005056821322"
-      },
-      {
-        "tekniskNavn": "minstefradragIBarnepensjonTilBarn",
-        "visningsnavn_nb_NO": "Minstefradrag i barnepensjon",
-        "visningsnavn_nn_NO": "Minstefrådrag av barnepensjon",
-        "visningsnavn_se_NO": "Vuolimus geasus mánáidpenšuvnnas",
-        "visningsnavn_en_US": "Minimum standard deduction from children’s pension",
-        "kategori": "inntektsfradrag",
-        "begrepsreferanse": "https://data.skatteetaten.no/web/datakatalog/begrep/367f2ca7-a9e1-11e8-8514-005056821322"
       },
       {
         "tekniskNavn": "minstefradragIEktefelletillegg",
@@ -1413,28 +1411,32 @@
         "visningsnavn_nb_NO": "Oppjustering av latent gevinst ved salg mv. av aksjer, andeler i SDF og aksjedel av andre verdipapirer ved flytting eller overføring av eiendeler til utlandet uten utsatt betaling av skatt",
         "visningsnavn_nn_NO": "Oppjustering av latent gevinst ved sal m.m. av aksjar, andelar i SDF og aksjedel av andre verdipapir ved flytting eller overføring av eigedelar til utlandet utan utsett betaling av skatt",
         "visningsnavn_se_NO": "Bajidit lateanta vuoitu vuovdimis ossosiid, osiid fitnodagas mas lea oassálastinmearrideapmi (SDF) ja oasusoassi eará árvobáhpiriin fárren oktavuođas dahje sirdimis háldoomiid olgoriikii mas ii leat maŋiduvvon vearromáksin",
-        "visningsnavn_en_US": "Upward adjustment of latent gains on the sale, etc., of shares, ownership interests in SDF, and the share component of other securities in connection with a move or transfer of assets abroad without deferred payment of tax"
+        "visningsnavn_en_US": "Upward adjustment of latent gains on the sale, etc., of shares, ownership interests in SDF, and the share component of other securities in connection with a move or transfer of assets abroad without deferred payment of tax",
+        "kategori": "oppjusteringAvEierinntekter"
       },
       {
         "tekniskNavn": "oppjustertTilleggTilLatentGevinstPaaAksjeAndelMvVedUtflyttingMedUtsattBetalingAvSkatt",
         "visningsnavn_nb_NO": "Oppjustering av latent gevinst ved salg mv. av aksjer, andeler i SDF og aksjedel av andre verdipapirer ved flytting eller overføring av eiendeler til utlandet med utsatt betaling av skatt",
         "visningsnavn_nn_NO": "Oppjustering av latent gevinst ved sal m.m. av aksjar, andelar i SDF og aksjedel av andre verdipapir ved flytting eller overføring av eigedelar til utlandet med utsett betaling av skatt",
         "visningsnavn_se_NO": "Bajidit lateanta vuoitu vuovdimis ossosiid, osiid fitnodagas mas lea oassálastinmearrideapmi (SDF) dahje sirdimis háldoomiid olgoriikii mas lea maŋiduvvon vearromáksin",
-        "visningsnavn_en_US": "Upward adjustment of latent gains on the sale, etc., of shares, ownership interests in SDF, and the share component  of other securities in connection with a relocation or transfer of assets abroad with deferred payment of tax"
+        "visningsnavn_en_US": "Upward adjustment of latent gains on the sale, etc., of shares, ownership interests in SDF, and the share component  of other securities in connection with a relocation or transfer of assets abroad with deferred payment of tax",
+        "kategori": "oppjusteringAvEierinntekter"
       },
       {
         "tekniskNavn": "oppjustertTilleggTilLatentTapPaaAksjeAndelMvVedUtflyttingUtenUtsattBetalingAvSkatt",
         "visningsnavn_nb_NO": "Oppjustering av latent tap ved salg mv. av aksjer, andeler i SDF og aksjedel av andre verdipapirer ved flytting eller overføring av eiendeler til utlandet uten utsatt betaling av skatt",
         "visningsnavn_nn_NO": "Oppjustering av latent tap ved sal m.m. av aksjar, andelar i SDF og aksjedel av andre verdipapir ved flytting eller overføring av eigedelar til utlandet utan utsett betaling av skatt",
         "visningsnavn_se_NO": "Bajidit lateanta táhpa vuovdimis ossosiid, osiid fitnodagas mas lea oassálastinmearrideapmi (SDF) ja oasusoassi eará árvobáhpiriin fárren oktavuođas dahje sirdimis háldoomiid olgoriikii mas ii leat maŋiduvvon vearromáksin",
-        "visningsnavn_en_US": "Upward adjustment of latent losses on the sale, etc., of shares, ownership interests in SDF, and the share component of other securities in connection with a move or transfer of assets abroad without deferred payment of tax"
+        "visningsnavn_en_US": "Upward adjustment of latent losses on the sale, etc., of shares, ownership interests in SDF, and the share component of other securities in connection with a move or transfer of assets abroad without deferred payment of tax",
+        "kategori": "oppjusteringAvEierinntekter"
       },
       {
         "tekniskNavn": "oppjustertTilleggTilLatentTapPaaAksjeAndelMvVedUtflyttingMedUtsattBetalingAvSkatt",
         "visningsnavn_nb_NO": "Oppjustering av latent tap ved salg mv. av aksjer, andeler i SDF og aksjedel av andre verdipapirer ved flytting eller overføring av eiendeler til utlandet med utsatt betaling av skatt",
         "visningsnavn_nn_NO": "Oppjustering av latent tap ved sal m.m. av aksjar, andelar i SDF og aksjedel av andre verdipapir ved flytting eller overføring av eigedelar til utlandet med utsett betaling av skatt",
         "visningsnavn_se_NO": "Bajidit lateanta táhpa vuovdimis ossosiid, osiid fitnodagas mas lea oassálastinmearrideapmi (SDF) ja oasusoassi eará árvobáhpiriin fárren oktavuođas dahje sirdimis háldoomiid olgoriikii mas lea maŋiduvvon vearromáksin",
-        "visningsnavn_en_US": "Upward adjustment of latent losses on the sale, etc., of shares, ownership interests in SDF, and the share component of other securities in connection with a relocation or transfer of assets abroad with deferred payment of tax"
+        "visningsnavn_en_US": "Upward adjustment of latent losses on the sale, etc., of shares, ownership interests in SDF, and the share component of other securities in connection with a relocation or transfer of assets abroad with deferred payment of tax",
+        "kategori": "oppjusteringAvEierinntekter"
       },
       {
         "tekniskNavn": "oppjustertTilleggTilRenteinntektMedEkstrabeskatningForLaanTilSelskap",
