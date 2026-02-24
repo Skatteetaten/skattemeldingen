@@ -405,6 +405,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
             indeksRegulerteVerdierForegaaendeInntektsaar,
+            salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft,
             bruttoSalgsinntektOgFradragForKostnaderTil2024,
             bruttoSalgsinntektOgFradragForKostnaderFra2025,
             gjennomsnittligIndeksregulertSisteFemAar,
@@ -413,8 +414,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
             fradragForFremtidigeUtskiftningskostnader,
             formuesverdi,
             minimumsOgMaksimumsverdiForEiendomsskattegrunnlag,
-            eiendomsskattegrunnlag,
-            salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft
+            eiendomsskattegrunnlag
         )
     }
 }
