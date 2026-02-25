@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--no.skatteetaten:gitlab:INMO:xsd_for_skatteplikt:no/skatteetaten/fastsetting/formueinntekt/perioderformottakogutveksling_v1.xsd-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:skatteetaten:no:fastsetting:formueinntekt:perioderformottakogutveksling:v1" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:skatteetaten:no:fastsetting:formueinntekt:perioderformottakogutveksling:v1">
+    <xsd:annotation>
+        <xsd:documentation>
+            <xsd:attribute fixed="2025-12-04T09:56:08.016+0100" name="generertDato"/>
+            <xsd:attribute fixed="1.0" name="versjon"/>
+            <xsd:attribute fixed="Forenklet modell basert på periodelageret. Skal brukes i et API som skal speile funksjonaliteten i Min skatteplikt." name="beskrivelse"/>
+            <xsd:attribute fixed="Perioder for mottak og utveksling v1" name="modellnavn"/>
+            <xsd:attribute fixed="urn:skatteetaten:no:fastsetting:formueinntekt:perioderformottakogutveksling:v1" name="navnerom"/>
+            <xsd:attribute fixed="true" name="begrepsreferanse"/>
+            <xsd:attribute fixed="true" name="dokumentasjon"/>
+            <xsd:attribute fixed="false" name="nillable"/>
+            <xsd:attribute fixed="false" name="modellelement"/>
+            <xsd:attribute fixed="false" name="norskeTegn"/>
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="perioder" type="Perioder"/>
+    <xsd:element name="perioderForMottakOgUtveksling" type="PerioderForMottakOgUtveksling"/>
+    <xsd:complexType name="PerioderForMottakOgUtveksling">
+        <xsd:annotation>
+            <xsd:documentation>Forenklet modell basert på periodelageret. Skal brukes i et API som skal speile funksjonaliteten i Min skatteplikt.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="perioder" type="Perioder"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Perioder">
+        <xsd:sequence>
+            <xsd:element name="endringsnoekkel" type="Tekst"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="arbeidsforholdsperiode" type="Arbeidsforholdsperiode"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="oppholdsperiode" type="Oppholdsperiode"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Arbeidsforholdsperiode">
+        <xsd:complexContent>
+            <xsd:extension base="Periode">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element minOccurs="0" name="arbeidsforholdIOppdrag" type="InformasjonOmArbeidsforholdIOppdrag"/>
+                        <xsd:element minOccurs="0" name="arbeidsforholdSomSjoemann" type="InformasjonOmArbeidsforholdSomSjoemann"/>
+                    </xsd:choice>
+                    <xsd:element name="spesifikasjonAvInntektsgivendeAktivitet" type="SpesifikasjonAvInntektsgivendeAktivitet"/>
+                    <xsd:element minOccurs="0" name="ansvarligEnhetEllerPart" type="InformasjonOmAnsvarligEnhetEllerPart"/>
+                    <xsd:element name="kanEndres" type="Boolsk"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Oppholdsperiode">
+        <xsd:complexContent>
+            <xsd:extension base="Periode">
+                <xsd:sequence>
+                    <xsd:element name="kanEndres" type="Boolsk"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="Periode">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="norskPersonidentifikator" type="NorskPersonidentifikator"/>
+            <xsd:element name="periodeidentifikator" type="Tekst"/>
+            <xsd:element name="fraOgMedDato" type="Dato"/>
+            <xsd:element minOccurs="0" name="tilOgMedDato" type="Dato"/>
+            <xsd:element minOccurs="0" name="erMerketSomSlettet" type="Boolsk"/>
+            <xsd:element minOccurs="0" name="antallDagerOverstyrt" type="Antall"/>
+            <xsd:element minOccurs="0" name="kommune" type="Kommunenummer"/>
+            <xsd:element minOccurs="0" name="informasjonskilde" type="Tekst"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Hovedenhet">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="organisasjonsnummer" type="Organisasjonsnummer"/>
+            <xsd:element minOccurs="0" name="navn" type="Organisasjonsnavn"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="IdentifikatorForEnhetEllerPerson">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="organisasjonsnummer" type="Organisasjonsnummer"/>
+                </xsd:sequence>
+                <xsd:sequence>
+                    <xsd:element name="personidentifikator" type="NorskPersonidentifikator"/>
+                </xsd:sequence>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="InformasjonOmAnsvarligEnhetEllerPart">
+        <xsd:sequence>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="norskIdentifikator" type="IdentifikatorForEnhetEllerPerson"/>
+            </xsd:sequence>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="hovedorganisasjon" type="Hovedenhet"/>
+                <xsd:element minOccurs="0" name="underenhetensOrganisasjonsnummer" type="Organisasjonsnummer"/>
+            </xsd:sequence>
+            <xsd:element minOccurs="0" name="naeringsdrivendeUtenKravTilOrganisasjonsnummer" type="Boolsk"/>
+            <xsd:element minOccurs="0" name="navn" type="Organisasjonsnavn"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="InformasjonOmArbeidsforholdIOppdrag">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="oppdragsgiver" type="Oppdragsgiver"/>
+            <xsd:element minOccurs="0" name="erFastDriftssted" type="Boolsk"/>
+            <xsd:element minOccurs="0" name="kontraktstype" type="Kontraktstype"/>
+            <xsd:element minOccurs="0" name="manueltRegistrertIkkeOmfattetAvRapporteringsplikt" type="Boolsk"/>
+            <xsd:element minOccurs="0" name="arbeidsstedsOgVirksomhetsspesifikasjonPaaSokkel" type="ArbeidsstedsOgVirksomhetstypePaaSokkel"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="InformasjonOmArbeidsforholdSomSjoemann">
+        <xsd:sequence>
+            <xsd:element name="skipsregister" type="Skipsregister"/>
+            <xsd:element minOccurs="0" name="skipstype" type="Skipstype"/>
+            <xsd:element minOccurs="0" name="fartsomraade" type="Fartsomraade"/>
+            <xsd:element minOccurs="0" name="stillingstittel" type="Stillingstittelkode"/>
+            <xsd:element minOccurs="0" name="arbeidstidsordning" type="Arbeidstidsordning"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="NorskPersonidentifikator">
+        <xsd:restriction base="Tekst">
+            <xsd:pattern value="[0-9]+"/>
+            <xsd:length value="11"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="Oppdragsgiver">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="informasjonOmAnsvarligEnhetEllerPart" type="InformasjonOmAnsvarligEnhetEllerPart"/>
+                </xsd:sequence>
+                <xsd:sequence>
+                    <xsd:element name="identifikatorIHjemland" type="Tekst"/>
+                    <xsd:element name="hjemland" type="Landkode"/>
+                </xsd:sequence>
+            </xsd:choice>
+            <xsd:element minOccurs="0" name="navn" type="Organisasjonsnavn"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SpesifikasjonAvInntektsgivendeAktivitet">
+        <xsd:sequence>
+            <xsd:element name="oppholdsstedVedInntektsgivendeAktivitet" type="OppholdsstedsbeliggenhetVedInntektsgivendeAktivitet"/>
+            <xsd:element name="inntektsgivendeAktivitetstype" type="RolleVedInntektsgivendeAktivitet"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="ArbeidsstedsOgVirksomhetstypePaaSokkel" skatt:eksternKodeliste="https://git.aurora.skead.no/projects/KOLI/repos/kodeliste-prod_v2/browse/SkattepliktMv/arbeidsstedsOgVirksomhetstypePaaSokkel.xml">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Arbeidstidsordning" skatt:eksternKodeliste="https://git.aurora.skead.no/projects/KOLI/repos/kodeliste-prod_v2/browse/SkattepliktMv/arbeidstidsordning.xml">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Fartsomraade">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="innenriks"/>
+            <xsd:enumeration value="utenriks"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Kontraktstype">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="innleieAvOppdragstaker"/>
+            <xsd:enumeration value="selvstendigAvOppdragstaker"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="OppholdsstedsbeliggenhetVedInntektsgivendeAktivitet">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="fastland"/>
+            <xsd:enumeration value="sjoe"/>
+            <xsd:enumeration value="fiskefartoeyInnenfor12Milssone"/>
+            <xsd:enumeration value="fiskefartoeyUtenfor12Milssone"/>
+            <xsd:enumeration value="kontinentalsokkel"/>
+            <xsd:enumeration value="fastlandUtenforNorge"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="RolleVedInntektsgivendeAktivitet">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="arbeidstaker"/>
+            <xsd:enumeration value="arbeidstakerForForsvaretEllerUtenriksstasjon"/>
+            <xsd:enumeration value="arbeidstakerFinansiertAvDenNorskeStat"/>
+            <xsd:enumeration value="arbeidstakerKunTrygdeavgiftsplikt"/>
+            <xsd:enumeration value="arbeidstakerPaaSkipIFart"/>
+            <xsd:enumeration value="selvstendigNaeringsdrivende"/>
+            <xsd:enumeration value="deltakerISelskapMedDeltakerfastsetting"/>
+            <xsd:enumeration value="mottarStyrehonorar"/>
+            <xsd:enumeration value="mottarIntroduksjonsstoenad"/>
+            <xsd:enumeration value="eierFastEiendom"/>
+            <xsd:enumeration value="grensegjenger"/>
+            <xsd:enumeration value="landtransportsjaafoer"/>
+            <xsd:enumeration value="flyvendePersonell"/>
+            <xsd:enumeration value="pensjonistMedKildeskattPaaPensjon"/>
+            <xsd:enumeration value="pensjonistMedSkatteOgAvgiftsfriPensjon"/>
+            <xsd:enumeration value="arbeidstakerSomGjesteforeleserEllerForsker"/>
+            <xsd:enumeration value="arbeidstakerInnenforHavbrukMineralvirksomhetFornybarEnergiEllerKarbonfangst"/>
+            <xsd:enumeration value="arbeidstakerInnenforPetroleumsvirksomhet"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Skipsregister">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="norskInternasjonaltSkipsregister"/>
+            <xsd:enumeration value="norskOrdinaertSkipsregister"/>
+            <xsd:enumeration value="utenlandskSkip"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Skipstype">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="turistskip"/>
+            <xsd:enumeration value="boreplattform"/>
+            <xsd:enumeration value="annenTypeFartoey"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Stillingstittelkode">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Tekst" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52af3-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:annotation>
+            <xsd:documentation>vilkårlig lang sekvens av tegn inkludert aksenter og spesielle tegn fra standardiserte tegnsett</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4000"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Boolsk" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aec-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:annotation>
+            <xsd:documentation>angir verdien sann eller usann</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:boolean"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Dato" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aed-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:annotation>
+            <xsd:documentation>gir verdier for år, måned og dag. Kodes som en tekststreng etter datoformatering spesifisert i  ISO 8601 (ISO 8601:2004 Data elements and interchange formats -- Information interchange -- Representation of dates and times). Eksempel : 1998-12-21 eller 19981221.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:date"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:annotation>
+            <xsd:documentation>hele tall, dvs. hele tall i mengden {..., -2, -1, 0, 1, 2, ...}</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:long"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Antall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e145-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:annotation>
+            <xsd:documentation>mengde som utgjør eller kan uttrykkes i et visst tall</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="Heltall"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Kommunenummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e0f3-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:annotation>
+            <xsd:documentation>nummer for kommune</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="Tekst">
+            <xsd:pattern value="([0-9]){4}"/>
+            <xsd:length value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:annotation>
+            <xsd:documentation>9 sifret nummer gitt de som er registrert i Enhetsregisteret.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="Tekst">
+            <xsd:pattern value="[0-9]+"/>
+            <xsd:length value="9"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Organisasjonsnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:annotation>
+            <xsd:documentation>navn på organisasjon</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="Tekst">
+            <xsd:maxLength value="175"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Landkode" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e112-9fe1-11e5-a9f8-e4115b280940">
+        <xsd:annotation>
+            <xsd:documentation>koder for land etter ISO 3166-1 Alpha-2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="Tekst">
+            <xsd:pattern value="([A-Z]){2}"/>
+            <xsd:length value="2"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

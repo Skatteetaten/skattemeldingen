@@ -17,9 +17,9 @@ API-et returnerer gjeldende antall tolvdeler, skatteplikt og alle registrerte op
 
 **Respons** :
 
-Iht. XSD: perioderformottakogutveksling_v1.xsd
+- Iht. XSD: [perioderformottakogutveksling_v1.xsd](/src/resources/xsd/perioderformottakogutveksling_v1.xsd)
 
-Eksempel respons JSON: 
+- Eksempel respons JSON: 
 
 ``` json
 {
@@ -72,6 +72,7 @@ Eksempel respons JSON:
           ],
           "endringsnoekkel" : "42653453"
      }
+}
 ```
 
 **Forklaring til respons**
@@ -98,61 +99,60 @@ API‑et mottar alle endrede perioder, validerer dem og beregner skatteplikt sam
 
 Body:
 
-- Iht. XSD:perioderformottakogutveksling_v1.xsd - se forklaring av oppholdperiode og arbeidsforholdsperioder under XSD: Beskrivelse av oppholdsperioder og arbeidsforholdsperioder
+- Iht. XSD: [perioderformottakogutveksling_v1.xsd](/src/resources/xsd/perioderformottakogutveksling_v1.xsd) - se forklaring av oppholdperiode og arbeidsforholdsperioder under XSD: Beskrivelse av oppholdsperioder og arbeidsforholdsperioder
 - Eksempel input JSON:
 
 ```json
 {
-          "oppholdsperiode" : [
-               {
-                    "kanEndres" : true,
-                    "norskPersonidentifikator" : "28818698897",
-                    "kommune" : null,
-                    "periodeidentifikator" : "2518d6ba-4989-4aee-b86a-c5054fc49a94",
-                    "fraOgMedDato" : "2025-05-01",
-                    "tilOgMedDato" : "2025-05-31",
-                    "informasjonskilde" : "OPPLYST_TIL_SAKSBEHANDLER_AV_SKATTEPLIKTIG",
-                    "erMerketSomSlettet" : false,
-                    "antallDagerOverstyrt" : null
-               }
-          ],
-          "arbeidsforholdsperiode" : [
-               {
-                    "kanEndres" : true,
-                    "arbeidsforholdIOppdrag" : null,
-                    "arbeidsforholdSomSjoemann" : null,
-                    "spesifikasjonAvInntektsgivendeAktivitet" : {
-                         "oppholdsstedVedInntektsgivendeAktivitet" : "FASTLAND",
-                         "inntektsgivendeAktivitetstype" : "ARBEIDSTAKER"
-                    },
-                    "ansvarligEnhetEllerPart" : {
-                         "norskIdentifikator" : {
-                              "organisasjonsnummer" : "315078385",
-                              "personidentifikator" : null
-                         },
-                         "hovedorganisasjon" : null,
-                         "underenhetensOrganisasjonsnummer" : null,
-                         "naeringsdrivendeUtenKravTilOrganisasjonsnummer" : null,
-                         "navn" : "ENKEL ENKEL KATT INVITASJON"
-                    },
-                    "norskPersonidentifikator" : "28818698897",
-                    "kommune" : "4641",
-                    "periodeidentifikator" : "b1e6b902-07b7-495b-9933-1fbb6cb23dc9",
-                    "fraOgMedDato" : "2025-05-01",
-                    "tilOgMedDato" : "2025-05-31",
-                    "informasjonskilde" : "OPPLYST_TIL_SAKSBEHANDLER_AV_SKATTEPLIKTIG",
-                    "erMerketSomSlettet" : false,
-                    "antallDagerOverstyrt" : null
-               }
-          ],
-          "endringsnoekkel" : "42653453"
+  "oppholdsperiode" : [
+    {
+      "kanEndres" : true,
+      "norskPersonidentifikator" : "28818698897",
+      "kommune" : null,
+      "periodeidentifikator" : "2518d6ba-4989-4aee-b86a-c5054fc49a94",
+      "fraOgMedDato" : "2025-05-01",
+      "tilOgMedDato" : "2025-05-31",
+      "informasjonskilde" : "OPPLYST_TIL_SAKSBEHANDLER_AV_SKATTEPLIKTIG",
+      "erMerketSomSlettet" : false,
+      "antallDagerOverstyrt" : null
+    }
+  ],
+  "arbeidsforholdsperiode" : [
+    {
+      "kanEndres" : true,
+      "arbeidsforholdIOppdrag" : null,
+      "arbeidsforholdSomSjoemann" : null,
+      "spesifikasjonAvInntektsgivendeAktivitet" : {
+        "oppholdsstedVedInntektsgivendeAktivitet" : "FASTLAND",
+        "inntektsgivendeAktivitetstype" : "ARBEIDSTAKER"
+      },
+      "ansvarligEnhetEllerPart" : {
+        "norskIdentifikator" : {
+          "organisasjonsnummer" : "315078385",
+          "personidentifikator" : null
+        },
+        "hovedorganisasjon" : null,
+        "underenhetensOrganisasjonsnummer" : null,
+        "naeringsdrivendeUtenKravTilOrganisasjonsnummer" : null,
+        "navn" : "ENKEL ENKEL KATT INVITASJON"
+      },
+      "norskPersonidentifikator" : "28818698897",
+      "kommune" : "4641",
+      "periodeidentifikator" : "b1e6b902-07b7-495b-9933-1fbb6cb23dc9",
+      "fraOgMedDato" : "2025-05-01",
+      "tilOgMedDato" : "2025-05-31",
+      "informasjonskilde" : "OPPLYST_TIL_SAKSBEHANDLER_AV_SKATTEPLIKTIG",
+      "erMerketSomSlettet" : false,
+      "antallDagerOverstyrt" : null
+    }
+  ],
+  "endringsnoekkel" : "42653453"
 }
 ```
 
 ***Respons***:
 
 Ved vellykket beregning:
-
 
 ```json
 {
@@ -194,8 +194,8 @@ Forespørsel :
 
 Body:
 
-- Iht. XSD:perioderformottakogutveksling_v1.xsd - se forklaring av oppholdperioder og arbeidsforholdsperioder under XSD: Beskrivelse av oppholdsperioder og arbeidsforholdsperioder
-- XML:  samme XML som ved beregning
+- Iht. XSD: [perioderformottakogutveksling_v1.xsd](/src/resources/xsd/perioderformottakogutveksling_v1.xsd) - se forklaring av oppholdperioder og arbeidsforholdsperioder under XSD: Beskrivelse av oppholdsperioder og arbeidsforholdsperioder
+- JSON: samme som ved beregning
 
 
 **Respons**
