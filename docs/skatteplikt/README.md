@@ -1,5 +1,12 @@
 ## Perioder API
 
+API-ene er rettet mot brukere av SBS som bistår skattepliktige med begrenset skatteplikt, med leveringen av skattemeldingen.
+
+API-ene gir tilgang til å hente, vurdere og lagre periodegrunnlaget med hensikten å korrigere tolvdeler og skatteplikt for den skattepliktige.
+Tolvdeler og skatteplikt kan ikke registreres eller overstyres manuelt, de beregnes automatisk basert på den skattepliktiges registrerte oppholdsperioder og arbeidsforholdsperioder.
+
+Funksjonaliteten tilsvarer det som er tilgjengelig i Min skatt under «Arbeid og opphold i Norge», der skattepliktige selv kan logge inn og registrere eller endre oppholds- og arbeidsforholdsperioder.
+
 ### Hent perioder
 
 API-et returnerer gjeldende antall tolvdeler, skatteplikt og alle registrerte oppholds- og arbeidsforholdsperioder for en skattepliktig for et gitt inntektsår.
@@ -11,9 +18,8 @@ API-et returnerer gjeldende antall tolvdeler, skatteplikt og alle registrerte op
 
 **Forespørsel** :
 
-<inntektsår>:inntektsåret det hentes informasjon for (format: YYYY)
-<identifikator>: fødselsnummer, D‑nummer eller organisasjonsnummer til skattepliktig
-
+- `<inntektsaar>`: inntektsåret det hentes informasjon for (format: YYYY)
+- `<identifikator>`: Fødselsnummer eller D‑nummer til den skattepliktig
 
 **Respons** :
 
@@ -94,8 +100,8 @@ API‑et mottar alle endrede perioder, validerer dem og beregner skatteplikt sam
 
 **Forespørsel** :
 
-- `<inntektsår>` : Inntektsåret man spør om informasjon for, i formatet YYYY.
-- `<identifikator>` : Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige som man spør om skattemeldingen for.
+- `<inntektsaar>`: inntektsåret det hentes informasjon for (format: YYYY)
+- `<identifikator>`: Fødselsnummer eller D‑nummer til den skattepliktig
 
 Body:
 
@@ -175,7 +181,7 @@ Forklaring til respons
 - skatteordning – hvilken skatteordning den skattepliktige er omfattet av (f.eks. kildeskatt på lønn)
 - tolvdeler – antall tolvdeler etter endringen
 - nyttUtkastProduseres – angir om endringen medfører at et nytt utkast til skattemeldingen opprettes
-- merknader– eventuelle merknader
+- merknader – eventuelle merknader
 
 ### Lagre perioder
 
@@ -189,8 +195,8 @@ API-et mottar og validerer alle perioder, beregner nødvendige verdier og oppdat
 
 Forespørsel :
 
-- `<inntektsår>` : Inntektsåret man spør om informasjon for, i formatet YYYY.
-- `<identifikator>` : Fødselsnummer, D-nummer eller organisasjonsnummer til den skattepliktige som man spør om skattemeldingen for.
+- `<inntektsaar>`: inntektsåret det hentes informasjon for (format: YYYY)
+- `<identifikator>`: Fødselsnummer eller D‑nummer til den skattepliktig
 
 Body:
 
@@ -225,11 +231,11 @@ Forklaring til respons
 - nyttUtkastProduseres – angir om endringen medfører at et nytt utkast til skattemeldingen opprettes
 - merknader– eventuelle merknader
 
-### Feil response ifm bad request
+### Feil respons ifm bad request
 
 ```json
 {
-  "feilMeldinger" : [
+  "feilmeldinger" : [
     {
       "feilkode" : "Skatteplikt-001",
       "beskrivelse" : "Til og med dato er satt til før fra og med dato på periode",
@@ -245,7 +251,7 @@ Forklaring til respons
 - SKATTEPLIKT-003 - Overstyring av antall dager må skje innen inntektsår
 - SKATTEPLIKT-004 - Til og med dato er obligatorisk når overstyrte dager er satt
 - SKATTEPLIKT-005 - Antall overstyrte dager kan ikke overstige antall dager i perioden
-- SKATTEPLIKT-006 - Antall overstyrte dager kan ikke være mindre enn 1 dag eller mer inntektsår lengde
+- SKATTEPLIKT-006 - Antall overstyrte dager kan ikke være mindre enn 1 dag eller mer enn inntektsårets lengde
 - SKATTEPLIKT-007 - Tin skrevet på periode tilhører ikke denne personen
 - SKATTEPLIKT-008 - Mangler informasjon om oppholdssted
 - SKATTEPLIKT-009 - Ugyldig kombinasjon av oppholdssted og inntektsgivende aktivitet
@@ -261,9 +267,9 @@ Forklaring til respons
 - SKATTEPLIKT-019 - Ikke mulig å lagre eller endre periode med oppholdssted og inntektsgivende aktivitet
 - SKATTEPLIKT-020 - Ikke mulig å overstyre antall dager for periode med oppholdssted
 - SKATTEPLIKT-021 - Ikke mulig å overstyre antall dager for periode med oppholdssted og inntektsgivende aktivitet
-- SKATTEPLIKT-022 - Kan ikke legge til en ny periode med oppholdssteds og inntektsgivendeAktivitet
-- SKATTEPLIKT-023 - Kan ikke slette periode med oppholdssteds og inntektsgivendeAktivitet
-- SKATTEPLIKT-024 - Kun datoer er redigerbart for tredjeparts informasjonskilde
+- SKATTEPLIKT-022 - Kan ikke legge til en ny periode med oppholdssteds og inntektsgivende aktivitet
+- SKATTEPLIKT-023 - Kan ikke slette periode med oppholdssteds og inntektsgivende aktivitet
+- SKATTEPLIKT-024 - Kun datoer er redigerbare for tredjeparts informasjonskilde
 - SKATTEPLIKT-025 - Ugyldig verdi i felt
 - SKATTEPLIKT-026 - Ukjent arbeidsgiver
 - SKATTEPLIKT-027 - Periode er myndighetsfastsatt og kan derfor ikke endres
@@ -279,40 +285,40 @@ Forklaring til respons
 
 ### XSD: Beskrivelse av oppholdsperioder og arbeidsforholdsperioder
 
-En oppholdsperiode angir hvor mange dager den skattepliktige har oppholdt seg på fastlandet i Norge. Dersom oppholdet varer deler av en dag, regnes dette som én hel dag. Antall registrerte dager påvirker om den skattepliktige anses som globalt eller begrenset skattepliktig. Det er derfor viktig at korrekt antall dager registreres.
+En oppholdsperiode angir hvor mange dager den skattepliktige har oppholdt seg på fastlandet i Norge. Dersom oppholdet varer deler av en dag, regnes dette som én hel dag. Antall registrerte dager påvirker om den skattepliktige anses som global eller begrenset skattepliktig. Det er derfor viktig at korrekt antall dager registreres.
 
 Arbeidsperiode skal vise tidsrommet den ansatte var ansatt og utførte arbeid for arbeidsgiver. Perioden skal inkludere avspasering, helger og ferier. Antall tolvdeler blir beregnet ut i fra arbeidsperiodene.
 
 - Oppholdsperiode
-  - norskPersonidentifikator -Norsk personidentifikator (fødselsnummer eller D-nummer).
+  - norskPersonidentifikator - Norsk personidentifikator (fødselsnummer eller D-nummer).
   - periodeidentifikator - Unik identifikator per TIN / norskPersonidentifikator. 
   - fraOgMedDato - Første dag med opphold på fastlandet i Norge. 
-  - tilOgMedDato -Siste dag med opphold på fastlandet i Norge. 
+  - tilOgMedDato - Siste dag med opphold på fastlandet i Norge. 
   - antallDagerOverstyrt (ikke påkrevd)- Dersom den skattepliktige har mange korte opphold i Norge i løpet av året, kan totalt antall oppholdsdager registreres samlet. Ankomstdag og utreisedag må være innenfor samme kalenderår. Alle dager med opphold i Norge skal telles som hele dager. 
-  - erMerketSomSlettet  (ikke påkrevd) - true/false 
-  - informasjonskilde -hvor informasjonen kommer fra. [Oppdragasregister | AA-register | Folkeregister | OpplystAvSkatteplikt | OpplystTilSaksbehandlerAvSkattepliktig ]
-  - KanEndres - om perioden kan oppdateres eller slettes
+  - erMerketSomSlettet (ikke påkrevd) - true/false 
+  - informasjonskilde - Hvor informasjonen kommer fra. [Oppdragasregister | AA-register | Folkeregister | OpplystAvSkatteplikt | OpplystTilSaksbehandlerAvSkattepliktig ]
+  - KanEndres - Om perioden kan oppdateres eller slettes
 - Arbeidsperiode - Arbeidet skal vise tidsrommet den ansatte var ansatt og utførte arbeid for arbeidsgiver. Perioden skal inkludere avspasering, helger og ferier. 
   - spesifikasjonAvInntektsgivendeAktivitet 
     - oppholdsstedVedInntektsgivendeAktivitet -  Arbeidssted (kodeliste OppholdsstedVedInntektsgivendeAktivitet)
-    - inntektsgivendeAktivitetstype - beskrivelse av arbeidsforhold ( kodeliste RolleVedInntektsgivendeAktivitet)
+    - inntektsgivendeAktivitetstype - Beskrivelse av arbeidsforhold (kodeliste RolleVedInntektsgivendeAktivitet)
   - ansvarligEnhetEllerPart 
-    - hovedorganisasjon - dersom ansvarligenhet eller part er et enkeltperson foretakets norske organisasjonsnummer er hovedorganisasjon fylt ut 
-      - organisasjonsnummer" :  enkeltperson foretakets norske organisasjonsnummer 
-    - naeringsdrivendeUtenKravTilOrganisasjonsnummer - om virksomheten er selvstendig næringsdrivende uten krav om norsk organisasjonsnummer. 
-    - norskIdentifikator - 
-      - organisasjonsnummer - arbeidsgivers organisasjonsnummer 
-    - navn - arbeidsgivers navn 
+    - hovedorganisasjon 
+      - organisasjonsnummer" : Enkeltperson foretakets organisasjonsnummer 
+    - naeringsdrivendeUtenKravTilOrganisasjonsnummer - Om virksomheten er selvstendig næringsdrivende uten krav om norsk organisasjonsnummer. 
+    - norskIdentifikator 
+      - organisasjonsnummer - Arbeidsgivers organisasjonsnummer 
+    - navn - Arbeidsgivers navn 
   - norskPersonidentifikator - Norsk personidentifikator (fødselsnummer eller D-nummer). 
-  - kommune - Oppgi kommunennr der arbeidstakeren først bosatte seg eller oppholdt seg dette året 
+  - kommune - Oppgi kommunenr der arbeidstakeren først bosatte seg eller oppholdt seg dette året 
   - periodeidentifikator - Unik identifikator per TIN / norskPersonidentifikator. 
-  - fraOgMedDato - første arbeidsdag 
-  - tilOgMedDato (ikke påkrevd)  - siste arbeidsdag 
-  - antallDagerOverstyrt (ikke påkrevd) - Dersom den skattepliktige har mange korte arbeidsperioder i Norge i løpet av året for samme arbeidsgiver, kan totalt antall oppholdsdager registreres samlet. Første og siste arbeidsdag må være innenfor samme kalenderår. Når man teller antall dager i arbeidsperiode skal det telle med helger, ferier og avspasering. 
-  - erMerketSomSlettet  (ikke påkrevd) - true/false 
-  - informasjonskilde - hvor informasjonen kommer fra. [Oppdragasregister | AA-register | Folkeregister | OpplystAvSkatteplikt | OpplystTilSaksbehandlerAvSkattepliktig ] Perioder oppdatert/opprette via api-et vil få kilde OpplystAvSkatteplikt. 
-  - KanEndres - om perioden kan oppdateres eller slettes 
-- endringsnøkkel – Send med endringsnøkkelen som ble hentet via API-et «hent perioder».Dersom endringsnøkkelen ikke samsvarer, vil beregning eller lagring feile fordi periodene har blitt oppdatert.
+  - fraOgMedDato - Første arbeidsdag 
+  - tilOgMedDato (ikke påkrevd) - Siste arbeidsdag 
+  - antallDagerOverstyrt (ikke påkrevd) - Dersom den skattepliktige har mange korte arbeidsperioder i Norge i løpet av året for samme arbeidsgiver, kan totalt antall oppholdsdager registreres samlet. Første og siste arbeidsdag må være innenfor samme kalenderår. Når man teller antall dager i arbeidsperiode skal helger, ferier og avspasering telles med 
+  - erMerketSomSlettet (ikke påkrevd) - true/false 
+  - informasjonskilde - Hvor informasjonen kommer fra. [Oppdragasregister | AA-register | Folkeregister | OpplystAvSkatteplikt | OpplystTilSaksbehandlerAvSkattepliktig ] Perioder oppdatert/opprettet via api-et vil få kilde OpplystAvSkatteplikt. 
+  - KanEndres - Om perioden kan oppdateres eller slettes 
+- endringsnøkkel – Send med endringsnøkkelen som ble hentet via API-et «hent perioder». Dersom endringsnøkkelen ikke samsvarer, vil beregning eller lagring feile fordi periodene har blitt oppdatert.
 
 ### Opprett ny oppholdsperiode
 Når du skal registrere en ny oppholdsperiode, må følgende informasjon fylles ut:
@@ -320,7 +326,7 @@ Når du skal registrere en ny oppholdsperiode, må følgende informasjon fylles 
 - norskPersonidentifikator
 - periodeidentifikator - Oppgi en unik ID for perioden. Tradisjonelt brukt UUID 
 - fraOgMedDato 
-- tilOgMedDato(valgfritt)
+- tilOgMedDato (valgfritt)
 - antallDagerOverstyrt (valgfritt)
 
 ### Endre oppholdsperiode
@@ -342,7 +348,7 @@ Når du skal registrere en ny arbeidsperiode, må følgende informasjon fylles u
 
 - spesifikasjonAvInntektsgivendeAktivitet - se tabell for gyldige kombinasjoner
   - oppholdsstedVedInntektsgivendeAktivitet -  Arbeidssted (kodeliste OppholdsstedVedInntektsgivendeAktivitet)
-  - inntektsgivendeAktivitetstype - beskrivelse av arbeidsforhold ( kodeliste RolleVedInntektsgivendeAktivitet)
+  - inntektsgivendeAktivitetstype - beskrivelse av arbeidsforhold (kodeliste RolleVedInntektsgivendeAktivitet)
 - ansvarligEnhetEllerPart
   - norskIdentifikator
     - organisasjonsnummer - arbeidsgivers organisasjonsnummer
@@ -350,10 +356,10 @@ Når du skal registrere en ny arbeidsperiode, må følgende informasjon fylles u
 - kommune - kommune må fylles inn for FASTLAND
 - periodeidentifikator - Oppgi en unik ID for perioden. Tradisjonelt brukt UUID
 - fraOgMedDato
-- tilOgMedDato(valgfritt)
+- tilOgMedDato (valgfritt)
 - antallDagerOverstyrt (valgfritt)
 
-Gyldig  kombinasjon av oppholdsstedVedInntektsgivendeAktivitet og inntektsgivendeAktivitetstype:
+Gyldig kombinasjon av oppholdsstedVedInntektsgivendeAktivitet og inntektsgivendeAktivitetstype:
 
 <table>
 <tr>
@@ -381,7 +387,7 @@ Gyldig  kombinasjon av oppholdsstedVedInntektsgivendeAktivitet og inntektsgivend
 <tr><td>FASTLAND_UTENFOR_NORGE</td><td>MOTTAR_STYREHONORAR</td><td>Nei</td><td>Nei</td><td>Nei</td></tr>
 </table>
 
-Eksempel på opprettelse av ny arbeidsperioder
+Eksempel på opprettelse av ny arbeidsperiode
 
 ```json
 {
@@ -412,7 +418,7 @@ Eksempel på opprettelse av ny arbeidsperioder
 ### Endre arbeidsforholdperioder
 For å endre en arbeidsperiode, skriv inn periodeidentifikatoren til perioden du vil oppdatere.
 
-Følgende felter kan endres dersom informasjonskilder er IKKE tredjepartskilde:
+Følgende felter kan endres dersom informasjonskilde IKKE er tredjepartskilde:
 
 - spesifikasjonAvInntektsgivendeAktivitet
   - oppholdsstedVedInntektsgivendeAktivitet
@@ -423,7 +429,7 @@ Følgende felter kan endres dersom informasjonskilder er IKKE tredjepartskilde:
 - erMerketSomSlettet
 
 
-Følgende felter kan endres dersom informasjonskilder er tredjepartskilde:
+Følgende felter kan endres dersom informasjonskilde er tredjepartskilde:
 
 - fraOgMedDato
 - tilOgMedDato
@@ -440,11 +446,11 @@ Når inntektsgivendeAktivitetstype er satt til SELVSTENDIG_NAERINGSDRIVENDE, ska
 I disse tilfellene representerer ansvarligEnhetEllerPart den selvstendige virksomheten, og ikke en arbeidsgiver.
 
 - ansvarligEnhetEllerPart
-  - norskIdentifikator" : null
+  - norskIdentifikator : null
   - hovedorganisasjon 
-    - organisasjonsnummer" :Enkeltperson foretakets norske organisasjonsnummer 
+    - organisasjonsnummer : Enkeltperson foretakets norske organisasjonsnummer 
     - navn : null 
-  - naeringsdrivendeUtenKravTilOrganisasjonsnummer - Settes til true dersom virksomheten er selvstendig næringsdrivende uten krav om norsk organisasjonsnummer.  Default verdi er false.
+  - naeringsdrivendeUtenKravTilOrganisasjonsnummer - Settes til true dersom virksomheten er selvstendig næringsdrivende uten krav om norsk organisasjonsnummer. Default verdi er false.
 
 Dette innebærer at ansvarligEnhetEllerPart alltid er påkrevd, men at identifikasjonsmåten varierer basert på type inntektsgivende aktivitet.
 
