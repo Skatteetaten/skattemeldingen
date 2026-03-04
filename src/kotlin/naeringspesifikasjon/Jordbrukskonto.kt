@@ -14,9 +14,6 @@ internal object Jordbrukskonto : HarKalkylesamling {
             forAlleForekomsterAv(modell.jordbruk_jordbrukskonto) {
                 settFelt(forekomstType.inntektOgKostnad_driftsresultatSomIkkeInngaarPaaJordbrukskonto) {
                     forekomstType.inntektOgKostnad_driftsinntektKnyttetTilJordHagevirksomhetSomIkkeOmfattesAvJordbrukskonto +
-                            forekomstType.inntektOgKostnad_inntektFraGevinstOgTapskonto -
-                            forekomstType.inntektOgKostnad_inntektsfradragFraGevinstOgTapskonto +
-                            forekomstType.inntektOgKostnad_inntektsfoeringAvNegativSaldo +
                             forekomstType.inntektOgKostnad_tilleggForPositivMidlertidigForskjell -
                             forekomstType.inntektOgKostnad_reduksjonForNegativMidlertidigForskjell -
                             forekomstType.inntektOgKostnad_andelAvDriftskostnadKnyttetTilInntektOgUttakSomIkkeInngaarPaaJordbrukskonto
