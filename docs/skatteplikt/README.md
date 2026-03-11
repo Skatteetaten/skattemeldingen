@@ -320,6 +320,8 @@ Arbeidsperiode skal vise tidsrommet den ansatte var ansatt og utførte arbeid fo
   - KanEndres - Om perioden kan oppdateres eller slettes 
 - endringsnøkkel – Send med endringsnøkkelen som ble hentet via API-et «hent perioder». Dersom endringsnøkkelen ikke samsvarer, vil beregning eller lagring feile fordi periodene har blitt oppdatert.
 
+APIet håndterer enum verdier i følgende formater: camelCase, SNAKE_CASE og lower_snake_case
+
 ### Opprett ny oppholdsperiode
 Når du skal registrere en ny oppholdsperiode, må følgende informasjon fylles ut:
 
