@@ -154,9 +154,9 @@ eksisterende løsninger.
 | POST | [/api/skattemelding/v2/klargjoerforhaandsfastsetting/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-for-forhaandsfastsetting)                 | Nei          |
 | POST | [/api/skattemelding/v2/klargjoerpart/\<inntektsaar\>/\<identifikator\>](#user-content-klargjoer-part-som-mangler-utkast)                                       | Nei          |
 | POST | [/api/skattemelding/v2/utsattfristsoeknad/\<identifikator\>](#utsattfrist-skattemeldingen)                                                                     | Nei          |
-| GET  | [/api/skattemelding/v2/skatteplikt/perioder/\<inntektsaar\>/\<tin\>](#user-content-hentGjeldenePerioderInntektsaar)                                            | Nei          |
-| POST | [/api/skattemelding/v2/skatteplikt/perioder/\<inntektsaar\>/\<tin\>/beregn](#user-content-vurderInnsendtPeriodegrunnlag)                                       | Nei          |
-| POST | [/api/skattemelding/v2/skatteplikt/perioder/\<inntektsaar\>/\<tin\>/lagre](#user-content-lagreInnsendtPeriodegrunnlag)                                         | Nei          |
+| GET  | [/api/skattemelding/v2/skatteplikt/perioder/\<inntektsaar\>/\<tin\>](../skatteplikt/README.md)                                                                 | Nei          |
+| POST | [/api/skattemelding/v2/skatteplikt/perioder/\<inntektsaar\>/\<tin\>/beregn](../skatteplikt/README.md)                                                          | Nei          |
+| POST | [/api/skattemelding/v2/skatteplikt/perioder/\<inntektsaar\>/\<tin\>/lagre](../skatteplikt/README.md)                                                           | Nei          |
 
 | Miljø                   | Adresse                      | Påloggingsmetode      |
 |-------------------------|------------------------------|-----------------------|
