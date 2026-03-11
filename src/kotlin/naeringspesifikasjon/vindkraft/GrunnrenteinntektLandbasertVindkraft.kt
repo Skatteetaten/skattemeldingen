@@ -673,11 +673,11 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                     }
                 }
 
-
             val sumInntektIGrunnrenteUnntattAndelFraSDF =
                 forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVindkraftverk) der {
                     forekomstType.type likEnAv InntektOgFradragIGrunnrente.inntekterIGrunnrente(inntektsaar) &&
-                            forekomstType.type ulik inntektIGrunnrente.kode_andelAvPositivGrunnrenteinntektFraSelskapMedDeltakerfastsetting
+                        forekomstType.type ulik inntektIGrunnrente.kode_andelAvPositivGrunnrenteinntektFraSelskapMedDeltakerfastsetting &&
+                        forekomstType.type.verdi().harBehandlingsregelTillegg(inntektsaar)
                 } summerVerdiFraHverForekomst {
                     forekomstType.beloep.tall()
                 }
