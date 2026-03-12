@@ -102,15 +102,17 @@ object InntektOgUnderskuddFra2025 {
 
     internal val tilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand =
         kalkyle("tilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand") {
-            val forloepigSamletInntektEllerUnderskudd = forloepigSamletInntektEllerUnderskudd()
-            hvis(forloepigSamletInntektEllerUnderskudd stoerreEnn 0) {
-                settUniktFelt(modell.inntektOgUnderskudd.tilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand) {
-                    val tilbakefoertUnderskudd =
-                        modell.inntektOgUnderskudd.tilbakefoertUnderskuddFraForhaandsfastsetting_tilbakefoertUnderskudd.tall()
-                    if (tilbakefoertUnderskudd stoerreEnn 0 && forloepigSamletInntektEllerUnderskudd mindreEnn tilbakefoertUnderskudd) {
-                        forloepigSamletInntektEllerUnderskudd
-                    } else {
-                        tilbakefoertUnderskudd
+            if (erPetroleumsforetak()) {
+                val forloepigSamletInntektEllerUnderskudd = forloepigSamletInntektEllerUnderskudd()
+                hvis(forloepigSamletInntektEllerUnderskudd stoerreEnn 0) {
+                    settUniktFelt(modell.inntektOgUnderskudd.tilbakefoertUnderskuddFraVirksomhetPaaLandFraFremtidigInntektsaarFoertMotAlminneligInntektFraVirksomhetPaaLand) {
+                        val tilbakefoertUnderskudd =
+                            modell.inntektOgUnderskudd.tilbakefoertUnderskuddFraForhaandsfastsetting_tilbakefoertUnderskudd.tall()
+                        if (tilbakefoertUnderskudd stoerreEnn 0 && forloepigSamletInntektEllerUnderskudd mindreEnn tilbakefoertUnderskudd) {
+                            forloepigSamletInntektEllerUnderskudd
+                        } else {
+                            tilbakefoertUnderskudd
+                        }
                     }
                 }
             }
