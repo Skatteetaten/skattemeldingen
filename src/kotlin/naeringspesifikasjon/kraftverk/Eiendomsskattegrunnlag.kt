@@ -56,17 +56,6 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
     internal val salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft =
         kalkyle("salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft") {
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
-
-                val sumKraftTattUtIhtKonsesjonProduksjon =
-                    forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon.tall()
-                    }
-
-                settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon) {
-                    forekomstType.totalAarsproduksjon - sumKraftTattUtIhtKonsesjonProduksjon
-                }
-
-
                 settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_salgsinntekt) {
                     forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon * forekomstType.salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_konsesjonsEllerKontraktspris
                 }
