@@ -195,7 +195,8 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                         benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivningPaaOppjustertVerdiOgDirekteFradragPaaHeleEllerDelAvAnskaffelse
                         )
                         &&
-                        forekomstType.utgaaendeVerdi stoerreEllerLik 0 && forekomstType.inngaaendeVerdi stoerreEllerLik 0
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_utgaaendeVerdiAvOppjustertVerdiPr01012024 stoerreEllerLik 0 ||
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_utgaaendeVerdiAvAnskaffelseEtter01012024 stoerreEllerLik 0
                 ) {
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForBeregningAvVenterente) {
                         (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelOppjustertPr01012024 +
@@ -301,7 +302,8 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                         benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedAvskrivningPaaOppjustertVerdiOgDirekteFradragPaaHeleEllerDelAvAnskaffelse
                         )
                         &&
-                        forekomstType.utgaaendeVerdi stoerreEllerLik 0 && forekomstType.inngaaendeVerdi stoerreEllerLik 0
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_utgaaendeVerdiAvOppjustertVerdiPr01012024 stoerreEllerLik 0 ||
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_utgaaendeVerdiAvAnskaffelseEtter01012024 stoerreEllerLik 0
                 ) {
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForBeregningAvVenterente) {
                         (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelOppjustertPr01012024 +
