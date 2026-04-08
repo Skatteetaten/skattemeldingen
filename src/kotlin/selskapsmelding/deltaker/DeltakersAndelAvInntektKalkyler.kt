@@ -556,7 +556,7 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
                         verdi = it.key
                     )
                     medFelt(deltaker.deltakersAndelAvFormueOgInntekt_grunnlagForNaturressursskattPerKommune.grunnlag) {
-                        grunnlagForNaturressursskattPerKommune[it.key] * deltakersAndelAvInntektIProsent
+                        (grunnlagForNaturressursskattPerKommune[it.key] * deltakersAndelAvInntektIProsent).somHeltall()
                     }
                 }
             }

@@ -129,10 +129,18 @@ object InntektOgUnderskudd : HarKalkylesamling {
             )
 
             settUniktFelt(modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoerbartUnderskuddIInntekt) {
-                restFremfoertUnderskudd -
-                    modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
-                    modell.inntektOgUnderskudd.samletUnderskudd -
-                    restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd
+                if (inntektsaar.tekniskInntektsaar >= 2025) {
+                    restFremfoertUnderskudd -
+                        modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
+                        modell.inntektOgUnderskudd.samletUnderskudd -
+                        restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd -
+                        modell.inntektOgUnderskudd.tilbakefoertUnderskuddFraForhaandsfastsetting_underskuddTilFremfoeringSomKrevesTilbakefoertTilTidligereInntektsaarVedForhaandsfastsetting
+                } else {
+                    restFremfoertUnderskudd -
+                        modell.inntektOgUnderskudd.underskuddTilFremfoering_aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAar +
+                        modell.inntektOgUnderskudd.samletUnderskudd -
+                        restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd
+                }
             }
         }
     }
