@@ -137,8 +137,8 @@ eksisterende løsninger.
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>?inkluderUtvidetVeiledning=\<inkluderUtvidetVeiledning\>](#user-content-hentGjeldendeUtvidet)          | Ja           |
 | GET  | [/api/skattemelding/v2/\<type\>/\<inntektsaar\>/\<identifikator\>](#user-content-hentType)                                                                     | Ja           |
 | GET  | [/api/skattemelding/v2/innsendt/\<inntektsaar\>/\<identifikator\>](#user-content-hentInnsendt)                                                                 | Ja           |
-| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                       | Nei          |
-| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                               | Planlagt     |
+| POST | [/api/skattemelding/v2/valider/\<inntektsaar\>/\<identifikator\>](#user-content-valider)                                                                       | Ja           |
+| POST | [/api/skattemelding/v2/validertest/\<inntektsaar\>/\<identifikator\>](#user-content-validerTest)                                                               | Ja           |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/vedlegg/\<vedleggId\>](#user-content-hentVedlegg)                                                     | Nei          |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf](#user-content-hentGjeldendeFastsettingPdf)                                 | Ja           |
 | GET  | [/api/skattemelding/v2/skatteoppgjoer/\<inntektsaar\>/\<identifikator\>/\<skatteoppgjoerType\>/gjeldende.pdf](#user-content-hentGjeldendeSkatteoppgjoerPdf)    | Ja           |

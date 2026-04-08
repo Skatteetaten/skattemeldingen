@@ -28,6 +28,7 @@ Ved migrering fra deprekert asynkront API, så er det følgende endringer:
    Når valideringen er ferdig så vil en kunne hente ned hele valideringsresultatet.
 6. Send inn via Altinn. Når valideringen er validert ok, så brukes samme instans til å sende inn skattemeldingen.
 
+Alle endepunkt for asynkront API støtter autorisering med både systembruker og idporten.
 
 ## 1. Opprett instans i Altinn
 Bruk Altinn3-applikasjonen `skd/formueinntekt-skattemelding-v2` for å opprette instans.
