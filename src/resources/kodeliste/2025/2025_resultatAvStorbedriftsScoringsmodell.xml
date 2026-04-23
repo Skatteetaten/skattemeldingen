@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <kodeliste xmlns="urn:no:skatteetaten:informasjonsforvaltning:kodeliste:v2">
-  <identifikator>528f2426-887d-4355-b519-f9b410713fef</identifikator>
-  <tekniskNavn>2025_resultatAvSekundaerboligmodellen</tekniskNavn>
+  <identifikator>f8c26e7f-5419-49c1-a50e-073cae66c92e</identifikator>
+  <tekniskNavn>2025_resultatAvStorbedriftsScoringsmodell</tekniskNavn>
   <status>under utvikling</status>
   <versjonsnummer>0.5</versjonsnummer>
-  <sistEndret>2026-04-20T10:18:41.000+02:00</sistEndret>
+  <sistEndret>2026-04-08T09:12:39.000+02:00</sistEndret>
   <sistEndretAv>x00elo</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -21,63 +21,45 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>score</tekniskNavn>
+    <tekniskNavn>samletMaskinellRisikovurdering</tekniskNavn>
     <kodetillegg>
       <datatype>desimaltall</datatype>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>avviksbeloep</tekniskNavn>
+    <tekniskNavn>avgift</tekniskNavn>
     <kodetillegg>
-      <datatype>heltall</datatype>
+      <datatype>desimaltall</datatype>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>sergEiendomsidentifkator</tekniskNavn>
+    <tekniskNavn>eierskap</tekniskNavn>
     <kodetillegg>
-      <datatype>tekst</datatype>
+      <datatype>desimaltall</datatype>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>kommunenummer</tekniskNavn>
+    <tekniskNavn>nasjonalSkatt</tekniskNavn>
     <kodetillegg>
-      <datatype>tekst</datatype>
+      <datatype>desimaltall</datatype>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>kommunenavn</tekniskNavn>
+    <tekniskNavn>nullskatt</tekniskNavn>
     <kodetillegg>
-      <datatype>tekst</datatype>
+      <datatype>desimaltall</datatype>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>adresse</tekniskNavn>
+    <tekniskNavn>rentebegrensning</tekniskNavn>
     <kodetillegg>
-      <datatype>tekst</datatype>
+      <datatype>desimaltall</datatype>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>gaardsnummer</tekniskNavn>
+    <tekniskNavn>selskapshistorikk</tekniskNavn>
     <kodetillegg>
-      <datatype>tekst</datatype>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>bruksnummer</tekniskNavn>
-    <kodetillegg>
-      <datatype>tekst</datatype>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>antallEiere</tekniskNavn>
-    <kodetillegg>
-      <datatype>heltall</datatype>
-    </kodetillegg>
-  </kode>
-  <kode>
-    <tekniskNavn>kommentar</tekniskNavn>
-    <kodetillegg>
-      <datatype>tekst</datatype>
+      <datatype>desimaltall</datatype>
     </kodetillegg>
   </kode>
 </kodeliste>
