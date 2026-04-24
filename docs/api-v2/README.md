@@ -210,7 +210,7 @@ skattemeldingen kan enten være utkast eller fastsatt:
 - Eksempel
   XML: [personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml](/src/resources/eksempler/2021/personligSkattemeldingerOgNaeringsspesifikasjonResponse.xml)
 
-skattemeldingerOgNaeringsopplysningerforespoerselResponse:
+skattemeldingOgNaeringsspesifikasjonforespoerselResponse:
 
 - dokumenter – konvolutt for dokumenter
 
@@ -220,7 +220,7 @@ skattemeldingerOgNaeringsopplysningerforespoerselResponse:
         - id – dokumentidentifikator til dokumentet i skatteetatens system.
         - encoding – kodeliste – [utf-8]
         - content – serialisert dokumentinnhold i base64 encodet format
-    - naeringsopplysningsdokument – complex type
+    - naeringsspesifikasjondokument – complex type
         - id – dokumentidentifikator til dokumentet i skatteetatens system
         - encoding – kodeliste – [utf-8]
         - content – serialisert dokumentinnhold i base64 encodet format
