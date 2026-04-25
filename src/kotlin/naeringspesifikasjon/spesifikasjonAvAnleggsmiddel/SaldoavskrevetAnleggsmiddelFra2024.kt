@@ -380,7 +380,7 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
                 hvis(kraftverk.datoForOverdragelseVedRealisasjonIInntektsaaret.aar() == inntektsaar) {
                     val dagerEid = dagerEidIRealisasjonsaaret(kraftverk.datoForOverdragelseVedRealisasjonIInntektsaaret)
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsFriinntekt) {
-                        forekomstType.inngaaendeVerdi / 2 * normRente + (dagerEid / antallDagerIAar(inntektsaar!!.toInt()))
+                        forekomstType.inngaaendeVerdi / 2 * normRente * (dagerEid / antallDagerIAar(inntektsaar!!.toInt()))
                     }
                 }
             }
