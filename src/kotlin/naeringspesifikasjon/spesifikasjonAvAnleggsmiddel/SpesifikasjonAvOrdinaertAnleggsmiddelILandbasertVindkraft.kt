@@ -43,7 +43,8 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                             forekomstType.ervervsdato.harVerdi() && forekomstType.ervervsdato.aar() mindreEnn 2024
 
                     ) {
-                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelOppjustertPr01012024 -
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_inngaaendeVerdiForDriftsmiddelOppjustertPr01012024 +
+                            forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_justeringPaaSaldo -
                             forekomstType.vederlagVedRealisasjonOgUttak
                     }
                 }
@@ -52,7 +53,8 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_grunnlagForAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024 -
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsAvskrivningIGrunnrenteinntektAvOppjustertVerdiPr01012024 +
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_gevinstVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto -
-                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_tapVedRealisasjonOgUttakSomSkalOverfoeresTilGevinstOgTapskonto +
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_aaretsInntektsfoeringAvGevinstVedRealisasjonOgUttakAvAnleggsmiddelSomErDirekteUtgiftsfoert
                 }
 
 
