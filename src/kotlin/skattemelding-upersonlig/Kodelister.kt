@@ -2,10 +2,10 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.bereg
 
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v3_2023.mellomvaerendetype_2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v3_2023.transaksjonstype_2023
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v5_2025.overdragelsestype_2025
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v5_2025.skipsstatusKnyttetTilRederiskatteordning_2025
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v6_2026.overdragelsestype_2026
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.upersonlig.domenemodell.v6_2026.skipsstatusKnyttetTilRederiskatteordning_2026
 
 val mellomvaerendetype2023 = mellomvaerendetype_2023
-val overdragelsestype = overdragelsestype_2025
-val skipsstatusKnyttetTilRederiskatteordning = skipsstatusKnyttetTilRederiskatteordning_2025
+val overdragelsestype = overdragelsestype_2026
+val skipsstatusKnyttetTilRederiskatteordning = skipsstatusKnyttetTilRederiskatteordning_2026
 val transaksjonstype2023 = transaksjonstype_2023

@@ -12,7 +12,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.FeltMedEgenskaper
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.konstanter.Inntektsaar
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v6_2025.v6
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v7_2026.v7
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Satser
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2024
@@ -418,8 +418,8 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>.summerBeloepPerAndelPerLoepenummer(
-        beloepsfelt: FeltMedEgenskaper<v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>,
+    private fun ForekomstKontekst<v7.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>.summerBeloepPerAndelPerLoepenummer(
+        beloepsfelt: FeltMedEgenskaper<v7.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>,
         nyeForekomster: MutableMap<String, BigDecimal>
     ) {
 
@@ -448,7 +448,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
 
         val antall = generiskModell.verdiFor(felt)?.toBigDecimal()
         if (antall != null) {
-            forekomsterAv(v6.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst.kontraktspart) forHverForekomst {
+            forekomsterAv(v7.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst.kontraktspart) forHverForekomst {
                 val andel: BigDecimal =
                     forekomstType.andelAvKontrakt.prosent()
                         ?: BigDecimal.ZERO
@@ -464,7 +464,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v6.spesifikasjonAvEnhetIVindkraftverkForekomst>.opprettNyForekomstFradrag(
+    private fun ForekomstKontekst<v7.spesifikasjonAvEnhetIVindkraftverkForekomst>.opprettNyForekomstFradrag(
         kodeverdi: KodeVerdi,
         beloep: BigDecimal?
     ) {
@@ -485,7 +485,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v6.spesifikasjonAvEnhetIVindkraftverkForekomst>.opprettNyForekomstInntekt(
+    private fun ForekomstKontekst<v7.spesifikasjonAvEnhetIVindkraftverkForekomst>.opprettNyForekomstInntekt(
         kodeverdi: KodeVerdi,
         beloep: BigDecimal?
     ) {

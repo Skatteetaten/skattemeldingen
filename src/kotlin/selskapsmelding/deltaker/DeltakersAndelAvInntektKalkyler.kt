@@ -10,7 +10,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.selskapsmelding.sdf.domenemodell.v4_2025.v4
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.selskapsmelding.sdf.domenemodell.v5_2026.v5
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsForFinansskattepliktigVirksomhet
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsITiltakssone
@@ -684,7 +684,7 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v4.deltakerForekomst>.deltakersAndelAvInntektIProsent() =
+    private fun ForekomstKontekst<v5.deltakerForekomst>.deltakersAndelAvInntektIProsent() =
         forekomstType.deltakersAndelAvInntektIProsent.prosent() ?: forekomstType.selskapsandelIProsent.prosent()
 
     private fun GeneriskModellKontekst.aaretsTilleggEllerFradragIInntekt() = forekomsterAv(modell.rentebegrensning) summerVerdiFraHverForekomst  {

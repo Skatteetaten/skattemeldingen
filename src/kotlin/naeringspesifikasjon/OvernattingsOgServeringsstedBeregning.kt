@@ -4,7 +4,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v6_2025.v6.andreForhold_overnattingsOgServeringsstedForekomst
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v7_2026.v7.andreForhold_overnattingsOgServeringsstedForekomst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 
 object OvernattingsOgServeringsstedBeregning : HarKalkylesamling {

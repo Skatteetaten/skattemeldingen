@@ -11,7 +11,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v6_2025.v6
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v7_2026.v7
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIAnskaffelsesaaret
@@ -101,7 +101,7 @@ object LineaertavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
         }
     }
 
-    private fun ForekomstKontekst<v6.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddelForekomst>.korrigeringer(): BigDecimal? =
+    private fun ForekomstKontekst<v7.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddelForekomst>.korrigeringer(): BigDecimal? =
         modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringAvInngaaendeMva -
             modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.offentligTilskudd +
             modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel.justeringForAapenbarVerdiendring -
