@@ -147,7 +147,7 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
         val fordeltBeregnetNaeringsinntektForekomstId =
             mapOf(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.rotForekomstIdNoekkel to eksisterendeForekomstId)
 
-        var gm = GeneriskModell.fra(
+        return GeneriskModell.fra(
             lagDefaultElementHvisDetIkkeEksisterer(
                 fordeltBeregnetNaeringsinntektForekomst,
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt,
@@ -188,19 +188,8 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
                 fordeltBeregnetNaeringsinntektForekomstId,
                 "100"
             ),
+            fordeltBeregnetNaeringsinntektForekomst.felt(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fradragForRenterINaeringPaaSvalbard).element(),
         )
-
-        if (fordeltBeregnetNaeringsinntektForekomst.harVerdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fradragForRenterINaeringPaaSvalbard)) {
-            gm = gm.erstattEllerLeggTilFelter(
-                InformasjonsElement(
-                    modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fradragForRenterINaeringPaaSvalbard,
-                    fordeltBeregnetNaeringsinntektForekomstId,
-                    fordeltBeregnetNaeringsinntektForekomst.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fradragForRenterINaeringPaaSvalbard),
-                )
-            )
-        }
-
-        return gm
     }
 
     private fun fyllUtStandarVerdierForUpersonlig(
