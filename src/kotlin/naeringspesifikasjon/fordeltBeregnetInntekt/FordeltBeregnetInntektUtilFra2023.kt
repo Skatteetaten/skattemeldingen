@@ -1,53 +1,54 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt
 
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskGruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.ForekomstType
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.tilGeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.virksomhetstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 
 internal fun skalBeregnePersoninntektFra2023(gm: GeneriskModell): Boolean {
     val virksomhetstypeVerdi = gm.verdiFor(modell.virksomhet.virksomhetstype)
     val forekomsterAvFordeltBeregnetNaeringsinntekt =
-        gm.grupper(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
+        gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
     return virksomhetstypeVerdi == virksomhetstype.kode_enkeltpersonforetak.kode
         && forekomsterAvFordeltBeregnetNaeringsinntekt.isNotEmpty()
 }
 
 object FordeltBeregnetNaeringsinntektUtilFra2023 {
-    private fun sortertFordeltBeregnetNaeringsinntektForekomster(gm: GeneriskModell): List<GeneriskModell> {
-        return gm.grupper(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
+    private fun sortertFordeltBeregnetNaeringsinntektForekomster(gm: GeneriskModell): List<GeneriskGruppe> {
+        return gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
             .sortedBy { it.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt) }
     }
 
     internal fun finnDefaultFordeltBeregnetNaeringsinntekt(
         gm: GeneriskModell
-    ): GeneriskModell? {
+    ): GeneriskGruppe? {
         return sortertFordeltBeregnetNaeringsinntektForekomster(gm).firstOrNull()
     }
 
     internal fun identifikatorerForFordeltBeregnetNaeringsinntekt(gm: GeneriskModell): Set<String> {
         return sortertFordeltBeregnetNaeringsinntektForekomster(gm)
-            .map { it.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt) }
+            .mapNotNull { it.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt) }
             .toSet()
     }
 }
 
 object FordeltBeregnetPersoninntektUtilFra2023 {
 
-    private fun sortertFordeltBeregnetPersoninntektForekomster(gm: GeneriskModell): List<GeneriskModell> {
-        return gm.grupper(modell.fordeltBeregnetPersoninntekt)
+    private fun sortertFordeltBeregnetPersoninntektForekomster(gm: GeneriskModell): List<GeneriskGruppe> {
+        return gm.grupperV2(modell.fordeltBeregnetPersoninntekt)
             .sortedBy { it.verdiFor(modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt) }
     }
 
-    internal fun finnDefaultFordeltBeregnetPersoninntekt(gm: GeneriskModell): GeneriskModell? {
+    internal fun finnDefaultFordeltBeregnetPersoninntekt(gm: GeneriskModell): GeneriskGruppe? {
         return sortertFordeltBeregnetPersoninntektForekomster(gm).firstOrNull()
     }
 
     internal fun identifikatorerForFordeltBeregnetPersoninntekt(gm: GeneriskModell): Set<String> {
         return sortertFordeltBeregnetPersoninntektForekomster(gm)
-            .map { it.verdiFor(modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt) }
+            .map { it.verdiFor(modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt)!! }
             .toSet()
     }
 }
@@ -73,15 +74,13 @@ internal fun opprettGyldigeIdentifikatorerFra2023(gm: GeneriskModell): GeneriskM
 
 private fun opprettManglendeIdentifikatorer(gm: GeneriskModell): GeneriskModell {
     val fordeltBeregnetNaeringsinntektIdentifikatorer = opprettManglendeIdentifikatorerForFordeltBeregnetInntekt(
-        gm.grupper(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf),
-        modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf,
+        gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf),
         modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt,
         modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt
     )
 
     val fordeltBeregnetPersoninntektIdentifikatorer = opprettManglendeIdentifikatorerForFordeltBeregnetInntekt(
-        gm.grupper(modell.fordeltBeregnetPersoninntekt),
-        modell.fordeltBeregnetPersoninntekt,
+        gm.grupperV2(modell.fordeltBeregnetPersoninntekt),
         modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt,
         modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetNaeringsinntekt
     )
@@ -91,23 +90,19 @@ private fun opprettManglendeIdentifikatorer(gm: GeneriskModell): GeneriskModell 
 }
 
 private fun opprettManglendeIdentifikatorerForFordeltBeregnetInntekt(
-    forekomster: List<GeneriskModell>,
-    forekomstType: ForekomstType<*>,
+    forekomster: List<GeneriskGruppe>,
     identifikatorForFordeltBeregnetPersoninntekt: Felt<*>,
     identifikatorForFordeltBeregnetNaeringsinntekt: Felt<*>,
 ): GeneriskModell {
     val nyeIdentifikatorer = mutableListOf<InformasjonsElement>()
 
     val eksisterendePid = forekomster
-        .filter { it.harVerdiFor(identifikatorForFordeltBeregnetPersoninntekt) }
-        .map { it.verdiFor(identifikatorForFordeltBeregnetPersoninntekt) }
+        .mapNotNull { it.verdiFor(identifikatorForFordeltBeregnetPersoninntekt) }
 
     val eksisterendeNid = forekomster
-        .filter { it.harVerdiFor(identifikatorForFordeltBeregnetNaeringsinntekt) }
-        .map { it.verdiFor(identifikatorForFordeltBeregnetNaeringsinntekt) }
+        .mapNotNull { it.verdiFor(identifikatorForFordeltBeregnetNaeringsinntekt) }
 
     forekomster.forEachIndexed { index, forekomst ->
-        val forekomstId = forekomstType.rotForekomstIdNoekkel to forekomst.rotIdVerdi()
         val pid = forekomst
             .verdiFor(identifikatorForFordeltBeregnetPersoninntekt)
         if (pid == null) {
@@ -116,9 +111,8 @@ private fun opprettManglendeIdentifikatorerForFordeltBeregnetInntekt(
                 nyPid++
             }
             nyeIdentifikatorer.add(
-                InformasjonsElement(
+                forekomst.lagNyttFeltForGruppe(
                     identifikatorForFordeltBeregnetPersoninntekt,
-                    mapOf(forekomstId),
                     nyPid
                 )
             )
@@ -132,9 +126,8 @@ private fun opprettManglendeIdentifikatorerForFordeltBeregnetInntekt(
                 nyNid++
             }
             nyeIdentifikatorer.add(
-                InformasjonsElement(
+                forekomst.lagNyttFeltForGruppe(
                     identifikatorForFordeltBeregnetNaeringsinntekt,
-                    mapOf(forekomstId),
                     nyNid
                 )
             )
@@ -147,14 +140,12 @@ private fun opprettUnikeIdentifikatorer(
     gm: GeneriskModell
 ): GeneriskModell {
     val fordeltBeregnetNaeringsinntektIdentifikatorer = opprettUnikeIdentifikatorerForFordeltBeregnetInntekt(
-        gm.grupper(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf),
-        modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf,
+        gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf),
         modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt,
     )
 
     val fordeltBeregnetPersoninntektIdentifikatorer = opprettUnikeIdentifikatorerForFordeltBeregnetInntekt(
-        gm.grupper(modell.fordeltBeregnetPersoninntekt),
-        modell.fordeltBeregnetPersoninntekt,
+        gm.grupperV2(modell.fordeltBeregnetPersoninntekt),
         modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt,
     )
 
@@ -163,8 +154,7 @@ private fun opprettUnikeIdentifikatorer(
 }
 
 private fun opprettUnikeIdentifikatorerForFordeltBeregnetInntekt(
-    forekomster: List<GeneriskModell>,
-    forekomstType: ForekomstType<*>,
+    forekomster: List<GeneriskGruppe>,
     identifikator: Felt<*>,
 ): GeneriskModell {
     val nyeIdentifikatorer = mutableListOf<InformasjonsElement>()
@@ -179,14 +169,12 @@ private fun opprettUnikeIdentifikatorerForFordeltBeregnetInntekt(
 
     var nyIdentifikatorVerdi = 1
     forekomsterSomMaaOppdateres.forEach { forekomst ->
-        val forekomstId = forekomstType.rotForekomstIdNoekkel to forekomst.rotIdVerdi()
         while (eksisterendeIdentifikatorerTilForekomster.containsKey(nyIdentifikatorVerdi.toString())) {
             nyIdentifikatorVerdi++
         }
         nyeIdentifikatorer.add(
-            InformasjonsElement(
+            forekomst.lagNyttFeltForGruppe(
                 identifikator,
-                mapOf(forekomstId),
                 nyIdentifikatorVerdi
             )
         )
@@ -210,29 +198,22 @@ private fun synkroniserFordeltBeregnetPersoninntekt(gm: GeneriskModell): Generis
             ?.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt)
             ?: throw IllegalStateException(FEILMELDING_FORDELT_BEREGNET_NAERINGSINNTEKT_SKAL_EKSISTERE)
 
-    return gm.grupper(modell.fordeltBeregnetPersoninntekt)
-        .stream()
-        .map { fordeltPersoninntekt ->
+    return gm.grupperV2(modell.fordeltBeregnetPersoninntekt)
+        .mapNotNull { fordeltPersoninntekt ->
             val nid = fordeltPersoninntekt
                 .verdiFor(modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetNaeringsinntekt)
-            val rotForekomstId = fordeltPersoninntekt.rotIdVerdi()
-            val forekomstIdFordeltBeregnetPersoninntekt =
-                modell.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to rotForekomstId
             if (!FordeltBeregnetNaeringsinntektUtilFra2023.identifikatorerForFordeltBeregnetNaeringsinntekt(gm)
                     .contains(nid)
             ) {
-                GeneriskModell.fra(
-                    InformasjonsElement(
-                        modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetNaeringsinntekt,
-                        mapOf(forekomstIdFordeltBeregnetPersoninntekt),
-                        defaultIdentifikatorForFordeltBeregnetNaeringsinntekt
-                    )
+                fordeltPersoninntekt.lagNyttFeltForGruppe(
+                    modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetNaeringsinntekt,
+                    defaultIdentifikatorForFordeltBeregnetNaeringsinntekt
                 )
             } else {
-                GeneriskModell.tom()
+                null
             }
         }
-        .collect(GeneriskModell.collectorFraGm())
+        .tilGeneriskModell()
 }
 
 private fun synkroniserFordeltBeregnetNaeringsinntekt(gm: GeneriskModell): GeneriskModell {
@@ -241,28 +222,20 @@ private fun synkroniserFordeltBeregnetNaeringsinntekt(gm: GeneriskModell): Gener
         ?.verdiFor(modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt)
         ?: throw IllegalStateException(FEILMELDING_FORDELT_BEREGNET_PERSONINNTEKT_SKAL_EKSISTERE)
 
-    return gm.grupper(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
-        .stream()
-        .map { fordeltNaeringsinntekt ->
+    return gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
+        .mapNotNull { fordeltNaeringsinntekt ->
             val pid = fordeltNaeringsinntekt
                 .verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt)
-            val rotForekomstId = fordeltNaeringsinntekt.rotIdVerdi()
-            val forekomstIdFordeltBeregnetNaeringsinntekt =
-                modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.rotForekomstIdNoekkel to rotForekomstId
             if (!FordeltBeregnetPersoninntektUtilFra2023
                     .identifikatorerForFordeltBeregnetPersoninntekt(gm)
                     .contains(pid)
             ) {
-                GeneriskModell.fra(
-                    InformasjonsElement(
-                        modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt,
-                        mapOf(forekomstIdFordeltBeregnetNaeringsinntekt),
-                        defaultIdentifikatorForFordeltBeregnetPersoninntekt
-                    )
+                fordeltNaeringsinntekt.lagNyttFeltForGruppe(
+                    modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt,
+                    defaultIdentifikatorForFordeltBeregnetPersoninntekt
                 )
             } else {
-                GeneriskModell.tom()
+                null
             }
-        }
-        .collect(GeneriskModell.collectorFraGm())
+        }.tilGeneriskModell()
 }

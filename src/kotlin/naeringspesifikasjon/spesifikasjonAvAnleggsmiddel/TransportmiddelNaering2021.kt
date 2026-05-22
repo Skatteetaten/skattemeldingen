@@ -10,7 +10,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.biltype2022
@@ -53,9 +52,8 @@ internal object TransportmiddelNaering2021 : HarKalkylesamling {
         val gm = generiskModell.tilGeneriskModell()
         val inntektsaar = inntektsaar.gjeldendeInntektsaar
 
-        val nyeElementer = mutableListOf<InformasjonsElement>()
-        gm.grupper(modell2021.spesifikasjonAvAnleggsmiddel_transportmiddelINaering.rotForekomstIdNoekkel)
-            .forEach { forekomst ->
+        val nyeElementer = gm.grupperV2(modell2021.spesifikasjonAvAnleggsmiddel_transportmiddelINaering)
+            .flatMap { forekomst ->
                 val disponertFraOgMed =
                     forekomst.verdiFor(modell2021.spesifikasjonAvAnleggsmiddel_transportmiddelINaering.disponertFraOgMedDato.key)
                         ?.let { parseLocalDateOrLocalDateTime(it) }
@@ -73,19 +71,15 @@ internal object TransportmiddelNaering2021 : HarKalkylesamling {
                         datoStart = temp
                     }
 
-                    nyeElementer.add(
+                    listOf(
                         forekomst.felt(modell2021.spesifikasjonAvAnleggsmiddel_transportmiddelINaering.disponertFraOgMedDato.key)
-                            .element()
-                            .medVerdi(datoStart.toString())
-                    )
-                    nyeElementer.add(
+                            .medVerdi(datoStart.toString()),
                         forekomst.felt(modell2021.spesifikasjonAvAnleggsmiddel_transportmiddelINaering.disponertTilOgMedDato.key)
-                            .element()
                             .medVerdi(datoSlutt.toString())
                     )
-                }
+                } else emptyList()
             }
-        leggTilIKontekst(GeneriskModellForKalkyler.Companion.fra(nyeElementer))
+        leggTilIKontekst(GeneriskModellForKalkyler.fra(nyeElementer))
     }
 
     private fun dagerMellom(fra: LocalDate?, til: LocalDate?): BigDecimal? {

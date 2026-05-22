@@ -4,6 +4,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskGruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.erPetroleumsforetak
@@ -44,9 +45,9 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
 
     private fun unntakSDF(gm: GeneriskModell): GeneriskModell {
         val forekomsterAvFordeltBeregnetNaeringsinntekt =
-            gm.grupper(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
+            gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
         return if (forekomsterAvFordeltBeregnetNaeringsinntekt.isEmpty()) {
-            fyllUtStandardVerdierSDF(gm, GeneriskModell.tom())
+            fyllUtStandardVerdierSDF(gm)
         } else if (forekomsterAvFordeltBeregnetNaeringsinntekt.size == 1) {
             val forekomst = forekomsterAvFordeltBeregnetNaeringsinntekt[0]
             val oppdaterteFelter = fyllUtStandardVerdierSDF(gm, forekomst)
@@ -58,29 +59,17 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
 
     private fun fyllUtStandardVerdierSDF(
         gm: GeneriskModell,
-        fordeltBeregnetNaeringsinntektForekomst: GeneriskModell = GeneriskModell.tom(),
+        fordeltBeregnetNaeringsinntektForekomst: GeneriskGruppe? = null,
     ): GeneriskModell {
-        val eksisterendeForekomstId = if (fordeltBeregnetNaeringsinntektForekomst.isEmpty) {
-            "1"
-        } else {
-            fordeltBeregnetNaeringsinntektForekomst.rotIdVerdi()
-        }
-        val fordeltBeregnetNaeringsinntektForekomstId =
-            mapOf(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.rotForekomstIdNoekkel to eksisterendeForekomstId)
+        val forekomst = fordeltBeregnetNaeringsinntektForekomst
+            ?: GeneriskGruppe(mapOf(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.rotForekomstIdNoekkel to "1"))
         return GeneriskModell.fra(
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt,
-                fordeltBeregnetNaeringsinntektForekomstId,
                 "1"
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat,
-                fordeltBeregnetNaeringsinntektForekomstId +
-                    mapOf(
-                        modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat.gruppe to "fixed"
-                    ),
                 gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat)
                     ?: gm.verdiFor(modell.resultatregnskap_aarsresultat)
             ),
@@ -89,11 +78,11 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
 
     private fun unntakForUpersonlige(gm: GeneriskModell): GeneriskModell {
         val forekomsterAvFordeltBeregnetNaeringsinntekt =
-            gm.grupper(modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig)
+            gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig)
         return if (forekomsterAvFordeltBeregnetNaeringsinntekt.size == 1) {
-            oppdaterFordeltSkattemessigResultatUpersonlig(gm, forekomsterAvFordeltBeregnetNaeringsinntekt[0])
+            GeneriskModell.fra(oppdaterFordeltSkattemessigResultatUpersonlig(gm, forekomsterAvFordeltBeregnetNaeringsinntekt[0]))
         } else if (forekomsterAvFordeltBeregnetNaeringsinntekt.isEmpty()) {
-            fyllUtStandarVerdierForUpersonlig(gm)
+            fyllUtStandardVerdierForUpersonlig(gm).tilGeneriskModell()
         } else {
             GeneriskModell.tom()
         }
@@ -101,29 +90,20 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
 
     private fun oppdaterFordeltSkattemessigResultatUpersonlig(
         gm: GeneriskModell,
-        fordeltBeregnetNaeringsinntektForekomst: GeneriskModell = GeneriskModell.tom(),
-    ): GeneriskModell {
+        fordeltBeregnetNaeringsinntektForekomst: GeneriskGruppe
+    ): InformasjonsElement? {
         val skattemessigResultatVerdi =
-            gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat) ?: return GeneriskModell.tom()
-        val eksisterendeForekomstId = fordeltBeregnetNaeringsinntektForekomst.rotIdVerdi()!!
-        val forekomstId =
-            modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.rotForekomstIdNoekkel to eksisterendeForekomstId
+            gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat) ?: return null
 
-        return GeneriskModell.fra(
-            InformasjonsElement(
-                modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultat,
-                mapOf(
-                    forekomstId,
-                    modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultat.gruppe to "fixed"
-                ),
-                skattemessigResultatVerdi
-            )
+        return fordeltBeregnetNaeringsinntektForekomst.lagFeltMedEgenskaper(
+            modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultat,
+            skattemessigResultatVerdi
         )
     }
 
     private fun unntakPersonlig(gm: GeneriskModell): GeneriskModell {
         val forekomsterAvFordeltBeregnetNaeringsinntekt =
-            gm.grupper(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
+            gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
         return if (forekomsterAvFordeltBeregnetNaeringsinntekt.isEmpty()) {
             fyllUtStandardVerdierPersonlig(gm)
         } else if (forekomsterAvFordeltBeregnetNaeringsinntekt.size == 1) {
@@ -137,116 +117,65 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
 
     private fun fyllUtStandardVerdierPersonlig(
         gm: GeneriskModell,
-        fordeltBeregnetNaeringsinntektForekomst: GeneriskModell = GeneriskModell.tom(),
+        fordeltBeregnetNaeringsinntektForekomst: GeneriskGruppe? = null,
     ): GeneriskModell {
-        val eksisterendeForekomstId = if (fordeltBeregnetNaeringsinntektForekomst.isEmpty) {
-            "1"
-        } else {
-            fordeltBeregnetNaeringsinntektForekomst.rotIdVerdi()
-        }
-        val fordeltBeregnetNaeringsinntektForekomstId =
-            mapOf(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.rotForekomstIdNoekkel to eksisterendeForekomstId)
+        val forekomst = fordeltBeregnetNaeringsinntektForekomst
+            ?: GeneriskGruppe(mapOf(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.rotForekomstIdNoekkel to "1"))
 
         return GeneriskModell.fra(
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt,
-                fordeltBeregnetNaeringsinntektForekomstId,
                 "1"
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt,
-                fordeltBeregnetNaeringsinntektForekomstId,
                 "1"
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.naeringstype,
-                fordeltBeregnetNaeringsinntektForekomstId,
                 "annenNaering"
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.naeringsbeskrivelse,
-                fordeltBeregnetNaeringsinntektForekomstId,
                 ""
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat,
-                fordeltBeregnetNaeringsinntektForekomstId +
-                    mapOf(
-                        modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat.gruppe to "fixed"
-                    ),
                 gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat)
                     ?: gm.verdiFor(modell.resultatregnskap_aarsresultat)
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.andelAvFordeltSkattemessigResultatTilordnetInnehaver,
-                fordeltBeregnetNaeringsinntektForekomstId,
                 "100"
             ),
-            fordeltBeregnetNaeringsinntektForekomst.felt(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fradragForRenterINaeringPaaSvalbard).element(),
+            fordeltBeregnetNaeringsinntektForekomst?.felt(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fradragForRenterINaeringPaaSvalbard),
         )
     }
 
-    private fun fyllUtStandarVerdierForUpersonlig(
-        gm: GeneriskModell,
-        fordeltBeregnetNaeringsinntektForekomst: GeneriskModell = GeneriskModell.tom(),
-    ): GeneriskModell {
-        val eksisterendeForekomstId = if (fordeltBeregnetNaeringsinntektForekomst.isEmpty) {
-            "1"
-        } else {
-            fordeltBeregnetNaeringsinntektForekomst.rotIdVerdi()
-        }
-        val fordeltBeregnetNaeringsinntektForekomstId =
-            mapOf(modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.rotForekomstIdNoekkel to eksisterendeForekomstId)
-
-        return GeneriskModell.fra(
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+    private fun fyllUtStandardVerdierForUpersonlig(gm: GeneriskModell): GeneriskGruppe {
+        return GeneriskGruppe(mapOf(modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.rotForekomstIdNoekkel to "1"))
+            .leggTilFeltMedEgenskaper(
                 modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultat,
-                fordeltBeregnetNaeringsinntektForekomstId +
-                    mapOf(
-                        modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultat.gruppe to "fixed"
-                    ),
                 gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat)
                     ?: gm.verdiFor(modell.resultatregnskap_aarsresultat)
-            ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                fordeltBeregnetNaeringsinntektForekomst,
+            )
+            .leggTilFeltMedEgenskaper(
                 modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultatEtterKorreksjon,
-                fordeltBeregnetNaeringsinntektForekomstId +
-                    mapOf(
-                        modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultatEtterKorreksjon.gruppe to "fixed"
-                    ),
                 gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat)
                     ?: gm.verdiFor(modell.resultatregnskap_aarsresultat)
-            ),
-        )
+            )
     }
 
     private fun oppdaterFordeltSkattemessigResultatPersonlig(
         gm: GeneriskModell,
-        fordeltBeregnetNaeringsinntektForekomst: GeneriskModell,
-    ): GeneriskModell {
+        fordeltBeregnetNaeringsinntektForekomst: GeneriskGruppe,
+    ): InformasjonsElement? {
         val skattemessigResultatVerdi =
-            gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat) ?: return GeneriskModell.tom()
-        val eksisterendeForekomstId = fordeltBeregnetNaeringsinntektForekomst.rotIdVerdi()!!
-        val forekomstId =
-            modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.rotForekomstIdNoekkel to eksisterendeForekomstId
+            gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat) ?: return null
 
-        return GeneriskModell.fra(
-            InformasjonsElement(
-                modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat,
-                mapOf(
-                    forekomstId,
-                    modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat.gruppe to "fixed"
-                ),
-                skattemessigResultatVerdi
-            )
+        return fordeltBeregnetNaeringsinntektForekomst.lagFeltMedEgenskaper(
+            modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.fordeltSkattemessigResultat,
+            skattemessigResultatVerdi
         )
     }
 

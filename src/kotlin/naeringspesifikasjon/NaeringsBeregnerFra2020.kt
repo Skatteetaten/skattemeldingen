@@ -42,27 +42,27 @@ private fun filtrerResultatAvBeregninger(gm: GeneriskModell, inntektsaar: Int): 
 
 private fun filtrerBortResultatOgBalanseregnskapstyperMedKunEkskluderesFraSkattemeldingenFelt(gm: GeneriskModell): GeneriskModell {
     val balanseverdiForAnleggsmiddelForekomster =
-        gm.grupper(modell.balanseregnskap_anleggsmiddel_balanseverdiForAnleggsmiddel.balanseverdi)
+        gm.grupperV2(modell.balanseregnskap_anleggsmiddel_balanseverdiForAnleggsmiddel.balanseverdi)
     val filtrertBalanseverdiForAnleggsmiddelForekomster = balanseverdiForAnleggsmiddelForekomster
         .filter { it.harVerdiFor(modell.balanseregnskap_anleggsmiddel_balanseverdiForAnleggsmiddel.balanseverdi.type) }
 
     val balanseverdiForOmloepsmiddelForekomster =
-        gm.grupper(modell.balanseregnskap_omloepsmiddel_balanseverdiForOmloepsmiddel.balanseverdi)
+        gm.grupperV2(modell.balanseregnskap_omloepsmiddel_balanseverdiForOmloepsmiddel.balanseverdi)
     val filtrertBalanseverdiForOmloepsmiddelForekomster = balanseverdiForOmloepsmiddelForekomster
         .filter { it.harVerdiFor(modell.balanseregnskap_omloepsmiddel_balanseverdiForOmloepsmiddel.balanseverdi.type) }
 
     val egenkapitalForekomster =
-        gm.grupper(modell.balanseregnskap_gjeldOgEgenkapital_egenkapital.kapital)
+        gm.grupperV2(modell.balanseregnskap_gjeldOgEgenkapital_egenkapital.kapital)
     val filtrertEgenkapitalForekomster = egenkapitalForekomster
         .filter { it.harVerdiFor(modell.balanseregnskap_gjeldOgEgenkapital_egenkapital.kapital.type) }
 
     return gm
-        .fjernFelter(GeneriskModell.merge(balanseverdiForAnleggsmiddelForekomster))
-        .fjernFelter(GeneriskModell.merge(balanseverdiForOmloepsmiddelForekomster))
-        .fjernFelter(GeneriskModell.merge(egenkapitalForekomster))
-        .erstattEllerLeggTilFelter(GeneriskModell.merge(filtrertBalanseverdiForAnleggsmiddelForekomster))
-        .erstattEllerLeggTilFelter(GeneriskModell.merge(filtrertBalanseverdiForOmloepsmiddelForekomster))
-        .erstattEllerLeggTilFelter(GeneriskModell.merge(filtrertEgenkapitalForekomster))
+        .fjernGrupperV2(balanseverdiForAnleggsmiddelForekomster)
+        .fjernGrupperV2(balanseverdiForOmloepsmiddelForekomster)
+        .fjernGrupperV2(egenkapitalForekomster)
+        .erstattEllerLeggTilFelter(filtrertBalanseverdiForAnleggsmiddelForekomster)
+        .erstattEllerLeggTilFelter(filtrertBalanseverdiForOmloepsmiddelForekomster)
+        .erstattEllerLeggTilFelter(filtrertEgenkapitalForekomster)
 }
 
 private fun filtrerBortFordelBeregnetInntekt(gm: GeneriskModell, inntektsaar: Int): GeneriskModell {
@@ -72,15 +72,11 @@ private fun filtrerBortFordelBeregnetInntekt(gm: GeneriskModell, inntektsaar: In
         )
         return if (resultat == null) {
             val eksisterendeFordeltBeregnetNaeringsinntektFelter =
-                gm.grupper(modell2022.fordeltBeregnetNaeringsinntekt)
-                    .stream()
-                    .collect(GeneriskModell.collectorFraGm())
+                gm.grupperV2(modell2022.fordeltBeregnetNaeringsinntekt)
             val eksisterendeFordeltBeregnetPersoninntektFelter =
-                gm.grupper(modell2022.fordeltBeregnetPersoninntekt)
-                    .stream()
-                    .collect(GeneriskModell.collectorFraGm())
-            gm.fjernFelter(eksisterendeFordeltBeregnetNaeringsinntektFelter)
-                .fjernFelter(eksisterendeFordeltBeregnetPersoninntektFelter)
+                gm.grupperV2(modell2022.fordeltBeregnetPersoninntekt)
+            gm.fjernGrupperV2(eksisterendeFordeltBeregnetNaeringsinntektFelter)
+                .fjernGrupperV2(eksisterendeFordeltBeregnetPersoninntektFelter)
         } else {
             gm
         }
@@ -89,20 +85,14 @@ private fun filtrerBortFordelBeregnetInntekt(gm: GeneriskModell, inntektsaar: In
             ?: gm.verdiFor(modell.resultatregnskap_aarsresultat)
         return if (resultat == null) {
             val eksisterendeFordeltBeregnetNaeringsinntektFelter =
-                gm.grupper(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
-                    .stream()
-                    .collect(GeneriskModell.collectorFraGm())
+                gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
             val eksisterendeFordeltBeregnetPersoninntektFelter =
-                gm.grupper(modell.fordeltBeregnetPersoninntekt)
-                    .stream()
-                    .collect(GeneriskModell.collectorFraGm())
+                gm.grupperV2(modell.fordeltBeregnetPersoninntekt)
             val eksisterendeFordeltBeregnetUpersonlig =
-                gm.grupper(modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig)
-                    .stream()
-                    .collect(GeneriskModell.collectorFraGm())
-            gm.fjernFelter(eksisterendeFordeltBeregnetNaeringsinntektFelter)
-                .fjernFelter(eksisterendeFordeltBeregnetPersoninntektFelter)
-                .fjernFelter(eksisterendeFordeltBeregnetUpersonlig)
+                gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig)
+            gm.fjernGrupperV2(eksisterendeFordeltBeregnetNaeringsinntektFelter)
+                .fjernGrupperV2(eksisterendeFordeltBeregnetPersoninntektFelter)
+                .fjernGrupperV2(eksisterendeFordeltBeregnetUpersonlig)
         } else {
             gm
         }

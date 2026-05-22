@@ -9,9 +9,10 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskGruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.tilGeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.erNegativ
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.sum
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.tilGeneriskModell
@@ -56,21 +57,21 @@ object FordeltBeregnetPersoninntektBeregning2022 : HarKalkylesamling {
             //Personinntekt
             val oppdatertePersoninntektForekomster = gm
                 .erstattEllerLeggTilFelter(beregnetSkjermingsgrunnlag)
-                .grupper(modell.fordeltBeregnetPersoninntekt)
+                .grupperV2(modell.fordeltBeregnetPersoninntekt)
 
-            val personinntektForekomsterPerIdentifikator: Map<String, List<GeneriskModell>> =
+            val personinntektForekomsterPerIdentifikator: Map<String, List<GeneriskGruppe>> =
                 oppdatertePersoninntektForekomster
-                    .groupBy { it.verdiFor(modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt) }
+                    .groupBy { it.verdiFor(modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt)!! }
 
-            val naeringinntektForekomsterPerIdentifikator: Map<String, List<GeneriskModell>> =
-                gm.grupper(modell2022.fordeltBeregnetNaeringsinntekt)
+            val naeringinntektForekomsterPerIdentifikator: Map<String, List<GeneriskGruppe>> =
+                gm.grupperV2(modell2022.fordeltBeregnetNaeringsinntekt)
                     .filter { it.harVerdiFor(modell2022.fordeltBeregnetNaeringsinntekt.identifikatorForFordeltBeregnetPersoninntekt) }
-                    .groupBy { it.verdiFor(modell2022.fordeltBeregnetNaeringsinntekt.identifikatorForFordeltBeregnetPersoninntekt) }
+                    .groupBy { it.verdiFor(modell2022.fordeltBeregnetNaeringsinntekt.identifikatorForFordeltBeregnetPersoninntekt)!! }
 
             //Beregningen er lenient og beregner kun der det er verdier begge steder, hvis ikke så kan vi ikke kjøre kalkylen
-            val oppdaterteFeltForPersonForekomst: List<GeneriskModell> = personinntektForekomsterPerIdentifikator
-                .mapNotNull { (personinntektIdentifikator, personinntektForekomster) ->
-                    var resultat = GeneriskModell.tom()
+            val oppdaterteFeltForPersonForekomst: List<InformasjonsElement> = personinntektForekomsterPerIdentifikator
+                .flatMap { (personinntektIdentifikator, personinntektForekomster) ->
+                    val resultat = mutableListOf<InformasjonsElement>()
                     if (personinntektForekomster.size != 1) {
                         error(
                             "Vi kan ikke ha mer enn én forekomst av fordeltBeregnetPersoninntekt" +
@@ -89,22 +90,16 @@ object FordeltBeregnetPersoninntektBeregning2022 : HarKalkylesamling {
                     if (fordeltSkattemessigResultatEtterKorreksjonBeloep != null
                         && fordeltSkattemessigResultatEtterKorreksjonBeloep.isNotEmpty()
                     ) {
-                        val beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning = overstyrtVerdiHvisOverstyrt(
-                            personinntektForekomst,
-                            modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning.key
-                        )
-                            ?: beregnAaretsBeregnedePersoninntektFoerFordelingOgSamordning(
-                                personinntektForekomst,
-                                fordeltSkattemessigResultatEtterKorreksjonBeloep.sum()
-                            )
+                        val beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning =
+                            personinntektForekomst.overstyrtVerdiHvisOverstyrt(modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning)
+                                ?: beregnAaretsBeregnedePersoninntektFoerFordelingOgSamordning(
+                                    personinntektForekomst,
+                                    fordeltSkattemessigResultatEtterKorreksjonBeloep.sum()
+                                )
 
-                        resultat = GeneriskModell.fra(
-                            InformasjonsElement(
+                        resultat.add(
+                            personinntektForekomst.lagFeltMedEgenskaper(
                                 modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning,
-                                mapOf(
-                                    modell.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to personinntektForekomst.rotIdVerdi(),
-                                    modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning.gruppe to "fixed"
-                                ),
                                 beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning
                             )
                         )
@@ -114,22 +109,15 @@ object FordeltBeregnetPersoninntektBeregning2022 : HarKalkylesamling {
                                 personinntektForekomst.verdiFor(modell.fordeltBeregnetPersoninntekt.andelAvPersoninntektTilordnetInnehaver)
                                     ?: "100"
                             val beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver =
-                                overstyrtVerdiHvisOverstyrt(
-                                    personinntektForekomst,
-                                    modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver.key
-                                )
+                                personinntektForekomst.overstyrtVerdiHvisOverstyrt(modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver)
                                     ?: beregnAaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver(
                                         beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordning,
                                         BigDecimal(andelAvPersoninntektTilordnetInnehaver)
                                     )
 
-                            resultat = resultat.erstattEllerLeggTilFelter(
-                                InformasjonsElement(
+                            resultat.add(
+                                personinntektForekomst.lagFeltMedEgenskaper(
                                     modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver,
-                                    mapOf(
-                                        modell.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to personinntektForekomst.rotIdVerdi(),
-                                        modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver.gruppe to "fixed"
-                                    ),
                                     beregnetAaretsBeregnedePersoninntektFoerFordelingOgSamordningTilordnetInnehaver
                                 )
                             )
@@ -150,13 +138,13 @@ object FordeltBeregnetPersoninntektBeregning2022 : HarKalkylesamling {
     private fun beregnSkjermingsgrunnlag(
         gm: GeneriskModell,
     ): GeneriskModell {
-        return gm.grupper(modell.fordeltBeregnetPersoninntekt)
+        return gm.grupperV2(modell.fordeltBeregnetPersoninntekt)
             .map { fordeltBeregnetPersoninntektForekomst ->
                 val gjennomsnittsverdier =
                     fordeltBeregnetPersoninntektForekomst.grupper(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag)
                         .filter { it.harVerdiFor(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.skjermingsgrunnlagstype) }
                         .groupBy(
-                            { it.verdiFor(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.skjermingsgrunnlagstype) },
+                            { it.verdiFor(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.skjermingsgrunnlagstype)!! },
                             {
                                 val inngaaendeVerdi =
                                     it.verdiSomBigDecimalEller0(modell.fordeltBeregnetPersoninntekt.spesifikasjonAvSkjermingsgrunnlag.inngaaendeVerdi)
@@ -169,17 +157,11 @@ object FordeltBeregnetPersoninntektBeregning2022 : HarKalkylesamling {
 
                 if (gjennomsnittsverdier.isNotEmpty()) {
                     val sumSkjermingsgrunnlagFoerGjeldsfradrag =
-                        overstyrtVerdiHvisOverstyrt(
-                            fordeltBeregnetPersoninntektForekomst,
-                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagFoerGjeldsfradrag.key
-                        )
+                        fordeltBeregnetPersoninntektForekomst.overstyrtVerdiHvisOverstyrt(modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagFoerGjeldsfradrag)
                             ?: beregnSumSkjermingsgrunnlagFoerGjeldsfradrag(gjennomsnittsverdier)
 
                     val sumSkjermingsgrunnlagEtterGjeldsfradrag =
-                        overstyrtVerdiHvisOverstyrt(
-                            fordeltBeregnetPersoninntektForekomst,
-                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagEtterGjeldsfradrag.key
-                        )
+                        fordeltBeregnetPersoninntektForekomst.overstyrtVerdiHvisOverstyrt(modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagEtterGjeldsfradrag)
                             ?: beregnSumSkjermingsgrunnlagEtterGjeldsfradrag(
                                 gjennomsnittsverdier,
                                 sumSkjermingsgrunnlagFoerGjeldsfradrag
@@ -193,10 +175,7 @@ object FordeltBeregnetPersoninntektBeregning2022 : HarKalkylesamling {
                         (fordeltBeregnetPersoninntektForekomst.verdiSomBigDecimal(modell.fordeltBeregnetPersoninntekt.antallMaanederDrevetIAar)
                             ?: BigDecimal(12)).divideInternal(BigDecimal(12))
 
-                    val skjermingsfradrag = overstyrtVerdiHvisOverstyrt(
-                        fordeltBeregnetPersoninntektForekomst,
-                        modell.fordeltBeregnetPersoninntekt.skjermingsfradrag.key
-                    )
+                    val skjermingsfradrag = fordeltBeregnetPersoninntektForekomst.overstyrtVerdiHvisOverstyrt(modell.fordeltBeregnetPersoninntekt.skjermingsfradrag)
                         ?: beregnSkjermingsfradrag(
                             sumSkjermingsgrunnlagFoerGjeldsfradrag,
                             skjermingsrente,
@@ -204,41 +183,21 @@ object FordeltBeregnetPersoninntektBeregning2022 : HarKalkylesamling {
                             faktorForSkjermingsrente
                         )
 
-                    val idPersonInntekt = fordeltBeregnetPersoninntektForekomst.rotIdVerdi()!!
-                    val skjermingsgrunnlagElementer = mutableListOf<InformasjonsElement>()
-
-                    leggTilInformasjonselement(
-                        skjermingsgrunnlagElementer,
-                        modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagFoerGjeldsfradrag,
-                        mapOf(
-                            modell.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to idPersonInntekt,
-                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagFoerGjeldsfradrag.gruppe to "fixed"
-                        ),
-                        sumSkjermingsgrunnlagFoerGjeldsfradrag
-                    )
-
-                    leggTilInformasjonselement(
-                        skjermingsgrunnlagElementer,
-                        modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagEtterGjeldsfradrag,
-                        mapOf(
-                            modell.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to idPersonInntekt,
-                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagEtterGjeldsfradrag.gruppe to "fixed"
-                        ),
-                        sumSkjermingsgrunnlagEtterGjeldsfradrag
-                    )
-                    leggTilInformasjonselement(
-                        skjermingsgrunnlagElementer,
-                        modell.fordeltBeregnetPersoninntekt.skjermingsfradrag,
-                        mapOf(
-                            modell.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to idPersonInntekt,
-                            modell.fordeltBeregnetPersoninntekt.skjermingsfradrag.gruppe to "fixed"
-                        ),
-                        skjermingsfradrag
-                    )
-
-                    GeneriskModell.fra(skjermingsgrunnlagElementer)
+                    GeneriskGruppe(fordeltBeregnetPersoninntektForekomst.forekomstIder)
+                        .leggTilFeltMedEgenskaper(
+                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagFoerGjeldsfradrag,
+                            sumSkjermingsgrunnlagFoerGjeldsfradrag.avrundTilToDesimalerString()
+                        )
+                        .leggTilFeltMedEgenskaper(
+                            modell.fordeltBeregnetPersoninntekt.sumSkjermingsgrunnlagEtterGjeldsfradrag,
+                            sumSkjermingsgrunnlagEtterGjeldsfradrag.avrundTilToDesimalerString()
+                        )
+                        .leggTilFeltMedEgenskaper(
+                            modell.fordeltBeregnetPersoninntekt.skjermingsfradrag,
+                            skjermingsfradrag?.avrundTilToDesimalerString()
+                        )
                 } else {
-                    GeneriskModell.tom()
+                    GeneriskGruppe.tom()
                 }
             }
             .tilGeneriskModell()
@@ -290,7 +249,7 @@ object FordeltBeregnetPersoninntektBeregning2022 : HarKalkylesamling {
     }
 
     private fun beregnAaretsBeregnedePersoninntektFoerFordelingOgSamordning(
-        fordeltBeregnetPersoninntektForekomst: GeneriskModell,
+        fordeltBeregnetPersoninntektForekomst: GeneriskGruppe,
         fordeltSkattemessigResultatEtterKorreksjon: BigDecimal,
     ): BigDecimal {
         return fordeltSkattemessigResultatEtterKorreksjon
@@ -344,23 +303,6 @@ object FordeltBeregnetPersoninntektBeregning2022 : HarKalkylesamling {
             .times(andelAvPersoninntektTilordnetInnehaver)
             .div(BigDecimal(100))
             .avrundTilToDesimaler()
-    }
-
-    private fun leggTilInformasjonselement(
-        elementer: MutableList<InformasjonsElement>,
-        felt: Felt<*>,
-        id: Map<String, String>,
-        verdi: BigDecimal?,
-    ) {
-        if (verdi != null) {
-            elementer.add(
-                InformasjonsElement(
-                    felt,
-                    id,
-                    verdi.avrundTilToDesimalerString()
-                )
-            )
-        }
     }
 
     override fun kalkylesamling(): Kalkylesamling {

@@ -7,7 +7,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.opprettSyntetiskFelt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.*
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
@@ -50,9 +49,8 @@ internal object MotorkjoeretoeyINaering2022 : HarKalkylesamling {
         val gm = generiskModell.tilGeneriskModell()
         val inntektsaar = inntektsaar.gjeldendeInntektsaar
 
-        val nyeElementer = mutableListOf<InformasjonsElement>()
-        gm.grupper(modell.spesifikasjonAvAnleggsmiddel_motorkjoeretoeyINaering)
-            .forEach { forekomst ->
+        val nyeElementer = gm.grupperV2(modell.spesifikasjonAvAnleggsmiddel_motorkjoeretoeyINaering)
+            .flatMap { forekomst ->
                 val disponertFraOgMed =
                     forekomst.verdiFor(modell.spesifikasjonAvAnleggsmiddel_motorkjoeretoeyINaering.disponertFraOgMedDato)
                 val disponertTilOgMed =
@@ -68,17 +66,13 @@ internal object MotorkjoeretoeyINaering2022 : HarKalkylesamling {
                         datoStart = temp
                     }
 
-                    nyeElementer.add(
+                    listOf(
                         forekomst.felt(modell.spesifikasjonAvAnleggsmiddel_motorkjoeretoeyINaering.disponertFraOgMedDato)
-                            .element()
-                            .medVerdi(datoStart.toString())
-                    )
-                    nyeElementer.add(
+                            .medVerdi(datoStart.toString()),
                         forekomst.felt(modell.spesifikasjonAvAnleggsmiddel_motorkjoeretoeyINaering.disponertTilOgMedDato)
-                            .element()
                             .medVerdi(datoSlutt.toString())
                     )
-                }
+                } else emptyList()
             }
         leggTilIKontekst(GeneriskModellForKalkyler.fra(nyeElementer))
     }

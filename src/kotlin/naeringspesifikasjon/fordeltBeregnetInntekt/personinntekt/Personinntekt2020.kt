@@ -7,10 +7,10 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskGruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v1_2020.Skjermingsgrunnlagstype
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.tilGeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.sum
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2020
 
@@ -20,9 +20,9 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 object PersoninntektBeregning2020 : HarKalkylesamling {
     val fordeltBeregnetPersoninntektKalkyle = kalkyle {
         val gm = generiskModell.tilGeneriskModell()
-        val personinntektForekomster = gm.grupper(modell2020.personinntektFraEnkeltpersonforetak)
+        val personinntektForekomster = gm.grupperV2(modell2020.personinntektFraEnkeltpersonforetak)
 
-        val nyeElementerForSkjemingsfradrag: List<GeneriskModell> = personinntektForekomster
+        val nyeElementerForSkjemingsfradrag: List<GeneriskGruppe> = personinntektForekomster
             .map { forekomstPerson ->
                 val gjennomsnittsverdier =
                     forekomstPerson.grupper(modell2020.personinntektFraEnkeltpersonforetak.spesifikasjonAvSkjermingsgrunnlag)
@@ -96,60 +96,40 @@ object PersoninntektBeregning2020 : HarKalkylesamling {
                             null
                         }
 
-                    val idPersonInntekt = forekomstPerson.rotIdVerdi()!!
-                    val nyeElementer = mutableListOf<InformasjonsElement>()
-
-                    leggTilInformasjonselement(
-                        nyeElementer,
-                        modell2020.personinntektFraEnkeltpersonforetak.sumSkjermingsgrunnlagFoerGjeldsfradrag,
-                        mapOf(
-                            modell2020.personinntektFraEnkeltpersonforetak.rotForekomstIdNoekkel to idPersonInntekt,
-                            modell2020.personinntektFraEnkeltpersonforetak.sumSkjermingsgrunnlagFoerGjeldsfradrag.gruppe to "fixed"
-                        ),
-                        sumSkjermingsgrunnlagFoerGjeldsfradrag
-                    )
-
-                    leggTilInformasjonselement(
-                        nyeElementer,
-                        modell2020.personinntektFraEnkeltpersonforetak.sumSkjermingsgrunnlagEtterGjeldsfradrag,
-                        mapOf(
-                            modell2020.personinntektFraEnkeltpersonforetak.rotForekomstIdNoekkel to idPersonInntekt,
-                            modell2020.personinntektFraEnkeltpersonforetak.sumSkjermingsgrunnlagEtterGjeldsfradrag.gruppe to "fixed"
-                        ),
-                        sumSkjermingsgrunnlagEtterGjeldsfradrag
-                    )
-                    leggTilInformasjonselement(
-                        nyeElementer,
-                        modell2020.personinntektFraEnkeltpersonforetak.skjermingsfradrag,
-                        mapOf(
-                            modell2020.personinntektFraEnkeltpersonforetak.rotForekomstIdNoekkel to idPersonInntekt,
-                            modell2020.personinntektFraEnkeltpersonforetak.skjermingsfradrag.gruppe to "fixed"
-                        ),
-                        skjermingsfradrag
-                    )
-                    GeneriskModell.fra(nyeElementer)
+                    GeneriskGruppe(forekomstPerson.forekomstIder)
+                        .leggTilFeltMedEgenskaper(
+                            modell2020.personinntektFraEnkeltpersonforetak.sumSkjermingsgrunnlagFoerGjeldsfradrag,
+                            sumSkjermingsgrunnlagFoerGjeldsfradrag?.avrundTilToDesimalerString()
+                        )
+                        .leggTilFeltMedEgenskaper(
+                            modell2020.personinntektFraEnkeltpersonforetak.sumSkjermingsgrunnlagEtterGjeldsfradrag,
+                            sumSkjermingsgrunnlagEtterGjeldsfradrag?.avrundTilToDesimalerString()
+                        )
+                        .leggTilFeltMedEgenskaper(
+                            modell2020.personinntektFraEnkeltpersonforetak.skjermingsfradrag,
+                            skjermingsfradrag?.avrundTilToDesimalerString()
+                        )
                 } else {
-                    GeneriskModell.tom()
+                    GeneriskGruppe.tom()
                 }
-            }.toList()
+            }
 
         //Personinntekt
         val oppdatertePersonForekomster = gm
-            .concat(nyeElementerForSkjemingsfradrag.flatMap { it.informasjonsElementer() })
-            .grupper(modell2020.personinntektFraEnkeltpersonforetak)
+            .concat(nyeElementerForSkjemingsfradrag.tilGeneriskModell())
+            .grupperV2(modell2020.personinntektFraEnkeltpersonforetak)
 
         val personForekomstPerIdentifikator =
             oppdatertePersonForekomster.groupBy { it.verdiFor(modell2020.personinntektFraEnkeltpersonforetak.identifikatorForFordelingAvNaeringsinntektOgPersoninntekt) }
 
-        val fordelingAvNaeringinntektPerIdentifikator: Map<String, List<GeneriskModell>> =
-            gm.grupper(modell2020.fordelingAvNaeringsinntekt)
+        val fordelingAvNaeringinntektPerIdentifikator: Map<String, List<GeneriskGruppe>> =
+            gm.grupperV2(modell2020.fordelingAvNaeringsinntekt)
                 .filter { it.harVerdiFor(modell2020.fordelingAvNaeringsinntekt.identifikatorForFordelingAvNaeringsinntektOgPersoninntekt) }
-                .groupBy { it.verdiFor(modell2020.fordelingAvNaeringsinntekt.identifikatorForFordelingAvNaeringsinntektOgPersoninntekt) }
+                .groupBy { it.verdiFor(modell2020.fordelingAvNaeringsinntekt.identifikatorForFordelingAvNaeringsinntektOgPersoninntekt)!! }
 
         //Beregningen er lenient og beregner kun der det er verdier begge steder, hvis ikke så kan vi ikke kjøre kalkylen
         val oppdaterteFeltForPersonForekomst: List<InformasjonsElement> = personForekomstPerIdentifikator
             .mapNotNull {
-                var informasjonsElement: InformasjonsElement? = null
                 if (it.value.size != 1) {
                     error(
                         "Vi kan ikke ha mer enn en forekomst av personinntektFraEnkeltmannsforetak per identifikatortype, " +
@@ -191,38 +171,17 @@ object PersoninntektBeregning2020 : HarKalkylesamling {
                                 )
                                 .minus(personForekomst.verdiSomBigDecimalEller0(modell2020.personinntektFraEnkeltpersonforetak.skjermingsfradrag))
 
-                        informasjonsElement = InformasjonsElement(
+                        return@mapNotNull personForekomst.lagFeltMedEgenskaper(
                             modell2020.personinntektFraEnkeltpersonforetak.aaretsBeregnedePersoninntektFoerFordelingOgSamordning,
-                            mapOf(
-                                modell2020.personinntektFraEnkeltpersonforetak.rotForekomstIdNoekkel to personForekomst.rotIdVerdi(),
-                                modell2020.personinntektFraEnkeltpersonforetak.aaretsBeregnedePersoninntektFoerFordelingOgSamordning.gruppe to "fixed"
-                            ),
                             aaretsBeregnedePersoninntektFoerFordelingOgSamordning
                         )
                     }
                 }
-                informasjonsElement
+                null
             }
 
-        val resultat = GeneriskModell.merge(nyeElementerForSkjemingsfradrag).concat(oppdaterteFeltForPersonForekomst)
+        val resultat = nyeElementerForSkjemingsfradrag.tilGeneriskModell().concat(oppdaterteFeltForPersonForekomst)
         leggTilIKontekst(GeneriskModellForKalkyler(resultat))
-    }
-
-    private fun leggTilInformasjonselement(
-        elementer: MutableList<InformasjonsElement>,
-        key: Felt<*>,
-        id: Map<String, String>,
-        verdi: BigDecimal?
-    ) {
-        if (verdi != null) {
-            elementer.add(
-                InformasjonsElement(
-                    key,
-                    id,
-                    verdi.avrundTilToDesimalerString()
-                )
-            )
-        }
     }
 
     override fun kalkylesamling(): Kalkylesamling {

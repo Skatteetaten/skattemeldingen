@@ -4,7 +4,9 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskGruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt.skalBeregnePersoninntekt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.lagDefaultElementHvisDetIkkeEksisterer
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.oppdaterVerdiEllerLagElement
@@ -15,53 +17,45 @@ object FordeltBeregnetPersoninntektUnntak2021 : HarKalkylesamling {
     val fordeltBerengetPersoninntektUnntak = kalkyle {
         val gm = generiskModell.tilGeneriskModell()
         val resultat = if (skalBeregnePersoninntekt(gm)) {
-            unntakForEnkeltmannsforetak(gm)
+            GeneriskModell.fra(unntakForEnkeltmannsforetak(gm))
         } else {
             GeneriskModell.tom()
         }
         leggTilIKontekst(GeneriskModellForKalkyler(resultat))
     }
 
-    private fun unntakForEnkeltmannsforetak(gm: GeneriskModell): GeneriskModell {
-        val forekomsterAvFordeltBeregnetPersoninntekt = gm.grupper(modell2021.fordeltBeregnetPersoninntekt)
-        var unntak = GeneriskModell.tom()
-        if (forekomsterAvFordeltBeregnetPersoninntekt.isEmpty()) {
-            unntak = fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(gm)
+    private fun unntakForEnkeltmannsforetak(gm: GeneriskModell): List<InformasjonsElement> {
+        val forekomsterAvFordeltBeregnetPersoninntekt = gm.grupperV2(modell2021.fordeltBeregnetPersoninntekt)
+        return if (forekomsterAvFordeltBeregnetPersoninntekt.isEmpty()) {
+            fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(gm)
         } else if (forekomsterAvFordeltBeregnetPersoninntekt.size == 1) {
-            unntak = fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(
+            fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(
                 gm,
-                forekomsterAvFordeltBeregnetPersoninntekt[0]
+                forekomsterAvFordeltBeregnetPersoninntekt.first()
             )
+        } else {
+            emptyList()
         }
-
-        return unntak
     }
 
     private fun fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(
         gm: GeneriskModell,
-        fordeltBeregnetPersoninntektForekomst: GeneriskModell? = null,
-    ): GeneriskModell {
-        val eksisterendeForekomstId = fordeltBeregnetPersoninntektForekomst?.rotIdVerdi() ?: "1"
-        val fordeltBeregnetPersoninntektForekomstId =
-            modell2021.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to eksisterendeForekomstId
+        fordeltBeregnetPersoninntektForekomst: GeneriskGruppe? = null,
+    ): List<InformasjonsElement> {
+        val forekomst = fordeltBeregnetPersoninntektForekomst
+            ?: GeneriskGruppe(mapOf(modell2021.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to "1"))
 
-        val medStandardverdier = GeneriskModell.fra(
-            lagDefaultElementHvisDetIkkeEksisterer(
-                gm,
+        val medStandardverdier = listOf(
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell2021.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt,
-                mapOf(fordeltBeregnetPersoninntektForekomstId),
                 "1"
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                gm,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell2021.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetNaeringsinntekt,
-                mapOf(fordeltBeregnetPersoninntektForekomstId),
                 "1"
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                gm,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell2021.fordeltBeregnetPersoninntekt.andelAvPersoninntektTilordnetInnehaver,
-                mapOf(fordeltBeregnetPersoninntektForekomstId),
                 "100"
             ),
         )
@@ -70,17 +64,11 @@ object FordeltBeregnetPersoninntektUnntak2021 : HarKalkylesamling {
             ?: gm.verdiFor(modell2021.resultatregnskap_aarsresultat)
 
         return if (aarsresultatEllerSkattemessigResultat != null) {
-            medStandardverdier.erstattEllerLeggTilFelter(
-                oppdaterVerdiEllerLagElement(
-                    gm,
+            medStandardverdier +
+                forekomst.oppdaterVerdiEllerLagElement(
                     modell2021.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning,
-                    mapOf(
-                        fordeltBeregnetPersoninntektForekomstId,
-                        modell2021.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning.gruppe to "fixed"
-                    ),
                     aarsresultatEllerSkattemessigResultat
                 )
-            )
         } else {
             medStandardverdier
         }

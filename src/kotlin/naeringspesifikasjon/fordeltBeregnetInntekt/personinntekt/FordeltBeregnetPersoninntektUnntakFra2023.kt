@@ -5,8 +5,8 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskGruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.oppdaterVerdiEllerLagElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt.FordeltBeregnetNaeringsinntektUtilFra2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt.FordeltBeregnetPersoninntektUtilFra2023
@@ -29,30 +29,27 @@ object FordeltBeregnetPersoninntektUnntakFra2023 : HarKalkylesamling {
 
     private fun unntakForEnkeltmannsforetak(gm: GeneriskModell): GeneriskModell {
         val forekomsterAvFordeltBeregnetPersoninntekt =
-            gm.grupper(modell.fordeltBeregnetPersoninntekt)
+            gm.grupperV2(modell.fordeltBeregnetPersoninntekt)
         val forekomsterAvFordeltBeregnetNaeringsinntekt =
-            gm.grupper(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
-        var unntak = GeneriskModell.tom()
+            gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
         val harNyNaeringsinntekt = forekomsterAvFordeltBeregnetNaeringsinntekt.any {
             it.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt) ==
                 ID_FRA_SME
         }
-        if (harNyNaeringsinntekt) {
-            unntak = opprettPersoninntektKortISammenhengMedNaeringsinntektKort(
+        return if (harNyNaeringsinntekt) {
+            opprettPersoninntektKortISammenhengMedNaeringsinntektKort(
                 gm,
                 forekomsterAvFordeltBeregnetPersoninntekt,
                 forekomsterAvFordeltBeregnetNaeringsinntekt,
             )
         } else if (forekomsterAvFordeltBeregnetPersoninntekt.isEmpty()) {
-            unntak = fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(gm)
+            fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(gm)
         } else if (forekomsterAvFordeltBeregnetPersoninntekt.size == 1) {
-            unntak = fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(
+            fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(
                 gm,
-                forekomsterAvFordeltBeregnetPersoninntekt[0]
+                forekomsterAvFordeltBeregnetPersoninntekt.first()
             )
-        }
-
-        return unntak
+        } else GeneriskModell.tom()
     }
 
     private fun finnesFlereLikeNaeringtyper(
@@ -66,9 +63,9 @@ object FordeltBeregnetPersoninntektUnntakFra2023 : HarKalkylesamling {
 
     private fun opprettPersoninntektKortISammenhengMedNaeringsinntektKort(
         gm: GeneriskModell,
-        forekomsterAvFordeltBeregnetPersoninntekt: List<GeneriskModell>,
-        forekomsterAvFordeltBeregnetNaeringsinntekt: List<GeneriskModell>,
-    ): GeneriskModell? {
+        forekomsterAvFordeltBeregnetPersoninntekt: List<GeneriskGruppe>,
+        forekomsterAvFordeltBeregnetNaeringsinntekt: List<GeneriskGruppe>,
+    ): GeneriskModell {
         val nyttNaeringsKort = forekomsterAvFordeltBeregnetNaeringsinntekt.first {
             it.harFeltMedVerdi(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt,
@@ -76,7 +73,7 @@ object FordeltBeregnetPersoninntektUnntakFra2023 : HarKalkylesamling {
             )
         }
         val naeringtypeForNyttKort =
-            nyttNaeringsKort.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.naeringstype)
+            nyttNaeringsKort.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.naeringstype)!!
         if (finnesFlereLikeNaeringtyper(gm, naeringtypeForNyttKort)) {
             val foersteIdentifikatorForFordeltBeregnetPersoninntekt = forekomsterAvFordeltBeregnetNaeringsinntekt
                 .first {
@@ -88,19 +85,13 @@ object FordeltBeregnetPersoninntektUnntakFra2023 : HarKalkylesamling {
 
             val nyNid = genererNyNaeringsIdentifikator(gm)
 
-            val oppdatertNyttKort = nyttNaeringsKort.erstattEllerLeggTilFelter(
-                InformasjonsElement(
-                    modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt,
-                    nyttNaeringsKort.rotForekomstIder(),
-                    foersteIdentifikatorForFordeltBeregnetPersoninntekt
-                ),
-                InformasjonsElement(
-                    modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt,
-                    nyttNaeringsKort.rotForekomstIder(),
-                    nyNid
-                )
-            )
-            return GeneriskModell.fra(oppdatertNyttKort.alleInformasjonsElementer())
+            return nyttNaeringsKort.erstattEllerLeggTilNyttFeltForGruppe(
+                modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt,
+                foersteIdentifikatorForFordeltBeregnetPersoninntekt
+            ).erstattEllerLeggTilNyttFeltForGruppe(
+                modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt,
+                nyNid
+            ).tilGeneriskModell()
         }
 
         // NID
@@ -115,21 +106,15 @@ object FordeltBeregnetPersoninntektUnntakFra2023 : HarKalkylesamling {
         }
 
         // Naeringsinntekt kort
-        var naeringsInntektSomSkalOppdateres = forekomsterAvFordeltBeregnetNaeringsinntekt.first {
+        val naeringsInntektSomSkalOppdateres = forekomsterAvFordeltBeregnetNaeringsinntekt.first {
             it.verdiFor(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt) ==
                 ID_FRA_SME
-        }
-        naeringsInntektSomSkalOppdateres = naeringsInntektSomSkalOppdateres.erstattEllerLeggTilFelter(
-            InformasjonsElement(
-                modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt,
-                naeringsInntektSomSkalOppdateres.gruppeForekomstIder,
-                nyNid
-            ),
-            InformasjonsElement(
-                modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt,
-                naeringsInntektSomSkalOppdateres.gruppeForekomstIder,
-                nyPid
-            )
+        }.erstattEllerLeggTilNyttFeltForGruppe(
+            modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt,
+            nyNid
+        ).erstattEllerLeggTilNyttFeltForGruppe(
+            modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetPersoninntekt,
+            nyPid
         )
 
         // Personinntekt kort
@@ -140,25 +125,22 @@ object FordeltBeregnetPersoninntektUnntakFra2023 : HarKalkylesamling {
         while (alleForekomstIder.contains(nyPid.toString())) {
             forekomstId++
         }
-        val fordeltBeregnetPersoninntektForekomstId =
+        val fordeltBeregnetPersoninntektForekomstId = mapOf(
             modell.fordeltBeregnetPersoninntekt.loevForekomstIdNoekkel to forekomstId.toString()
-        return GeneriskModell.fra(
-            InformasjonsElement(
+        )
+        return GeneriskGruppe(fordeltBeregnetPersoninntektForekomstId)
+            .leggTilNyttFeltForGruppe(
                 modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt,
-                mapOf(fordeltBeregnetPersoninntektForekomstId),
                 nyPid
-            ),
-            InformasjonsElement(
+            )
+            .leggTilNyttFeltForGruppe(
                 modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetNaeringsinntekt,
-                mapOf(fordeltBeregnetPersoninntektForekomstId),
                 nyNid
-            ),
-            InformasjonsElement(
+            )
+            .leggTilNyttFeltForGruppe(
                 modell.fordeltBeregnetPersoninntekt.andelAvPersoninntektTilordnetInnehaver,
-                mapOf(fordeltBeregnetPersoninntektForekomstId),
-                "100"
-            ),
-        ).concat(naeringsInntektSomSkalOppdateres)
+                100
+            ).tilGeneriskModell().concat(naeringsInntektSomSkalOppdateres.tilGeneriskModell())
     }
 
     private fun genererNyNaeringsIdentifikator(gm: GeneriskModell): Long {
@@ -172,29 +154,22 @@ object FordeltBeregnetPersoninntektUnntakFra2023 : HarKalkylesamling {
 
     private fun fyllUtStandardverdierForFordeltBeregnetPersoninntektVedMangler(
         gm: GeneriskModell,
-        fordeltBeregnetPersoninntektForekomst: GeneriskModell? = null,
+        fordeltBeregnetPersoninntektForekomst: GeneriskGruppe? = null,
     ): GeneriskModell {
-        val eksisterendeForekomstId = fordeltBeregnetPersoninntektForekomst?.rotIdVerdi() ?: "1"
-        val fordeltBeregnetPersoninntektForekomstId =
-            modell.fordeltBeregnetPersoninntekt.loevForekomstIdNoekkel to eksisterendeForekomstId
+        val forekomst = fordeltBeregnetPersoninntektForekomst
+            ?: GeneriskGruppe(mapOf(modell.fordeltBeregnetPersoninntekt.loevForekomstIdNoekkel to "1"))
 
         val medStandardverdier = GeneriskModell.fra(
-            lagDefaultElementHvisDetIkkeEksisterer(
-                gm,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt,
-                mapOf(fordeltBeregnetPersoninntektForekomstId),
                 "1"
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                gm,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetNaeringsinntekt,
-                mapOf(fordeltBeregnetPersoninntektForekomstId),
                 "1"
             ),
-            lagDefaultElementHvisDetIkkeEksisterer(
-                gm,
+            forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetPersoninntekt.andelAvPersoninntektTilordnetInnehaver,
-                mapOf(fordeltBeregnetPersoninntektForekomstId),
                 "100"
             ),
         )
@@ -205,13 +180,8 @@ object FordeltBeregnetPersoninntektUnntakFra2023 : HarKalkylesamling {
 
         return if (aarsresultatEllerSkattemessigResultat != null) {
             medStandardverdier.erstattEllerLeggTilFelter(
-                oppdaterVerdiEllerLagElement(
-                    gm,
+                forekomst.oppdaterVerdiEllerLagElement(
                     modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning,
-                    mapOf(
-                        fordeltBeregnetPersoninntektForekomstId,
-                        modell.fordeltBeregnetPersoninntekt.aaretsBeregnedePersoninntektFoerFordelingOgSamordning.gruppe to "fixed"
-                    ),
                     aarsresultatEllerSkattemessigResultat
                 )
             )

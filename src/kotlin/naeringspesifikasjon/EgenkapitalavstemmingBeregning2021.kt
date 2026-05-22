@@ -8,8 +8,8 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskGruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minusNullsafe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.plusNullsafe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.Egenkapitalendringstype
@@ -30,7 +30,8 @@ object EgenkapitalavstemmingBeregning2021 : HarKalkylesamling {
     internal val egenkapitalAvstemingKalkyle = kalkyle {
         val gm = generiskModell.tilGeneriskModell()
 
-        val inngaaendeEgenkapitalVerdi = hentEgenkapitalavstemmingForekomst(gm)
+        val egenkapitalavstemmingForekomst = gm.hentEgenkapitalavstemmingForekomst()
+        val inngaaendeEgenkapitalVerdi = egenkapitalavstemmingForekomst
             ?.verdiSomBigDecimal(modell2021.egenkapitalavstemming.inngaaendeEgenkapital)
 
         val sumNettoPositivEllerNegativPrinsippendring = beregnSumNettoPositivEllerNegativPrinsippendring(gm)
@@ -45,11 +46,6 @@ object EgenkapitalavstemmingBeregning2021 : HarKalkylesamling {
             .plusNullsafe(sumTilleggIEgenkapitalVerdi)
             .minusNullsafe(sumFradragIEgenkapitalVerdi)
 
-        val egenkapitalavstemmingForekomstId = modell2021.egenkapitalavstemming.rotForekomstIdNoekkel to
-            (hentEgenkapitalavstemmingForekomst(gm)?.rotIdVerdi() ?: "1")
-
-        val nyeElementer = mutableListOf<InformasjonsElement>()
-
         sumNettoPositivEllerNegativPrinsippendring?.let {
             if (sumNettoPositivEllerNegativPrinsippendring.erPositiv()) {
                 settUniktFelt(modell2021.egenkapitalavstemming.sumNettoPositivPrinsippendring) {
@@ -62,46 +58,19 @@ object EgenkapitalavstemmingBeregning2021 : HarKalkylesamling {
             }
         }
 
-        sumTilleggIEgenkapitalVerdi?.let {
-            nyeElementer.add(
-                InformasjonsElement(
-                    modell2021.egenkapitalavstemming.sumTilleggIEgenkapital,
-                    mapOf(
-                        egenkapitalavstemmingForekomstId,
-                        modell2021.egenkapitalavstemming.sumTilleggIEgenkapital.gruppe to "fixed"
-                    ),
-                    it.avrundTilToDesimalerString()
-                )
+        val nyGruppe = GeneriskGruppe(egenkapitalavstemmingForekomst?.forekomstIder ?: mapOf(modell2021.egenkapitalavstemming.rotForekomstIdNoekkel to "1"))
+            .leggTilFeltMedEgenskaper(
+                modell2021.egenkapitalavstemming.sumTilleggIEgenkapital,
+                sumTilleggIEgenkapitalVerdi?.avrundTilToDesimalerString()
+            ).leggTilFeltMedEgenskaper(
+                modell2021.egenkapitalavstemming.sumFradragIEgenkapital,
+                sumFradragIEgenkapitalVerdi?.avrundTilToDesimalerString()
+            ).leggTilFeltMedEgenskaper(
+                modell2021.egenkapitalavstemming.utgaaendeEgenkapital,
+                utgaaendeEgenkapitalVerdi?.avrundTilToDesimalerString()
             )
-        }
 
-        sumFradragIEgenkapitalVerdi?.let {
-            nyeElementer.add(
-                InformasjonsElement(
-                    modell2021.egenkapitalavstemming.sumFradragIEgenkapital,
-                    mapOf(
-                        egenkapitalavstemmingForekomstId,
-                        modell2021.egenkapitalavstemming.sumFradragIEgenkapital.gruppe to "fixed"
-                    ),
-                    it.avrundTilToDesimalerString()
-                )
-            )
-        }
-
-        utgaaendeEgenkapitalVerdi?.let {
-            nyeElementer.add(
-                InformasjonsElement(
-                    modell2021.egenkapitalavstemming.utgaaendeEgenkapital,
-                    mapOf(
-                        egenkapitalavstemmingForekomstId,
-                        modell2021.egenkapitalavstemming.utgaaendeEgenkapital.gruppe to "fixed"
-                    ),
-                    it.avrundTilToDesimalerString()
-                )
-            )
-        }
-
-        leggTilIKontekst(GeneriskModellForKalkyler.fra(nyeElementer))
+        leggTilIKontekst(GeneriskModellForKalkyler.fra(nyGruppe.informasjonsElementer))
     }
 
     internal fun GeneriskModellKontekst.beregnSumNettoPositivEllerNegativPrinsippendring(gm: GeneriskModell): BigDecimal? {
@@ -118,7 +87,7 @@ object EgenkapitalavstemmingBeregning2021 : HarKalkylesamling {
         val sumNettoPrinsippendring = sumPositivPrinsippendring
             .minusNullsafe(sumNegativPrinsippendring)
 
-        val egenkapitalavstemmingForekomst = hentEgenkapitalavstemmingForekomst(gm)
+        val egenkapitalavstemmingForekomst = gm.hentEgenkapitalavstemmingForekomst()
         val utsattSkatt = egenkapitalavstemmingForekomst
             ?.verdiSomBigDecimal(modell2021.egenkapitalavstemming.utsattSkatt)
         val utsattSkattefordel = egenkapitalavstemmingForekomst
@@ -129,8 +98,8 @@ object EgenkapitalavstemmingBeregning2021 : HarKalkylesamling {
             .plusNullsafe(utsattSkattefordel)
     }
 
-    private fun hentEgenkapitalavstemmingForekomst(gm: GeneriskModell): GeneriskModell? {
-        return gm.grupper(modell2021.egenkapitalavstemming).firstOrNull()
+    private fun GeneriskModell.hentEgenkapitalavstemmingForekomst(): GeneriskGruppe? {
+        return gruppeOrNull(modell2021.egenkapitalavstemming)
     }
 
     override fun kalkylesamling(): Kalkylesamling {
