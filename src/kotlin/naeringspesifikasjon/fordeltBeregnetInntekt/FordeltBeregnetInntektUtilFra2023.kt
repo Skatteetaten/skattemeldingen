@@ -220,7 +220,7 @@ private fun synkroniserFordeltBeregnetNaeringsinntekt(gm: GeneriskModell): Gener
     val defaultIdentifikatorForFordeltBeregnetPersoninntekt = FordeltBeregnetPersoninntektUtilFra2023
         .finnDefaultFordeltBeregnetPersoninntekt(gm)
         ?.verdiFor(modell.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt)
-        ?: throw IllegalStateException(FEILMELDING_FORDELT_BEREGNET_PERSONINNTEKT_SKAL_EKSISTERE)
+        ?: throw IllegalStateException("$FEILMELDING_FORDELT_BEREGNET_PERSONINNTEKT_SKAL_EKSISTERE. gm=$gm")
 
     return gm.grupperV2(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf)
         .mapNotNull { fordeltNaeringsinntekt ->
