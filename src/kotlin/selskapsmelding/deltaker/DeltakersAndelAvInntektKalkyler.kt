@@ -552,7 +552,7 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
                 opprettNySubforekomstAv(deltaker.deltakersAndelAvFormueOgInntekt_grunnlagForNaturressursskattPerKommune) {
                     medId(it.key)
                     medFelt(
-                        noekkel = deltaker.deltakersAndelAvFormueOgInntekt_grunnlagForNaturressursskattPerKommune.kommunenummer,
+                        felt = deltaker.deltakersAndelAvFormueOgInntekt_grunnlagForNaturressursskattPerKommune.kommunenummer,
                         verdi = it.key
                     )
                     medFelt(deltaker.deltakersAndelAvFormueOgInntekt_grunnlagForNaturressursskattPerKommune.grunnlag) {
@@ -565,11 +565,11 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
                 opprettNySubforekomstAv(deltaker.deltakersAndelAvFormueOgInntekt_deltakersAndelAvEiendomsskattegrunnlagPerKraftverk) {
                     medId(it.key)
                     medFelt(
-                        noekkel = deltaker.deltakersAndelAvFormueOgInntekt_deltakersAndelAvEiendomsskattegrunnlagPerKraftverk.loepenummer,
+                        felt = deltaker.deltakersAndelAvFormueOgInntekt_deltakersAndelAvEiendomsskattegrunnlagPerKraftverk.loepenummer,
                         verdi = it.key
                     )
                     medFelt(
-                        noekkel = deltaker.deltakersAndelAvFormueOgInntekt_deltakersAndelAvEiendomsskattegrunnlagPerKraftverk.kraftverketsNavn,
+                        felt = deltaker.deltakersAndelAvFormueOgInntekt_deltakersAndelAvEiendomsskattegrunnlagPerKraftverk.kraftverketsNavn,
                         verdi = it.value[deltaker.deltakersAndelAvFormueOgInntekt_deltakersAndelAvEiendomsskattegrunnlagPerKraftverk.kraftverketsNavn]
                     )
 
