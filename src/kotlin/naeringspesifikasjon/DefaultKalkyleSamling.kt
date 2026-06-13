@@ -76,7 +76,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
  * Toppnivå - referanser til alle kalkyler som skal kjøres. Kalkyler som brukes av andre kalkyler
  * (lavere nivå) refereres ikke direkte her.
  */
-val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkylesamling>()
+val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkylesamling>(2020)
     .bareI(2020, GevinstOgTapskonto2020)
     .bareI(2021, GevinstOgTapskonto2021)
     .fraTil(2022, 2023, GevinstOgTapskonto)
@@ -171,4 +171,4 @@ val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkyle
     .fra(2023, RevisorsBekreftelse)
     .fra(2024, GrunnrenteinntektLandbasertVindkraft)
     .fra(2024, SkogfondForSelskap)
-    .sorterPaaAarFra(2020).mapValues { Kalkylesamling(*it.value.toTypedArray()) }
+    .listerSortertPaaAar().mapValues { Kalkylesamling(*it.value.toTypedArray()) }

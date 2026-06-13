@@ -2,7 +2,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v7" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v7">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2026-01-16T12:12:07.991+0100" name="generertDato" />
+      <xsd:attribute fixed="2026-06-04T10:08:41.099+0200" name="generertDato" />
       <xsd:attribute fixed="7.0" name="versjon" />
       <xsd:attribute fixed="Næringsspesifikasjon inneholder informasjon om aktiviteten i virksomheten." name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v7" name="modellnavn" />
@@ -72,6 +72,12 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="Heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:annotation>
+      <xsd:documentation>hele tall, dvs. hele tall i mengden {..., -2, -1, 0, 1, 2, ...}</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:long" />
+  </xsd:simpleType>
   <xsd:simpleType name="Partsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52adf-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>identifiserende nummer for å representere en part</xsd:documentation>
@@ -1643,6 +1649,11 @@
       <xsd:element minOccurs="0" name="aaretsFriinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="LoepenummerVindkraftverkMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="loepenummer" type="LoepenummerVindkraftverk" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="NaeringstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="naeringstype" type="Naeringstype" />
@@ -1839,12 +1850,6 @@
       <xsd:pattern value="[0-9]+" />
       <xsd:length value="11" />
     </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="Heltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52af0-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:annotation>
-      <xsd:documentation>hele tall, dvs. hele tall i mengden {..., -2, -1, 0, 1, 2, ...}</xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:long" />
   </xsd:simpleType>
   <xsd:simpleType name="BeloepSomHeltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
@@ -2128,17 +2133,17 @@
       <xsd:element minOccurs="0" name="spesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris" type="SpesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="LoepenummerVindkraftverkMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="loepenummer" type="LoepenummerVindkraftverk" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="DesimaltallMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">
     <xsd:annotation>
       <xsd:documentation>tall som er satt sammen av en heltallsdel og en fraksjondel [wikipedia]</xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940" type="Desimaltall" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KiloWattimeMedInnkapsling">
+    <xsd:sequence>
+      <xsd:element name="kiloWattime" type="KiloWattime" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvKontraktIVindkraftverk">
@@ -2189,6 +2194,16 @@
   <xsd:complexType name="ResultatOgBalanseregnskapstypeMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="resultatOgBalanseregnskapstype" type="ResultatOgBalanseregnskapstype" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrganisasjonsnavnMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="organisasjonsnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnavn" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrganisasjonsnummerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
+    <xsd:sequence>
+      <xsd:element name="organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnummer" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="LandkodeMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e112-9fe1-11e5-a9f8-e4115b280940">
@@ -2269,6 +2284,8 @@
       </xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="Desimaltall">
+      <xsd:minInclusive value="0" />
+      <xsd:maxInclusive value="100" />
       <xsd:fractionDigits value="10" />
     </xsd:restriction>
   </xsd:simpleType>
@@ -2308,6 +2325,9 @@
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="RealisasjonsregelForVirksomhetOmfattetAvPetroleumsskatteloven" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_realisasjonsregelForVirksomhetOmfattetAvPetroleumsskatteloven.xml">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="LoepenummerVindkraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_loepenummerVindkraftverk.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
   <xsd:simpleType name="Naeringstype" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_naeringstype.xml">
@@ -2452,11 +2472,6 @@
       <xsd:element minOccurs="0" name="kostnadVedAvslutningEllerEndringAvFastpriskontrakt" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="KiloWattimeMedInnkapsling">
-    <xsd:sequence>
-      <xsd:element name="kiloWattime" type="KiloWattime" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="GrunnlagForNaturressursskattPerInntektsaar">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
@@ -2553,17 +2568,12 @@
       <xsd:element minOccurs="0" name="volumDekningskjoep" type="KiloWattimeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="LoepenummerVindkraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_loepenummerVindkraftverk.xml">
-    <xsd:restriction base="xsd:string" />
+  <xsd:simpleType name="KiloWattime">
+    <xsd:restriction base="Heltall" />
   </xsd:simpleType>
   <xsd:complexType name="KontraktstypeForKraftLevertAvKraftverkMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="kontraktstypeForKraftLevertAvKraftverk" type="KontraktstypeForKraftLevertAvKraftverk" />
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="OrganisasjonsnavnMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="organisasjonsnavn" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a7-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnavn" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="KonsesjonsEllerKontraktspris">
@@ -2583,6 +2593,9 @@
       <xsd:element name="andelAvKontrakt" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="Organisasjonsnavn">
+    <xsd:restriction base="Tekst" />
+  </xsd:simpleType>
   <xsd:simpleType name="Landkode" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_aktiveLandkoder.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
@@ -2651,9 +2664,6 @@
       <xsd:element minOccurs="0" name="salgsinntekt" type="SalgsinntektFraKraftLevert" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:simpleType name="KiloWattime">
-    <xsd:restriction base="Heltall" />
-  </xsd:simpleType>
   <xsd:complexType name="FiskeartKnyttetTilHavbruksvirksomhetMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="fiskeartKnyttetTilHavbruksvirksomhet" type="FiskeartKnyttetTilHavbruksvirksomhet" />
@@ -2677,9 +2687,6 @@
   <xsd:simpleType name="KontraktstypeForKraftLevertAvKraftverk" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_kontraktstypeForKraftLevertAvKraftverk.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>
-  <xsd:simpleType name="Organisasjonsnavn">
-    <xsd:restriction base="Tekst" />
-  </xsd:simpleType>
   <xsd:complexType name="BeloepMed10DesimalerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e146-9fe1-11e5-a9f8-e4115b280940">
     <xsd:sequence>
       <xsd:element name="beloep" type="BeloepMed10Desimaler" />
@@ -2696,11 +2703,6 @@
   <xsd:simpleType name="Identifikator" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e2f8-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="Tekst" />
   </xsd:simpleType>
-  <xsd:complexType name="OrganisasjonsnummerMedInnkapsling" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
-    <xsd:sequence>
-      <xsd:element name="organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940" type="Organisasjonsnummer" />
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="FiskeartKnyttetTilHavbruksvirksomhet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_fiskeartKnyttetTilHavbruksvirksomhet.xml">
     <xsd:restriction base="xsd:string" />
   </xsd:simpleType>

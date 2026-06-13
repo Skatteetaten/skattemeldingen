@@ -1,6 +1,7 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt.personinntekt
 
 import java.math.BigDecimal
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.api.KodeVerdi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.GeneriskModellForKalkyler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.avrundTilToDesimaler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.avrundTilToDesimalerString
@@ -28,25 +29,25 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
  */
 object FordeltBeregnetPersoninntektBeregningFra2023 : HarKalkylesamling {
 
-    private val skjermingsgrunnlagtyper = Aarsliste<String>()
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeA.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeB.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeC.kode)
-        .bareI(2023, skjermingsgrunnlagstype2023.kode_saldogruppeC2.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeD.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeE.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeF.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeG.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeH.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeI.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_saldogruppeJ.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_lineaertavskrevetAnleggsmiddel.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_ikkeAvskrivbartAnleggsmiddel.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_ervervetImmatriellRettighet.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_aktivertForskningsOgUtviklingskostnad.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_varelager.kode)
-        .fra(2023, skjermingsgrunnlagstype.kode_kundefordring.kode)
-        .sorterPaaAarFra(2023)
+    private val skjermingsgrunnlagtyper = Aarsliste<KodeVerdi>(2023)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeA)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeB)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeC)
+        .bareI(2023, skjermingsgrunnlagstype2023.kode_saldogruppeC2)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeD)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeE)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeF)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeG)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeH)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeI)
+        .alleAar(skjermingsgrunnlagstype.kode_saldogruppeJ)
+        .alleAar(skjermingsgrunnlagstype.kode_lineaertavskrevetAnleggsmiddel)
+        .alleAar(skjermingsgrunnlagstype.kode_ikkeAvskrivbartAnleggsmiddel)
+        .alleAar(skjermingsgrunnlagstype.kode_ervervetImmatriellRettighet)
+        .alleAar(skjermingsgrunnlagstype.kode_aktivertForskningsOgUtviklingskostnad)
+        .alleAar(skjermingsgrunnlagstype.kode_varelager)
+        .alleAar(skjermingsgrunnlagstype.kode_kundefordring)
+        .listerSortertPaaAar { it.kode }
 
 
     val fodeltBeregnetPersoninntektKalkyle = kalkyle {
