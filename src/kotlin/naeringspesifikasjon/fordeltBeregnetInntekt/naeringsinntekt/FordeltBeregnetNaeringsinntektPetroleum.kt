@@ -220,6 +220,31 @@ internal object FordeltBeregnetNaeringsinntektPetroleum : HarKalkylesamling {
         }
     }
 
+    internal val aaretsInntektsfoeringIAlminneligInntektFraVirksomhetPaaSokkel =
+        kalkyle("aaretsInntektsfoeringIAlminneligInntektFraVirksomhetPaaSokkel") {
+            hvis(inntektsaar.gjeldendeInntektsaar >= 2026) {
+                settUniktFelt(beregnetSelskapsskatt.aaretsInntektsfoeringIAlminneligInntektFraVirksomhetPaaSokkel) {
+                    forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskontoVedRealisasjonAvAnleggsmiddelOmfattetAvPetroleumsskatteloven.perRealisasjonsaar) der {
+                        forekomstType.realisasjonsaar stoerreEllerLik 2022
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.aaretsInntektsfoeringIAlminneligInntektFraVirksomhetPaaSokkel.tall()
+                    }
+                }
+            }
+        }
+
+    internal val aaretsFradragsfoeringIAlminneligInntektFraVirksomhetPaaSokkel = kalkyle("aaretsFradragsfoeringIAlminneligInntektFraVirksomhetPaaSokkel") {
+        hvis(inntektsaar.gjeldendeInntektsaar >= 2026) {
+            settUniktFelt(beregnetSelskapsskatt.aaretsFradragsfoeringIAlminneligInntektFraVirksomhetPaaSokkel) {
+                forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskontoVedRealisasjonAvAnleggsmiddelOmfattetAvPetroleumsskatteloven.perRealisasjonsaar) der {
+                    forekomstType.realisasjonsaar stoerreEllerLik 2022
+                } summerVerdiFraHverForekomst {
+                    forekomstType.aaretsFradragsfoeringIAlminneligInntektFraVirksomhetPaaSokkel.tall()
+                }
+            }
+        }
+    }
+
     internal val aaretsKorrigeringForFriinntekt = kalkyle("aaretsKorrigeringForFriinntekt") {
         settUniktFelt(beregnetSelskapsskatt.aaretsKorrigeringForFriinntekt) {
             forekomsterAv(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) der {
@@ -263,6 +288,8 @@ internal object FordeltBeregnetNaeringsinntektPetroleum : HarKalkylesamling {
             aaretsInntektsfoeringISaerskattegrunnlagFraVirksomhetPaaSokkel,
             aaretsFradragsfoeringISaerskattegrunnlagFraVirksomhetPaaSokkel,
             aaretsAvskrivningIAlminneligInntektFraVirksomhetPaaSokkel,
+            aaretsInntektsfoeringIAlminneligInntektFraVirksomhetPaaSokkel,
+            aaretsFradragsfoeringIAlminneligInntektFraVirksomhetPaaSokkel,
             aaretsKorrigeringForFriinntekt,
             grunnlagForBeregningAvSelskapsskatt
         )
