@@ -208,14 +208,14 @@ internal object SaldoavskrevetAnleggsmiddel : HarKalkylesamling {
                 hvis(kraftverk.datoForOverdragelseVedErvervIInntektsaaret.aar() == inntektsaar) {
                     val dagerEid = dagerEidIAnskaffelsesaaret(kraftverk.datoForOverdragelseVedErvervIInntektsaaret)
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIKraftverk_aaretsFriinntekt) {
-                        (forekomstType.nyanskaffelse + forekomstType.utgaaendeVerdi) / 2 * normRente * (dagerEid / antallDagerIAar(inntektsaar!!.toInt()))
+                        (forekomstType.nyanskaffelse + forekomstType.utgaaendeVerdi) / 2 * normRente * (dagerEid / antallDagerIAar(inntektsaar.toInt()))
                     }
                 }
 
                 hvis(kraftverk.datoForOverdragelseVedRealisasjonIInntektsaaret.aar() == inntektsaar) {
                     val dagerEid = dagerEidIRealisasjonsaaret(kraftverk.datoForOverdragelseVedRealisasjonIInntektsaaret)
                     settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIKraftverk_aaretsFriinntekt) {
-                        forekomstType.inngaaendeVerdi / 2 * normRente + (dagerEid / antallDagerIAar(inntektsaar!!.toInt()))
+                        forekomstType.inngaaendeVerdi / 2 * normRente + (dagerEid / antallDagerIAar(inntektsaar.toInt()))
                     }
                 }
             }

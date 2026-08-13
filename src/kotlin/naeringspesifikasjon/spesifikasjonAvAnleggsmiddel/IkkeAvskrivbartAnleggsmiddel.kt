@@ -63,7 +63,7 @@ internal object IkkeAvskrivbartAnleggsmiddel : HarKalkylesamling {
                         val dagerEid = dagerEidIAnskaffelsesaaret(kraftverk.datoForOverdragelseVedErvervIInntektsaaret)
                         settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsFriinntekt) {
                             (forekomstType.nyanskaffelse + forekomstType.utgaaendeVerdi) / 2 * normRente * (dagerEid / antallDagerIAar(
-                                inntektsaar!!.toInt()
+                                inntektsaar.toInt()
                             ))
                         }
                     }
@@ -72,7 +72,7 @@ internal object IkkeAvskrivbartAnleggsmiddel : HarKalkylesamling {
                         val dagerEid =
                             dagerEidIRealisasjonsaaret(kraftverk.datoForOverdragelseVedRealisasjonIInntektsaaret)
                         settFelt(forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsFriinntekt) {
-                            forekomstType.inngaaendeVerdi / 2 * normRente * (dagerEid / antallDagerIAar(inntektsaar!!.toInt()))
+                            forekomstType.inngaaendeVerdi / 2 * normRente * (dagerEid / antallDagerIAar(inntektsaar.toInt()))
                         }
                     }
                 }
