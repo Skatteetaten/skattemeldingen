@@ -9,9 +9,10 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.konstante
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.ResultatregnskapOgBalanse
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.ResultatregnskapOgBalanse.balansekontoerSomGirVerdsettingsrabatt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.ResultatregnskapOgBalanse.balansekontoerSomSkalOverfoeresTilSkattemeldingen
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 
-internal object BalanseFormueOgGjeld : HarKalkylesamling {
+internal object BalanseFormueOgGjeld2025 : HarKalkylesamling {
 
     private fun GeneriskModellKontekst.sumAnleggsmiddel(balansekontoGirVerdsettingsrabattForventetVerdi: Boolean): BigDecimal? {
         val inntektsaar = inntektsaar
@@ -130,21 +131,12 @@ internal object BalanseFormueOgGjeld : HarKalkylesamling {
             forekomstType.beloep.tall()
         }
 
-    private val sumEgenkapitalInnenLivsforsikringForKundeportefoeljeKalkyle = kalkyle("sumEgenkapitalInnenLivsforsikringForKundeportefoelje") {
+    private val sumEgenkapitalLivsforsikringKalkyle = kalkyle("sumEgenkapitalLivsforsikring") {
         hvis(virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
-            settUniktFelt(modell.balanseregnskap_gjeldOgEgenkapital_sumEgenkapitalInnenLivsforsikringForKundeportefoelje) {
-                forekomsterAv(modell.balanseregnskap_gjeldOgEgenkapital_egenkapital.kapitalInnenLivsforsikringForKundeportefoelje) summerVerdiFraHverForekomst {
-                    forekomstType.beloep.tall()
-                }
-            }
-        }
-    }
-
-    private val sumEgenkapitalInnenLivsforsikringForSelskapsportefoeljeKalkyle = kalkyle("sumEgenkapitalInnenLivsforsikringForSelskapsportefoelje") {
-        hvis(virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
-            settUniktFelt(modell.balanseregnskap_gjeldOgEgenkapital_sumEgenkapitalInnenLivsforsikringForSelskapsportefoelje) {
-                forekomsterAv(modell.balanseregnskap_gjeldOgEgenkapital_egenkapital.kapitalInnenLivsforsikringForSelskapsportefoelje) summerVerdiFraHverForekomst {
-                    forekomstType.beloep.tall()
+            settUniktFelt(modell.balanseregnskap_gjeldOgEgenkapital_sumEgenkapital) {
+                forekomsterAv(modell2025.balanseregnskap_gjeldOgEgenkapital_egenkapital.kapital) summerVerdiFraHverForekomst {
+                    forekomstType.kundeportefoeljebeloep +
+                        forekomstType.selskapsportefoeljebeloep
                 }
             }
         }
@@ -166,62 +158,33 @@ internal object BalanseFormueOgGjeld : HarKalkylesamling {
         }
     }
 
-    private val sumGjeldInnenBankOgSkadeforsikringKalkyle = kalkyle("sumGjeldInnenBankOgSkadeforsikring") {
-        hvis(virksomhetsTypeBankOgFinansieringsforetak() || virksomhetsTypeSkadeforsikringsforetak()) {
-            settUniktFelt(modell.balanseregnskap_gjeldOgEgenkapital_sumGjeldInnenBankOgSkadeforsikring) {
-                forekomsterAv(modell.balanseregnskap_gjeldOgEgenkapital_gjeldInnenBankOgForsikring.gjeldInnenBankOgSkadeforsikring) summerVerdiFraHverForekomst {
+    private val sumGjeldInnenBankOgForsikringBankOgSkadeforsikringKalkyle = kalkyle("sumGjeldInnenBankOgForsikringBankOgSkadeforsikring") {
+        hvis(!virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
+            settUniktFelt(modell2025.balanseregnskap_gjeldOgEgenkapital_sumGjeldInnenBankOgForsikring) {
+                forekomsterAv(modell2025.balanseregnskap_gjeldOgEgenkapital_gjeldInnenBankOgForsikring.gjeld) summerVerdiFraHverForekomst {
                     forekomstType.beloep.tall()
                 }
             }
         }
     }
 
-    private val sumGjeldInnenLivsforsikringForKundeportefoeljeKalkyle = kalkyle("sumGjeldInnenLivsforsikringForKundeportefoelje") {
+    private val sumGjeldInnenBankOgForsikringLivsforsikringKalkyle = kalkyle("sumGjeldInnenBankOgForsikringLivsforsikring") {
         hvis(virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
-            settUniktFelt(modell.balanseregnskap_gjeldOgEgenkapital_sumGjeldInnenLivsforsikringForKundeportefoelje) {
-                forekomsterAv(modell.balanseregnskap_gjeldOgEgenkapital_gjeldInnenBankOgForsikring.gjeldInnenLivsforsikringForKundeportefoelje) summerVerdiFraHverForekomst {
-                    forekomstType.beloep.tall()
-                }
-            }
-        }
-    }
-
-    private val sumGjeldInnenLivsforsikringForSelskapsportefoeljeKalkyle = kalkyle("sumGjeldInnenLivsforsikringForSelskapsportefoelje") {
-        hvis(virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
-            settUniktFelt(modell.balanseregnskap_gjeldOgEgenkapital_sumGjeldInnenLivsforsikringForSelskapsportefoelje) {
-                forekomsterAv(modell.balanseregnskap_gjeldOgEgenkapital_gjeldInnenBankOgForsikring.gjeldInnenLivsforsikringForSelskapsportefoelje) summerVerdiFraHverForekomst {
-                    forekomstType.beloep.tall()
+            settUniktFelt(modell2025.balanseregnskap_gjeldOgEgenkapital_sumGjeldInnenBankOgForsikring) {
+                forekomsterAv(modell2025.balanseregnskap_gjeldOgEgenkapital_gjeldInnenBankOgForsikring.gjeld) summerVerdiFraHverForekomst {
+                    forekomstType.kundeportefoeljebeloep +
+                        forekomstType.selskapsportefoeljebeloep
                 }
             }
         }
     }
 
     private val sumGjeldOgEgenkapitalKalkyle = kalkyle("sumGjeldOgEgenkapital") {
-        hvis(!virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
-            settUniktFelt(modell.balanseregnskap_sumGjeldOgEgenkapital) {
-                modell.balanseregnskap_gjeldOgEgenkapital_sumLangsiktigGjeld +
-                        modell.balanseregnskap_gjeldOgEgenkapital_sumKortsiktigGjeld +
-                        modell.balanseregnskap_gjeldOgEgenkapital_sumGjeldInnenBankOgSkadeforsikring +
-                        modell.balanseregnskap_gjeldOgEgenkapital_sumEgenkapital
-            }
-        }
-    }
-
-    private val sumGjeldOgEgenkapitalInnenLivsforsikringForKundeportefoeljeKalkyle = kalkyle("sumGjeldOgEgenkapitalInnenLivsforsikringForKundeportefoelje") {
-        hvis(virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
-            settUniktFelt(modell.balanseregnskap_sumGjeldOgEgenkapitalInnenLivsforsikringForKundeportefoelje) {
-                modell.balanseregnskap_gjeldOgEgenkapital_sumGjeldInnenLivsforsikringForKundeportefoelje.tall() +
-                modell.balanseregnskap_gjeldOgEgenkapital_sumEgenkapitalInnenLivsforsikringForKundeportefoelje.tall()
-            }
-        }
-    }
-
-    private val sumGjeldOgEgenkapitalInnenLivsforsikringForSelskapsportefoeljeKalkyle = kalkyle("sumGjeldOgEgenkapitalInnenLivsforsikringForSelskapsportefoelje") {
-        hvis(virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
-            settUniktFelt(modell.balanseregnskap_sumGjeldOgEgenkapitalInnenLivsforsikringForSelskapsportefoelje) {
-                modell.balanseregnskap_gjeldOgEgenkapital_sumGjeldInnenLivsforsikringForSelskapsportefoelje.tall() +
-                modell.balanseregnskap_gjeldOgEgenkapital_sumEgenkapitalInnenLivsforsikringForSelskapsportefoelje.tall()
-            }
+        settUniktFelt(modell.balanseregnskap_sumGjeldOgEgenkapital) {
+            modell.balanseregnskap_gjeldOgEgenkapital_sumLangsiktigGjeld +
+                modell.balanseregnskap_gjeldOgEgenkapital_sumKortsiktigGjeld +
+                modell2025.balanseregnskap_gjeldOgEgenkapital_sumGjeldInnenBankOgForsikring +
+                modell.balanseregnskap_gjeldOgEgenkapital_sumEgenkapital
         }
     }
 
@@ -230,16 +193,12 @@ internal object BalanseFormueOgGjeld : HarKalkylesamling {
         formuesverdiForFormuesobjekterIkkeOmfattetAvVerdsettingsrabattKalkyle,
         samletGjeldKalkyle,
         sumEgenkapitalKalkyle,
-        sumEgenkapitalInnenLivsforsikringForKundeportefoeljeKalkyle,
-        sumEgenkapitalInnenLivsforsikringForSelskapsportefoeljeKalkyle,
+        sumEgenkapitalLivsforsikringKalkyle,
         sumLangsiktigGjeldKalkyle,
         sumKortsiktigGjeldKalkyle,
-        sumGjeldInnenBankOgSkadeforsikringKalkyle,
-        sumGjeldInnenLivsforsikringForKundeportefoeljeKalkyle,
-        sumGjeldInnenLivsforsikringForSelskapsportefoeljeKalkyle,
-        sumGjeldOgEgenkapitalKalkyle,
-        sumGjeldOgEgenkapitalInnenLivsforsikringForKundeportefoeljeKalkyle,
-        sumGjeldOgEgenkapitalInnenLivsforsikringForSelskapsportefoeljeKalkyle
+        sumGjeldInnenBankOgForsikringBankOgSkadeforsikringKalkyle,
+        sumGjeldInnenBankOgForsikringLivsforsikringKalkyle,
+        sumGjeldOgEgenkapitalKalkyle
     )
 
     override fun kalkylesamling(): Kalkylesamling {

@@ -26,30 +26,37 @@ internal object Balanse : HarKalkylesamling {
                     modell.balanseregnskap_anleggsmiddel_sumBalanseverdiForAnleggsmiddel + modell.balanseregnskap_omloepsmiddel_sumBalanseverdiForOmloepsmiddel
                 }
             }
-        }
-
-    private val sumBalanseverdiForEiendelBankOgSkadeforsikringKalkyle =
-        kalkyle("sumBalanseverdiForEiendelBankOgSkadeforsikring") {
             hvis(virksomhetsTypeBankOgFinansieringsforetak() || virksomhetsTypeSkadeforsikringsforetak()) {
                 settUniktFelt(modell.balanseregnskap_sumBalanseverdiForEiendel) {
-                    forekomsterAv(modell.balanseregnskap_balanseverdiForBankOgForsikringseiendel.balanseverdi) summerVerdiFraHverForekomst {
+                    forekomsterAv(modell.balanseregnskap_balanseverdiForBankOgForsikringseiendel.balanseverdiForEiendelInnenBankOgSkadeforsikring) summerVerdiFraHverForekomst {
                         forekomstType.beloep.tall()
                     }
                 }
             }
         }
 
-    private val sumBalanseverdiForEiendelLivsforsikringKalkyle =
-        kalkyle("sumBalanseverdiForEiendelLivsforsikring") {
+    private val sumBalanseverdiForEiendelInnenLivsforsikringForKundeportefoeljeKalkyle =
+        kalkyle("sumBalanseverdiForEiendelInnenLivsforsikringForKundeportefoelje") {
             hvis(virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
-                settUniktFelt(modell.balanseregnskap_sumBalanseverdiForEiendel) {
-                    forekomsterAv(modell.balanseregnskap_balanseverdiForBankOgForsikringseiendel.balanseverdi) summerVerdiFraHverForekomst {
-                        forekomstType.kundeportefoeljebeloep +
-                            forekomstType.selskapsportefoeljebeloep
+                settUniktFelt(modell.balanseregnskap_sumBalanseverdiForEiendelInnenLivsforsikringForKundeportefoelje) {
+                    forekomsterAv(modell.balanseregnskap_balanseverdiForBankOgForsikringseiendel.balanseverdiForEiendelInnenLivsforsikringForKundeportefoelje) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
                     }
                 }
             }
         }
+
+    private val sumBalanseverdiForEiendelInnenLivsforsikringForSelskapsportefoeljKalkyle =
+        kalkyle("sumBalanseverdiForEiendelInnenLivsforsikringForSelskapsportefoelje") {
+            hvis(virksomhetsTypeLivsforsikringsforetakOgPensjonskasse()) {
+                settUniktFelt(modell.balanseregnskap_sumBalanseverdiForEiendelInnenLivsforsikringForSelskapsportefoelje) {
+                    forekomsterAv(modell.balanseregnskap_balanseverdiForBankOgForsikringseiendel.balanseverdiForEiendelInnenLivsforsikringForSelskapsportefoelje) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
+                    }
+                }
+            }
+        }
+
 
     private val kalkyleSamling = Kalkylesamling(
         BalanseverdiForAnleggsmiddel.goodWill,
@@ -73,8 +80,8 @@ internal object Balanse : HarKalkylesamling {
         BalanseverdiForOmloepsmiddel.balanseverdi1401Kalkyle,
         BalanseverdiForOmloepsmiddel.sumBalanseverdiForOmloepsmiddelKalkyle,
         sumBalanseverdiForEiendelKalkyle,
-        sumBalanseverdiForEiendelBankOgSkadeforsikringKalkyle,
-        sumBalanseverdiForEiendelLivsforsikringKalkyle,
+        sumBalanseverdiForEiendelInnenLivsforsikringForKundeportefoeljeKalkyle,
+        sumBalanseverdiForEiendelInnenLivsforsikringForSelskapsportefoeljKalkyle,
         Egenkapital.negativSaldoKalkyle,
         Egenkapital.positivGevinstOgTapskontoKalkyle,
         Egenkapital.positivToemmerkontoKalkyle,

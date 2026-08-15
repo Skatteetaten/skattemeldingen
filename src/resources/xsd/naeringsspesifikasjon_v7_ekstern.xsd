@@ -127,9 +127,13 @@
       <xsd:element minOccurs="0" name="omloepsmiddel" type="Omloepsmiddel" />
       <xsd:element minOccurs="0" name="gjeldOgEgenkapital" type="GjeldOgEgenkapital" />
       <xsd:element minOccurs="0" name="sumBalanseverdiForEiendel" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="sumGjeldOgEgenkapital" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="balanseverdiForBankOgForsikringseiendel" type="BalanseverdiForBankOgForsikringseiendel" />
       <xsd:element minOccurs="0" name="annenSpesifikasjonAvBalanseregnskap" type="AnnenSpesifikasjonAvBalanseregnskap" />
+      <xsd:element minOccurs="0" name="sumBalanseverdiForEiendelInnenLivsforsikringForKundeportefoelje" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumBalanseverdiForEiendelInnenLivsforsikringForSelskapsportefoelje" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumGjeldOgEgenkapital" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumGjeldOgEgenkapitalInnenLivsforsikringForKundeportefoelje" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumGjeldOgEgenkapitalInnenLivsforsikringForSelskapsportefoelje" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvAnleggsmiddel">
@@ -427,17 +431,22 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="sumLangsiktigGjeld" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sumKortsiktigGjeld" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="sumEgenkapital" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="langsiktigGjeld" type="LangsiktigGjeld" />
       <xsd:element minOccurs="0" name="kortsiktigGjeld" type="KortsiktigGjeld" />
       <xsd:element minOccurs="0" name="egenkapital" type="Egenkapital" />
       <xsd:element minOccurs="0" name="gjeldInnenBankOgForsikring" type="GjeldInnenBankOgForsikring" />
-      <xsd:element minOccurs="0" name="sumGjeldInnenBankOgForsikring" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumGjeldInnenLivsforsikringForKundeportefoelje" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumGjeldInnenLivsforsikringForSelskapsportefoelje" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumGjeldInnenBankOgSkadeforsikring" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumEgenkapital" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumEgenkapitalInnenLivsforsikringForKundeportefoelje" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="BalanseverdiForBankOgForsikringseiendel">
     <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="balanseverdi" type="Balanseregnskapsforekomst" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="balanseverdiForEiendelInnenBankOgSkadeforsikring" type="Balanseregnskapsforekomst" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="balanseverdiForEiendelInnenLivsforsikringForKundeportefoelje" type="Balanseregnskapsforekomst" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="balanseverdiForEiendelInnenLivsforsikringForSelskapsportefoelje" type="Balanseregnskapsforekomst" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="AnnenSpesifikasjonAvBalanseregnskap">
@@ -1354,19 +1363,21 @@
   <xsd:complexType name="Egenkapital">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="kapital" type="Balanseregnskapsforekomst" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kapitalInnenLivsforsikringForKundeportefoelje" type="Balanseregnskapsforekomst" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kapitalInnenLivsforsikringForSelskapsportefoelje" type="Balanseregnskapsforekomst" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GjeldInnenBankOgForsikring">
     <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjeld" type="Balanseregnskapsforekomst" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjeldInnenBankOgSkadeforsikring" type="Balanseregnskapsforekomst" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjeldInnenLivsforsikringForKundeportefoelje" type="Balanseregnskapsforekomst" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjeldInnenLivsforsikringForSelskapsportefoelje" type="Balanseregnskapsforekomst" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Balanseregnskapsforekomst">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element minOccurs="0" name="beloep" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="kundeportefoeljebeloep" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="selskapsportefoeljebeloep" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element name="type" type="ResultatOgBalanseregnskapstypeMedInnkapsling" />
       <xsd:element minOccurs="0" name="ekskluderesFraSkattemeldingen" type="BoolskMedInnkapsling" />
     </xsd:sequence>
