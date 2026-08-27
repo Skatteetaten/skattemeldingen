@@ -28,7 +28,14 @@ internal object IkkeAvskrivbartAnleggsmiddel : HarKalkylesamling {
                 forekomstType.nedskrivningPaaNyanskaffelserMedBetingetSkattefriSalgsgevinst +
                 forekomstType.reinvestertBetingetSkattefriSalgsgevinst
 
-            hvis(utgaaendeVerdiPositivOgNegativ stoerreEllerLik 0) {
+            hvis(this@kalkyle.inntektsaar.tekniskInntektsaar >= 2026) {
+                settFelt(forekomstType.utgaaendeVerdi) {
+                    utgaaendeVerdiPositivOgNegativ
+
+                }
+            }
+
+            hvis(utgaaendeVerdiPositivOgNegativ stoerreEllerLik 0 && this@kalkyle.inntektsaar.tekniskInntektsaar <= 2025) {
                 settFelt(forekomstType.utgaaendeVerdi) {
                     utgaaendeVerdiPositivOgNegativ
                 }

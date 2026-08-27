@@ -1,7 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fordeltBeregnetInntekt.personinntekt
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.api.KodeVerdi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.GeneriskModellForKalkyler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.avrundTilToDesimaler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.avrundTilToDesimalerString
@@ -13,6 +12,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskGruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.GeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.InformasjonsElement
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.KodeVerdi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.konstanter.Inntektsaar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.tilGeneriskModell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Aarsliste

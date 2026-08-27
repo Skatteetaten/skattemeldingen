@@ -125,10 +125,7 @@ object FordeltBeregnetPersoninntektUnntak2022 : HarKalkylesamling {
         while (alleForekomstIder.contains(nyPid.toString())) {
             forekomstId++
         }
-        val fordeltBeregnetPersoninntektForekomstId = mapOf(
-            modell2022.fordeltBeregnetPersoninntekt.loevForekomstIdNoekkel to forekomstId.toString()
-        )
-        return GeneriskGruppe(fordeltBeregnetPersoninntektForekomstId)
+        return GeneriskGruppe(modell2022.fordeltBeregnetPersoninntekt, forekomstId.toString())
             .leggTilNyttFeltForGruppe(
                 modell2022.fordeltBeregnetPersoninntekt.identifikatorForFordeltBeregnetPersoninntekt,
                 nyPid
@@ -157,7 +154,7 @@ object FordeltBeregnetPersoninntektUnntak2022 : HarKalkylesamling {
         fordeltBeregnetPersoninntektForekomst: GeneriskGruppe? = null,
     ): GeneriskModell {
         val forekomst = fordeltBeregnetPersoninntektForekomst
-            ?: GeneriskGruppe(mapOf(modell2022.fordeltBeregnetPersoninntekt.loevForekomstIdNoekkel to "1"))
+            ?: GeneriskGruppe(modell2022.fordeltBeregnetPersoninntekt, "1")
 
         val medStandardverdier = GeneriskModell.fra(
             forekomst.lagDefaultElementHvisDetIkkeEksisterer(

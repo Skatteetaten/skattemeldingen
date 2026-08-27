@@ -476,11 +476,12 @@
           <xsd:element minOccurs="0" name="nedskrevetVerdiAvUtskiltAnleggsmiddel" type="BeloepMedSkattemessigeEgenskaper" />
           <xsd:element name="erDetFysiskAnleggsmiddelIUtgaaendeVerdi" type="BoolskMedInnkapsling" />
           <xsd:element minOccurs="0" name="forretningsbyggAnskaffetFoer01011984" type="ForretningsbyggAnskaffetFoer01011984" />
-          <xsd:element minOccurs="0" name="antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret" type="AntallMedInnkapsling" />
-        </xsd:sequence>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
+           <xsd:element minOccurs="0" name="antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret" type="AntallMedInnkapsling" />
+           <xsd:element minOccurs="0" name="konsumprisindeksjustertInvesteringskostnadForKorrigeringAvKommunefordelingAvEiendomsskattegrunnlagISaldogruppeG" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+         </xsd:sequence>
+       </xsd:extension>
+     </xsd:complexContent>
+   </xsd:complexType>
   <xsd:complexType name="LineaertavskrevetAnleggsmiddel">
     <xsd:complexContent>
       <xsd:extension base="AnleggsmiddelFelles">
@@ -2072,11 +2073,10 @@
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="TilleggsopplysningForSaldogruppeG">
-    <xsd:sequence>
-      <xsd:element name="id" type="Tekst" />
-      <xsd:element minOccurs="0" name="erDriftsmiddelElektrotekniskUtrustningIKraftforetak" type="BoolskMedInnkapsling" />
-      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
-    </xsd:sequence>
+     <xsd:sequence>
+       <xsd:element name="id" type="Tekst" />
+       <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
+     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Saldogruppe" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_saldogruppe.xml">
     <xsd:restriction base="xsd:string" />

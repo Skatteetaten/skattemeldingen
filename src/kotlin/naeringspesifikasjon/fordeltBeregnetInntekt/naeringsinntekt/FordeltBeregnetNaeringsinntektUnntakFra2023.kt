@@ -62,7 +62,7 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
         fordeltBeregnetNaeringsinntektForekomst: GeneriskGruppe? = null,
     ): GeneriskModell {
         val forekomst = fordeltBeregnetNaeringsinntektForekomst
-            ?: GeneriskGruppe(mapOf(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.rotForekomstIdNoekkel to "1"))
+            ?: GeneriskGruppe(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf, "1")
         return GeneriskModell.fra(
             forekomst.lagDefaultElementHvisDetIkkeEksisterer(
                 modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.identifikatorForFordeltBeregnetNaeringsinntekt,
@@ -120,7 +120,7 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
         fordeltBeregnetNaeringsinntektForekomst: GeneriskGruppe? = null,
     ): GeneriskModell {
         val forekomst = fordeltBeregnetNaeringsinntektForekomst
-            ?: GeneriskGruppe(mapOf(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf.rotForekomstIdNoekkel to "1"))
+            ?: GeneriskGruppe(modell.fordeltBeregnetNaeringsinntektForPersonligSkattepliktigEllerSdf, "1")
 
         return GeneriskModell.fra(
             forekomst.lagDefaultElementHvisDetIkkeEksisterer(
@@ -153,7 +153,7 @@ object FordeltBeregnetNaeringsinntektUnntakFra2023 : HarKalkylesamling {
     }
 
     private fun fyllUtStandardVerdierForUpersonlig(gm: GeneriskModell): GeneriskGruppe {
-        return GeneriskGruppe(mapOf(modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.rotForekomstIdNoekkel to "1"))
+        return GeneriskGruppe(modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig, "1")
             .leggTilFeltMedEgenskaper(
                 modell.fordeltBeregnetNaeringsinntektForUpersonligSkattepliktig.fordeltSkattemessigResultat,
                 gm.verdiFor(modell.beregnetNaeringsinntekt_skattemessigResultat)

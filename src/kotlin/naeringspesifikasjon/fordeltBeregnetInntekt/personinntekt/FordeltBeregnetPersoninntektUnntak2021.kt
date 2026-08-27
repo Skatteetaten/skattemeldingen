@@ -43,7 +43,7 @@ object FordeltBeregnetPersoninntektUnntak2021 : HarKalkylesamling {
         fordeltBeregnetPersoninntektForekomst: GeneriskGruppe? = null,
     ): List<InformasjonsElement> {
         val forekomst = fordeltBeregnetPersoninntektForekomst
-            ?: GeneriskGruppe(mapOf(modell2021.fordeltBeregnetPersoninntekt.rotForekomstIdNoekkel to "1"))
+            ?: GeneriskGruppe(modell2021.fordeltBeregnetPersoninntekt, "1")
 
         val medStandardverdier = listOf(
             forekomst.lagDefaultElementHvisDetIkkeEksisterer(

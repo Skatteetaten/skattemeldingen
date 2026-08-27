@@ -3,10 +3,13 @@ package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregnin
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.KonsumprisindeksVannkraft.hentKonsumprisindeksVannkraft
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.grunnrenteomraade
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
+import java.math.BigDecimal
 
 object OevrigTilVisningForSpesifikasjonAvAnleggsmiddel : HarKalkylesamling {
 
@@ -251,6 +254,23 @@ object OevrigTilVisningForSpesifikasjonAvAnleggsmiddel : HarKalkylesamling {
             }
         }
 
+    internal val konsumprisindeksjustertInvesteringskostnadForKorrigeringAvKommunefordelingAvEiendomsskattegrunnlagISaldogruppeG = kalkyle("konsumprisindeksjustertInvesteringskostnadForKorrigeringAvKommunefordelingAvEiendomsskattegrunnlagISaldogruppeG") {
+        if (inntektsaar.tekniskInntektsaar >= 2026) {
+            val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
+            val konsumprisindeks1997Desember =
+                hentKonsumprisindeksVannkraft(BigDecimal.valueOf(1997))
+            val konsumprisindeksInntektsaar =
+                hentKonsumprisindeksVannkraft(inntektsaar)
+            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) forHverForekomst {
+                hvis(forekomstType.saldogruppe lik saldogruppe.kode_g && forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.harVerdi()) {
+                    settFelt(forekomstType.konsumprisindeksjustertInvesteringskostnadForKorrigeringAvKommunefordelingAvEiendomsskattegrunnlagISaldogruppeG) {
+                        (forekomstType.nyanskaffelse + forekomstType.paakostning) * konsumprisindeks1997Desember / konsumprisindeksInntektsaar
+                    }
+                }
+            }
+        }
+    }
+
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
             samletSaldoavskrivning,
@@ -260,6 +280,7 @@ object OevrigTilVisningForSpesifikasjonAvAnleggsmiddel : HarKalkylesamling {
             samletInntektsfradragFraGevinstOgTapskonto,
             samletFriinntektFoer2024,
             samletFriinntekt,
+            konsumprisindeksjustertInvesteringskostnadForKorrigeringAvKommunefordelingAvEiendomsskattegrunnlagISaldogruppeG,
             samletAvskrivningInntektsfoeringOgInntektsfradrag
         )
     }

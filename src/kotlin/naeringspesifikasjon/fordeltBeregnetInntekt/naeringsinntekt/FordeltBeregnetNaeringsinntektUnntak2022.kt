@@ -56,7 +56,7 @@ object FordeltBeregnetNaeringsinntektUnntak2022 : HarKalkylesamling {
         fordeltBeregnetNaeringsinntektForekomst: GeneriskGruppe? = null,
     ): GeneriskModell {
         val forekomst = fordeltBeregnetNaeringsinntektForekomst
-            ?: GeneriskGruppe(mapOf(modell2022.fordeltBeregnetNaeringsinntekt.rotForekomstIdNoekkel to "1"))
+            ?: GeneriskGruppe(modell2022.fordeltBeregnetNaeringsinntekt, "1")
 
         return GeneriskModell.fra(
             forekomst.lagDefaultElementHvisDetIkkeEksisterer(

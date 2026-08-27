@@ -1,11 +1,11 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler
 
 import java.math.BigDecimal
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.api.KodeVerdi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.KodeVerdi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v4_2023.resultatregnskapOgBalanse_2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v4_2023.resultatregnskapOgBalanse_2023.kostnadIFilialregnskap.kode_avskrivningIFilialregnskap
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.ResultatregnskapOgBalanse
