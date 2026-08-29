@@ -299,6 +299,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
 
     val tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle =
         kalkyle("tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle") {
+            val inntektsaar = inntektsaar
             forAlleForekomsterAv(modell.rentebegrensning) {
                 hvis(forekomstType.erKonsernIhtRegelverkForRentebegrensning.erUsann()) {
                     settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme) {
@@ -308,10 +309,17 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
                         ) {
                             BigDecimal.ZERO
                         } else {
-                            lavesteTallAv(
-                                forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall(),
-                                forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsern.tall()
-                            ) medMinimumsverdi 0
+                            if (inntektsaar.gjeldendeInntektsaar <= 2025) {
+                                lavesteTallAv(
+                                    forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall(),
+                                    forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsern.tall()
+                                ) medMinimumsverdi 0
+                            } else {
+                                lavesteTallAv(
+                                    forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall(),
+                                    forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_totalNettoRentekostnaderTilNaerstaaendeMv.tall()
+                                ) medMinimumsverdi 0
+                            }
                         }
                     }
                 }

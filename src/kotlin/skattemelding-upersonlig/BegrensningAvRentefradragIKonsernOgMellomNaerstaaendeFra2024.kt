@@ -250,10 +250,17 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024 : HarKalkyle
                     ) {
                         BigDecimal.ZERO
                     } else {
-                        minsteVerdiAv(
-                            forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall(),
-                            forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsern.tall()
-                        ) medMinimumsverdi 0
+                        if (inntektsaar.gjeldendeInntektsaar <= 2025) {
+                            minsteVerdiAv(
+                                forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall(),
+                                forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsern.tall()
+                            ) medMinimumsverdi 0
+                        } else {
+                            minsteVerdiAv(
+                                forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_differanseMellomNettoRentekostnadOgRentefradragsrammen.tall(),
+                                forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnadTilNaerstaaendeMv_totalNettoRentekostnaderTilNaerstaaendeMv.tall()
+                            ) medMinimumsverdi 0
+                        }
                     }
                 }
             }
