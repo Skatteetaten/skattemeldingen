@@ -760,16 +760,59 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
         }
     }
 
-    val egenkapitalandelForSelskapetEllerNorskDelAvKonsernetKalkyle = kalkyle("egenkapitalandelForSelskapetEllerNorskDelAvKonsernet") {
-        hvis(modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletKorrigertEgenkapitalISelskapetEllerNorskDelAvKonsernet ulik 0
-            && modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletKorrigertBalansesumISelskapetEllerNorskDelAvKonsernet.harVerdi()
-            && modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletKorrigertBalansesumISelskapetEllerNorskDelAvKonsernet ulik 0
-        ) {
-            settUniktFelt(modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalandelForSelskapetEllerNorskDelAvKonsernet) {
-                (modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletKorrigertEgenkapitalISelskapetEllerNorskDelAvKonsernet / modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletKorrigertBalansesumISelskapetEllerNorskDelAvKonsernet) * 100 medAntallDesimaler 2 medMinimumsverdi 0
+    val egenkapitalandelForSelskapetEllerNorskDelAvKonsernetKalkyle =
+        kalkyle("egenkapitalandelForSelskapetEllerNorskDelAvKonsernet") {
+            val samletKorrigertEgenkapital =
+                modell.unntakForRentebegrensning
+                    .opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletKorrigertEgenkapitalISelskapetEllerNorskDelAvKonsernet
+
+            val samletKorrigertBalansesum =
+                modell.unntakForRentebegrensning
+                    .opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletKorrigertBalansesumISelskapetEllerNorskDelAvKonsernet
+
+            val egenkapitalandel =
+                modell.unntakForRentebegrensning
+                    .opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalandelForSelskapetEllerNorskDelAvKonsernet
+
+            if (inntektsaar.tekniskInntektsaar >= 2026) {
+                hvis(samletKorrigertEgenkapital.erPositiv() && samletKorrigertBalansesum.erPositiv()
+                ) {
+                    settUniktFelt(egenkapitalandel) {
+                        (samletKorrigertEgenkapital / samletKorrigertBalansesum) *
+                            100 medAntallDesimaler 2
+                    }
+                }
+
+                hvis(samletKorrigertEgenkapital.erPositiv() &&
+                    samletKorrigertBalansesum.harVerdi() &&
+                    samletKorrigertBalansesum mindreEllerLik 0
+                ) {
+                    settUniktFelt(egenkapitalandel) {
+                        BigDecimal(100)
+                    }
+                }
+
+                hvis(samletKorrigertEgenkapital.harVerdi() &&
+                    (samletKorrigertEgenkapital mindreEllerLik 0 ||
+                        !samletKorrigertBalansesum.harVerdi())
+                ) {
+                    settUniktFelt(egenkapitalandel) {
+                        BigDecimal.ZERO
+                    }
+                }
+            } else {
+                hvis(
+                    samletKorrigertEgenkapital ulik 0 &&
+                        samletKorrigertBalansesum.harVerdi() &&
+                        samletKorrigertBalansesum ulik 0
+                ) {
+                    settUniktFelt(egenkapitalandel) {
+                        (samletKorrigertEgenkapital / samletKorrigertBalansesum) *
+                            100 medAntallDesimaler 2 medMinimumsverdi 0
+                    }
+                }
             }
         }
-    }
 
     val samletOekningAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper = kalkyle("samletOekningAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper") {
         settUniktFelt(modell.unntakForRentebegrensning.spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper_samletOekningAvEgenkapital) {
