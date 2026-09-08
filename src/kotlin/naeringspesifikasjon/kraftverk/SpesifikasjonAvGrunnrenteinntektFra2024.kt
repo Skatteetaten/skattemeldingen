@@ -12,6 +12,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.kontraktstypeForKraftLevertAvKraftverk
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2024
 
 /**
@@ -20,6 +21,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
     private val salgsinntekt =
         kalkyle("salgsinntekt") {
+            val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
@@ -53,11 +55,13 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                     }
                 }
 
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.produksjon.harVerdi() && forekomstType.konsesjonsEllerKontraktspris.harVerdi()
-                } forHverForekomst {
-                    settFelt(forekomstType.salgsinntekt) {
-                        forekomstType.produksjon * forekomstType.konsesjonsEllerKontraktspris
+                if (tekniskInntektsaar <= 2025) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.produksjon.harVerdi() && forekomstType.konsesjonsEllerKontraktspris.harVerdi()
+                    } forHverForekomst {
+                        settFelt(forekomstType.salgsinntekt) {
+                            forekomstType.produksjon * forekomstType.konsesjonsEllerKontraktspris
+                        }
                     }
                 }
             }
@@ -343,6 +347,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
         kalkyle("aaretsAvskrivningPaaAnleggsmiddelSomErDirekteUtgiftsfoertgrunnlag_GrunnlagForBeregningAvSelskapsskatt") {
 
             val satser = satser!!
+            val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
             fun aaretsAvkastningSaerskilteAnleggsmidler(loepenummer: String?): BigDecimal? {
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk) der {
                     forekomstType.kraftverketsLoepenummer.verdi() == loepenummer
@@ -391,8 +396,8 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt) {
                     (forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt -
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_dekningskjoep +
-                        summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt() -
-                        summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt() +
+                        summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) -
+                        summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
@@ -465,30 +470,35 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
         }
 
-    private fun ForekomstKontekst<v7.kraftverk_spesifikasjonAvKraftverkForekomst>.summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt() =
-        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-            forekomstType.salgsinntekt.harVerdi()
-        } summerVerdiFraHverForekomst {
-            forekomstType.salgsinntekt.tall()
-        }
+    private fun ForekomstKontekst<v7.kraftverk_spesifikasjonAvKraftverkForekomst>.summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar: Int) =
+        if (tekniskInntektsaar <= 2025) {
+            forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                forekomstType.salgsinntekt.harVerdi()
+            } summerVerdiFraHverForekomst {
+                forekomstType.salgsinntekt.tall()
+            }
+        } else null
 
-    private fun ForekomstKontekst<v7.kraftverk_spesifikasjonAvKraftverkForekomst>.summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt() =
-        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-            forekomstType.dekningskjoep.harVerdi()
-        } summerVerdiFraHverForekomst {
-            forekomstType.dekningskjoep.tall()
-        }
+    private fun ForekomstKontekst<v7.kraftverk_spesifikasjonAvKraftverkForekomst>.summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar: Int) =
+        if (tekniskInntektsaar <= 2025) {
+            forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                forekomstType.dekningskjoep.harVerdi()
+            } summerVerdiFraHverForekomst {
+                forekomstType.dekningskjoep.tall()
+            }
+        } else null
 
     private val samletBruttoInntektOgFradragIGrunnrenteinntekt =
         kalkyle("samletBruttoInntektIGrunnrenteinntekt") {
+            val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrenseV6()
             } forHverForekomst {
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_samletBruttoInntektIGrunnrenteinntekt) {
                     forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt -
                     forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_dekningskjoep +
-                        summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt() -
-                        summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt() +
+                        summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) -
+                        summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt +
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
@@ -632,99 +642,108 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
     }
 
     internal val kontraktstypeLeieavtale = kalkyle("kontraktstypeLeieavtale") {
-        forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForKontraktstypeLeieavtale) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_leieavtale
-                } summerVerdiFraHverForekomst {
-                    forekomstType.produksjon.tall()
+        val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
+        if (tekniskInntektsaar <= 2025) {
+            forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForKontraktstypeLeieavtale) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_leieavtale
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.produksjon.tall()
+                    }
                 }
-            }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForKontraktstypeLeieavtale) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_leieavtale
-                } summerVerdiFraHverForekomst {
-                    forekomstType.salgsinntekt.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForKontraktstypeLeieavtale) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_leieavtale
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.salgsinntekt.tall()
+                    }
                 }
-            }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForDekningskjoepForKontraktstypeLeieavtale) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_leieavtale
-                } summerVerdiFraHverForekomst {
-                    forekomstType.volumDekningskjoep.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForDekningskjoepForKontraktstypeLeieavtale) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_leieavtale
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.volumDekningskjoep.tall()
+                    }
                 }
-            }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForDekningskjoepForKontraktstypeLeieavtale) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_leieavtale
-                } summerVerdiFraHverForekomst {
-                    forekomstType.dekningskjoep.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForDekningskjoepForKontraktstypeLeieavtale) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_leieavtale
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.dekningskjoep.tall()
+                    }
                 }
             }
         }
     }
 
     internal val kontraktstypeKjoepekontrakt = kalkyle("kontraktstypeKjoepekontrakt") {
-        forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForKontraktstypeKjoepekontrakt) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontrakt
-                } summerVerdiFraHverForekomst {
-                    forekomstType.produksjon.tall()
+        val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
+        if (tekniskInntektsaar <= 2025) {
+            forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForKontraktstypeKjoepekontrakt) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontrakt
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.produksjon.tall()
+                    }
                 }
-            }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForKontraktstypeKjoepekontrakt) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontrakt
-                } summerVerdiFraHverForekomst {
-                    forekomstType.salgsinntekt.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForKontraktstypeKjoepekontrakt) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontrakt
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.salgsinntekt.tall()
+                    }
                 }
-            }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForDekningskjoepForKontraktstypeKjoepekontrakt) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontrakt
-                } summerVerdiFraHverForekomst {
-                    forekomstType.volumDekningskjoep.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForDekningskjoepForKontraktstypeKjoepekontrakt) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontrakt
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.volumDekningskjoep.tall()
+                    }
                 }
-            }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForDekningskjoepForKontraktstypeKjoepekontrakt) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontrakt
-                } summerVerdiFraHverForekomst {
-                    forekomstType.dekningskjoep.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForDekningskjoepForKontraktstypeKjoepekontrakt) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontrakt
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.dekningskjoep.tall()
+                    }
                 }
             }
         }
     }
 
     internal val kontraktstypeFastprisavtale = kalkyle("kontraktstypeFastprisavtale") {
-        forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForKontraktstypeFastprisavtale) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_fastprisavtale
-                } summerVerdiFraHverForekomst {
-                    forekomstType.produksjon.tall()
+        val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
+        if (tekniskInntektsaar <= 2025) {
+            forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForKontraktstypeFastprisavtale) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_fastprisavtale
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.produksjon.tall()
+                    }
                 }
-            }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForKontraktstypeFastprisavtale) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_fastprisavtale
-                } summerVerdiFraHverForekomst {
-                    forekomstType.salgsinntekt.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForKontraktstypeFastprisavtale) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_fastprisavtale
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.salgsinntekt.tall()
+                    }
                 }
-            }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForDekningskjoepForKontraktstypeFastprisavtale) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_fastprisavtale
-                } summerVerdiFraHverForekomst {
-                    forekomstType.volumDekningskjoep.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForDekningskjoepForKontraktstypeFastprisavtale) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_fastprisavtale
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.volumDekningskjoep.tall()
+                    }
                 }
-            }
-            settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForDekningskjoepForKontraktstypeFastprisavtale) {
-                forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
-                    forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_fastprisavtale
-                } summerVerdiFraHverForekomst {
-                    forekomstType.dekningskjoep.tall()
+                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForDekningskjoepForKontraktstypeFastprisavtale) {
+                    forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
+                        forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_fastprisavtale
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.dekningskjoep.tall()
+                    }
                 }
             }
         }

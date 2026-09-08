@@ -36,6 +36,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.havbruk.GrunnrenteskattHavbruk
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.havbruk.GrunnrenteskattHavbruk2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk.Eiendomsskattegrunnlag
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk.KontraktForVannkraftverk
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk.Naturressursskatt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk.SpesifikasjonAvGrunnrenteinntekt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk.SpesifikasjonAvGrunnrenteinntektFra2024
@@ -153,6 +154,7 @@ val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkyle
     .bareI(2024, SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft2024)
     .fra(2025, SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft)
     .fra(2024, SpesifikasjonAvGrunnrenteinntektFra2024)
+    .fra(2026, KontraktForVannkraftverk)
     .fra(2022, OevrigTilVisningForSpesifikasjonAvAnleggsmiddel)
     .fra(2023, SpesifikasjonAvForskjellForSelskapOmfattetAvPetroleumsskatteloven)
     .fra(2023, PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven)

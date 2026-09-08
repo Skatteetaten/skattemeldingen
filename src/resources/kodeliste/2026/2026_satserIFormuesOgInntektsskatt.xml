@@ -222,7 +222,7 @@
     <tekniskNavn>innboOgAnnetLoesoere.verdsettingssatsLav</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Innbo loesoere og fritidsbaat, verdsettingssats lav, verdsettingsfaktor</tekst>
+        <tekst>Innbo loesoere og fritidsbaat til og med kr 1 500 000, verdsettingssats lav, verdsettingsfaktor</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
@@ -232,16 +232,13 @@
       <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-6</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
-      <intervallFra>0</intervallFra>
-      <intervallenhet>beløp</intervallenhet>
-      <intervallTilOgMed>1500000</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>innboOgAnnetLoesoere.verdsettingssatsMedium</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Innbo loesoere og fritidsbaat, verdsettingssats medium, verdsettingsfaktor</tekst>
+        <tekst>Innbo loesoere og fritidsbaat fra kr 1 500 000 til og med kr 1 900 000, verdsettingssats medium, verdsettingsfaktor</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
@@ -251,16 +248,13 @@
       <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-6</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
-      <intervallFra>1500000</intervallFra>
-      <intervallenhet>beløp</intervallenhet>
-      <intervallTilOgMed>1900000</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
     <tekniskNavn>innboOgAnnetLoesoere.verdsettingssatsHoey</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Innbo loesoere og fritidsbaat, verdsettingssats hoey, verdsettingsfaktor</tekst>
+        <tekst>Innbo loesoere og fritidsbaat fra kr 1 900 000, verdsettingssats hoey, verdsettingsfaktor</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
@@ -270,9 +264,6 @@
       <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-6</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
-      <intervallFra>1900000</intervallFra>
-      <intervallenhet>beløp</intervallenhet>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -448,9 +439,6 @@
       <kildereferanse>Forskrift om takseringsregler 2025 § 4-8</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
-      <intervallFra>85</intervallFra>
-      <intervallenhet>prosent</intervallenhet>
-      <intervallTilOgMed>100</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -467,9 +455,6 @@
       <kildereferanse>Forskrift om takseringsregler 2025 § 4-8</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
-      <intervallFra>70</intervallFra>
-      <intervallenhet>prosent</intervallenhet>
-      <intervallTilOgMed>85</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -486,9 +471,6 @@
       <kildereferanse>Forskrift om takseringsregler 2025 § 4-8</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
-      <intervallFra>0</intervallFra>
-      <intervallenhet>prosent</intervallenhet>
-      <intervallTilOgMed>70</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -883,7 +865,6 @@
       <satsverdi>25</satsverdi>
       <kildereferanse>Stortingets skattevedtak 2025 § 3-3</kildereferanse>
       <beregningskontekst>selskapsmelding</beregningskontekst>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>verifisertInntilVidere</verifiseringsstatus>
     </kodetillegg>
   </kode>
@@ -1795,28 +1776,114 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satstype>verdsettingssats</satstype>
+      <multiverdi>
+        <noekkel>inntektsaar+1</noekkel>
+        <verdi>75</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar+0</noekkel>
+        <verdi>75</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-1</noekkel>
+        <verdi>65</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-2</noekkel>
+        <verdi>55</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-3</noekkel>
+        <verdi>45</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-4</noekkel>
+        <verdi>40</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-5</noekkel>
+        <verdi>30</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-6</noekkel>
+        <verdi>20</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-7</noekkel>
+        <verdi>15</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-8</noekkel>
+        <verdi>15</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-9</noekkel>
+        <verdi>15</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-10</noekkel>
+        <verdi>15</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-11</noekkel>
+        <verdi>15</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-12</noekkel>
+        <verdi>15</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-13</noekkel>
+        <verdi>15</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-14</noekkel>
+        <verdi>15</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-15</noekkel>
+        <verdi>15</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>forklaring</noekkel>
+        <verdi>her tar vi inntektåret og trekker fra tallet, feks i 2025 så blir inntektsaar-1 lik 2025 - 1 = 2024</verdi>
+      </multiverdi>
+      <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-3</kildereferanse>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
+      <satsenhet>prosent</satsenhet>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>verdsettingAvKjoeretoey.verdsettingssatsEtterRegistreringsaar16Til29</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Kjøretoey, private biler/motorsykler/snøscootere/bobil verdsettes med utgangspunkt i hovedimportørs listepris ved registrering som ny., verdsettingssats 16-29 år</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloep</satsenhet>
+      <satsverdi>1000</satsverdi>
+      <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-3</kildereferanse>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>verdsettingAvKjoeretoey.verdsettingssatsEtterRegistreringsaarOver30</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Kjøretoey, private biler/motorsykler/snøscootere/bobil verdsettes med utgangspunkt i hovedimportørs listepris ved registrering som ny., verdsettingssats 16-29 år</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloep</satsenhet>
+      <satsverdi>0</satsverdi>
       <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-3</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>verifisertInntilVidere</verifiseringsstatus>
-      <inntektsaar>75</inntektsaar>
-      <inntektsaar-2>55</inntektsaar-2>
-      <inntektsaar-1>65</inntektsaar-1>
-      <inntektsaar-4>40</inntektsaar-4>
-      <inntektsaar-13>15</inntektsaar-13>
-      <inntektsaar-3>45</inntektsaar-3>
-      <inntektsaar-12>15</inntektsaar-12>
-      <inntektsaar-6>20</inntektsaar-6>
-      <inntektsaar-15>15</inntektsaar-15>
-      <inntektsaar--1>75</inntektsaar--1>
-      <inntektsaar-5>30</inntektsaar-5>
-      <inntektsaar-14>15</inntektsaar-14>
-      <inntektsaar-8>15</inntektsaar-8>
-      <inntektsår-16-29>1000kr</inntektsår-16-29>
-      <inntektsaar-7>15</inntektsaar-7>
-      <inntektsaar-11>15</inntektsaar-11>
-      <inntektsaar-9>15</inntektsaar-9>
-      <inntektsaar-10>15</inntektsaar-10>
     </kodetillegg>
   </kode>
   <kode>
@@ -1828,27 +1895,77 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satstype>verdsettingssats</satstype>
+      <multiverdi>
+        <noekkel>inntektsaar+0</noekkel>
+        <verdi>85</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-1</noekkel>
+        <verdi>72</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-2</noekkel>
+        <verdi>61</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-3</noekkel>
+        <verdi>52</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-4</noekkel>
+        <verdi>44</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-5</noekkel>
+        <verdi>37</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-6</noekkel>
+        <verdi>31</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-7</noekkel>
+        <verdi>26</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-8</noekkel>
+        <verdi>22</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-9</noekkel>
+        <verdi>19</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-10</noekkel>
+        <verdi>16</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-12</noekkel>
+        <verdi>12</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-13</noekkel>
+        <verdi>10</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-14</noekkel>
+        <verdi>10</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-15</noekkel>
+        <verdi>10</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-11</noekkel>
+        <verdi>14</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>inntektsaar-16</noekkel>
+        <verdi>10</verdi>
+      </multiverdi>
       <kildereferanse>Forskrift om takseringsregler 2025 § 2-1-4</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>verifisertInntilVidere</verifiseringsstatus>
-      <inntektsaar>85</inntektsaar>
-      <inntektsaar-2>61</inntektsaar-2>
-      <inntektsaar-1>72</inntektsaar-1>
-      <inntektsaar-4>44</inntektsaar-4>
-      <inntektsaar-13>10</inntektsaar-13>
-      <inntektsaar-3>52</inntektsaar-3>
-      <inntektsaar-12>12</inntektsaar-12>
-      <inntektsaar-6>31</inntektsaar-6>
-      <inntektsaar-15>10</inntektsaar-15>
-      <inntektsaar-5>37</inntektsaar-5>
-      <inntektsaar-14>10</inntektsaar-14>
-      <inntektsaar-8>22</inntektsaar-8>
-      <inntektsaar-7>26</inntektsaar-7>
-      <inntektsaar-11>14</inntektsaar-11>
-      <inntektsaar-9>19</inntektsaar-9>
-      <inntektsaar-10>16</inntektsaar-10>
-      <inntektsaar-fra16>10</inntektsaar-fra16>
     </kodetillegg>
   </kode>
   <kode>
@@ -1869,7 +1986,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>skjermingsrenteForEkstraSkattPaaLaan</tekniskNavn>
+    <tekniskNavn>skjermingsrenteForEkstraSkattPaaLaan.perMaaned</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Privat fordringring utenfor virksomhet til selskap, lån til et selskap som omfattes av aksjonær- og deltakermodellen medfører ekstraskatt på lånerenter utover et visst nivå (skjermingsrenten)., skjermingsrente</tekst>
@@ -1877,25 +1994,60 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <multiverdi>
+        <noekkel>1</noekkel>
+        <verdi>3.9</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>2</noekkel>
+        <verdi>3.9</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>3</noekkel>
+        <verdi>3.9</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>4</noekkel>
+        <verdi>3.9</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>5</noekkel>
+        <verdi>3.9</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>6</noekkel>
+        <verdi>3.9</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>7</noekkel>
+        <verdi>3.9</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>8</noekkel>
+        <verdi>3.9</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>9</noekkel>
+        <verdi>3.4</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>10</noekkel>
+        <verdi>3.4</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>11</noekkel>
+        <verdi>3.4</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>12</noekkel>
+        <verdi>3.4</verdi>
+      </multiverdi>
       <satsenhet>prosent</satsenhet>
-      <satstype>skjermingsrente</satstype>
       <kildereferanse>Skatteloven § 5-22</kildereferanse>
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-22-4</kildereferanse>
       <kildereferanse>Skjermingsrente lån</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>verifisertInntilVidere</verifiseringsstatus>
-      <november>3.4</november>
-      <januar>3.4</januar>
-      <august>3.4</august>
-      <mars>3.4</mars>
-      <april>3.4</april>
-      <september>3.4</september>
-      <mai>3.4</mai>
-      <juni>3.4</juni>
-      <februar>3.4</februar>
-      <oktober>3.4</oktober>
-      <juli>3.4</juli>
-      <desember>3.4</desember>
     </kodetillegg>
   </kode>
   <kode>
@@ -2204,9 +2356,6 @@
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
-      <intervallFra>0</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2224,9 +2373,6 @@
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
-      <intervallFra>3</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2244,9 +2390,6 @@
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertIForskriftEllerVedtak</verifiseringsstatus>
-      <intervallFra>0</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2264,9 +2407,6 @@
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertIForskriftEllerVedtak</verifiseringsstatus>
-      <intervallFra>3</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2313,14 +2453,11 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>100</satsverdi>
+      <satsverdi>80</satsverdi>
       <kildereferanse>Skatteloven § 5-13</kildereferanse>
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
-      <intervallFra>0</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2333,14 +2470,11 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>75</satsverdi>
+      <satsverdi>60</satsverdi>
       <kildereferanse>Skatteloven § 5-13</kildereferanse>
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertIForskriftEllerVedtak</verifiseringsstatus>
-      <intervallFra>3</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2358,9 +2492,6 @@
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertIForskriftEllerVedtak</verifiseringsstatus>
-      <intervallFra>0</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2378,9 +2509,6 @@
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertIForskriftEllerVedtak</verifiseringsstatus>
-      <intervallFra>3</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2398,9 +2526,6 @@
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
-      <intervallFra>0</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>3</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2418,9 +2543,6 @@
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
-      <intervallFra>3</intervallFra>
-      <intervallenhet>aar</intervallenhet>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2449,14 +2571,43 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
-      <satsenhet>beloep</satsenhet>
+      <satsverdi>4000</satsverdi>
+      <kildereferanse>Skatteloven § 5-13</kildereferanse>
+      <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>privatBrukAvBil.kilometersatsVedPrivatBruk.intervallTilOgMedGrenseverdi</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Privat bruk av bil, kilometersats ved privat bruk,</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsverdi>3.4</satsverdi>
+      <kildereferanse>Skatteloven § 5-13</kildereferanse>
+      <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>privatBrukAvBil.kilometersatsVedPrivatBruk.satsFraGrenseverdi</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Privat bruk av bil, kilometersats ved privat bruk,</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsverdi>1.5</satsverdi>
       <kildereferanse>Skatteloven § 5-13</kildereferanse>
       <kildereferanse>Finansdepartementets skattelovforskrift § 5-13-5</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertIForskriftEllerVedtak</verifiseringsstatus>
-      <satsIntervallTilOgMedGrenseverdiEn>3.4</satsIntervallTilOgMedGrenseverdiEn>
-      <grenseverdiEn>4000</grenseverdiEn>
-      <satsIntervallFraGrenseverdiEn>1.5</satsIntervallFraGrenseverdiEn>
     </kodetillegg>
   </kode>
   <kode>
@@ -2510,7 +2661,7 @@
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>anleggsmiddel.grenseverdiForAnleggsmiddel</tekniskNavn>
+    <tekniskNavn>anleggsmiddel.grenseverdiForAnleggsmiddel.intervallFra</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Anleggsmidler, grenseverdi,</tekst>
@@ -2518,12 +2669,27 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <satsenhet>beloep</satsenhet>
+      <satsverdi>-30000</satsverdi>
+      <kildereferanse>Skatteloven § 14-40</kildereferanse>
+      <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
+      <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>anleggsmiddel.grenseverdiForAnleggsmiddel.intervallTilOgMed</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Anleggsmidler, grenseverdi,</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloep</satsenhet>
+      <satsverdi>30000</satsverdi>
       <kildereferanse>Skatteloven § 14-40</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>verifisertInntilVidere</verifiseringsstatus>
-      <intervallFra>-30000</intervallFra>
-      <intervallenhet>beloep</intervallenhet>
-      <intervallTilOgMed>30000</intervallTilOgMed>
     </kodetillegg>
   </kode>
   <kode>
@@ -2763,16 +2929,37 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <multiverdi>
+        <noekkel>satsIntervallTilOgMedGrenseverdiEn</noekkel>
+        <verdi>0-20</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>grenseverdiEn</noekkel>
+        <verdi>-30000</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>grenseverdiTo</noekkel>
+        <verdi>0</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>satsIntervallFraGrenseverdiEnTilTo</noekkel>
+        <verdi>0-100</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>satsIntervallFraOgMedGrenseverdiToTilTre</noekkel>
+        <verdi>100-100</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>satsIntervallFraOgMedGrenseverdiTre</noekkel>
+        <verdi>20-100</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>grenseverdiTre</noekkel>
+        <verdi>30000</verdi>
+      </multiverdi>
       <kildereferanse>Skatteloven § 14-40</kildereferanse>
       <beregningskontekst>naeringsspesifikasjon</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
-      <satsIntervallTilOgMedGrenseverdiEn>0-20</satsIntervallTilOgMedGrenseverdiEn>
-      <grenseverdiEn>-30000</grenseverdiEn>
-      <grenseverdiTo>0</grenseverdiTo>
-      <satsIntervallFraGrenseverdiEnTilTo>0-100</satsIntervallFraGrenseverdiEnTilTo>
-      <satsIntervallFraOgMedGrenseverdiToTilTre>100-100</satsIntervallFraOgMedGrenseverdiToTilTre>
-      <satsIntervallFraOgMedGrenseverdiTre>20-100</satsIntervallFraOgMedGrenseverdiTre>
-      <grenseverdiTre>30000</grenseverdiTre>
     </kodetillegg>
   </kode>
   <kode>
@@ -3402,6 +3589,15 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <multiverdi>
+        <noekkel>1867</noekkel>
+        <verdi>0.2</verdi>
+      </multiverdi>
+      <multiverdi>
+        <noekkel>1514</noekkel>
+        <verdi>0.2</verdi>
+      </multiverdi>
       <beregningskontekst>forskudd</beregningskontekst>
       <beregningskontekst>skatteberegning</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
@@ -4368,7 +4564,7 @@
     </beskrivelse>
     <kodetillegg>
       <satsenhet>prosent</satsenhet>
-      <satsverdi>3.5</satsverdi>
+      <satsverdi>3.7</satsverdi>
       <kildereferanse>Finansdepartementets skattelovforskrift § 18-8-2</kildereferanse>
       <beregningskontekst>skatteberegning</beregningskontekst>
       <beregningskontekst>upersonlig</beregningskontekst>
@@ -5324,11 +5520,13 @@
     <tekniskNavn>verdsettingsrabatt.formuesverdiForAnnenFastEiendomInnenforInntektsgivendeAktivitet</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Verdsettingsrabatt formuesverdi for annen fast eiendom innenfor inntektsgivende aktivitet          (driftsmidler)</tekst>
+        <tekst>Verdsettingsrabatt formuesverdi for annen fast eiendom innenfor inntektsgivende aktivitet (driftsmidler)</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <beregningskontekst>skatteberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <beregningskontekst>skatteberegning</beregningskontekst>
@@ -5344,9 +5542,26 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-17</kildereferanse>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>verdsettingsrabatt.formuesverdiForPrimaerbolig.oevreGrenseverdiForOrdinaerSats</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Verdsettingsrabatt, øvre grense for ordinær sats formuesverdi for primærbolig</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloep</satsenhet>
+      <satsverdi>10000000</satsverdi>
+      <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5358,13 +5573,15 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>verdsettingsrabatt.lav.formuesverdiForPrimaerbolig</tekniskNavn>
+    <tekniskNavn>verdsettingsrabatt.formuesverdiForPrimaerbolig</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Verdsettingsrabatt lav formuesverdi for primaerbolig</tekst>
@@ -5372,14 +5589,15 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>25</satsverdi>
       <verifiseringsstatus>verifisertIRevidertNasjonalbudsjett</verifiseringsstatus>
-      <intervallTilOgMed>14000000</intervallTilOgMed>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
-    <tekniskNavn>verdsettingsrabatt.hoey.formuesverdiForPrimaerbolig</tekniskNavn>
+    <tekniskNavn>verdsettingsrabatt.formuesverdiForPrimaerbolig.hoey</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
         <tekst>Verdsettingsrabatt høy formuesverdi for primaerbolig</tekst>
@@ -5387,11 +5605,27 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIRevidertNasjonalbudsjett</verifiseringsstatus>
-      <intervallFra>14000000</intervallFra>
-      <intervallTilOgMed>uendelig</intervallTilOgMed>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>verdsettingsrabatt.formuesverdiForPrimaerbolig.nedreGrenseForHoey</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Verdsettingsrabatt, nedre grense for høy formuesverdi for primaerbolig</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <satsenhet>beloep</satsenhet>
+      <satsverdi>14000000</satsverdi>
+      <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5403,9 +5637,11 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-1</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5417,9 +5653,11 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-1</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5431,9 +5669,11 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>100</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5448,6 +5688,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>100</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5459,9 +5700,11 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-17</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5473,9 +5716,11 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Forskrift om takseringsregler 2025§ 1-1-1</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5490,6 +5735,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5504,6 +5750,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5518,6 +5765,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5532,6 +5780,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5546,6 +5795,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-40</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5560,6 +5810,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-17</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5574,6 +5825,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-17</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5588,6 +5840,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-10</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5602,6 +5855,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-17</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5616,6 +5870,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-17</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5630,6 +5885,8 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-17</kildereferanse>
+      <kildereferanse>Forskrift om takseringsregler 2025§ 2-1-4</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5644,6 +5901,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-12</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
@@ -5658,6 +5916,7 @@
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
+      <kildereferanse>Skatteloven § 4-12</kildereferanse>
     </kodetillegg>
   </kode>
   <kode>
