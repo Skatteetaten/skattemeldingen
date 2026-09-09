@@ -580,7 +580,7 @@ Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommenes f
 
 ### Testdata
 
-Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer_v4.csv)
+Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer_v5.csv)
 
 ### Søk v1 <a name="eiendomSoekV1"></a> [[back up]](#user-content-table-of-requests)
 Viktig, versjon en av api'et vil bli avviklet. Det er ikke satt noen dato for "End of life", men vi anbefaler å ta i bruk v2 så snart som mulig.
