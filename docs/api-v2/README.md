@@ -83,7 +83,7 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
 
 #### Levetidsparametre for scopes
 Scopene våre er satt opp med følgende maks levetid:
-|scope	| levetid access-token |	levetid refresh-token|
+|scope | levetid access-token | levetid refresh-token|
 |-------|---------------------|----------------------|
 | skatteetaten:formueinntekt/skattemelding | 8 timer | 90 dager |
 | skatteetaten:formueinntekt/skattemelding/eiendom | 8 timer | 90 dager |
@@ -143,7 +143,8 @@ eksisterende løsninger.
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf](#user-content-hentGjeldendeFastsettingPdf)                                 | Ja           |
 | GET  | [/api/skattemelding/v2/skatteoppgjoer/\<inntektsaar\>/\<identifikator\>/\<skatteoppgjoerType\>/gjeldende.pdf](#user-content-hentGjeldendeSkatteoppgjoerPdf)    | Ja           |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/lenker/publikumsportaler](#user-content-hentPublikumsportaler)                                        | Nei          |
-| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                                 | Ja           |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoekV1)                                                               | Ja           |
+| GET  | [/api/skattemelding/v2/eiendom/soek/v2/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoekV2)                                                            | Ja           |
 | GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                  | Ja           |
 | POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                   | Ja           |
 | POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                           | Ja           |
@@ -581,7 +582,8 @@ Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommenes f
 
 Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer_v4.csv)
 
-### Søk <a name="eiendomSoek"></a> [[back up]](#user-content-table-of-requests)
+### Søk v1 <a name="eiendomSoekV1"></a> [[back up]](#user-content-table-of-requests)
+Viktig, versjon en av api'et vil bli avviklet. Det er ikke satt noen dato for "End of life", men vi anbefaler å ta i bruk v2 så snart som mulig.
 
 Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
 
@@ -668,6 +670,58 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 **_Forklaring til respons_**
 
 - `sergEiendomsidentifikator: eiendomsidentifikator som skal benyttes for å hente eiendom og formuesinformasjon.`
+
+### Søk v2 <a name="eiendomSoekV2"></a> [[back up]](#user-content-table-of-requests)
+Som for v1 er det mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
+V2 søket vil ikke retunere eiendommer som ikke eksisterer for inntektsåret en søker på. 
+
+**URL** : `GET https://<env>/api/skattemelding/v2/eiendom/soek/v2/<inntektsår>?query=<query>&resultSize=<resultSize>`
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse.`
+- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
+- `<query>: Fritekst søkestreng.`
+- `<resultSize>: Maks antall resultater som skal returneres. Default er 10`
+
+**Respons** :
+V2 dto objektet ser slik ut: 
+
+| Felt                                   | Type   | Beskrivelse                |
+|----------------------------------------|--------|----------------------------|
+| treff                                  | Array  | Liste med søketreff        | 
+| treff[].sergEiendomsidentifikator      | String | SERG eiendomsidentifikator |
+| treff[].visningsTekst                  | String | Treff-tekst                | 
+| treff[].matrikkelnummer                | Object | Matrikkelnummer            | 
+| treff[].matrikkelnummer.kommunenummer  | String | Kommunenummer              | 
+| treff[].matrikkelnummer.gaardsnummer   | Number | Gårdsnummer                | 
+| treff[].matrikkelnummer.bruksnummer    | Number | Bruksnummer                | 
+| treff[].matrikkelnummer.seksjonsnummer | Number | Seksjonsnummer             | 
+| treff[].matrikkelnummer.festenummer    | Number | Festenummer                | 
+| treff[].vegadresse                     | Object | Vegadresse                 | 
+| treff[].organisasjonsnummer            | String | Organisasjonsnummer        | 
+| treff[].andelsnummer                   | Number | Andelsnummer               | 
+| treff[].andelsnummer                   | Number | Andelsnummer               | 
+| treff[].aksjeboenhetsnummer            | Number | Aksjeboenhetsnummer        | 
+| treff[].undereiendomsnummer            | Number | Undereiendomsnummer        | 
+| treff[].utgaattDato                    | String | Utgått dato                | 
+| treff[].etablertDato                   | String | Etablert dato              | 
+| treff[].kommunenavn                    | String | Kommunenavn                | 
+| treff[].formuestype                    | String | Formuestype                | 
+
+
+Vegadresse objekt
+
+| Felt                         | Type    | Beskrivelse                               |
+|------------------------------|---------|-------------------------------------------|
+| adressenavn                  | String  | Adressenavn (påkrevd)                     |
+| adressenummer                | Objekt  | Adressenummer (valgfri). Se felter under. |
+| adressenummer.nummer         | Integer | Husnummer (valgfri)                       |
+| adressenummer.adressebokstav | String  | Husbokstav (valgfri)                      |
+| poststed                     | Objekt  | Poststed (valgfri). Se felter under.      |
+| poststed.postnummer          | String  | Postnummer (valgfri)                      |
+| poststed.poststedsnavn       | String  | Poststed (valgfri)                        |
+| bruksenhetsnummer            | String  | Bruksenhetsnummer (valgfri)               |
+
 
 ### Hent formuesgrunnlag <a name="hentFormuesgrunnlag"></a> [[back up]](#user-content-table-of-requests)
 
