@@ -1810,7 +1810,9 @@
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="NorskPersonidentifikator">
-    <xsd:restriction base="Tekst" />
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="[0-9]+" />
+    </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="Organisasjonsnummer" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e1a8-9fe1-11e5-a9f8-e4115b280940">
     <xsd:restriction base="Tekst" />

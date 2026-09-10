@@ -2315,7 +2315,9 @@
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="NorskPersonidentifikator">
-    <xsd:restriction base="Tekst" />
+    <xsd:restriction base="Tekst">
+      <xsd:pattern value="[0-9]+" />
+    </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="DyreartKnyttetTilJaktrettighet" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_dyreartKnyttetTilJaktrettighet.xml">
     <xsd:restriction base="xsd:string" />
