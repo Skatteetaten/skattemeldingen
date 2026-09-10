@@ -83,7 +83,7 @@ Under følger en beskrivelse av hvordan en integrasjon kan opprettes hos DigDir 
 
 #### Levetidsparametre for scopes
 Scopene våre er satt opp med følgende maks levetid:
-|scope	| levetid access-token |	levetid refresh-token|
+|scope | levetid access-token | levetid refresh-token|
 |-------|---------------------|----------------------|
 | skatteetaten:formueinntekt/skattemelding | 8 timer | 90 dager |
 | skatteetaten:formueinntekt/skattemelding/eiendom | 8 timer | 90 dager |
@@ -143,7 +143,8 @@ eksisterende løsninger.
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/gjeldende-fastsetting.pdf](#user-content-hentGjeldendeFastsettingPdf)                                 | Ja           |
 | GET  | [/api/skattemelding/v2/skatteoppgjoer/\<inntektsaar\>/\<identifikator\>/\<skatteoppgjoerType\>/gjeldende.pdf](#user-content-hentGjeldendeSkatteoppgjoerPdf)    | Ja           |
 | GET  | [/api/skattemelding/v2/\<inntektsaar\>/\<identifikator\>/lenker/publikumsportaler](#user-content-hentPublikumsportaler)                                        | Nei          |
-| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoek)                                                                 | Ja           |
+| GET  | [/api/skattemelding/v2/eiendom/soek/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoekV1)                                                               | Ja           |
+| GET  | [/api/skattemelding/v2/eiendom/soek/v2/\<inntektsår\>?query=\<tekst\>](#user-content-eiendomSoekV2)                                                            | Ja           |
 | GET  | [/api/skattemelding/v2/eiendom/formuesgrunnlag/\<inntektsår\>/\<eiendomsidentifikator\>/\<identifikator\>](#user-content-hentFormuesgrunnlag)                  | Ja           |
 | POST | [/api/skattemelding/v2/eiendom/markedsverdi/bolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiBolig)                                   | Ja           |
 | POST | [/api/skattemelding/v2/eiendom/markedsverdi/flerbolig/\<inntektsår\>/\<eiendomsidentifikator\>](#user-content-markedsverdiFlerbolig)                           | Ja           |
@@ -231,7 +232,7 @@ skattemeldingOgNaeringsspesifikasjonforespoerselResponse:
 
 ### Utvidet veiledning <a name="hentGjeldendeUtvidet"></a> [[back up]](#user-content-table-of-requests)
 
-Fra og med inntektsår 2022 er det mulig å etterspørre eventuelle ubesvarte utvidede veiledninger som del av dette API'et, som kan sees i response-spesifikasjonen over.
+Fra og med inntektsår 2022 er det mulig å etterspørre eventuelle ubesvarte utvidede veiledninger som del av dette API-et, som kan sees i response-spesifikasjonen over.
 
 En utvidet veiledning representerer opplysninger som Skatteetaten har om skatteyter som muligens burde vært oppgitt i skattmeldingen, men som ikke er det. Disse opplysningene er gjerne ikke komplette, og kan derfor ikke forhåndsutfylles.
 
@@ -324,7 +325,7 @@ API som returnerer den siste innsendte skattemeldingen for gitt inntektsår. En 
 - Eksempel
   XML: [upersonligSkattemeldingOgNaeringssepsifikasjonRequest.xml](/src/resources/eksempler/2024/upersonligSkattemeldingOgNaeringsspesifikasjonRequest.xml)
 
-For nærmere beskrivelse av felt i XSDen, se kapittel under. Inndata til valider-APIet blir det samme som utdata fra dette APIet.
+For nærmere beskrivelse av felt i XSDen, se kapittel under. Inndata til valider-API-et blir det samme som utdata fra dette API-et.
 
 ## Valider skattemelding <a name="valider"></a> [[back up]](#user-content-table-of-requests)
 
@@ -479,7 +480,7 @@ Likt som valider ovenfor
 
 ## Hent vedlegg <a name="hentVedlegg"></a> [[back up]](#user-content-table-of-requests)
 
-Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, enten fastsatt i gjeldende/nyeste skattemelding eller fra tidligere fastsettinger.
+API som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, enten fastsatt i gjeldende/nyeste skattemelding eller fra tidligere fastsettinger.
 
 **URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/vedlegg/<vedleggId>`
 
@@ -498,7 +499,7 @@ Api som returnerer tidligere innsendte vedlegg til fastsatte skattemeldinger, en
 
 ## Hent gjeldende fastsetting som PDF <a name="hentGjeldendeFastsettingPdf"></a> [[back up]](#user-content-table-of-requests)
 
-Api som returnerer gjeldende fastsetting i PDF-format.
+API som returnerer gjeldende fastsetting i PDF-format.
 
 **URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/gjeldende-fastsetting.pdf`
 
@@ -517,7 +518,7 @@ Api som returnerer gjeldende fastsetting i PDF-format.
 
 ## Hent gjeldende skatteoppgjør som PDF <a name="hentGjeldendeSkatteoppgjoerPdf"></a> [[back up]](#user-content-table-of-requests)
 
-Api som returnerer gjeldende skatteoppgjør i PDF-format.
+API som returnerer gjeldende skatteoppgjør i PDF-format.
 
 **URL** : `GET https://<env>/api/skattemelding/v2/skatteoppgjoer/<inntektsaar>/<identifikator>/<skatteoppgjoerType>/gjeldende.pdf`
 
@@ -538,7 +539,7 @@ Api som returnerer gjeldende skatteoppgjør i PDF-format.
 
 ## Hent lenker til publikumsportaler <a name="hentPublikumsportaler"></a> [[back up]](#user-content-table-of-requests)
 
-Api som returnerer lenker til publikumsportaler. For personlige returneres lenker til Min Skatt, skattemeldingen og Tilsvar.
+API som returnerer lenker til publikumsportaler. For personlige returneres lenker til Min Skatt, skattemeldingen og Tilsvar.
 For upersonlige returneres lenke til Tilsvar.
 
 **URL** : `GET https://<env>/api/skattemelding/v2/<inntektsaar>/<identifikator>/lenker/publikumsportaler`
@@ -573,15 +574,16 @@ For upersonlig:
 
 - `<partsreferanse>` er en unik identifikator som brukes for å identifisere skattepliktig i Skatteetatens systemer. Det er ingen informasjon i partsreferansen som direkte identifiserer skattepliktig.
 
-## Eiendom API
+## Eiendom-API
 
-Eiendom API tilbyr endepunkter for å søke opp eiendommer, hente eiendommenes formuesgrunnlag og for å beregne eiendommers markedsverdi.
+Eiendom-API tilbyr endepunkter for å søke opp eiendommer, hente eiendommenes formuesgrunnlag og for å beregne eiendommers markedsverdi.
 
 ### Testdata
 
-Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer_v4.csv)
+Oversikt over hvilke eiendommer dere kan søke opp ligger i [dette regnearket](Syntetiske_eiendommer_v5.csv)
 
-### Søk <a name="eiendomSoek"></a> [[back up]](#user-content-table-of-requests)
+### Søk v1 <a name="eiendomSoekV1"></a> [[back up]](#user-content-table-of-requests)
+Viktig, versjon 1 av API-et vil bli avviklet. Det er ikke satt noen dato for "End of life", men vi anbefaler å ta i bruk v2 så snart som mulig.
 
 Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
 
@@ -668,6 +670,58 @@ Det er mulig å søke på alle norske vegadresser, matrikkelnummer og boligselsk
 **_Forklaring til respons_**
 
 - `sergEiendomsidentifikator: eiendomsidentifikator som skal benyttes for å hente eiendom og formuesinformasjon.`
+
+### Søk v2 <a name="eiendomSoekV2"></a> [[back up]](#user-content-table-of-requests)
+Som for v1 er det mulig å søke på alle norske vegadresser, matrikkelnummer og boligselskap (organisasjonsnummer og andelsnr/aksjeboenhetsnr)
+V2-søket vil ikke returnere eiendommer som ikke eksisterer for inntektsåret en søker på. 
+
+**URL** : `GET https://<env>/api/skattemelding/v2/eiendom/soek/v2/<inntektsår>?query=<query>&resultSize=<resultSize>`
+**Forespørsel** :
+
+- `<env>: Miljøspesifikk adresse.`
+- `<inntektsår>: Inntektsåret man spør om informasjon for, i formatet YYYY.`
+- `<query>: Fritekst søkestreng.`
+- `<resultSize>: Maks antall resultater som skal returneres. Default er 10`
+
+**Respons** :
+V2-objektet ser slik ut: 
+
+| Felt                                   | Type   | Beskrivelse                |
+|----------------------------------------|--------|----------------------------|
+| treff                                  | Array  | Liste med søketreff        | 
+| treff[].sergEiendomsidentifikator      | String | SERG eiendomsidentifikator |
+| treff[].visningsTekst                  | String | Treff-tekst                | 
+| treff[].matrikkelnummer                | Object | Matrikkelnummer            | 
+| treff[].matrikkelnummer.kommunenummer  | String | Kommunenummer              | 
+| treff[].matrikkelnummer.gaardsnummer   | Number | Gårdsnummer                | 
+| treff[].matrikkelnummer.bruksnummer    | Number | Bruksnummer                | 
+| treff[].matrikkelnummer.seksjonsnummer | Number | Seksjonsnummer             | 
+| treff[].matrikkelnummer.festenummer    | Number | Festenummer                | 
+| treff[].vegadresse                     | Object | Vegadresse                 | 
+| treff[].organisasjonsnummer            | String | Organisasjonsnummer        | 
+| treff[].andelsnummer                   | Number | Andelsnummer               | 
+| treff[].andelsnummer                   | Number | Andelsnummer               | 
+| treff[].aksjeboenhetsnummer            | Number | Aksjeboenhetsnummer        | 
+| treff[].undereiendomsnummer            | Number | Undereiendomsnummer        | 
+| treff[].utgaattDato                    | String | Utgått dato                | 
+| treff[].etablertDato                   | String | Etablert dato              | 
+| treff[].kommunenavn                    | String | Kommunenavn                | 
+| treff[].formuestype                    | String | Formuestype                | 
+
+
+Vegadresse-objekt:
+
+| Felt                         | Type    | Beskrivelse                               |
+|------------------------------|---------|-------------------------------------------|
+| adressenavn                  | String  | Adressenavn (påkrevd)                     |
+| adressenummer                | Objekt  | Adressenummer (valgfri). Se felter under. |
+| adressenummer.nummer         | Integer | Husnummer (valgfri)                       |
+| adressenummer.adressebokstav | String  | Husbokstav (valgfri)                      |
+| poststed                     | Objekt  | Poststed (valgfri). Se felter under.      |
+| poststed.postnummer          | String  | Postnummer (valgfri)                      |
+| poststed.poststedsnavn       | String  | Poststed (valgfri)                        |
+| bruksenhetsnummer            | String  | Bruksenhetsnummer (valgfri)               |
+
 
 ### Hent formuesgrunnlag <a name="hentFormuesgrunnlag"></a> [[back up]](#user-content-table-of-requests)
 
@@ -2014,12 +2068,12 @@ responsen er json med disse feltene. Spørsmålstegn indikerer at feltet ikke er
 
 ## Forhåndsfastsetting <a name="Forhandsfastsetting"></a> [[back up]](#user-content-table-of-requests)
 Det er mulig å be om forhåndsfastsetting for upersonlige skattemelding før ordinær fastsettingsperioden starter.
-For eksempel, så skal et selskap kunne få forhåndsfastsetting i mars i 2023. Da skal skattemeldingen for 2022 og 2023 leveres.
+For eksempel skal et selskap kunne få forhåndsfastsetting i mars i 2023. Da skal skattemeldingen for 2022 og 2023 leveres.
 
 Skattemeldingen 2022 leveres i 2022-modellen, som "vanlig". I tillegg skal skattemeldingen for 2023 leveres, også den i 2022-modellen.
 
-Dersom en skal forhåndsfastsette før skattemeldingen er tilgjenglig via vanlig hent api'et så må en kjøre et "klargjøringskall".
-Når skattemeldingen er tilgjenglig så må skattemeldingen inneholde
+Dersom en skal forhåndsfastsette før skattemeldingen er tilgjengelig via vanlig hent API-et, må en kjøre et "klargjøringskall".
+Når skattemeldingen er tilgjengelig, må skattemeldingen inneholde
 
 ```xml
 <skattemelding xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:skattemelding:upersonlig:ekstern:v2">
@@ -2033,10 +2087,10 @@ Når skattemeldingen er tilgjenglig så må skattemeldingen inneholde
     </gjelderForhaandsfastsetting>
 </skattemelding>
 ```
-I tillegg så må en i skattemeldingOgNaeringsspesifikasjonRequest anngi hvilket navnerom skattemeldingen er lagret på.
-Dersom en skal forhåndsfastsette 2022 og 2023 nå i februar 2023 så skal følgende være satt:
+I tillegg må en i skattemeldingOgNaeringsspesifikasjonRequest angi hvilket navnerom skattemeldingen er lagret på.
+Dersom en skal forhåndsfastsette 2022 og 2023 i februar 2023 så skal følgende være satt:
 
-For skattemeldingen dokumentet:
+For skattemeldingsdokumentet:
 ```xml
 <dokument>
     <type>skattemeldingUpersonlig</type>
@@ -2046,7 +2100,7 @@ For skattemeldingen dokumentet:
 </dokument>
 ```
 
-For næringspesifikasjonen
+For næringspesifikasjonen:
 ```xml
     <dokument>
     <type>naeringsspesifikasjon</type>
@@ -2078,7 +2132,7 @@ Ved vellykket klargjøring:
 }
 ```
 
-Part som har utkast tilgjenglig:
+Part som har utkast tilgjengelig:
 ```json
 {
   "status": "PART_HAR_GJELDENDE",
@@ -2086,7 +2140,7 @@ Part som har utkast tilgjenglig:
 }
 ```
 
-Innteksår ikke støttet
+Inntektsår ikke støttet
 ```json
 {
   "status": "FORHAANDSFASTSETTING_ER_IKKE_STOETTET_FOR_INNTEKTSAAR",
@@ -2120,8 +2174,8 @@ Andre feiltilstander
 ```
 
 # Klargjør part som mangler utkast <a name="klargjoer-part-som-mangler-utkast"></a> [[back up]](#user-content-table-of-requests)
-Dersom dere har en organisasjon som av eller annen årsak mangler utkast (får feilmelding http 403, skattemelding ikke tilgjenglig) for et aktivt inntektsår, så kan dere bruke dette API'et for for å klargjøre parten.
-Det API'et støttes kun for enhetstyper som skal levere skattemelding upersonlig.
+Dersom dere har en organisasjon som av eller annen årsak mangler utkast (får feilmelding http 403, skattemelding ikke tilgjengelig) for et aktivt inntektsår, så kan dere bruke dette API-et for for å klargjøre parten.
+Det API-et støttes kun for enhetstyper som skal levere skattemelding upersonlig.
 
 **URL** `POST https://<env>/api/skattemelding/v2/klargjoerpart/<inntektsår>/<identifikator>`
 
@@ -2181,7 +2235,7 @@ Tjeneste for å søke om utsatt frist for levering av skattemeldingen.
 
 # Altinn3-API
 
-For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjennom et klient API (typisk skattepliktige som bruker et sluttbrukersystem) tilbyr Altinn API-er med følgende funksjonalitet:
+For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjennom et klient-API (typisk skattepliktige som bruker et sluttbrukersystem), tilbyr Altinn API-er med følgende funksjonalitet:
 
 1. opprette en instans i Altinn
 2. populere instansen med metadata
@@ -2191,7 +2245,7 @@ For applikasjonsbrukere, dvs. organisasjoner og personer som kaller Altinn gjenn
 6. trigger neste steg slik at instansen havner i status _Tilbakemelding_ (betyr "skattemeldingen innsendt").
 7. hente kvittering/tilbakemelding. Merk at det kan gå litt tid før kvittering er tilgjengelig (Skatteetaten må laste ned, behandle innsendingen og laste opp kvitteringen)
 
-Les mer om Altinn API-ene på [altinn sine sider](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/).
+Les mer om Altinns API-er på [altinn sine sider](https://docs.altinn.studio/teknologi/altinnstudio/altinn-api/).
 
 Tjenestene listet under kalles for å sende inn skattemelding til Altinn.
 
@@ -2205,13 +2259,13 @@ _Merk at Base URL-en_ til applikasjonen vår i Altinn er:
 
 Første trinn er å få generert et autentiseringstoken i Altinn. Autentisering skjer enten via maskinporten eller ID-porten. Les mer om det på [altinn sine sider](https://docs.altinn.studio/api/authentication/)
 
-Tokenet fra maskinporten/ID-porten brukes til å veksle det inn i et Altinn JWT access token. Det er Altinn tokenet som brukes videre til å kalle Altinn-APIer beskrevet under.
+Tokenet fra maskinporten/ID-porten brukes til å veksle det inn i et Altinn JWT access token. Det er Altinn tokenet som brukes videre til å kalle Altinn-API-er beskrevet under.
 
 **Testmiljø:** `curl --location --request GET 'https://platform.tt02.altinn.no//authentication/api/v1/exchange/id-porten' \ --header 'Authorization: Bearer <ID-porten/maskinporten Token>'`
 
 **Produksjonsmiljø:** `curl --location --request GET 'https://platform.altinn.no//authentication/api/v1/exchange/id-porten' \ --header 'Authorization: Bearer <ID-porten/maskinporten Token>'`
 
-Responsen til dette kallet vil være et Altinn-token, dette tokenet skal brukes i kallene under.
+Responsen til dette kallet vil være et Altinn-token. Dette tokenet skal brukes i kallene under.
 <br />
 
 ## Hent PartyId fra Altinn
