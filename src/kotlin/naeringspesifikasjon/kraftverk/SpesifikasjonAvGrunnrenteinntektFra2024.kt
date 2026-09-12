@@ -14,6 +14,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2024
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2025
 
 /**
  * Spec: https://wiki.sits.no/display/SIR/FR+-+Beregnet+formuesverdi+og+grunnlag+for+beregning+av+særskilt+eiendomsskattegrunnlag
@@ -23,7 +24,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
         kalkyle("salgsinntekt") {
             val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
                 hvis(
                     forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon.harVerdi() &&
@@ -87,7 +88,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon) {
                     summerInntektFraGevinstOgTapskonto(forekomstType.loepenummer.verdi())
@@ -214,7 +215,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon) {
                     summerSaerskiltAnleggsmiddelAaretsAvskrivning(forekomstType.loepenummer.verdi()) +
@@ -330,7 +331,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_investeringskostnadKnyttetTilKraftproduksjon) {
                     investeringskostnadKnyttetTilSaerskilteAnleggsmidler(forekomstType.loepenummer.verdi()) +
@@ -384,15 +385,21 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                 }
             }
 
-            forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrenseV6()
-            } forHverForekomst {
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsAvskrivningPaaAnleggsmiddelKnyttetTilVannkraftverkSomErDirekteUtgiftsfoert) {
-                    (aaretsAvkastningSaerskilteAnleggsmidler(forekomstType.loepenummer.verdi()) +
-                        aaretsAvskrivningSaldoavskrevetAnleggsmidler(forekomstType.loepenummer.verdi()) +
-                        aaretsAvskrivningLineaertavskrevetAnleggsmidler(forekomstType.loepenummer.verdi())).somHeltall()
+            hvis(inntektsaar.tekniskInntektsaar <= 2025) {
+                forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk) der {
+                    samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                } forHverForekomst {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsAvskrivningPaaAnleggsmiddelKnyttetTilVannkraftverkSomErDirekteUtgiftsfoert) {
+                        (aaretsAvkastningSaerskilteAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            aaretsAvskrivningSaldoavskrevetAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            aaretsAvskrivningLineaertavskrevetAnleggsmidler(forekomstType.loepenummer.verdi())).somHeltall()
+                    }
                 }
+            }
 
+            forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
+                samletPaastempletMerkeytelseIKvaOverGrense()
+            } forHverForekomst {
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt) {
                     (forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt -
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_dekningskjoep +
@@ -413,7 +420,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                             forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon +
                             forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
                             forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsAvskrivningPaaAnleggsmiddelKnyttetTilVannkraftverkSomErDirekteUtgiftsfoert +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsAvskrivningPaaAnleggsmiddelKnyttetTilVannkraftverkSomErDirekteUtgiftsfoert +
                             forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadVedAvslutningEllerEndringAvFastpriskontrakt
                             )).somHeltall()
                 }
@@ -492,7 +499,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
         kalkyle("samletBruttoInntektIGrunnrenteinntekt") {
             val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_samletBruttoInntektIGrunnrenteinntekt) {
                     forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt -
@@ -579,7 +586,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_friinntekt) {
                     summerSaerskiltAnleggsmiddelAaretsFriinntekt(forekomstType.loepenummer.verdi()) +

@@ -16,7 +16,7 @@ internal object Naturressursskatt : HarKalkylesamling {
     private val samletAarsproduksjon = kalkyle("samletAarsproduksjon") {
         hvis(erKraftverk()) {
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
                 val samletAarsproduksjon = forekomsterAv(forekomstType.grunnlagForBeregningAvNaturressursskatt_grunnlagForNaturressursskattPerInntektsaar) summerVerdiFraHverForekomst {
                     forekomstType.aarsproduksjon.tall()
@@ -32,7 +32,7 @@ internal object Naturressursskatt : HarKalkylesamling {
     private val samletMedgaattPumpekraft = kalkyle("samletMedgaattPumpekraft") {
         hvis(erKraftverk()) {
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-                samletPaastempletMerkeytelseIKvaOverGrenseV6()
+                samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
                 settFelt(forekomstType.grunnlagForBeregningAvNaturressursskatt_samletMedgaattPumpekraft) {
                     forekomsterAv(forekomstType.grunnlagForBeregningAvNaturressursskatt_grunnlagForNaturressursskattPerInntektsaar) summerVerdiFraHverForekomst {
@@ -46,7 +46,7 @@ internal object Naturressursskatt : HarKalkylesamling {
     private val samletGrunnlagForNaturressursskatt = kalkyle("samletGrunnlagForNaturressursskatt") {
         val antallAar = 7
         forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
-            samletPaastempletMerkeytelseIKvaOverGrenseV6()
+            samletPaastempletMerkeytelseIKvaOverGrense()
         } forHverForekomst {
             settFelt(forekomstType.grunnlagForBeregningAvNaturressursskatt_samletGrunnlagForNaturressursskatt) {
                 ((modell.kraftverk_spesifikasjonAvKraftverk.grunnlagForBeregningAvNaturressursskatt_samletAarsproduksjon
