@@ -116,7 +116,6 @@
       <xsd:element minOccurs="0" name="sumGjeldOgEgenkapital" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sumGjeldOgEgenkapitalInnenLivsforsikringForKundeportefoelje" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="sumGjeldOgEgenkapitalInnenLivsforsikringForSelskapsportefoelje" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="SpesifikasjonAvAnleggsmiddel">
@@ -477,12 +476,12 @@
           <xsd:element minOccurs="0" name="nedskrevetVerdiAvUtskiltAnleggsmiddel" type="BeloepMedSkattemessigeEgenskaper" />
           <xsd:element name="erDetFysiskAnleggsmiddelIUtgaaendeVerdi" type="BoolskMedInnkapsling" />
           <xsd:element minOccurs="0" name="forretningsbyggAnskaffetFoer01011984" type="ForretningsbyggAnskaffetFoer01011984" />
-           <xsd:element minOccurs="0" name="antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret" type="AntallMedInnkapsling" />
-           <xsd:element minOccurs="0" name="konsumprisindeksjustertInvesteringskostnadForKorrigeringAvKommunefordelingAvEiendomsskattegrunnlagISaldogruppeG" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
-         </xsd:sequence>
-       </xsd:extension>
-     </xsd:complexContent>
-   </xsd:complexType>
+          <xsd:element minOccurs="0" name="antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret" type="AntallMedInnkapsling" />
+          <xsd:element minOccurs="0" name="konsumprisindeksjustertInvesteringskostnadForKorrigeringAvKommunefordelingAvEiendomsskattegrunnlagISaldogruppeG" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaperOgOverstyring" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
   <xsd:complexType name="LineaertavskrevetAnleggsmiddel">
     <xsd:complexContent>
       <xsd:extension base="AnleggsmiddelFelles">
@@ -1867,6 +1866,7 @@
       <xsd:element minOccurs="0" name="beregnetNegativSelskapsskattTilFremfoering" type="BeregnetNegativSelskapsskattTilFremfoering" />
       <xsd:element minOccurs="0" name="restAvFremfoerbarNegativGrunnrenteinntektFraFoer2007" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="positivGrunnrenteinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="spesifikasjonAvDekningskjoep" type="SpesifikasjonAvDekningskjoep" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregningAvNaturressursskatt">
@@ -2097,10 +2097,10 @@
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="TilleggsopplysningForSaldogruppeG">
-     <xsd:sequence>
-       <xsd:element name="id" type="Tekst" />
-       <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
-     </xsd:sequence>
+    <xsd:sequence>
+      <xsd:element name="id" type="Tekst" />
+      <xsd:element minOccurs="0" name="kommunenummer" type="KommunenummerMedInnkapsling" />
+    </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Saldogruppe" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_saldogruppe.xml">
     <xsd:restriction base="xsd:string" />
@@ -2280,6 +2280,16 @@
       <xsd:element minOccurs="0" name="kostnadVedAvslutningEllerEndringAvFastpriskontrakt" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvDekningskjoep">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="totaltDekningskjoep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="volumTotaltDekningskjoep" type="KiloWattimeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="dekningskjoepTilknyttetKonsesjonskraft" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="volumDekningskjoepTilknyttetKonsesjonskraft" type="KiloWattimeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="gjennomsnittligTotaltDekningskjoepPerKWh" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="gjennomsnittligDekningskjoepTilknyttetKonsesjonskraftPerKWh" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="GrunnlagForNaturressursskattPerInntektsaar">
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
@@ -2297,8 +2307,6 @@
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="konsesjonspris" type="KonsesjonsEllerKontraktspris" />
-      <xsd:element minOccurs="0" name="konsesjonskraft" type="KiloWattimeMedInnkapsling" />
       <xsd:element minOccurs="0" name="salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft" type="SalgsinntektFraKraftLevert" />
       <xsd:element minOccurs="0" name="bruttoSalgsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fradragForKostnader" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />

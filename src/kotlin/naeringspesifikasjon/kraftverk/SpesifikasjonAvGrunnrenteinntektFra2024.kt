@@ -68,6 +68,32 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
         }
 
+    internal val gjennomsnittligDekningskjoep = kalkyle("gjennomsnittligDekningskjoep") {
+        hvis (inntektsaar.tekniskInntektsaar >= 2026) {
+            forAlleForekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) {
+                hvis(
+                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_totaltDekningskjoep.harVerdi() &&
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_volumTotaltDekningskjoep.harVerdi()
+                ) {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_gjennomsnittligTotaltDekningskjoepPerKWh) {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_totaltDekningskjoep /
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_volumTotaltDekningskjoep
+                    }
+                }
+
+                hvis(
+                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_dekningskjoepTilknyttetKonsesjonskraft.harVerdi() &&
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_volumDekningskjoepTilknyttetKonsesjonskraft.harVerdi()
+                ) {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_gjennomsnittligDekningskjoepTilknyttetKonsesjonskraftPerKWh) {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_dekningskjoepTilknyttetKonsesjonskraft /
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_volumDekningskjoepTilknyttetKonsesjonskraft
+                    }
+                }
+            }
+        }
+    }
+
     internal val gevinstOgTapVedRealisasjonAvAnleggsmiddelSomBenyttesIKraftproduksjon =
         kalkyle("gevinstOgTapVedRealisasjonAvAnleggsmiddelSomBenyttesIKraftproduksjon") {
 
@@ -802,6 +828,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
             salgsinntekt,
+            gjennomsnittligDekningskjoep,
             gevinstOgTapVedRealisasjonAvAnleggsmiddelSomBenyttesIKraftproduksjon,
             skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon,
             investeringskostnadKnyttetTilKraftproduksjon,
