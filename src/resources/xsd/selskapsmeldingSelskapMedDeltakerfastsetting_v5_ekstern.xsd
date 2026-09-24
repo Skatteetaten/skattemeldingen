@@ -91,7 +91,7 @@
       <xsd:element minOccurs="0" name="gjeld" type="Gjeld" />
       <xsd:element minOccurs="0" name="samletVerdiFoerEventuellVerdsettingsrabatt" skatt:erAvledet="true" type="StortBeloepSomHeltallMedOverstyring" />
       <xsd:element minOccurs="0" name="samletGjeld" skatt:erAvledet="true" type="StortBeloepSomHeltallMedOverstyring" />
-      <xsd:element minOccurs="0" name="formueForSelskapMedDeltakerINokus" type="FormueForSelskapMedDeltakerINokus" />
+      <xsd:element minOccurs="0" name="formuesverdiTilFordelingPaaDeltaker" type="FormuesverdiTilFordelingPaaDeltaker"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="akvakulturtillatelseSomFormuesobjekt" type="AkvakulturtillatelseSomFormuesobjekt" />
     </xsd:sequence>
   </xsd:complexType>
@@ -338,7 +338,7 @@
       <xsd:element minOccurs="0" name="annenGjeld" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="FormueForSelskapMedDeltakerINokus">
+  <xsd:complexType name="FormuesverdiTilFordelingPaaDeltaker">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="kursverdiAvBoersnoterteAksjer" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="nettoformueFraForegaaendeInntektsaar" type="BeloepSomHeltallMedInnkapsling" />
@@ -1186,10 +1186,10 @@
   </xsd:complexType>
   <xsd:complexType name="FormuesverdiPaaDeltakersAksjerINokus">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="andelAvKursverdi1JanuarIAaretEtterInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvNettoSkattemessigFormueForrigeInntektsaar" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvNettoSkattemessigFormueIInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="andelAvAntattSalgsverdi1JanuarIAaretEtterInntektsaaret" type="BeloepSomHeltallMedInnkapsling" />
+       <xsd:element minOccurs="0" name="andelAvKursverdi1JanuarIAaretEtterInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+       <xsd:element minOccurs="0" name="andelAvNettoSkattemessigFormueForrigeInntektsaar" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+       <xsd:element minOccurs="0" name="andelAvNettoSkattemessigFormueIInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
+       <xsd:element minOccurs="0" name="andelAvAntattSalgsverdi1JanuarIAaretEtterInntektsaaret" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Desimaltall" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b52aef-9fe1-11e5-a9f8-e4115b280940">

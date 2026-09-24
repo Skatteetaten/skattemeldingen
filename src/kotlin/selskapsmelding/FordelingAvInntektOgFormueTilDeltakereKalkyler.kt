@@ -9,6 +9,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.s
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.erSdf
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modellV1
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modellV4
 
 
 object FordelingAvInntektOgFormueTilDeltakereKalkyler : HarKalkylesamling {
@@ -17,9 +18,12 @@ object FordelingAvInntektOgFormueTilDeltakereKalkyler : HarKalkylesamling {
         val nettoformue = modell.formueOgGjeld.nettoformue.tall()
         val nettogjeld = modell.formueOgGjeld.nettogjeld.tall()
         val nokusErBoersnotert = modell.opplysningOmSelskapMedDeltakerfastsetting.nokusErBoersnotert.erSann()
-        val kursverdiAvBoersnoterteAksjer = modell.formueForSelskapMedDeltakerINokus.kursverdiAvBoersnoterteAksjer.tall()
-        val nettoformueFraForegaaendeInntektsaar = modell.formueForSelskapMedDeltakerINokus.nettoformueFraForegaaendeInntektsaar.tall()
-        val antattSalgsverdiVedUtgangenAvInntektsaaret = modell.formueForSelskapMedDeltakerINokus.antattSalgsverdiVedUtgangenAvInntektsaaret.tall()
+        val kursverdiAvBoersnoterteAksjer =
+            if (inntektsaar.tekniskInntektsaar >= 2026) modell.formuesverdiTilFordelingPaaDeltaker.kursverdiAvBoersnoterteAksjer.tall() else modellV4.formueForSelskapMedDeltakerINokus.kursverdiAvBoersnoterteAksjer.tall()
+        val nettoformueFraForegaaendeInntektsaar =
+            if (inntektsaar.tekniskInntektsaar >= 2026) modell.formuesverdiTilFordelingPaaDeltaker.nettoformueFraForegaaendeInntektsaar.tall() else modellV4.formueForSelskapMedDeltakerINokus.nettoformueFraForegaaendeInntektsaar.tall()
+        val antattSalgsverdiVedUtgangenAvInntektsaaret =
+            if (inntektsaar.tekniskInntektsaar >= 2026) modell.formuesverdiTilFordelingPaaDeltaker.antattSalgsverdiVedUtgangenAvInntektsaaret.tall() else modellV4.formueForSelskapMedDeltakerINokus.antattSalgsverdiVedUtgangenAvInntektsaaret.tall()
         val erNokus = erNokus()
 
         forekomsterAv(modell.deltaker) forHverForekomst {
