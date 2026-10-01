@@ -10,8 +10,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2020
 
 /**
- * Saldogruppe A og B håndteres helt likt.
- *
  * Spec: https://wiki.sits.no/display/SIR/FR-Spes+av+bal+-+Anleggsmidler
  */
 internal object SaldoavskrevetAnleggsmiddel2020 : HarKalkylesamling {
