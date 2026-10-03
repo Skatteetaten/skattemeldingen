@@ -164,7 +164,7 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="samletEiendomsskattegrunnlag" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletGrunnlagForNaturressursskatt" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling" />
-      <xsd:element maxOccurs="unbounded" name="spesifikasjonPerKraftverk" type="SpesifikasjonPerKraftverk" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonPerKraftverk" type="SpesifikasjonPerKraftverk" />
       <xsd:element minOccurs="0" name="samordnetGrunnrenteinntekt" type="SamordnetGrunnrenteinntekt" />
       <xsd:element minOccurs="0" name="ubenyttetSkattefradragForNaturressursskattTidligereAar" type="UbenyttetSkattefradragForNaturressursskattTidligereAar" />
     </xsd:sequence>
