@@ -5,18 +5,13 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.rederi.restFremfoertUnderskudd
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.util.RederiUtil
 
 object InntektFoerFradragForEventueltAvgittKonsernbidrag : HarKalkylesamling {
 
     internal val aaretsAnvendelseAvFremfoertUnderskuddFraTidligereAarKalkyle = kalkyle {
-        val underhaandsakkordMotregnetFremfoertUnderskudd = minsteVerdiAv(
-            modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall(),
-            modell.inntektOgUnderskudd.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
-        )
-        val restFremfoertUnderskudd =
-            modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar -
-                underhaandsakkordMotregnetFremfoertUnderskudd
+        val restFremfoertUnderskudd = restFremfoertUnderskudd()
         hvis(
             (!harForekomsterAv(modell.inntektOgUnderskuddForVirksomhetPaaSokkel) &&
                 !RederiUtil.skalBeregneRederi(RederiUtil.beskatningsordning.verdi()))

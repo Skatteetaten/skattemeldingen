@@ -2750,7 +2750,6 @@
   <xsd:complexType name="FremfoertUtenlandskSkatt" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/cf247fd7-dfe5-11e7-9101-005056821322">
     <xsd:sequence>
       <xsd:element maxOccurs="5" minOccurs="0" name="fremfoertUtenlandskSkattPerInntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/cf247fd7-dfe5-11e7-9101-005056821322" type="FremfoertUtenlandskSkattPerInntektsaar" />
-      <xsd:element minOccurs="0" name="samletFremfoertUtenlandskFormuesskatt" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="samletFremfoertUtenlandskInntektsskatt" skatt:erAvledet="true" type="BeloepSomHeltall" />
     </xsd:sequence>
   </xsd:complexType>
@@ -3373,7 +3372,6 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="inntektsaar" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/20b2e14a-9fe1-11e5-a9f8-e4115b280940" type="AarstallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fremfoertUtenlandskFormuesskatt" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/9c33fd1c-2964-11e6-b2bc-96405985e0fa" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fremfoertUtenlandskInntektsskatt" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/9c33fd1d-2964-11e6-b2bc-96405985e0fa" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>

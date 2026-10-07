@@ -2750,7 +2750,6 @@
   <xsd:complexType name="FremfoertUtenlandskSkatt">
     <xsd:sequence>
       <xsd:element maxOccurs="5" minOccurs="0" name="fremfoertUtenlandskSkattPerInntektsaar" type="FremfoertUtenlandskSkattPerInntektsaar" />
-      <xsd:element minOccurs="0" name="samletFremfoertUtenlandskFormuesskatt" skatt:erAvledet="true" type="BeloepSomHeltall" />
       <xsd:element minOccurs="0" name="samletFremfoertUtenlandskInntektsskatt" skatt:erAvledet="true" type="BeloepSomHeltall" />
     </xsd:sequence>
   </xsd:complexType>
@@ -3373,7 +3372,6 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="inntektsaar" type="AarstallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="fremfoertUtenlandskFormuesskatt" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="fremfoertUtenlandskInntektsskatt" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>

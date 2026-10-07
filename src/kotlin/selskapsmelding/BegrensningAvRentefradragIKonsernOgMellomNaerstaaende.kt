@@ -591,7 +591,7 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
 
             val satser = satser!!
             forAlleForekomsterAv(modell.rentebegrensning) {
-                hvis(erNokus && forekomstType.deltakerrolle lik Deltakerrolle.personligDeltakerINokus) {
+                hvis(erNokus && (forekomstType.deltakerrolle lik Deltakerrolle.personligDeltakerINokus || forekomstType.deltakerrolle lik Deltakerrolle.annenDeltakerINokus)) {
                     underskudd = underskuddINokus
                 }
                 val inntektEllerUnderskudd =

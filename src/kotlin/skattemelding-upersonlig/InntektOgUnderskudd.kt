@@ -6,6 +6,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV3
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.kalkyle.kalkyler.rederi.restFremfoertUnderskudd
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.util.RederiUtil
 
 object InntektOgUnderskudd : HarKalkylesamling {
@@ -113,15 +114,10 @@ object InntektOgUnderskudd : HarKalkylesamling {
     }
 
     internal val fremfoerbartUnderskuddIInntektKalkyle = kalkyle {
-        hvis(!harForekomsterAv(modell.inntektOgUnderskuddForVirksomhetPaaSokkel)) {
-            val underhaandsakkordMotregnetFremfoertUnderskudd = minsteVerdiAv(
-                modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar.tall(),
-                modell.inntektOgUnderskudd.underskuddTilFremfoering_oppnaaddUnderhaandsakkordOgGjeldsettergivelse.tall()
-            )
-
-            val restFremfoertUnderskudd =
-                modell.inntektOgUnderskudd.underskuddTilFremfoering_fremfoertUnderskuddFraTidligereAar -
-                    underhaandsakkordMotregnetFremfoertUnderskudd
+        hvis(
+            !harForekomsterAv(modell.inntektOgUnderskuddForVirksomhetPaaSokkel)
+        ) {
+            val restFremfoertUnderskudd = restFremfoertUnderskudd()
 
             val restOppnaaddUnderhaandsakkordOgGjeldsettergivelseMotregnetSamletUnderskudd = minsteVerdiAv(
                 modell.inntektOgUnderskudd.samletUnderskudd.tall(),
