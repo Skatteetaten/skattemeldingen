@@ -132,6 +132,10 @@ object FormueOgGjeld : HarKalkylesamling {
                     }
                 }
 
+            val formuesverdiForSkogeiendom = forekomsterAv(modell.formuesgrunnlagSkogeiendomINorge) summerVerdiFraHverForekomst {
+                forekomstType.formuesverdiForFormuesandel.tall()
+            }
+
             val formueOgInntektISelskapMedDeltakerfastsetting =
                 forekomsterAv(modell.deltakersAndelAvFormueOgInntekt) der {
                     forekomstType.kommunenummer.verdi() != KOMMUNENUMMER_SVALBARD
@@ -156,6 +160,7 @@ object FormueOgGjeld : HarKalkylesamling {
             val sumFormuesverdiForFormuesandel =
                 formuesverdiForFormuesobjekt +
                     formuesverdiForFastEiendom +
+                    formuesverdiForSkogeiendom +
                     formueOgInntektISelskapMedDeltakerfastsetting +
                     formueAkvakultur +
                     formuesverdiForKapitalisertFesteavgift
@@ -319,6 +324,11 @@ object FormueOgGjeld : HarKalkylesamling {
                 }
             }
 
+        val verdiFoerVerdsettingsrabattForSkogeiendom =
+            forekomsterAv(modell.formuesgrunnlagSkogeiendomINorge) summerVerdiFraHverForekomst {
+                forekomstType.verdiFoerVerdsettingsrabattForFormuesandel.tall()
+            }
+
         val formueOgInntektISelskapMedDeltakerfastsetting =
             forekomsterAv(modell.deltakersAndelAvFormueOgInntekt) der {
                 KOMMUNENUMMER_SVALBARD != forekomstType.kommunenummer.verdi()
@@ -336,6 +346,7 @@ object FormueOgGjeld : HarKalkylesamling {
         val sumVerdiFoerVerdsettingsrabatt =
             verdiFoerVerdsettingsrabattFormuesobjekt +
                 verdiFoerVerdsettingsrabattForFormuesandelForFastEiendom +
+                verdiFoerVerdsettingsrabattForSkogeiendom +
                 verdiFoerVerdsettingsrabattKapitalisertFesteavgift +
                 formueOgInntektISelskapMedDeltakerfastsetting
         return sumVerdiFoerVerdsettingsrabatt

@@ -1,14 +1,23 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk
 
 import java.math.BigDecimal
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.erTryggAaDelePaa
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.somHeltall
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.KodeVerdi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v7_2026.v7
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erFradrag
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erTillegg
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.grunnlagIBeregningAvSelskapsskatt
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.inntektIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.kontraktstypeForKraftLevertAvKraftverk
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
@@ -20,48 +29,160 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
  * Spec: https://wiki.sits.no/display/SIR/FR+-+Beregnet+formuesverdi+og+grunnlag+for+beregning+av+særskilt+eiendomsskattegrunnlag
  */
 internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
-    private val salgsinntekt =
+
+    /**
+     * Oppretter en beregnet type/beloep-forekomst under spesifikasjonAvInntektIBruttoGrunnrenteinntektIVannkraftverk
+     * for inntektsaar >= 2026. Speiler mønsteret fra KontraktForVannkraftverk/vindkraft (opprettNySubforekomstAv +
+     * medId + medFelt).
+     */
+    private fun ForekomstKontekst<v7.kraftverk_spesifikasjonAvKraftverkForekomst>.opprettNyForekomstInntektIBruttoGrunnrenteinntektIVannkraftverk(
+        kodeverdi: KodeVerdi,
+        beloep: BigDecimal?
+    ) {
+        if (beloep != null) {
+            val forekomsttype =
+                forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVannkraftverk
+            opprettNySubforekomstAv(forekomsttype) {
+                medId(kodeverdi.kode)
+                medFelt(forekomsttype.type, kodeverdi.kode)
+                medFelt(forekomsttype.beloep, beloep)
+            }
+        }
+    }
+
+    private fun ForekomstKontekst<v7.kraftverk_spesifikasjonAvKraftverkForekomst>.opprettNyForekomstFradragIBruttoGrunnrenteinntektIVannkraftverk(
+        kodeverdi: KodeVerdi,
+        beloep: BigDecimal?
+    ) {
+        if (beloep != null) {
+            val forekomsttype =
+                forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVannkraftverk
+            opprettNySubforekomstAv(forekomsttype) {
+                medId(kodeverdi.kode)
+                medFelt(forekomsttype.type, kodeverdi.kode)
+                medFelt(forekomsttype.beloep, beloep)
+            }
+        }
+    }
+
+    /**
+     * Tilsvarende for spesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVannkraftverk (en annen kodeliste enn
+     * inntektOgFradragIGrunnrente).
+     */
+    private fun ForekomstKontekst<v7.kraftverk_spesifikasjonAvKraftverkForekomst>.opprettNyForekomstGrunnlagIBeregningAvSelskapsskattIVannkraftverk(
+        kodeverdi: KodeVerdi,
+        beloep: BigDecimal?
+    ) {
+        if (beloep != null) {
+            val forekomsttype =
+                forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVannkraftverk
+            opprettNySubforekomstAv(forekomsttype) {
+                medId(kodeverdi.kode)
+                medFelt(forekomsttype.type, kodeverdi.kode)
+                medFelt(forekomsttype.beloep, beloep)
+            }
+        }
+    }
+
+    internal val salgsinntekt =
         kalkyle("salgsinntekt") {
             val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
-                hvis(
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon.harVerdi() &&
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_konsesjonsEllerKontraktspris.harVerdi()
-                ) {
-                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt) {
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon *
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_konsesjonsEllerKontraktspris
-                    }
-                }
-
-                hvis(
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_produksjon.harVerdi() &&
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_konsesjonsEllerKontraktspris.harVerdi()
-                ) {
-                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt) {
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_produksjon *
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_konsesjonsEllerKontraktspris
-                    }
-                }
-
-                hvis(
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_produksjon.harVerdi() &&
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_konsesjonsEllerKontraktspris.harVerdi()
-                ) {
-                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt) {
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_produksjon *
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_konsesjonsEllerKontraktspris
-                    }
-                }
-
                 if (tekniskInntektsaar <= 2025) {
+                    hvis(
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon.harVerdi() &&
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_konsesjonsEllerKontraktspris.harVerdi()
+                    ) {
+                        settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt) {
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon *
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_konsesjonsEllerKontraktspris
+                        }
+                    }
+
+                    hvis(
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_produksjon.harVerdi() &&
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_konsesjonsEllerKontraktspris.harVerdi()
+                    ) {
+                        settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt) {
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_produksjon *
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_konsesjonsEllerKontraktspris
+                        }
+                    }
+
+                    hvis(
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_produksjon.harVerdi() &&
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_konsesjonsEllerKontraktspris.harVerdi()
+                    ) {
+                        settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt) {
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_produksjon *
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_konsesjonsEllerKontraktspris
+                        }
+                    }
+
                     forekomsterAv(modell2025.kraftverk_spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftLevertIhtKontrakt) der {
                         forekomstType.produksjon.harVerdi() && forekomstType.konsesjonsEllerKontraktspris.harVerdi()
                     } forHverForekomst {
                         settFelt(forekomstType.salgsinntekt) {
                             forekomstType.produksjon * forekomstType.konsesjonsEllerKontraktspris
+                        }
+                    }
+                } else {
+                    hvis(
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_produksjon.harVerdi() &&
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_konsesjonsEllerKontraktspris.harVerdi()
+                    ) {
+                        settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_salgsinntekt) {
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_produksjon *
+                                forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_konsesjonsEllerKontraktspris
+                        }
+                    }
+
+                    hvis(
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_produksjon.harVerdi() &&
+                            forekomstType.spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_konsesjonsEllerKontraktspris.harVerdi()
+                    ) {
+                        settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt) {
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_produksjon *
+                                forekomstType.spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_konsesjonsEllerKontraktspris
+                        }
+                    }
+                }
+            }
+        }
+
+    internal val oevrigAarsproduksjonProduksjonFra2026 =
+        kalkyle("oevrigAarsproduksjonProduksjon") {
+            hvis(inntektsaar.tekniskInntektsaar >= 2026) {
+                val sumVolumIKWIInntektsaaret =
+                    forekomsterAv(modell.kontraktForVannkraftverk.spesifikasjonAvKontraktIVannkraftverk) summerVerdiFraHverForekomst {
+                        forekomstType.volumIKWIInntektsaaret.tall()
+                    }
+                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
+                    samletPaastempletMerkeytelseIKvaOverGrense()
+                } forHverForekomst {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_produksjon) {
+                        (forekomstType.totalAarsproduksjon -
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_produksjon -
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_produksjon -
+                            sumVolumIKWIInntektsaaret +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_volumTotaltDekningskjoep).somHeltall()
+                    }
+                }
+            }
+        }
+
+    internal val oevrigAarsproduksjonSpotmarkedsprisFra2026 =
+        kalkyle("oevrigAarsproduksjonSpotmarkedspris") {
+            hvis(inntektsaar.tekniskInntektsaar >= 2026) {
+                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
+                    samletPaastempletMerkeytelseIKvaOverGrense()
+                } forHverForekomst {
+                    hvis(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_produksjon.tall().erTryggAaDelePaa()) {
+                        settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_spotmarkedspris) {
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_salgsinntekt /
+                                forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_produksjon
                         }
                     }
                 }
@@ -96,6 +217,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
 
     internal val gevinstOgTapVedRealisasjonAvAnleggsmiddelSomBenyttesIKraftproduksjon =
         kalkyle("gevinstOgTapVedRealisasjonAvAnleggsmiddelSomBenyttesIKraftproduksjon") {
+            val inntektsaar = inntektsaar
 
             fun summerInntektFraGevinstOgTapskonto(loepenummer: String?): BigDecimal? {
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk) der {
@@ -116,18 +238,31 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon) {
-                    summerInntektFraGevinstOgTapskonto(forekomstType.loepenummer.verdi())
-                }
+                if (inntektsaar.tekniskInntektsaar <= 2025) {
+                    settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon) {
+                        summerInntektFraGevinstOgTapskonto(forekomstType.loepenummer.verdi())
+                    }
 
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon) {
-                    summerInntektsfradragFraGevinstOgTapskonto(forekomstType.loepenummer.verdi()).absoluttverdi()
+                    settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon) {
+                        summerInntektsfradragFraGevinstOgTapskonto(forekomstType.loepenummer.verdi()).absoluttverdi()
+                    }
+                } else {
+                    opprettNyForekomstInntektIBruttoGrunnrenteinntektIVannkraftverk(
+                        inntektIGrunnrente.kode_gevinstVedRealisasjonAvSaerskiltDriftsmiddelBenyttetIVannkraftproduksjon,
+                        summerInntektFraGevinstOgTapskonto(forekomstType.loepenummer.verdi())
+                    )
+
+                    opprettNyForekomstFradragIBruttoGrunnrenteinntektIVannkraftverk(
+                        fradragIGrunnrente.kode_tapVedRealisasjonAvSaerskiltDriftsmiddelBenyttetIVannkraftproduksjon,
+                        summerInntektsfradragFraGevinstOgTapskonto(forekomstType.loepenummer.verdi()).absoluttverdi()
+                    )
                 }
             }
         }
 
-    private val skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon =
+    internal val skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon =
         kalkyle("skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon") {
+            val inntektsaar = inntektsaar
             fun summerSaerskiltAnleggsmiddelAaretsAvskrivning(loepenummer: String?): BigDecimal? {
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk) der {
                     forekomstType.kraftverketsLoepenummer.verdi() == loepenummer &&
@@ -243,14 +378,27 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon) {
-                    summerSaerskiltAnleggsmiddelAaretsAvskrivning(forekomstType.loepenummer.verdi()) +
-                        summerSaldoavskrevetAnleggsmiddelAaretsAvskrivning(forekomstType.loepenummer.verdi()) +
-                        summerLineaertavskrevetAnleggsmiddelAaaretsAvskrivning(forekomstType.loepenummer.verdi()) -
-                        summerSaldoavskrevetAnleggsmiddelAaretsInntektAvNegativSaldo(forekomstType.loepenummer.verdi()) -
-                        summerSaldoavskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi()) -
-                        summerLineaertAvskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi()) -
-                        summerIkkeAvskrivbartAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi())
+                if (inntektsaar.tekniskInntektsaar <= 2025) {
+                    settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon) {
+                        summerSaerskiltAnleggsmiddelAaretsAvskrivning(forekomstType.loepenummer.verdi()) +
+                            summerSaldoavskrevetAnleggsmiddelAaretsAvskrivning(forekomstType.loepenummer.verdi()) +
+                            summerLineaertavskrevetAnleggsmiddelAaaretsAvskrivning(forekomstType.loepenummer.verdi()) -
+                            summerSaldoavskrevetAnleggsmiddelAaretsInntektAvNegativSaldo(forekomstType.loepenummer.verdi()) -
+                            summerSaldoavskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi()) -
+                            summerLineaertAvskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi()) -
+                            summerIkkeAvskrivbartAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi())
+                    }
+                } else {
+                    opprettNyForekomstFradragIBruttoGrunnrenteinntektIVannkraftverk(
+                        fradragIGrunnrente.kode_skattemessigAvskrivningAvDriftsmiddelBenyttetIVannkraftproduksjon,
+                        summerSaerskiltAnleggsmiddelAaretsAvskrivning(forekomstType.loepenummer.verdi()) +
+                            summerSaldoavskrevetAnleggsmiddelAaretsAvskrivning(forekomstType.loepenummer.verdi()) +
+                            summerLineaertavskrevetAnleggsmiddelAaaretsAvskrivning(forekomstType.loepenummer.verdi()) -
+                            summerSaldoavskrevetAnleggsmiddelAaretsInntektAvNegativSaldo(forekomstType.loepenummer.verdi()) -
+                            summerSaldoavskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi()) -
+                            summerLineaertAvskrevetAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi()) -
+                            summerIkkeAvskrivbartAnleggsmiddelAaretsInntektsfoeringAvGevinst(forekomstType.loepenummer.verdi())
+                    )
                 }
             }
         }
@@ -359,12 +507,23 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_investeringskostnadKnyttetTilKraftproduksjon) {
-                    investeringskostnadKnyttetTilSaerskilteAnleggsmidler(forekomstType.loepenummer.verdi()) +
-                        investeringskostnadKnyttetTilSaldoavskrevetAnleggsmidler(forekomstType.loepenummer.verdi()) +
-                        investeringskostnadKnyttetTilLineaertavskrevetAnleggsmidler(forekomstType.loepenummer.verdi()) +
-                        investeringskostnadKnyttetTilIkkeAvskrivbarAnleggsmidler(forekomstType.loepenummer.verdi()) +
-                        investeringskostnadKnyttetAnleggsmiddelUnderUtfoerelse(forekomstType.loepenummer.verdi())
+                if (tekniskInntektsaar <= 2025) {
+                    settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_investeringskostnadKnyttetTilKraftproduksjon) {
+                        investeringskostnadKnyttetTilSaerskilteAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            investeringskostnadKnyttetTilSaldoavskrevetAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            investeringskostnadKnyttetTilLineaertavskrevetAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            investeringskostnadKnyttetTilIkkeAvskrivbarAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            investeringskostnadKnyttetAnleggsmiddelUnderUtfoerelse(forekomstType.loepenummer.verdi())
+                    }
+                } else {
+                    opprettNyForekomstFradragIBruttoGrunnrenteinntektIVannkraftverk(
+                        fradragIGrunnrente.kode_investeringskostnad,
+                        investeringskostnadKnyttetTilSaerskilteAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            investeringskostnadKnyttetTilSaldoavskrevetAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            investeringskostnadKnyttetTilLineaertavskrevetAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            investeringskostnadKnyttetTilIkkeAvskrivbarAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            investeringskostnadKnyttetAnleggsmiddelUnderUtfoerelse(forekomstType.loepenummer.verdi())
+                    )
                 }
             }
 
@@ -372,6 +531,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
 
     val aaretsAvskrivningPaaAnleggsmiddelSomErDirekteUtgiftsfoertgrunnlag_GrunnlagForBeregningAvSelskapsskatt =
         kalkyle("aaretsAvskrivningPaaAnleggsmiddelSomErDirekteUtgiftsfoertgrunnlag_GrunnlagForBeregningAvSelskapsskatt") {
+            val inntektsaar = inntektsaar
 
             val satser = satser!!
             val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
@@ -423,82 +583,190 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                 }
             }
 
+            hvis(inntektsaar.tekniskInntektsaar >= 2026) {
+                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
+                    samletPaastempletMerkeytelseIKvaOverGrense()
+                } forHverForekomst {
+                    opprettNyForekomstGrunnlagIBeregningAvSelskapsskattIVannkraftverk(
+                        grunnlagIBeregningAvSelskapsskatt.kode_aaretsAvskrivningPaaAnleggsmiddelSomErDirekteUtgiftsfoert,
+                        (aaretsAvkastningSaerskilteAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            aaretsAvskrivningSaldoavskrevetAnleggsmidler(forekomstType.loepenummer.verdi()) +
+                            aaretsAvskrivningLineaertavskrevetAnleggsmidler(forekomstType.loepenummer.verdi())).somHeltall()
+                    )
+                }
+            }
+
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt) {
-                    (forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt -
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_dekningskjoep +
-                        summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) -
-                        summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_driftsstoetteTilProduksjonAvNyVannkraft +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_inntektFraUtstedtElsertifikat +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_opprinnelsesgaranti +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_inntektVedAvslutningEllerEndringAvFastpriskontrakt -
-                        (forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_driftskostnad +
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadTilPumpingAvKraft +
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_konsesjonsavgift +
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_eiendomsskatt +
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon +
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
-                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsAvskrivningPaaAnleggsmiddelKnyttetTilVannkraftverkSomErDirekteUtgiftsfoert +
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadVedAvslutningEllerEndringAvFastpriskontrakt
-                            )).somHeltall()
-                }
-
-                hvis(
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt
-                        .stoerreEllerLik(0)
-                ) {
-                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet) {
-                        (forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt *
-                            satser.sats(Sats.skattPaaAlminneligInntekt_sats)).somHeltall()
-                    }
-                }
-
-                hvis(
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt
-                        .mindreEnn(0)
-                ) {
-                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet) {
-                        (forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt *
-                            satser.sats(Sats.skattPaaAlminneligInntekt_sats)).somHeltall().absoluttverdi()
-                    }
-                }
-
-                hvis(
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                        stoerreEnn 0 &&
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                        stoerreEllerLik
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet
-                ) {
-                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()
+                if (tekniskInntektsaar <= 2025) {
+                    settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt) {
+                        (felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt -
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_dekningskjoep +
+                            summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) -
+                            summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_driftsstoetteTilProduksjonAvNyVannkraft +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_inntektFraUtstedtElsertifikat +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_opprinnelsesgaranti +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_inntektVedAvslutningEllerEndringAvFastpriskontrakt -
+                            (felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_driftskostnad +
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadTilPumpingAvKraft +
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_konsesjonsavgift +
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_eiendomsskatt +
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon +
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsAvskrivningPaaAnleggsmiddelKnyttetTilVannkraftverkSomErDirekteUtgiftsfoert +
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadVedAvslutningEllerEndringAvFastpriskontrakt
+                                )).somHeltall()
                     }
 
-                }
-
-                hvis(
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                        stoerreEnn 0 &&
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
-                        mindreEnn
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet
-                ) {
-                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()
+                    hvis(
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt
+                            .stoerreEllerLik(0)
+                    ) {
+                        settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet) {
+                            (felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt *
+                                satser.sats(Sats.skattPaaAlminneligInntekt_sats)).somHeltall()
+                        }
                     }
-                }
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoerbarBeregnetNegativSelskapsskatt) {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar -
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt +
-                            forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet
+
+                    hvis(
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt
+                            .mindreEnn(0)
+                    ) {
+                        settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet) {
+                            (felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_grunnlagForBeregningAvSelskapsskatt *
+                                satser.sats(Sats.skattPaaAlminneligInntekt_sats)).somHeltall().absoluttverdi()
+                        }
+                    }
+
+                    hvis(
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            stoerreEnn 0 &&
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            stoerreEllerLik
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet
+                    ) {
+                        settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()
+                        }
+                    }
+
+                    hvis(
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            stoerreEnn 0 &&
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            mindreEnn
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet
+                    ) {
+                        settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()
+                        }
+                    }
+                    settFelt(felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoerbarBeregnetNegativSelskapsskatt) {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_fremfoertBeregnetNegativSelskapsskattFraTidligereAar -
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt +
+                                felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet
+                    }
+                } else {
+                    val sumInntektIGrunnrente =
+                        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVannkraftverk) der {
+                            forekomstType.type likEnAv InntektOgFradragIGrunnrente.inntekterIGrunnrenteVannkraft(inntektsaar)
+                        } summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
+                        }
+
+                    val sumFradragIGrunnrente =
+                        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVannkraftverk) der {
+                            forekomstType.type likEnAv InntektOgFradragIGrunnrente.fradragIGrunnrenteVannkraft(inntektsaar) &&
+                                forekomstType.type ulik fradragIGrunnrente.kode_investeringskostnad
+                        } summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
+                        }
+
+                    val sumGrunnlagTillegg =
+                        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVannkraftverk) der {
+                            forekomstType.type likEnAv GrunnlagIBeregningAvSelskapsskatt.koderVannkraft(inntektsaar)
+                        } summerVerdiFraHverForekomst {
+                            if (forekomstType.type.verdi().erTillegg(inntektsaar)) {
+                                forekomstType.beloep.tall()
+                            } else {
+                                BigDecimal.ZERO
+                            }
+                        }
+
+                    val sumGrunnlagFradrag =
+                        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVannkraftverk) der {
+                            forekomstType.type likEnAv GrunnlagIBeregningAvSelskapsskatt.koderVannkraft(inntektsaar)
+                        } summerVerdiFraHverForekomst {
+                            if (forekomstType.type.verdi().erFradrag(inntektsaar)) {
+                                forekomstType.beloep.tall()
+                            } else {
+                                BigDecimal.ZERO
+                            }
+                        }
+
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_grunnlagForBeregningAvSelskapsskatt) {
+                        (forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_salgsinntekt +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_salgsinntekt +
+                            sumInntektIGrunnrente + sumGrunnlagTillegg -
+                            sumFradragIGrunnrente - sumGrunnlagFradrag).somHeltall()
+                    }
+
+                    hvis(
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_grunnlagForBeregningAvSelskapsskatt
+                            .stoerreEllerLik(0)
+                    ) {
+                        settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet) {
+                            (forekomstType.spesifikasjonAvGrunnrenteinntekt_grunnlagForBeregningAvSelskapsskatt *
+                                satser.sats(Sats.skattPaaAlminneligInntekt_sats)).somHeltall()
+                        }
+                    }
+
+                    hvis(
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_grunnlagForBeregningAvSelskapsskatt
+                            .mindreEnn(0)
+                    ) {
+                        settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet) {
+                            (forekomstType.spesifikasjonAvGrunnrenteinntekt_grunnlagForBeregningAvSelskapsskatt *
+                                satser.sats(Sats.skattPaaAlminneligInntekt_sats)).somHeltall().absoluttverdi()
+                        }
+                    }
+
+                    hvis(
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            stoerreEnn 0 &&
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            stoerreEllerLik
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet
+                    ) {
+                        settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet.tall()
+                        }
+                    }
+
+                    hvis(
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            stoerreEnn 0 &&
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar
+                            mindreEnn
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet
+                    ) {
+                        settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt) {
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar.tall()
+                        }
+                    }
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_fremfoerbarBeregnetNegativSelskapsskatt) {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_fremfoertBeregnetNegativSelskapsskattFraTidligereAar -
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt +
+                                forekomstType.spesifikasjonAvGrunnrenteinntekt_aaretsBeregnedeNegativeSelskapsskattPaaGrunnrentepliktigVirksomhet
+                    }
                 }
             }
         }
@@ -521,38 +789,67 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
         } else null
 
-    private val samletBruttoInntektOgFradragIGrunnrenteinntekt =
+    internal val samletBruttoInntektOgFradragIGrunnrenteinntekt =
         kalkyle("samletBruttoInntektIGrunnrenteinntekt") {
+            val inntektsaar = inntektsaar
             val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
             forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                 samletPaastempletMerkeytelseIKvaOverGrense()
             } forHverForekomst {
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_samletBruttoInntektIGrunnrenteinntekt) {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt -
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_dekningskjoep +
-                        summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) -
-                        summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_driftsstoetteTilProduksjonAvNyVannkraft +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_inntektFraUtstedtElsertifikat +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_opprinnelsesgaranti +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_inntektVedAvslutningEllerEndringAvFastpriskontrakt
-                }
-                settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_samletBruttoFradragIGrunnrenteinntekt) {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_driftskostnad +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadTilPumpingAvKraft +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_konsesjonsavgift +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_eiendomsskatt +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_investeringskostnadKnyttetTilKraftproduksjon +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet -
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt +
-                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadVedAvslutningEllerEndringAvFastpriskontrakt
+                if (tekniskInntektsaar <= 2025) {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_samletBruttoInntektIGrunnrenteinntekt) {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt -
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_dekningskjoep +
+                            summenAvSalgsinntektFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) -
+                            summenAvDekningskjoepFraAlleForekomsterKraftLevertIhtKontrakt(tekniskInntektsaar) +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_gevinstVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_driftsstoetteTilProduksjonAvNyVannkraft +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_inntektFraUtstedtElsertifikat +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_opprinnelsesgaranti +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_inntektVedAvslutningEllerEndringAvFastpriskontrakt
+                    }
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_samletBruttoFradragIGrunnrenteinntekt) {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_driftskostnad +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadTilPumpingAvKraft +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_konsesjonsavgift +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_eiendomsskatt +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvSaerskiltAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_tapVedRealisasjonAvOrdinaertAnleggsmiddelSomBenyttesIKraftproduksjon +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_investeringskostnadKnyttetTilKraftproduksjon +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetSelskapsskatt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet -
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoering_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt +
+                            felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_kostnadVedAvslutningEllerEndringAvFastpriskontrakt
+                    }
+                } else {
+                    val sumInntektIGrunnrente =
+                        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntektIVannkraftverk) der {
+                            forekomstType.type likEnAv InntektOgFradragIGrunnrente.inntekterIGrunnrenteVannkraft(inntektsaar)
+                        } summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
+                        }
+
+                    val sumFradragIGrunnrente =
+                        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVannkraftverk) der {
+                            forekomstType.type likEnAv InntektOgFradragIGrunnrente.fradragIGrunnrenteVannkraft(inntektsaar)
+                        } summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
+                        }
+
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_samletBruttoInntektIGrunnrenteinntekt) {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_salgsinntekt +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_salgsinntekt +
+                            sumInntektIGrunnrente
+                    }
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_samletBruttoFradragIGrunnrenteinntekt) {
+                        sumFradragIGrunnrente +
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_aaretsBeregnedeSelskapsskattPaaGrunnrentepliktigVirksomhet -
+                            forekomstType.spesifikasjonAvGrunnrenteinntekt_beregnetNegativSelskapsskattTilFremfoeringIVannkraftverk_aaretsAnvendelseAvFremfoertBeregnetNegativSelskapsskatt
+                    }
                 }
             }
         }
@@ -783,19 +1080,32 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
     }
 
     internal val samletVolumForOevrigKraftsalg = kalkyle("samletVolumForOevrigKraftsalg") {
+        val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
         forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
             val kraftTattUtIhtKonsesjonProduksjon =
                 forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon.tall()
+                    if (tekniskInntektsaar <= 2025) {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_produksjon.tall()
+                    } else {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_produksjon.tall()
+                    }
                 }
             val kraftForbruktIEgenProduksjonsvirksomhetProduksjon =
                 forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_produksjon.tall()
+                    if (tekniskInntektsaar <= 2025) {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_produksjon.tall()
+                    } else {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_produksjon.tall()
+                    }
                 }
 
             val oevrigAarsproduksjonProduksjon =
                 forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_produksjon.tall()
+                    if (tekniskInntektsaar <= 2025) {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_produksjon.tall()
+                    } else {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_produksjon.tall()
+                    }
                 }
             settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletVolumForOevrigKraftsalg) {
                 kraftTattUtIhtKonsesjonProduksjon + kraftForbruktIEgenProduksjonsvirksomhetProduksjon + oevrigAarsproduksjonProduksjon
@@ -804,19 +1114,32 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
     }
 
     internal val samletSalgsinntektForOevrigKraftsalg = kalkyle("samletSalgsinntektForOevrigKraftsalg") {
+        val tekniskInntektsaar = inntektsaar.tekniskInntektsaar
         forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
             val kraftTattUtIhtKonsesjonSalgsinntekt =
                 forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt.tall()
+                    if (tekniskInntektsaar <= 2025) {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftTattUtIhtKonsesjon_salgsinntekt.tall()
+                    } else {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftTattUtIhtKonsesjon_salgsinntekt.tall()
+                    }
                 }
             val kraftForbruktIEgenProduksjonsvirksomhetSalgsinntekt =
                 forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt.tall()
+                    if (tekniskInntektsaar <= 2025) {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt.tall()
+                    } else {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_kraftForbruktIEgenProduksjonsvirksomhet_salgsinntekt.tall()
+                    }
                 }
 
             val oevrigAarsproduksjonSalgsinntekt =
                 forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt.tall()
+                    if (tekniskInntektsaar <= 2025) {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvInntektIBruttoGrunnrenteinntekt_oevrigAarsproduksjon_salgsinntekt.tall()
+                    } else {
+                        forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_salgsinntekt.tall()
+                    }
                 }
             settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_oevrigTilVisningAvKontraktsinformasjonPerVannkraftverk_samletSalgsinntektForOevrigKraftsalg) {
                 kraftTattUtIhtKonsesjonSalgsinntekt + kraftForbruktIEgenProduksjonsvirksomhetSalgsinntekt + oevrigAarsproduksjonSalgsinntekt
@@ -828,6 +1151,8 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
             salgsinntekt,
+            oevrigAarsproduksjonProduksjonFra2026,
+            oevrigAarsproduksjonSpotmarkedsprisFra2026,
             gjennomsnittligDekningskjoep,
             gevinstOgTapVedRealisasjonAvAnleggsmiddelSomBenyttesIKraftproduksjon,
             skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon,

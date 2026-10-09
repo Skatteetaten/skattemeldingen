@@ -51,6 +51,11 @@ object FormueOgGjeldKalkyler : HarKalkylesamling {
             }
         }
 
+        val verdiFoerVerdsettingsrabattSkogeiendomINorge =
+            forekomsterAv(modell.formuesgrunnlagSkogeiendomINorge) summerVerdiFraHverForekomst {
+                forekomstType.verdiFoerVerdsettingsrabattForFormuesandel.tall()
+            }
+
         val verdiFraSdfSomDeltakerISdf =
             forekomsterAv(modell.deltakersAndelAvFormueOgInntekt) summerVerdiFraHverForekomst {
                 forekomstType.verdiFoerVerdsettingsrabattForNettoformue.tall()
@@ -64,6 +69,7 @@ object FormueOgGjeldKalkyler : HarKalkylesamling {
         val sumVerdiFoerVerdsettingsrabatt =
             verdiFraFormuesobjekter +
                 verdiFoerVerdsettingsrabattForFormuesandelForFastEiendom +
+                verdiFoerVerdsettingsrabattSkogeiendomINorge +
                 verdiFoerVerdsettingsrabattKapitalisertFesteavgift +
                 verdiFraSdfSomDeltakerISdf
         return sumVerdiFoerVerdsettingsrabatt

@@ -4,9 +4,12 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.KonsumprisindeksVannkraft.hentKonsumprisindeksVannkraft
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.kraftverk.samletPaastempletMerkeytelseIKvaOverGrense
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.grunnrenteomraade
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2025
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
 import java.math.BigDecimal
@@ -232,8 +235,21 @@ object OevrigTilVisningForSpesifikasjonAvAnleggsmiddel : HarKalkylesamling {
             }
 
             settUniktFelt(modell.spesifikasjonAvAnleggsmiddel_oevrigTilVisningForSpesifikasjonAvAnleggsmiddel.samletAvskrivningAvSaerskiltAnleggsmiddelFraVannkraftverk) {
-                forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
-                    forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon.tall()
+                if (inntektsaar.tekniskInntektsaar <= 2025) {
+                    forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) summerVerdiFraHverForekomst {
+                        felt2025.spesifikasjonAvKraftverk.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntekt_skattemessigAvskrivningAvAnleggsmiddelSomBenyttesIKraftproduksjon.tall()
+                    }
+                } else {
+
+                    forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
+                        samletPaastempletMerkeytelseIKvaOverGrense()
+                    } summerVerdiFraHverForekomst {
+                        forekomsterAv(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvFradragIBruttoGrunnrenteinntektIVannkraftverk) der {
+                            forekomstType.type lik fradragIGrunnrente.kode_skattemessigAvskrivningAvDriftsmiddelBenyttetIVannkraftproduksjon
+                        } summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
+                        }
+                    }
                 }
             }
 
