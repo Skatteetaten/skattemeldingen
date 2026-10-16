@@ -157,7 +157,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             hvis(inntektsaar.tekniskInntektsaar >= 2026) {
                 val sumVolumIKWIInntektsaaret =
                     forekomsterAv(modell.kontraktForVannkraftverk.spesifikasjonAvKontraktIVannkraftverk) summerVerdiFraHverForekomst {
-                        forekomstType.volumIKWIInntektsaaret.tall()
+                        forekomstType.volumIKWhIInntektsaaret.tall()
                     }
                 forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
                     samletPaastempletMerkeytelseIKvaOverGrense()

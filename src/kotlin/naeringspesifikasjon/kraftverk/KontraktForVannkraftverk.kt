@@ -24,7 +24,7 @@ internal object KontraktForVannkraftverk : HarKalkylesamling {
             forekomsterAv(modell.kontraktForVannkraftverk) forHverForekomst {
                 forekomsterAv(forekomstType.spesifikasjonAvKontraktIVannkraftverk) forHverForekomst {
                     settFelt(forekomstType.salgsinntektFraFysiskAvtale) {
-                        forekomstType.kontraktspris * forekomstType.volumIKWIInntektsaaret
+                        forekomstType.kontraktspris * forekomstType.volumIKWhIInntektsaaret
                     }
                 }
             }
