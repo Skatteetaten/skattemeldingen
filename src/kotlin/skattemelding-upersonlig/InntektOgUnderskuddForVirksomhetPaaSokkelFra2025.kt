@@ -4,7 +4,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_sats
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregning.modellV5 as modell
 
 object InntektOgUnderskuddForVirksomhetPaaSokkelFra2025 {
 
