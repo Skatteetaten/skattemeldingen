@@ -13,6 +13,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.annenDriftskostnad
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2022
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
 
 /**
@@ -270,161 +271,196 @@ internal object Resultatregnskapet : HarKalkylesamling {
         }
     }
 
-    private val sumDriftsinntekterBankOgForsikringKalkyle = kalkyle("sumDriftsinntekterBankOgForsikring") {
+    internal val sumDriftsinntekterBankOgForsikringKalkyle = kalkyle("sumDriftsinntekterBankOgForsikring") {
         hvis(gjelderBankOgForsikring()) {
             settUniktFelt(modell.resultatregnskap_driftsinntekt_sumDriftsinntekt) {
-                forekomsterAv(modell.resultatregnskap_driftsinntekt_bankOgForsikringsinntekt.inntekt) summerVerdiFraHverForekomst {
-                    forekomstType.beloep.tall()
+                if (inntektsaar.tekniskInntektsaar >= 2026) {
+                    val inntekt = modell.resultatregnskap_driftsinntekt_bankOgForsikringsinntekt
+                    (forekomsterAv(inntekt.inntektInnenBankOgSkadeforsikring) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
+                    }) + (forekomsterAv(inntekt.inntektTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
+                    }) + (forekomsterAv(inntekt.inntektIkkeTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
+                    })
+                } else {
+                    forekomsterAv(modell2025.resultatregnskap_driftsinntekt_bankOgForsikringsinntekt.inntekt) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
+                    }
                 }
             }
         }
     }
 
-    private val sumDriftsinntekterSomInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak =
+    internal val sumDriftsinntekterSomInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak =
         kalkyle("sumDriftsinntekterSomInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak") {
             hvis(fullRegnskapspliktOgLivsforsikringsforetakOgPensjonskasse()) {
                 val inntektsaar = inntektsaar
                 settUniktFelt(modell.resultatregnskap_driftsinntekt_heravAndelInntektTekniskRegnskapILivsforsikringOgPensjonskasseforetak) {
-                    forekomsterAv(modell.resultatregnskap_driftsinntekt_bankOgForsikringsinntekt.inntekt) der {
-                        if (inntektsaar.tekniskInntektsaar >= 2024) {
-                            ResultatregnskapOgBalanse.inngaarITekniskRegnskapForLivsforsikringOgPensjonskasseforetak(
-                                inntektsaar,
-                                forekomstType.type.verdi()
-                            )
-                        } else {
-                            forekomstType.type.harVerdi() && forekomstType.type likEnAv listOf(
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_05_0_10,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_05_0_20,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_07_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_30_2_20,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_73_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_40,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_60,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_80,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_79_0_00,
-                            )
+                    if (inntektsaar.tekniskInntektsaar >= 2026) {
+                        forekomsterAv(modell.resultatregnskap_driftsinntekt_bankOgForsikringsinntekt.inntektTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
                         }
-                    } summerVerdiFraHverForekomst {
-                        forekomstType.beloep.tall()
+                    } else {
+                        forekomsterAv(modell2025.resultatregnskap_driftsinntekt_bankOgForsikringsinntekt.inntekt) der {
+                            if (inntektsaar.tekniskInntektsaar >= 2024) {
+                                ResultatregnskapOgBalanse.inngaarITekniskRegnskapForLivsforsikringOgPensjonskasseforetak(
+                                    inntektsaar,
+                                    forekomstType.type.verdi()
+                                )
+                            } else {
+                                forekomstType.type.harVerdi() && forekomstType.type likEnAv listOf(
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_05_0_10,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_05_0_20,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_07_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_30_2_20,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_73_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_40,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_60,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_80,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_79_0_00,
+                                )
+                            }
+                        } summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
+                        }
                     }
                 }
             }
         }
 
-    private val sumDriftsinntekterSomIkkeInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak =
+    internal val sumDriftsinntekterSomIkkeInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak =
         kalkyle("sumDriftsinntekterSomIkkeInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak") {
             hvis(fullRegnskapspliktOgLivsforsikringsforetakOgPensjonskasse()) {
                 val inntektsaar = inntektsaar
                 settUniktFelt(modell.resultatregnskap_driftsinntekt_heravAndelInntektIkkeTekniskRegnskapILivsforsikringOgPensjonskasseforetak) {
-                    forekomsterAv(modell.resultatregnskap_driftsinntekt_bankOgForsikringsinntekt.inntekt) der {
-                        if (inntektsaar.tekniskInntektsaar >= 2024) {
-                            ResultatregnskapOgBalanse.inngaarIkkeITekniskRegnskapForLivsforsikringOgPensjonskasseforetak(
-                                inntektsaar,
-                                forekomstType.type.verdi()
-                            )
-                        } else {
-                            forekomstType.type.harVerdi() && forekomstType.type likEnAv listOf(
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_0_40_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_0_91_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_0_99_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_1_16_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_2_30_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_3_50_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_30_2_20_51,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_30_2_20_91,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_30_2_20_99,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_0_40_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_0_99_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_2_20_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_2_30_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_3_50_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_5_91_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_0_40_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_0_99_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_2_20_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_2_30_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_3_50_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_5_91_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_73_0_00_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_40_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_60_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_40_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_60_00
-                            )
+                    if (inntektsaar.tekniskInntektsaar >= 2026) {
+                        forekomsterAv(modell.resultatregnskap_driftsinntekt_bankOgForsikringsinntekt.inntektIkkeTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
                         }
-                    } summerVerdiFraHverForekomst {
-                        forekomstType.beloep.tall()
+                    } else {
+                        forekomsterAv(modell2025.resultatregnskap_driftsinntekt_bankOgForsikringsinntekt.inntekt) der {
+                            if (inntektsaar.tekniskInntektsaar >= 2024) {
+                                ResultatregnskapOgBalanse.inngaarIkkeITekniskRegnskapForLivsforsikringOgPensjonskasseforetak(
+                                    inntektsaar,
+                                    forekomstType.type.verdi()
+                                )
+                            } else {
+                                forekomstType.type.harVerdi() && forekomstType.type likEnAv listOf(
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_0_40_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_0_91_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_0_99_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_1_16_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_2_30_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_11_3_50_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_30_2_20_51,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_30_2_20_91,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_30_2_20_99,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_0_40_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_0_99_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_2_20_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_2_30_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_3_50_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_62_5_91_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_0_40_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_0_99_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_2_20_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_2_30_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_3_50_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_1_63_5_91_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_73_0_00_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_40_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_60_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_40_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringsinntekt.kode_2_78_0_60_00
+                                )
+                            }
+                        } summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
+                        }
                     }
                 }
             }
         }
 
-    private val sumDriftskostnaderSomInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak =
+    internal val sumDriftskostnaderSomInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak =
         kalkyle("sumDriftskostnaderSomInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak") {
             hvis(fullRegnskapspliktOgLivsforsikringsforetakOgPensjonskasse()) {
                 val inntektsaar = inntektsaar
                 settUniktFelt(modell.resultatregnskap_driftskostnad_heravAndelKostnadTekniskRegnskapILivsforsikringOgPensjonskasseforetak) {
-                    forekomsterAv(modell.resultatregnskap_driftskostnad_bankOgForsikringskostnad.kostnad) der {
-                        if (inntektsaar.tekniskInntektsaar >= 2024) {
-                            ResultatregnskapOgBalanse.inngaarITekniskRegnskapForLivsforsikringOgPensjonskasseforetak(
-                                inntektsaar,
-                                forekomstType.type.verdi()
-                            )
-                        } else {
-                            forekomstType.type.harVerdi() && forekomstType.type likEnAv listOf(
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_05_0_10,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_05_0_20,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_07_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_08_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_09_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_00_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_9_00_0_00
-                            )
+                    if (inntektsaar.tekniskInntektsaar >= 2026) {
+                        forekomsterAv(modell.resultatregnskap_driftskostnad_bankOgForsikringskostnad.kostnadTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
                         }
-                    } summerVerdiFraHverForekomst {
-                        forekomstType.beloep.tall()
+                    } else {
+                        forekomsterAv(modell2025.resultatregnskap_driftskostnad_bankOgForsikringskostnad.kostnad) der {
+                            if (inntektsaar.tekniskInntektsaar >= 2024) {
+                                ResultatregnskapOgBalanse.inngaarITekniskRegnskapForLivsforsikringOgPensjonskasseforetak(
+                                    inntektsaar,
+                                    forekomstType.type.verdi()
+                                )
+                            } else {
+                                forekomstType.type.harVerdi() && forekomstType.type likEnAv listOf(
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_05_0_10,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_05_0_20,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_07_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_08_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_09_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_00_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_9_00_0_00
+                                )
+                            }
+                        } summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
+                        }
                     }
                 }
             }
         }
 
-    private val sumDriftskostnaderSomIkkeInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak =
+    internal val sumDriftskostnaderSomIkkeInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak =
         kalkyle("sumDriftskostnaderSomIkkeInngaarITekniskRegnskapLivsforsikringOgPensjonskasseforetak") {
             hvis(fullRegnskapspliktOgLivsforsikringsforetakOgPensjonskasse()) {
                 val inntektsaar = inntektsaar
                 settUniktFelt(modell.resultatregnskap_driftskostnad_heravAndelKostnadIkkeTekniskRegnskapILivsforsikringOgPensjonskasseforetak) {
-                    forekomsterAv(modell.resultatregnskap_driftskostnad_bankOgForsikringskostnad.kostnad) der {
-                        if (inntektsaar.tekniskInntektsaar >= 2024) {
-                            ResultatregnskapOgBalanse.inngaarIkkeITekniskRegnskapForLivsforsikringOgPensjonskasseforetak(
-                                inntektsaar,
-                                forekomstType.type.verdi()
-                            )
-                        } else {
-                            forekomstType.type.harVerdi() && forekomstType.type likEnAv listOf(
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_0_40,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_0_91,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_0_99,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_8_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_51_0_10,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_51_0_20,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_51_0_50,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_51_0_99,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_71_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_73_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_78_0_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_78_0_40,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_78_0_51,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_78_0_52,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_6_62_5_00,
-                                resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_6_63_5_00
-                            )
+                    if (inntektsaar.tekniskInntektsaar >= 2026) {
+                        forekomsterAv(modell.resultatregnskap_driftskostnad_bankOgForsikringskostnad.kostnadIkkeTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
                         }
-                    } summerVerdiFraHverForekomst {
-                        forekomstType.beloep.tall()
+                    } else {
+                        forekomsterAv(modell2025.resultatregnskap_driftskostnad_bankOgForsikringskostnad.kostnad) der {
+                            if (inntektsaar.tekniskInntektsaar >= 2024) {
+                                ResultatregnskapOgBalanse.inngaarIkkeITekniskRegnskapForLivsforsikringOgPensjonskasseforetak(
+                                    inntektsaar,
+                                    forekomstType.type.verdi()
+                                )
+                            } else {
+                                forekomstType.type.harVerdi() && forekomstType.type likEnAv listOf(
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_0_40,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_0_91,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_0_99,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_4_11_8_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_51_0_10,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_51_0_20,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_51_0_50,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_51_0_99,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_71_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_73_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_78_0_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_78_0_40,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_78_0_51,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_5_78_0_52,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_6_62_5_00,
+                                    resultatregnskapOgBalanse_2023.bankOgForsikringskostnad.kode_6_63_5_00
+                                )
+                            }
+                        } summerVerdiFraHverForekomst {
+                            forekomstType.beloep.tall()
+                        }
                     }
                 }
             }
@@ -489,8 +525,19 @@ internal object Resultatregnskapet : HarKalkylesamling {
     val sumDriftskostnaderBankOgForsikringKalkyle = kalkyle("sumDriftskostnaderBankOgForsikring") {
         hvis(gjelderBankOgForsikring()) {
             settUniktFelt(modell.resultatregnskap_driftskostnad_sumDriftskostnad) {
-                forekomsterAv(modell.resultatregnskap_driftskostnad_bankOgForsikringskostnad.kostnad) summerVerdiFraHverForekomst {
-                    forekomstType.beloep.tall()
+                if (inntektsaar.tekniskInntektsaar >= 2026) {
+                    val kostnad = modell.resultatregnskap_driftskostnad_bankOgForsikringskostnad
+                    (forekomsterAv(kostnad.kostnadInnenBankOgSkadeforsikring) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
+                    }) + (forekomsterAv(kostnad.kostnadTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
+                    }) + (forekomsterAv(kostnad.kostnadIkkeTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
+                    })
+                } else {
+                    forekomsterAv(modell2025.resultatregnskap_driftskostnad_bankOgForsikringskostnad.kostnad) summerVerdiFraHverForekomst {
+                        forekomstType.beloep.tall()
+                    }
                 }
             }
         }
@@ -552,18 +599,54 @@ internal object Resultatregnskapet : HarKalkylesamling {
             forekomstType.beloep + forekomstType.beloepForVirksomhetOmfattetAvPetroleumsskatteloven_beloep
         }
 
-    private val sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatKalkyle = kalkyle("sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultat") {
-        settUniktFelt(modell.resultatregnskap_sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet) {
-            forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet.inntektEllerKostnad) summerVerdiFraHverForekomst {
-                forekomstType.beloep.tall()
+    internal val sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatKalkyle = kalkyle("sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultat") {
+        if (inntektsaar.tekniskInntektsaar >= 2026) {
+            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetInnenSkadeforsikring) {
+                forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_bankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet.inntektEllerKostnadInnenBankOgSkadeforsikring) summerVerdiFraHverForekomst {
+                    forekomstType.beloep.tall()
+                }
+            }
+            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetTekniskRegnskapInnenLivsforsikring) {
+                forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_bankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet.inntektEllerKostnadTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                    forekomstType.beloep.tall()
+                }
+            }
+            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetIkkeTekniskRegnskapInnenLivsforsikring) {
+                forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_bankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet.inntektEllerKostnadIkkeTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                    forekomstType.beloep.tall()
+                }
+            }
+        } else {
+            settUniktFelt(modell2025.resultatregnskap_sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet) {
+                forekomsterAv(modell2025.resultatregnskap_bankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet.inntektEllerKostnad) summerVerdiFraHverForekomst {
+                    forekomstType.beloep.tall()
+                }
             }
         }
     }
 
-    private val sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatKalkyle = kalkyle("sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultat") {
-        settUniktFelt(modell.resultatregnskap_sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet) {
-            forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet.inntektEllerKostnad) summerVerdiFraHverForekomst {
-                forekomstType.beloep.tall()
+    internal val sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatKalkyle = kalkyle("sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultat") {
+        if (inntektsaar.tekniskInntektsaar >= 2026) {
+            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetInnenSkadeforsikring) {
+                forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_bankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet.inntektEllerKostnadInnenBankOgSkadeforsikring) summerVerdiFraHverForekomst {
+                    forekomstType.beloep.tall()
+                }
+            }
+            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetTekniskRegnskapInnenLivsforsikring) {
+                forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_bankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet.inntektEllerKostnadTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                    forekomstType.beloep.tall()
+                }
+            }
+            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetIkkeTekniskRegnskapInnenLivsforsikring) {
+                forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_bankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet.inntektEllerKostnadIkkeTekniskRegnskapInnenLivsforsikring) summerVerdiFraHverForekomst {
+                    forekomstType.beloep.tall()
+                }
+            }
+        } else {
+            settUniktFelt(modell2025.resultatregnskap_sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet) {
+                forekomsterAv(modell2025.resultatregnskap_bankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet.inntektEllerKostnad) summerVerdiFraHverForekomst {
+                    forekomstType.beloep.tall()
+                }
             }
         }
     }
@@ -638,6 +721,10 @@ internal object Resultatregnskapet : HarKalkylesamling {
             }
         }
 
+    private fun GeneriskModellKontekst.omklassifiseringssummerSomInngaarIAarsresultatTilOgMed2025(): BigDecimal? =
+        modell2025.resultatregnskap_sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet +
+            modell2025.resultatregnskap_sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet
+
     internal val aarsresultatKalkyle = kalkyle("aarsresultat") {
         val skjoennsfastsattInntektEllerKostnad =
             forekomsterAv(modell.resultatregnskap_skjoennsfastsattInntektEllerKostnad.inntektEllerKostnad)
@@ -653,9 +740,28 @@ internal object Resultatregnskapet : HarKalkylesamling {
                     modell.resultatregnskap_sumFinanskostnad -
                     modell.resultatregnskap_sumSkattekostnad +
                     modell.resultatregnskap_sumResultatkomponentForIFRSForetak +
-                    modell.resultatregnskap_sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet +
-                    modell.resultatregnskap_sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet +
+                    (if (inntektsaar.tekniskInntektsaar >= 2026) null else omklassifiseringssummerSomInngaarIAarsresultatTilOgMed2025()) +
                     skjoennsfastsattInntektEllerKostnad)
+        }
+    }
+
+    private fun GeneriskModellKontekst.sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet(): BigDecimal? =
+        modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetInnenSkadeforsikring +
+            modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetTekniskRegnskapInnenLivsforsikring +
+            modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetIkkeTekniskRegnskapInnenLivsforsikring
+
+    private fun GeneriskModellKontekst.sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet(): BigDecimal? =
+        modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetInnenSkadeforsikring +
+            modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetTekniskRegnskapInnenLivsforsikring +
+            modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetIkkeTekniskRegnskapInnenLivsforsikring
+
+    internal val totalresultatInnenBankOgForsikringKalkyle = kalkyle("totalresultatInnenBankOgForsikring") {
+        hvis(inntektsaar.tekniskInntektsaar >= 2026 && gjelderBankOgForsikring()) {
+            settUniktFelt(modell.resultatregnskap_totalresultatInnenBankOgForsikring) {
+                modell.resultatregnskap_aarsresultat +
+                    sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet() +
+                    sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet()
+            }
         }
     }
 
@@ -757,6 +863,7 @@ internal object Resultatregnskapet : HarKalkylesamling {
         sumKostnadIFilialregnskapKalkyle,
         sumResultatkomponentForIFRSForetak,
         aarsresultatKalkyle,
+        totalresultatInnenBankOgForsikringKalkyle,
         heravAndelResultatTekniskRegnskapLivsforsikringOgPensjonskasse,
         heravAndelResultatIkkeTekniskRegnskapLivsforsikringOgPensjonskasse,
         fordeltAarsresultatFoerOmklassifisertInntektEllerKostnad,

@@ -198,14 +198,14 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende2023 : HarKalkylesam
 
     val nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle =
         kalkyle("nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntekt") {
-            settUniktFelt(BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024.forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad) {
+            settUniktFelt(BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_nettoRentekostnad) {
                 if (
-                    BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024.forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.harIkkeVerdi() &&
-                    BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024.forekomstType.erKonsernIhtRegelverkForRentebegrensning.harVerdi()
+                    BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.harIkkeVerdi() &&
+                    BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.forekomstType.erKonsernIhtRegelverkForRentebegrensning.harVerdi()
                 ) {
                     BigDecimal.ZERO
                 } else {
-                    BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024.forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.tall() medMinimumsverdi 0
+                    BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.forekomstType.grunnlagForBeregningAvSelskapetsNettoRentekostnad_nettoRentekostnad.tall() medMinimumsverdi 0
                 }
             }
         }

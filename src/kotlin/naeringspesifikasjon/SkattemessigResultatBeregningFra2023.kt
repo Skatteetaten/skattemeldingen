@@ -9,8 +9,13 @@ object SkattemessigResultatBeregningFra2023 : HarKalkylesamling {
 
     internal val skattemessigResultatKalkyle = kalkyle("skattemessigResultatKalkyle") {
         if (!erPetroleumsforetak()) {
+            val resultatgrunnlag =
+                if (inntektsaar.tekniskInntektsaar >= 2026 && gjelderBankOgForsikring())
+                    modell.resultatregnskap_totalresultatInnenBankOgForsikring.tall()
+                else
+                    modell.resultatregnskap_aarsresultat.tall()
             settUniktFelt(modell.beregnetNaeringsinntekt_skattemessigResultat) {
-                modell.resultatregnskap_aarsresultat +
+                resultatgrunnlag +
                     modell.forskjellMellomRegnskapsmessigOgSkattemessigVerdi_sumTilleggINaeringsinntekt -
                     modell.forskjellMellomRegnskapsmessigOgSkattemessigVerdi_sumFradragINaeringsinntekt +
                     modell.forskjellMellomRegnskapsmessigOgSkattemessigVerdi_sumEndringIMidlertidigForskjell

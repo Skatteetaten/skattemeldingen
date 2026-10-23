@@ -76,9 +76,13 @@ object FordelingAvInntektOgFormueTilDeltakereKalkyler : HarKalkylesamling {
 
             val landkode = modell.opplysningOmSelskapMedDeltakerfastsetting.hovedkontorforetaketsLandkode.verdi()
             val erNokusEllerSdfIkkeNorge = erNokus() || (erSdf() && !landkode.isNullOrEmpty() && landkode != "NO")
-            val underlagsmaterialeForUsdfEllerNokusKanFremlegges =
-                modell.opplysningOmSelskapMedDeltakerfastsetting.underlagsmaterialeForUsdfEllerNokusKanFremlegges.verdi()
-
+            val underlagsmaterialeForUsdfEllerNokusKanFremleggesErSann =
+                modell.opplysningOmSelskapMedDeltakerfastsetting.underlagsmaterialeForUsdfEllerNokusKanFremlegges.erSann()
+            val underlagsmaterialeForUsdfEllerNokusKanFremleggesErUsann = if (inntektsaar.tekniskInntektsaar >= 2026) {
+                modell.opplysningOmSelskapMedDeltakerfastsetting.underlagsmaterialeForUsdfEllerNokusKanFremlegges.erUsann()
+            } else {
+                modell.opplysningOmSelskapMedDeltakerfastsetting.underlagsmaterialeForUsdfEllerNokusKanFremlegges.verdi() == "false"
+            }
 
             forekomsterAv(modell.deltaker) forHverForekomst {
                 val prosent =
@@ -95,14 +99,14 @@ object FordelingAvInntektOgFormueTilDeltakereKalkyler : HarKalkylesamling {
                 }
 
                 val underskuddForDeltaker = if (erNokusEllerSdfIkkeNorge &&
-                    underlagsmaterialeForUsdfEllerNokusKanFremlegges == "false" &&
+                    underlagsmaterialeForUsdfEllerNokusKanFremleggesErUsann &&
                     samletUnderskudd.harVerdi()
                 ) {
                     BigDecimal.ZERO
                 } else if (forekomstType.erOmfattetAvRederiskatteordning.erSann()) {
                     inntektEllerUnderskuddRederi
                 } else if (erNokus &&
-                    underlagsmaterialeForUsdfEllerNokusKanFremlegges == "true" &&
+                    underlagsmaterialeForUsdfEllerNokusKanFremleggesErSann &&
                     samletUnderskuddINokus.harVerdi() &&
                     forekomstType.deltakerensNorskePersonidentifikator.harVerdi()
                 ) {

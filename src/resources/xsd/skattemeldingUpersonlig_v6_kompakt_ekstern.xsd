@@ -1767,13 +1767,14 @@
   </xsd:complexType>
   <xsd:complexType name="KonsernregnskapOgEgenkapitalandelIKonsern">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="positivEgenkapitalIKonsernregnskapGlobalt" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="negativEgenkapitalIKonsernregnskapGlobalt" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="balansesumIKonsernregnskapGlobalt" type="BeloepIValuta" />
+      <xsd:element minOccurs="0" name="positivEgenkapitalIKonsernregnskapGlobalt" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="negativEgenkapitalIKonsernregnskapGlobalt" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="balansesumIKonsernregnskapGlobalt" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
       <xsd:element minOccurs="0" name="egenkapitalandelIKonsernregnskap" skatt:erAvledet="true" type="ProsentUtenBegrensningMedInnkapsling" />
       <xsd:element minOccurs="0" name="selskapMvErKonsolidertInnLinjeForLinjeIKonsernregnskap" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="regnskapsspraak" type="RegnskapsspraakKnyttetTilRentebegrensningForSelskapMvIKonsernMedInnkapsling" />
       <xsd:element minOccurs="0" name="gaapIEtEoesLand" type="LandkodeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="valuta" type="ValutakodeMedInnkapsling" />
       <xsd:element minOccurs="0" name="selskapSomHarUtarbeidetKonsernregnskap" type="Foretak" />
       <xsd:element minOccurs="0" name="konsernregnskapErUtarbeidetAvKonsernspissVedUtgangAvForrigeInntektsaar" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="konsernregnskapErUtarbeidetAvOeversteSelskapSomKanUtarbeideKonsernregnskap" type="BoolskMedInnkapsling" />
@@ -1783,9 +1784,10 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="regnskapsspraak" type="RegnskapsspraakKnyttetTilRentebegrensningForSelskapMvIKonsernMedInnkapsling" />
       <xsd:element minOccurs="0" name="gaapIEtEoesLand" type="LandkodeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="egenkapitalVedUtgangenAvRegnskapsaaretFoerInntektsaaret" type="BeloepIValuta" />
+      <xsd:element minOccurs="0" name="valuta" type="ValutakodeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="egenkapitalVedUtgangenAvRegnskapsaaretFoerInntektsaaret" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
       <xsd:element minOccurs="0" name="samletKorrigertEgenkapitalISelskapetEllerNorskDelAvKonsernet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
-      <xsd:element minOccurs="0" name="balansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret" type="BeloepIValuta" />
+      <xsd:element minOccurs="0" name="balansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
       <xsd:element minOccurs="0" name="samletKorrigertBalansesumISelskapetEllerNorskDelAvKonsernet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="egenkapitalandelForSelskapetEllerNorskDelAvKonsernet" skatt:erAvledet="true" type="ProsentUtenBegrensningMedInnkapsling" />
     </xsd:sequence>
@@ -1801,16 +1803,16 @@
   </xsd:complexType>
   <xsd:complexType name="JusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="positivForretningsverdi" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="negativForretningsverdi" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="merverdiFraKonsernregnskap" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="mindreverdiFraKonsernregnskap" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="utsattSkatteforpliktelseKnyttetTilMerverdi" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="utsattSkattefordelKnyttetTilMindreverdi" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="gjeldVerdsattHoeyereIKonsernregnskap" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="gjeldVerdsattLavereIKonsernregnskap" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="aksjeOgAndel" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="fordringMotSelskapMvSomErKonsolidertLinjeForLinjeIKonsernregnskapet" type="BeloepIValuta" />
+      <xsd:element minOccurs="0" name="positivForretningsverdi" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="negativForretningsverdi" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="merverdiFraKonsernregnskap" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="mindreverdiFraKonsernregnskap" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="utsattSkatteforpliktelseKnyttetTilMerverdi" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="utsattSkattefordelKnyttetTilMindreverdi" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="gjeldVerdsattHoeyereIKonsernregnskap" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="gjeldVerdsattLavereIKonsernregnskap" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="aksjeOgAndel" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="fordringMotSelskapMvSomErKonsolidertLinjeForLinjeIKonsernregnskapet" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
       <xsd:element minOccurs="0" name="samletOekningAvEgenkapital" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletReduksjonAvEgenkapital" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="samletOekningAvBalansesum" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
@@ -2323,6 +2325,11 @@
       <xsd:element minOccurs="0" name="eierandelIProsent" type="ProsentMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon">
+    <xsd:sequence>
+      <xsd:element name="beloep" type="BeloepSomHeltallMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="ProsentUtenBegrensningMedInnkapsling">
     <xsd:sequence>
       <xsd:element name="prosentUtenBegrensning" type="ProsentUtenBegrensning" />
@@ -2337,10 +2344,10 @@
     <xsd:sequence>
       <xsd:element name="id" type="Tekst" />
       <xsd:element name="balansekonto" type="ResultatOgBalanseregnskapstypeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="positivEffektPaaEgenkapital" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="negativEffektPaaEgenkapital" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="positivEffektPaaBalansesum" type="BeloepIValuta" />
-      <xsd:element minOccurs="0" name="negativEffektPaaBalansesum" type="BeloepIValuta" />
+      <xsd:element minOccurs="0" name="positivEffektPaaEgenkapital" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="negativEffektPaaEgenkapital" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="positivEffektPaaBalansesum" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
+      <xsd:element minOccurs="0" name="negativEffektPaaBalansesum" type="BeloepINorskEllerUtenlandskValutaUtenSpesifikasjon" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="AktivitetsomraadeKnyttetTilInternprising" skatt:eksternKodeliste="/formuesOgInntektsskatt/skattemelding/2026_aktivitetsomraadeKnyttetTilInternprising.xml">
