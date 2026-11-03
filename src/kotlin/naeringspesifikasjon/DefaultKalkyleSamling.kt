@@ -1,5 +1,6 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler
 
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.AarsversjonertKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Aarsliste
@@ -29,9 +30,11 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.forskjeller.MidlertidigeForskjellerBeregning2021
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.forskjeller.Omvurderingskonto
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.forskjeller.PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.forskjeller.PermanentForskjellForVirksomhetOmfattetAvPetroleumsskattelovenFra2026
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.forskjeller.PermanenteForskjellerBeregning2021
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.forskjeller.PermanenteForskjellerBeregning2022
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.forskjeller.PermanenteForskjellerBeregningFra2023
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.forskjeller.PermanenteForskjellerBeregningFra2026
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.forskjeller.SpesifikasjonAvForskjellForSelskapOmfattetAvPetroleumsskatteloven
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.havbruk.GrunnrenteskattHavbruk
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.havbruk.GrunnrenteskattHavbruk2023
@@ -77,7 +80,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
  * Toppnivå - referanser til alle kalkyler som skal kjøres. Kalkyler som brukes av andre kalkyler
  * (lavere nivå) refereres ikke direkte her.
  */
-val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkylesamling>(2020)
+val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<AarsversjonertKalkylesamling>(2020)
     .bareI(2020, GevinstOgTapskonto2020)
     .bareI(2021, GevinstOgTapskonto2021)
     .fraTil(2022, 2023, GevinstOgTapskonto)
@@ -113,7 +116,8 @@ val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkyle
     .fra(2022, IkkeAvskrivbartAnleggsmiddel)
     .bareI(2021, PermanenteForskjellerBeregning2021) // Kun relevant for regnskapspliktstype 2 (kun de som sender inn forskjeller)
     .bareI(2022, PermanenteForskjellerBeregning2022) // Kun relevant for fullRegnskapsplikt (kun de som sender inn forskjeller)
-    .fra(2023, PermanenteForskjellerBeregningFra2023) // Kun relevant for fullRegnskapsplikt (kun de som sender inn forskjeller)
+    .fraTil(2023, 2025, PermanenteForskjellerBeregningFra2023) // Kun relevant for fullRegnskapsplikt (kun de som sender inn forskjeller)
+    .fra(2026, PermanenteForskjellerBeregningFra2026) // Permanent forskjell splittet i inntektsøkende og inntektsreduserende, pluss to nye summer for ikke-teknisk regnskap
     .bareI(2021, MidlertidigeForskjellerBeregning2021) // Kun relevant for regnskapspliktstype 2 (kun de som sender inn forskjeller)
     .fra(2022, MidlertidigeForskjellerBeregning) // Kun relevant for fullRegnskapsplikt (kun de som sender inn forskjeller)
     .fraTil(2021, 2022, SkattemessigResultatBeregning)
@@ -157,7 +161,8 @@ val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkyle
     .fra(2024, SpesifikasjonAvGrunnrenteinntektFra2024)
     .fra(2022, OevrigTilVisningForSpesifikasjonAvAnleggsmiddel)
     .fra(2023, SpesifikasjonAvForskjellForSelskapOmfattetAvPetroleumsskatteloven)
-    .fra(2023, PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven)
+    .fraTil(2023, 2025, PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven)
+    .fra(2026, PermanentForskjellForVirksomhetOmfattetAvPetroleumsskattelovenFra2026)
     .fra(2023, MidlertidigForskjellPetroleumsskattelovenSaerskattegrunnlagFraVirksomhetPaaSokkel)
     .fra(2023, MidlertidigForskjellPetroleumsskattelovenAlminneligInntektFraVirksomhetPaaSokkel)
     .fra(2023, MidlertidigForskjellPetroleumsskattelovenAlminneligInntektFraVirksomhetPaaLand)
@@ -175,4 +180,4 @@ val defaultKalkyleSamlingPerAar: Map<Int, Kalkylesamling> = Aarsliste<HarKalkyle
     .fra(2023, RevisorsBekreftelse)
     .fra(2024, GrunnrenteinntektLandbasertVindkraft)
     .fra(2024, SkogfondForSelskap)
-    .listerSortertPaaAar().mapValues { Kalkylesamling(*it.value.toTypedArray()) }
+    .listerSortertPaaAar().mapValues { Kalkylesamling(it.key, *it.value.toTypedArray()) }

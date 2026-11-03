@@ -5,11 +5,16 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.PermanentForskjellstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 
+/**
+ * Gjelder 2023-2025 (modell2025). Fra 2026 er entiteten splittet, se
+ * PermanentForskjellForVirksomhetOmfattetAvPetroleumsskattelovenFra2026.
+ */
 internal object PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven : HarKalkylesamling {
 
     internal val petroleumFordelt = modell.forskjellForVirksomhetOmfattetAvPetroleumsskatteloven
-    internal val permanentForskjellPetroleum = modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven
+    internal val permanentForskjellPetroleum = modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven
 
     internal val fordeltTilleggINaeringsinntektBeloepSaerskattegrunnlagFraVirksomhetPaaSokkel =
         kalkyle("fordeltTilleggINaeringsinntektBeloepSaerskattegrunnlagFraVirksomhetPaaSokkel") {

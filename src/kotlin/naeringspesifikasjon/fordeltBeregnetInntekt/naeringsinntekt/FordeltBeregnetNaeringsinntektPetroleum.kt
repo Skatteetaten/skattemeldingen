@@ -9,6 +9,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.permanentForskjellstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.saldogruppe
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 
 /**
 Spesifisert her: https://wiki.sits.no/pages/viewpage.action?pageId=856685903
@@ -247,10 +248,19 @@ internal object FordeltBeregnetNaeringsinntektPetroleum : HarKalkylesamling {
 
     internal val aaretsKorrigeringForFriinntekt = kalkyle("aaretsKorrigeringForFriinntekt") {
         settUniktFelt(beregnetSelskapsskatt.aaretsKorrigeringForFriinntekt) {
-            forekomsterAv(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) der {
-                forekomstType.permanentForskjellstype lik permanentForskjellstype.kode_friinntektEtterPetroleumsskatteloven
-            } summerVerdiFraHverForekomst {
-                forekomstType.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel.tall()
+            if (inntektsaar.tekniskInntektsaar <= 2025) {
+                forekomsterAv(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) der {
+                    forekomstType.permanentForskjellstype lik permanentForskjellstype.kode_friinntektEtterPetroleumsskatteloven
+                } summerVerdiFraHverForekomst {
+                    forekomstType.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel.tall()
+                }
+            } else {
+                // Fra 2026 er friinntekt en inntektsreduserende permanent forskjell (kategori fradrag)
+                forekomsterAv(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) der {
+                    forekomstType.permanentForskjellstype lik permanentForskjellstype.kode_friinntektEtterPetroleumsskatteloven
+                } summerVerdiFraHverForekomst {
+                    forekomstType.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel.tall()
+                }
             }
         }
     }

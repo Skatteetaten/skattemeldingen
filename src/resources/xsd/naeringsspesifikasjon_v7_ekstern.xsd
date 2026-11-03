@@ -163,10 +163,10 @@
   </xsd:complexType>
   <xsd:complexType name="ForskjellMellomRegnskapsmessigOgSkattemessigVerdi">
     <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="permanentForskjell" type="PermanentForskjell" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektsoekendePermanentForskjell" type="PermanentForskjell" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="midlertidigForskjell" type="MidlertidigForskjell" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="midlertidigForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="MidlertidigForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
       <xsd:element minOccurs="0" name="alminneligOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" type="OmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" />
       <xsd:element minOccurs="0" name="separatOmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" type="OmvurderingskontoForLangsiktigFordringsOgGjeldspostIFremmedValuta" />
       <xsd:element minOccurs="0" name="sumTilleggINaeringsinntekt" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
@@ -174,6 +174,10 @@
       <xsd:element minOccurs="0" name="sumEndringIMidlertidigForskjell" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="forskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="ForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
       <xsd:element minOccurs="0" name="spesifikasjonAvForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="SpesifikasjonAvForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektsreduserendePermanentForskjell" type="PermanentForskjell" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" type="PermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven" />
+      <xsd:element minOccurs="0" name="sumTilleggINaeringsinntektKnyttetTilIkkeTekniskRegnskapForLivsforsikringsforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="sumFradragINaeringsinntektKnyttetTilIkkeTekniskRegnskapForLivsforsikringsforetak" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Virksomhet">

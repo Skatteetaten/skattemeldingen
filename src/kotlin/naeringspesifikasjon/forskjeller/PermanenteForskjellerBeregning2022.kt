@@ -6,7 +6,6 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fullRegnskapsplikt
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.PermanentForskjellstype
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2022
 
 internal object PermanenteForskjellerBeregning2022 : HarKalkylesamling {
@@ -14,18 +13,18 @@ internal object PermanenteForskjellerBeregning2022 : HarKalkylesamling {
     internal val permanenteForskjellerKalkyle = kalkyle {
         hvis(fullRegnskapsplikt()) {
             val inntektsaar = inntektsaar
-            val sumPermanenteForskjellerTillegg = forekomsterAv(modell.permanentForskjell) der {
-                PermanentForskjellstype.erTillegg(inntektsaar, modell.permanentForskjell.permanentForskjellstype.verdi())
+            val sumPermanenteForskjellerTillegg = forekomsterAv(modell2022.permanentForskjell) der {
+                PermanentForskjellstype.erTillegg(inntektsaar, modell2022.permanentForskjell.permanentForskjellstype.verdi())
             } summerVerdiFraHverForekomst {
-                modell.permanentForskjell.beloep.tall()
+                modell2022.permanentForskjell.beloep.tall()
             } medAntallDesimaler 2
 
             settUniktFelt(modell2022.beregnetNaeringsinntekt_sumTilleggINaeringsinntekt) { sumPermanenteForskjellerTillegg }
 
-            val sumPermanenteForskjellerFradrag = forekomsterAv(modell.permanentForskjell) der {
-                PermanentForskjellstype.erFradrag(inntektsaar, modell.permanentForskjell.permanentForskjellstype.verdi())
+            val sumPermanenteForskjellerFradrag = forekomsterAv(modell2022.permanentForskjell) der {
+                PermanentForskjellstype.erFradrag(inntektsaar, modell2022.permanentForskjell.permanentForskjellstype.verdi())
             } summerVerdiFraHverForekomst {
-                modell.permanentForskjell.beloep.tall()
+                modell2022.permanentForskjell.beloep.tall()
             } medAntallDesimaler 2
 
             settUniktFelt(modell2022.beregnetNaeringsinntekt_sumFradragINaeringsinntekt) { sumPermanenteForskjellerFradrag }

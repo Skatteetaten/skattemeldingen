@@ -8,8 +8,10 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.KodeVerdi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.erPetroleumsforetak
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.fullRegnskapsplikt
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.PermanentForskjellstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.permanentForskjellstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 
 /**
  * Spec: https://wiki.sits.no/display/SIR/FR+-+Forskjeller
@@ -433,34 +435,89 @@ internal object SpesifikasjonAvForskjellForSelskapOmfattetAvPetroleumsskattelove
         beloepAlminneligInntektFraVirksomhetPaaLand: BigDecimal? = null,
         beloepResultatAvFinansinntektOgFinanskostnadMv: BigDecimal? = null,
     ) {
+        val harBeloep = beloepSaerskattegrunnlagFraVirksomhetPaaSokkel.harVerdi() ||
+            beloepAlminneligInntektFraVirksomhetPaaSokkel.harVerdi() ||
+            beloepAlminneligInntektFraVirksomhetPaaLand.harVerdi() ||
+            beloepResultatAvFinansinntektOgFinanskostnadMv.harVerdi()
+        val inntektsaar = inntektsaar
+        if (inntektsaar.tekniskInntektsaar <= 2025) {
         val forekomst =
-            finnForekomstMed(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) {
-                modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.permanentForskjellstype lik forskjellstype
+            finnForekomstMed(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) {
+                modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.permanentForskjellstype lik forskjellstype
             }
 
         if (forekomst.eksisterer()) {
             oppdaterForekomst(forekomst) {
-                settFelt(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel) { beloepSaerskattegrunnlagFraVirksomhetPaaSokkel }
-                settFelt(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaSokkel) { beloepAlminneligInntektFraVirksomhetPaaSokkel }
-                settFelt(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaLand) { beloepAlminneligInntektFraVirksomhetPaaLand }
-                settFelt(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepResultatAvFinansinntektOgFinanskostnadMv) { beloepResultatAvFinansinntektOgFinanskostnadMv }
+                settFelt(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel) { beloepSaerskattegrunnlagFraVirksomhetPaaSokkel }
+                settFelt(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaSokkel) { beloepAlminneligInntektFraVirksomhetPaaSokkel }
+                settFelt(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaLand) { beloepAlminneligInntektFraVirksomhetPaaLand }
+                settFelt(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepResultatAvFinansinntektOgFinanskostnadMv) { beloepResultatAvFinansinntektOgFinanskostnadMv }
             }
-        } else if (
-            beloepSaerskattegrunnlagFraVirksomhetPaaSokkel.harVerdi() ||
-            beloepAlminneligInntektFraVirksomhetPaaSokkel.harVerdi() ||
-            beloepAlminneligInntektFraVirksomhetPaaLand.harVerdi() ||
-            beloepResultatAvFinansinntektOgFinanskostnadMv.harVerdi()
-        ) {
-            opprettNyForekomstAv(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) {
+        } else if (harBeloep) {
+            opprettNyForekomstAv(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) {
                 medFelt(
-                    modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.permanentForskjellstype,
+                    modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.permanentForskjellstype,
                     forskjellstype.kode
                 )
-                medFelt(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel) { beloepSaerskattegrunnlagFraVirksomhetPaaSokkel }
-                medFelt(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaSokkel) { beloepAlminneligInntektFraVirksomhetPaaSokkel }
-                medFelt(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaLand) { beloepAlminneligInntektFraVirksomhetPaaLand }
-                medFelt(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepResultatAvFinansinntektOgFinanskostnadMv) { beloepResultatAvFinansinntektOgFinanskostnadMv }
+                medFelt(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel) { beloepSaerskattegrunnlagFraVirksomhetPaaSokkel }
+                medFelt(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaSokkel) { beloepAlminneligInntektFraVirksomhetPaaSokkel }
+                medFelt(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaLand) { beloepAlminneligInntektFraVirksomhetPaaLand }
+                medFelt(modell2025.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepResultatAvFinansinntektOgFinanskostnadMv) { beloepResultatAvFinansinntektOgFinanskostnadMv }
             }
+        }
+        } else if (PermanentForskjellstype.erTillegg(inntektsaar, forskjellstype.kode)) {
+            // Fra 2026: permanentForskjell er splittet. Entiteten følger kategorien i kodelisten (tillegg/fradrag).
+        val forekomst =
+            finnForekomstMed(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) {
+                modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.permanentForskjellstype lik forskjellstype
+            }
+
+        if (forekomst.eksisterer()) {
+            oppdaterForekomst(forekomst) {
+                settFelt(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel) { beloepSaerskattegrunnlagFraVirksomhetPaaSokkel }
+                settFelt(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaSokkel) { beloepAlminneligInntektFraVirksomhetPaaSokkel }
+                settFelt(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaLand) { beloepAlminneligInntektFraVirksomhetPaaLand }
+                settFelt(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepResultatAvFinansinntektOgFinanskostnadMv) { beloepResultatAvFinansinntektOgFinanskostnadMv }
+            }
+        } else if (harBeloep) {
+            opprettNyForekomstAv(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) {
+                medFelt(
+                    modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.permanentForskjellstype,
+                    forskjellstype.kode
+                )
+                medFelt(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel) { beloepSaerskattegrunnlagFraVirksomhetPaaSokkel }
+                medFelt(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaSokkel) { beloepAlminneligInntektFraVirksomhetPaaSokkel }
+                medFelt(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaLand) { beloepAlminneligInntektFraVirksomhetPaaLand }
+                medFelt(modell.inntektsoekendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepResultatAvFinansinntektOgFinanskostnadMv) { beloepResultatAvFinansinntektOgFinanskostnadMv }
+            }
+        }
+        } else if (PermanentForskjellstype.erFradrag(inntektsaar, forskjellstype.kode)) {
+        val forekomst =
+            finnForekomstMed(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) {
+                modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.permanentForskjellstype lik forskjellstype
+            }
+
+        if (forekomst.eksisterer()) {
+            oppdaterForekomst(forekomst) {
+                settFelt(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel) { beloepSaerskattegrunnlagFraVirksomhetPaaSokkel }
+                settFelt(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaSokkel) { beloepAlminneligInntektFraVirksomhetPaaSokkel }
+                settFelt(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaLand) { beloepAlminneligInntektFraVirksomhetPaaLand }
+                settFelt(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepResultatAvFinansinntektOgFinanskostnadMv) { beloepResultatAvFinansinntektOgFinanskostnadMv }
+            }
+        } else if (harBeloep) {
+            opprettNyForekomstAv(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) {
+                medFelt(
+                    modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.permanentForskjellstype,
+                    forskjellstype.kode
+                )
+                medFelt(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepSaerskattegrunnlagFraVirksomhetPaaSokkel) { beloepSaerskattegrunnlagFraVirksomhetPaaSokkel }
+                medFelt(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaSokkel) { beloepAlminneligInntektFraVirksomhetPaaSokkel }
+                medFelt(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepAlminneligInntektFraVirksomhetPaaLand) { beloepAlminneligInntektFraVirksomhetPaaLand }
+                medFelt(modell.inntektsreduserendePermanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven.beloep_beloepResultatAvFinansinntektOgFinanskostnadMv) { beloepResultatAvFinansinntektOgFinanskostnadMv }
+            }
+        }
+        } else {
+            error("Forskjellstype ${forskjellstype.kode} har hverken kategori tillegg eller fradrag i permanentForskjellstype")
         }
     }
 

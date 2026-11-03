@@ -15,6 +15,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.permanentForskjellstype
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.permanentForskjellstype2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
 
 /**
 Spesifisert her: https://wiki.sits.no/pages/viewpage.action?pageId=856685903
@@ -205,7 +206,7 @@ internal object FordeltBeregnetNaeringsinntektPetroleum2023 : HarKalkylesamling 
     internal val grunnlagForBeregningAvSelskapsskatt = kalkyle("grunnlagForBeregningAvSelskapsskatt") {
         hvis(fullRegnskapspliktOgVirksomhetsTypePetroleumsforetak()) {
             val sumBeloepSaerskattegrunnlagFraVirksomhetPaaSokkel =
-                forekomsterAv(modell.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) summerVerdiFraHverForekomst {
+                forekomsterAv(modell2023.permanentForskjellForVirksomhetOmfattetAvPetroleumsskatteloven) summerVerdiFraHverForekomst {
                     if (forekomstType.permanentForskjellstype lik permanentForskjellstype.kode_friinntektEtterPetroleumsskatteloven ||
                         forekomstType.permanentForskjellstype lik permanentForskjellstype2023.kode_friinntektEtterSamordningsforskriften
                     ) {
