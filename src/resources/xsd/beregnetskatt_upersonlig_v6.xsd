@@ -2,10 +2,10 @@
 <xsd:schema xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v6" xmlns:skatt="http://www.skatteetaten.no/xsd" xmlns:typekatalog="urn:ske:informasjonsrammeverk:typekatalog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v6">
     <xsd:annotation>
         <xsd:documentation>
-            <xsd:attribute fixed="2024-11-27T10:47:07.221+0100" name="generertDato"/>
-            <xsd:attribute fixed="v6" name="versjon"/>
-            <xsd:attribute fixed="Beregnet skatt upersonlige skattepliktige" name="beskrivelse"/>
-            <xsd:attribute fixed="v6 (2025)" name="modellnavn"/>
+            <xsd:attribute fixed="2026-10-30T15:25:39.428+0100" name="generertDato"/>
+            <xsd:attribute fixed="6.1" name="versjon"/>
+            <xsd:attribute fixed="Beregnet skatt upersonlige skattepliktige fra 2025" name="beskrivelse"/>
+            <xsd:attribute fixed="beregnet skatt upersonlig v6 (2025 -)" name="modellnavn"/>
             <xsd:attribute fixed="urn:no:skatteetaten:fastsetting:formueinntekt:upersonlig:beregnetskatt:v6" name="navnerom"/>
             <xsd:attribute fixed="false" name="begrepsreferanse"/>
             <xsd:attribute fixed="false" name="dokumentasjon"/>
@@ -81,6 +81,7 @@
             <xsd:element minOccurs="0" name="skatteverdiAvAaretsUnderskuddISaerskattegrunnlagetTilUtbetaling" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="negativGrunnrenteskattVedRealisasjonEllerOpphoerAvGrunnrenteskattepliktigHavbruksvirksomhet" type="typekatalog:BeloepSomHeltall"/>
             <xsd:element minOccurs="0" name="negativGrunnrenteskattVedOpphoerLandbasertVindkraft" type="typekatalog:BeloepSomHeltall"/>
+            <xsd:element minOccurs="0" name="negativGrunnrenteskattVedDriftssettelseLandbasertVindkraft" type="typekatalog:BeloepSomHeltall"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Skattetillegg">

@@ -1570,12 +1570,14 @@
   <xsd:complexType name="GrunnlagForBeregningAvKreditfradrag">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="nettoformueIUtlandet" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/367f2cae-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetIkkeOmfattetAvEOeSregler" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetIkkeOmfattetAvEOeSreglerUtenLatentGevinstOgTap" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetOmfattetAvEOeSregler" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetOmfattetAvEOeSreglerUtenLatentGevinstOgTap" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetIkkeOmfattetAvEOESregler" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetIkkeOmfattetAvEOESreglerUtenLatentGevinstOgTap" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetOmfattetAvEOESregler" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetOmfattetAvEOESreglerUtenLatentGevinstOgTap" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetIkkeOmfattetAvEOESreglerUtenArbeidsfradragForUnge" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektUnderlagtBeskatningIUtlandetOmfattetAvEOESreglerUtenArbeidsfradragForUnge" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="personinntektUnderlagtBeskatningIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="harLoennOgPensjonUnderlagtBeskatningIUtlandetFraLandIEOeSOver90ProsentAvSumInntekt" skatt:erAvledet="true" type="BoolskMedInnkapsling" />
+      <xsd:element minOccurs="0" name="harLoennOgPensjonUnderlagtBeskatningIUtlandetFraLandIEOESOver90ProsentAvSumInntekt" skatt:erAvledet="true" type="BoolskMedInnkapsling" />
       <xsd:element minOccurs="0" name="inntektsskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="formuesskattBetaltIUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
@@ -1590,9 +1592,14 @@
       <xsd:element minOccurs="0" name="nettoinntektFraDenNorskeStatUtenforEOESVedDenAlternativeFordelingsmetodenUtenLatentGevinstOgTap" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="nettoinntektFraDenNorskeStatIEOESVedDenAlternativeFordelingsmetoden" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/367f2cb1-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="nettoinntektFraDenNorskeStatIEOESVedDenAlternativeFordelingsmetodenUtenLatentGevinstOgTap" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektFraAndreEnnDenNorskeStatUtenforEOESVedDenAlternativeFordelingsmetodenUtenArbeidsfradragForUnge" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektFraAndreEnnDenNorskeStatIEOESVedDenAlternativeFordelingsmetodenUtenArbeidsfradragForUnge" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektFraDenNorskeStatUtenforEOESVedDenAlternativeFordelingsmetodenUtenArbeidsfradragForUnge" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="nettoinntektFraDenNorskeStatIEOESVedDenAlternativeFordelingsmetodenUtenArbeidsfradragForUnge" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="personinntektIUtlandetVedDenAlternativeFordelingsmetoden" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/367f2cbe-a9e1-11e8-8514-005056821322" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="korrigertGlobalAlminneligInntektVedKombinasjonAvDenAlternativeFordelingsmetodenOgKreditfradrag" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="korrigertGlobalAlminneligInntektVedKombinasjonAvDenAlternativeFordelingsmetodenOgKreditfradragUtenLatentGevinstOgTap" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="korrigertGlobalAlminneligInntektVedKombinasjonAvDenAlternativeFordelingsmetodenOgKreditfradragUtenArbeidsfradragForUnge" skatt:erAvledet="true" type="BeloepSomHeltallMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="KravOmKreditfradrag" skatt:begrepsreferanse="https://data.skatteetaten.no/web/datakatalog/begrep/cf247fe3-dfe5-11e7-9101-005056821322">
@@ -1615,6 +1622,7 @@
       <xsd:element minOccurs="0" name="saerskiltFradragForFiskereOgFangstfolkTilordnetUtlandet" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="saerskiltFradragForSjoefolkTilordnetUtlandet" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="fremfoertUnderskuddFraTidligereAarTilordnetUtlandet" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="arbeidsfradragForUngeTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FradragDirekteTilordnetInntektFraUtlandetVedKravOmDenAlternativeFordelingsmetoden">
@@ -1627,6 +1635,7 @@
       <xsd:element minOccurs="0" name="pensjonsinnbetalingTilPensjonsordningTilordnetUtlandet" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="saerskiltFradragForSjoefolkTilordnetUtlandet" type="BeloepSomHeltallMedInnkapsling" />
       <xsd:element minOccurs="0" name="saerskiltFradragForFiskereOgFangstfolkTilordnetUtlandet" type="BeloepSomHeltallMedInnkapsling" />
+      <xsd:element minOccurs="0" name="arbeidsfradragForUngeTilordnetUtlandet" skatt:erAvledet="true" type="BeloepSomHeltallMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="FradragIndirekteTilordnetUtlandetVedKravOmKreditfradrag">
