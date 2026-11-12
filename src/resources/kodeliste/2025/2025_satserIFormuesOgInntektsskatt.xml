@@ -4,7 +4,7 @@
   <tekniskNavn>2025_satserIFormuesOgInntektsskatt</tekniskNavn>
   <status>aktiv</status>
   <versjonsnummer>1</versjonsnummer>
-  <sistEndret>2026-04-27T11:37:33.376751522Z</sistEndret>
+  <sistEndret>2026-09-16T11:37:33.376751522Z</sistEndret>
   <sistEndretAv>m79764</sistEndretAv>
   <ansvarligOmraade>skattemeldingForFormuesOgInntektsskatt</ansvarligOmraade>
   <beskrivelse>
@@ -251,6 +251,22 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>innboOgAnnetLoesoere.verdsettingssatsMedium.grense</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Innbo loesoere og fritidsbaat fra kr 1 500 000 til og med kr 1 900 000, verdsettingssats medium, grense</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloep</satsenhet>
+      <satsverdi>1500000</satsverdi>
+      <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-6</kildereferanse>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>innboOgAnnetLoesoere.verdsettingssatsHoey</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -264,6 +280,22 @@
       <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-6</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>verifisertIForskriftEllerVedtak</verifiseringsstatus>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>innboOgAnnetLoesoere.verdsettingssatsHoey.grense</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Innbo loesoere og fritidsbaat fra kr 1 900 000, verdsettingssats hoey, grense</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>beloep</satsenhet>
+      <satsverdi>1900000</satsverdi>
+      <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-6</kildereferanse>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
     </kodetillegg>
   </kode>
   <kode>
@@ -442,6 +474,22 @@
     </kodetillegg>
   </kode>
   <kode>
+    <tekniskNavn>verdsettingAvSkog.korreksjonForUnormalHogstklassefordelingHoey.grense</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Fast eiendom som formuesobjekt, korrigering for ungskog sats hoey, grense</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>85</satsverdi>
+      <kildereferanse>Forskrift om takseringsregler 2025 § 4-8</kildereferanse>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
+    </kodetillegg>
+  </kode>
+  <kode>
     <tekniskNavn>verdsettingAvSkog.korreksjonForUnormalHogstklassefordelingMedium</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
@@ -455,6 +503,22 @@
       <kildereferanse>Forskrift om takseringsregler 2025 § 4-8</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>verifisertIForskriftEllerVedtak</verifiseringsstatus>
+    </kodetillegg>
+  </kode>
+  <kode>
+    <tekniskNavn>verdsettingAvSkog.korreksjonForUnormalHogstklassefordelingMedium.grense</tekniskNavn>
+    <beskrivelse>
+      <spraakTekst>
+        <tekst>Fast eiendom som formuesobjekt, korrigering for ungskog sats hoey, grense</tekst>
+        <spraak>no</spraak>
+      </spraakTekst>
+    </beskrivelse>
+    <kodetillegg>
+      <satsenhet>prosent</satsenhet>
+      <satsverdi>70</satsverdi>
+      <kildereferanse>Forskrift om takseringsregler 2025 § 4-8</kildereferanse>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
+      <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
     </kodetillegg>
   </kode>
   <kode>
@@ -1845,10 +1909,6 @@
         <noekkel>inntektsaar-15</noekkel>
         <verdi>15</verdi>
       </multiverdi>
-      <multiverdi>
-        <noekkel>forklaring</noekkel>
-        <verdi>her tar vi inntektåret og trekker fra tallet, feks i 2025 så blir inntektsaar-1 lik 2025 - 1 = 2024</verdi>
-      </multiverdi>
       <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-3</kildereferanse>
       <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
@@ -1875,7 +1935,7 @@
     <tekniskNavn>verdsettingAvKjoeretoey.verdsettingssatsEtterRegistreringsaarOver30</tekniskNavn>
     <beskrivelse>
       <spraakTekst>
-        <tekst>Kjøretoey, private biler/motorsykler/snøscootere/bobil verdsettes med utgangspunkt i hovedimportørs listepris ved registrering som ny., verdsettingssats 16-29 år</tekst>
+        <tekst>Kjøretoey, private biler/motorsykler/snøscootere/bobil verdsettes med utgangspunkt i hovedimportørs listepris ved registrering som ny., verdsettingssats over 30 år</tekst>
         <spraak>no</spraak>
       </spraakTekst>
     </beskrivelse>
@@ -1883,7 +1943,6 @@
       <satsenhet>beloep</satsenhet>
       <satsverdi>0</satsverdi>
       <kildereferanse>Forskrift om takseringsregler 2025 § 1-1-3</kildereferanse>
-      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <verifiseringsstatus>ikkeVerifisert</verifiseringsstatus>
     </kodetillegg>
   </kode>
@@ -1896,6 +1955,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <satsenhet>prosent</satsenhet>
       <multiverdi>
         <noekkel>inntektsaar+0</noekkel>
         <verdi>85</verdi>
@@ -5480,6 +5540,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <beregningskontekst>skatteberegning</beregningskontekst>
@@ -5495,6 +5556,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertIAnnet</verifiseringsstatus>
@@ -5510,6 +5572,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>beloep</satsenhet>
       <satsverdi>10000000</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
@@ -5525,6 +5588,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>80</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
@@ -5540,6 +5604,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>25</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
@@ -5555,6 +5620,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
@@ -5570,6 +5636,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
@@ -5585,6 +5652,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
@@ -5600,6 +5668,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>100</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
@@ -5630,6 +5699,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
@@ -5645,6 +5715,7 @@
       </spraakTekst>
     </beskrivelse>
     <kodetillegg>
+      <beregningskontekst>fastsettingsberegning</beregningskontekst>
       <satsenhet>prosent</satsenhet>
       <satsverdi>70</satsverdi>
       <verifiseringsstatus>verifisertILov</verifiseringsstatus>
