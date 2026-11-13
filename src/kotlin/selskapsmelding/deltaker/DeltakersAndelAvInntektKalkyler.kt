@@ -16,6 +16,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skattPaaAlminneligInntekt_satsITiltakssone
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.skjermingsrenteForPersonligeAksjonaererOgDeltakereIAnsvarligSelskapMv
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.minsteVerdiAv
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.Deltakerrolle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.deltakerErPersonlig
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.deltakerErUpersonlig
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.deltakerErUpersonligEllerSdf
@@ -687,7 +688,9 @@ object DeltakersAndelAvInntektKalkyler : HarKalkylesamling {
     private fun ForekomstKontekst<v5.deltakerForekomst>.deltakersAndelAvInntektIProsent() =
         forekomstType.deltakersAndelAvInntektIProsent.prosent() ?: forekomstType.selskapsandelIProsent.prosent()
 
-    private fun GeneriskModellKontekst.aaretsTilleggEllerFradragIInntekt() = forekomsterAv(modell.rentebegrensning) summerVerdiFraHverForekomst  {
+    private fun GeneriskModellKontekst.aaretsTilleggEllerFradragIInntekt() = forekomsterAv(modell.rentebegrensning) der {
+        forekomstType.deltakerrolle lik Deltakerrolle.deltakerErRederi
+    } summerVerdiFraHverForekomst {
         forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsTilleggIInntekt.tall() -
             forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_aaretsFradragIInntekt.tall()
     }
