@@ -9,13 +9,13 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.ForekomstKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellKontekst
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.Felt
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.FeltMedEgenskaper
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.domenemodell.KodeVerdi
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.konstanter.Inntektsaar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v7_2026.v7
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Satser
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2024
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2025
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erFradrag
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.GrunnlagIBeregningAvSelskapsskatt.erTillegg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente
@@ -23,6 +23,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.InntektOgFradragIGrunnrente.harBehandlingsregelTillegg
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.inntektIGrunnrente
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.inntektIGrunnrente2025
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.kontraktstypeForKraftLevertAvKraftverk
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
@@ -58,10 +59,10 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                     }
                 }
 
-                hvis(this@kalkyle.inntektsaar.tekniskInntektsaar >= 2025) {
-                    settFelt(forekomstType.samletDekningskjoepForFysiskAvtale) {
+                hvis(this@kalkyle.inntektsaar.tekniskInntektsaar == 2025) {
+                    settFelt(felt2025.kontraktForLandbasertVindkraft.samletDekningskjoepForFysiskAvtale) {
                         forekomsterAv(forekomstType.spesifikasjonAvKontraktIVindkraftverk) summerVerdiFraHverForekomst {
-                            forekomstType.dekningskjoep.tall()
+                            felt2025.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.dekningskjoep.tall()
                         }
                     }
                 }
@@ -147,23 +148,26 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 )
             }
 
-            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattFoer28092022) {
-                summerAntallPerAndelPerLoepenummer(
-                    forekomstType.volumDekningskjoep,
-                    samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022
-                )
-            }
-            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
-                summerAntallPerAndelPerLoepenummer(
-                    forekomstType.volumDekningskjoep,
-                    samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030
-                )
-            }
-            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_langsiktigFastpriskontrakt) {
-                summerAntallPerAndelPerLoepenummer(
-                    forekomstType.volumDekningskjoep,
-                    samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt
-                )
+            if (this@kalkyle.inntektsaar.tekniskInntektsaar == 2025) {
+                val volumDekningskjoep = felt2025.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.volumDekningskjoep
+                if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattFoer28092022) {
+                    summerAntallPerAndelPerLoepenummer(
+                        volumDekningskjoep,
+                        samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022
+                    )
+                }
+                if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                    summerAntallPerAndelPerLoepenummer(
+                        volumDekningskjoep,
+                        samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030
+                    )
+                }
+                if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_langsiktigFastpriskontrakt) {
+                    summerAntallPerAndelPerLoepenummer(
+                        volumDekningskjoep,
+                        samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt
+                    )
+                }
             }
         }
 
@@ -236,7 +240,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                         loepenummer
                     )
                 ) {
-                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022) {
+                    settFelt(felt2025.spesifikasjonAvEnhetIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022) {
                         samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattFoer28092022[loepenummer]
                     }
                 }
@@ -245,13 +249,13 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                         loepenummer
                     )
                 ) {
-                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                    settFelt(felt2025.spesifikasjonAvEnhetIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
                         samletVolumForDekningskjoepForKontraktstypeKjoepekontraktInngaattIPeriodenFra01012024Til31122030[loepenummer]
                     }
                 }
 
                 if (samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt.containsKey(loepenummer)) {
-                    settFelt(forekomstType.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt) {
+                    settFelt(felt2025.spesifikasjonAvEnhetIVindkraftverk.oevrigTilVisningAvKontraktsinformasjonPerVindkraftverk_samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt) {
                         samletVolumForDekningskjoepForKontraktstypeLangsiktigFastpriskontrakt[loepenummer]
                     }
                 }
@@ -340,23 +344,26 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                     nyeForekomsterTapVedFoertidigOppgjoerAvKjoepekontraktInngaattMellom2024Og2030
                 )
             }
-            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattFoer28092022) {
-                summerBeloepPerAndelPerLoepenummer(
-                    forekomstType.dekningskjoep,
-                    nyeForekomsterdekningskjoepForKjoepekontraktMellomUavhengigeParterInngaattFoer28092022
-                )
-            }
-            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
-                summerBeloepPerAndelPerLoepenummer(
-                    forekomstType.dekningskjoep,
-                    dekningskjoepKjoepekontraktMellomUavhengigeParterInngaattMellom2024Og2030
-                )
-            }
-            if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_langsiktigFastpriskontrakt) {
-                summerBeloepPerAndelPerLoepenummer(
-                    forekomstType.dekningskjoep,
-                    dekningskjoepForLangsiktigFastpriskontrakt
-                )
+            if (this@kalkyle.inntektsaar.tekniskInntektsaar == 2025) {
+                val dekningskjoep = felt2025.kontraktForLandbasertVindkraft.spesifikasjonAvKontraktIVindkraftverk.dekningskjoep
+                if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattFoer28092022) {
+                    summerBeloepPerAndelPerLoepenummer(
+                        dekningskjoep,
+                        nyeForekomsterdekningskjoepForKjoepekontraktMellomUavhengigeParterInngaattFoer28092022
+                    )
+                }
+                if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_kjoepekontraktInngaattIPeriodenFra01012024Til31122030) {
+                    summerBeloepPerAndelPerLoepenummer(
+                        dekningskjoep,
+                        dekningskjoepKjoepekontraktMellomUavhengigeParterInngaattMellom2024Og2030
+                    )
+                }
+                if (forekomstType.kontraktstype lik kontraktstypeForKraftLevertAvKraftverk.kode_langsiktigFastpriskontrakt) {
+                    summerBeloepPerAndelPerLoepenummer(
+                        dekningskjoep,
+                        dekningskjoepForLangsiktigFastpriskontrakt
+                    )
+                }
             }
         }
 
@@ -404,22 +411,22 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 nyeForekomsterTapVedFoertidigOppgjoerAvKjoepekontraktInngaattMellom2024Og2030[forekomstType.loepenummer.verdi()]
             )
             opprettNyForekomstInntekt(
-                inntektIGrunnrente.kode_dekningskjoepForKjoepekontraktMellomUavhengigeParterInngaattFoer28092022,
+                inntektIGrunnrente2025.kode_dekningskjoepForKjoepekontraktMellomUavhengigeParterInngaattFoer28092022,
                 nyeForekomsterdekningskjoepForKjoepekontraktMellomUavhengigeParterInngaattFoer28092022[forekomstType.loepenummer.verdi()]
             )
             opprettNyForekomstInntekt(
-                inntektIGrunnrente.kode_dekningskjoepKjoepekontraktMellomUavhengigeParterInngaattMellom2024Og2030,
+                inntektIGrunnrente2025.kode_dekningskjoepKjoepekontraktMellomUavhengigeParterInngaattMellom2024Og2030,
                 dekningskjoepKjoepekontraktMellomUavhengigeParterInngaattMellom2024Og2030[forekomstType.loepenummer.verdi()]
             )
             opprettNyForekomstInntekt(
-                inntektIGrunnrente.kode_dekningskjoepForLangsiktigFastpriskontrakt,
+                inntektIGrunnrente2025.kode_dekningskjoepForLangsiktigFastpriskontrakt,
                 dekningskjoepForLangsiktigFastpriskontrakt[forekomstType.loepenummer.verdi()]
             )
         }
     }
 
     private fun ForekomstKontekst<v7.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>.summerBeloepPerAndelPerLoepenummer(
-        beloepsfelt: FeltMedEgenskaper<v7.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>,
+        beloepsfelt: Felt<v7.kontraktForLandbasertVindkraftForekomst.spesifikasjonAvKontraktIVindkraftverkForekomst>,
         nyeForekomster: MutableMap<String, BigDecimal>
     ) {
 
@@ -709,6 +716,12 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                     forekomstType.beloep.tall()
                 }
 
+            val totaltDekningskjoep = if (inntektsaar.tekniskInntektsaar >= 2026) {
+                forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvDekningskjoepIVindkraftverk_totaltDekningskjoep.tall()
+            } else {
+                null
+            }
+
             hvis(
                 forekomstType.installertEffektIMwIHenholdTilKonsesjon.stoerreEllerLik(1)
                         || forekomstType.antallTurbiner.stoerreEnn(5)
@@ -736,7 +749,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                         )
                     )
 
-                    inntekt.minus(fradrag)
+                    inntekt.minus(fradrag).minus(totaltDekningskjoep)
                 }
 
                 if (forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_grunnlagForBeregningAvSelskapsskatt
@@ -783,7 +796,7 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
                 }
 
                 settFelt(forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_samletInntektIBruttoGrunnrenteinntekt) {
-                    sumInntektIGrunnrenteTillegg - sumInntektIGrunnrenteFradrag
+                    sumInntektIGrunnrenteTillegg - sumInntektIGrunnrenteFradrag - totaltDekningskjoep
                 }
             }
 
@@ -799,14 +812,32 @@ internal object GrunnrenteinntektLandbasertVindkraft : HarKalkylesamling {
         }
     }
 
-
+    private val gjennomsnittligTotaltDekningskjoep = kalkyle("gjennomsnittligTotaltDekningskjoepIVindkraftverk") {
+        hvis(inntektsaar.tekniskInntektsaar >= 2026) {
+            forAlleForekomsterAv(modell.spesifikasjonAvEnhetIVindkraftverk) {
+                hvis(
+                    forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvDekningskjoepIVindkraftverk_totaltDekningskjoep.harVerdi() &&
+                        forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvDekningskjoepIVindkraftverk_volumTotaltDekningskjoep.harVerdi()
+                ) {
+                    settFelt(
+                        forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvDekningskjoepIVindkraftverk_gjennomsnittligTotaltDekningskjoepPerKWh,
+                        maksAntallDesimaler = 10
+                    ) {
+                        forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvDekningskjoepIVindkraftverk_totaltDekningskjoep /
+                            forekomstType.spesifikasjonAvGrunnrenteinntektIVindkraftverk_spesifikasjonAvDekningskjoepIVindkraftverk_volumTotaltDekningskjoep
+                    }
+                }
+            }
+        }
+    }
 
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
             kontraktForLandbasertVindkraft,
             lagNyForekomstSpesifikasjonAvInntekt,
             spesifikasjonAvEnhetIVindkraftverk,
-            kontraktsinformasjonPerVindkraftanlegg
+            kontraktsinformasjonPerVindkraftanlegg,
+            gjennomsnittligTotaltDekningskjoep
         )
     }
 }

@@ -2,7 +2,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v7" xmlns:skatt="http://www.skatteetaten.no/xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:no:skatteetaten:fastsetting:formueinntekt:naeringsspesifikasjon:ekstern:v7">
   <xsd:annotation>
     <xsd:documentation>
-      <xsd:attribute fixed="2026-09-01T14:28:30.190+0200" name="generertDato" />
+      <xsd:attribute fixed="2026-10-28T14:24:25.883+0100" name="generertDato" />
       <xsd:attribute fixed="7.0" name="versjon" />
       <xsd:attribute fixed="Næringsspesifikasjon inneholder informasjon om aktiviteten i virksomheten." name="beskrivelse" />
       <xsd:attribute fixed="Næringsspesifikasjon v7" name="modellnavn" />
@@ -1083,7 +1083,6 @@
       <xsd:element minOccurs="0" name="samletSalgsinntektFraFysiskAvtale" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="samletGevinstFraFoertidigTerminering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="samletTapFraFoertidigTerminering" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="samletDekningskjoepForFysiskAvtale" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Jordbrukskonto">
@@ -2016,6 +2015,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk" type="SpesifikasjonAvFradragIBruttoGrunnrenteinntektIVindkraftverk" />
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="spesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVindkraftverk" type="SpesifikasjonAvGrunnlagIBeregningAvSelskapsskattIVindkraftverk" />
       <xsd:element minOccurs="0" name="spesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris" type="SpesifikasjonAvBruttoSalgsinntektTilSpotmarkedspris" />
+      <xsd:element minOccurs="0" name="spesifikasjonAvDekningskjoepIVindkraftverk" type="SpesifikasjonAvDekningskjoepIVindkraftverk" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="DesimaltallMedInnkapsling">
@@ -2048,8 +2048,6 @@
       <xsd:element minOccurs="0" name="tapVedFoertidigTermineringMvAvAvtaleOmFinansiellSikring" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="avtaleInngaattAvAnnetSelskapISammeKonsern" type="Foretak" />
       <xsd:element maxOccurs="unbounded" name="kontraktspartIVindkraftverk" type="KontraktspartIVindkraftverk" />
-      <xsd:element minOccurs="0" name="dekningskjoep" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="volumDekningskjoep" type="KiloWattimeMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="InntektOgKostnadJordbrukskonto">
@@ -2314,8 +2312,8 @@
       <xsd:element minOccurs="0" name="volumTotaltDekningskjoep" type="KiloWattimeMedInnkapsling" />
       <xsd:element minOccurs="0" name="dekningskjoepTilknyttetKonsesjonskraft" type="BeloepMedSkattemessigeEgenskaper" />
       <xsd:element minOccurs="0" name="volumDekningskjoepTilknyttetKonsesjonskraft" type="KiloWattimeMedInnkapsling" />
-      <xsd:element minOccurs="0" name="gjennomsnittligTotaltDekningskjoepPerKWh" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="gjennomsnittligDekningskjoepTilknyttetKonsesjonskraftPerKWh" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="gjennomsnittligTotaltDekningskjoepPerKWh" skatt:erAvledet="true" type="BeloepMed10DesimalerMedInnkapsling" />
+      <xsd:element minOccurs="0" name="gjennomsnittligDekningskjoepTilknyttetKonsesjonskraftPerKWh" skatt:erAvledet="true" type="BeloepMed10DesimalerMedInnkapsling" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="GrunnlagForNaturressursskattPerInntektsaar">
@@ -2418,8 +2416,13 @@
     <xsd:sequence>
       <xsd:element minOccurs="0" name="produksjon" type="KiloWattimeMedInnkapsling" />
       <xsd:element minOccurs="0" name="spotmarkedspris" type="KonsesjonsEllerKontraktspris" />
-      <xsd:element minOccurs="0" name="dekningskjoep" type="BeloepMedSkattemessigeEgenskaper" />
-      <xsd:element minOccurs="0" name="volumDekningskjoep" type="KiloWattimeMedInnkapsling" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SpesifikasjonAvDekningskjoepIVindkraftverk">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="totaltDekningskjoep" type="BeloepMedSkattemessigeEgenskaper" />
+      <xsd:element minOccurs="0" name="volumTotaltDekningskjoep" type="KiloWattimeMedInnkapsling" />
+      <xsd:element minOccurs="0" name="gjennomsnittligTotaltDekningskjoepPerKWh" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper" />
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="KiloWattime">
@@ -2428,7 +2431,7 @@
   <xsd:complexType name="SalgsinntektFraSpotmarkedspris">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="produksjon" skatt:erAvledet="true" type="KiloWattimeMedInnkapsling"/>
-      <xsd:element minOccurs="0" name="spotmarkedspris" skatt:erAvledet="true" type="BeloepMedSkattemessigeEgenskaper"/>
+      <xsd:element minOccurs="0" name="spotmarkedspris" skatt:erAvledet="true" type="BeloepMed10DesimalerMedInnkapsling"/>
       <xsd:element minOccurs="0" name="salgsinntekt" type="BeloepMedSkattemessigeEgenskaper"/>
     </xsd:sequence>
   </xsd:complexType>

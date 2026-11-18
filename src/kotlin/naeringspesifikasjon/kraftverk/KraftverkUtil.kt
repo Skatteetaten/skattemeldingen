@@ -6,6 +6,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.d
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.naering.domenemodell.v7_2026.v7
 
 const val grenseverdiKva = 10000
+const val ANTALL_DESIMALER_FOR_PRIS_PER_KWH = 10
 
 fun ForekomstKontekst<v7.kraftverk_spesifikasjonAvKraftverkForekomst>.samletPaastempletMerkeytelseIKvaOverGrense() =
     forekomstType.samletPaastempletMerkeytelseIKva stoerreEllerLik grenseverdiKva

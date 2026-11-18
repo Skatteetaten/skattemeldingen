@@ -181,7 +181,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                     samletPaastempletMerkeytelseIKvaOverGrense()
                 } forHverForekomst {
                     hvis(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_produksjon.tall().erTryggAaDelePaa()) {
-                        settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_spotmarkedspris) {
+                        settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_spotmarkedspris, ANTALL_DESIMALER_FOR_PRIS_PER_KWH) {
                             forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_salgsinntekt /
                                 forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvOevrigInntektIBruttoGrunnrenteinntektIVannkraftverk_oevrigAarsproduksjon_produksjon
                         }
@@ -197,7 +197,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                     forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_totaltDekningskjoep.harVerdi() &&
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_volumTotaltDekningskjoep.harVerdi()
                 ) {
-                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_gjennomsnittligTotaltDekningskjoepPerKWh) {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_gjennomsnittligTotaltDekningskjoepPerKWh, ANTALL_DESIMALER_FOR_PRIS_PER_KWH) {
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_totaltDekningskjoep /
                             forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_volumTotaltDekningskjoep
                     }
@@ -207,7 +207,7 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
                     forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_dekningskjoepTilknyttetKonsesjonskraft.harVerdi() &&
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_volumDekningskjoepTilknyttetKonsesjonskraft.harVerdi()
                 ) {
-                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_gjennomsnittligDekningskjoepTilknyttetKonsesjonskraftPerKWh) {
+                    settFelt(forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_gjennomsnittligDekningskjoepTilknyttetKonsesjonskraftPerKWh, ANTALL_DESIMALER_FOR_PRIS_PER_KWH) {
                         forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_dekningskjoepTilknyttetKonsesjonskraft /
                             forekomstType.spesifikasjonAvGrunnrenteinntekt_spesifikasjonAvDekningskjoep_volumDekningskjoepTilknyttetKonsesjonskraft
                     }

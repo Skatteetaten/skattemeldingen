@@ -88,7 +88,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
             hvis(inntektsaar.tekniskInntektsaar >= 2026) {
                 forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) forHverForekomst {
                     hvis(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon.tall().erTryggAaDelePaa()) {
-                        settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_spotmarkedspris) {
+                        settFelt(forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_spotmarkedspris, ANTALL_DESIMALER_FOR_PRIS_PER_KWH) {
                             forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_salgsinntekt /
                                 forekomstType.grunnlagForBeregningAvFormuesverdiOgSaerskiltEiendomsskattegrunnlagIInntektsaaret_salgsinntektFraTotalAarsproduksjonRedusertMedKonsesjonskraft_produksjon
                         }
