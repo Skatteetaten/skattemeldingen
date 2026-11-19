@@ -12,6 +12,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2025
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 import java.math.BigDecimal
 
 object OevrigTilVisningForSpesifikasjonAvAnleggsmiddel : HarKalkylesamling {
@@ -119,8 +120,14 @@ object OevrigTilVisningForSpesifikasjonAvAnleggsmiddel : HarKalkylesamling {
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_aaretsFriinntekt.tall()
                     }
                 val anleggsmiddelUnderUtfoerelseFriinntekt =
-                    forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) summerVerdiFraHverForekomst {
-                        forekomstType.aaretsFriinntektForAnleggsmiddelIVannkraftOmfattetAvGrunnrenteskatt.tall()
+                    if (inntektsaar.tekniskInntektsaar >= 2026) {
+                        forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelse) summerVerdiFraHverForekomst {
+                            forekomstType.aaretsFriinntektForAnleggsmiddelIVannkraftOmfattetAvGrunnrenteskatt.tall()
+                        }
+                    } else {
+                        forekomsterAv(modell2025.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) summerVerdiFraHverForekomst {
+                            forekomstType.aaretsFriinntektForAnleggsmiddelIVannkraftOmfattetAvGrunnrenteskatt.tall()
+                        }
                     }
                 val saerskiltePetroleumFriinntekt =
                     forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelForVirksomhetOmfattetAvPetroleumsskatteloven) summerVerdiFraHverForekomst {

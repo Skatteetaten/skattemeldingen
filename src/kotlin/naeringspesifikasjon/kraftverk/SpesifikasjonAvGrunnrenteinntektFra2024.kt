@@ -493,15 +493,23 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
             }
 
             fun investeringskostnadKnyttetAnleggsmiddelUnderUtfoerelse(loepenummer: String?): BigDecimal? {
-                return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
-                    val kraftverketsLoepenummer = if(tekniskInntektsaar >= 2025) {
-                        forekomstType.vannkraftverketsLoepenummer
-                    } else {
-                        felt2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer
+                return if (tekniskInntektsaar >= 2026) {
+                    forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelse) der {
+                        forekomstType.vannkraftverketsLoepenummer lik loepenummer
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
                     }
-                    kraftverketsLoepenummer lik loepenummer
-                } summerVerdiFraHverForekomst {
-                    forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
+                } else {
+                    forekomsterAv(modell2025.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
+                        val kraftverketsLoepenummer = if(tekniskInntektsaar >= 2025) {
+                            forekomstType.vannkraftverketsLoepenummer
+                        } else {
+                            felt2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer
+                        }
+                        kraftverketsLoepenummer lik loepenummer
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
+                    }
                 }
             }
 
@@ -897,15 +905,23 @@ internal object SpesifikasjonAvGrunnrenteinntektFra2024 : HarKalkylesamling {
 
             fun summerAnleggsmiddelIKraftverkUnderUtfoerelseAaretsFriinntekt(loepenummer: String?): BigDecimal? {
                 val inntektsaar = inntektsaar
-                return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
-                    val loepenummerForekomst = if(inntektsaar.tekniskInntektsaar >= 2025) {
-                        forekomstType.vannkraftverketsLoepenummer
-                    } else {
-                        felt2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer
+                return if (inntektsaar.tekniskInntektsaar >= 2026) {
+                    forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelse) der {
+                        forekomstType.vannkraftverketsLoepenummer lik loepenummer
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.aaretsFriinntektForAnleggsmiddelIVannkraftOmfattetAvGrunnrenteskatt.tall()
                     }
-                    loepenummerForekomst lik loepenummer
-                } summerVerdiFraHverForekomst {
-                    forekomstType.aaretsFriinntektForAnleggsmiddelIVannkraftOmfattetAvGrunnrenteskatt.tall()
+                } else {
+                    forekomsterAv(modell2025.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
+                        val loepenummerForekomst = if(inntektsaar.tekniskInntektsaar >= 2025) {
+                            forekomstType.vannkraftverketsLoepenummer
+                        } else {
+                            felt2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer
+                        }
+                        loepenummerForekomst lik loepenummer
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.aaretsFriinntektForAnleggsmiddelIVannkraftOmfattetAvGrunnrenteskatt.tall()
+                    }
                 }
             }
 

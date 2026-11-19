@@ -9,6 +9,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kodelister.fradragIGrunnrente
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 
 internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarKalkylesamling {
 
@@ -450,15 +451,23 @@ internal object SpesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraft : HarK
 
         fun sumDirekteUtgiftsfoertInvesteringskostnadIGrunnrenteinntekt(loepenummer: String): BigDecimal? {
             val inntektsaar = inntektsaar
-            return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
-                val kraftverketsLoepenummer = if (inntektsaar.tekniskInntektsaar >= 2025) {
-                    forekomstType.vindkraftverketsLoepenummer
-                } else {
-                    felt2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer
+            return if (inntektsaar.tekniskInntektsaar >= 2026) {
+                forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelse) der {
+                    forekomstType.vindkraftverketsLoepenummer lik loepenummer
+                } summerVerdiFraHverForekomst {
+                    forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
                 }
-                kraftverketsLoepenummer lik loepenummer
-            } summerVerdiFraHverForekomst {
-                forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
+            } else {
+                forekomsterAv(modell2025.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
+                    val kraftverketsLoepenummer = if (inntektsaar.tekniskInntektsaar >= 2025) {
+                        forekomstType.vindkraftverketsLoepenummer
+                    } else {
+                        felt2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert.kraftverketsLoepenummer
+                    }
+                    kraftverketsLoepenummer lik loepenummer
+                } summerVerdiFraHverForekomst {
+                    forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
+                }
             }
         }
 

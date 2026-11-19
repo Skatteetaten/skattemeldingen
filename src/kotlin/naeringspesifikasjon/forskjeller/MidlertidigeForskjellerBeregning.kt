@@ -22,6 +22,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2022
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2023
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2024
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 
 internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
 
@@ -68,8 +69,12 @@ internal object MidlertidigeForskjellerBeregning : HarKalkylesamling {
                     forekomstType.utgaaendeVerdi.tall()
                 }
 
-            val anskaffelseskost = if (inntektsaar.tekniskInntektsaar >= 2024) {
-                forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) summerVerdiFraHverForekomst {
+            val anskaffelseskost = if (inntektsaar.tekniskInntektsaar >= 2026) {
+                forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelse) summerVerdiFraHverForekomst {
+                    forekomstType.anskaffelseskost.tall()
+                }
+            } else if (inntektsaar.tekniskInntektsaar >= 2024) {
+                forekomsterAv(modell2025.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) summerVerdiFraHverForekomst {
                     forekomstType.anskaffelseskost.tall()
                 }
             } else {

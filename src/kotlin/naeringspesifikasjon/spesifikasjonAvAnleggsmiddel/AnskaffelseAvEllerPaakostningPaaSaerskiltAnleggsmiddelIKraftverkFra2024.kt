@@ -18,6 +18,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
 
 internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverkFra2024 {
     private val logger = KotlinLogging.logger("AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk")
+
     internal val aaretsAvskrivningKalkyle = kalkyle("aaretsAvskrivningKalkyle") {
         val antallDagerIAar = antallDagerIAar(inntektsaar.gjeldendeInntektsaar)
         val inntektsaar = inntektsaar.gjeldendeInntektsaar.toBigDecimal()
@@ -25,7 +26,9 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
             val realisasjonsdato = forekomstType.realisasjonsdato.dato()
             val realisasjonsaar = realisasjonsdato?.year?.toBigDecimal()
 
-            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk.anskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk) forHverForekomst {
+            forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saerskiltAnleggsmiddelIKraftverk.anskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk) der {
+                forekomstType.erAnleggsmiddelUnderUtfoerelse.erUsann()
+            } forHverForekomst {
                 hvis(realisasjonsaar != inntektsaar && forekomstType.anskaffelsesEllerPaakostningsdato.aar() != inntektsaar) {
                     val gjenstaaendeAvskrivningstid =
                         forekomstType.avskrivningstid.tall() - (inntektsaar - forekomstType.anskaffelsesEllerPaakostningsdato.aar())
@@ -151,8 +154,9 @@ internal object AnskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk
                 val minsteGjenstaaendelevetid = forekomstType.anleggsmiddeltype.verdi().minsteGjenstaaendeLevetid(inntektsaar)
 
                 forekomsterAv(forekomstType.anskaffelseAvEllerPaakostningPaaSaerskiltAnleggsmiddelIKraftverk) der {
-                    forekomstType.anskaffelsesEllerPaakostningsdato.harVerdi() && forekomstType.anskaffelsesEllerPaakostningsdato.aar()!!
-                        .mindreEllerLik(gjeldendeInntektsaar)
+                    forekomstType.anskaffelsesEllerPaakostningsdato.harVerdi() &&
+                        forekomstType.anskaffelsesEllerPaakostningsdato.aar() mindreEllerLik gjeldendeInntektsaar &&
+                        forekomstType.erAnleggsmiddelUnderUtfoerelse.erUsann()
                 } forHverForekomst {
                     val aarSidenPaakostningEllerAnskaffelse =
                         gjeldendeInntektsaar - forekomstType.anskaffelsesEllerPaakostningsdato.aar() + 1 // Inklusiv inntektsaaret, legger derfor til 1

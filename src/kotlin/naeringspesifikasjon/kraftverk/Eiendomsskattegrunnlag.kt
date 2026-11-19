@@ -334,7 +334,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
     ) =
         (forekomstType.inntektsaar.tall() == gjeldendeInntektsaar - 1 || forekomstType.inntektsaar.tall() == gjeldendeInntektsaar - 2 || forekomstType.inntektsaar.tall() == gjeldendeInntektsaar - 3 || forekomstType.inntektsaar.tall() == gjeldendeInntektsaar - 4)
 
-    private val eiendomsskattegrunnlag = kalkyle("eiendomsskattegrunnlag") {
+    internal val eiendomsskattegrunnlag = kalkyle("eiendomsskattegrunnlag") {
         val inntektsaar = inntektsaar
 
         forekomsterAv(modell.kraftverk_spesifikasjonAvKraftverk) der {
@@ -355,12 +355,21 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
             }
         }
 
+        val verdierForBenyttesIGrunnrenteskattepliktigVirksomhet = if (inntektsaar.tekniskInntektsaar >= 2026)
+            listOf(
+                benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_utgaaendeVerdiInngaarIEiendomsskattegrunnlaget,
+                benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaUtenDirekteFradragOgAvskrivning,
+                benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaMedDirekteFradrag
+            ) else listOf(
+                benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_utgaaendeVerdiInngaarIEiendomsskattegrunnlaget,
+                benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaUtenDirekteFradragOgAvskrivning
+            )
+
         fun summerUtgaaendeVerdiSaldoavskrevetAnleggsmiddel(loepenummer: String?): BigDecimal? {
             if (inntektsaar.tekniskInntektsaar >= 2024) {
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.harVerdi() &&
-                            (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_utgaaendeVerdiInngaarIEiendomsskattegrunnlaget  ||
-                                    forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaUtenDirekteFradragOgAvskrivning) &&
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet likEnAv verdierForBenyttesIGrunnrenteskattepliktigVirksomhet &&
                         forekomstType.erDetFysiskAnleggsmiddelIUtgaaendeVerdi.erSann() &&
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
                 } summerVerdiFraHverForekomst {
@@ -382,8 +391,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
             if (inntektsaar.tekniskInntektsaar >= 2024) {
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_lineaertavskrevetAnleggsmiddel) der {
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.harVerdi() &&
-                            (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_utgaaendeVerdiInngaarIEiendomsskattegrunnlaget ||
-                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaUtenDirekteFradragOgAvskrivning) &&
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet likEnAv verdierForBenyttesIGrunnrenteskattepliktigVirksomhet &&
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
                 } summerVerdiFraHverForekomst {
                     forekomstType.utgaaendeVerdi.tall()
@@ -402,8 +410,7 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
             if (inntektsaar.tekniskInntektsaar >= 2024) {
                 return forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_ikkeAvskrivbartAnleggsmiddel) der {
                     forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet.harVerdi() &&
-                            (forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_utgaaendeVerdiInngaarIEiendomsskattegrunnlaget ||
-                             forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet lik benyttesIGrunnrenteskattepliktigVirksomhetMedAvskrivningsregel.kode_jaUtenDirekteFradragOgAvskrivning) &&
+                        forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_benyttesIGrunnrenteskattepliktigVirksomhet likEnAv verdierForBenyttesIGrunnrenteskattepliktigVirksomhet &&
                         forekomstType.spesifikasjonAvOrdinaertAnleggsmiddelIVannkraftverk_kraftverketsLoepenummer.verdi() == loepenummer
                 } summerVerdiFraHverForekomst {
                     forekomstType.utgaaendeVerdi.tall()
@@ -419,22 +426,28 @@ internal object Eiendomsskattegrunnlag : HarKalkylesamling {
         }
 
         fun summerUtgaaendeVerdiAnleggsmiddelUnderUtfoerelse(loepenummer: String?): BigDecimal? {
-            return when (inntektsaar.tekniskInntektsaar) {
-                2025 ->
-                    forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
+            return when {
+                inntektsaar.tekniskInntektsaar == 2025 ->
+                    forekomsterAv(modell2025.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
                         forekomstType.vannkraftverketsLoepenummer.verdi() == loepenummer
                     } summerVerdiFraHverForekomst {
                         forekomstType.anskaffelseskost.tall()
                     }
-                2024 ->
+                inntektsaar.tekniskInntektsaar == 2024 ->
                     forekomsterAv(modell2024.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
                         forekomstType.kraftverketsLoepenummer.verdi() == loepenummer
                     } summerVerdiFraHverForekomst {
                         forekomstType.anskaffelseskost.tall()
                     }
-                else ->
+                inntektsaar.tekniskInntektsaar < 2024 ->
                     forekomsterAv(modell2023.spesifikasjonAvAnleggsmiddel_anleggsmiddelIKraftverkUnderUtfoerelse) der {
                         forekomstType.kraftverketsLoepenummer.verdi() == loepenummer
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.anskaffelseskost.tall()
+                    }
+                else ->
+                    forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelse) der {
+                        forekomstType.vannkraftverketsLoepenummer.verdi() == loepenummer
                     } summerVerdiFraHverForekomst {
                         forekomstType.anskaffelseskost.tall()
                     }

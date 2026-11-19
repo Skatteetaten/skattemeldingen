@@ -5,6 +5,7 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.modell2025
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.statisk
 
 /**
@@ -87,11 +88,20 @@ internal object GrunnrenteskattHavbruk : HarKalkylesamling {
                 }
 
             val ikkeErAktivert = if (statisk.skatteplikt.erOmfattetAvSaerreglerForHavbruksvirksomhet.erSann()) {
-                forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
-                    forekomstType.vannkraftverketsLoepenummer.verdi() == null &&
-                    forekomstType.vindkraftverketsLoepenummer.verdi() == null
-                } summerVerdiFraHverForekomst {
-                    forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
+                if (inntektsaar.tekniskInntektsaar >= 2026) {
+                    forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelse) der {
+                        forekomstType.vannkraftverketsLoepenummer.verdi() == null &&
+                            forekomstType.vindkraftverketsLoepenummer.verdi() == null
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
+                    }
+                } else {
+                    forekomsterAv(modell2025.spesifikasjonAvAnleggsmiddel_anleggsmiddelUnderUtfoerelseSomIkkeErAktivert) der {
+                        forekomstType.vannkraftverketsLoepenummer.verdi() == null &&
+                            forekomstType.vindkraftverketsLoepenummer.verdi() == null
+                    } summerVerdiFraHverForekomst {
+                        forekomstType.direkteUtgiftsfoertInvesteringskostnadIGrunnrenteinntektIInntektsaaret.tall()
+                    }
                 }
             } else null
 
