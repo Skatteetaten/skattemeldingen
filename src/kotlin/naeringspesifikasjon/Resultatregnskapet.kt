@@ -601,7 +601,7 @@ internal object Resultatregnskapet : HarKalkylesamling {
 
     internal val sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatKalkyle = kalkyle("sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultat") {
         if (inntektsaar.tekniskInntektsaar >= 2026) {
-            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetInnenSkadeforsikring) {
+            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetInnenBankOgSkadeforsikring) {
                 forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_bankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet.inntektEllerKostnadInnenBankOgSkadeforsikring) summerVerdiFraHverForekomst {
                     forekomstType.beloep.tall()
                 }
@@ -627,7 +627,7 @@ internal object Resultatregnskapet : HarKalkylesamling {
 
     internal val sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatKalkyle = kalkyle("sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultat") {
         if (inntektsaar.tekniskInntektsaar >= 2026) {
-            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetInnenSkadeforsikring) {
+            settUniktFelt(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetInnenBankOgSkadeforsikring) {
                 forekomsterAv(modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_bankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet.inntektEllerKostnadInnenBankOgSkadeforsikring) summerVerdiFraHverForekomst {
                     forekomstType.beloep.tall()
                 }
@@ -746,12 +746,12 @@ internal object Resultatregnskapet : HarKalkylesamling {
     }
 
     private fun GeneriskModellKontekst.sumBankOgForsikringsinntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatet(): BigDecimal? =
-        modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetInnenSkadeforsikring +
+        modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetInnenBankOgSkadeforsikring +
             modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetTekniskRegnskapInnenLivsforsikring +
             modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomIkkeBlirOmklassifisertTilResultatetIkkeTekniskRegnskapInnenLivsforsikring
 
     private fun GeneriskModellKontekst.sumBankOgForsikringsinntektEllerKostnadSomKanBliOmklassifisertTilResultatet(): BigDecimal? =
-        modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetInnenSkadeforsikring +
+        modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetInnenBankOgSkadeforsikring +
             modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetTekniskRegnskapInnenLivsforsikring +
             modell.resultatregnskap_bankOgForsikringsinntektEllerKostnad_sumInntektEllerKostnadSomKanBliOmklassifisertTilResultatetIkkeTekniskRegnskapInnenLivsforsikring
 
