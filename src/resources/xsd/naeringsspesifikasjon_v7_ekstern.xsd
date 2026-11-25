@@ -184,6 +184,7 @@
     <xsd:sequence>
       <xsd:element name="regnskapspliktstype" type="RegnskapspliktstypeMedInnkapsling" />
       <xsd:element name="regnskapsperiode" type="Regnskapsperiode" />
+      <xsd:element minOccurs="0" name="rapportererRegnskapsperiodeSomErMindreEnnTolvMaanederPaaGrunnAvEndretRegnskapsperiode" type="BoolskMedInnkapsling" />
       <xsd:element name="virksomhetstype" type="VirksomhetstypeMedInnkapsling" />
       <xsd:element minOccurs="0" name="regeltypeForAarsregnskap" type="RegeltypeForAarsregnskapMedInnkapsling" />
       <xsd:element minOccurs="0" name="kontaktperson" type="Kontaktinformasjon" />

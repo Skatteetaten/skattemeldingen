@@ -16,8 +16,8 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.upersonlig.beregn
 object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling {
 
     val forekomstType = modell.rentebegrensning
-    private const val UNNTAKSREGEL_PAA_SELSKAPSNIVAA = "unntaksregelPaaSelskapsnivaa"
-    private const val UNNTAKSREGEL_PAA_NASJONALTNIVAA = "unntaksregelPaaNasjonaltNivaa"
+    const val UNNTAKSREGEL_PAA_SELSKAPSNIVAA = "unntaksregelPaaSelskapsnivaa"
+    const val UNNTAKSREGEL_PAA_NASJONALTNIVAA = "unntaksregelPaaNasjonaltNivaa"
 
 
     val samletRentekostnadOgGarantiprovisjonKalkyle = kalkyle("samletRentekostnadOgGarantiprovisjon") {
@@ -743,6 +743,18 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
             rentefradragsrammeKalkyle,
             differanseMellomNettoRentekostnadOgRentefradragsrammenKalkyle,
             tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle,
+            egenkapitalandelIKonsernregnskapKalkyle,
+            samletOekningAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
+            samletReduksjonAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
+            samletOekningAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
+            samletReduksjonAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
+            samletKorrigertEgenkapitalISelskapetEllerNorskDelAvKonsernetKalkyle,
+            samletOekningAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
+            samletReduksjonAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
+            samletOekningAvBalansesumJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
+            samletReduksjonAvBalansesumJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
+            samletKorrigertBalansesumISelskapetEllerNorskDelAvKonsernetKalkyle,
+            egenkapitalandelForSelskapetEllerNorskDelAvKonsernetKalkyle,
             tilbakefoertTilleggIInntektForSelskapIKonsernMvKalkyle,
             korrigertRentestoerrelse,
             tilleggIInntektForSelskapIKonsernMvSomFaarAvskaaretFradragForRenterTilAndreNaerstaaendeKalkyle,
@@ -754,18 +766,6 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaende : HarKalkylesamling
             aaretsAnvendelseAvFremfoertRentefradragFraTidligereAarKalkyle,
             fremfoerbartRentefradragIInntektTidligereAar,
             fremfoerbarRentekostnadKalkyle,
-            egenkapitalandelIKonsernregnskapKalkyle,
-            samletOekningAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
-            samletReduksjonAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
-            samletOekningAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
-            samletReduksjonAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
-            samletOekningAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
-            samletReduksjonAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
-            samletOekningAvBalansesumJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
-            samletReduksjonAvBalansesumJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
-            samletKorrigertEgenkapitalISelskapetEllerNorskDelAvKonsernetKalkyle,
-            samletKorrigertBalansesumISelskapetEllerNorskDelAvKonsernetKalkyle,
-            egenkapitalandelForSelskapetEllerNorskDelAvKonsernetKalkyle,
         )
     }
 }

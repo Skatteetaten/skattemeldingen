@@ -1,13 +1,17 @@
 package no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.spesifikasjonAvAnleggsmiddel
 
 import java.math.BigDecimal
+import java.time.LocalDate
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.erTryggAaDelePaa
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.util.medAntallDesimaler
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kontekster.GeneriskModellLesKontekst
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.konstanter.Inntektsaar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.util.Sats.anleggsmiddelOgToemmerkonto_grenseverdiEn
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.antallMaanederIRegnskapsperiode
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.felt2024
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.antallDagerIAar
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning.kalkyler.kalkyler.dagerEidIAnskaffelsesaaret
@@ -25,6 +29,19 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.naering.beregning
  * Spec: https://wiki.sits.no/pages/viewpage.action?pageId=279550129
  */
 internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
+
+    private fun GeneriskModellLesKontekst.regnskapsperiodejustering(inntektsaar: Inntektsaar): BigDecimal? =
+        if (
+            inntektsaar.tekniskInntektsaar >= 2026 &&
+            modell.virksomhet.rapportererRegnskapsperiodeSomErMindreEnnTolvMaanederPaaGrunnAvEndretRegnskapsperiode.erSann()
+        ) {
+            antallMaanederIRegnskapsperiode(
+                modell.virksomhet.regnskapsperiode_start.dato() ?: LocalDate.of(inntektsaar.gjeldendeInntektsaar, 1, 1),
+                modell.virksomhet.regnskapsperiode_slutt.dato() ?: LocalDate.of(inntektsaar.gjeldendeInntektsaar, 12, 1),
+            ) / 12.toBigDecimal()
+        } else {
+            1.toBigDecimal()
+        }
 
     internal val grunnlagForAvskrivningOgInntektsFoeringKalkyle = kalkyle {
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) forHverForekomst {
@@ -81,6 +98,7 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
 
     val aaretsAvskrivningKalkyle = kalkyle {
         val inntektsaar = inntektsaar
+        val regnskapsperiodejustering = regnskapsperiodejustering(inntektsaar)
         forekomsterAv(modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel) der {
             val erAnleggsmiddelUnderUtfoerelse = if (inntektsaar.tekniskInntektsaar > 2024) {
                 modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.spesifikasjonAvOrdinaertAnleggsmiddelILandbasertVindkraftverk_erAnleggsmiddelUnderUtfoerelse
@@ -115,13 +133,15 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
                     forekomstType.grunnlagForAvskrivningOgInntektsfoering -
                         forekomstType.forretningsbyggAnskaffetFoer01011984_nedreGrenseForAvskrivning
                 } else {
-                    val antallDager = if (forekomstType.antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret.harVerdi()) {
+                    val periodefaktor = if (forekomstType.antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret.harVerdi()) {
                         (forekomstType.antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret / antallDagerIAar(inntektsaar))
-                    } else { 1.toBigDecimal() }
+                    } else {
+                        regnskapsperiodejustering
+                    }
 
                     forekomstType.grunnlagForAvskrivningOgInntektsfoering *
                         forekomstType.avskrivningssats.prosent() *
-                        antallDager
+                        periodefaktor
                 }
             }
         }
@@ -131,6 +151,7 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
         val satser = satser!!
         val harSpesifikasjonAvKraftverk = harMinstEnForekomstAv(modell.kraftverk_spesifikasjonAvKraftverk)
         val inntektsaar = inntektsaar
+        val regnskapsperiodejustering = regnskapsperiodejustering(inntektsaar)
         val saldogruppeBasertPaaInntektsaar = if (inntektsaar.tekniskInntektsaar <= 2023) {
             saldogruppeACC2DJ
         } else {
@@ -160,7 +181,8 @@ internal object SaldoavskrevetAnleggsmiddelFra2024 : HarKalkylesamling {
                         val aaretsInntektsfoeringAvNegativSaldo =
                             if (forekomstType.antallDagerKnyttetTilSkattepliktigVirksomhetForForetakMedBegrensetSkattepliktIInntektsaaret.harIkkeVerdi()) {
                                 modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.grunnlagForAvskrivningOgInntektsfoering *
-                                    modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.avskrivningssats.prosent()
+                                    modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.avskrivningssats.prosent() *
+                                    regnskapsperiodejustering
                             } else {
                                 modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.grunnlagForAvskrivningOgInntektsfoering *
                                     modell.spesifikasjonAvAnleggsmiddel_saldoavskrevetAnleggsmiddel.avskrivningssats.prosent() *

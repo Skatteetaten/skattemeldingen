@@ -5,53 +5,21 @@ import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.HarKalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.beregner.Kalkylesamling
 import no.skatteetaten.fastsetting.formueinntekt.skattemelding.beregningdsl.dsl.v2.kalkyle.kalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.aaretsAnvendelseAvFremfoertRentefradragFraTidligereAarKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.aaretsFradragIInntektKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.aaretsTilleggIInntektKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.andelAvRentekostnadAnnenNaerstaaendePartKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.andelAvRentekostnadSelskapMvISammeKonsernKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.differanseMellomNettoRentekostnadOgRentefradragsrammenKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.egenkapitalandelForSelskapetEllerNorskDelAvKonsernetKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fradragForKonsernbidragSomSkalEkskluderes
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fremfoerbarRentekostnadKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fremfoerbartRentefradragIInntektIInntektsaaret
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fremfoerbartRentefradragIInntektTidligereAar
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fremfoertRentefradragFraTidligereAarInnenforAaretsTillatteRentefradragKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.grunnlagForRentefradragsrammeKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.justeringForSdfEllerNokusKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.korrigertRentestoerrelse
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.nettoRentekostnadKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsernKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentefradragsrammeKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletMottattKonsernbidrag
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletOekningAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletOekningAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletReduksjonAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletReduksjonAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletRentekostnadOgGarantiprovisjonKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.tilbakefoertTilleggIInntektForSelskapIKonsernMvKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.tilleggEllerFradragIInntektSomFoelgeAvRentebegrensningKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.tilleggIInntektForSelskapIKonsernMvSomFaarAvskaaretFradragForRenterTilAndreNaerstaaendeKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalNettoRentekostnadTilNaerstaaendeMvKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalNettoRentekostnadTilSelskapISammeKonsernKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalRenteinntektMottattFraAnnenNaerstaaendePartKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalRenteinntektMottattFraSelskapMvISammeKonsernKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalRentekostnadBetaltTilAnnenNaerstaaendePartKalkyle
-import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.beregning.kalkyler.BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalRentekostnadBetaltTilSelskapMvISammeKonsernKalkyle
 import java.math.BigDecimal
-
-val modell = no.skatteetaten.fastsetting.formueinntekt.skattemelding.mapping.selskapsmelding.sdf.domenemodell.v4_2025.v4
+import no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modellV4
 
 object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024Til2025  : HarKalkylesamling  {
+
+    val modell = modellV4
+    private const val UNNTAKSREGEL_PAA_SELSKAPSNIVAA = "unntaksregelPaaSelskapsnivaa"
+    private const val UNNTAKSREGEL_PAA_NASJONALTNIVAA = "unntaksregelPaaNasjonaltNivaa"
 
     val egenkapitalandelIKonsernregnskapKalkyle = kalkyle("egenkapitalandelIKonsernregnskap") {
         hvis(modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_positivEgenkapitalIKonsernregnskapGlobalt.beloepIValuta().erPositiv()) {
             settUniktFelt(modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap) {
                 if (modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_balansesumIKonsernregnskapGlobalt.beloepIValuta().erPositiv()) {
-                    modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_positivEgenkapitalIKonsernregnskapGlobalt.beloepIValuta() / modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_balansesumIKonsernregnskapGlobalt.beloepIValuta() * 100 medAntallDesimaler 2
+                    (modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_positivEgenkapitalIKonsernregnskapGlobalt.beloepIValuta()
+                            / modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_balansesumIKonsernregnskapGlobalt.beloepIValuta()) * 100 medAntallDesimaler 2
                 } else {
                     BigDecimal(100)
                 }
@@ -59,7 +27,8 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024Til2025  : Ha
         }
 
         hvis(
-            modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_positivEgenkapitalIKonsernregnskapGlobalt.beloepIValuta() lik 0 || modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_negativEgenkapitalIKonsernregnskapGlobalt.beloepIValuta() * 100 stoerreEllerLik 0
+            modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_positivEgenkapitalIKonsernregnskapGlobalt.beloepIValuta() lik 0
+             || modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_negativEgenkapitalIKonsernregnskapGlobalt.beloepIValuta() stoerreEllerLik 0
         ) {
             settUniktFelt(modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap) {
                 BigDecimal.ZERO
@@ -87,15 +56,46 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024Til2025  : Ha
         }
     }
 
-    val samletOekningAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet =
-        kalkyle("samletOekningAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet") {
-            settUniktFelt(modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletOekningAvEgenkapital) {
-                (modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_positivForretningsverdi.beloepIValuta() +
-                        modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_merverdiFraKonsernregnskap.beloepIValuta() +
-                        modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_utsattSkatteforpliktelseKnyttetTilMerverdi.beloepIValuta()
-                        ).somHeltall()
-            }
+    val samletOekningAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper = kalkyle("samletOekningAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper") {
+        settUniktFelt(modell.unntakForRentebegrensning.spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper_samletOekningAvEgenkapital) {
+            (forekomsterAv(modell.unntakForRentebegrensning.spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper_spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipperPerKonto) summerVerdiFraHverForekomst {
+                forekomstType.positivEffektPaaEgenkapital.beloepIValuta()
+            }).somHeltall()
         }
+    }
+
+    val samletReduksjonAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper = kalkyle("samletReduksjonAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper") {
+        settUniktFelt(modell.unntakForRentebegrensning.spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper_samletReduksjonAvEgenkapital) {
+            (forekomsterAv(modell.unntakForRentebegrensning.spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper_spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipperPerKonto) summerVerdiFraHverForekomst {
+                forekomstType.negativEffektPaaEgenkapital.beloepIValuta()
+            }).somHeltall()
+        }
+    }
+
+    val samletOekningAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper = kalkyle("samletOekningAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper") {
+        settUniktFelt(modell.unntakForRentebegrensning.spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper_samletOekningAvBalansesum) {
+            (forekomsterAv(modell.unntakForRentebegrensning.spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper_spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipperPerKonto) summerVerdiFraHverForekomst {
+                forekomstType.positivEffektPaaBalansesum.beloepIValuta()
+            }).somHeltall()
+        }
+    }
+
+    val samletReduksjonAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper = kalkyle("samletReduksjonAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper") {
+        settUniktFelt(modell.unntakForRentebegrensning.spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper_samletReduksjonAvBalansesum) {
+            (forekomsterAv(modell.unntakForRentebegrensning.spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper_spesifikasjonAvOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipperPerKonto) summerVerdiFraHverForekomst {
+                forekomstType.negativEffektPaaBalansesum.beloepIValuta()
+            }).somHeltall()
+        }
+    }
+
+    val samletOekningAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet = kalkyle("samletOekningAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet") {
+        settUniktFelt(modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletOekningAvEgenkapital) {
+            (modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_positivForretningsverdi.beloepIValuta() +
+                    modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_merverdiFraKonsernregnskap.beloepIValuta() +
+                    modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_utsattSkatteforpliktelseKnyttetTilMerverdi.beloepIValuta()
+                    ).somHeltall()
+        }
+    }
 
     val samletReduksjonAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet = kalkyle("samletReduksjonAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet") {
         settUniktFelt(modell.unntakForRentebegrensning.justeringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_samletReduksjonAvEgenkapital) {
@@ -127,51 +127,136 @@ object BegrensningAvRentefradragIKonsernOgMellomNaerstaaendeFra2024Til2025  : Ha
         }
     }
 
+    val tilbakefoertTilleggIInntektForSelskapIKonsernMvKalkyle =
+        kalkyle("tilbakefoertTilleggIInntektForSelskapIKonsernMv") {
+            val harUnntakForRentebegrensningSkalBekreftesAvRevisor =
+                modell.unntakForRentebegrensning.unntakForRentebegrensningSkalBekreftesAvRevisor.erSann()
+            val harUnntaksregelPaaSelskapsnivaa =
+                modell.unntakForRentebegrensning.anvendtUnntaksregel_unntaksregeltype.verdi() == UNNTAKSREGEL_PAA_SELSKAPSNIVAA
+            val harUnntaksregelPaaNasjonaltNivaa =
+                modell.unntakForRentebegrensning.anvendtUnntaksregel_unntaksregeltype.verdi() == UNNTAKSREGEL_PAA_NASJONALTNIVAA
+            val harEgenkapitalVedUtgangenAvRegnskapsaaretFoerInntektsaaret =
+                modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalVedUtgangenAvRegnskapsaaretFoerInntektsaaret.harVerdi()
+            val balansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret =
+                modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_balansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret.harVerdi()
+            val harPositivEllerNegativEgenkapitalIKonsernregnskapGlobalt = (
+                modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_positivEgenkapitalIKonsernregnskapGlobalt.harVerdi()
+                    || modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_negativEgenkapitalIKonsernregnskapGlobalt.harVerdi()
+                )
+            val harBalansesumIKonsernregnskapGlobalt =
+                no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_balansesumIKonsernregnskapGlobalt.harVerdi()
+            val erHelnorskKonsern = modell.unntakForRentebegrensning.anvendtUnntaksregel_erHelnorskKonsern.erSann()
+            val harSelskapetErInkludertIAnnenInnrapportering = modell.unntakForRentebegrensning.anvendtUnntaksregel_selskapetErInkludertIAnnenInnrapportering.erSann()
+            val harIdentifikator = modell.unntakForRentebegrensning.anvendtUnntaksregel_annetSelskapSomRapportererPaaVegneAvKonsern_identifikator.harVerdi()
+            val harBalansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret = modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_balansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret.harVerdi()
+            val egenkapitalandelForSelskapetEllerNorskDelAvKonsernetSoerst =
+                (modell.unntakForRentebegrensning.opplysningerOmSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet_egenkapitalandelForSelskapetEllerNorskDelAvKonsernet + 2) stoerreEllerLik no.skatteetaten.fastsetting.formueinntekt.skattemelding.selskapsmelding.sdf.modell.unntakForRentebegrensning.konsernregnskapOgEgenkapitalandelIKonsern_egenkapitalandelIKonsernregnskap
+            val harAnnetSelskapINorskDelAvEllerInnenlandskKonsernSelskapetsOrganisasjonsnummer = finnForekomsterMed(modell.unntakForRentebegrensning.anvendtUnntaksregel_annetSelskapINorskDelAvEllerInnenlandskKonsern) {
+                forekomstType.selskapetsOrganisasjonsnummer.harVerdi()
+            }.isNotEmpty()
+
+            forAlleForekomsterAv(modell.rentebegrensning) {
+                hvis(
+                    forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme.erPositiv()
+                        && forekomstType.erKonsernIhtRegelverkForRentebegrensning.erSann()
+                        && harUnntakForRentebegrensningSkalBekreftesAvRevisor
+                        && harUnntaksregelPaaSelskapsnivaa
+                        && harEgenkapitalVedUtgangenAvRegnskapsaaretFoerInntektsaaret
+                        && balansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret
+                        && harPositivEllerNegativEgenkapitalIKonsernregnskapGlobalt
+                        && harBalansesumIKonsernregnskapGlobalt
+                        && egenkapitalandelForSelskapetEllerNorskDelAvKonsernetSoerst
+                ) {
+                settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilbakefoertTilleggIInntektForSelskapIKonsernMv) {
+                    forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme.tall().somHeltall()
+                }
+            }
+            hvis(
+                forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme.erPositiv()
+                    && forekomstType.erKonsernIhtRegelverkForRentebegrensning.erSann()
+                    && harUnntakForRentebegrensningSkalBekreftesAvRevisor
+                    && harUnntaksregelPaaNasjonaltNivaa
+            ) {
+                hvis(
+                   erHelnorskKonsern
+                        && !harSelskapetErInkludertIAnnenInnrapportering
+                        && harAnnetSelskapINorskDelAvEllerInnenlandskKonsernSelskapetsOrganisasjonsnummer
+                ) {
+                    settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilbakefoertTilleggIInntektForSelskapIKonsernMv) {
+                        forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme.tall().somHeltall()
+                    }
+                }
+                hvis(
+                    harSelskapetErInkludertIAnnenInnrapportering
+                        && harIdentifikator
+                ) {
+                        settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilbakefoertTilleggIInntektForSelskapIKonsernMv) {
+                        forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme.tall().somHeltall()
+                    }
+                }
+                hvis(
+                    !erHelnorskKonsern
+                        && !harSelskapetErInkludertIAnnenInnrapportering
+                        && harAnnetSelskapINorskDelAvEllerInnenlandskKonsernSelskapetsOrganisasjonsnummer
+                        && harEgenkapitalVedUtgangenAvRegnskapsaaretFoerInntektsaaret
+                        && harBalansesumVedUtgangenAvRegnskapsaaretFoerInntektsaaret
+                        && harPositivEllerNegativEgenkapitalIKonsernregnskapGlobalt
+                        && harBalansesumIKonsernregnskapGlobalt
+                        && egenkapitalandelForSelskapetEllerNorskDelAvKonsernetSoerst
+                ) {
+                    settFelt(forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilbakefoertTilleggIInntektForSelskapIKonsernMv) {
+                        forekomstType.beregningsgrunnlagTilleggEllerFradragIInntekt_tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsramme.tall().somHeltall()
+                    }
+                }
+            }
+        }
+    }
+
     override fun kalkylesamling(): Kalkylesamling {
         return Kalkylesamling(
-            samletRentekostnadOgGarantiprovisjonKalkyle,
-            andelAvRentekostnadSelskapMvISammeKonsernKalkyle,
-            andelAvRentekostnadAnnenNaerstaaendePartKalkyle,
-            nettoRentekostnadKalkyle,
-            totalRentekostnadBetaltTilSelskapMvISammeKonsernKalkyle,
-            totalRenteinntektMottattFraSelskapMvISammeKonsernKalkyle,
-            totalRentekostnadBetaltTilAnnenNaerstaaendePartKalkyle,
-            totalRenteinntektMottattFraAnnenNaerstaaendePartKalkyle,
-            totalNettoRentekostnadTilSelskapISammeKonsernKalkyle,
-            nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsernKalkyle,
-            totalNettoRentekostnadTilNaerstaaendeMvKalkyle,
-            samletMottattKonsernbidrag,
-            sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap,
-            fradragForKonsernbidragSomSkalEkskluderes,
-            grunnlagForRentefradragsrammeKalkyle,
-            nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle,
-            rentefradragsrammeKalkyle,
-            differanseMellomNettoRentekostnadOgRentefradragsrammenKalkyle,
-            tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle,
-            tilbakefoertTilleggIInntektForSelskapIKonsernMvKalkyle,
-            korrigertRentestoerrelse,
-            tilleggIInntektForSelskapIKonsernMvSomFaarAvskaaretFradragForRenterTilAndreNaerstaaendeKalkyle,
-            aaretsTilleggIInntektKalkyle,
-            aaretsFradragIInntektKalkyle,
-            tilleggEllerFradragIInntektSomFoelgeAvRentebegrensningKalkyle,
-            fremfoertRentefradragFraTidligereAarInnenforAaretsTillatteRentefradragKalkyle,
-            justeringForSdfEllerNokusKalkyle,
-            fremfoerbartRentefradragIInntektIInntektsaaret,
-            aaretsAnvendelseAvFremfoertRentefradragFraTidligereAarKalkyle,
-            fremfoerbartRentefradragIInntektTidligereAar,
-            fremfoerbarRentekostnadKalkyle,
-            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.egenkapitalandelIKonsernregnskapKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletRentekostnadOgGarantiprovisjonKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.andelAvRentekostnadSelskapMvISammeKonsernKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.andelAvRentekostnadAnnenNaerstaaendePartKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.nettoRentekostnadKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalRentekostnadBetaltTilSelskapMvISammeKonsernKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalRenteinntektMottattFraSelskapMvISammeKonsernKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalRentekostnadBetaltTilAnnenNaerstaaendePartKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalRenteinntektMottattFraAnnenNaerstaaendePartKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalNettoRentekostnadTilSelskapISammeKonsernKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.nettoRentekostnadTilAnnenNaerstaaendePartUtenforKonsernKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.totalNettoRentekostnadTilNaerstaaendeMvKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletMottattKonsernbidrag,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.sumAndelAvMottattKonsernbidragSomErAvgittTilAnnetSelskap,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fradragForKonsernbidragSomSkalEkskluderes,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.grunnlagForRentefradragsrammeKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.nettoRentekostnadBeregningsgrunnlagTilleggEllerFradragIInntektKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.rentefradragsrammeKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.differanseMellomNettoRentekostnadOgRentefradragsrammenKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.tilleggIInntektSomFoelgeAvAtNettoRentekostnadOverstigerRentefradragsrammenKalkyle,
+            egenkapitalandelIKonsernregnskapKalkyle,
             samletOekningAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
             samletReduksjonAvEgenkapitalOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
+            samletOekningAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
+            samletReduksjonAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
+            samletKorrigertEgenkapitalISelskapetEllerNorskDelAvKonsernetKalkyle,
             samletOekningAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
             samletReduksjonAvBalansesumOmarbeidelseTilKonsernregnskapetsRegnskapsprinsipper,
-            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletOekningAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
-            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletReduksjonAvEgenkapitalJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
-            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletOekningAvBalansesumJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
-            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletReduksjonAvBalansesumJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
-            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletKorrigertEgenkapitalISelskapetEllerNorskDelAvKonsernetKalkyle,
-            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.samletKorrigertBalansesumISelskapetEllerNorskDelAvKonsernetKalkyle,
-            egenkapitalandelForSelskapetEllerNorskDelAvKonsernetKalkyle,
+            samletOekningAvBalansesumJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
+            samletReduksjonAvBalansesumJusteringAvSelskapsregnskapetEllerKonsolidertBalanseForNorskDelAvKonsernet,
+            samletKorrigertBalansesumISelskapetEllerNorskDelAvKonsernetKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.egenkapitalandelForSelskapetEllerNorskDelAvKonsernetKalkyle,
+            tilbakefoertTilleggIInntektForSelskapIKonsernMvKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.korrigertRentestoerrelse,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.tilleggIInntektForSelskapIKonsernMvSomFaarAvskaaretFradragForRenterTilAndreNaerstaaendeKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.aaretsTilleggIInntektKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.aaretsFradragIInntektKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.tilleggEllerFradragIInntektSomFoelgeAvRentebegrensningKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fremfoertRentefradragFraTidligereAarInnenforAaretsTillatteRentefradragKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.justeringForSdfEllerNokusKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fremfoerbartRentefradragIInntektIInntektsaaret,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.aaretsAnvendelseAvFremfoertRentefradragFraTidligereAarKalkyle,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fremfoerbartRentefradragIInntektTidligereAar,
+            BegrensningAvRentefradragIKonsernOgMellomNaerstaaende.fremfoerbarRentekostnadKalkyle,
         )
     }
 }

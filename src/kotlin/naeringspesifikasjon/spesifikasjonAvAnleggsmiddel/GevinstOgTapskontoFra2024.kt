@@ -96,10 +96,18 @@ internal object GevinstOgTapskontoFra2024 : HarKalkylesamling {
         val virksomhetstypeVerdi = modell.virksomhet.virksomhetstype.verdi()
         val harSpesifikasjonAvKraftverk = harMinstEnForekomstAv(modell.kraftverk_spesifikasjonAvKraftverk)
 
-        val antallMaanederIRegnskapsperiode = antallMaanederIRegnskapsperiode(
-            modell.virksomhet.regnskapsperiode_start.dato() ?: LocalDate.of(inntektsaar.gjeldendeInntektsaar, 1, 1),
-            modell.virksomhet.regnskapsperiode_slutt.dato() ?: LocalDate.of(inntektsaar.gjeldendeInntektsaar, 12, 1),
-        )
+        // Fra 2026 justeres det kun for regnskapsperiode når virksomheten rapporterer endret regnskapsperiode
+        val antallMaanederIRegnskapsperiode = if (
+            inntektsaar.tekniskInntektsaar < 2026 ||
+            modell.virksomhet.rapportererRegnskapsperiodeSomErMindreEnnTolvMaanederPaaGrunnAvEndretRegnskapsperiode.erSann()
+        ) {
+            antallMaanederIRegnskapsperiode(
+                modell.virksomhet.regnskapsperiode_start.dato() ?: LocalDate.of(inntektsaar.gjeldendeInntektsaar, 1, 1),
+                modell.virksomhet.regnskapsperiode_slutt.dato() ?: LocalDate.of(inntektsaar.gjeldendeInntektsaar, 12, 1),
+            )
+        } else {
+            12.toBigDecimal()
+        }
         val inntektsaar = inntektsaar
 
         forAlleForekomsterAv(modell.spesifikasjonAvAnleggsmiddel_gevinstOgTapskonto) {
